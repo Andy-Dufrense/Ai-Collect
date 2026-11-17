@@ -226,12 +226,7 @@ start_worker() {
     fi
 
     echo "自动抓取进程已启动，PID: ${pid}"
-    local interval_seconds
-    interval_seconds="$(
-        "${PYTHON_BIN}" -c \
-            "from config import AUTO_FETCH_INTERVAL_SECONDS; print(f'{AUTO_FETCH_INTERVAL_SECONDS:g}')"
-    )"
-    echo "后台会立即同步一次，之后每 ${interval_seconds} 秒检查 RSS。"
+    echo "自动刷新计划：北京时间每天 00:00 和 12:00。"
 }
 
 start_service() {

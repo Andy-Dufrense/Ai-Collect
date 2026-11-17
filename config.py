@@ -42,8 +42,8 @@ def get_fetch_lock_path() -> Path:
     """
     返回抓取任务锁文件路径。
 
-    锁文件与数据库放在同一目录。后台自动抓取和工作页面的“立即同步”
-    即使同时发生，也只有一个任务能够真正访问 RSS，避免重复请求与并写入。
+    锁文件与数据库放在同一目录。多个后台命令或运维任务同时运行时，
+    只有一个任务能够真正访问 RSS，避免重复请求与并写入。
     """
 
     return get_database_path().with_suffix(".fetch.lock")
@@ -358,19 +358,19 @@ REQUEST_BACKOFF_SECONDS: Final[float] = _read_positive_number(
     0.8,
 )
 
-# 后台自动抓取的轮询间隔，默认 5 分钟。
-# RSS 并不是实时推送协议，因此后端采用固定间隔轮询来实现“近实时”更新。
-# 最小限制为 30 秒，避免错误配置导致对公开 RSS 服务发起过密请求。
-AUTO_FETCH_INTERVAL_SECONDS: Final[float] = max(
-    30.0,
-    _read_positive_number("AUTO_FETCH_INTERVAL_SECONDS", 43200.0),
-)
-
 # 整轮抓取完全失败时不必等待完整的 5 分钟，网络恢复后应在 60 秒内自动重试。
 AUTO_FETCH_RETRY_SECONDS: Final[float] = max(
     15.0,
     _read_positive_number("AUTO_FETCH_RETRY_SECONDS", 60.0),
 )
+
+# 后台抓取固定在北京时间每天 00:00 和 12:00 执行。
+AUTO_FETCH_TIME_ZONE: Final[str] = os.getenv(
+    "AUTO_FETCH_TIME_ZONE",
+    "Asia/Shanghai",
+)
+AUTO_FETCH_SCHEDULE_HOURS: Final[tuple[int, ...]] = (0, 12)
+AUTO_FETCH_HEARTBEAT_MAX_AGE_SECONDS: Final[int] = 13 * 3600
 
 # requests 会自动识别 HTTP_PROXY / HTTPS_PROXY。
 # 某些 cron 环境不会继承终端的代理变量，因此这里额外支持统一的 NEWS_PROXY。
@@ -416,6 +416,3 @@ DISPLAY_TIME_ZONE: Final[str] = os.getenv("DISPLAY_TIME_ZONE", "Asia/Shanghai")
 FLASK_HOST: Final[str] = os.getenv("FLASK_HOST", "0.0.0.0")
 FLASK_PORT: Final[int] = int(_read_positive_number("FLASK_PORT", 5000))
 
-# 部署到公网后可设置 ADMIN_TOKEN。设置后，手动录入和手动同步需要 Basic Auth；
-# 不设置时保持本机开发模式的直接访问。
-ADMIN_TOKEN: Final[str] = os.getenv("ADMIN_TOKEN", "").strip()

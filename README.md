@@ -7,13 +7,12 @@
 当前运行模式为“后端常驻自动同步”：
 
 1. 执行 `./manage.sh start` 后同时启动 Flask 网页和后台自动抓取进程。
-2. 自动抓取进程启动后立即同步一次，之后默认每 12 小时刷新全部来源。
+2. 自动抓取进程在北京时间每天 00:00 和 12:00 刷新全部来源。
 3. 新资讯经过去重后写入 SQLite；网页只读取数据库。
 4. 你日常打开网页或刷新页面即可看到最新内容，不需要手动点击抓取。
 5. 执行 `./manage.sh stop` 后，网页和自动抓取进程同时停止。
 
-RSS 不是真正的实时推送协议，所以这里采用“固定间隔轮询”实现定时更新。
-轮询间隔可以通过环境变量 `AUTO_FETCH_INTERVAL_SECONDS` 调整，最小 30 秒。
+RSS 不是真正的实时推送协议，所以这里采用固定时间轮询。
 
 ## 一、原始项目需求
 
@@ -51,13 +50,12 @@ RSS 不是真正的实时推送协议，所以这里采用“固定间隔轮询�
 - Flask 首页按发布时间倒序展示标题、简介、来源和发布时间，并显示抓取时间与总条数。
 - 抓取入口可以独立调用，以便之后用 Linux cron 定时运行。
 - 增加搜狗微信公开搜索适配器；不绕过验证码、登录或平台访问限制。
-- 增加手动收录页面，可录入微信公众号、微信视频号、抖音和其他链接。
 
 ## 二、当前实现结构
 
 ```text
 Ai-Collect/
-├── app.py                 # Flask 网页应用和手动抓取接口
+├── app.py                 # Flask 只读网页和筛选分页
 ├── auto_fetcher.py        # 常驻后台抓取进程和定时轮询
 ├── fetch_news.py          # cron/命令行抓取入口
 ├── config.py              # RSS 源、关键词、代理和路径配置
@@ -69,7 +67,6 @@ Ai-Collect/
 ├── sogou_wechat.py        # 搜狗微信公开结果页解析
 ├── manage.sh              # 一键启动、停止、重启、查看状态
 ├── templates/index.html   # 首页模板
-├── templates/manual.html  # 手动录入公众号、视频号、抖音
 ├── static/style.css       # 卡片式页面样式
 ├── tests/test_core.py     # 过滤、存储、心跳和网页测试
 ├── tests/test_rss_fetcher.py # 使用模拟 RSS 的离线解析测试
@@ -91,8 +88,7 @@ manage.sh
 └── auto_fetcher.py   定时下载 RSS，过滤并写入 SQLite
 ```
 
-两个进程共享一个 Linux 文件锁，所以即使网页上的“立即同步”和后台定时任务
-碰巧同时触发，也只有一个任务会真正访问 RSS。
+两个进程共享一个 Linux 文件锁，避免多个后台任务同时抓取。
 
 ## 三、第一次运行
 
@@ -103,7 +99,7 @@ cd ~/Desktop/Ai-Collect
 ./manage.sh start
 ```
 
-启动脚本会先让后台立即抓取一次，然后自动按间隔持续更新。在浏览器打开：
+启动脚本后，后台会按北京时间每天 00:00 和 12:00 自动更新。在浏览器打开：
 
 ```text
 http://127.0.0.1:5000/
@@ -136,7 +132,7 @@ python3 -m pip install -r requirements.txt
 # 不打开网页，直接抓取一次
 ./manage.sh fetch
 
-# 查看最近 80 行网页、后台自动抓取或手动抓取日志
+# 查看最近 80 行网页、后台自动抓取或命令行抓取日志
 ./manage.sh logs flask
 ./manage.sh logs worker
 ./manage.sh logs fetch 200
@@ -147,7 +143,7 @@ python3 -m pip install -r requirements.txt
 
 脚本使用 `data/flask.pid` 和 `data/worker.pid` 记录两个进程编号。
 网页日志写入 `data/flask.log`，自动抓取日志写入 `data/worker.log`，
-手动抓取日志写入 `data/fetch.log`。关闭终端不会停止服务，必须执行
+命令行抓取日志写入 `data/fetch.log`。关闭终端不会停止服务，必须执行
 `./manage.sh stop`。
 
 如果提示脚本没有执行权限，先运行一次：
@@ -244,15 +240,7 @@ export NEWS_PROXY="http://127.0.0.1:7890"
 请把端口替换成你本机实际使用的代理端口。设置代理后需要重启后端，让后台
 自动抓取进程继承新环境变量。不要在代码里写死代理地址。
 
-修改自动同步频率：
-
-```bash
-export AUTO_FETCH_INTERVAL_SECONDS=120
-./manage.sh restart
-```
-
-这个示例表示每 2 分钟检查一次 RSS。频率过低可能对公开 RSS 服务造成压力，
-因此程序把最小间隔限制为 30 秒。
+自动刷新时间是固定的北京时间每天 `00:00` 和 `12:00`，不需要修改环境变量。
 
 ### 常见启动问题
 
@@ -302,8 +290,8 @@ cd ~/Desktop/Ai-Collect
 python3 -m unittest discover -s tests -v
 ```
 
-预期看到 `OK`。目前共有 55 项测试，会检查过滤、大小写、词边界、模拟 RSS、
-搜狗微信解析、手动录入、非法链接、分类字段、链接去重、抓取状态、工作进程
+预期看到 `OK`。目前共有 52 项测试，会检查过滤、大小写、词边界、模拟 RSS、
+搜狗微信解析、分类字段、链接去重、抓取状态、工作进程
 心跳、跨进程抓取锁、时间范围筛选、关键词搜索、综合排名、首页渲染和非法
 查询参数，不依赖当前网络状态。
 
@@ -311,8 +299,7 @@ python3 -m unittest discover -s tests -v
 
 首页默认显示最近 3 天的资讯，也可以选择最近 1、7、14、30、60 天或全部时间，
 或者指定某一个具体日期。时间范围、日期和搜索条件改变后会自动刷新，不需要
-再次点击“筛选”。每次默认显示 20 条，点击底部“显示更多”继续增加 20 条，
-直到全部展示。
+再次点击“筛选”。列表每页固定显示 20 条，底部通过上一页、下一页和页码切换。
 
 关键词搜索覆盖中文标题、英文原标题和简介，例如“吉他”“钢琴”“乐理”。
 
@@ -335,7 +322,7 @@ python3 -m unittest discover -s tests -v
 编辑过滤采用“技术或音乐”并集：AI、科技、软件、硬件、系统、芯片等技术内容
 以及音乐、乐器、乐理、音效和音频制作内容均可收录；AI + 音乐继续获得最高
 优先级。高管变动、诉讼、融资、明星八卦、巡演、榜单、购物优惠和纯观点内容
-会被排除。手动提交的公众号、视频号和抖音内容不受自动过滤影响。
+会被排除。
 
 对于已审核的国内科技、国际科技、音乐科技和搜狗微信来源，不再要求每篇文章
 重复命中关键词；只要标题不触发噪音规则即可收录。相关度和热度仍用于内部
@@ -391,7 +378,7 @@ curl http://127.0.0.1:5000/health
 然后打开 `http://127.0.0.1:5000/` 查看页面。若页面正常但仍无卡片，
 先查看 `data/flask.log`，再确认当前 RSS 中是否存在同时命中两类关键词的内容。
 
-## 九、搜狗微信与手动来源
+## 九、搜狗微信来源
 
 搜狗微信搜索关键词位于 `config.py` 的 `SOGOU_WECHAT_QUERIES`。程序使用
 普通公开结果页，不会绕过验证码、登录或风控；平台限制该来源时，只在日志中
@@ -403,15 +390,6 @@ curl http://127.0.0.1:5000/health
 
 没有解析到真实发布时间的文章不会进入“近 N 天”排行，但仍可通过
 “全部时间”查看。这是为了保证每日排行不会被旧文章污染。
-
-微信公众号、视频号或抖音中的重要内容，可以打开：
-
-```text
-http://192.168.25.128:5000/add_manual
-```
-
-填写标题、链接、账号和简介后保存。首页会显示“微信公众号”“微信视频号”
-或“抖音”分类。重复链接会被数据库自动跳过。
 
 如果你在 WeRSS 等合规服务扫码授权了公众号，并得到专属 RSS 地址，可以编辑
 `custom_sources.json`：
@@ -440,8 +418,6 @@ Flask，而是由 GitHub Actions 每 12 小时执行 Python 抓取，把结果�
 已包含：
 
 - `.github/workflows/update-pages.yml`：定时抓取、提交数据、部署 Pages
-- `.github/workflows/ingest-approved-issue.yml`：处理审核通过的手动资讯
-- `.github/ISSUE_TEMPLATE/add-news.yml`：公众号、视频号、抖音提交表单
 - `public/index.html`、`public/app.js`：静态搜索、天数筛选与排行
 - `translation.py`：英文标题自动翻译和持久缓存
 - `scripts/github_update.py`：恢复历史数据、抓取和导出 JSON
@@ -487,7 +463,8 @@ https://github.com/Andy-Dufrense/Ai-Collect/actions/workflows/update-pages.yml
 https://Andy-Dufrense.github.io/Ai-Collect/
 ```
 
-之后 Actions 会在 UTC 00:00 和 12:00（北京时间 08:00 和 20:00）自动运行。
+之后 Actions 会在 UTC 04:00 和 16:00（北京时间 12:00 和次日 00:00）
+自动运行。
 
 英文标题会通过 MyMemory 免费翻译接口转换为简体中文，并缓存到
 `news.json`。同一标题不会重复翻译；接口限流时保留英文原文，不影响站点更新。
@@ -500,20 +477,9 @@ https://Andy-Dufrense.github.io/Ai-Collect/
 ./manage.sh translate
 ```
 
-### 4. 手动提交资讯
-
-打开：
-
-```text
-https://github.com/Andy-Dufrense/Ai-Collect/issues/new?template=add-news.yml
-```
-
-填写后会创建 `pending-news` Issue。维护者添加 `approved-news` 标签后，
-Actions 会把它加入网站并从 Issue 自动发布。
-
 注意：GitHub Actions 的定时任务可能有几分钟延迟；仓库需为 Public 才能免费
 使用 GitHub Pages（具体以 GitHub 当前规则为准）。搜狗微信可能限制云数据中心
-IP，但 RSS 和 Issue 手动录入不受影响。
+IP，但 RSS 和授权公众号 RSS 不受影响。
 
 ## 十一、部署到云服务器（可选）
 
@@ -566,10 +532,6 @@ sudo bash deploy/install.sh
 - 启动 Web 和自动抓取服务
 - 设置开机自启和崩溃自动重启
 - 配置 Nginx 反向代理
-- 生成管理员 Basic Auth 密码
-
-安装结束时会显示管理员账号 `admin` 和随机密码。密码保存在服务器的
-`/opt/ai-music/.env`，请妥善保存。
 
 ### 5. 访问
 
@@ -577,8 +539,8 @@ sudo bash deploy/install.sh
 http://服务器公网IP/
 ```
 
-首页、搜索和筛选公开访问；手动收录和“立即同步”会要求管理员账号密码。
-服务器重启后服务会自动恢复，不需要再执行任何启动命令。
+首页、搜索和筛选公开只读访问。服务器重启后服务会自动恢复，不需要再执行
+任何启动命令。
 
 ### 6. 查看运行状态
 
@@ -616,10 +578,11 @@ sudo bash deploy/install.sh
 command -v python3
 ```
 
-用 `crontab -e` 编辑定时任务。下面的示例表示每天 08:00 抓取：
+用 `crontab -e` 编辑定时任务。下面的示例表示北京时间每天 00:00 和 12:00
+抓取：
 
 ```cron
-0 8 * * * cd /home/andy/Desktop/Ai-Collect && NEWS_PROXY=http://127.0.0.1:7890 /usr/bin/python3 fetch_news.py >> /home/andy/Desktop/Ai-Collect/data/cron.log 2>&1
+0 0,12 * * * cd /home/andy/Desktop/Ai-Collect && /usr/bin/python3 fetch_news.py >> /home/andy/Desktop/Ai-Collect/data/cron.log 2>&1
 ```
 
 如果不需要代理，删除 `NEWS_PROXY=...` 部分。网页服务与抓取任务分离，
@@ -631,4 +594,3 @@ command -v python3
 - 修改关键词：编辑 `config.py` 中的 `AI_KEYWORDS` 和 `MUSIC_KEYWORDS`。
 - 修改数据库位置：设置环境变量 `NEWS_DB_PATH`。
 - 修改端口：启动前设置环境变量 `FLASK_PORT`，例如 `FLASK_PORT=8000 ./manage.sh start`。
-- 修改自动同步间隔：设置环境变量 `AUTO_FETCH_INTERVAL_SECONDS` 后重启后端。

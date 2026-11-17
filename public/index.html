@@ -56,14 +56,6 @@
                 </label>
                 <a class="reset-link" href="./">重置</a>
             </form>
-            <div class="control-actions">
-                <a class="text-action"
-                   href="https://github.com/Andy-Dufrense/Ai-Collect/issues/new?template=add-news.yml"
-                   target="_blank" rel="noopener noreferrer">+ 提交资讯</a>
-                <a class="sync-button button-link"
-                   href="https://github.com/Andy-Dufrense/Ai-Collect/actions/workflows/update-pages.yml"
-                   target="_blank" rel="noopener noreferrer">更新记录</a>
-            </div>
         </section>
 
         <div class="result-toolbar">
@@ -79,12 +71,11 @@
             </div>
             <div id="news-list"></div>
         </section>
-        <div class="load-more-wrap">
-            <button type="button" class="load-more-button" id="load-more">
-                显示更多
-            </button>
-            <span id="load-status"></span>
-        </div>
+        <nav class="pagination" id="pagination" aria-label="资讯分页" hidden>
+            <button type="button" class="page-button" id="page-prev">上一页</button>
+            <span class="page-info" id="page-info"></span>
+            <button type="button" class="page-button" id="page-next">下一页</button>
+        </nav>
 
         <section class="empty-state" id="empty-state" hidden>
             <p class="empty-code">NO MATCHED SIGNAL</p>

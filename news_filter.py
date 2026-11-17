@@ -164,16 +164,6 @@ GOSSIP_OR_BUSINESS_NOISE = (
     "slams",
 )
 
-MANUAL_CATEGORIES = {"微信公众号", "微信视频号", "抖音", "其他"}
-TRUSTED_SOURCE_CATEGORIES = {
-    "国内科技",
-    "国际科技",
-    "音乐科技",
-    "搜狗微信",
-    "授权 RSS",
-}
-
-
 def _normalize_text(value: str) -> str:
     """统一大小写并压缩多余空白，减少无意义的匹配差异。"""
 
@@ -223,7 +213,6 @@ def is_relevant_news(
     编辑规则：
     - AI、技术、音乐或乐器命中任一类即可收录；
     - 高管、诉讼、融资、明星、巡演、购物和纯观点等噪音排除；
-    - 用户手动提交的分类直接保留。
     """
 
     combined_text = _normalize_text(" ".join(part for part in text_parts if part))
@@ -233,9 +222,6 @@ def is_relevant_news(
         find_matched_keywords(combined_text, SOFTWARE_SIGNAL_KEYWORDS)
     )
     has_tech_keyword = bool(find_matched_keywords(combined_text, TECH_KEYWORDS))
-
-    if category in MANUAL_CATEGORIES:
-        return True
 
     title_for_review = str(text_parts[0]) if text_parts else ""
     # 人工保留白名单只保护容易因词形变化被误伤的音乐科技文章。

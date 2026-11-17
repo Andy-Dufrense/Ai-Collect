@@ -58,8 +58,7 @@ a {
     letter-spacing: 0.14em;
 }
 
-.brand-block h1,
-.manual-header h1 {
+.brand-block h1 {
     margin: 0 0 6px;
     font-family: "Noto Serif SC", "Songti SC", Georgia, serif;
     font-size: clamp(2rem, 4vw, 3.6rem);
@@ -167,10 +166,7 @@ a {
 }
 
 .filter-form input,
-.filter-form select,
-.manual-form input,
-.manual-form select,
-.manual-form textarea {
+.filter-form select {
     height: 38px;
     padding: 0 11px;
     border: 1px solid var(--line-strong);
@@ -181,10 +177,7 @@ a {
 }
 
 .filter-form input:focus,
-.filter-form select:focus,
-.manual-form input:focus,
-.manual-form select:focus,
-.manual-form textarea:focus {
+.filter-form select:focus {
     border-color: var(--ink);
     outline: 2px solid rgba(232, 255, 84, 0.72);
 }
@@ -197,81 +190,10 @@ a {
     min-width: 145px;
 }
 
-.primary-button,
-.sync-button,
-.fetch-button {
-    height: 38px;
-    padding: 0 18px;
-    border: 1px solid var(--ink);
-    border-radius: 0;
-    color: var(--surface);
-    background: var(--ink);
-    font: 700 0.8rem/1 inherit;
-    cursor: pointer;
-}
-
-.sync-button {
-    color: var(--ink);
-    background: var(--accent);
-}
-
-.button-link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-}
-
-.reset-link,
-.text-action,
-.back-link {
+.reset-link {
     font-size: 0.76rem;
     line-height: 38px;
     text-underline-offset: 3px;
-}
-
-.control-actions {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-}
-
-.control-actions form {
-    margin: 0;
-}
-
-.compact-message {
-    margin: 14px 0 0;
-    padding: 10px 13px;
-    border: 1px solid var(--line-strong);
-    background: var(--surface);
-    font-size: 0.8rem;
-}
-
-.notice.warning,
-.notice.error {
-    background: var(--warning-bg);
-}
-
-.diagnostic-note {
-    margin-top: 12px;
-    padding: 9px 12px;
-    border: 1px solid #dfc57b;
-    background: var(--warning-bg);
-    font-size: 0.76rem;
-}
-
-.diagnostic-note summary {
-    cursor: pointer;
-    font-weight: 700;
-}
-
-.diagnostic-note ul {
-    margin: 9px 0 0;
-    padding-left: 18px;
-    font-family: var(--mono);
-    font-size: 0.7rem;
-    overflow-wrap: anywhere;
 }
 
 .result-toolbar {
@@ -382,31 +304,54 @@ a {
     white-space: nowrap;
 }
 
-.load-more-wrap {
+.pagination {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
-    padding: 18px 0 4px;
+    gap: 6px;
+    padding: 20px 0 4px;
+    flex-wrap: wrap;
 }
 
-.load-more-button {
-    min-width: 150px;
-    height: 36px;
+.page-button {
+    display: inline-flex;
+    min-width: 36px;
+    height: 34px;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
     border: 1px solid var(--ink);
     color: var(--ink);
     background: var(--surface);
-    font: 700 0.78rem/1 inherit;
+    font: 700 0.72rem/1 var(--mono);
+    text-decoration: none;
     cursor: pointer;
 }
 
-.load-more-button:hover {
+.page-button:hover,
+.page-button.current {
     background: var(--accent);
 }
 
-#load-status {
+.page-button.disabled,
+.page-button:disabled {
+    pointer-events: none;
+    opacity: 0.55;
     color: var(--muted);
-    font: 0.68rem/1.3 var(--mono);
+    border-color: var(--line);
+    background: transparent;
+}
+
+.page-info {
+    min-width: 90px;
+    color: var(--muted);
+    font: 0.7rem/1 var(--mono);
+    text-align: center;
+}
+
+.page-ellipsis {
+    color: var(--muted);
+    font-family: var(--mono);
 }
 
 .empty-state {
@@ -434,39 +379,6 @@ a {
     padding-top: 18px;
     color: var(--muted);
     font: 0.65rem/1.4 var(--mono);
-}
-
-/* 手动录入页面 */
-.manual-header {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 30px;
-    padding: 12px 0 24px;
-    border-bottom: 2px solid var(--ink);
-}
-
-.manual-form {
-    display: grid;
-    width: min(720px, 100%);
-    gap: 16px;
-    margin: 28px auto 0;
-    padding: 24px;
-    border: 1px solid var(--line-strong);
-    background: var(--surface);
-}
-
-.manual-form label {
-    display: grid;
-    gap: 7px;
-    color: var(--muted);
-    font-size: 0.76rem;
-}
-
-.manual-form textarea {
-    height: auto;
-    padding: 10px 11px;
-    resize: vertical;
 }
 
 code {
@@ -534,8 +446,7 @@ code {
         display: none;
     }
 
-    .app-footer,
-    .manual-header {
+    .app-footer {
         flex-direction: column;
     }
 }

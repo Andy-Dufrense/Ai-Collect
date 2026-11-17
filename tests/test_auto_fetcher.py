@@ -58,7 +58,7 @@ class AutoFetcherTests(unittest.TestCase):
                         new_count=0,
                     )
 
-                run_forever(fake_fetch_and_stop)
+                run_forever(fake_fetch_and_stop, run_immediately=True)
                 self.assertIsNone(get_worker_heartbeat())
 
 

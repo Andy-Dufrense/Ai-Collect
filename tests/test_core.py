@@ -102,15 +102,6 @@ class NewsFilterTests(unittest.TestCase):
             )
         )
 
-    def test_manual_category_is_always_kept(self) -> None:
-        self.assertTrue(
-            is_relevant_news(
-                "一首歌曲",
-                "普通音乐内容",
-                category="微信公众号",
-            )
-        )
-
     def test_music_only_and_ai_development_are_kept(self) -> None:
         self.assertTrue(
             is_relevant_news(
@@ -347,7 +338,6 @@ class FlaskPageTests(unittest.TestCase):
         self.assertIn("测试源", page)
         self.assertIn("总收录", page)
         self.assertIn('id="filter-form"', page)
-        self.assertIn("显示更多", page)
 
     def test_index_shows_auto_sync_when_heartbeat_is_fresh(self) -> None:
         set_worker_heartbeat(datetime.now(timezone.utc))
@@ -357,48 +347,6 @@ class FlaskPageTests(unittest.TestCase):
         page = response.get_data(as_text=True)
         self.assertEqual(response.status_code, 200)
         self.assertIn("自动同步中", page)
-
-    def test_page_redacts_proxy_credentials_in_error_summary(self) -> None:
-        import app as app_module
-
-        redacted = app_module._redact_error_text(
-            "ProxyError http://demo:secret@127.0.0.1:7890"
-        )
-        self.assertIn("127.0.0.1:7890", redacted)
-        self.assertNotIn("demo:secret", redacted)
-
-    def test_manual_entry_is_saved_with_category(self) -> None:
-        from app import app
-
-        client = app.test_client()
-        response = client.post(
-            "/add_manual",
-            data={
-                "category": "微信公众号",
-                "source": "测试公众号",
-                "title": "AI 吉他创作新工具",
-                "link": "https://mp.weixin.qq.com/s/manual-test",
-                "summary": "用于测试手动录入。",
-            },
-        )
-        self.assertEqual(response.status_code, 302)
-        self.assertEqual(get_news_count(), 1)
-        self.assertEqual(get_all_news()[0]["category"], "微信公众号")
-
-    def test_manual_entry_rejects_invalid_link(self) -> None:
-        from app import app
-
-        response = app.test_client().post(
-            "/add_manual",
-            data={
-                "title": "无效链接",
-                "link": "javascript:alert(1)",
-            },
-        )
-        page = response.get_data(as_text=True)
-        self.assertEqual(response.status_code, 200)
-        self.assertIn("完整的 http", page)
-        self.assertEqual(get_news_count(), 0)
 
     def test_homepage_marks_only_first_twenty_rows_visible(self) -> None:
         now = datetime.now(timezone.utc)
@@ -421,22 +369,15 @@ class FlaskPageTests(unittest.TestCase):
         from app import app
 
         page = app.test_client().get("/").get_data(as_text=True)
-        self.assertEqual(page.count('class="feed-row"'), 25)
-        self.assertEqual(page.count(" hidden>"), 5)
+        self.assertEqual(page.count('class="feed-row"'), 20)
+        self.assertIn("下一页", page)
 
-    def test_admin_routes_can_be_protected_by_basic_auth(self) -> None:
-        import app as app_module
+    def test_manual_and_sync_routes_are_removed(self) -> None:
+        from app import app
 
-        client = app_module.app.test_client()
-        with patch.object(app_module, "ADMIN_TOKEN", "test-secret"):
-            unauthorized = client.get("/add_manual")
-            self.assertEqual(unauthorized.status_code, 401)
-
-            authorized = client.get(
-                "/add_manual",
-                auth=("admin", "test-secret"),
-            )
-            self.assertEqual(authorized.status_code, 200)
+        client = app.test_client()
+        self.assertEqual(client.get("/add_manual").status_code, 404)
+        self.assertEqual(client.post("/fetch").status_code, 404)
 
 
 if __name__ == "__main__":

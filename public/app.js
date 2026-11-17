@@ -7,7 +7,7 @@ const state = {
     items: [],
     generatedAt: null,
     lastRun: null,
-    visibleCount: 20,
+    currentPage: 1,
 };
 const PAGE_SIZE = 20;
 
@@ -23,8 +23,10 @@ const elements = {
     generatedAt: document.querySelector("#generated-at"),
     syncState: document.querySelector("#sync-state"),
     syncText: document.querySelector("#sync-text"),
-    loadMore: document.querySelector("#load-more"),
-    loadStatus: document.querySelector("#load-status"),
+    pagination: document.querySelector("#pagination"),
+    pagePrev: document.querySelector("#page-prev"),
+    pageNext: document.querySelector("#page-next"),
+    pageInfo: document.querySelector("#page-info"),
 };
 
 function formatTime(value) {
@@ -45,7 +47,7 @@ function formatTime(value) {
 function nextScheduledRefresh() {
     const now = new Date();
     const candidates = [];
-    for (let offset = 0; offset <= 1; offset += 1) {
+    for (let offset = 0; offset <= 2; offset += 1) {
         const midnight = new Date(Date.UTC(
             now.getUTCFullYear(),
             now.getUTCMonth(),
@@ -54,8 +56,9 @@ function nextScheduledRefresh() {
             0,
             0
         ));
-        candidates.push(midnight);
-        candidates.push(new Date(midnight.getTime() + 12 * 3600000));
+        // 北京时间 12:00 和次日 00:00 对应 UTC 04:00 和 16:00。
+        candidates.push(new Date(midnight.getTime() + 4 * 3600000));
+        candidates.push(new Date(midnight.getTime() + 16 * 3600000));
     }
     return candidates.find((candidate) => candidate > now) || candidates.at(-1);
 }
@@ -198,7 +201,10 @@ function renderRow(item, rank) {
 
 function render() {
     const ranked = rankItems();
-    const visibleItems = ranked.slice(0, state.visibleCount);
+    const totalPages = Math.max(1, Math.ceil(ranked.length / PAGE_SIZE));
+    state.currentPage = Math.min(state.currentPage, totalPages);
+    const pageStart = (state.currentPage - 1) * PAGE_SIZE;
+    const visibleItems = ranked.slice(pageStart, pageStart + PAGE_SIZE);
     elements.list.replaceChildren();
     visibleItems.forEach((item, index) => {
         elements.list.append(renderRow(item, index + 1));
@@ -213,10 +219,10 @@ function render() {
         specificDate || (days ? `最近 ${days} 天` : "全部时间"),
         keyword ? `关键词“${keyword}”` : "",
     ].filter(Boolean).join(" · ");
-    elements.loadMore.hidden = visibleItems.length >= ranked.length;
-    elements.loadStatus.textContent = ranked.length
-        ? `已显示 ${visibleItems.length} / ${ranked.length} 条`
-        : "";
+    elements.pagination.hidden = totalPages <= 1;
+    elements.pageInfo.textContent = `第 ${state.currentPage} / ${totalPages} 页`;
+    elements.pagePrev.disabled = state.currentPage <= 1;
+    elements.pageNext.disabled = state.currentPage >= totalPages;
 }
 
 async function loadData() {
@@ -232,7 +238,7 @@ async function loadData() {
         elements.generatedAt.textContent = formatTime(payload.generated_at);
         elements.syncState.className = "sync-state online";
         elements.syncText.textContent =
-            `Actions 自动更新 · 下次 ${formatTime(nextScheduledRefresh().toISOString())}`;
+            `下次刷新时间：${formatTime(nextScheduledRefresh().toISOString())}`;
         render();
     } catch (error) {
         elements.syncState.className = "sync-state offline";
@@ -244,24 +250,28 @@ async function loadData() {
 
 elements.filterForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    state.visibleCount = PAGE_SIZE;
+    state.currentPage = 1;
     render();
 });
 elements.days.addEventListener("change", () => {
     elements.specificDate.value = "";
-    state.visibleCount = PAGE_SIZE;
+    state.currentPage = 1;
     render();
 });
 elements.specificDate.addEventListener("change", () => {
-    state.visibleCount = PAGE_SIZE;
+    state.currentPage = 1;
     render();
 });
 elements.keyword.addEventListener("input", () => {
-    state.visibleCount = PAGE_SIZE;
+    state.currentPage = 1;
     render();
 });
-elements.loadMore.addEventListener("click", () => {
-    state.visibleCount += PAGE_SIZE;
+elements.pagePrev.addEventListener("click", () => {
+    state.currentPage = Math.max(1, state.currentPage - 1);
+    render();
+});
+elements.pageNext.addEventListener("click", () => {
+    state.currentPage += 1;
     render();
 });
 

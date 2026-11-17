@@ -15,7 +15,7 @@ if [[ "${EUID}" -ne 0 ]]; then
 fi
 
 apt-get update
-apt-get install -y python3 python3-venv python3-pip nginx rsync openssl
+apt-get install -y python3 python3-venv python3-pip nginx rsync
 
 if ! id "${APP_USER}" >/dev/null 2>&1; then
     useradd --system --home-dir "${TARGET_DIR}" --shell /usr/sbin/nologin "${APP_USER}"
@@ -43,15 +43,6 @@ fi
 "${TARGET_DIR}/.venv/bin/pip" install --upgrade pip
 "${TARGET_DIR}/.venv/bin/pip" install -r "${TARGET_DIR}/requirements.txt"
 
-if [[ ! -f "${TARGET_DIR}/.env" ]]; then
-    admin_token="$(openssl rand -hex 20)"
-    printf 'ADMIN_TOKEN=%s\n' "${admin_token}" > "${TARGET_DIR}/.env"
-    chmod 600 "${TARGET_DIR}/.env"
-    echo "管理员账号：admin"
-    echo "管理员密码：${admin_token}"
-    echo "请妥善保存，手动录入和手动同步时会用到。"
-fi
-
 install -m 644 \
     "${TARGET_DIR}/deploy/ai-music-web.service" \
     /etc/systemd/system/ai-music-web.service
@@ -65,8 +56,6 @@ ln -sfn /etc/nginx/sites-available/ai-music /etc/nginx/sites-enabled/ai-music
 rm -f /etc/nginx/sites-enabled/default
 
 chown -R "${APP_USER}:${APP_USER}" "${TARGET_DIR}"
-chown root:root "${TARGET_DIR}/.env"
-chmod 600 "${TARGET_DIR}/.env"
 
 systemctl daemon-reload
 systemctl enable --now ai-music-web.service

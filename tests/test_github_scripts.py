@@ -12,31 +12,9 @@ from unittest.mock import patch
 
 from database import get_news_count, initialize_database, save_news_items
 from scripts.github_update import export_static_site, import_existing_news
-from scripts.import_issue import parse_issue_body
 
 
 class GitHubScriptTests(unittest.TestCase):
-    def test_issue_form_is_parsed(self) -> None:
-        body = """### 平台分类
-
-微信公众号
-
-### 账号或来源
-
-机器之心
-
-### 标题
-
-AI 音乐工具发布
-
-### 原文链接
-
-https://mp.weixin.qq.com/s/example
-"""
-        fields = parse_issue_body(body)
-        self.assertEqual(fields["平台分类"], "微信公众号")
-        self.assertEqual(fields["标题"], "AI 音乐工具发布")
-
     def test_existing_json_can_restore_database(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
             database_path = Path(temp_dir) / "github-test.db"

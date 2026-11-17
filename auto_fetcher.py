@@ -1,8 +1,8 @@
 """
 常驻后台自动抓取进程。
 
-只要通过 manage.sh 启动后端，这个进程就会立即抓取一次，此后每隔
-AUTO_FETCH_INTERVAL_SECONDS（默认 300 秒）自动执行：
+只要通过 manage.sh 启动后端，这个进程就会常驻，并在北京时间每天
+00:00 和 12:00 自动执行：
 
     下载 RSS -> 双重关键词过滤 -> SQLite 去重入库
 
@@ -18,7 +18,7 @@ import threading
 from collections.abc import Callable
 from datetime import datetime, timedelta, timezone
 
-from config import AUTO_FETCH_INTERVAL_SECONDS, AUTO_FETCH_RETRY_SECONDS
+from config import AUTO_FETCH_RETRY_SECONDS
 from database import (
     clear_meta_value,
     clear_worker_heartbeat,
@@ -27,6 +27,7 @@ from database import (
     set_worker_heartbeat,
 )
 from rss_fetcher import FetchAlreadyRunningError, FetchResult, fetch_and_save_news
+from scheduler_utils import next_scheduled_refresh
 
 
 LOGGER = logging.getLogger("auto_fetcher")
@@ -58,7 +59,7 @@ def run_fetch_cycle(
     try:
         result = fetch_function()
     except FetchAlreadyRunningError:
-        # 手动同步正在进行时，本轮让路，下一轮按计划继续。
+        # 其他抓取任务正在进行时，本轮让路，下一轮按计划继续。
         LOGGER.info("已有抓取任务运行，本轮自动抓取跳过")
         return None
     except Exception:
@@ -82,49 +83,59 @@ def run_fetch_cycle(
 
 def run_forever(
     fetch_function: Callable[[], FetchResult] = fetch_and_save_news,
+    *,
+    run_immediately: bool = False,
 ) -> None:
-    """启动即抓取一次，然后按固定间隔持续轮询，直到收到停止信号。"""
+    """按北京时间 00:00、12:00 调度，直到收到停止信号。"""
 
     initialize_database()
     STOP_EVENT.clear()
+    set_worker_heartbeat(datetime.now(timezone.utc))
 
     # SIGTERM 是 manage.sh stop 使用的信号；SIGINT 对应终端 Ctrl+C。
     signal.signal(signal.SIGTERM, _handle_stop_signal)
     signal.signal(signal.SIGINT, _handle_stop_signal)
 
-    LOGGER.info(
-        "自动抓取进程已启动，轮询间隔 %.0f 秒",
-        AUTO_FETCH_INTERVAL_SECONDS,
+    LOGGER.info("自动抓取进程已启动，计划为北京时间每天 00:00 和 12:00")
+    next_run = (
+        datetime.now(timezone.utc)
+        if run_immediately
+        else next_scheduled_refresh()
     )
     try:
         while not STOP_EVENT.is_set():
-            result = run_fetch_cycle(fetch_function)
-
-            if result is not None and result.successful_sources == 0:
-                wait_seconds = min(
-                    AUTO_FETCH_INTERVAL_SECONDS,
-                    AUTO_FETCH_RETRY_SECONDS,
-                )
-                LOGGER.info(
-                    "本轮没有来源成功，%.0f 秒后自动重试",
-                    wait_seconds,
-                )
-            elif result is None:
-                # 手动同步占用锁或出现未预期异常时，快速回到调度循环。
-                wait_seconds = min(30.0, AUTO_FETCH_INTERVAL_SECONDS)
-            else:
-                wait_seconds = AUTO_FETCH_INTERVAL_SECONDS
-
             set_meta_value(
                 "next_auto_fetch_at",
-                (
-                    datetime.now(timezone.utc)
-                    + timedelta(seconds=wait_seconds)
-                )
-                .isoformat(timespec="seconds"),
+                next_run.isoformat(timespec="seconds"),
+            )
+            wait_seconds = max(
+                0.0,
+                (next_run - datetime.now(timezone.utc)).total_seconds(),
+            )
+            LOGGER.info(
+                "下次自动刷新：%s UTC",
+                next_run.isoformat(timespec="seconds"),
             )
             if STOP_EVENT.wait(wait_seconds):
                 break
+
+            result = run_fetch_cycle(fetch_function)
+
+            if result is not None and result.successful_sources == 0:
+                LOGGER.info(
+                    "本轮没有来源成功，%.0f 秒后重试",
+                    AUTO_FETCH_RETRY_SECONDS,
+                )
+                next_run = datetime.now(timezone.utc) + timedelta(
+                    seconds=AUTO_FETCH_RETRY_SECONDS
+                )
+            elif result is None:
+                # 抓取锁被占用或出现未预期异常时，快速回到调度循环。
+                next_run = datetime.now(timezone.utc) + timedelta(seconds=30)
+            else:
+                next_run = next_scheduled_refresh(
+                    datetime.now(timezone.utc) + timedelta(seconds=1)
+                )
     finally:
         clear_meta_value("next_auto_fetch_at")
         clear_worker_heartbeat()
