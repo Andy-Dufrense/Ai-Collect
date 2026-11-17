@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-17T09:14:01+00:00",
-  "total": 302,
+  "generated_at": "2026-11-17T09:29:13+00:00",
+  "total": 294,
   "translated_count": 0,
   "last_run": {
     "id": 51,
@@ -34,7 +34,7 @@
       "rank": 1
     },
     {
-      "id": 1281,
+      "id": 1920,
       "title": "小米雷军：AI 是一个全新的时代，一定会带来非常多的商业机会",
       "link": "https://www.ithome.com/1/028/322.htm",
       "source": "IT之家24小时榜",
@@ -45,8 +45,8 @@
       "title_zh": null,
       "relevance_score": 55,
       "heat_score": 78,
-      "recency_score": 99,
-      "rank_score": 70.7,
+      "recency_score": 98,
+      "rank_score": 70.5,
       "rank": 2
     },
     {
@@ -66,22 +66,6 @@
       "rank": 3
     },
     {
-      "id": 1429,
-      "title": "腾讯 Hy4 flash 实测：快速、实惠、聪明，国模进入过日子时代",
-      "link": "http://www.geekpark.net/news/374083",
-      "source": "极客公园",
-      "publish_time": "2026-11-17T07:12:48+00:00",
-      "summary": "作者｜Cynthia 编辑｜郑玄 过日子的风，还是吹到了大模型行业。 2026 年之前，一款模型能不能刷屏，往往取决于它又做到了什么。GPT-4o 的实时语音交互、Claude 的编程能力、DeepSeek R1 的推理表现，一度轮番成为讨论焦点。一款新模型发布，大家首先关心的是它超过了谁，又做到了什么过去做不到的事。 但到了 2026 年，Agent 真正流行起来之后，风向开始变了。SOTA 模型的领先能力开始以季度为单位被轮番刷新，变得不再新鲜。而模型能力能不能用得起、等得起，成为了新的议题。 毕竟，让模型回答一个问题，和让 Agent 接手一项工作，对应的资源消耗模式完全不同。在 Agent 场景中，一次指令背后，可能是几十轮模型调用。读材料、查代码、调用工具、处理报错，每一步都会增加大量上下文和调用次数。OpenRouter 披露，今年 2 月 6 日，平台上 Agent 的 Token 用量首次超过人类直接调用；到 9 月底，已经约为后者的七倍。 具体到任务，今年 4 月，密歇根大学与斯坦福大学一项覆盖 8 款模型、500 个真实代码问题的研究发现， 在其测试中，Agent…",
-      "category": "国内科技",
-      "dedupe_key": "http://www.geekpark.net/news/374083",
-      "title_zh": null,
-      "relevance_score": 31,
-      "heat_score": 65,
-      "recency_score": 97,
-      "rank_score": 54.4,
-      "rank": 4
-    },
-    {
       "id": 1282,
       "title": "每秒输出最高 43 词元：Garlic LLM 可让越狱 PS4 运行 9B 参数本地 AI 模型",
       "link": "https://www.ithome.com/1/028/266.htm",
@@ -95,10 +79,10 @@
       "heat_score": 78,
       "recency_score": 97,
       "rank_score": 72.8,
-      "rank": 5
+      "rank": 4
     },
     {
-      "id": 1283,
+      "id": 1923,
       "title": "第三方供应商 Fireworks AI 遭黑客入侵，近 15 万 Uber 司机驾照信息泄露",
       "link": "https://www.ithome.com/1/028/263.htm",
       "source": "IT之家24小时榜",
@@ -111,42 +95,10 @@
       "heat_score": 74,
       "recency_score": 97,
       "rank_score": 64.1,
-      "rank": 6
+      "rank": 5
     },
     {
-      "id": 1422,
-      "title": "宇树科技王兴兴：大家希望机器人去家里真正干活，或许不久的将来可以实现",
-      "link": "https://www.ithome.com/1/028/252.htm",
-      "source": "IT之家24小时榜",
-      "publish_time": "2026-11-17T06:47:53+00:00",
-      "summary": "IT之家 11 月 17 日消息，据看看新闻 Knews 报道，宇树科技 CEO 王兴兴今日现身深圳，参加 APEC 工商领导人峰会时，谈到机器人行业目前面临的挑战。 王兴兴表示，大家希望可以借助 AI，让机器人走进千家万户真正干活，而不是再根据具体场景重新训练，这种“泛化能力”是目前最棘手的。 IT之家从原报道获悉，王兴兴认为今年的全球技术突破已经让他看到临界点， 或许不久的将来 ， 机器人很快就能进你家干活了 。 另据财联社消息，王兴兴认为机器人行业面临多重现实难题，首要痛点是模型泛化能力不足，机器人更换应用场景往往需要重新训练，难以实现一台设备适配各类家庭与工作环境，不过全球技术演进已接近突破临界点。 他同时提醒，即便机器人 AI 模型实现技术突破，产业链仍要面对诸多考验。未来若产品需求从数万台暴涨至数百万、数千万级别，机器人的生产制造、产品可靠性以及售后服务体系都将迎来巨大压力。除此之外，机器人发展还将面临算力需求暴增、使用安全等系列问题，需要行业共同着手应对，为规模化商用做好准备。",
-      "category": "国内科技",
-      "dedupe_key": "https://www.ithome.com/1/028/252.htm",
-      "title_zh": null,
-      "relevance_score": 42,
-      "heat_score": 78,
-      "recency_score": 97,
-      "rank_score": 63.8,
-      "rank": 7
-    },
-    {
-      "id": 1430,
-      "title": "全村希望，千问 4 Max 正式发布，2.4 万亿参数模型「进厂打工」",
-      "link": "http://www.geekpark.net/news/374079",
-      "source": "极客公园",
-      "publish_time": "2026-11-17T06:41:48+00:00",
-      "summary": "作者｜桦林舞王 编辑｜靖宇 底座架构重写，单任务成本暴降近六成，阿里把旗舰模型拉进了真实排班表。 终于，一款国产旗舰模型现身了。 11 月 16 日，阿里千问正式发布新一代旗舰模型 Qwen4-Max。就在五天前，它的预览版 qwen4-max-preview 刚在 Token Plan 里低调露过面，今天正式版直接亮出了完整底牌。 新模型依然维持着 2.4 万亿（2.4T）的主干总参数规模，原生支持文本、图像和视频输入，上下文窗口拉到了 100 万 Token。不过比参数表更显眼的，是官方同时给出的一笔账单：在模拟真实工作场景的评测里，千问 4 Max 跑完单个任务的平均费用， 从上一代的 26.58 元降到了 11.16 元，直接砍掉 58% 。 千问团队这次释放的信号很明确，旗舰大模型单纯拼纸面考分的阶段翻篇了，现在的目标是把模型塞进真实工作流，当一个能扛长活、也算得过账的「新同事」。 01 给 2.4 万亿参数的巨兽「减负」 过去一年，行业里没少见识号称百万上下文的模型。但真把几十万字的项目文档或者一整个代码库丢进去，很多模型到了后半程就开始注意力涣散、输出卡顿，账单还贵得吓人…",
-      "category": "国内科技",
-      "dedupe_key": "http://www.geekpark.net/news/374079",
-      "title_zh": null,
-      "relevance_score": 36,
-      "heat_score": 65,
-      "recency_score": 96,
-      "rank_score": 56.7,
-      "rank": 8
-    },
-    {
-      "id": 1601,
+      "id": 1924,
       "title": "闲鱼亮相联合国气候变化大会：AI加速闲置流转，低碳融入日常",
       "link": "https://www.leiphone.com/category/industrynews/fZwDw188Li4SuyQM.html",
       "source": "雷锋网",
@@ -159,10 +111,10 @@
       "heat_score": 69,
       "recency_score": 96,
       "rank_score": 67.4,
-      "rank": 9
+      "rank": 6
     },
     {
-      "id": 1285,
+      "id": 1925,
       "title": "AMD 高管：AI 不会取代超级计算机，高精度计算仍不可替代",
       "link": "https://www.ithome.com/1/028/245.htm",
       "source": "IT之家24小时榜",
@@ -175,10 +127,10 @@
       "heat_score": 78,
       "recency_score": 96,
       "rank_score": 65.1,
-      "rank": 10
+      "rank": 7
     },
     {
-      "id": 1286,
+      "id": 1926,
       "title": "AI 找漏洞太快：Anthropic 收紧披露规则，高危漏洞缓冲期从 90 天变 30 天",
       "link": "https://www.ithome.com/1/028/236.htm",
       "source": "IT之家24小时榜",
@@ -189,25 +141,9 @@
       "title_zh": null,
       "relevance_score": 45,
       "heat_score": 78,
-      "recency_score": 96,
-      "rank_score": 65.1,
-      "rank": 11
-    },
-    {
-      "id": 1426,
-      "title": "百度李彦宏：无人驾驶出租车安全记录大约是人类司机的 10 倍",
-      "link": "https://www.ithome.com/1/028/231.htm",
-      "source": "IT之家24小时榜",
-      "publish_time": "2026-11-17T05:43:44+00:00",
-      "summary": "IT之家 11 月 17 日消息，2026 年 APEC 工商领导人峰会于今日在深圳举办。据凤凰网科技报道，百度创始人、董事长兼首席执行官李彦宏在峰会上表示，无人驾驶出租车是 AI 落地的典型应用之一， 其投入运营后的安全记录大约是人类司机的 10 倍 。 李彦宏指出，全球每年有超过 100 万人死于道路交通事故， 自动驾驶技术有望通过降低人为失误改善道路安全 。他表示，近年来中国和美国逐步向无人驾驶出租车开放道路，希望未来有更多国家推动相关应用落地。 目前百度旗下萝卜快跑已落地全球 28 座城市，自动驾驶总里程突破 3.5 亿公里， 其中全无人里程超 2.4 亿公里，累计服务订单超 2300 万单 。当前，萝卜快跑已在迪拜实现全无人商业化运营，于伦敦、瑞士开展公开道路测试，并在香港完成全球首个右舵左行环境下的全无人驾驶测试。 据IT之家此前报道，百度自动驾驶技术平台 Apollo 于 11 月 3 日首次披露 面向物理 AI 的智能体驱动全模态世界模型 Apollo World 。该模型将虚拟场景内交通参与者建模为具备决策与交互能力的 AI 智能体，支持无人车在虚拟城市任意起终点通行…",
-      "category": "国内科技",
-      "dedupe_key": "https://www.ithome.com/1/028/231.htm",
-      "title_zh": null,
-      "relevance_score": 37,
-      "heat_score": 78,
       "recency_score": 95,
-      "rank_score": 60.9,
-      "rank": 12
+      "rank_score": 64.9,
+      "rank": 8
     },
     {
       "id": 238,
@@ -223,7 +159,7 @@
       "heat_score": 80,
       "recency_score": 87,
       "rank_score": 64.9,
-      "rank": 13
+      "rank": 9
     },
     {
       "id": 821,
@@ -239,7 +175,7 @@
       "heat_score": 84,
       "recency_score": 84,
       "rank_score": 58.5,
-      "rank": 14
+      "rank": 10
     },
     {
       "id": 1311,
@@ -255,7 +191,7 @@
       "heat_score": 88,
       "recency_score": 78,
       "rank_score": 58.5,
-      "rank": 15
+      "rank": 11
     },
     {
       "id": 807,
@@ -271,7 +207,7 @@
       "heat_score": 98,
       "recency_score": 76,
       "rank_score": 61.1,
-      "rank": 16
+      "rank": 12
     },
     {
       "id": 178,
@@ -285,9 +221,9 @@
       "title_zh": "从“默默无闻的艺术家”到Daddy Yankee：关于TikTok演变为超级巨星孵化器的5个要点",
       "relevance_score": 25,
       "heat_score": 94,
-      "recency_score": 76,
-      "rank_score": 55.9,
-      "rank": 17
+      "recency_score": 75,
+      "rank_score": 55.7,
+      "rank": 13
     },
     {
       "id": 1318,
@@ -301,9 +237,9 @@
       "title_zh": "TikTok 称 2026 年超过 4.6 万名英国音乐创作者开播，日观看量同比增长 74%",
       "relevance_score": 51,
       "heat_score": 94,
-      "recency_score": 76,
-      "rank_score": 68.9,
-      "rank": 18
+      "recency_score": 75,
+      "rank_score": 68.7,
+      "rank": 14
     },
     {
       "id": 809,
@@ -317,9 +253,9 @@
       "title_zh": "Suno推出Bridge，一款将AI音轨导入Ableton Live的应用程序",
       "relevance_score": 51,
       "heat_score": 98,
-      "recency_score": 76,
-      "rank_score": 70.1,
-      "rank": 19
+      "recency_score": 75,
+      "rank_score": 69.9,
+      "rank": 15
     },
     {
       "id": 1383,
@@ -335,7 +271,7 @@
       "heat_score": 62,
       "recency_score": 75,
       "rank_score": 76.6,
-      "rank": 20
+      "rank": 16
     },
     {
       "id": 1305,
@@ -349,9 +285,9 @@
       "title_zh": null,
       "relevance_score": 60,
       "heat_score": 61,
-      "recency_score": 75,
-      "rank_score": 63.3,
-      "rank": 21
+      "recency_score": 74,
+      "rank_score": 63.1,
+      "rank": 17
     },
     {
       "id": 1319,
@@ -367,7 +303,7 @@
       "heat_score": 86,
       "recency_score": 74,
       "rank_score": 66.1,
-      "rank": 22
+      "rank": 18
     },
     {
       "id": 841,
@@ -383,7 +319,7 @@
       "heat_score": 92,
       "recency_score": 74,
       "rank_score": 67.9,
-      "rank": 23
+      "rank": 19
     },
     {
       "id": 1333,
@@ -399,7 +335,7 @@
       "heat_score": 82,
       "recency_score": 74,
       "rank_score": 69.9,
-      "rank": 24
+      "rank": 20
     },
     {
       "id": 811,
@@ -413,9 +349,9 @@
       "title_zh": "Shrub是Serum的免费“精简版”，可以在M-Vave FM-1上以及在您的DAW中运行",
       "relevance_score": 15,
       "heat_score": 86,
-      "recency_score": 74,
-      "rank_score": 48.1,
-      "rank": 25
+      "recency_score": 73,
+      "rank_score": 47.9,
+      "rank": 21
     },
     {
       "id": 240,
@@ -431,7 +367,7 @@
       "heat_score": 80,
       "recency_score": 73,
       "rank_score": 80.1,
-      "rank": 26
+      "rank": 22
     },
     {
       "id": 1321,
@@ -447,7 +383,7 @@
       "heat_score": 86,
       "recency_score": 72,
       "rank_score": 70.7,
-      "rank": 27
+      "rank": 23
     },
     {
       "id": 1334,
@@ -463,7 +399,23 @@
       "heat_score": 82,
       "recency_score": 71,
       "rank_score": 64.3,
-      "rank": 28
+      "rank": 24
+    },
+    {
+      "id": 1940,
+      "title": "AI变量下的多线博弈，面板行业迎来新卡位战",
+      "link": "https://www.tmtpost.com/8206976.html",
+      "source": "钛媒体",
+      "publish_time": "2026-11-16T11:30:16+00:00",
+      "summary": "过去，企业需要思考如何生产更多、更便宜的屏幕。AI时代，则需要思考如何生产更有价值、更符合未来需求的屏幕。",
+      "category": "国内科技",
+      "dedupe_key": "https://www.tmtpost.com/8206976.html",
+      "title_zh": null,
+      "relevance_score": 33,
+      "heat_score": 61,
+      "recency_score": 69,
+      "rank_score": 48.6,
+      "rank": 25
     },
     {
       "id": 1322,
@@ -477,12 +429,12 @@
       "title_zh": "The Pixies 曾讨厌后来成为突破作品的那首歌",
       "relevance_score": 33,
       "heat_score": 90,
-      "recency_score": 67,
-      "rank_score": 56.9,
-      "rank": 29
+      "recency_score": 66,
+      "rank_score": 56.7,
+      "rank": 26
     },
     {
-      "id": 1306,
+      "id": 1950,
       "title": "智算接棒：物理AI的下一个风口，在于计算基础设施",
       "link": "https://www.leiphone.com/category/chips/yYPDwzuTBbcMSCSx.html",
       "source": "雷锋网",
@@ -495,7 +447,7 @@
       "heat_score": 61,
       "recency_score": 65,
       "rank_score": 53.8,
-      "rank": 30
+      "rank": 27
     },
     {
       "id": 1308,
@@ -511,26 +463,10 @@
       "heat_score": 65,
       "recency_score": 64,
       "rank_score": 57.3,
-      "rank": 31
+      "rank": 28
     },
     {
-      "id": 1449,
-      "title": "模型选择自由！千问办公上线Qwen4、Kimi-K3.1、GLM-5.3等10款模型",
-      "link": "https://www.leiphone.com/category/industrynews/tDhzNl3D84AjopSh.html",
-      "source": "雷锋网",
-      "publish_time": "2026-11-16T04:08:00+00:00",
-      "summary": "11月16日，千问办公一口气上线10款模型，包括刚刚发布的Qwen4-Max，以及Kimi、GLM、DeepSeek、MiniMax、Step等多款三方大模型。目前，千问办公的模型列表已向用户开放选择，个人版和企业标准版用户可结合自身使用场景自由选择模型。 此前，千问办公在模型供给上为用户提供了标准、高级和Qwen3.8-Max三档模型选择，可满足绝大多数日常办公任务的需求。但随着用户使用Agent的场景不断深入，用户对Agent背后的模型需求也越来越个性化。核心原因是，不同模型在不同复杂度的任务上，效果、响应速度和成本都有明显差异。为此，千问办公在原有三档模型的基础上提供更丰富的模型选择，用户可以自由选择最贴近不同任务需求的模型，用更低的Token成本高效完成任务。 例如，在需要多步复杂推理的任务中，用户可以选择Qwen4-Max。据介绍，该模型是阿里全新一代基座大模型，在模型内实现了持续交付机制，可先生成一个可用的首版，并持续根据用户意见逐版扩展内容直至完成；同时模型还具备围绕复杂目标与约束进行运筹建模、求解与验证的能力，通过自主规划和持续迭代，编排智能体解决更复杂的任务，可轻松完…",
-      "category": "国内科技",
-      "dedupe_key": "https://www.leiphone.com/category/industrynews/tDhzNl3D84AjopSh.html",
-      "title_zh": null,
-      "relevance_score": 36,
-      "heat_score": 69,
-      "recency_score": 60,
-      "rank_score": 50.7,
-      "rank": 32
-    },
-    {
-      "id": 1309,
+      "id": 1927,
       "title": "百度世界2026｜让金融AI用得起、更专业，度小满“轩辕”探索中小机构落地新路径",
       "link": "https://www.leiphone.com/category/industrynews/JDoXug7VZqSjkQrQ.html",
       "source": "雷锋网",
@@ -543,39 +479,7 @@
       "heat_score": 69,
       "recency_score": 59,
       "rank_score": 65.0,
-      "rank": 33
-    },
-    {
-      "id": 1451,
-      "title": "阿里正式发布Qwen4，智能体及编程能力进阶，迈向真实全场景",
-      "link": "https://www.leiphone.com/category/industrynews/TRw4D5Bw5HsTmC1G.html",
-      "source": "雷锋网",
-      "publish_time": "2026-11-16T03:33:00+00:00",
-      "summary": "11月16日，阿里巴巴发布全新一代基座大模型Qwen4-Max，总参数2.4T，具备原生视觉能力，支持百万上下文。基于创新的模型架构和训练优化，Qwen4-Max以更少的Token消耗实现了更高的性能，在智能体和编程等关键能力项上持续进化：在权威的全球前端编程盲测CodeArena中，Qwen4位居第六；在Agents' Last Exam（ALE）、Vals Index等智能体能力及专业任务三方评测中，Qwen4均处于领先梯队。Qwen4面向全领域的真实任务深度优化，可更好地调用专业工具处理长周期任务，推进AI在汽车制造、游戏开发、金融投研及科学研究等专业领域的深入落地。 Qwen4-Max现已上线千问AI平台对外提供API服务，缓存命中每百万Tokens低至0.5元，完成单任务的平均费用较上代模型大降6成；用户也可通过阿里Token Plan调用新模型，或在千问办公、Qoder、千问APP等应用中直接体验。据悉，Qwen4系列中的中小尺寸模型将陆续开源发布。 （图说：在CodeArena前端编程全球榜中，Qwen4-Max位居第6） Qwen4-Max采用基于Qwen稀疏注意力（Q…",
-      "category": "国内科技",
-      "dedupe_key": "https://www.leiphone.com/category/industrynews/TRw4D5Bw5HsTmC1G.html",
-      "title_zh": null,
-      "relevance_score": 47,
-      "heat_score": 69,
-      "recency_score": 59,
-      "rank_score": 56.0,
-      "rank": 34
-    },
-    {
-      "id": 1452,
-      "title": "会畅科技发布任务管理原生 Agent 矩阵 软硬件协同深耕企业执行场景",
-      "link": "https://www.leiphone.com/category/industrynews/vBMqo9G7ViFbsPER.html",
-      "source": "雷锋网",
-      "publish_time": "2026-11-16T02:39:00+00:00",
-      "summary": "2026 年 11 月 12 日，“会联运营・畅享执行 ——2026 会畅科技任务管理原生 Agent 发布会” 在上海举办。会畅科技现场推出白泽任务管理 OS 与会畅超光桌面 AI 助理终端两大核心产品，首次提出 “以任务为 AI 原生组织最小协作单元” 的产业判断，通过 “软件中枢 + 硬件入口” 一体化布局，打通战略到执行的全链路闭环，为企业从流程数字化迈向执行智能化提供落地方案。 一、AI 落地进入深水区：从工具叠加到组织重构，任务成为核心破局点 回顾产业演进，历次技术革命最终都指向组织协作方式的重塑：工业革命降低物理生产成本，催生流水线分工与层级制组织;信息革命降低信息传递成本，催生 SaaS 软件与跨地域协作模式;当下的 AI 革命正降低认知与执行成本，推动企业组织形态发生本质变化。 会畅科技总经理方艺霖在致辞中指出：“当前绝大多数企业的 AI 应用，仍停留在‘原有流程叠加 AI 工具’的阶段 —— 多一个聊天框、多一个内容生成入口，带来的只是局部效率优化，并没有真正改变企业的运转逻辑。真正的 AI Native 组织，不是简单用 AI 替代某一个环节，而是重新定义人与机器…",
-      "category": "国内科技",
-      "dedupe_key": "https://www.leiphone.com/category/industrynews/vBMqo9G7ViFbsPER.html",
-      "title_zh": null,
-      "relevance_score": 47,
-      "heat_score": 69,
-      "recency_score": 58,
-      "rank_score": 55.8,
-      "rank": 35
+      "rank": 29
     },
     {
       "id": 1335,
@@ -591,7 +495,7 @@
       "heat_score": 82,
       "recency_score": 55,
       "rank_score": 66.1,
-      "rank": 36
+      "rank": 30
     },
     {
       "id": 823,
@@ -605,9 +509,9 @@
       "title_zh": "Deluge 1.3 “Derbyshire”固件上手演示",
       "relevance_score": 15,
       "heat_score": 80,
-      "recency_score": 55,
-      "rank_score": 42.5,
-      "rank": 37
+      "recency_score": 54,
+      "rank_score": 42.3,
+      "rank": 31
     },
     {
       "id": 241,
@@ -623,7 +527,7 @@
       "heat_score": 80,
       "recency_score": 54,
       "rank_score": 71.3,
-      "rank": 38
+      "rank": 32
     },
     {
       "id": 1481,
@@ -637,9 +541,9 @@
       "title_zh": "Joe Bonamassa 谈对 Fender Jaguar 的喜爱",
       "relevance_score": 25,
       "heat_score": 82,
-      "recency_score": 46,
-      "rank_score": 46.3,
-      "rank": 39
+      "recency_score": 45,
+      "rank_score": 46.1,
+      "rank": 33
     },
     {
       "id": 1323,
@@ -655,7 +559,7 @@
       "heat_score": 86,
       "recency_score": 34,
       "rank_score": 63.1,
-      "rank": 40
+      "rank": 34
     },
     {
       "id": 242,
@@ -669,9 +573,9 @@
       "title_zh": "AudioThing与Hainbach推出Seconds，一款48频段频谱声音设计效果器",
       "relevance_score": 43,
       "heat_score": 80,
-      "recency_score": 29,
-      "rank_score": 51.3,
-      "rank": 41
+      "recency_score": 28,
+      "rank_score": 51.1,
+      "rank": 35
     },
     {
       "id": 87,
@@ -687,7 +591,7 @@
       "heat_score": 80,
       "recency_score": 14,
       "rank_score": 76.8,
-      "rank": 42
+      "rank": 36
     },
     {
       "id": 818,
@@ -703,7 +607,7 @@
       "heat_score": 82,
       "recency_score": 12,
       "rank_score": 34.5,
-      "rank": 43
+      "rank": 37
     },
     {
       "id": 244,
@@ -719,7 +623,7 @@
       "heat_score": 80,
       "recency_score": 7,
       "rank_score": 54.9,
-      "rank": 44
+      "rank": 38
     },
     {
       "id": 828,
@@ -733,9 +637,9 @@
       "title_zh": "Living Sky将卷积混响、3D定位和调制相结合，打造沉浸式音频体验",
       "relevance_score": 21,
       "heat_score": 80,
-      "recency_score": 7,
-      "rank_score": 35.9,
-      "rank": 45
+      "recency_score": 6,
+      "rank_score": 35.7,
+      "rank": 39
     },
     {
       "id": 1337,
@@ -751,7 +655,7 @@
       "heat_score": 82,
       "recency_score": 2,
       "rank_score": 50.5,
-      "rank": 46
+      "rank": 40
     },
     {
       "id": 291,
@@ -767,7 +671,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 64.6,
-      "rank": 47
+      "rank": 41
     },
     {
       "id": 1484,
@@ -783,7 +687,7 @@
       "heat_score": 82,
       "recency_score": 0,
       "rank_score": 46.1,
-      "rank": 48
+      "rank": 42
     },
     {
       "id": 246,
@@ -799,7 +703,7 @@
       "heat_score": 84,
       "recency_score": 0,
       "rank_score": 40.7,
-      "rank": 49
+      "rank": 43
     },
     {
       "id": 247,
@@ -815,7 +719,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 57.5,
-      "rank": 50
+      "rank": 44
     },
     {
       "id": 248,
@@ -831,7 +735,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 54.5,
-      "rank": 51
+      "rank": 45
     },
     {
       "id": 249,
@@ -847,7 +751,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 39.5,
-      "rank": 52
+      "rank": 46
     },
     {
       "id": 250,
@@ -863,7 +767,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 53
+      "rank": 47
     },
     {
       "id": 1464,
@@ -879,7 +783,7 @@
       "heat_score": 86,
       "recency_score": 0,
       "rank_score": 38.3,
-      "rank": 54
+      "rank": 48
     },
     {
       "id": 1338,
@@ -895,7 +799,7 @@
       "heat_score": 82,
       "recency_score": 0,
       "rank_score": 50.1,
-      "rank": 55
+      "rank": 49
     },
     {
       "id": 1339,
@@ -911,7 +815,7 @@
       "heat_score": 82,
       "recency_score": 0,
       "rank_score": 50.1,
-      "rank": 56
+      "rank": 50
     },
     {
       "id": 1487,
@@ -927,7 +831,7 @@
       "heat_score": 82,
       "recency_score": 0,
       "rank_score": 37.1,
-      "rank": 57
+      "rank": 51
     },
     {
       "id": 1515,
@@ -943,7 +847,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 50.9,
-      "rank": 58
+      "rank": 52
     },
     {
       "id": 819,
@@ -959,7 +863,7 @@
       "heat_score": 86,
       "recency_score": 0,
       "rank_score": 51.3,
-      "rank": 59
+      "rank": 53
     },
     {
       "id": 1341,
@@ -975,7 +879,7 @@
       "heat_score": 82,
       "recency_score": 0,
       "rank_score": 50.1,
-      "rank": 60
+      "rank": 54
     },
     {
       "id": 1342,
@@ -991,7 +895,7 @@
       "heat_score": 82,
       "recency_score": 0,
       "rank_score": 41.1,
-      "rank": 61
+      "rank": 55
     },
     {
       "id": 1343,
@@ -1007,7 +911,7 @@
       "heat_score": 82,
       "recency_score": 0,
       "rank_score": 55.1,
-      "rank": 62
+      "rank": 56
     },
     {
       "id": 1465,
@@ -1023,7 +927,7 @@
       "heat_score": 90,
       "recency_score": 0,
       "rank_score": 48.5,
-      "rank": 63
+      "rank": 57
     },
     {
       "id": 842,
@@ -1039,7 +943,23 @@
       "heat_score": 92,
       "recency_score": 0,
       "rank_score": 35.1,
-      "rank": 64
+      "rank": 58
+    },
+    {
+      "id": 2010,
+      "title": "研究生如何用 AI 辅助完成一篇综述：我的科研写作工具与实践经验",
+      "link": "https://sspai.com/post/118153",
+      "source": "少数派",
+      "publish_time": "2026-11-13T07:00:00+00:00",
+      "summary": "AI 改变的不是科研写作本身，而是我们完成科研写作时的工作方式。 查看全文",
+      "category": "国内科技",
+      "dedupe_key": "https://sspai.com/post/118153",
+      "title_zh": null,
+      "relevance_score": 33,
+      "heat_score": 61,
+      "recency_score": 0,
+      "rank_score": 34.8,
+      "rank": 59
     },
     {
       "id": 1015,
@@ -1055,10 +975,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 37.5,
-      "rank": 65
+      "rank": 60
     },
     {
-      "id": 1294,
+      "id": 1954,
       "title": "AI 录音硬件卖的是时间差，窗口可能只剩半年",
       "link": "http://www.geekpark.net/news/373946",
       "source": "极客公园",
@@ -1071,7 +991,7 @@
       "heat_score": 65,
       "recency_score": 0,
       "rank_score": 44.5,
-      "rank": 66
+      "rank": 61
     },
     {
       "id": 1014,
@@ -1087,10 +1007,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 67
+      "rank": 62
     },
     {
-      "id": 1295,
+      "id": 1999,
       "title": "李彦宏定义 AI 下一个十年，智能组织是「新厂房」",
       "link": "http://www.geekpark.net/news/373937",
       "source": "极客公园",
@@ -1103,7 +1023,7 @@
       "heat_score": 65,
       "recency_score": 0,
       "rank_score": 52.0,
-      "rank": 68
+      "rank": 63
     },
     {
       "id": 1013,
@@ -1119,7 +1039,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 40.5,
-      "rank": 69
+      "rank": 64
     },
     {
       "id": 1344,
@@ -1135,7 +1055,7 @@
       "heat_score": 82,
       "recency_score": 0,
       "rank_score": 50.1,
-      "rank": 70
+      "rank": 65
     },
     {
       "id": 812,
@@ -1151,7 +1071,7 @@
       "heat_score": 90,
       "recency_score": 0,
       "rank_score": 45.5,
-      "rank": 71
+      "rank": 66
     },
     {
       "id": 843,
@@ -1167,7 +1087,7 @@
       "heat_score": 92,
       "recency_score": 0,
       "rank_score": 35.1,
-      "rank": 72
+      "rank": 67
     },
     {
       "id": 263,
@@ -1183,7 +1103,7 @@
       "heat_score": 92,
       "recency_score": 0,
       "rank_score": 56.1,
-      "rank": 73
+      "rank": 68
     },
     {
       "id": 1325,
@@ -1199,7 +1119,7 @@
       "heat_score": 86,
       "recency_score": 0,
       "rank_score": 42.3,
-      "rank": 74
+      "rank": 69
     },
     {
       "id": 264,
@@ -1215,7 +1135,7 @@
       "heat_score": 92,
       "recency_score": 0,
       "rank_score": 48.1,
-      "rank": 75
+      "rank": 70
     },
     {
       "id": 813,
@@ -1231,7 +1151,7 @@
       "heat_score": 86,
       "recency_score": 0,
       "rank_score": 33.3,
-      "rank": 76
+      "rank": 71
     },
     {
       "id": 814,
@@ -1247,7 +1167,7 @@
       "heat_score": 86,
       "recency_score": 0,
       "rank_score": 33.3,
-      "rank": 77
+      "rank": 72
     },
     {
       "id": 1328,
@@ -1263,7 +1183,7 @@
       "heat_score": 86,
       "recency_score": 0,
       "rank_score": 51.3,
-      "rank": 78
+      "rank": 73
     },
     {
       "id": 1012,
@@ -1279,7 +1199,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 54.5,
-      "rank": 79
+      "rank": 74
     },
     {
       "id": 1494,
@@ -1295,7 +1215,7 @@
       "heat_score": 82,
       "recency_score": 0,
       "rank_score": 37.1,
-      "rank": 80
+      "rank": 75
     },
     {
       "id": 1516,
@@ -1311,7 +1231,7 @@
       "heat_score": 84,
       "recency_score": 0,
       "rank_score": 46.7,
-      "rank": 81
+      "rank": 76
     },
     {
       "id": 200,
@@ -1327,7 +1247,7 @@
       "heat_score": 86,
       "recency_score": 0,
       "rank_score": 51.3,
-      "rank": 82
+      "rank": 77
     },
     {
       "id": 1346,
@@ -1343,7 +1263,7 @@
       "heat_score": 82,
       "recency_score": 0,
       "rank_score": 50.1,
-      "rank": 83
+      "rank": 78
     },
     {
       "id": 265,
@@ -1359,7 +1279,7 @@
       "heat_score": 92,
       "recency_score": 0,
       "rank_score": 58.1,
-      "rank": 84
+      "rank": 79
     },
     {
       "id": 1472,
@@ -1375,7 +1295,7 @@
       "heat_score": 86,
       "recency_score": 0,
       "rank_score": 47.3,
-      "rank": 85
+      "rank": 80
     },
     {
       "id": 266,
@@ -1391,7 +1311,7 @@
       "heat_score": 92,
       "recency_score": 0,
       "rank_score": 49.1,
-      "rank": 86
+      "rank": 81
     },
     {
       "id": 1380,
@@ -1407,26 +1327,10 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 65.6,
-      "rank": 87
+      "rank": 82
     },
     {
-      "id": 1435,
-      "title": "体验「跟拍机器人」Beni：谁不想要一个不会喊累还会拍照的出行搭子",
-      "link": "http://www.geekpark.net/news/373860",
-      "source": "极客公园",
-      "publish_time": "2026-11-12T03:44:41+00:00",
-      "summary": "作者 | siqi 编辑 | 郑玄 在智能硬件和具身圈里，可能是今年最受关注的产品之一 Beni 终于开售了。 我第一次听说 Beni，是今年上半年，这款产品背后的创业团队妙动科技拿到了包括经纬、红杉、美团的多轮投资。他们的两位核心合伙人，一位是前大疆（DJI）高管，另一位曾先后任大疆技术总监和特斯拉 Optimus 人形机器人团队核心算法与控制工程师。可以说兼具硬件和具身背景。 到了 8 月份，Hardwire 的伙伴 Founder Park 在新加坡组织了一场 AI 线下活动，影石的创始人刘靖康现场分享了对打造「CameraMan」（影像机器人）的想法——当时，他认为无人机也许是影像机器人的最佳形态。但有些意外的是，下台之后，不少现场观众都跟 JK 讨论起了妙动这个早期团队。 那是我第一次意识到，如果拉长时间维度，在影像机器人的这个目标下，无人机的对手可能会是一款新形态的硬件设备。 10 月下旬，我终于有机会提前得到了一台 Beni——一个双轮足式、体型比一只猫还小、可以跳跃翻跟头的机器人。更重要的是，作为一台 ToC 的影像产品，它的确可以在场景里，拍到过去哪怕专业人类摄影师都…",
-      "category": "国内科技",
-      "dedupe_key": "http://www.geekpark.net/news/373860",
-      "title_zh": null,
-      "relevance_score": 37,
-      "heat_score": 61,
-      "recency_score": 0,
-      "rank_score": 36.8,
-      "rank": 88
-    },
-    {
-      "id": 1296,
+      "id": 1979,
       "title": "苹果突然永久关闭官方「支持社区」；字节即将推出个人 AI 助手；华为新品牌星芒 OSTA 曝光 | 极客早知道",
       "link": "http://www.geekpark.net/news/373839",
       "source": "极客公园",
@@ -1439,7 +1343,7 @@
       "heat_score": 69,
       "recency_score": 0,
       "rank_score": 40.2,
-      "rank": 89
+      "rank": 83
     },
     {
       "id": 1011,
@@ -1455,7 +1359,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 65.5,
-      "rank": 90
+      "rank": 84
     },
     {
       "id": 1010,
@@ -1471,7 +1375,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 57.5,
-      "rank": 91
+      "rank": 85
     },
     {
       "id": 1009,
@@ -1487,7 +1391,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 52.5,
-      "rank": 92
+      "rank": 86
     },
     {
       "id": 1008,
@@ -1503,7 +1407,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 93
+      "rank": 87
     },
     {
       "id": 1496,
@@ -1519,7 +1423,7 @@
       "heat_score": 82,
       "recency_score": 0,
       "rank_score": 46.1,
-      "rank": 94
+      "rank": 88
     },
     {
       "id": 1330,
@@ -1535,7 +1439,7 @@
       "heat_score": 90,
       "recency_score": 0,
       "rank_score": 57.5,
-      "rank": 95
+      "rank": 89
     },
     {
       "id": 1531,
@@ -1551,7 +1455,7 @@
       "heat_score": 92,
       "recency_score": 0,
       "rank_score": 40.1,
-      "rank": 96
+      "rank": 90
     },
     {
       "id": 1497,
@@ -1567,7 +1471,7 @@
       "heat_score": 82,
       "recency_score": 0,
       "rank_score": 46.1,
-      "rank": 97
+      "rank": 91
     },
     {
       "id": 1331,
@@ -1583,7 +1487,7 @@
       "heat_score": 86,
       "recency_score": 0,
       "rank_score": 51.3,
-      "rank": 98
+      "rank": 92
     },
     {
       "id": 1007,
@@ -1599,7 +1503,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 99
+      "rank": 93
     },
     {
       "id": 1006,
@@ -1615,7 +1519,7 @@
       "heat_score": 84,
       "recency_score": 0,
       "rank_score": 57.7,
-      "rank": 100
+      "rank": 94
     },
     {
       "id": 1499,
@@ -1631,7 +1535,7 @@
       "heat_score": 82,
       "recency_score": 0,
       "rank_score": 37.1,
-      "rank": 101
+      "rank": 95
     },
     {
       "id": 4,
@@ -1647,7 +1551,7 @@
       "heat_score": 86,
       "recency_score": 0,
       "rank_score": 75.8,
-      "rank": 102
+      "rank": 96
     },
     {
       "id": 1476,
@@ -1663,7 +1567,7 @@
       "heat_score": 86,
       "recency_score": 0,
       "rank_score": 38.3,
-      "rank": 103
+      "rank": 97
     },
     {
       "id": 1347,
@@ -1679,7 +1583,7 @@
       "heat_score": 82,
       "recency_score": 0,
       "rank_score": 46.1,
-      "rank": 104
+      "rank": 98
     },
     {
       "id": 11,
@@ -1695,7 +1599,23 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 66.6,
-      "rank": 105
+      "rank": 99
+    },
+    {
+      "id": 2011,
+      "title": "当美国无法建设数据中心，会对 AI 产生怎样的冲击",
+      "link": "http://www.geekpark.net/news/373816",
+      "source": "极客公园",
+      "publish_time": "2026-11-11T05:23:24+00:00",
+      "summary": "作者｜Techno 之王 编辑｜靖宇 2026 年 11 月 4 日，美国中期选举结果落定后的第二天上午，OpenAI 的高管们坐到了一起。 据外媒援引知情人士的消息，他们讨论的是要不要重设 2027 年的数据中心容量预期。讨论还没有形成决定，但焦虑已经摆上了台面。 过去几个月，美国各地的大型数据中心项目接连被按下暂停键。得州前任州长 Abbott 从 8 月起冻结了数据中心的并网和空气许可，要求审计到年底；新当选的州长 Gina Hinojosa 承诺，在州议会立法保护居民之前，暂停所有新数据中心审批，而议会会期要到 2027 年 5 月才结束。 俄亥俄新州长 Amy Acton 提出有条件暂停，要求新项目承担全部电力成本、只能建在旧工业用地上；佐治亚新州长 Keisha Lance Bottoms 则准备上任后直接签行政令，暂停全州新建。 据 Tokenpost 统计， 今年 7 月到 11 月 4 日，美国至少有 21 个大型数据中心项目被取消，已经接近 2025 年全年的 23 个 。Anthropic 在 10 月 26 日提交的招股书里，也把暂停令写进了风险因素：一些辖区正…",
+      "category": "国内科技",
+      "dedupe_key": "http://www.geekpark.net/news/373816",
+      "title_zh": null,
+      "relevance_score": 33,
+      "heat_score": 61,
+      "recency_score": 0,
+      "rank_score": 34.8,
+      "rank": 100
     },
     {
       "id": 1477,
@@ -1711,7 +1631,7 @@
       "heat_score": 86,
       "recency_score": 0,
       "rank_score": 38.3,
-      "rank": 106
+      "rank": 101
     },
     {
       "id": 5,
@@ -1727,7 +1647,7 @@
       "heat_score": 84,
       "recency_score": 0,
       "rank_score": 64.2,
-      "rank": 107
+      "rank": 102
     },
     {
       "id": 1299,
@@ -1743,10 +1663,10 @@
       "heat_score": 65,
       "recency_score": 0,
       "rank_score": 36.0,
-      "rank": 108
+      "rank": 103
     },
     {
-      "id": 1300,
+      "id": 1955,
       "title": "ChatGPT 占全球 AI 聊天流量超 81%；iOS 27.3 曝光 Siri「个人记忆系统」；传玛莎拉蒂+尊界合作新车曝光｜极客早知道",
       "link": "http://www.geekpark.net/news/373736",
       "source": "极客公园",
@@ -1759,7 +1679,7 @@
       "heat_score": 65,
       "recency_score": 0,
       "rank_score": 44.5,
-      "rank": 109
+      "rank": 104
     },
     {
       "id": 836,
@@ -1775,7 +1695,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 38.9,
-      "rank": 110
+      "rank": 105
     },
     {
       "id": 1069,
@@ -1791,7 +1711,7 @@
       "heat_score": 92,
       "recency_score": 0,
       "rank_score": 44.1,
-      "rank": 111
+      "rank": 106
     },
     {
       "id": 1005,
@@ -1807,7 +1727,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 40.5,
-      "rank": 112
+      "rank": 107
     },
     {
       "id": 1068,
@@ -1823,7 +1743,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 57.4,
-      "rank": 113
+      "rank": 108
     },
     {
       "id": 1004,
@@ -1839,7 +1759,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 65.5,
-      "rank": 114
+      "rank": 109
     },
     {
       "id": 1301,
@@ -1855,23 +1775,7 @@
       "heat_score": 65,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 115
-    },
-    {
-      "id": 1441,
-      "title": "创业者做 Personal Agent，有没有一线生机？",
-      "link": "http://www.geekpark.net/news/373650",
-      "source": "极客公园",
-      "publish_time": "2026-11-08T02:40:20+00:00",
-      "summary": "最近一阶段，Personal Agent 很热。有趣的是，这个概念迅速火爆又迅速有了一个共识，几波讨论下来大家的观点似乎是： Personal Agent 的机会是大厂的，创业者基本没戏。 虽然一般情况下，「入口级机会归大厂」确实是大概率发生的事情，但 Personal Agent 真的是个「入口」的问题吗？真的意味着「这件事里没有创业者的位置」吗？ 这依旧值得认真聊一聊。 真正值得兴奋的事：价值可以长在基模外 我们换一个视角看，Personal Agent 为什么让人兴奋？ 因为它给创业者提供了一种新的可能： 产品的 终极价值不来自于 今天 大模型 公司提供的智能 ， 而是 可以借助大模型的 能力 来 孕育 产品 ，最终在和用户的共同发展中，把 大部分 能力和价值留在创业公司自身。 回顾过去三年 AI 和 Agent 的演进，通用大模型就像一个营养丰富的「蛋」。绝大多数 AI 应用和 Agent 产品，本质上都没能离开大模型这层「卵壳」。无论是从最初的「套壳」，还是后来开始做 Environment Engineering、Harness Engineering，努力让模型能用工具、…",
-      "category": "国内科技",
-      "dedupe_key": "http://www.geekpark.net/news/373650",
-      "title_zh": null,
-      "relevance_score": 41,
-      "heat_score": 61,
-      "recency_score": 0,
-      "rank_score": 38.8,
-      "rank": 116
+      "rank": 110
     },
     {
       "id": 1003,
@@ -1887,7 +1791,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 40.5,
-      "rank": 117
+      "rank": 111
     },
     {
       "id": 1002,
@@ -1903,39 +1807,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 55.0,
-      "rank": 118
-    },
-    {
-      "id": 1442,
-      "title": "博世用豆包工作：让工程师少搬信息，多解问题",
-      "link": "http://www.geekpark.net/news/373643",
-      "source": "极客公园",
-      "publish_time": "2026-11-07T03:35:36+00:00",
-      "summary": "头图来源：豆包工作 客户在群里抛出一个问题，到工程师真正坐下来分析故障，中间隔着多少工作？ 在博世的某研发事业部，答案曾经是：找齐散落在各个群和私聊里的消息，按多个维度整理成完整描述，凭经验判断该找谁，接着再开会，再把结论写成报告。 故障分析还没开始，大半天已经过去了。 如今，这中间的一大段路，工程师交给了豆包工作和豆包工作伙伴。 博世的尝试：让 AI 接手沟通之后的工作 汽车产业链企业的研发部门，经常会遇到这样的情况：一个工程师要当三个用：研发细节要盯，还有很多日常重复的活儿需要做。 博世某事业部的工程师，其所在的团队需要对接各家客户，为客户提供系统综合解决方案。面对同一家客户，不同项目会有不同的群，测试、路试、投产任何一个环节出了问题，消息一条条蹦出来：哪个项目、哪个软件、报了什么故障代码、出现什么报错。 他得把这些碎片按不同的数个维度整合起来，所属项目、软件版本、车辆配置、测试工况、报错时间、诊断截图都在其中，再凭经验自己排障，或者转给负责对应模块的研发同学。解释不清的就拉会，双方澄清之后，再出报告发给客户。 让这位工程师下决心改变的，是两件事。 一是知识沉淀靠不住。经验都装在工…",
-      "category": "国内科技",
-      "dedupe_key": "http://www.geekpark.net/news/373643",
-      "title_zh": null,
-      "relevance_score": 31,
-      "heat_score": 61,
-      "recency_score": 0,
-      "rank_score": 33.8,
-      "rank": 119
-    },
-    {
-      "id": 1443,
-      "title": "办公提效之后，企业级 Agent 开始对经营结果负责",
-      "link": "http://www.geekpark.net/news/373642",
-      "source": "极客公园",
-      "publish_time": "2026-11-07T03:31:37+00:00",
-      "summary": "头图来源：腾讯云 过去一年，智能体是 AI 行业最受关注的方向之一。 从查资料、写文档到处理日常办公事务，桌面办公智能体完成了第一轮普及，办公提效的价值已经成为行业共识。但当 AI 进一步走向企业核心业务，搭出一个智能体不难，难的是让它真正跑进业务流程，适配复杂的系统、权限与规则，持续产出可量化的经营价值。 在腾讯云副总裁吴永坚看来，未来企业级智能体的核心赛道，对话式的桌面办公 Agent 和服务经营的 Service Agent 会是两个长期并行的赛道。大模型提供了理解与推理能力，但想让 AI 真正参与业务经营，还需要一套能够打通系统、管好权限、支撑长期稳定运行的企业级平台。 在 2026 腾讯全球数字生态大会企业级 Agent 产业实践专场上，腾讯云 ADP 宣布完成全生命周期产品升级，同时推出 FDE 交付方法论与生态共建体系，试图回答的正是这一问题：当办公场景的提效已经形成共识，要让智能体真的走进业务经营场景，底层的智能体平台，到底需要补哪些能力。 过去用来搭建单点应用的开发工具，正在成为 Service Agent 扎根企业业务流的核心基础设施。 一、从办公到经营，企业级 A…",
-      "category": "国内科技",
-      "dedupe_key": "http://www.geekpark.net/news/373642",
-      "title_zh": null,
-      "relevance_score": 47,
-      "heat_score": 65,
-      "recency_score": 0,
-      "rank_score": 43.0,
-      "rank": 120
+      "rank": 112
     },
     {
       "id": 1001,
@@ -1951,7 +1823,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 31.5,
-      "rank": 121
+      "rank": 113
     },
     {
       "id": 1000,
@@ -1967,7 +1839,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 70.0,
-      "rank": 122
+      "rank": 114
     },
     {
       "id": 256,
@@ -1983,7 +1855,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 44.9,
-      "rank": 123
+      "rank": 115
     },
     {
       "id": 999,
@@ -1999,7 +1871,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 31.5,
-      "rank": 124
+      "rank": 116
     },
     {
       "id": 998,
@@ -2015,7 +1887,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 34.5,
-      "rank": 125
+      "rank": 117
     },
     {
       "id": 997,
@@ -2031,7 +1903,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 54.5,
-      "rank": 126
+      "rank": 118
     },
     {
       "id": 996,
@@ -2047,7 +1919,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 54.5,
-      "rank": 127
+      "rank": 119
     },
     {
       "id": 257,
@@ -2063,7 +1935,7 @@
       "heat_score": 92,
       "recency_score": 0,
       "rank_score": 43.1,
-      "rank": 128
+      "rank": 120
     },
     {
       "id": 995,
@@ -2079,7 +1951,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 60.5,
-      "rank": 129
+      "rank": 121
     },
     {
       "id": 994,
@@ -2095,7 +1967,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 51.9,
-      "rank": 130
+      "rank": 122
     },
     {
       "id": 993,
@@ -2111,7 +1983,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 54.5,
-      "rank": 131
+      "rank": 123
     },
     {
       "id": 992,
@@ -2127,7 +1999,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 46.0,
-      "rank": 132
+      "rank": 124
     },
     {
       "id": 1067,
@@ -2143,7 +2015,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 38.9,
-      "rank": 133
+      "rank": 125
     },
     {
       "id": 1066,
@@ -2159,7 +2031,7 @@
       "heat_score": 92,
       "recency_score": 0,
       "rank_score": 60.1,
-      "rank": 134
+      "rank": 126
     },
     {
       "id": 1404,
@@ -2175,7 +2047,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 66.1,
-      "rank": 135
+      "rank": 127
     },
     {
       "id": 1065,
@@ -2191,7 +2063,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 42.9,
-      "rank": 136
+      "rank": 128
     },
     {
       "id": 991,
@@ -2207,7 +2079,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 54.5,
-      "rank": 137
+      "rank": 129
     },
     {
       "id": 990,
@@ -2223,7 +2095,7 @@
       "heat_score": 84,
       "recency_score": 0,
       "rank_score": 32.7,
-      "rank": 138
+      "rank": 130
     },
     {
       "id": 1521,
@@ -2239,7 +2111,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 38.9,
-      "rank": 139
+      "rank": 131
     },
     {
       "id": 1064,
@@ -2255,7 +2127,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 62.9,
-      "rank": 140
+      "rank": 132
     },
     {
       "id": 989,
@@ -2271,7 +2143,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 141
+      "rank": 133
     },
     {
       "id": 1558,
@@ -2287,7 +2159,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 61.6,
-      "rank": 142
+      "rank": 134
     },
     {
       "id": 1063,
@@ -2303,7 +2175,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 42.4,
-      "rank": 143
+      "rank": 135
     },
     {
       "id": 988,
@@ -2319,7 +2191,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 52.5,
-      "rank": 144
+      "rank": 136
     },
     {
       "id": 259,
@@ -2335,7 +2207,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 44.9,
-      "rank": 145
+      "rank": 137
     },
     {
       "id": 986,
@@ -2351,7 +2223,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 146
+      "rank": 138
     },
     {
       "id": 1523,
@@ -2367,7 +2239,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 38.9,
-      "rank": 147
+      "rank": 139
     },
     {
       "id": 985,
@@ -2383,7 +2255,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 31.5,
-      "rank": 148
+      "rank": 140
     },
     {
       "id": 984,
@@ -2399,7 +2271,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 39.5,
-      "rank": 149
+      "rank": 141
     },
     {
       "id": 983,
@@ -2415,7 +2287,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 150
+      "rank": 142
     },
     {
       "id": 982,
@@ -2431,7 +2303,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 151
+      "rank": 143
     },
     {
       "id": 981,
@@ -2447,7 +2319,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 31.5,
-      "rank": 152
+      "rank": 144
     },
     {
       "id": 980,
@@ -2463,7 +2335,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 31.5,
-      "rank": 153
+      "rank": 145
     },
     {
       "id": 979,
@@ -2479,7 +2351,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 54.5,
-      "rank": 154
+      "rank": 146
     },
     {
       "id": 1062,
@@ -2495,7 +2367,7 @@
       "heat_score": 92,
       "recency_score": 0,
       "rank_score": 35.1,
-      "rank": 155
+      "rank": 147
     },
     {
       "id": 1061,
@@ -2511,7 +2383,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 51.9,
-      "rank": 156
+      "rank": 148
     },
     {
       "id": 978,
@@ -2527,7 +2399,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 65.5,
-      "rank": 157
+      "rank": 149
     },
     {
       "id": 977,
@@ -2543,7 +2415,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 158
+      "rank": 150
     },
     {
       "id": 976,
@@ -2559,7 +2431,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 58.0,
-      "rank": 159
+      "rank": 151
     },
     {
       "id": 975,
@@ -2575,7 +2447,7 @@
       "heat_score": 84,
       "recency_score": 0,
       "rank_score": 61.7,
-      "rank": 160
+      "rank": 152
     },
     {
       "id": 974,
@@ -2591,7 +2463,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 31.5,
-      "rank": 161
+      "rank": 153
     },
     {
       "id": 973,
@@ -2607,7 +2479,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 51.9,
-      "rank": 162
+      "rank": 154
     },
     {
       "id": 1060,
@@ -2623,7 +2495,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 33.9,
-      "rank": 163
+      "rank": 155
     },
     {
       "id": 1059,
@@ -2639,7 +2511,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 51.9,
-      "rank": 164
+      "rank": 156
     },
     {
       "id": 1058,
@@ -2655,7 +2527,7 @@
       "heat_score": 92,
       "recency_score": 0,
       "rank_score": 38.1,
-      "rank": 165
+      "rank": 157
     },
     {
       "id": 1057,
@@ -2671,7 +2543,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 33.9,
-      "rank": 166
+      "rank": 158
     },
     {
       "id": 972,
@@ -2687,7 +2559,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 40.5,
-      "rank": 167
+      "rank": 159
     },
     {
       "id": 971,
@@ -2703,7 +2575,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 47.5,
-      "rank": 168
+      "rank": 160
     },
     {
       "id": 970,
@@ -2719,7 +2591,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 169
+      "rank": 161
     },
     {
       "id": 969,
@@ -2735,7 +2607,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 36.5,
-      "rank": 170
+      "rank": 162
     },
     {
       "id": 968,
@@ -2751,7 +2623,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 171
+      "rank": 163
     },
     {
       "id": 967,
@@ -2767,7 +2639,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 40.5,
-      "rank": 172
+      "rank": 164
     },
     {
       "id": 966,
@@ -2783,7 +2655,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 52.5,
-      "rank": 173
+      "rank": 165
     },
     {
       "id": 965,
@@ -2799,7 +2671,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 174
+      "rank": 166
     },
     {
       "id": 964,
@@ -2815,7 +2687,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 47.5,
-      "rank": 175
+      "rank": 167
     },
     {
       "id": 1056,
@@ -2831,7 +2703,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 36.9,
-      "rank": 176
+      "rank": 168
     },
     {
       "id": 963,
@@ -2847,7 +2719,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 37.5,
-      "rank": 177
+      "rank": 169
     },
     {
       "id": 962,
@@ -2863,7 +2735,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 45.5,
-      "rank": 178
+      "rank": 170
     },
     {
       "id": 961,
@@ -2879,7 +2751,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 54.5,
-      "rank": 179
+      "rank": 171
     },
     {
       "id": 1055,
@@ -2895,7 +2767,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 42.9,
-      "rank": 180
+      "rank": 172
     },
     {
       "id": 960,
@@ -2911,7 +2783,7 @@
       "heat_score": 84,
       "recency_score": 0,
       "rank_score": 32.7,
-      "rank": 181
+      "rank": 173
     },
     {
       "id": 959,
@@ -2927,7 +2799,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 40.5,
-      "rank": 182
+      "rank": 174
     },
     {
       "id": 1054,
@@ -2943,7 +2815,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 44.9,
-      "rank": 183
+      "rank": 175
     },
     {
       "id": 1053,
@@ -2959,7 +2831,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 62.9,
-      "rank": 184
+      "rank": 176
     },
     {
       "id": 1052,
@@ -2975,7 +2847,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 38.9,
-      "rank": 185
+      "rank": 177
     },
     {
       "id": 1051,
@@ -2991,7 +2863,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 73.4,
-      "rank": 186
+      "rank": 178
     },
     {
       "id": 1050,
@@ -3007,7 +2879,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 42.9,
-      "rank": 187
+      "rank": 179
     },
     {
       "id": 1049,
@@ -3023,7 +2895,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 33.9,
-      "rank": 188
+      "rank": 180
     },
     {
       "id": 958,
@@ -3039,7 +2911,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 189
+      "rank": 181
     },
     {
       "id": 957,
@@ -3055,7 +2927,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 45.5,
-      "rank": 190
+      "rank": 182
     },
     {
       "id": 1048,
@@ -3071,7 +2943,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 33.9,
-      "rank": 191
+      "rank": 183
     },
     {
       "id": 956,
@@ -3087,7 +2959,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 31.5,
-      "rank": 192
+      "rank": 184
     },
     {
       "id": 1047,
@@ -3103,7 +2975,7 @@
       "heat_score": 92,
       "recency_score": 0,
       "rank_score": 56.1,
-      "rank": 193
+      "rank": 185
     },
     {
       "id": 955,
@@ -3119,7 +2991,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 39.5,
-      "rank": 194
+      "rank": 186
     },
     {
       "id": 954,
@@ -3135,7 +3007,7 @@
       "heat_score": 84,
       "recency_score": 0,
       "rank_score": 50.7,
-      "rank": 195
+      "rank": 187
     },
     {
       "id": 953,
@@ -3151,7 +3023,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 196
+      "rank": 188
     },
     {
       "id": 952,
@@ -3167,7 +3039,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 60.5,
-      "rank": 197
+      "rank": 189
     },
     {
       "id": 951,
@@ -3183,7 +3055,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 54.5,
-      "rank": 198
+      "rank": 190
     },
     {
       "id": 1045,
@@ -3199,7 +3071,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 39.9,
-      "rank": 199
+      "rank": 191
     },
     {
       "id": 950,
@@ -3215,7 +3087,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 34.5,
-      "rank": 200
+      "rank": 192
     },
     {
       "id": 949,
@@ -3231,7 +3103,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 31.5,
-      "rank": 201
+      "rank": 193
     },
     {
       "id": 948,
@@ -3247,7 +3119,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 74.0,
-      "rank": 202
+      "rank": 194
     },
     {
       "id": 947,
@@ -3263,7 +3135,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 56.5,
-      "rank": 203
+      "rank": 195
     },
     {
       "id": 946,
@@ -3279,7 +3151,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 204
+      "rank": 196
     },
     {
       "id": 945,
@@ -3295,7 +3167,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 54.5,
-      "rank": 205
+      "rank": 197
     },
     {
       "id": 1043,
@@ -3311,7 +3183,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 56.9,
-      "rank": 206
+      "rank": 198
     },
     {
       "id": 944,
@@ -3327,7 +3199,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 31.5,
-      "rank": 207
+      "rank": 199
     },
     {
       "id": 943,
@@ -3343,7 +3215,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 40.5,
-      "rank": 208
+      "rank": 200
     },
     {
       "id": 942,
@@ -3359,7 +3231,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 31.5,
-      "rank": 209
+      "rank": 201
     },
     {
       "id": 941,
@@ -3375,7 +3247,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 210
+      "rank": 202
     },
     {
       "id": 1042,
@@ -3391,7 +3263,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 48.4,
-      "rank": 211
+      "rank": 203
     },
     {
       "id": 1041,
@@ -3407,7 +3279,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 33.9,
-      "rank": 212
+      "rank": 204
     },
     {
       "id": 940,
@@ -3423,7 +3295,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 41.5,
-      "rank": 213
+      "rank": 205
     },
     {
       "id": 939,
@@ -3439,7 +3311,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 54.5,
-      "rank": 214
+      "rank": 206
     },
     {
       "id": 938,
@@ -3455,7 +3327,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 40.5,
-      "rank": 215
+      "rank": 207
     },
     {
       "id": 937,
@@ -3471,7 +3343,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 216
+      "rank": 208
     },
     {
       "id": 936,
@@ -3487,7 +3359,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 31.5,
-      "rank": 217
+      "rank": 209
     },
     {
       "id": 935,
@@ -3503,7 +3375,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 218
+      "rank": 210
     },
     {
       "id": 1040,
@@ -3519,7 +3391,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 76.4,
-      "rank": 219
+      "rank": 211
     },
     {
       "id": 934,
@@ -3535,7 +3407,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 40.5,
-      "rank": 220
+      "rank": 212
     },
     {
       "id": 1039,
@@ -3551,7 +3423,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 44.9,
-      "rank": 221
+      "rank": 213
     },
     {
       "id": 933,
@@ -3567,7 +3439,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 42.5,
-      "rank": 222
+      "rank": 214
     },
     {
       "id": 1038,
@@ -3583,7 +3455,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 51.9,
-      "rank": 223
+      "rank": 215
     },
     {
       "id": 932,
@@ -3599,7 +3471,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 224
+      "rank": 216
     },
     {
       "id": 931,
@@ -3615,7 +3487,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 225
+      "rank": 217
     },
     {
       "id": 930,
@@ -3631,7 +3503,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 41.5,
-      "rank": 226
+      "rank": 218
     },
     {
       "id": 929,
@@ -3647,7 +3519,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 31.5,
-      "rank": 227
+      "rank": 219
     },
     {
       "id": 928,
@@ -3663,7 +3535,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 228
+      "rank": 220
     },
     {
       "id": 1037,
@@ -3679,7 +3551,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 33.9,
-      "rank": 229
+      "rank": 221
     },
     {
       "id": 927,
@@ -3695,7 +3567,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 54.5,
-      "rank": 230
+      "rank": 222
     },
     {
       "id": 926,
@@ -3711,7 +3583,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 60.5,
-      "rank": 231
+      "rank": 223
     },
     {
       "id": 925,
@@ -3727,7 +3599,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 60.5,
-      "rank": 232
+      "rank": 224
     },
     {
       "id": 924,
@@ -3743,7 +3615,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 48.5,
-      "rank": 233
+      "rank": 225
     },
     {
       "id": 923,
@@ -3759,7 +3631,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 48.5,
-      "rank": 234
+      "rank": 226
     },
     {
       "id": 1036,
@@ -3775,7 +3647,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 51.9,
-      "rank": 235
+      "rank": 227
     },
     {
       "id": 1035,
@@ -3791,7 +3663,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 42.9,
-      "rank": 236
+      "rank": 228
     },
     {
       "id": 922,
@@ -3807,7 +3679,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 39.5,
-      "rank": 237
+      "rank": 229
     },
     {
       "id": 1034,
@@ -3823,7 +3695,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 51.9,
-      "rank": 238
+      "rank": 230
     },
     {
       "id": 1033,
@@ -3839,7 +3711,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 42.9,
-      "rank": 239
+      "rank": 231
     },
     {
       "id": 921,
@@ -3855,7 +3727,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 31.5,
-      "rank": 240
+      "rank": 232
     },
     {
       "id": 1032,
@@ -3871,7 +3743,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 51.9,
-      "rank": 241
+      "rank": 233
     },
     {
       "id": 1031,
@@ -3887,7 +3759,7 @@
       "heat_score": 92,
       "recency_score": 0,
       "rank_score": 44.1,
-      "rank": 242
+      "rank": 234
     },
     {
       "id": 920,
@@ -3903,7 +3775,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 51.5,
-      "rank": 243
+      "rank": 235
     },
     {
       "id": 1030,
@@ -3919,7 +3791,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 65.9,
-      "rank": 244
+      "rank": 236
     },
     {
       "id": 919,
@@ -3935,7 +3807,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 37.5,
-      "rank": 245
+      "rank": 237
     },
     {
       "id": 1539,
@@ -3951,7 +3823,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 61.6,
-      "rank": 246
+      "rank": 238
     },
     {
       "id": 1413,
@@ -3967,7 +3839,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 59.6,
-      "rank": 247
+      "rank": 239
     },
     {
       "id": 304,
@@ -3983,7 +3855,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 65.6,
-      "rank": 248
+      "rank": 240
     },
     {
       "id": 1402,
@@ -3999,7 +3871,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 57.6,
-      "rank": 249
+      "rank": 241
     },
     {
       "id": 306,
@@ -4015,7 +3887,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 56.6,
-      "rank": 250
+      "rank": 242
     },
     {
       "id": 1391,
@@ -4031,7 +3903,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 61.6,
-      "rank": 251
+      "rank": 243
     },
     {
       "id": 289,
@@ -4047,7 +3919,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 61.6,
-      "rank": 252
+      "rank": 244
     },
     {
       "id": 294,
@@ -4063,7 +3935,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 68.6,
-      "rank": 253
+      "rank": 245
     },
     {
       "id": 1408,
@@ -4079,7 +3951,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 65.6,
-      "rank": 254
+      "rank": 246
     },
     {
       "id": 299,
@@ -4095,7 +3967,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 56.6,
-      "rank": 255
+      "rank": 247
     },
     {
       "id": 1412,
@@ -4111,7 +3983,7 @@
       "heat_score": 66,
       "recency_score": 0,
       "rank_score": 69.8,
-      "rank": 256
+      "rank": 248
     },
     {
       "id": 1387,
@@ -4127,7 +3999,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 65.6,
-      "rank": 257
+      "rank": 249
     },
     {
       "id": 1375,
@@ -4143,7 +4015,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 61.6,
-      "rank": 258
+      "rank": 250
     },
     {
       "id": 1376,
@@ -4159,7 +4031,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 68.6,
-      "rank": 259
+      "rank": 251
     },
     {
       "id": 300,
@@ -4175,7 +4047,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 61.6,
-      "rank": 260
+      "rank": 252
     },
     {
       "id": 1541,
@@ -4191,7 +4063,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 61.6,
-      "rank": 261
+      "rank": 253
     },
     {
       "id": 1411,
@@ -4207,7 +4079,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 56.6,
-      "rank": 262
+      "rank": 254
     },
     {
       "id": 305,
@@ -4223,7 +4095,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 56.6,
-      "rank": 263
+      "rank": 255
     },
     {
       "id": 1385,
@@ -4239,7 +4111,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 68.6,
-      "rank": 264
+      "rank": 256
     },
     {
       "id": 1386,
@@ -4255,7 +4127,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 68.6,
-      "rank": 265
+      "rank": 257
     },
     {
       "id": 1388,
@@ -4271,7 +4143,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 65.6,
-      "rank": 266
+      "rank": 258
     },
     {
       "id": 1384,
@@ -4287,7 +4159,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 68.6,
-      "rank": 267
+      "rank": 259
     },
     {
       "id": 73,
@@ -4303,7 +4175,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 56.6,
-      "rank": 268
+      "rank": 260
     },
     {
       "id": 1537,
@@ -4319,7 +4191,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 56.6,
-      "rank": 269
+      "rank": 261
     },
     {
       "id": 1532,
@@ -4335,7 +4207,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 56.6,
-      "rank": 270
+      "rank": 262
     },
     {
       "id": 1549,
@@ -4351,7 +4223,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 44.1,
-      "rank": 271
+      "rank": 263
     },
     {
       "id": 1400,
@@ -4367,7 +4239,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 66.6,
-      "rank": 272
+      "rank": 264
     },
     {
       "id": 295,
@@ -4383,7 +4255,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 66.6,
-      "rank": 273
+      "rank": 265
     },
     {
       "id": 1565,
@@ -4399,7 +4271,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 31.1,
-      "rank": 274
+      "rank": 266
     },
     {
       "id": 1534,
@@ -4415,7 +4287,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 56.6,
-      "rank": 275
+      "rank": 267
     },
     {
       "id": 1407,
@@ -4431,7 +4303,7 @@
       "heat_score": 70,
       "recency_score": 0,
       "rank_score": 59.0,
-      "rank": 276
+      "rank": 268
     },
     {
       "id": 302,
@@ -4447,7 +4319,7 @@
       "heat_score": 66,
       "recency_score": 0,
       "rank_score": 66.8,
-      "rank": 277
+      "rank": 269
     },
     {
       "id": 1533,
@@ -4463,7 +4335,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 35.1,
-      "rank": 278
+      "rank": 270
     },
     {
       "id": 1536,
@@ -4479,7 +4351,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 40.1,
-      "rank": 279
+      "rank": 271
     },
     {
       "id": 1547,
@@ -4495,7 +4367,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 40.1,
-      "rank": 280
+      "rank": 272
     },
     {
       "id": 1540,
@@ -4511,7 +4383,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 40.1,
-      "rank": 281
+      "rank": 273
     },
     {
       "id": 1538,
@@ -4527,7 +4399,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 35.1,
-      "rank": 282
+      "rank": 274
     },
     {
       "id": 1551,
@@ -4543,7 +4415,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 35.1,
-      "rank": 283
+      "rank": 275
     },
     {
       "id": 1535,
@@ -4559,7 +4431,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 35.1,
-      "rank": 284
+      "rank": 276
     },
     {
       "id": 77,
@@ -4575,7 +4447,7 @@
       "heat_score": 66,
       "recency_score": 0,
       "rank_score": 69.8,
-      "rank": 285
+      "rank": 277
     },
     {
       "id": 83,
@@ -4591,7 +4463,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 68.6,
-      "rank": 286
+      "rank": 278
     },
     {
       "id": 81,
@@ -4607,7 +4479,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 68.6,
-      "rank": 287
+      "rank": 279
     },
     {
       "id": 80,
@@ -4623,7 +4495,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 68.6,
-      "rank": 288
+      "rank": 280
     },
     {
       "id": 78,
@@ -4639,7 +4511,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 68.6,
-      "rank": 289
+      "rank": 281
     },
     {
       "id": 75,
@@ -4655,7 +4527,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 68.6,
-      "rank": 290
+      "rank": 282
     },
     {
       "id": 63,
@@ -4671,7 +4543,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 68.6,
-      "rank": 291
+      "rank": 283
     },
     {
       "id": 25,
@@ -4687,7 +4559,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 68.6,
-      "rank": 292
+      "rank": 284
     },
     {
       "id": 79,
@@ -4703,7 +4575,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 67.6,
-      "rank": 293
+      "rank": 285
     },
     {
       "id": 76,
@@ -4719,7 +4591,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 67.6,
-      "rank": 294
+      "rank": 286
     },
     {
       "id": 297,
@@ -4735,7 +4607,7 @@
       "heat_score": 66,
       "recency_score": 0,
       "rank_score": 62.8,
-      "rank": 295
+      "rank": 287
     },
     {
       "id": 82,
@@ -4751,7 +4623,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 62.1,
-      "rank": 296
+      "rank": 288
     },
     {
       "id": 60,
@@ -4767,7 +4639,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 59.6,
-      "rank": 297
+      "rank": 289
     },
     {
       "id": 10,
@@ -4783,7 +4655,7 @@
       "heat_score": 66,
       "recency_score": 0,
       "rank_score": 57.8,
-      "rank": 298
+      "rank": 290
     },
     {
       "id": 84,
@@ -4799,7 +4671,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 56.6,
-      "rank": 299
+      "rank": 291
     },
     {
       "id": 12,
@@ -4815,7 +4687,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 56.6,
-      "rank": 300
+      "rank": 292
     },
     {
       "id": 9,
@@ -4831,7 +4703,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 56.6,
-      "rank": 301
+      "rank": 293
     },
     {
       "id": 7,
@@ -4847,7 +4719,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 56.6,
-      "rank": 302
+      "rank": 294
     }
   ]
 }

@@ -41,6 +41,36 @@ ARCHIVE_SOURCES = (
         "api": "https://musictech.com/wp-json/wp/v2/posts",
         "category": "音乐科技",
     },
+    {
+        "source": "Synthanatomy",
+        "api": "https://www.synthanatomy.com/wp-json/wp/v2/posts",
+        "category": "音乐科技",
+    },
+    {
+        "source": "Rekkerd",
+        "api": "https://rekkerd.org/wp-json/wp/v2/posts",
+        "category": "音乐科技",
+    },
+    {
+        "source": "Gearnews",
+        "api": "https://www.gearnews.com/wp-json/wp/v2/posts",
+        "category": "音乐科技",
+    },
+    {
+        "source": "Music Business Worldwide",
+        "api": "https://www.musicbusinessworldwide.com/wp-json/wp/v2/posts",
+        "category": "音乐科技",
+    },
+    {
+        "source": "爱范儿",
+        "api": "https://www.ifanr.com/wp-json/wp/v2/posts",
+        "category": "国内科技",
+    },
+    {
+        "source": "TechCrunch",
+        "api": "https://techcrunch.com/wp-json/wp/v2/posts",
+        "category": "国际科技",
+    },
 )
 
 

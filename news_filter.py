@@ -11,7 +11,7 @@ from __future__ import annotations
 import re
 from collections.abc import Iterable
 
-from config import AI_KEYWORDS, MUSIC_KEYWORDS, TECH_KEYWORDS
+from config import AI_KEYWORDS, MUSIC_KEYWORDS
 from filter_learning import is_learned_accepted, is_learned_excluded
 
 
@@ -180,31 +180,6 @@ PRICE_OR_PROMOTION_PATTERN = re.compile(
     re.IGNORECASE,
 )
 
-AI_DEVELOPMENT_KEYWORDS = (
-    "开发",
-    "编程",
-    "代码",
-    "开源",
-    "模型",
-    "算法",
-    "接口",
-    "框架",
-    "智能体",
-    "agent",
-    "api",
-    "sdk",
-    "software",
-    "tool",
-    "platform",
-    "framework",
-    "model",
-    "algorithm",
-    "developer",
-    "coding",
-    "open source",
-    "open-source",
-)
-
 def _normalize_text(value: str) -> str:
     """统一大小写并压缩多余空白，减少无意义的匹配差异。"""
 
@@ -262,8 +237,6 @@ def is_relevant_news(
     has_software_signal = bool(
         find_matched_keywords(combined_text, SOFTWARE_SIGNAL_KEYWORDS)
     )
-    has_tech_keyword = bool(find_matched_keywords(combined_text, TECH_KEYWORDS))
-
     title_for_review = str(text_parts[0]) if text_parts else ""
     if is_learned_excluded(title_for_review):
         return False
@@ -272,7 +245,10 @@ def is_relevant_news(
     title_text = _normalize_text(" ".join(text_parts[:1]))
     if PRICE_OR_PROMOTION_PATTERN.search(title_text):
         return False
-    if find_matched_keywords(title_text, GOSSIP_OR_BUSINESS_NOISE):
+    if (
+        category in {"音乐科技", "搜狗微信"}
+        and find_matched_keywords(title_text, GOSSIP_OR_BUSINESS_NOISE)
+    ):
         return False
 
     # 人工保留白名单只保护音乐科技文章，价格和优惠仍优先生效。
@@ -293,12 +269,10 @@ def is_relevant_news(
             or has_software_signal
         )
 
-    # 综合科技媒体允许标题涉及音乐，或正文确实涉及 AI 技术。
+    # 综合科技媒体只保留标题涉及 AI 或音乐的内容。AI 人物、公司和商业新闻
+    # 同样属于 AI 范围，不与音乐明星八卦规则混用。
     if category in {"国内科技", "国际科技"}:
-        has_ai_development = bool(
-            find_matched_keywords(combined_text, AI_DEVELOPMENT_KEYWORDS)
-        )
-        return title_music or (has_ai_keyword and has_ai_development)
+        return title_ai or title_music
 
     # 搜狗微信允许 AI 或音乐单类内容。
     if category == "搜狗微信":

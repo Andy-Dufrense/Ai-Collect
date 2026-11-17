@@ -55,20 +55,33 @@ class NewsFilterTests(unittest.TestCase):
         self.assertTrue(is_relevant_news("大模型新进展", "可用于实时编曲"))
 
     def test_technical_content_is_accepted_but_noise_is_rejected(self) -> None:
-        self.assertFalse(
+        self.assertTrue(
             is_relevant_news(
                 "AI 芯片销量创新高",
                 "半导体行业资讯",
                 category="国内科技",
             )
         )
-        self.assertFalse(is_relevant_news("本周热门音乐榜单", "多位歌手发布新歌"))
+        self.assertFalse(
+            is_relevant_news(
+                "新款手机正式上架",
+                "普通硬件产品介绍",
+                category="国内科技",
+            )
+        )
+        self.assertFalse(
+            is_relevant_news(
+                "本周热门音乐榜单",
+                "多位歌手发布新歌",
+                category="音乐科技",
+            )
+        )
 
-    def test_ai_development_and_price_filter(self) -> None:
+    def test_ai_person_and_price_filter(self) -> None:
         self.assertTrue(
             is_relevant_news(
-                "开发者发布 AI 编程工具",
-                "新增 API、模型和开源 SDK",
+                "OpenAI CEO 谈 AI 行业下一阶段",
+                "公司人物与商业动态",
                 category="国内科技",
             )
         )
@@ -141,8 +154,8 @@ class NewsFilterTests(unittest.TestCase):
         )
         self.assertTrue(
             is_relevant_news(
-                "开发者发布新工具",
-                "该软件内置 AI 模型和开发接口",
+                "开发者发布 AI 编程工具",
+                "该软件提供模型接口和开源 SDK",
                 category="国内科技",
             )
         )
