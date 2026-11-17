@@ -1,0 +1,54 @@
+name: 提交一条资讯
+description: 提交微信公众号、微信视频号、抖音或其他 AI/音乐资讯
+title: "[News] "
+labels:
+  - pending-news
+body:
+  - type: markdown
+    attributes:
+      value: |
+        提交后需要仓库维护者添加 `approved-news` 标签，资讯才会进入网站。
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: 平台分类
+      options:
+        - 微信公众号
+        - 微信视频号
+        - 抖音
+        - 其他
+    validations:
+      required: true
+
+  - type: input
+    id: source
+    attributes:
+      label: 账号或来源
+      placeholder: 例如：机器之心
+    validations:
+      required: true
+
+  - type: input
+    id: title
+    attributes:
+      label: 标题
+    validations:
+      required: true
+
+  - type: input
+    id: link
+    attributes:
+      label: 原文链接
+      placeholder: https://...
+    validations:
+      required: true
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: 简介
+      description: 简要说明与 AI、音乐或乐器的关系
+      render: text
+    validations:
+      required: false

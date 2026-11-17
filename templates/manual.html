@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="手动收录公众号、视频号和短视频资讯">
+    <title>手动收录 · AI × 音乐情报站</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="page-shell">
+        <header class="manual-header">
+            <div>
+                <p class="eyebrow">MANUAL INGEST</p>
+                <h1>收录一条情报</h1>
+                <p class="intro">
+                    粘贴公众号、视频号或抖音链接。系统只保存你主动提交的内容，
+                    不绕过平台登录、验证码或访问限制。
+                </p>
+            </div>
+            <a class="back-link" href="{{ url_for('index') }}">← 返回首页</a>
+        </header>
+
+        {% if message %}
+            <p class="{{ message_class }}" role="status">{{ message }}</p>
+        {% endif %}
+
+        <form class="manual-form" method="post">
+            <label>
+                <span>平台分类</span>
+                <select name="category">
+                    <option value="微信公众号">微信公众号</option>
+                    <option value="微信视频号">微信视频号</option>
+                    <option value="抖音">抖音</option>
+                    <option value="其他">其他</option>
+                </select>
+            </label>
+
+            <label>
+                <span>账号或来源名称</span>
+                <input name="source" type="text" placeholder="例如：机器之心">
+            </label>
+
+            <label>
+                <span>标题 *</span>
+                <input name="title" type="text" required
+                       placeholder="输入资讯标题">
+            </label>
+
+            <label>
+                <span>原文链接 *</span>
+                <input name="link" type="url" required
+                       placeholder="https://...">
+            </label>
+
+            <label>
+                <span>简介</span>
+                <textarea name="summary" rows="6"
+                          placeholder="可选，简要说明这条资讯与 AI 音乐的关系"></textarea>
+            </label>
+
+            <button type="submit" class="fetch-button">保存资讯</button>
+        </form>
+    </div>
+</body>
+</html>

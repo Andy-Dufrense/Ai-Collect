@@ -1,0 +1,18 @@
+[Unit]
+Description=AI Music Intelligence Auto Fetcher
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=ai-music
+Group=ai-music
+WorkingDirectory=/opt/ai-music
+Environment=PYTHONUNBUFFERED=1
+EnvironmentFile=-/opt/ai-music/.env
+ExecStart=/opt/ai-music/.venv/bin/python auto_fetcher.py
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
