@@ -5,7 +5,12 @@ from __future__ import annotations
 import unittest
 from unittest.mock import patch
 
-from translation import is_probably_english, translate_items, translate_title
+from translation import (
+    is_probably_english,
+    is_title_displayable,
+    translate_items,
+    translate_title,
+)
 
 
 class FakeResponse:
@@ -60,6 +65,22 @@ class TranslationTests(unittest.TestCase):
         self.assertEqual(translated_count, 0)
         self.assertEqual(items[0]["title_zh"], "缓存的中文标题")
         translate_mock.assert_not_called()
+
+    def test_untranslated_english_title_is_hidden(self) -> None:
+        self.assertFalse(
+            is_title_displayable(
+                {"title": "New AI music plugin released"}
+            )
+        )
+        self.assertTrue(
+            is_title_displayable(
+                {
+                    "title": "New AI music plugin released",
+                    "title_zh": "全新 AI 音乐插件发布",
+                }
+            )
+        )
+        self.assertTrue(is_title_displayable({"title": "AI 音乐工具更新"}))
 
 
 if __name__ == "__main__":

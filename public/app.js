@@ -95,6 +95,12 @@ function rankItems() {
                     return false;
                 }
             }
+            if (
+                isEnglishTitle(item.title || "")
+                && (!item.title_zh || item.title_zh === "None")
+            ) {
+                return false;
+            }
             const text = [
                 item.title || "",
                 item.title_zh || "",
@@ -115,12 +121,13 @@ function rankItems() {
             };
         })
         .sort((left, right) => {
-            if (right.rank_score !== left.rank_score) {
-                return right.rank_score - left.rank_score;
-            }
-            return String(right.publish_time || "").localeCompare(
+            const timeOrder = String(right.publish_time || "").localeCompare(
                 String(left.publish_time || "")
             );
+            if (timeOrder !== 0) {
+                return timeOrder;
+            }
+            return right.rank_score - left.rank_score;
         });
 }
 
@@ -135,6 +142,12 @@ function shanghaiDate(value) {
     }).formatToParts(date);
     const part = (type) => parts.find((entry) => entry.type === type)?.value;
     return `${part("year")}-${part("month")}-${part("day")}`;
+}
+
+function isEnglishTitle(title) {
+    const cjk = (title.match(/[\u3400-\u9fff]/g) || []).length;
+    const latin = (title.match(/[A-Za-z]/g) || []).length;
+    return latin >= 10 && cjk < 2;
 }
 
 function createCell(className, text) {

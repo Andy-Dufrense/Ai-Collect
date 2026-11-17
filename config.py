@@ -322,6 +322,24 @@ SOGOU_QUERY_DELAY_SECONDS: Final[float] = max(
     _read_positive_number("SOGOU_QUERY_DELAY_SECONDS", 2.0),
 )
 
+HISTORY_BACKFILL_DAYS: Final[int] = max(
+    1,
+    int(_read_positive_number("HISTORY_BACKFILL_DAYS", 60)),
+)
+HISTORY_BACKFILL_DELAY_SECONDS: Final[float] = max(
+    2.0,
+    _read_positive_number("HISTORY_BACKFILL_DELAY_SECONDS", 5.0),
+)
+HISTORY_BACKFILL_QUERIES: Final[tuple[str, ...]] = (
+    "AI 音乐",
+    "AI音乐",
+    "AI音乐 软件 工具",
+)
+ON_DEMAND_DATE_BACKFILL_SECONDS: Final[float] = max(
+    600.0,
+    _read_positive_number("ON_DEMAND_DATE_BACKFILL_SECONDS", 21600.0),
+)
+
 
 # 单次网络请求的最长等待时间，单位是秒。
 REQUEST_TIMEOUT_SECONDS: Final[float] = _read_positive_number(

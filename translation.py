@@ -24,7 +24,7 @@ TRANSLATION_ENABLED = os.getenv("TRANSLATION_ENABLED", "1").casefold() not in {
     "no",
     "off",
 }
-MAX_TRANSLATIONS_PER_RUN = 60
+MAX_TRANSLATIONS_PER_RUN = 300
 
 
 def is_probably_english(text: str) -> bool:
@@ -83,6 +83,16 @@ def is_translatable_title(text: str) -> bool:
     """避免把纯数字、链接或极短英文产品缩写送去翻译。"""
 
     return is_probably_english(text) and len(text) <= 400
+
+
+def is_title_displayable(item: Mapping[str, Any]) -> bool:
+    """中文标题或翻译成功的英文标题才允许展示。"""
+
+    title = str(item.get("title", "")).strip()
+    title_zh = str(item.get("title_zh") or "").strip()
+    if not is_probably_english(title):
+        return True
+    return bool(title_zh and title_zh.casefold() != "none")
 
 
 def load_translation_cache(

@@ -17,10 +17,12 @@ import requests
 from bs4 import BeautifulSoup
 
 from config import REQUEST_TIMEOUT_SECONDS
+from config import DATA_DIR
 from news_filter import is_relevant_news
 
 
 SOGOU_SEARCH_URL = "https://weixin.sogou.com/weixin"
+SOGOU_DEBUG_PATH = DATA_DIR / "sogou_debug.html"
 
 
 def make_sogou_dedupe_key(title: str) -> str:
@@ -32,9 +34,16 @@ def make_sogou_dedupe_key(title: str) -> str:
 
 
 def _extract_publish_time(node: object) -> str | None:
-    """兼容时间戳脚本、日期文本以及“几小时前”等搜狗展示格式。"""
+    """
+    只从搜狗结果的 .s2 时间元素提取发布时间。
 
-    node_html = str(node)
+    不从整个结果节点搜索数字，避免把图片 ID、文章 ID 等误当成时间戳。
+    """
+
+    time_node = getattr(node, "select_one", lambda _selector: None)(".s2")
+    if time_node is None:
+        return None
+    node_html = str(time_node)
     timestamp_match = re.search(
         r"(?:timeConvert|timestamp)[^\d]{0,8}(\d{10,13})",
         node_html,
@@ -80,13 +89,22 @@ def _extract_publish_time(node: object) -> str | None:
     return None
 
 
-def build_sogou_url(query: str) -> str:
+def build_sogou_url(
+    query: str,
+    *,
+    start_date: str = "",
+    end_date: str = "",
+) -> str:
     """构造普通关键词搜索 URL，不包含登录凭据或规避验证参数。"""
 
-    return (
+    url = (
         f"{SOGOU_SEARCH_URL}?type=2&query={quote_plus(query)}"
-        "&ie=utf8&s_from=input"
+        "&ie=utf8&s_from=input&_sug_=n&_sug_type_="
     )
+    if start_date and end_date:
+        # tsn=5 是搜狗公开页面的自定义日期范围模式。
+        url += f"&tsn=5&ft={start_date}&et={end_date}"
+    return url
 
 
 def parse_sogou_results(
@@ -121,7 +139,7 @@ def parse_sogou_results(
             if summary_node is not None
             else ""
         )
-        if not is_relevant_news(title, summary):
+        if not is_relevant_news(title, summary, category="搜狗微信"):
             continue
 
         # 没有可靠发布时间的旧结果不进入每日排行。
@@ -154,6 +172,9 @@ def parse_sogou_results(
 def fetch_sogou_query(
     session: requests.Session,
     query: str,
+    *,
+    start_date: str = "",
+    end_date: str = "",
 ) -> tuple[list[dict[str, str | None]], int, int]:
     """
     请求并解析一个搜狗微信关键词。
@@ -162,7 +183,24 @@ def fetch_sogou_query(
     不尝试识别验证码或伪造登录态。
     """
 
-    url = build_sogou_url(query)
+    # 日期筛选请求比普通搜索更容易触发重定向。先访问一次首页建立正常
+    # 搜索会话，再发起关键词请求；这不会绕过验证码或登录。
+    if not getattr(session, "_ai_music_sogou_warmed", False):
+        try:
+            session.get(
+                "https://weixin.sogou.com/",
+                timeout=REQUEST_TIMEOUT_SECONDS,
+            )
+        except requests.RequestException:
+            pass
+        session.headers.update({"Referer": "https://weixin.sogou.com/"})
+        session._ai_music_sogou_warmed = True
+
+    url = build_sogou_url(
+        query,
+        start_date=start_date,
+        end_date=end_date,
+    )
     response = session.get(url, timeout=REQUEST_TIMEOUT_SECONDS)
     response.raise_for_status()
     response.encoding = response.apparent_encoding or response.encoding
@@ -177,5 +215,18 @@ def fetch_sogou_query(
 
     parsed_result = parse_sogou_results(response.text, page_url=response.url)
     if parsed_result[1] == 0:
+        SOGOU_DEBUG_PATH.parent.mkdir(parents=True, exist_ok=True)
+        SOGOU_DEBUG_PATH.write_text(
+            f"URL: {response.url}\n"
+            f"STATUS: {response.status_code}\n"
+            f"LENGTH: {len(response.text)}\n\n"
+            "HISTORY:\n"
+            + "\n".join(
+                f"{item.status_code} {item.url}" for item in response.history
+            )
+            + "\n\n"
+            + response.text,
+            encoding="utf-8",
+        )
         raise ValueError("搜狗没有返回搜索结果，可能为空结果或页面访问受限")
     return parsed_result

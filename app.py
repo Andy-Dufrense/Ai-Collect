@@ -25,6 +25,7 @@ from config import (
     FLASK_HOST,
     FLASK_PORT,
 )
+from backfill import backfill_date
 from database import (
     get_all_news,
     get_latest_fetch_run,
@@ -37,6 +38,7 @@ from database import (
 )
 from ranking import filter_and_rank_news
 from rss_fetcher import FetchAlreadyRunningError, fetch_and_save_news
+from translation import is_title_displayable
 
 
 # 统一日志格式，启动脚本会把标准输出和错误写入 data/flask.log。
@@ -172,7 +174,7 @@ def index():
     latest_fetch_run = get_latest_fetch_run()
     keyword = request.args.get("q", "").strip()[:100]
     raw_days = request.args.get("days", "3")
-    allowed_days = {0, 1, 3, 7, 14, 30}
+    allowed_days = {0, 1, 3, 7, 14, 30, 60}
     try:
         selected_days = int(raw_days)
     except ValueError:
@@ -191,6 +193,18 @@ def index():
         keyword=keyword,
         specific_date=selected_date,
     )
+    # 指定日期没有数据时，按该日期的真实范围补抓一次。
+    if selected_date and not ranked_news:
+        backfill_date(selected_date)
+        all_news_items = get_all_news()
+        ranked_news = filter_and_rank_news(
+            all_news_items,
+            days=selected_days,
+            keyword=keyword,
+            specific_date=selected_date,
+        )
+    # 英文文章必须完成标题翻译后才展示，翻译失败时保留在数据库中等待重试。
+    ranked_news = [item for item in ranked_news if is_title_displayable(item)]
 
     # 手动抓取完成后，fetch 路由会通过 URL 参数带回简短统计信息。
     fetch_status = request.args.get("status", "")

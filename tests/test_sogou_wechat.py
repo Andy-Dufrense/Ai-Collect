@@ -4,7 +4,13 @@ from __future__ import annotations
 
 import unittest
 
-from sogou_wechat import build_sogou_url, parse_sogou_results
+from bs4 import BeautifulSoup
+
+from sogou_wechat import (
+    _extract_publish_time,
+    build_sogou_url,
+    parse_sogou_results,
+)
 
 
 SOGOU_HTML = """
@@ -37,6 +43,31 @@ class SogouWechatTests(unittest.TestCase):
     def test_query_is_url_encoded(self) -> None:
         url = build_sogou_url("AI音乐")
         self.assertIn("query=AI%E9%9F%B3%E4%B9%90", url)
+
+    def test_custom_date_range_is_included(self) -> None:
+        url = build_sogou_url(
+            "AI音乐",
+            start_date="2026-11-01",
+            end_date="2026-11-01",
+        )
+        self.assertIn("tsn=5", url)
+        self.assertIn("ft=2026-11-01", url)
+        self.assertIn("et=2026-11-01", url)
+
+    def test_only_dedicated_time_element_is_used(self) -> None:
+        node = BeautifulSoup(
+            """
+            <li>
+              <script>var articleId = "1763000000";</script>
+              <span class="s2">2023-08-12</span>
+            </li>
+            """,
+            "html.parser",
+        ).li
+        self.assertEqual(
+            _extract_publish_time(node),
+            "2023-08-12T00:00:00+00:00",
+        )
 
     def test_only_relevant_results_are_returned(self) -> None:
         items, total, matched = parse_sogou_results(

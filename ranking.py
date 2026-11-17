@@ -192,8 +192,8 @@ def filter_and_rank_news(
 
     ranked_items.sort(
         key=lambda item: (
-            item["rank_score"],
             item.get("publish_time") or "",
+            item["rank_score"],
         ),
         reverse=True,
     )

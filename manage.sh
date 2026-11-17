@@ -9,6 +9,9 @@
 #   ./manage.sh status   查看两个进程及自动同步状态
 #   ./manage.sh fetch    手动立即抓取一次
 #   ./manage.sh logs     查看网页、自动抓取或手动抓取日志
+#   ./manage.sh review   在终端中审核新闻并调整过滤规则
+#   ./manage.sh backfill 按真实发布日期回填最近 60 天
+#   ./manage.sh translate 补齐数据库中的英文标题翻译
 #
 # 启动后后台会立即抓取一次，然后按配置间隔持续轮询 RSS。
 # 网页只读取 SQLite，所以日常只需刷新页面，不需要再次点击抓取。
@@ -481,11 +484,21 @@ case "${1:-}" in
     logs)
         show_logs "${2:-worker}" "${3:-80}"
         ;;
+    review)
+        "${PYTHON_BIN}" "${PROJECT_DIR}/scripts/review_filter.py" --limit 20
+        ;;
+    backfill)
+        "${PYTHON_BIN}" "${PROJECT_DIR}/scripts/backfill_history.py" \
+            --days "${2:-60}" 2>&1 | tee -a "${PROJECT_DIR}/data/backfill.log"
+        ;;
+    translate)
+        "${PYTHON_BIN}" "${PROJECT_DIR}/scripts/translate_missing.py"
+        ;;
     doctor)
         doctor
         ;;
     *)
-        echo "用法：$0 {start|stop|restart|status|fetch|logs|doctor}" >&2
+        echo "用法：$0 {start|stop|restart|status|fetch|logs|review|backfill|translate|doctor}" >&2
         echo "日志用法：$0 logs [flask|worker|fetch] [行数]" >&2
         exit 1
         ;;

@@ -109,6 +109,21 @@ class RankingTests(unittest.TestCase):
         self.assertEqual(ranked[0]["title"], "AI 钢琴与乐理工具")
         self.assertTrue(all(item["rank"] > 0 for item in ranked))
 
+    def test_publication_time_is_primary_sort_key(self) -> None:
+        items = [
+            make_item(
+                "AI 音乐软件 插件 合成器 混音 母带",
+                publish_time="2026-11-16T08:00:00+00:00",
+                summary="AI 音乐制作 插件 功能 工作流",
+            ),
+            make_item(
+                "最新 AI 简讯",
+                publish_time="2026-11-17T09:00:00+00:00",
+            ),
+        ]
+        ranked = filter_and_rank_news(items, days=3, now=self.now)
+        self.assertEqual(ranked[0]["title"], "最新 AI 简讯")
+
 
 if __name__ == "__main__":
     unittest.main()

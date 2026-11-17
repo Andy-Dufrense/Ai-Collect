@@ -111,6 +111,29 @@ class NewsFilterTests(unittest.TestCase):
             )
         )
 
+    def test_music_only_and_ai_development_are_kept(self) -> None:
+        self.assertTrue(
+            is_relevant_news(
+                "爱音乐，更爱古筝",
+                "音乐学习与乐器介绍",
+                category="搜狗微信",
+            )
+        )
+        self.assertTrue(
+            is_relevant_news(
+                "开发者发布新工具",
+                "该软件内置 AI 模型和开发接口",
+                category="国内科技",
+            )
+        )
+        self.assertFalse(
+            is_relevant_news(
+                "普通手机产品上架",
+                "介绍外观颜色和电池容量",
+                category="国内科技",
+            )
+        )
+
     def test_ai_music_cross_topic_has_higher_ranking_than_ai_only(self) -> None:
         from ranking import _relevance_score
 

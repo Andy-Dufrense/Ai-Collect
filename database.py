@@ -278,6 +278,22 @@ def get_last_fetch_time() -> str | None:
     return str(row["meta_value"]) if row else None
 
 
+def delete_news_by_ids(news_ids: Iterable[int]) -> int:
+    """按 ID 删除人工明确判定为无关的新闻，返回删除数量。"""
+
+    ids = [int(news_id) for news_id in news_ids]
+    if not ids:
+        return 0
+    placeholders = ",".join("?" for _ in ids)
+    with get_connection() as connection:
+        cursor = connection.execute(
+            f"DELETE FROM news WHERE id IN ({placeholders})",
+            ids,
+        )
+        connection.commit()
+    return cursor.rowcount
+
+
 def record_fetch_run(
     *,
     fetched_at: datetime,
