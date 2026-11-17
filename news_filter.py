@@ -105,6 +105,8 @@ GOSSIP_OR_BUSINESS_NOISE = (
     "估值",
     "股价",
     "财报",
+    "ipo",
+    "套现",
     "裁员",
     "格莱美",
     "巡演",
@@ -162,6 +164,45 @@ GOSSIP_OR_BUSINESS_NOISE = (
     "believes",
     "criticizes",
     "slams",
+)
+
+PRICE_OR_PROMOTION_PATTERN = re.compile(
+    r"(?:"
+    r"[¥$€£]\s*\d+"
+    r"|\d+(?:\.\d+)?\s*(?:元|万元|美元|英镑|欧元)"
+    r"|\d+(?:\.\d+)?\s*亿\s*美元"
+    r"|\d+(?:\.\d+)?\s*%\s*(?:off|折扣)"
+    r"|售价|首发价|起售价|价格|定价|折扣|优惠|促销|降价|涨价|黑五"
+    r"|免费领|会员|订阅|会员费|限时"
+    r"|\b(?:price|pricing|discount|deal|deals|sale|bundle|membership|"
+    r"subscription)\b"
+    r")",
+    re.IGNORECASE,
+)
+
+AI_DEVELOPMENT_KEYWORDS = (
+    "开发",
+    "编程",
+    "代码",
+    "开源",
+    "模型",
+    "算法",
+    "接口",
+    "框架",
+    "智能体",
+    "agent",
+    "api",
+    "sdk",
+    "software",
+    "tool",
+    "platform",
+    "framework",
+    "model",
+    "algorithm",
+    "developer",
+    "coding",
+    "open source",
+    "open-source",
 )
 
 def _normalize_text(value: str) -> str:
@@ -224,17 +265,19 @@ def is_relevant_news(
     has_tech_keyword = bool(find_matched_keywords(combined_text, TECH_KEYWORDS))
 
     title_for_review = str(text_parts[0]) if text_parts else ""
-    # 人工保留白名单只保护容易因词形变化被误伤的音乐科技文章。
-    # 综合科技来源仍须标题涉及 AI 或音乐，避免永久保留普通手机/硬件新闻。
-    if category == "音乐科技" and is_learned_accepted(title_for_review):
-        return True
     if is_learned_excluded(title_for_review):
         return False
 
     # 噪音词只检查标题。简介中顺带提到诉讼或融资不应错误删除技术文章。
     title_text = _normalize_text(" ".join(text_parts[:1]))
+    if PRICE_OR_PROMOTION_PATTERN.search(title_text):
+        return False
     if find_matched_keywords(title_text, GOSSIP_OR_BUSINESS_NOISE):
         return False
+
+    # 人工保留白名单只保护音乐科技文章，价格和优惠仍优先生效。
+    if category == "音乐科技" and is_learned_accepted(title_for_review):
+        return True
 
     title_ai = bool(find_matched_keywords(title_text, AI_KEYWORDS))
     title_music = bool(find_matched_keywords(title_text, MUSIC_KEYWORDS))
@@ -252,7 +295,10 @@ def is_relevant_news(
 
     # 综合科技媒体允许标题涉及音乐，或正文确实涉及 AI 技术。
     if category in {"国内科技", "国际科技"}:
-        return title_music or (has_ai_keyword and has_tech_keyword)
+        has_ai_development = bool(
+            find_matched_keywords(combined_text, AI_DEVELOPMENT_KEYWORDS)
+        )
+        return title_music or (has_ai_keyword and has_ai_development)
 
     # 搜狗微信允许 AI 或音乐单类内容。
     if category == "搜狗微信":

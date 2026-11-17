@@ -24,7 +24,6 @@ from backfill import backfill_date
 from database import (
     get_all_news,
     get_last_fetch_time,
-    get_meta_value,
     get_news_count,
     get_worker_heartbeat,
     initialize_database,
@@ -170,9 +169,9 @@ def index():
         selected_date=selected_date,
         last_fetch_at=get_last_fetch_time(),
         auto_sync_online=_is_auto_sync_online(get_worker_heartbeat()),
-        next_auto_fetch_at=(
-            get_meta_value("next_auto_fetch_at")
-            or next_scheduled_refresh().isoformat(timespec="seconds")
+        # 页面始终按固定日程实时计算，不信任重启前可能残留的旧 meta 值。
+        next_auto_fetch_at=next_scheduled_refresh().isoformat(
+            timespec="seconds"
         ),
     )
 

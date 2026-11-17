@@ -55,8 +55,37 @@ class NewsFilterTests(unittest.TestCase):
         self.assertTrue(is_relevant_news("大模型新进展", "可用于实时编曲"))
 
     def test_technical_content_is_accepted_but_noise_is_rejected(self) -> None:
-        self.assertTrue(is_relevant_news("AI 芯片销量创新高", "半导体行业资讯"))
+        self.assertFalse(
+            is_relevant_news(
+                "AI 芯片销量创新高",
+                "半导体行业资讯",
+                category="国内科技",
+            )
+        )
         self.assertFalse(is_relevant_news("本周热门音乐榜单", "多位歌手发布新歌"))
+
+    def test_ai_development_and_price_filter(self) -> None:
+        self.assertTrue(
+            is_relevant_news(
+                "开发者发布 AI 编程工具",
+                "新增 API、模型和开源 SDK",
+                category="国内科技",
+            )
+        )
+        self.assertFalse(
+            is_relevant_news(
+                "新款 AI 手机首发价 5999 元",
+                "产品正式上市",
+                category="国内科技",
+            )
+        )
+        self.assertFalse(
+            is_relevant_news(
+                "Music gear bundle 50% off",
+                "Limited sale",
+                category="音乐科技",
+            )
+        )
 
     def test_does_not_treat_letters_inside_english_word_as_ai(self) -> None:
         self.assertFalse(is_relevant_news("Daily news about cooking", "普通生活晨报"))

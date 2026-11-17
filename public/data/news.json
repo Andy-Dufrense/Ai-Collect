@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-17T09:01:44+00:00",
-  "total": 337,
+  "generated_at": "2026-11-17T09:10:59+00:00",
+  "total": 302,
   "translated_count": 0,
   "last_run": {
     "id": 51,
@@ -34,22 +34,6 @@
       "rank": 1
     },
     {
-      "id": 1415,
-      "title": "消息称苹果破例与三星洽谈 DRAM 长期供货协议，已启动最后磋商",
-      "link": "https://www.ithome.com/1/028/325.htm",
-      "source": "IT之家24小时榜",
-      "publish_time": "2026-11-17T08:16:47+00:00",
-      "summary": "IT之家 11 月 17 日消息，据韩国《每日经济》援引半导体行业消息称，三星电子与苹果即将达成 DRAM 内存芯片长期供货协议。苹果是全球最大的消费电子企业，也是大型科技公司中唯一尚未与三星电子签订长期供货协议的企业。 消息称双方正就一份 为期 4 至 5 年的长期供货协议 进行最后磋商，计划从 明年上半年开始供货 。协议将规定 DRAM 最低供货量，具体价格则根据未来市场行情确定。 苹果向来以采购条件苛刻著称，凭借强势买方地位尽可能压低供应商的利润。苹果通常只签短期合同，每次续约还会要求降价。一名半导体行业人士称：“以苹果过去的采购作风来看，这次与三星签订长期供货协议，是 以往很难想象的破例之举 。” 业界认为， 存储芯片供应日趋紧张 ，是苹果改变采购策略的重要原因。为了保证 iPhone、MacBook 等核心产品的 DRAM 供应，苹果最终选择签订长期供货协议。 三星电子、SK 海力士和美光三大存储芯片制造商陆续与主要客户签订长期供货协议，也给苹果带来了压力。据悉，苹果近期还与 SK 海力士达成了长期供货协议，并接受了对供应商更有利的合同条件。 AI 数据中心建设热潮进一步加剧…",
-      "category": "国内科技",
-      "dedupe_key": "https://www.ithome.com/1/028/325.htm",
-      "title_zh": null,
-      "relevance_score": 37,
-      "heat_score": 74,
-      "recency_score": 99,
-      "rank_score": 60.5,
-      "rank": 2
-    },
-    {
       "id": 1281,
       "title": "小米雷军：AI 是一个全新的时代，一定会带来非常多的商业机会",
       "link": "https://www.ithome.com/1/028/322.htm",
@@ -63,7 +47,7 @@
       "heat_score": 78,
       "recency_score": 99,
       "rank_score": 70.7,
-      "rank": 3
+      "rank": 2
     },
     {
       "id": 1378,
@@ -77,25 +61,9 @@
       "title_zh": null,
       "relevance_score": 92,
       "heat_score": 62,
-      "recency_score": 99,
-      "rank_score": 84.4,
-      "rank": 4
-    },
-    {
-      "id": 1417,
-      "title": "影目发布 INMO Future 智能眼镜：125g 重量、120Hz Micro OLED 面板，首发价 5999 元",
-      "link": "https://www.ithome.com/1/028/270.htm",
-      "source": "IT之家24小时榜",
-      "publish_time": "2026-11-17T07:25:26+00:00",
-      "summary": "IT之家 11 月 17 日消息，影目宣布推出一款 INMO Future 智能眼镜，该产品采用光波导技术， 首发价 5999 元 ，部分地区国补后低至 5499 元。 京东 INMO Future 智能 AR 眼镜 5999 元 直达链接 该眼镜采用 ABS+PC 材质，整体重量约 125g。机身采用人体工学设计，具备 4:6 的前后重心配比，优化了佩戴时的重量分布。镜身内置由多层导热材料与微型离心风扇组成的主动散热系统，日常运行噪音约 40dB。此外其支持磁吸与卡扣式近视镜片，适配 -8D 至 +2D 的视力范围。 该机采用双目全彩阵列光波导技术，匹配 1080P（单眼分辨率）120Hz Micro OLED 面板，拥有 36° FOV，号称可在 6 米处呈现 150 英寸的巨幕效果，眼镜入眼亮度最高达 800 尼特。非光栅区透光率达到 90%，具备 60 PPD，屏幕亮度均匀性大于等于 80%，畸变率低于 1.5%。 该机配备一枚 16MP 摄像头，提供 3DoF 与 6DoF 空间计算能力，结合 AI 大模型实现自然语言语音交互及视觉物体识别等功能，用户还可搭配便携外设 INM…",
-      "category": "国内科技",
-      "dedupe_key": "https://www.ithome.com/1/028/270.htm",
-      "title_zh": null,
-      "relevance_score": 47,
-      "heat_score": 82,
       "recency_score": 98,
-      "rank_score": 67.7,
-      "rank": 5
+      "rank_score": 84.2,
+      "rank": 3
     },
     {
       "id": 1429,
@@ -111,7 +79,7 @@
       "heat_score": 65,
       "recency_score": 97,
       "rank_score": 54.4,
-      "rank": 6
+      "rank": 4
     },
     {
       "id": 1282,
@@ -127,7 +95,7 @@
       "heat_score": 78,
       "recency_score": 97,
       "rank_score": 72.8,
-      "rank": 7
+      "rank": 5
     },
     {
       "id": 1283,
@@ -143,39 +111,7 @@
       "heat_score": 74,
       "recency_score": 97,
       "rank_score": 64.1,
-      "rank": 8
-    },
-    {
-      "id": 1420,
-      "title": "Marvell、Penguin 共推业界首款多机架光学 I/O 内存池，提供 HBM 级带宽",
-      "link": "https://www.ithome.com/1/028/261.htm",
-      "source": "IT之家24小时榜",
-      "publish_time": "2026-11-17T07:02:57+00:00",
-      "summary": "IT之家 11 月 17 日消息，Marvell、Penguin 双方当地时间昨日宣布面向 AI 内存需求达成战略合作，共同推出 DDR4 CXL 内存扩展卡 、业界首款多机架光学 I/O 内存池 MemoryAI Photonic Appliance。 这一解决方案使得 多个 XPU 能通过光学 I/O 在数米的距离上共享 HBM 级内存带宽 ，缓解 AI 计算面临的内存墙问题，提高系统的 DRAM 利用效率。 该系统基于 Marvell Photonic Fabric 平台，采用硅光子内存模块技术， 可扩展至 16TB DDR5 RDIMM 和 578GB HBM3E ， 总设备带宽达 57.6 Tbps ，支持 HBM 直接访问、DDR5 直接访问和 HBM-DDR5 缓存模式，可实现智能内存分配。 两家企业计划于 2027H2 向部分客户交付 MemoryAI Photonic Appliance 的样品。",
-      "category": "国内科技",
-      "dedupe_key": "https://www.ithome.com/1/028/261.htm",
-      "title_zh": null,
-      "relevance_score": 31,
-      "heat_score": 78,
-      "recency_score": 97,
-      "rank_score": 58.3,
-      "rank": 9
-    },
-    {
-      "id": 1284,
-      "title": "华为 MateBook 鸿蒙电脑“鸿蒙有礼”权益上新，可免费领三个月标准版小艺 AI 会员",
-      "link": "https://www.ithome.com/1/028/253.htm",
-      "source": "IT之家24小时榜",
-      "publish_time": "2026-11-17T06:50:25+00:00",
-      "summary": "IT之家 11 月 17 日消息，华为官方昨日宣布小艺 AI 订阅服务正式上线， 支持多场景高阶 AI 能力 。会员权益涵盖办公文档生成、内容创作、图像处理及云存储等场景，覆盖鸿蒙手机、平板、电脑及 Windows 平台。 据博主 @Adak封狼居胥 分享，华为 MateBook 鸿蒙电脑“鸿蒙有礼”权益上新， 可免费领取三个月标准版小艺 AI 会员（含 1000 点 AI 积分 + 50G 华为云空间） 。 活动入口：我的华为 App → 首页 → 鸿蒙有礼 参考IT之家昨日报道，体验版会员每月限时免费赠送 200 AI 积分，供用户直接试用小艺的高阶 AI 能力，无需先完成付费订阅。另外， 华为小艺 Work 订阅用户可 0 元升级至任一 AI 会员套餐 。 付费订阅提供两档套餐：体验包连续包月 49 元，含 1000 AI 积分；标准包 Pro 连续包月 199 元，含 6000 AI 积分、200G 云空间，Max 会员（499 元 / 月）则升级到了 15,000 个 AI 积分、2TB 云空间会员。 AI 积分是小艺 AI 会员中计量任务消耗的虚拟额度，不同复杂度的任务消耗…",
-      "category": "国内科技",
-      "dedupe_key": "https://www.ithome.com/1/028/253.htm",
-      "title_zh": null,
-      "relevance_score": 50,
-      "heat_score": 78,
-      "recency_score": 97,
-      "rank_score": 67.8,
-      "rank": 10
+      "rank": 6
     },
     {
       "id": 1422,
@@ -191,7 +127,7 @@
       "heat_score": 78,
       "recency_score": 97,
       "rank_score": 63.8,
-      "rank": 11
+      "rank": 7
     },
     {
       "id": 1430,
@@ -207,7 +143,7 @@
       "heat_score": 65,
       "recency_score": 97,
       "rank_score": 56.9,
-      "rank": 12
+      "rank": 8
     },
     {
       "id": 1601,
@@ -223,7 +159,7 @@
       "heat_score": 69,
       "recency_score": 97,
       "rank_score": 67.6,
-      "rank": 13
+      "rank": 9
     },
     {
       "id": 1285,
@@ -237,25 +173,9 @@
       "title_zh": null,
       "relevance_score": 45,
       "heat_score": 78,
-      "recency_score": 97,
-      "rank_score": 65.3,
-      "rank": 14
-    },
-    {
-      "id": 1424,
-      "title": "PFN 延续垂直堆叠逻辑与 DRAM 路线，MN-Core L2000 芯片目标倍增内存带宽",
-      "link": "https://www.ithome.com/1/028/240.htm",
-      "source": "IT之家24小时榜",
-      "publish_time": "2026-11-17T06:20:43+00:00",
-      "summary": "IT之家 11 月 17 日消息，日本人工智能初创企业 Preferred Networks (PFN) 当地时间今日宣布，其在 AI 推理加速器 MN-Core L2000 上将延续与芯片设计服务企业 SEMIFIVE、芯片合同制造服务商三星电子的合作， 继续打造垂直堆叠逻辑芯片与 DRAM 内存的产品 。 PFN 的 MN-Core 系列初代产品 L1000 单芯片峰值 FP8 算力 200 TFLOPS，集成带宽超 10TB/s 的 32GB 片上内存。而此次官宣的二代产品 L2000 目标实现 L1000 系列 2 倍以上的内存带宽 ，进一步提升 AI 推理速率，改进 AI 工作负载能效。 PFN 计划 2027 年正式发布 MN-Core L1000，提供单芯、四芯盒子和 16 芯工作站解决方案。MN-Core L2000 系列也将于 2027Q1 完成芯片设计。",
-      "category": "国内科技",
-      "dedupe_key": "https://www.ithome.com/1/028/240.htm",
-      "title_zh": null,
-      "relevance_score": 52,
-      "heat_score": 78,
       "recency_score": 96,
-      "rank_score": 68.6,
-      "rank": 15
+      "rank_score": 65.1,
+      "rank": 10
     },
     {
       "id": 1286,
@@ -271,7 +191,7 @@
       "heat_score": 78,
       "recency_score": 96,
       "rank_score": 65.1,
-      "rank": 16
+      "rank": 11
     },
     {
       "id": 1426,
@@ -287,119 +207,7 @@
       "heat_score": 78,
       "recency_score": 95,
       "rank_score": 60.9,
-      "rank": 17
-    },
-    {
-      "id": 1289,
-      "title": "“学霸”自首AI作弊，韩国高考紧急布防",
-      "link": "https://www.tmtpost.com/8208106.html",
-      "source": "钛媒体",
-      "publish_time": "2026-11-17T04:03:54+00:00",
-      "summary": "地狱难度的税务师考试大翻车",
-      "category": "国内科技",
-      "dedupe_key": "https://www.tmtpost.com/8208106.html",
-      "title_zh": null,
-      "relevance_score": 33,
-      "heat_score": 61,
-      "recency_score": 93,
-      "rank_score": 53.4,
-      "rank": 18
-    },
-    {
-      "id": 1290,
-      "title": "下跌周期中的MinMax：早期投资者和闫俊杰的AI畅谈",
-      "link": "https://www.tmtpost.com/8207380.html",
-      "source": "钛媒体",
-      "publish_time": "2026-11-17T04:03:52+00:00",
-      "summary": "中国AI的效率之战。",
-      "category": "国内科技",
-      "dedupe_key": "https://www.tmtpost.com/8207380.html",
-      "title_zh": null,
-      "relevance_score": 33,
-      "heat_score": 61,
-      "recency_score": 93,
-      "rank_score": 53.4,
-      "rank": 19
-    },
-    {
-      "id": 1291,
-      "title": "美国纳管AI算力远程获取，海外数据中心出租算力将须许可",
-      "link": "https://www.tmtpost.com/8207829.html",
-      "source": "钛媒体",
-      "publish_time": "2026-11-17T03:32:00+00:00",
-      "summary": "这项规则对AI投资周期意味着什么？",
-      "category": "国内科技",
-      "dedupe_key": "https://www.tmtpost.com/8207829.html",
-      "title_zh": null,
-      "relevance_score": 33,
-      "heat_score": 61,
-      "recency_score": 92,
-      "rank_score": 53.2,
-      "rank": 20
-    },
-    {
-      "id": 1287,
-      "title": "微软全球大宕机，AI 怎么又成了背锅侠",
-      "link": "https://www.ifanr.com/1689638?utm_source=rss&utm_medium=rss&utm_campaign=",
-      "source": "爱范儿",
-      "publish_time": "2026-11-17T02:23:50+00:00",
-      "summary": "微软宕机与美国航班停飞，背后都是 AI 失控吗？ #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
-      "category": "国内科技",
-      "dedupe_key": "https://www.ifanr.com/1689638?utm_source=rss&utm_medium=rss&utm_campaign=",
-      "title_zh": null,
-      "relevance_score": 33,
-      "heat_score": 72,
-      "recency_score": 91,
-      "rank_score": 56.3,
-      "rank": 21
-    },
-    {
-      "id": 1427,
-      "title": "Seedance 正杀死爱奇艺们",
-      "link": "https://www.tmtpost.com/8207907.html",
-      "source": "钛媒体",
-      "publish_time": "2026-11-17T02:05:21+00:00",
-      "summary": "2016 年，《如懿传》开机，总投资 3 亿，六百人的剧组，五地转场，264 个拍摄日。2026 年，一个宝妈，哄睡完孩子，坐回电脑前，手搓她的 AI 短剧。",
-      "category": "国内科技",
-      "dedupe_key": "https://www.tmtpost.com/8207907.html",
-      "title_zh": null,
-      "relevance_score": 31,
-      "heat_score": 61,
-      "recency_score": 90,
-      "rank_score": 51.8,
-      "rank": 22
-    },
-    {
-      "id": 1292,
-      "title": "Huang Leaves Nvidia. Chinese AI Buyers and Suppliers Feel It Next",
-      "link": "https://www.tmtpost.com/8207932.html",
-      "source": "钛媒体",
-      "publish_time": "2026-11-17T01:54:04+00:00",
-      "summary": "Jensen Huang has resigned as Nvidia’s CEO amid personal scandals, rattling a company long identified with one leader. For Chinese firms, the shock runs through export policy, GPU supply, overseas rental capacity, and domestic substitution. Tighter controls and delivery risk may accelerate local chips—even as advanced training hardware remains hard to replace.",
-      "category": "国内科技",
-      "dedupe_key": "https://www.tmtpost.com/8207932.html",
-      "title_zh": "黄仁勋离开英伟达，中国 AI 买家与供应商将受何影响",
-      "relevance_score": 45,
-      "heat_score": 61,
-      "recency_score": 90,
-      "rank_score": 58.8,
-      "rank": 23
-    },
-    {
-      "id": 1293,
-      "title": "消息称黄仁勋回归尚未进入英伟达董事会议程；腾讯总办号召AI时代再创业；AI 演员虚假代言被罚",
-      "link": "http://www.geekpark.net/news/374056",
-      "source": "极客公园",
-      "publish_time": "2026-11-17T00:42:16+00:00",
-      "summary": "消息称黄仁勋回归尚未进入英伟达董事会议程，已有 18 万人联署呼吁复职 11 月 17 日消息，CNBC 今天（11 月 17 日）发布博文，援引一名知情人士透露信息，英伟达董事会目前没有考虑让黄仁勋重新担任首席执行官，也未就其回归展开讨论。报道称英伟达董事会的工作重心，目前聚焦推进针对黄仁勋相关行为的调查。 报道称，英伟达已聘请 Wachtell Lipton 律师事务所，调查黄仁勋的行为。此前，黄仁勋在承认婚外情、并面临其他涉及员工的恋情报道后，于上周辞去职务，结束了在这家由其创立的公司长达 33 年的 CEO 任期。 围绕其是否回归，外界讨论持续升温。《金融时报》此前报道称，黄仁勋曾与支持者讨论复出事宜。不过，Altimeter Capital 的布拉德 · 格斯特纳 16 日向 CNBC 表示，黄仁勋没有与他讨论回归。 与此同时，一项呼吁黄仁勋复职的网络请愿已获得约 18 万个签名，马斯克、Y Combinator 首席执行官陈嘉兴及 Epic Games 首席执行官蒂姆 · 斯威尼等科技界人士也表达了支持。（来源：IT 之家） 腾讯总办号召 AI 时代再创业：这是一个生死存亡…",
-      "category": "国内科技",
-      "dedupe_key": "http://www.geekpark.net/news/374056",
-      "title_zh": null,
-      "relevance_score": 39,
-      "heat_score": 65,
-      "recency_score": 88,
-      "rank_score": 56.6,
-      "rank": 24
+      "rank": 12
     },
     {
       "id": 238,
@@ -415,7 +223,7 @@
       "heat_score": 80,
       "recency_score": 87,
       "rank_score": 64.9,
-      "rank": 25
+      "rank": 13
     },
     {
       "id": 821,
@@ -431,39 +239,7 @@
       "heat_score": 84,
       "recency_score": 84,
       "rank_score": 58.5,
-      "rank": 26
-    },
-    {
-      "id": 1310,
-      "title": "Apple reveals new Mac security controls as AI agents raise privacy risks",
-      "link": "https://techcrunch.com/2026/11/16/apple-reveals-new-mac-security-controls-as-ai-agents-raise-privacy-risks/",
-      "source": "TechCrunch",
-      "publish_time": "2026-11-16T21:01:02+00:00",
-      "summary": "Following an October announcement, Apple has detailed new permission controls, warnings, and transparency features coming to macOS 27.3 to address risks posed by AI agents and other apps.",
-      "category": "国际科技",
-      "dedupe_key": "https://techcrunch.com/2026/11/16/apple-reveals-new-mac-security-controls-as-ai-agents-raise-privacy-risks/",
-      "title_zh": "苹果新增 Mac 安全控制，AI 代理带来隐私风险",
-      "relevance_score": 50,
-      "heat_score": 92,
-      "recency_score": 83,
-      "rank_score": 69.2,
-      "rank": 27
-    },
-    {
-      "id": 1454,
-      "title": "Uber says hackers stole information on close to 150,000 driver’s licenses during data breach",
-      "link": "https://techcrunch.com/2026/11/16/uber-confirms-hackers-stole-thousands-of-drivers-license-information-in-data-breach/",
-      "source": "TechCrunch",
-      "publish_time": "2026-11-16T19:53:00+00:00",
-      "summary": "The ride-sharing giant said driver's license information stored by AI cloud company Fireworks AI was stolen during a security incident.",
-      "category": "国际科技",
-      "dedupe_key": "https://techcrunch.com/2026/11/16/uber-confirms-hackers-stole-thousands-of-drivers-license-information-in-data-breach/",
-      "title_zh": "Uber 称黑客在数据泄露事件中窃取近 15 万名司机的驾照信息",
-      "relevance_score": 42,
-      "heat_score": 88,
-      "recency_score": 82,
-      "rank_score": 63.8,
-      "rank": 28
+      "rank": 14
     },
     {
       "id": 1311,
@@ -477,41 +253,9 @@
       "title_zh": "FBI 称开源 AI 黑客工具 Artex 不到三小时便攻破网络",
       "relevance_score": 33,
       "heat_score": 88,
-      "recency_score": 79,
-      "rank_score": 58.7,
-      "rank": 29
-    },
-    {
-      "id": 1312,
-      "title": "Jordan Belfort’s new AI voice startup, Tone, wants to sell like the ‘Wolf of Wall Street’",
-      "link": "https://techcrunch.com/2026/11/16/jordan-belforts-new-ai-voice-startup-tone-wants-to-sell-like-the-wolf-of-wall-street/",
-      "source": "TechCrunch",
-      "publish_time": "2026-11-16T17:10:00+00:00",
-      "summary": "Belfort claims his AI sales voice can already close deals almost as well as the best human salespeople, and he thinks it will catch up in a year.",
-      "category": "国际科技",
-      "dedupe_key": "https://techcrunch.com/2026/11/16/jordan-belforts-new-ai-voice-startup-tone-wants-to-sell-like-the-wolf-of-wall-street/",
-      "title_zh": "Jordan Belfort 的新 AI 语音公司 Tone 想复制《华尔街之狼》的销售方式",
-      "relevance_score": 33,
-      "heat_score": 88,
       "recency_score": 78,
       "rank_score": 58.5,
-      "rank": 30
-    },
-    {
-      "id": 1313,
-      "title": "OpenAI will embed safety researchers to investigate AI subversion",
-      "link": "https://techcrunch.com/2026/11/16/openai-will-embed-apollo-researchers-to-investigate-ai-subversion/",
-      "source": "TechCrunch",
-      "publish_time": "2026-11-16T17:02:43+00:00",
-      "summary": "OpenAI will embed six Apollo Research evaluators to investigate whether its AI models engage in subversive behavior, but restrictions on access and disclosure raise questions about their independence.",
-      "category": "国际科技",
-      "dedupe_key": "https://techcrunch.com/2026/11/16/openai-will-embed-apollo-researchers-to-investigate-ai-subversion/",
-      "title_zh": "OpenAI 将嵌入安全研究人员调查 AI 颠覆行为",
-      "relevance_score": 33,
-      "heat_score": 88,
-      "recency_score": 78,
-      "rank_score": 58.5,
-      "rank": 31
+      "rank": 15
     },
     {
       "id": 807,
@@ -527,23 +271,7 @@
       "heat_score": 98,
       "recency_score": 76,
       "rank_score": 61.1,
-      "rank": 32
-    },
-    {
-      "id": 1314,
-      "title": "Audible turns to AI to help users discover audiobooks",
-      "link": "https://techcrunch.com/2026/11/16/audible-turns-to-ai-to-help-users-discover-audiobooks/",
-      "source": "TechCrunch",
-      "publish_time": "2026-11-16T15:52:19+00:00",
-      "summary": "Audible's new AI-generated audio previews summarize a book's themes and what readers liked about it, in addition to playing the narrated sample.",
-      "category": "国际科技",
-      "dedupe_key": "https://techcrunch.com/2026/11/16/audible-turns-to-ai-to-help-users-discover-audiobooks/",
-      "title_zh": "Audible 借助 AI 帮助用户发现有声书",
-      "relevance_score": 33,
-      "heat_score": 88,
-      "recency_score": 76,
-      "rank_score": 58.1,
-      "rank": 33
+      "rank": 16
     },
     {
       "id": 178,
@@ -559,7 +287,7 @@
       "heat_score": 94,
       "recency_score": 76,
       "rank_score": 55.9,
-      "rank": 34
+      "rank": 17
     },
     {
       "id": 1318,
@@ -575,7 +303,7 @@
       "heat_score": 94,
       "recency_score": 76,
       "rank_score": 68.9,
-      "rank": 35
+      "rank": 18
     },
     {
       "id": 809,
@@ -591,23 +319,7 @@
       "heat_score": 98,
       "recency_score": 76,
       "rank_score": 70.1,
-      "rank": 36
-    },
-    {
-      "id": 1445,
-      "title": "26.99万元起，腾势N8正式上市：首搭易三方Evo，纯电续航1003公里",
-      "link": "https://www.leiphone.com/category/transportation/9YeGaaNjyBi0zkQ4.html",
-      "source": "雷锋网",
-      "publish_time": "2026-11-16T15:21:00+00:00",
-      "summary": "11月12日，腾势汽车旗下全新大五座SUV腾势N8正式上市，共推出纯电、插混两种动力版本、六款车型，官方指导价为26.99万—32.99万元。 雷峰网了解到，作为腾势面向中高端家庭SUV市场推出的新产品，N8搭载了多项比亚迪最新技术，包括易三方Evo、第二代刀片电池及闪充技术、天神之眼5.0辅助驾驶系统，以及云辇-A闭式双腔空气悬架。 其中，纯电版本CLTC续航达到1003公里，插混版本CLTC纯电续航435公里、综合续航1567公里。 新车还首次搭载腾势巨幕智能座舱，采用30英寸巨幕屏与1.1米天际屏组合，并引入AI超级智能体迪迪虾及AI萌宠交互功能。 按照官方公布的购车政策，新车上市期间提供最高价值7.1万元的限时权益，涵盖选装、置换、金融贴息、闪充服务及智能驾驶相关保障等。 对于腾势而言，N8的上市进一步补充了品牌在30万元左右SUV市场的产品布局。相比单纯依靠尺寸和舒适配置建立竞争力，这款车把智能座舱、三电技术和底盘控制作为核心卖点，试图在竞争激烈的中高端家庭SUV市场形成差异化。 首搭巨幕智能座舱，腾势开始探索新的车内交互形态 智能座舱是腾势N8此次升级的重点。 新车首次搭载…",
-      "category": "国内科技",
-      "dedupe_key": "https://www.leiphone.com/category/transportation/9YeGaaNjyBi0zkQ4.html",
-      "title_zh": null,
-      "relevance_score": 31,
-      "heat_score": 65,
-      "recency_score": 75,
-      "rank_score": 50.0,
-      "rank": 37
+      "rank": 19
     },
     {
       "id": 1383,
@@ -623,23 +335,7 @@
       "heat_score": 62,
       "recency_score": 75,
       "rank_score": 76.6,
-      "rank": 38
-    },
-    {
-      "id": 1315,
-      "title": "US tightens AI chip export controls to deter Chinese companies from accessing compute remotely",
-      "link": "https://techcrunch.com/2026/11/16/us-tightens-ai-chip-export-controls-to-deter-chinese-companies-from-accessing-compute-remotely/",
-      "source": "TechCrunch",
-      "publish_time": "2026-11-16T15:02:34+00:00",
-      "summary": "Under the interim rule, the U.S. will require firms to get licenses to export AI chips if they may provide compute to China or other restricted countries.",
-      "category": "国际科技",
-      "dedupe_key": "https://techcrunch.com/2026/11/16/us-tightens-ai-chip-export-controls-to-deter-chinese-companies-from-accessing-compute-remotely/",
-      "title_zh": "美国收紧 AI 芯片出口管制，限制中国企业远程获取算力",
-      "relevance_score": 55,
-      "heat_score": 88,
-      "recency_score": 75,
-      "rank_score": 68.9,
-      "rank": 39
+      "rank": 20
     },
     {
       "id": 1305,
@@ -655,7 +351,7 @@
       "heat_score": 61,
       "recency_score": 75,
       "rank_score": 63.3,
-      "rank": 40
+      "rank": 21
     },
     {
       "id": 1319,
@@ -671,7 +367,7 @@
       "heat_score": 86,
       "recency_score": 74,
       "rank_score": 66.1,
-      "rank": 41
+      "rank": 22
     },
     {
       "id": 841,
@@ -687,7 +383,7 @@
       "heat_score": 92,
       "recency_score": 74,
       "rank_score": 67.9,
-      "rank": 42
+      "rank": 23
     },
     {
       "id": 1333,
@@ -703,7 +399,7 @@
       "heat_score": 82,
       "recency_score": 74,
       "rank_score": 69.9,
-      "rank": 43
+      "rank": 24
     },
     {
       "id": 811,
@@ -719,7 +415,7 @@
       "heat_score": 86,
       "recency_score": 74,
       "rank_score": 48.1,
-      "rank": 44
+      "rank": 25
     },
     {
       "id": 240,
@@ -733,9 +429,9 @@
       "title_zh": "全新软件合成器Victory扩展了Prophet VS合成功能，增加了音色变形和波形序列功能",
       "relevance_score": 83,
       "heat_score": 80,
-      "recency_score": 74,
-      "rank_score": 80.3,
-      "rank": 45
+      "recency_score": 73,
+      "rank_score": 80.1,
+      "rank": 26
     },
     {
       "id": 1321,
@@ -749,9 +445,9 @@
       "title_zh": "Bad Company 鼓手 Simon Kirke 谈乐队最热门歌曲的诞生",
       "relevance_score": 61,
       "heat_score": 86,
-      "recency_score": 73,
-      "rank_score": 70.9,
-      "rank": 46
+      "recency_score": 72,
+      "rank_score": 70.7,
+      "rank": 27
     },
     {
       "id": 1334,
@@ -767,23 +463,7 @@
       "heat_score": 82,
       "recency_score": 71,
       "rank_score": 64.3,
-      "rank": 47
-    },
-    {
-      "id": 1288,
-      "title": "实测腾讯 Hy4 flash：花两毛钱，就能让 AI 从零做个 3D 交互网页",
-      "link": "https://www.ifanr.com/1689653?utm_source=rss&utm_medium=rss&utm_campaign=",
-      "source": "爱范儿",
-      "publish_time": "2026-11-16T09:53:01+00:00",
-      "summary": "比 DeepSeek V4.1 Flash 性价比更高 #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
-      "category": "国内科技",
-      "dedupe_key": "https://www.ifanr.com/1689653?utm_source=rss&utm_medium=rss&utm_campaign=",
-      "title_zh": null,
-      "relevance_score": 33,
-      "heat_score": 72,
-      "recency_score": 68,
-      "rank_score": 51.7,
-      "rank": 48
+      "rank": 28
     },
     {
       "id": 1322,
@@ -799,7 +479,7 @@
       "heat_score": 90,
       "recency_score": 67,
       "rank_score": 56.9,
-      "rank": 49
+      "rank": 29
     },
     {
       "id": 1306,
@@ -815,23 +495,7 @@
       "heat_score": 61,
       "recency_score": 65,
       "rank_score": 53.8,
-      "rank": 50
-    },
-    {
-      "id": 1307,
-      "title": "HCI 先驱 de Souza：当 AI 替我们阅读，谁来为知识负责？| ACM MM 2026",
-      "link": "https://www.leiphone.com/category/private/j1CWHNsD9eBM7Wwc.html",
-      "source": "雷锋网",
-      "publish_time": "2026-11-16T07:59:00+00:00",
-      "summary": "研究者需要的不只是AI生成的答案，更是审查答案、追溯来源并为知识判断负责的能力。 作者丨 张 璐 编辑丨马晓宁 你有没有过这样的经历：面对几十页密密麻麻的PDF，实在抽不出时间细读，于是把论文丢给ChatGPT或Claude，让它帮你提炼核心观点。 几秒钟后，一份条理清晰的摘要出现在屏幕上。你点点头，觉得自己已经掌握了论文的主要内容，甚至直接将其中的观点引用进了自己的研究。 但是，等等——你确定AI总结的，真的是原作者想表达的意思吗？如果它悄悄引入了原文没有的观点，甚至将毫不相干的概念联系在一起，作为研究者的我们，能否及时发现？ 在正在举行的 ACM Multimedia 2026 上，人机交互领域先驱、巴西里约热内卢天主教大学（PUC-Rio）荣休教授 Clarisse Sieckenius de Souza 带来了一场主题演讲。 她从自己提出的“语义工程”（Semiotic Engineering）理论出发，讨论AI如何改变人与信息之间的关系，以及当我们把文献阅读和理解的工作交给AI时，如何守住研究者的“认知权威”（Epistemic Authority）。 从界面如何传递设计者的…",
-      "category": "国内科技",
-      "dedupe_key": "https://www.leiphone.com/category/private/j1CWHNsD9eBM7Wwc.html",
-      "title_zh": null,
-      "relevance_score": 33,
-      "heat_score": 61,
-      "recency_score": 65,
-      "rank_score": 47.8,
-      "rank": 51
+      "rank": 30
     },
     {
       "id": 1308,
@@ -847,7 +511,7 @@
       "heat_score": 65,
       "recency_score": 64,
       "rank_score": 57.3,
-      "rank": 52
+      "rank": 31
     },
     {
       "id": 1449,
@@ -863,7 +527,7 @@
       "heat_score": 69,
       "recency_score": 60,
       "rank_score": 50.7,
-      "rank": 53
+      "rank": 32
     },
     {
       "id": 1309,
@@ -877,9 +541,9 @@
       "title_zh": null,
       "relevance_score": 65,
       "heat_score": 69,
-      "recency_score": 60,
-      "rank_score": 65.2,
-      "rank": 54
+      "recency_score": 59,
+      "rank_score": 65.0,
+      "rank": 33
     },
     {
       "id": 1451,
@@ -895,7 +559,7 @@
       "heat_score": 69,
       "recency_score": 59,
       "rank_score": 56.0,
-      "rank": 55
+      "rank": 34
     },
     {
       "id": 1452,
@@ -911,7 +575,7 @@
       "heat_score": 69,
       "recency_score": 58,
       "rank_score": 55.8,
-      "rank": 56
+      "rank": 35
     },
     {
       "id": 1335,
@@ -925,9 +589,9 @@
       "title_zh": "Jon Stockman 如何打造 Karnivool《Sound Awake》中的巨大贝斯音色",
       "relevance_score": 61,
       "heat_score": 82,
-      "recency_score": 56,
-      "rank_score": 66.3,
-      "rank": 57
+      "recency_score": 55,
+      "rank_score": 66.1,
+      "rank": 36
     },
     {
       "id": 823,
@@ -943,7 +607,7 @@
       "heat_score": 80,
       "recency_score": 55,
       "rank_score": 42.5,
-      "rank": 58
+      "rank": 37
     },
     {
       "id": 241,
@@ -957,9 +621,9 @@
       "title_zh": "Steve Duda的Free Shrub将Serum波表合成器带到M-VAVE FM-1上",
       "relevance_score": 73,
       "heat_score": 80,
-      "recency_score": 55,
-      "rank_score": 71.5,
-      "rank": 59
+      "recency_score": 54,
+      "rank_score": 71.3,
+      "rank": 38
     },
     {
       "id": 1481,
@@ -975,7 +639,7 @@
       "heat_score": 82,
       "recency_score": 46,
       "rank_score": 46.3,
-      "rank": 60
+      "rank": 39
     },
     {
       "id": 1323,
@@ -989,9 +653,9 @@
       "title_zh": "Pete Townshend 如何把“一个人”转化为音乐，并催生 The Who 名曲",
       "relevance_score": 61,
       "heat_score": 86,
-      "recency_score": 35,
-      "rank_score": 63.3,
-      "rank": 61
+      "recency_score": 34,
+      "rank_score": 63.1,
+      "rank": 40
     },
     {
       "id": 242,
@@ -1007,7 +671,7 @@
       "heat_score": 80,
       "recency_score": 29,
       "rank_score": 51.3,
-      "rank": 62
+      "rank": 41
     },
     {
       "id": 87,
@@ -1021,9 +685,9 @@
       "title_zh": "雅马哈对VOCALOID进行更新，推出更具表现力的人工智能演唱功能和五个新语音库",
       "relevance_score": 100,
       "heat_score": 80,
-      "recency_score": 15,
-      "rank_score": 77.0,
-      "rank": 63
+      "recency_score": 14,
+      "rank_score": 76.8,
+      "rank": 42
     },
     {
       "id": 818,
@@ -1039,7 +703,7 @@
       "heat_score": 82,
       "recency_score": 12,
       "rank_score": 34.5,
-      "rank": 64
+      "rank": 43
     },
     {
       "id": 244,
@@ -1053,9 +717,9 @@
       "title_zh": "Cinescapes Pro 将 iPhone 和 iPad 变为电影氛围乐器",
       "relevance_score": 59,
       "heat_score": 80,
-      "recency_score": 8,
-      "rank_score": 55.1,
-      "rank": 65
+      "recency_score": 7,
+      "rank_score": 54.9,
+      "rank": 44
     },
     {
       "id": 828,
@@ -1071,7 +735,7 @@
       "heat_score": 80,
       "recency_score": 7,
       "rank_score": 35.9,
-      "rank": 66
+      "rank": 45
     },
     {
       "id": 1337,
@@ -1087,7 +751,7 @@
       "heat_score": 82,
       "recency_score": 3,
       "rank_score": 50.7,
-      "rank": 67
+      "rank": 46
     },
     {
       "id": 291,
@@ -1103,7 +767,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 64.6,
-      "rank": 68
+      "rank": 47
     },
     {
       "id": 1484,
@@ -1119,7 +783,7 @@
       "heat_score": 82,
       "recency_score": 0,
       "rank_score": 46.1,
-      "rank": 69
+      "rank": 48
     },
     {
       "id": 246,
@@ -1135,7 +799,7 @@
       "heat_score": 84,
       "recency_score": 0,
       "rank_score": 40.7,
-      "rank": 70
+      "rank": 49
     },
     {
       "id": 247,
@@ -1151,7 +815,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 57.5,
-      "rank": 71
+      "rank": 50
     },
     {
       "id": 248,
@@ -1167,7 +831,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 54.5,
-      "rank": 72
+      "rank": 51
     },
     {
       "id": 249,
@@ -1183,7 +847,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 39.5,
-      "rank": 73
+      "rank": 52
     },
     {
       "id": 250,
@@ -1199,7 +863,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 74
+      "rank": 53
     },
     {
       "id": 1464,
@@ -1215,7 +879,7 @@
       "heat_score": 86,
       "recency_score": 0,
       "rank_score": 38.3,
-      "rank": 75
+      "rank": 54
     },
     {
       "id": 1338,
@@ -1231,7 +895,7 @@
       "heat_score": 82,
       "recency_score": 0,
       "rank_score": 50.1,
-      "rank": 76
+      "rank": 55
     },
     {
       "id": 1339,
@@ -1247,7 +911,7 @@
       "heat_score": 82,
       "recency_score": 0,
       "rank_score": 50.1,
-      "rank": 77
+      "rank": 56
     },
     {
       "id": 1487,
@@ -1263,7 +927,7 @@
       "heat_score": 82,
       "recency_score": 0,
       "rank_score": 37.1,
-      "rank": 78
+      "rank": 57
     },
     {
       "id": 1515,
@@ -1279,7 +943,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 50.9,
-      "rank": 79
+      "rank": 58
     },
     {
       "id": 819,
@@ -1295,7 +959,7 @@
       "heat_score": 86,
       "recency_score": 0,
       "rank_score": 51.3,
-      "rank": 80
+      "rank": 59
     },
     {
       "id": 1341,
@@ -1311,7 +975,7 @@
       "heat_score": 82,
       "recency_score": 0,
       "rank_score": 50.1,
-      "rank": 81
+      "rank": 60
     },
     {
       "id": 1342,
@@ -1327,7 +991,7 @@
       "heat_score": 82,
       "recency_score": 0,
       "rank_score": 41.1,
-      "rank": 82
+      "rank": 61
     },
     {
       "id": 1343,
@@ -1343,7 +1007,7 @@
       "heat_score": 82,
       "recency_score": 0,
       "rank_score": 55.1,
-      "rank": 83
+      "rank": 62
     },
     {
       "id": 1465,
@@ -1359,7 +1023,7 @@
       "heat_score": 90,
       "recency_score": 0,
       "rank_score": 48.5,
-      "rank": 84
+      "rank": 63
     },
     {
       "id": 842,
@@ -1375,7 +1039,7 @@
       "heat_score": 92,
       "recency_score": 0,
       "rank_score": 35.1,
-      "rank": 85
+      "rank": 64
     },
     {
       "id": 1015,
@@ -1391,7 +1055,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 37.5,
-      "rank": 86
+      "rank": 65
     },
     {
       "id": 1294,
@@ -1407,7 +1071,7 @@
       "heat_score": 65,
       "recency_score": 0,
       "rank_score": 44.5,
-      "rank": 87
+      "rank": 66
     },
     {
       "id": 1014,
@@ -1423,7 +1087,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 88
+      "rank": 67
     },
     {
       "id": 1295,
@@ -1439,7 +1103,7 @@
       "heat_score": 65,
       "recency_score": 0,
       "rank_score": 52.0,
-      "rank": 89
+      "rank": 68
     },
     {
       "id": 1013,
@@ -1455,7 +1119,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 40.5,
-      "rank": 90
+      "rank": 69
     },
     {
       "id": 1344,
@@ -1471,7 +1135,7 @@
       "heat_score": 82,
       "recency_score": 0,
       "rank_score": 50.1,
-      "rank": 91
+      "rank": 70
     },
     {
       "id": 812,
@@ -1487,7 +1151,7 @@
       "heat_score": 90,
       "recency_score": 0,
       "rank_score": 45.5,
-      "rank": 92
+      "rank": 71
     },
     {
       "id": 843,
@@ -1503,7 +1167,7 @@
       "heat_score": 92,
       "recency_score": 0,
       "rank_score": 35.1,
-      "rank": 93
+      "rank": 72
     },
     {
       "id": 263,
@@ -1519,7 +1183,7 @@
       "heat_score": 92,
       "recency_score": 0,
       "rank_score": 56.1,
-      "rank": 94
+      "rank": 73
     },
     {
       "id": 1325,
@@ -1535,39 +1199,7 @@
       "heat_score": 86,
       "recency_score": 0,
       "rank_score": 42.3,
-      "rank": 95
-    },
-    {
-      "id": 1345,
-      "title": "Cort L-60 review: \"An exceptional sub-$300 budget acoustic guitar\"",
-      "link": "https://www.guitarworld.com/gear/acoustic-guitars/cort-l-60-review",
-      "source": "Guitar World",
-      "publish_time": "2026-11-12T16:15:10+00:00",
-      "summary": "The guitar-making giant delivers a brilliant no-frills acoustic that won't break the bank",
-      "category": "音乐科技",
-      "dedupe_key": "https://www.guitarworld.com/gear/acoustic-guitars/cort-l-60-review",
-      "title_zh": "Cort L-60 评测：300 美元以内表现出色的原声吉他",
-      "relevance_score": 51,
-      "heat_score": 82,
-      "recency_score": 0,
-      "rank_score": 50.1,
-      "rank": 96
-    },
-    {
-      "id": 1434,
-      "title": "穿了 33 年皮衣的那个人，离开了英伟达",
-      "link": "http://www.geekpark.net/news/373906",
-      "source": "极客公园",
-      "publish_time": "2026-11-12T15:55:51+00:00",
-      "summary": "美国时间 11 月 12 日美股开盘前， 英伟达 官方 宣布，黄仁勋辞去总裁、首席执行官和董事会成员职务，即刻生效 。 首席财务官科莱特·克雷斯（Colette Kress）出任临时 CEO，同时继续兼管财务；董事哈维·琼斯（Harvey C. Jones）出任董事会主席。董事会已经开始物色正式 CEO，公司内外的人选都会考虑。 黄仁勋 1993 年和两位合伙人创办英伟达， 从那时起一直是这家公司的 CEO，到今天 33 年 。 消息公布后，英伟达股价在盘前下跌 10%。 从报道到辞职 虽然外界众说纷纭，但这份公告中并没有直接写辞职理由，只简单感谢了黄仁勋「 对公司和行业不可估量的贡献 」。 10 月 29 日，《纽约时报》报道，美国情报官员认为，与黄仁勋关系密切的女商人 Alice Huang 曾任新加坡数据中心公司 Megaspeed 的董事总经理，而 Megaspeed 是英伟达的客户，被指帮受美国出口管制地区拿到英伟达的 AI 芯片。外交部随后否认，称报道纯属捏造。 11 月 8 日是周日，黄仁勋给员工发了一封信，承认自己有婚外情：「我对妻子不忠。我的行为伤害了她和我们的孩子，…",
-      "category": "国内科技",
-      "dedupe_key": "http://www.geekpark.net/news/373906",
-      "title_zh": null,
-      "relevance_score": 31,
-      "heat_score": 61,
-      "recency_score": 0,
-      "rank_score": 33.8,
-      "rank": 97
+      "rank": 74
     },
     {
       "id": 264,
@@ -1583,7 +1215,7 @@
       "heat_score": 92,
       "recency_score": 0,
       "rank_score": 48.1,
-      "rank": 98
+      "rank": 75
     },
     {
       "id": 813,
@@ -1599,7 +1231,7 @@
       "heat_score": 86,
       "recency_score": 0,
       "rank_score": 33.3,
-      "rank": 99
+      "rank": 76
     },
     {
       "id": 814,
@@ -1615,7 +1247,7 @@
       "heat_score": 86,
       "recency_score": 0,
       "rank_score": 33.3,
-      "rank": 100
+      "rank": 77
     },
     {
       "id": 1328,
@@ -1631,7 +1263,7 @@
       "heat_score": 86,
       "recency_score": 0,
       "rank_score": 51.3,
-      "rank": 101
+      "rank": 78
     },
     {
       "id": 1012,
@@ -1647,7 +1279,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 54.5,
-      "rank": 102
+      "rank": 79
     },
     {
       "id": 1494,
@@ -1663,7 +1295,7 @@
       "heat_score": 82,
       "recency_score": 0,
       "rank_score": 37.1,
-      "rank": 103
+      "rank": 80
     },
     {
       "id": 1516,
@@ -1679,7 +1311,7 @@
       "heat_score": 84,
       "recency_score": 0,
       "rank_score": 46.7,
-      "rank": 104
+      "rank": 81
     },
     {
       "id": 200,
@@ -1695,7 +1327,7 @@
       "heat_score": 86,
       "recency_score": 0,
       "rank_score": 51.3,
-      "rank": 105
+      "rank": 82
     },
     {
       "id": 1346,
@@ -1711,7 +1343,7 @@
       "heat_score": 82,
       "recency_score": 0,
       "rank_score": 50.1,
-      "rank": 106
+      "rank": 83
     },
     {
       "id": 265,
@@ -1727,7 +1359,7 @@
       "heat_score": 92,
       "recency_score": 0,
       "rank_score": 58.1,
-      "rank": 107
+      "rank": 84
     },
     {
       "id": 1472,
@@ -1743,7 +1375,7 @@
       "heat_score": 86,
       "recency_score": 0,
       "rank_score": 47.3,
-      "rank": 108
+      "rank": 85
     },
     {
       "id": 266,
@@ -1759,7 +1391,7 @@
       "heat_score": 92,
       "recency_score": 0,
       "rank_score": 49.1,
-      "rank": 109
+      "rank": 86
     },
     {
       "id": 1380,
@@ -1775,7 +1407,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 65.6,
-      "rank": 110
+      "rank": 87
     },
     {
       "id": 1435,
@@ -1791,7 +1423,7 @@
       "heat_score": 61,
       "recency_score": 0,
       "rank_score": 36.8,
-      "rank": 111
+      "rank": 88
     },
     {
       "id": 1296,
@@ -1807,7 +1439,7 @@
       "heat_score": 69,
       "recency_score": 0,
       "rank_score": 40.2,
-      "rank": 112
+      "rank": 89
     },
     {
       "id": 1011,
@@ -1823,7 +1455,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 65.5,
-      "rank": 113
+      "rank": 90
     },
     {
       "id": 1010,
@@ -1839,7 +1471,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 57.5,
-      "rank": 114
+      "rank": 91
     },
     {
       "id": 1009,
@@ -1855,7 +1487,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 52.5,
-      "rank": 115
+      "rank": 92
     },
     {
       "id": 1008,
@@ -1871,7 +1503,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 116
+      "rank": 93
     },
     {
       "id": 1496,
@@ -1887,7 +1519,7 @@
       "heat_score": 82,
       "recency_score": 0,
       "rank_score": 46.1,
-      "rank": 117
+      "rank": 94
     },
     {
       "id": 1330,
@@ -1903,7 +1535,7 @@
       "heat_score": 90,
       "recency_score": 0,
       "rank_score": 57.5,
-      "rank": 118
+      "rank": 95
     },
     {
       "id": 1531,
@@ -1919,7 +1551,7 @@
       "heat_score": 92,
       "recency_score": 0,
       "rank_score": 40.1,
-      "rank": 119
+      "rank": 96
     },
     {
       "id": 1497,
@@ -1935,7 +1567,7 @@
       "heat_score": 82,
       "recency_score": 0,
       "rank_score": 46.1,
-      "rank": 120
+      "rank": 97
     },
     {
       "id": 1331,
@@ -1951,23 +1583,7 @@
       "heat_score": 86,
       "recency_score": 0,
       "rank_score": 51.3,
-      "rank": 121
-    },
-    {
-      "id": 1498,
-      "title": "Jimi Hendrix to be minted on commemorative $1 coin: “An extraordinary honor”",
-      "link": "https://www.guitarworld.com/artists/guitarists/jimi-hendrix-us-mint-coin-program",
-      "source": "Guitar World",
-      "publish_time": "2026-11-11T15:06:54+00:00",
-      "summary": "The guitar legend has been selected as part of the U.S. Mint American Innovation $1 Coin Program, which celebrates innovators and innovations from across the nation",
-      "category": "音乐科技",
-      "dedupe_key": "https://www.guitarworld.com/artists/guitarists/jimi-hendrix-us-mint-coin-program",
-      "title_zh": "Jimi Hendrix 将登上纪念版 1 美元硬币",
-      "relevance_score": 25,
-      "heat_score": 82,
-      "recency_score": 0,
-      "rank_score": 37.1,
-      "rank": 122
+      "rank": 98
     },
     {
       "id": 1007,
@@ -1983,7 +1599,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 123
+      "rank": 99
     },
     {
       "id": 1006,
@@ -1999,7 +1615,7 @@
       "heat_score": 84,
       "recency_score": 0,
       "rank_score": 57.7,
-      "rank": 124
+      "rank": 100
     },
     {
       "id": 1499,
@@ -2015,7 +1631,7 @@
       "heat_score": 82,
       "recency_score": 0,
       "rank_score": 37.1,
-      "rank": 125
+      "rank": 101
     },
     {
       "id": 4,
@@ -2031,7 +1647,7 @@
       "heat_score": 86,
       "recency_score": 0,
       "rank_score": 75.8,
-      "rank": 126
+      "rank": 102
     },
     {
       "id": 1476,
@@ -2047,7 +1663,7 @@
       "heat_score": 86,
       "recency_score": 0,
       "rank_score": 38.3,
-      "rank": 127
+      "rank": 103
     },
     {
       "id": 1347,
@@ -2063,7 +1679,7 @@
       "heat_score": 82,
       "recency_score": 0,
       "rank_score": 46.1,
-      "rank": 128
+      "rank": 104
     },
     {
       "id": 11,
@@ -2079,39 +1695,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 66.6,
-      "rank": 129
-    },
-    {
-      "id": 1297,
-      "title": "当美国无法建设数据中心，会对 AI 产生怎样的冲击",
-      "link": "http://www.geekpark.net/news/373816",
-      "source": "极客公园",
-      "publish_time": "2026-11-11T05:23:24+00:00",
-      "summary": "作者｜Techno 之王 编辑｜靖宇 2026 年 11 月 4 日，美国中期选举结果落定后的第二天上午，OpenAI 的高管们坐到了一起。 据外媒援引知情人士的消息，他们讨论的是要不要重设 2027 年的数据中心容量预期。讨论还没有形成决定，但焦虑已经摆上了台面。 过去几个月，美国各地的大型数据中心项目接连被按下暂停键。得州前任州长 Abbott 从 8 月起冻结了数据中心的并网和空气许可，要求审计到年底；新当选的州长 Gina Hinojosa 承诺，在州议会立法保护居民之前，暂停所有新数据中心审批，而议会会期要到 2027 年 5 月才结束。 俄亥俄新州长 Amy Acton 提出有条件暂停，要求新项目承担全部电力成本、只能建在旧工业用地上；佐治亚新州长 Keisha Lance Bottoms 则准备上任后直接签行政令，暂停全州新建。 据 Tokenpost 统计， 今年 7 月到 11 月 4 日，美国至少有 21 个大型数据中心项目被取消，已经接近 2025 年全年的 23 个 。Anthropic 在 10 月 26 日提交的招股书里，也把暂停令写进了风险因素：一些辖区正…",
-      "category": "国内科技",
-      "dedupe_key": "http://www.geekpark.net/news/373816",
-      "title_zh": null,
-      "relevance_score": 33,
-      "heat_score": 61,
-      "recency_score": 0,
-      "rank_score": 34.8,
-      "rank": 130
-    },
-    {
-      "id": 1298,
-      "title": "Anthropic 启动 IPO 路演，创始人将套现 17.5 亿美元；谷歌最强 AI 模型正式开放；任天堂招新：经典游戏保存员",
-      "link": "http://www.geekpark.net/news/373796",
-      "source": "极客公园",
-      "publish_time": "2026-11-11T00:34:34+00:00",
-      "summary": "英伟达董事会聘请前美国联邦检察官，调查 CEO 黄仁勋相关事件 11 月 11 日消息，英伟达发布公告，宣布已聘请美国前联邦检察官金正贤（Joon H. Kim）及其所在的律师事务所 Wachtell, Lipton, Rosen & Katz，负责开展一项全面、独立的调查。 此前，英伟达董事会表示，鉴于近期有关公司创始人兼 CEO 黄仁勋可能成为外国情报机构目标的报道，董事会决定启动独立调查。董事会将成立由独立董事组成的委员会，并在外部独立法律顾问协助下监督调查。 英伟达董事会此前还表示，目前没有理由认为美国国家安全或英伟达的商业机密已经遭到泄露，但调查将审查所有可获得的信息。黄仁勋支持此次调查，并承诺配合相关工作。董事会同时表示，对黄仁勋及其领导团队保持信心。（来源：凤凰网科技） Anthropic 启动 IPO 路演，估值目标高达 1.4 万亿美元，七名联创拟套现 17.5 亿美元 Anthropic 已正式启动首次公开募股（IPO）的投资者路演。公司计划发行 8.25 亿股股票，每股发行价区间为 70 至 78 美元，最高募资规模可达 643.5 亿美元。若按区间上限定价，其完…",
-      "category": "国内科技",
-      "dedupe_key": "http://www.geekpark.net/news/373796",
-      "title_zh": null,
-      "relevance_score": 50,
-      "heat_score": 65,
-      "recency_score": 0,
-      "rank_score": 44.5,
-      "rank": 131
+      "rank": 105
     },
     {
       "id": 1477,
@@ -2127,7 +1711,7 @@
       "heat_score": 86,
       "recency_score": 0,
       "rank_score": 38.3,
-      "rank": 132
+      "rank": 106
     },
     {
       "id": 5,
@@ -2143,7 +1727,7 @@
       "heat_score": 84,
       "recency_score": 0,
       "rank_score": 64.2,
-      "rank": 133
+      "rank": 107
     },
     {
       "id": 1299,
@@ -2159,7 +1743,7 @@
       "heat_score": 65,
       "recency_score": 0,
       "rank_score": 36.0,
-      "rank": 134
+      "rank": 108
     },
     {
       "id": 1300,
@@ -2175,7 +1759,7 @@
       "heat_score": 65,
       "recency_score": 0,
       "rank_score": 44.5,
-      "rank": 135
+      "rank": 109
     },
     {
       "id": 836,
@@ -2191,7 +1775,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 38.9,
-      "rank": 136
+      "rank": 110
     },
     {
       "id": 1069,
@@ -2207,7 +1791,7 @@
       "heat_score": 92,
       "recency_score": 0,
       "rank_score": 44.1,
-      "rank": 137
+      "rank": 111
     },
     {
       "id": 1005,
@@ -2223,7 +1807,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 40.5,
-      "rank": 138
+      "rank": 112
     },
     {
       "id": 1068,
@@ -2239,7 +1823,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 57.4,
-      "rank": 139
+      "rank": 113
     },
     {
       "id": 1004,
@@ -2255,7 +1839,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 65.5,
-      "rank": 140
+      "rank": 114
     },
     {
       "id": 1301,
@@ -2271,39 +1855,7 @@
       "heat_score": 65,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 141
-    },
-    {
-      "id": 1302,
-      "title": "黄仁勋承认「婚外情」，英伟达启动调查；ChatGPT 突现封号风波，200 美元 Pro 用户也遭殃；腾讯姚顺雨谈「AI 公司护城河」：在产品层，而不是模型层",
-      "link": "http://www.geekpark.net/news/373687",
-      "source": "极客公园",
-      "publish_time": "2026-11-09T02:58:04+00:00",
-      "summary": "黄仁勋承认「婚外情」，英伟达启动调查 11 月 9 日消息，英伟达 CEO 黄仁勋当地时间 8 日于公司官网发布致全员公开信，就个人私事致歉，同时披露董事会将针对相关报道提及的国家安全关切展开独立调查。 黄仁勋在信中承认自己对妻子不忠，坦言该行为伤害家人，对此承担全部责任，并接受外界批评。他表示家人不应为其个人选择负责，恳请公众给予家人隐私空间，希望能有机会重新赢回家人信任。他强调自己对英伟达始终坚定，将努力重新赢得团队与投资方的信赖。 针对近期报道带出的国家安全相关质疑，黄仁勋确认董事会已启动独立调查，本人将全力配合。 此前据《纽约时报》报道，美国政府认为黄仁勋与一家名为 Megaspeed 的新加坡科技公司前高管 Alice Huang（黄乐）存在密切关系。（来源：DoNews） 特斯拉更新 AI 加速器路线图：SI6 算力达 HW4 的 80 倍，Dojo D3 将面向太空部署 11 月 8 日消息，特斯拉公布了更新后的 AI 加速器路线图，进一步揭示了公司未来几年的芯片研发方向。根据这份路线图，特斯拉第六代推理加速器的算力预计将达到现有第四代芯片的 80 倍；而用于训练任务的…",
-      "category": "国内科技",
-      "dedupe_key": "http://www.geekpark.net/news/373687",
-      "title_zh": null,
-      "relevance_score": 50,
-      "heat_score": 65,
-      "recency_score": 0,
-      "rank_score": 44.5,
-      "rank": 142
-    },
-    {
-      "id": 1303,
-      "title": "为什么「陪伴」，注定是 Personal AI 的核心",
-      "link": "http://www.geekpark.net/news/373653",
-      "source": "极客公园",
-      "publish_time": "2026-11-08T09:52:45+00:00",
-      "summary": "作者｜宇航猿 编辑｜靖宇 最近这一波 Personal AI 实在太火了，我也注册了一个 Muse 体验了一下。 整个体验下来，我感觉 Muse 的能力实在一般，远没到让人惊叹的地步。但奇怪的是，它确实带来了一种真切的陪伴感。这种陪伴感，甚至直接改变了我的使用习惯，让我总是忍不住想找它聊聊，哪怕只是把最琐碎的需求丢给它。 就在本周， Muse 又往前迈了一步，正式上线了实时语音和会动的头像 。无独有偶，各家 AI 助手最近都在做同一件事，就是给个人 AI 助手开通语音和对话功能。 这让我非常好奇，距离 ChatGPT 端出惊艳的语音模式，已经过去两年了， 为什么到了现在这个时间点，所有的个人 AI 助手又开始一窝蜂地往语音赛道上挤 ？ 01 口喷「派活」的魅力 2024 年 GPT-4o 发布演示时，那种流畅自然的对话体验常被拿来和电影《Her》对比。但在此后的很长一段时间里，AI 语音始终停留在聊天层，双方客客气气地说完，交互也就结束了。 这一轮语音热潮的核心变量在于，AI 身后终于长出了一双手，语音因此成了派活门槛最低的入口。 当地时间 11 月 5 日，Muse 在美国上线实时语…",
-      "category": "国内科技",
-      "dedupe_key": "http://www.geekpark.net/news/373653",
-      "title_zh": null,
-      "relevance_score": 33,
-      "heat_score": 69,
-      "recency_score": 0,
-      "rank_score": 37.2,
-      "rank": 143
+      "rank": 115
     },
     {
       "id": 1441,
@@ -2319,7 +1871,7 @@
       "heat_score": 61,
       "recency_score": 0,
       "rank_score": 38.8,
-      "rank": 144
+      "rank": 116
     },
     {
       "id": 1003,
@@ -2335,7 +1887,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 40.5,
-      "rank": 145
+      "rank": 117
     },
     {
       "id": 1002,
@@ -2351,7 +1903,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 55.0,
-      "rank": 146
+      "rank": 118
     },
     {
       "id": 1442,
@@ -2367,7 +1919,7 @@
       "heat_score": 61,
       "recency_score": 0,
       "rank_score": 33.8,
-      "rank": 147
+      "rank": 119
     },
     {
       "id": 1443,
@@ -2383,7 +1935,7 @@
       "heat_score": 65,
       "recency_score": 0,
       "rank_score": 43.0,
-      "rank": 148
+      "rank": 120
     },
     {
       "id": 1001,
@@ -2399,7 +1951,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 31.5,
-      "rank": 149
+      "rank": 121
     },
     {
       "id": 1000,
@@ -2415,7 +1967,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 70.0,
-      "rank": 150
+      "rank": 122
     },
     {
       "id": 256,
@@ -2431,7 +1983,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 44.9,
-      "rank": 151
+      "rank": 123
     },
     {
       "id": 999,
@@ -2447,7 +1999,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 31.5,
-      "rank": 152
+      "rank": 124
     },
     {
       "id": 998,
@@ -2463,7 +2015,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 34.5,
-      "rank": 153
+      "rank": 125
     },
     {
       "id": 997,
@@ -2479,7 +2031,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 54.5,
-      "rank": 154
+      "rank": 126
     },
     {
       "id": 996,
@@ -2495,23 +2047,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 54.5,
-      "rank": 155
-    },
-    {
-      "id": 1304,
-      "title": "AI 时代没有标准答案的问题，我们面对面聊",
-      "link": "http://www.geekpark.net/news/373636",
-      "source": "极客公园",
-      "publish_time": "2026-11-06T12:09:13+00:00",
-      "summary": "我们刚刚官宣了极客公园创新大会 2027 的首批嘉宾。 今天，再来揭晓「小场深谈」的最新进展。 10 月底，我们在「小场深谈」的预热文章里做了一次调研，请大家投票选出最想聊的话题。最终，我们选定了最受关注的五组主题，设下了五场专场，每一场都从大家最想聊的那个问题开始。 这五场专场，恰好瞄向当下行业最受关注、也最要紧的议题上：Personal AI 怎么接管日常、AI 创作怎么重写内容、具身智能怎么走进现实、硬件与制造怎么长出「新图纸」、AI 落地怎么用结果说话。 每一场，三组话题，深谈 + 现场问答，80 分钟左右。场子都不大，百余人左右。 IF 2026「小场深谈」现场 还记得去年的「小场深谈」，有人刚从大厂跳槽、正用 AI 做自己的第一款产品，当场把困惑摊给嘉宾；有精神科医生，追问做陪伴机器人的创业者：你希望它把人带回现实交往，还是给这个家添一个新成员？——现场的发问，往往带着一个人具体的处境，比文字更触动人心。 今年五场「小场深谈」的主题与要讨论的核心议题已经基本确认： Day1 Personal AI 是如今最热门的创投叙事，每个人都有不同的理解。但能真正谈论这个话题的创业者并…",
-      "category": "国内科技",
-      "dedupe_key": "http://www.geekpark.net/news/373636",
-      "title_zh": null,
-      "relevance_score": 39,
-      "heat_score": 61,
-      "recency_score": 0,
-      "rank_score": 37.8,
-      "rank": 156
+      "rank": 127
     },
     {
       "id": 257,
@@ -2527,7 +2063,7 @@
       "heat_score": 92,
       "recency_score": 0,
       "rank_score": 43.1,
-      "rank": 157
+      "rank": 128
     },
     {
       "id": 995,
@@ -2543,7 +2079,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 60.5,
-      "rank": 158
+      "rank": 129
     },
     {
       "id": 994,
@@ -2559,7 +2095,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 51.9,
-      "rank": 159
+      "rank": 130
     },
     {
       "id": 993,
@@ -2575,7 +2111,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 54.5,
-      "rank": 160
+      "rank": 131
     },
     {
       "id": 992,
@@ -2591,7 +2127,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 46.0,
-      "rank": 161
+      "rank": 132
     },
     {
       "id": 1067,
@@ -2607,7 +2143,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 38.9,
-      "rank": 162
+      "rank": 133
     },
     {
       "id": 1066,
@@ -2623,7 +2159,7 @@
       "heat_score": 92,
       "recency_score": 0,
       "rank_score": 60.1,
-      "rank": 163
+      "rank": 134
     },
     {
       "id": 1404,
@@ -2639,7 +2175,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 66.1,
-      "rank": 164
+      "rank": 135
     },
     {
       "id": 1065,
@@ -2655,7 +2191,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 42.9,
-      "rank": 165
+      "rank": 136
     },
     {
       "id": 991,
@@ -2671,7 +2207,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 54.5,
-      "rank": 166
+      "rank": 137
     },
     {
       "id": 990,
@@ -2687,7 +2223,7 @@
       "heat_score": 84,
       "recency_score": 0,
       "rank_score": 32.7,
-      "rank": 167
+      "rank": 138
     },
     {
       "id": 1521,
@@ -2703,7 +2239,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 38.9,
-      "rank": 168
+      "rank": 139
     },
     {
       "id": 1064,
@@ -2719,7 +2255,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 62.9,
-      "rank": 169
+      "rank": 140
     },
     {
       "id": 989,
@@ -2735,7 +2271,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 170
+      "rank": 141
     },
     {
       "id": 1558,
@@ -2751,7 +2287,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 61.6,
-      "rank": 171
+      "rank": 142
     },
     {
       "id": 1063,
@@ -2767,7 +2303,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 42.4,
-      "rank": 172
+      "rank": 143
     },
     {
       "id": 988,
@@ -2783,7 +2319,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 52.5,
-      "rank": 173
+      "rank": 144
     },
     {
       "id": 259,
@@ -2799,23 +2335,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 44.9,
-      "rank": 174
-    },
-    {
-      "id": 987,
-      "title": "Behringer Teases $200 Polykeys 61 MIDI Controller With Polyphonic Aftertouch",
-      "link": "https://www.synthtopia.com/content/2026/11/02/behringer-teases-200-polykeys-61-midi-controller-with-polyphonic-aftertouch/",
-      "source": "Synthtopia",
-      "publish_time": "2026-11-02T15:51:31+00:00",
-      "summary": "The POLYKEYS 61 will offer 61 mini keys with polyphonic aftertouch, plus a ribbon controller.… Read More Behringer Teases $200 Polykeys 61 MIDI Controller With Polyphonic Aftertouch",
-      "category": "音乐科技",
-      "dedupe_key": "https://www.synthtopia.com/content/2026/11/02/behringer-teases-200-polykeys-61-midi-controller-with-polyphonic-aftertouch/",
-      "title_zh": "Behringer 预告售价 200 美元的 Polykeys 61 MIDI 控制器，配备复音力度感应",
-      "relevance_score": 15,
-      "heat_score": 80,
-      "recency_score": 0,
-      "rank_score": 31.5,
-      "rank": 175
+      "rank": 145
     },
     {
       "id": 986,
@@ -2831,7 +2351,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 176
+      "rank": 146
     },
     {
       "id": 1523,
@@ -2847,7 +2367,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 38.9,
-      "rank": 177
+      "rank": 147
     },
     {
       "id": 985,
@@ -2863,7 +2383,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 31.5,
-      "rank": 178
+      "rank": 148
     },
     {
       "id": 984,
@@ -2879,7 +2399,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 39.5,
-      "rank": 179
+      "rank": 149
     },
     {
       "id": 983,
@@ -2895,7 +2415,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 180
+      "rank": 150
     },
     {
       "id": 982,
@@ -2911,7 +2431,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 181
+      "rank": 151
     },
     {
       "id": 981,
@@ -2927,7 +2447,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 31.5,
-      "rank": 182
+      "rank": 152
     },
     {
       "id": 980,
@@ -2943,7 +2463,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 31.5,
-      "rank": 183
+      "rank": 153
     },
     {
       "id": 979,
@@ -2959,7 +2479,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 54.5,
-      "rank": 184
+      "rank": 154
     },
     {
       "id": 1062,
@@ -2975,7 +2495,7 @@
       "heat_score": 92,
       "recency_score": 0,
       "rank_score": 35.1,
-      "rank": 185
+      "rank": 155
     },
     {
       "id": 1061,
@@ -2991,7 +2511,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 51.9,
-      "rank": 186
+      "rank": 156
     },
     {
       "id": 978,
@@ -3007,7 +2527,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 65.5,
-      "rank": 187
+      "rank": 157
     },
     {
       "id": 977,
@@ -3023,7 +2543,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 188
+      "rank": 158
     },
     {
       "id": 976,
@@ -3039,7 +2559,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 58.0,
-      "rank": 189
+      "rank": 159
     },
     {
       "id": 975,
@@ -3055,7 +2575,7 @@
       "heat_score": 84,
       "recency_score": 0,
       "rank_score": 61.7,
-      "rank": 190
+      "rank": 160
     },
     {
       "id": 974,
@@ -3071,7 +2591,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 31.5,
-      "rank": 191
+      "rank": 161
     },
     {
       "id": 973,
@@ -3087,7 +2607,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 51.9,
-      "rank": 192
+      "rank": 162
     },
     {
       "id": 1060,
@@ -3103,7 +2623,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 33.9,
-      "rank": 193
+      "rank": 163
     },
     {
       "id": 1059,
@@ -3119,7 +2639,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 51.9,
-      "rank": 194
+      "rank": 164
     },
     {
       "id": 1058,
@@ -3135,7 +2655,7 @@
       "heat_score": 92,
       "recency_score": 0,
       "rank_score": 38.1,
-      "rank": 195
+      "rank": 165
     },
     {
       "id": 1057,
@@ -3151,7 +2671,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 33.9,
-      "rank": 196
+      "rank": 166
     },
     {
       "id": 972,
@@ -3167,7 +2687,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 40.5,
-      "rank": 197
+      "rank": 167
     },
     {
       "id": 971,
@@ -3183,7 +2703,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 47.5,
-      "rank": 198
+      "rank": 168
     },
     {
       "id": 970,
@@ -3199,7 +2719,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 199
+      "rank": 169
     },
     {
       "id": 969,
@@ -3215,7 +2735,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 36.5,
-      "rank": 200
+      "rank": 170
     },
     {
       "id": 968,
@@ -3231,7 +2751,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 201
+      "rank": 171
     },
     {
       "id": 967,
@@ -3247,7 +2767,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 40.5,
-      "rank": 202
+      "rank": 172
     },
     {
       "id": 966,
@@ -3263,7 +2783,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 52.5,
-      "rank": 203
+      "rank": 173
     },
     {
       "id": 965,
@@ -3279,7 +2799,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 204
+      "rank": 174
     },
     {
       "id": 964,
@@ -3295,7 +2815,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 47.5,
-      "rank": 205
+      "rank": 175
     },
     {
       "id": 1056,
@@ -3311,7 +2831,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 36.9,
-      "rank": 206
+      "rank": 176
     },
     {
       "id": 963,
@@ -3327,7 +2847,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 37.5,
-      "rank": 207
+      "rank": 177
     },
     {
       "id": 962,
@@ -3343,7 +2863,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 45.5,
-      "rank": 208
+      "rank": 178
     },
     {
       "id": 961,
@@ -3359,7 +2879,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 54.5,
-      "rank": 209
+      "rank": 179
     },
     {
       "id": 1055,
@@ -3375,7 +2895,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 42.9,
-      "rank": 210
+      "rank": 180
     },
     {
       "id": 960,
@@ -3391,7 +2911,7 @@
       "heat_score": 84,
       "recency_score": 0,
       "rank_score": 32.7,
-      "rank": 211
+      "rank": 181
     },
     {
       "id": 959,
@@ -3407,7 +2927,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 40.5,
-      "rank": 212
+      "rank": 182
     },
     {
       "id": 1054,
@@ -3423,7 +2943,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 44.9,
-      "rank": 213
+      "rank": 183
     },
     {
       "id": 1053,
@@ -3439,7 +2959,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 62.9,
-      "rank": 214
+      "rank": 184
     },
     {
       "id": 1052,
@@ -3455,7 +2975,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 38.9,
-      "rank": 215
+      "rank": 185
     },
     {
       "id": 1051,
@@ -3471,7 +2991,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 73.4,
-      "rank": 216
+      "rank": 186
     },
     {
       "id": 1050,
@@ -3487,7 +3007,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 42.9,
-      "rank": 217
+      "rank": 187
     },
     {
       "id": 1049,
@@ -3503,7 +3023,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 33.9,
-      "rank": 218
+      "rank": 188
     },
     {
       "id": 958,
@@ -3519,7 +3039,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 219
+      "rank": 189
     },
     {
       "id": 957,
@@ -3535,7 +3055,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 45.5,
-      "rank": 220
+      "rank": 190
     },
     {
       "id": 1048,
@@ -3551,7 +3071,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 33.9,
-      "rank": 221
+      "rank": 191
     },
     {
       "id": 956,
@@ -3567,7 +3087,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 31.5,
-      "rank": 222
+      "rank": 192
     },
     {
       "id": 1047,
@@ -3583,7 +3103,7 @@
       "heat_score": 92,
       "recency_score": 0,
       "rank_score": 56.1,
-      "rank": 223
+      "rank": 193
     },
     {
       "id": 955,
@@ -3599,7 +3119,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 39.5,
-      "rank": 224
+      "rank": 194
     },
     {
       "id": 954,
@@ -3615,7 +3135,7 @@
       "heat_score": 84,
       "recency_score": 0,
       "rank_score": 50.7,
-      "rank": 225
+      "rank": 195
     },
     {
       "id": 953,
@@ -3631,7 +3151,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 226
+      "rank": 196
     },
     {
       "id": 952,
@@ -3647,23 +3167,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 60.5,
-      "rank": 227
-    },
-    {
-      "id": 1046,
-      "title": "Plugin Boutique launches new tiered membership programme that rewards you based on how many plugins you buy",
-      "link": "https://musictech.com/news/gear/plugin-boutique-membership/",
-      "source": "MusicTech",
-      "publish_time": "2026-10-15T09:41:53+00:00",
-      "summary": "There’s a Member Tier – everyone with a Plugin Boutique account starts here – plus Silver and Gold Tiers for producers who have spent $100 and $200 in the last month, respectively.",
-      "category": "音乐科技",
-      "dedupe_key": "https://musictech.com/news/gear/plugin-boutique-membership/",
-      "title_zh": "Plugin Boutique 推出按插件购买数量分级奖励的新会员计划",
-      "relevance_score": 15,
-      "heat_score": 92,
-      "recency_score": 0,
-      "rank_score": 35.1,
-      "rank": 228
+      "rank": 197
     },
     {
       "id": 951,
@@ -3679,7 +3183,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 54.5,
-      "rank": 229
+      "rank": 198
     },
     {
       "id": 1045,
@@ -3695,7 +3199,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 39.9,
-      "rank": 230
+      "rank": 199
     },
     {
       "id": 950,
@@ -3711,7 +3215,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 34.5,
-      "rank": 231
+      "rank": 200
     },
     {
       "id": 949,
@@ -3727,7 +3231,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 31.5,
-      "rank": 232
+      "rank": 201
     },
     {
       "id": 948,
@@ -3743,7 +3247,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 74.0,
-      "rank": 233
+      "rank": 202
     },
     {
       "id": 947,
@@ -3759,7 +3263,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 56.5,
-      "rank": 234
+      "rank": 203
     },
     {
       "id": 946,
@@ -3775,23 +3279,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 235
-    },
-    {
-      "id": 1044,
-      "title": "Man who made $8 million in AI streaming fraud scheme given 18-month prison sentence",
-      "link": "https://musictech.com/news/industry/man-who-made-8-million-in-ai-streaming-fraud-scheme-given-18-month-prison-sentence/",
-      "source": "MusicTech",
-      "publish_time": "2026-10-12T09:46:27+00:00",
-      "summary": "Michael Smith used thousands of AI-generated songs and an army of bots generate millions in fraudulent streaming revenue.",
-      "category": "音乐科技",
-      "dedupe_key": "https://musictech.com/news/industry/man-who-made-8-million-in-ai-streaming-fraud-scheme-given-18-month-prison-sentence/",
-      "title_zh": "利用 AI 刷流媒体获利 800 万美元者被判 18 个月监禁",
-      "relevance_score": 33,
-      "heat_score": 88,
-      "recency_score": 0,
-      "rank_score": 42.9,
-      "rank": 236
+      "rank": 204
     },
     {
       "id": 945,
@@ -3807,7 +3295,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 54.5,
-      "rank": 237
+      "rank": 205
     },
     {
       "id": 1043,
@@ -3823,7 +3311,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 56.9,
-      "rank": 238
+      "rank": 206
     },
     {
       "id": 944,
@@ -3839,7 +3327,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 31.5,
-      "rank": 239
+      "rank": 207
     },
     {
       "id": 943,
@@ -3855,7 +3343,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 40.5,
-      "rank": 240
+      "rank": 208
     },
     {
       "id": 942,
@@ -3871,7 +3359,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 31.5,
-      "rank": 241
+      "rank": 209
     },
     {
       "id": 941,
@@ -3887,7 +3375,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 242
+      "rank": 210
     },
     {
       "id": 1042,
@@ -3903,7 +3391,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 48.4,
-      "rank": 243
+      "rank": 211
     },
     {
       "id": 1041,
@@ -3919,7 +3407,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 33.9,
-      "rank": 244
+      "rank": 212
     },
     {
       "id": 940,
@@ -3935,7 +3423,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 41.5,
-      "rank": 245
+      "rank": 213
     },
     {
       "id": 939,
@@ -3951,7 +3439,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 54.5,
-      "rank": 246
+      "rank": 214
     },
     {
       "id": 938,
@@ -3967,7 +3455,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 40.5,
-      "rank": 247
+      "rank": 215
     },
     {
       "id": 937,
@@ -3983,7 +3471,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 248
+      "rank": 216
     },
     {
       "id": 936,
@@ -3999,7 +3487,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 31.5,
-      "rank": 249
+      "rank": 217
     },
     {
       "id": 935,
@@ -4015,7 +3503,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 250
+      "rank": 218
     },
     {
       "id": 1040,
@@ -4031,7 +3519,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 76.4,
-      "rank": 251
+      "rank": 219
     },
     {
       "id": 934,
@@ -4047,7 +3535,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 40.5,
-      "rank": 252
+      "rank": 220
     },
     {
       "id": 1039,
@@ -4063,7 +3551,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 44.9,
-      "rank": 253
+      "rank": 221
     },
     {
       "id": 933,
@@ -4079,7 +3567,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 42.5,
-      "rank": 254
+      "rank": 222
     },
     {
       "id": 1038,
@@ -4095,7 +3583,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 51.9,
-      "rank": 255
+      "rank": 223
     },
     {
       "id": 932,
@@ -4111,7 +3599,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 256
+      "rank": 224
     },
     {
       "id": 931,
@@ -4127,7 +3615,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 257
+      "rank": 225
     },
     {
       "id": 930,
@@ -4143,7 +3631,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 41.5,
-      "rank": 258
+      "rank": 226
     },
     {
       "id": 929,
@@ -4159,7 +3647,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 31.5,
-      "rank": 259
+      "rank": 227
     },
     {
       "id": 928,
@@ -4175,7 +3663,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 260
+      "rank": 228
     },
     {
       "id": 1037,
@@ -4191,7 +3679,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 33.9,
-      "rank": 261
+      "rank": 229
     },
     {
       "id": 927,
@@ -4207,7 +3695,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 54.5,
-      "rank": 262
+      "rank": 230
     },
     {
       "id": 926,
@@ -4223,7 +3711,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 60.5,
-      "rank": 263
+      "rank": 231
     },
     {
       "id": 925,
@@ -4239,7 +3727,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 60.5,
-      "rank": 264
+      "rank": 232
     },
     {
       "id": 924,
@@ -4255,7 +3743,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 48.5,
-      "rank": 265
+      "rank": 233
     },
     {
       "id": 923,
@@ -4271,7 +3759,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 48.5,
-      "rank": 266
+      "rank": 234
     },
     {
       "id": 1036,
@@ -4287,7 +3775,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 51.9,
-      "rank": 267
+      "rank": 235
     },
     {
       "id": 1035,
@@ -4303,7 +3791,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 42.9,
-      "rank": 268
+      "rank": 236
     },
     {
       "id": 922,
@@ -4319,7 +3807,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 39.5,
-      "rank": 269
+      "rank": 237
     },
     {
       "id": 1034,
@@ -4335,7 +3823,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 51.9,
-      "rank": 270
+      "rank": 238
     },
     {
       "id": 1033,
@@ -4351,7 +3839,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 42.9,
-      "rank": 271
+      "rank": 239
     },
     {
       "id": 921,
@@ -4367,7 +3855,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 31.5,
-      "rank": 272
+      "rank": 240
     },
     {
       "id": 1032,
@@ -4383,7 +3871,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 51.9,
-      "rank": 273
+      "rank": 241
     },
     {
       "id": 1031,
@@ -4399,7 +3887,7 @@
       "heat_score": 92,
       "recency_score": 0,
       "rank_score": 44.1,
-      "rank": 274
+      "rank": 242
     },
     {
       "id": 920,
@@ -4415,7 +3903,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 51.5,
-      "rank": 275
+      "rank": 243
     },
     {
       "id": 1030,
@@ -4431,7 +3919,7 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 65.9,
-      "rank": 276
+      "rank": 244
     },
     {
       "id": 919,
@@ -4447,7 +3935,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 37.5,
-      "rank": 277
+      "rank": 245
     },
     {
       "id": 1539,
@@ -4463,7 +3951,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 61.6,
-      "rank": 278
+      "rank": 246
     },
     {
       "id": 1413,
@@ -4479,7 +3967,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 59.6,
-      "rank": 279
+      "rank": 247
     },
     {
       "id": 304,
@@ -4495,7 +3983,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 65.6,
-      "rank": 280
+      "rank": 248
     },
     {
       "id": 1402,
@@ -4511,7 +3999,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 57.6,
-      "rank": 281
+      "rank": 249
     },
     {
       "id": 306,
@@ -4527,7 +4015,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 56.6,
-      "rank": 282
+      "rank": 250
     },
     {
       "id": 1391,
@@ -4543,7 +4031,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 61.6,
-      "rank": 283
+      "rank": 251
     },
     {
       "id": 289,
@@ -4559,7 +4047,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 61.6,
-      "rank": 284
+      "rank": 252
     },
     {
       "id": 294,
@@ -4575,7 +4063,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 68.6,
-      "rank": 285
+      "rank": 253
     },
     {
       "id": 1408,
@@ -4591,7 +4079,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 65.6,
-      "rank": 286
+      "rank": 254
     },
     {
       "id": 299,
@@ -4607,7 +4095,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 56.6,
-      "rank": 287
+      "rank": 255
     },
     {
       "id": 1412,
@@ -4623,7 +4111,7 @@
       "heat_score": 66,
       "recency_score": 0,
       "rank_score": 69.8,
-      "rank": 288
+      "rank": 256
     },
     {
       "id": 1387,
@@ -4639,7 +4127,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 65.6,
-      "rank": 289
+      "rank": 257
     },
     {
       "id": 1375,
@@ -4655,7 +4143,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 61.6,
-      "rank": 290
+      "rank": 258
     },
     {
       "id": 1376,
@@ -4671,7 +4159,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 68.6,
-      "rank": 291
+      "rank": 259
     },
     {
       "id": 300,
@@ -4687,7 +4175,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 61.6,
-      "rank": 292
+      "rank": 260
     },
     {
       "id": 1541,
@@ -4703,7 +4191,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 61.6,
-      "rank": 293
+      "rank": 261
     },
     {
       "id": 1411,
@@ -4719,7 +4207,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 56.6,
-      "rank": 294
+      "rank": 262
     },
     {
       "id": 305,
@@ -4735,7 +4223,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 56.6,
-      "rank": 295
+      "rank": 263
     },
     {
       "id": 1385,
@@ -4751,7 +4239,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 68.6,
-      "rank": 296
+      "rank": 264
     },
     {
       "id": 1386,
@@ -4767,7 +4255,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 68.6,
-      "rank": 297
+      "rank": 265
     },
     {
       "id": 1388,
@@ -4783,7 +4271,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 65.6,
-      "rank": 298
+      "rank": 266
     },
     {
       "id": 1384,
@@ -4799,7 +4287,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 68.6,
-      "rank": 299
+      "rank": 267
     },
     {
       "id": 73,
@@ -4815,7 +4303,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 56.6,
-      "rank": 300
+      "rank": 268
     },
     {
       "id": 1537,
@@ -4831,7 +4319,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 56.6,
-      "rank": 301
+      "rank": 269
     },
     {
       "id": 1532,
@@ -4847,7 +4335,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 56.6,
-      "rank": 302
+      "rank": 270
     },
     {
       "id": 1549,
@@ -4863,7 +4351,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 44.1,
-      "rank": 303
+      "rank": 271
     },
     {
       "id": 1400,
@@ -4879,7 +4367,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 66.6,
-      "rank": 304
+      "rank": 272
     },
     {
       "id": 295,
@@ -4895,39 +4383,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 66.6,
-      "rank": 305
-    },
-    {
-      "id": 1555,
-      "title": "涨价前最后3天!你们催返团的 钢琴 启蒙课、趣味 乐理 课、乐器合集课",
-      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqf0svQpImP4hP4oEcMSryqVqXa8Fplpd9W-q4gvBhhTlE1HhAcM9wbdizZ2-AxbsjoQG2NaPRdBaiptyX3iS-IZnQzhuc83XX44_uosT8ANUX8y1FSft9HghNxqxhc9MQm4sSvhOkNXYVd670bS_Y2ZcBo3_vNf-Udtxk_Z_L05ryVfqdFJx-1tk6UiZYAnN08Qo26PWnoNTzAjcIGepUqA..&type=2&query=AI%E9%92%A2%E7%90%B4 %E4%B9%90%E7%90%86&token=8D970E00CE0859E85F660014ED148487602747C96AFC107C",
-      "source": "搜狗微信",
-      "publish_time": "2021-04-27T12:40:01+00:00",
-      "summary": "音乐壳的 钢琴 启蒙课、趣味 乐理 课、和乐器合集课,正在返团中,这几个课程是过去一年里要求返团的呼声最高的团品,非常受欢迎....",
-      "category": "搜狗微信",
-      "dedupe_key": "sogou:fa71c94ba012ec07048147560b4bd3143547b509f0ca68944e7baf162e72aa89",
-      "title_zh": null,
-      "relevance_score": 61,
-      "heat_score": 62,
-      "recency_score": 0,
-      "rank_score": 49.1,
-      "rank": 306
-    },
-    {
-      "id": 1557,
-      "title": "涨价前最后一波,你们催返团的 钢琴 启蒙课、趣味 乐理 课、乐器合集课",
-      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqf0svQpImP4hP4oEcMSryqVqXa8Fplpd9W-q4gvBhhTlE1HhAcM9wbdizZ2-AxbsjoQG2NaPRdBaiptyX3iS-IbxVreSRcmpMvp6I4kDdOgaKNJWwAsG_WWp4nSEqyYGveWOC_HGSxrDRA41wf5hR_rcdxMuu4L1VWVv2bkR5RcWA9nw7z4uNRO0k-4ken4QpI5wo-SLwIARFkDr8IT4KYw..&type=2&query=AI%E9%92%A2%E7%90%B4 %E4%B9%90%E7%90%86&token=8D970E00CE0859E85F660014ED148487602747C96AFC107C",
-      "source": "搜狗微信",
-      "publish_time": "2021-04-23T13:33:15+00:00",
-      "summary": "让孩子爱上 钢琴 的趣味启蒙课,趣味 乐理 课,1节课的钱学2个月!音乐启蒙时, 乐理 是非常重要的一环,它是孩子在音乐启蒙时必须接...",
-      "category": "搜狗微信",
-      "dedupe_key": "sogou:27743390be18248d37cf5af24d85c8a72b76d227fc8849f452140312f583e19d",
-      "title_zh": null,
-      "relevance_score": 61,
-      "heat_score": 62,
-      "recency_score": 0,
-      "rank_score": 49.1,
-      "rank": 307
+      "rank": 273
     },
     {
       "id": 1565,
@@ -4943,7 +4399,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 31.1,
-      "rank": 308
+      "rank": 274
     },
     {
       "id": 1534,
@@ -4959,23 +4415,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 56.6,
-      "rank": 309
-    },
-    {
-      "id": 1556,
-      "title": "涨价倒计时!为3-6岁孩子定制的趣味 乐理 课—美国音乐硕士+ AI 互动+精美动画,轻松搞定音乐素养启蒙!",
-      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqf0svQpImP4hP4oEcMSryqVqXa8Fplpd9bjnKsxA7CXA9xXMcrtc9ijyri1t5cGSw9XM2knWQRUkCPUwC_v0nGDfJJy6Iy5rsRJAtwN6vllyqFGVeGHDJfztuGnVuHdoMulQt1rlGuwtnk0NRa1Zy1YfCImjjUsHg-Lcg0w60dk4VyGioaf3FCT3EugphLhLwqcaHSwSKCPyjotuuiAmOIg..&type=2&query=AI%E9%92%A2%E7%90%B4 %E4%B9%90%E7%90%86&token=8D970E00CE0859E85F660014ED148487602747C96AFC107C",
-      "source": "搜狗微信",
-      "publish_time": "2020-05-11T23:39:14+00:00",
-      "summary": "一句话重点音乐启蒙中, 乐理 基础知识的学习会让孩子未来的音乐之路更加顺畅,所以常爸特别联合 AI 音乐学院,推出了《3-6岁趣味...",
-      "category": "搜狗微信",
-      "dedupe_key": "sogou:f609d71cd8fb6e43b42b2e2656c2fbdedadeee6cc6f8a2bacdec15c488771cf5",
-      "title_zh": null,
-      "relevance_score": 94,
-      "heat_score": 66,
-      "recency_score": 0,
-      "rank_score": 66.8,
-      "rank": 310
+      "rank": 275
     },
     {
       "id": 1407,
@@ -4991,7 +4431,7 @@
       "heat_score": 70,
       "recency_score": 0,
       "rank_score": 59.0,
-      "rank": 311
+      "rank": 276
     },
     {
       "id": 302,
@@ -5007,7 +4447,7 @@
       "heat_score": 66,
       "recency_score": 0,
       "rank_score": 66.8,
-      "rank": 312
+      "rank": 277
     },
     {
       "id": 1533,
@@ -5023,7 +4463,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 35.1,
-      "rank": 313
+      "rank": 278
     },
     {
       "id": 1536,
@@ -5039,7 +4479,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 40.1,
-      "rank": 314
+      "rank": 279
     },
     {
       "id": 1547,
@@ -5055,7 +4495,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 40.1,
-      "rank": 315
+      "rank": 280
     },
     {
       "id": 1540,
@@ -5071,7 +4511,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 40.1,
-      "rank": 316
+      "rank": 281
     },
     {
       "id": 1538,
@@ -5087,7 +4527,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 35.1,
-      "rank": 317
+      "rank": 282
     },
     {
       "id": 1551,
@@ -5103,7 +4543,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 35.1,
-      "rank": 318
+      "rank": 283
     },
     {
       "id": 1535,
@@ -5119,7 +4559,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 35.1,
-      "rank": 319
+      "rank": 284
     },
     {
       "id": 77,
@@ -5135,7 +4575,7 @@
       "heat_score": 66,
       "recency_score": 0,
       "rank_score": 69.8,
-      "rank": 320
+      "rank": 285
     },
     {
       "id": 83,
@@ -5151,7 +4591,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 68.6,
-      "rank": 321
+      "rank": 286
     },
     {
       "id": 81,
@@ -5167,7 +4607,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 68.6,
-      "rank": 322
+      "rank": 287
     },
     {
       "id": 80,
@@ -5183,7 +4623,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 68.6,
-      "rank": 323
+      "rank": 288
     },
     {
       "id": 78,
@@ -5199,7 +4639,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 68.6,
-      "rank": 324
+      "rank": 289
     },
     {
       "id": 75,
@@ -5215,7 +4655,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 68.6,
-      "rank": 325
+      "rank": 290
     },
     {
       "id": 63,
@@ -5231,7 +4671,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 68.6,
-      "rank": 326
+      "rank": 291
     },
     {
       "id": 25,
@@ -5247,7 +4687,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 68.6,
-      "rank": 327
+      "rank": 292
     },
     {
       "id": 79,
@@ -5263,7 +4703,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 67.6,
-      "rank": 328
+      "rank": 293
     },
     {
       "id": 76,
@@ -5279,7 +4719,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 67.6,
-      "rank": 329
+      "rank": 294
     },
     {
       "id": 297,
@@ -5295,7 +4735,7 @@
       "heat_score": 66,
       "recency_score": 0,
       "rank_score": 62.8,
-      "rank": 330
+      "rank": 295
     },
     {
       "id": 82,
@@ -5311,7 +4751,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 62.1,
-      "rank": 331
+      "rank": 296
     },
     {
       "id": 60,
@@ -5327,7 +4767,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 59.6,
-      "rank": 332
+      "rank": 297
     },
     {
       "id": 10,
@@ -5343,7 +4783,7 @@
       "heat_score": 66,
       "recency_score": 0,
       "rank_score": 57.8,
-      "rank": 333
+      "rank": 298
     },
     {
       "id": 84,
@@ -5359,7 +4799,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 56.6,
-      "rank": 334
+      "rank": 299
     },
     {
       "id": 12,
@@ -5375,7 +4815,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 56.6,
-      "rank": 335
+      "rank": 300
     },
     {
       "id": 9,
@@ -5391,7 +4831,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 56.6,
-      "rank": 336
+      "rank": 301
     },
     {
       "id": 7,
@@ -5407,7 +4847,7 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 56.6,
-      "rank": 337
+      "rank": 302
     }
   ]
 }
