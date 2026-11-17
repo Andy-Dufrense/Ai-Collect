@@ -9,16 +9,21 @@ from __future__ import annotations
 
 import json
 import os
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 from urllib.parse import urlparse
 
+# 与 github_update.py 相同：保证从 scripts/ 直接执行时也能导入项目模块。
+PROJECT_DIR = Path(__file__).resolve().parent.parent
+if str(PROJECT_DIR) not in sys.path:
+    sys.path.insert(0, str(PROJECT_DIR))
+
 from database import save_news_items
 from ranking import filter_and_rank_news
 
 
-PROJECT_DIR = Path(__file__).resolve().parent.parent
 DATA_FILE = PROJECT_DIR / "public" / "data" / "news.json"
 
 

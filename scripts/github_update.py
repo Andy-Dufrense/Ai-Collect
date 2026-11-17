@@ -12,9 +12,16 @@ from __future__ import annotations
 
 import json
 import shutil
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+
+# Actions 直接执行“python scripts/github_update.py”时，sys.path[0] 是 scripts/。
+# 把项目根目录加入搜索路径，才能导入 database.py、ranking.py 等根目录模块。
+PROJECT_DIR = Path(__file__).resolve().parent.parent
+if str(PROJECT_DIR) not in sys.path:
+    sys.path.insert(0, str(PROJECT_DIR))
 
 from database import (
     get_all_news,
@@ -26,7 +33,6 @@ from ranking import filter_and_rank_news
 from rss_fetcher import fetch_and_save_news
 
 
-PROJECT_DIR = Path(__file__).resolve().parent.parent
 PUBLIC_DIR = PROJECT_DIR / "public"
 DATA_FILE = PUBLIC_DIR / "data" / "news.json"
 
