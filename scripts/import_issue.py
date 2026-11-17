@@ -22,6 +22,7 @@ if str(PROJECT_DIR) not in sys.path:
 
 from database import save_news_items
 from ranking import filter_and_rank_news
+from translation import translate_items
 
 
 DATA_FILE = PROJECT_DIR / "public" / "data" / "news.json"
@@ -106,6 +107,7 @@ def main() -> int:
             days=0,
             now=now,
         )[0]
+        translate_items([scored_item], existing_items=items)
         items.insert(0, scored_item)
         payload["total"] = len(items)
         payload["generated_at"] = now.isoformat(timespec="seconds")

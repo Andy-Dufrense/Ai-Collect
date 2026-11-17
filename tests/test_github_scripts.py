@@ -89,6 +89,7 @@ https://mp.weixin.qq.com/s/example
                 payload = export_static_site(
                     output_path,
                     copy_style=False,
+                    translate_titles=False,
                 )
             self.assertEqual(payload["total"], 1)
             self.assertGreater(payload["items"][0]["relevance_score"], 0)

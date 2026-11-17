@@ -31,6 +31,7 @@ from database import (
 )
 from ranking import filter_and_rank_news
 from rss_fetcher import fetch_and_save_news
+from translation import translate_items
 
 
 PUBLIC_DIR = PROJECT_DIR / "public"
@@ -58,6 +59,7 @@ def export_static_site(
     output_file: Path = DATA_FILE,
     *,
     copy_style: bool = True,
+    translate_titles: bool = True,
 ) -> dict[str, Any]:
     """
     导出静态页面所需数据。
@@ -67,12 +69,29 @@ def export_static_site(
     """
 
     output_file.parent.mkdir(parents=True, exist_ok=True)
+    existing_items: list[dict[str, Any]] = []
+    if output_file.exists():
+        try:
+            existing_payload = json.loads(
+                output_file.read_text(encoding="utf-8")
+            )
+            if isinstance(existing_payload.get("items"), list):
+                existing_items = existing_payload["items"]
+        except (OSError, json.JSONDecodeError, AttributeError):
+            pass
+
     now = datetime.now(timezone.utc)
     ranked_items = filter_and_rank_news(get_all_news(), days=0, now=now)
+    translated_count = translate_items(
+        ranked_items,
+        existing_items=existing_items,
+        enabled=translate_titles,
+    )
     latest_run = get_latest_fetch_run()
     payload: dict[str, Any] = {
         "generated_at": now.isoformat(timespec="seconds"),
         "total": len(ranked_items),
+        "translated_count": translated_count,
         "last_run": latest_run,
         "items": ranked_items,
     }

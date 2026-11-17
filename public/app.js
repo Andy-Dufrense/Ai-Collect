@@ -67,7 +67,11 @@ function rankItems() {
                     return false;
                 }
             }
-            const text = `${item.title || ""} ${item.summary || ""}`.toLocaleLowerCase();
+            const text = [
+                item.title || "",
+                item.title_zh || "",
+                item.summary || "",
+            ].join(" ").toLocaleLowerCase();
             return terms.every((term) => text.includes(term));
         })
         .map((item) => {
@@ -113,7 +117,7 @@ function renderRow(item, rank) {
     titleLink.target = "_blank";
     titleLink.rel = "noopener noreferrer";
     titleLink.title = item.title;
-    titleLink.textContent = item.title;
+    titleLink.textContent = item.title_zh || item.title;
 
     const sourceCell = document.createElement("span");
     sourceCell.className = "feed-source";

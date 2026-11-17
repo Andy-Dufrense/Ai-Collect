@@ -301,7 +301,7 @@ cd ~/Desktop/Ai-Collect
 python3 -m unittest discover -s tests -v
 ```
 
-预期看到 `OK`。目前共有 33 项测试，会检查过滤、大小写、词边界、模拟 RSS、
+预期看到 `OK`。目前共有 39 项测试，会检查过滤、大小写、词边界、模拟 RSS、
 搜狗微信解析、手动录入、非法链接、分类字段、链接去重、抓取状态、工作进程
 心跳、跨进程抓取锁、时间范围筛选、关键词搜索、综合排名、首页渲染和非法
 查询参数，不依赖当前网络状态。
@@ -412,6 +412,7 @@ Flask，而是由 GitHub Actions 每 12 小时执行 Python 抓取，把结果�
 - `.github/workflows/ingest-approved-issue.yml`：处理审核通过的手动资讯
 - `.github/ISSUE_TEMPLATE/add-news.yml`：公众号、视频号、抖音提交表单
 - `public/index.html`、`public/app.js`：静态搜索、天数筛选与排行
+- `translation.py`：英文标题自动翻译和持久缓存
 - `scripts/github_update.py`：恢复历史数据、抓取和导出 JSON
 
 ### 1. 推送代码
@@ -456,6 +457,10 @@ https://Andy-Dufrense.github.io/Ai-Collect/
 ```
 
 之后 Actions 会在 UTC 00:00 和 12:00（北京时间 08:00 和 20:00）自动运行。
+
+英文标题会通过 MyMemory 免费翻译接口转换为简体中文，并缓存到
+`news.json`。同一标题不会重复翻译；接口限流时保留英文原文，不影响站点更新。
+搜索会同时匹配英文原标题和中文翻译。
 
 ### 4. 手动提交资讯
 
