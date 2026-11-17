@@ -12,7 +12,7 @@ import logging
 import os
 import re
 import secrets
-from datetime import datetime, timedelta, timezone
+from datetime import date, datetime, timedelta, timezone
 from urllib.parse import urlparse
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
@@ -29,6 +29,7 @@ from database import (
     get_all_news,
     get_latest_fetch_run,
     get_last_fetch_time,
+    get_meta_value,
     get_news_count,
     get_worker_heartbeat,
     initialize_database,
@@ -178,10 +179,17 @@ def index():
         selected_days = 3
     if selected_days not in allowed_days:
         selected_days = 3
+    selected_date = request.args.get("date", "").strip()
+    if selected_date:
+        try:
+            date.fromisoformat(selected_date)
+        except ValueError:
+            selected_date = ""
     ranked_news = filter_and_rank_news(
         all_news_items,
         days=selected_days,
         keyword=keyword,
+        specific_date=selected_date,
     )
 
     # 手动抓取完成后，fetch 路由会通过 URL 参数带回简短统计信息。
@@ -213,6 +221,7 @@ def index():
         total_count=get_news_count(),
         keyword=keyword,
         selected_days=selected_days,
+        selected_date=selected_date,
         last_fetch_at=get_last_fetch_time(),
         last_fetch_run=latest_fetch_run,
         fetch_error_messages=[
@@ -220,6 +229,7 @@ def index():
             for error in (latest_fetch_run or {}).get("errors", [])
         ],
         auto_sync_online=_is_auto_sync_online(get_worker_heartbeat()),
+        next_auto_fetch_at=get_meta_value("next_auto_fetch_at"),
         auto_interval_minutes=max(
             1,
             round(AUTO_FETCH_INTERVAL_SECONDS / 60),

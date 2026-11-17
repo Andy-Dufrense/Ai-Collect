@@ -73,6 +73,26 @@ class RankingTests(unittest.TestCase):
         self.assertEqual(len(ranked), 1)
         self.assertEqual(ranked[0]["title"], "AI 音乐工具发布")
 
+    def test_specific_date_overrides_relative_time_range(self) -> None:
+        items = [
+            make_item(
+                "当天 AI 音乐资讯",
+                publish_time="2026-11-15T08:00:00+00:00",
+            ),
+            make_item(
+                "今天 AI 吉他资讯",
+                publish_time="2026-11-17T08:00:00+00:00",
+            ),
+        ]
+        ranked = filter_and_rank_news(
+            items,
+            days=3,
+            specific_date="2026-11-15",
+            now=self.now,
+        )
+        self.assertEqual(len(ranked), 1)
+        self.assertEqual(ranked[0]["title"], "当天 AI 音乐资讯")
+
     def test_newer_relevant_item_usually_ranks_first(self) -> None:
         items = [
             make_item(

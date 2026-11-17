@@ -35,18 +35,16 @@ def is_probably_english(text: str) -> bool:
     return latin_count >= 10 and cjk_count < 2
 
 
-def is_translatable_title(text: str) -> bool:
-    """避免把纯数字、链接或极短英文产品缩写送去翻译。"""
-
-    return is_probably_english(text) and len(text) <= 400
-
-
 def translate_title(
     text: str,
     *,
     session: requests.Session | None = None,
 ) -> str | None:
-    """把一个英文标题翻译成简体中文，失败时返回 None。"""
+    """
+    把一个英文标题翻译成简体中文。
+
+    网络失败、接口限流或返回异常时返回 None，由调用方保留英文原文。
+    """
 
     if not is_translatable_title(text):
         return None
@@ -81,6 +79,12 @@ def translate_title(
             http.close()
 
 
+def is_translatable_title(text: str) -> bool:
+    """避免把纯数字、链接或极短英文产品缩写送去翻译。"""
+
+    return is_probably_english(text) and len(text) <= 400
+
+
 def load_translation_cache(
     existing_items: Iterable[Mapping[str, Any]],
 ) -> dict[str, str]:
@@ -90,7 +94,7 @@ def load_translation_cache(
     for item in existing_items:
         key = str(item.get("dedupe_key") or item.get("link") or "")
         translated = str(item.get("title_zh") or "").strip()
-        if key and translated:
+        if key and translated and translated.casefold() != "none":
             cache[key] = translated
     return cache
 
@@ -101,7 +105,9 @@ def translate_items(
     existing_items: Iterable[Mapping[str, Any]] = (),
     enabled: bool | None = None,
 ) -> int:
-    """为英文标题增加 title_zh 字段，返回本轮新翻译数量。"""
+    """
+    为英文标题增加 title_zh 字段，返回本轮新翻译数量。
+    """
 
     should_translate = TRANSLATION_ENABLED if enabled is None else enabled
     if not should_translate:
@@ -114,6 +120,8 @@ def translate_items(
         for item in items:
             title = str(item.get("title", "")).strip()
             key = str(item.get("dedupe_key") or item.get("link") or "")
+            if str(item.get("title_zh") or "").strip().casefold() == "none":
+                item["title_zh"] = ""
             if not title or not key:
                 continue
             if key in cache:

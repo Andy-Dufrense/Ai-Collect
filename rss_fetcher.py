@@ -43,6 +43,7 @@ from config import (
     get_fetch_lock_path,
 )
 from database import (
+    get_all_news,
     get_meta_value,
     initialize_database,
     record_fetch_run,
@@ -51,6 +52,7 @@ from database import (
 )
 from news_filter import is_relevant_news
 from sogou_wechat import fetch_sogou_query
+from translation import translate_items
 
 
 LOGGER = logging.getLogger(__name__)
@@ -424,6 +426,7 @@ def fetch_one_source(
             or not is_relevant_news(
                 title,
                 summary,
+                category=category,
             )
         ):
             continue
@@ -616,6 +619,22 @@ def _fetch_and_save_news_unlocked() -> FetchResult:
     # 所有命中条目最后一次性入库。即使多个源含有相同链接，
     # 数据库的 UNIQUE 索引也会自动完成第二轮去重。
     new_count = save_news_items(all_matched_items, fetched_at)
+
+    # 本地网页与 GitHub Pages 共用中文标题缓存。后台会补齐历史英文标题，
+    # 已有 title_zh 不重复调用翻译接口。
+    try:
+        stored_items = get_all_news()
+        translated_count = translate_items(
+            stored_items,
+            existing_items=stored_items,
+        )
+        if translated_count:
+            save_news_items(stored_items, fetched_at)
+            LOGGER.info("新增中文标题翻译：%d 条", translated_count)
+    except Exception:
+        # 翻译服务故障不应影响资讯抓取和已有数据。
+        LOGGER.exception("中文标题翻译失败，保留英文原标题")
+
     result = FetchResult(
         fetched_at=fetched_at,
         source_count=len(RSS_SOURCES) + sogou_attempted,

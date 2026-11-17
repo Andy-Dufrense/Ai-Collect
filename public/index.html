@@ -49,7 +49,10 @@
                         <option value="0">全部时间</option>
                     </select>
                 </label>
-                <button type="submit" class="primary-button">筛选</button>
+                <label class="date-field">
+                    <span>指定日期</span>
+                    <input id="specific-date" name="date" type="date">
+                </label>
                 <a class="reset-link" href="./">重置</a>
             </form>
             <div class="control-actions">
@@ -62,14 +65,8 @@
             </div>
         </section>
 
-        <details class="diagnostic-note" id="diagnostic" hidden>
-            <summary id="diagnostic-summary">最近一轮抓取存在来源异常</summary>
-            <ul id="diagnostic-errors"></ul>
-        </details>
-
         <div class="result-toolbar">
             <span id="result-summary">正在加载...</span>
-            <span class="score-legend">综合分 = 相关度 × 50% + 热度 × 30% + 新鲜度 × 20%</span>
         </div>
 
         <section class="news-feed" aria-label="资讯排行">
@@ -77,12 +74,16 @@
                 <span>#</span>
                 <span>标题</span>
                 <span>来源</span>
-                <span>相关</span>
-                <span>热度</span>
                 <span>发布时间</span>
             </div>
             <div id="news-list"></div>
         </section>
+        <div class="load-more-wrap">
+            <button type="button" class="load-more-button" id="load-more">
+                显示更多
+            </button>
+            <span id="load-status"></span>
+        </div>
 
         <section class="empty-state" id="empty-state" hidden>
             <p class="empty-code">NO MATCHED SIGNAL</p>

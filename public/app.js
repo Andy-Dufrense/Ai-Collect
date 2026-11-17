@@ -7,11 +7,14 @@ const state = {
     items: [],
     generatedAt: null,
     lastRun: null,
+    visibleCount: 20,
 };
+const PAGE_SIZE = 20;
 
 const elements = {
     keyword: document.querySelector("#keyword"),
     days: document.querySelector("#days"),
+    specificDate: document.querySelector("#specific-date"),
     filterForm: document.querySelector("#filter-form"),
     list: document.querySelector("#news-list"),
     empty: document.querySelector("#empty-state"),
@@ -20,9 +23,8 @@ const elements = {
     generatedAt: document.querySelector("#generated-at"),
     syncState: document.querySelector("#sync-state"),
     syncText: document.querySelector("#sync-text"),
-    diagnostic: document.querySelector("#diagnostic"),
-    diagnosticSummary: document.querySelector("#diagnostic-summary"),
-    diagnosticErrors: document.querySelector("#diagnostic-errors"),
+    loadMore: document.querySelector("#load-more"),
+    loadStatus: document.querySelector("#load-status"),
 };
 
 function formatTime(value) {
@@ -40,6 +42,24 @@ function formatTime(value) {
     }).format(date);
 }
 
+function nextScheduledRefresh() {
+    const now = new Date();
+    const candidates = [];
+    for (let offset = 0; offset <= 1; offset += 1) {
+        const midnight = new Date(Date.UTC(
+            now.getUTCFullYear(),
+            now.getUTCMonth(),
+            now.getUTCDate() + offset,
+            0,
+            0,
+            0
+        ));
+        candidates.push(midnight);
+        candidates.push(new Date(midnight.getTime() + 12 * 3600000));
+    }
+    return candidates.find((candidate) => candidate > now) || candidates.at(-1);
+}
+
 function recencyScore(publishTime, now) {
     if (!publishTime) return 0;
     const published = new Date(publishTime);
@@ -50,6 +70,7 @@ function recencyScore(publishTime, now) {
 
 function rankItems() {
     const days = Number(elements.days.value);
+    const specificDate = elements.specificDate.value;
     const terms = elements.keyword.value
         .toLocaleLowerCase()
         .split(/\s+/)
@@ -62,7 +83,14 @@ function rankItems() {
             const publishTimestamp = item.publish_time
                 ? new Date(item.publish_time).getTime()
                 : NaN;
-            if (cutoff !== null) {
+            if (specificDate) {
+                if (
+                    Number.isNaN(publishTimestamp)
+                    || shanghaiDate(item.publish_time) !== specificDate
+                ) {
+                    return false;
+                }
+            } else if (cutoff !== null) {
                 if (Number.isNaN(publishTimestamp) || publishTimestamp < cutoff) {
                     return false;
                 }
@@ -96,6 +124,19 @@ function rankItems() {
         });
 }
 
+function shanghaiDate(value) {
+    const date = new Date(value);
+    if (Number.isNaN(date.getTime())) return "";
+    const parts = new Intl.DateTimeFormat("en-US", {
+        timeZone: "Asia/Shanghai",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+    }).formatToParts(date);
+    const part = (type) => parts.find((entry) => entry.type === type)?.value;
+    return `${part("year")}-${part("month")}-${part("day")}`;
+}
+
 function createCell(className, text) {
     const element = document.createElement("span");
     element.className = className;
@@ -117,7 +158,10 @@ function renderRow(item, rank) {
     titleLink.target = "_blank";
     titleLink.rel = "noopener noreferrer";
     titleLink.title = item.title;
-    titleLink.textContent = item.title_zh || item.title;
+    const displayTitle = item.title_zh && item.title_zh !== "None"
+        ? item.title_zh
+        : item.title;
+    titleLink.textContent = displayTitle;
 
     const sourceCell = document.createElement("span");
     sourceCell.className = "feed-source";
@@ -125,8 +169,6 @@ function renderRow(item, rank) {
     const sourceName = createCell("source-name", item.source || "未知来源");
     sourceCell.append(category, sourceName);
 
-    const relevance = createCell("metric", String(item.relevance_score));
-    const heat = createCell("metric", String(item.heat_score));
     const publishTime = document.createElement("time");
     publishTime.className = "publish-time";
     publishTime.dateTime = item.publish_time || "";
@@ -136,8 +178,6 @@ function renderRow(item, rank) {
         rankCell,
         titleLink,
         sourceCell,
-        relevance,
-        heat,
         publishTime
     );
     return row;
@@ -145,32 +185,25 @@ function renderRow(item, rank) {
 
 function render() {
     const ranked = rankItems();
+    const visibleItems = ranked.slice(0, state.visibleCount);
     elements.list.replaceChildren();
-    ranked.forEach((item, index) => {
+    visibleItems.forEach((item, index) => {
         elements.list.append(renderRow(item, index + 1));
     });
 
     elements.empty.hidden = ranked.length > 0;
     const days = Number(elements.days.value);
+    const specificDate = elements.specificDate.value;
     const keyword = elements.keyword.value.trim();
     elements.summary.textContent = [
         `${ranked.length} 条结果`,
-        days ? `最近 ${days} 天` : "全部时间",
+        specificDate || (days ? `最近 ${days} 天` : "全部时间"),
         keyword ? `关键词“${keyword}”` : "",
     ].filter(Boolean).join(" · ");
-}
-
-function renderDiagnostics() {
-    const lastRun = state.lastRun;
-    if (!lastRun || !lastRun.failed_sources || !lastRun.errors?.length) return;
-    elements.diagnostic.hidden = false;
-    elements.diagnosticSummary.textContent = `来源状态：${lastRun.successful_sources}/${lastRun.source_count} 成功`;
-    elements.diagnosticErrors.replaceChildren();
-    lastRun.errors.forEach((error) => {
-        const item = document.createElement("li");
-        item.textContent = error;
-        elements.diagnosticErrors.append(item);
-    });
+    elements.loadMore.hidden = visibleItems.length >= ranked.length;
+    elements.loadStatus.textContent = ranked.length
+        ? `已显示 ${visibleItems.length} / ${ranked.length} 条`
+        : "";
 }
 
 async function loadData() {
@@ -185,8 +218,8 @@ async function loadData() {
         elements.total.textContent = String(payload.total ?? state.items.length);
         elements.generatedAt.textContent = formatTime(payload.generated_at);
         elements.syncState.className = "sync-state online";
-        elements.syncText.textContent = "Actions 自动更新 · 12 小时";
-        renderDiagnostics();
+        elements.syncText.textContent =
+            `Actions 自动更新 · 下次 ${formatTime(nextScheduledRefresh().toISOString())}`;
         render();
     } catch (error) {
         elements.syncState.className = "sync-state offline";
@@ -198,9 +231,25 @@ async function loadData() {
 
 elements.filterForm.addEventListener("submit", (event) => {
     event.preventDefault();
+    state.visibleCount = PAGE_SIZE;
     render();
 });
-elements.days.addEventListener("change", render);
-elements.keyword.addEventListener("input", render);
+elements.days.addEventListener("change", () => {
+    elements.specificDate.value = "";
+    state.visibleCount = PAGE_SIZE;
+    render();
+});
+elements.specificDate.addEventListener("change", () => {
+    state.visibleCount = PAGE_SIZE;
+    render();
+});
+elements.keyword.addEventListener("input", () => {
+    state.visibleCount = PAGE_SIZE;
+    render();
+});
+elements.loadMore.addEventListener("click", () => {
+    state.visibleCount += PAGE_SIZE;
+    render();
+});
 
 loadData();

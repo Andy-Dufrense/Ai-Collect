@@ -11,7 +11,160 @@ from __future__ import annotations
 import re
 from collections.abc import Iterable
 
-from config import AI_KEYWORDS, MUSIC_KEYWORDS
+from config import AI_KEYWORDS, MUSIC_KEYWORDS, TECH_KEYWORDS
+
+
+SOFTWARE_SIGNAL_KEYWORDS = (
+    "软件",
+    "应用",
+    "工具",
+    "平台",
+    "功能",
+    "更新",
+    "插件",
+    "工作流",
+    "接口",
+    "模型",
+    "算法",
+    "生成",
+    "编曲",
+    "混音",
+    "母带",
+    "分轨",
+    "调音",
+    "音色",
+    "合成器",
+    "效果器",
+    "音效",
+    "教程",
+    "攻略",
+    "体验",
+    "玩法",
+    "开发",
+    "实现",
+    "software",
+    "application",
+    "app",
+    "tool",
+    "plugin",
+    "plugins",
+    "platform",
+    "feature",
+    "update",
+    "workflow",
+    "connector",
+    "integration",
+    "api",
+    "model",
+    "algorithm",
+    "generate",
+    "generation",
+    "editing",
+    "mixing",
+    "mastering",
+    "stems",
+    "midi",
+    "daw",
+    "synthesizer",
+    "effect",
+    "effects",
+    "processor",
+    "reverb",
+    "modulation",
+    "sequencer",
+    "looper",
+    "sampler",
+    "virtual instrument",
+    "logic pro",
+    "ableton",
+    "dsp",
+    "sound design",
+    "tutorial",
+    "how to",
+    "production",
+    "composition",
+    "developer",
+)
+
+GOSSIP_OR_BUSINESS_NOISE = (
+    "卸任",
+    "离职",
+    "上任",
+    "任命",
+    "接任",
+    "辞职",
+    "跳槽",
+    "诉讼",
+    "起诉",
+    "被诉",
+    "和解",
+    "版权纠纷",
+    "收购",
+    "融资",
+    "估值",
+    "股价",
+    "财报",
+    "裁员",
+    "格莱美",
+    "巡演",
+    "演唱会",
+    "致敬",
+    "纪念",
+    "去世",
+    "逝世",
+    "八卦",
+    "绯闻",
+    "榜单",
+    "优惠",
+    "折扣",
+    "降价",
+    "促销",
+    "表示",
+    "认为",
+    "回应争议",
+    "steps down",
+    "resign",
+    "appointed",
+    "appointment",
+    "lawsuit",
+    "sues",
+    "sued",
+    "settlement",
+    "copyright dispute",
+    "acquisition",
+    "acquires",
+    "funding",
+    "raises",
+    "valuation",
+    "earnings",
+    "layoffs",
+    "chairman",
+    "ceo",
+    "executive",
+    "grammy",
+    "tour",
+    "concert",
+    "tribute",
+    "quiz",
+    "obituary",
+    "dies",
+    "dead",
+    "sale",
+    "discount",
+    "thinks",
+    "believes",
+    "criticizes",
+    "slams",
+)
+
+MANUAL_CATEGORIES = {"微信公众号", "微信视频号", "抖音", "其他"}
+TRUSTED_SOURCE_CATEGORIES = {
+    "国内科技",
+    "国际科技",
+    "音乐科技",
+    "搜狗微信",
+    "授权 RSS",
+}
 
 
 def _normalize_text(value: str) -> str:
@@ -53,17 +206,43 @@ def find_matched_keywords(
 
 def is_relevant_news(
     *text_parts: str,
+    category: str = "",
 ) -> bool:
     """
     判断一条资讯是否属于 AI、音乐或乐器相关领域。
 
     传入的多个文本片段（通常是标题和简介）会先合并再判断。
     标题命中了 AI、简介命中了音乐，同样算同时满足条件。
-    两类关键词采用并集，只要命中 AI 或音乐/乐器之一即可收录；
-    同时命中两类的文章会在 ranking.py 中获得更高的相关度加权。
+    编辑规则：
+    - AI、技术、音乐或乐器命中任一类即可收录；
+    - 高管、诉讼、融资、明星、巡演、购物和纯观点等噪音排除；
+    - 用户手动提交的分类直接保留。
     """
 
     combined_text = _normalize_text(" ".join(part for part in text_parts if part))
     has_ai_keyword = bool(find_matched_keywords(combined_text, AI_KEYWORDS))
     has_music_keyword = bool(find_matched_keywords(combined_text, MUSIC_KEYWORDS))
-    return has_ai_keyword or has_music_keyword
+    has_software_signal = bool(
+        find_matched_keywords(combined_text, SOFTWARE_SIGNAL_KEYWORDS)
+    )
+    has_tech_keyword = bool(find_matched_keywords(combined_text, TECH_KEYWORDS))
+
+    if category in MANUAL_CATEGORIES:
+        return True
+
+    # 噪音词只检查标题。简介中顺带提到诉讼或融资不应错误删除技术文章。
+    title_text = _normalize_text(" ".join(text_parts[:1]))
+    if find_matched_keywords(title_text, GOSSIP_OR_BUSINESS_NOISE):
+        return False
+
+    # 已审核的内置来源本身就是科技或音乐垂类，不再要求每篇重复出现
+    # “技术/音乐”关键词；只通过标题噪音规则排除八卦和商业杂讯。
+    if category in TRUSTED_SOURCE_CATEGORIES:
+        return True
+
+    return (
+        has_ai_keyword
+        or has_tech_keyword
+        or has_music_keyword
+        or has_software_signal
+    )

@@ -16,12 +16,14 @@ import logging
 import signal
 import threading
 from collections.abc import Callable
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 from config import AUTO_FETCH_INTERVAL_SECONDS, AUTO_FETCH_RETRY_SECONDS
 from database import (
+    clear_meta_value,
     clear_worker_heartbeat,
     initialize_database,
+    set_meta_value,
     set_worker_heartbeat,
 )
 from rss_fetcher import FetchAlreadyRunningError, FetchResult, fetch_and_save_news
@@ -113,9 +115,18 @@ def run_forever(
             else:
                 wait_seconds = AUTO_FETCH_INTERVAL_SECONDS
 
+            set_meta_value(
+                "next_auto_fetch_at",
+                (
+                    datetime.now(timezone.utc)
+                    + timedelta(seconds=wait_seconds)
+                )
+                .isoformat(timespec="seconds"),
+            )
             if STOP_EVENT.wait(wait_seconds):
                 break
     finally:
+        clear_meta_value("next_auto_fetch_at")
         clear_worker_heartbeat()
         LOGGER.info("自动抓取进程已退出")
 

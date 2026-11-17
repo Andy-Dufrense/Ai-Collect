@@ -21,8 +21,8 @@ SOGOU_HTML = """
       </li>
       <li>
         <div class="txt-box">
-          <h3><a href="/link?url=irrelevant">本周普通产品更新</a></h3>
-          <p class="txt-info">本周普通产品更新详情。</p>
+          <h3><a href="/link?url=irrelevant">今日天气与晚餐建议</a></h3>
+          <p class="txt-info">周末天气和家常菜介绍。</p>
           <a class="account">科技日报</a>
           <span class="s2"><script>document.write(timeConvert('1763280000'))</script></span>
         </div>

@@ -28,7 +28,8 @@ CREATE TABLE IF NOT EXISTS news (
     publish_time TEXT,
     summary TEXT NOT NULL DEFAULT '',
     category TEXT NOT NULL DEFAULT 'RSS',
-    dedupe_key TEXT
+    dedupe_key TEXT,
+    title_zh TEXT
 );
 
 CREATE UNIQUE INDEX IF NOT EXISTS idx_news_link_unique
@@ -97,6 +98,8 @@ def initialize_database() -> None:
             )
         if "dedupe_key" not in columns:
             connection.execute("ALTER TABLE news ADD COLUMN dedupe_key TEXT")
+        if "title_zh" not in columns:
+            connection.execute("ALTER TABLE news ADD COLUMN title_zh TEXT")
         connection.execute(
             "UPDATE news SET dedupe_key = link "
             "WHERE dedupe_key IS NULL OR dedupe_key = ''"
@@ -146,6 +149,12 @@ def save_news_items(
                 publish_time = None
             category = str(item.get("category", "")).strip() or "RSS"
             dedupe_key = str(item.get("dedupe_key", "")).strip() or link
+            raw_title_zh = item.get("title_zh")
+            title_zh = (
+                str(raw_title_zh).strip() if raw_title_zh is not None else None
+            )
+            if not title_zh or title_zh.casefold() == "none":
+                title_zh = None
 
             # 标题、链接和来源是有效资讯的最低要求，缺失时直接跳过。
             if not title or not link or not source:
@@ -161,10 +170,11 @@ def save_news_items(
                         publish_time,
                         summary,
                         category,
-                        dedupe_key
+                        dedupe_key,
+                        title_zh
                     )
                 VALUES
-                    (?, ?, ?, ?, ?, ?, ?)
+                    (?, ?, ?, ?, ?, ?, ?, ?)
                 """,
                 (
                     title,
@@ -174,6 +184,7 @@ def save_news_items(
                     summary,
                     category,
                     dedupe_key,
+                    title_zh,
                 ),
             )
             inserted_count += cursor.rowcount
@@ -188,7 +199,8 @@ def save_news_items(
                         source = ?,
                         publish_time = COALESCE(?, publish_time),
                         summary = ?,
-                        category = ?
+                        category = ?,
+                        title_zh = COALESCE(?, title_zh)
                     WHERE dedupe_key = ?
                     """,
                     (
@@ -198,6 +210,7 @@ def save_news_items(
                         publish_time,
                         summary,
                         category,
+                        title_zh,
                         dedupe_key,
                     ),
                 )
@@ -235,7 +248,8 @@ def get_all_news() -> list[dict[str, Any]]:
                 publish_time,
                 summary,
                 category,
-                dedupe_key
+                dedupe_key,
+                title_zh
             FROM news
             ORDER BY
                 CASE WHEN publish_time IS NULL OR publish_time = '' THEN 1 ELSE 0 END,
@@ -419,4 +433,12 @@ def set_meta_value(key: str, value: str) -> None:
             """,
             (key, value),
         )
+        connection.commit()
+
+
+def clear_meta_value(key: str) -> None:
+    """删除一条运行状态，例如工作进程退出时清除下次刷新时间。"""
+
+    with get_connection() as connection:
+        connection.execute("DELETE FROM app_meta WHERE meta_key = ?", (key,))
         connection.commit()

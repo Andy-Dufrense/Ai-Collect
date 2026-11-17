@@ -8,10 +8,11 @@
 from __future__ import annotations
 
 from collections.abc import Iterable
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 from typing import Any
+from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
-from config import AI_KEYWORDS, MUSIC_KEYWORDS
+from config import AI_KEYWORDS, DISPLAY_TIME_ZONE, MUSIC_KEYWORDS, TECH_KEYWORDS
 from news_filter import find_matched_keywords
 
 
@@ -77,21 +78,26 @@ def _relevance_score(item: dict[str, Any]) -> int:
     """根据关键词覆盖和标题命中位置计算 0-100 的相关度。"""
 
     title = str(item.get("title", ""))
+    title_zh = str(item.get("title_zh", ""))
     summary = str(item.get("summary", ""))
-    combined = f"{title} {summary}"
+    combined = f"{title} {title_zh} {summary}"
     ai_matches = find_matched_keywords(combined, AI_KEYWORDS)
     music_matches = find_matched_keywords(combined, MUSIC_KEYWORDS)
-    title_ai = find_matched_keywords(title, AI_KEYWORDS)
-    title_music = find_matched_keywords(title, MUSIC_KEYWORDS)
+    tech_matches = find_matched_keywords(combined, TECH_KEYWORDS)
+    title_ai = find_matched_keywords(f"{title} {title_zh}", AI_KEYWORDS)
+    title_music = find_matched_keywords(f"{title} {title_zh}", MUSIC_KEYWORDS)
+    title_tech = find_matched_keywords(f"{title} {title_zh}", TECH_KEYWORDS)
 
     score = 15
     score += min(len(ai_matches), 3) * 10
     score += min(len(music_matches), 3) * 10
+    score += min(len(tech_matches), 2) * 6
     if ai_matches and music_matches:
         # AI + 音乐/乐器交叉命中是本项目的核心目标，给予明显加权。
         score += 25
     score += min(len(title_ai), 2) * 8
     score += min(len(title_music), 2) * 8
+    score += min(len(title_tech), 2) * 5
     return min(100, score)
 
 
@@ -121,11 +127,13 @@ def filter_and_rank_news(
     *,
     days: int = 3,
     keyword: str = "",
+    specific_date: str = "",
     now: datetime | None = None,
 ) -> list[dict[str, Any]]:
     """
     按时间范围和关键词过滤，再计算综合排行。
 
+    specific_date 为 YYYY-MM-DD 时只筛选本地时区的那一天，并忽略 days。
     days=0 表示全部时间。关键词使用不区分大小写的包含匹配；
     多个空格分隔的词必须同时出现。
     """
@@ -136,16 +144,36 @@ def filter_and_rank_news(
     )
     search_terms = [term.casefold() for term in keyword.split() if term.strip()]
     ranked_items: list[dict[str, Any]] = []
+    target_date: date | None = None
+    if specific_date:
+        try:
+            target_date = date.fromisoformat(specific_date)
+        except ValueError:
+            target_date = None
+    try:
+        display_time_zone = ZoneInfo(DISPLAY_TIME_ZONE)
+    except ZoneInfoNotFoundError:
+        display_time_zone = ZoneInfo("Asia/Shanghai")
 
     for original_item in items:
         item = dict(original_item)
         publish_time = _parse_utc(item.get("publish_time"))
+        if target_date is not None:
+            if (
+                publish_time is None
+                or publish_time.astimezone(display_time_zone).date()
+                != target_date
+            ):
+                continue
         if cutoff is not None:
-            if publish_time is None or publish_time.timestamp() < cutoff:
+            if target_date is not None:
+                pass
+            elif publish_time is None or publish_time.timestamp() < cutoff:
                 continue
 
         searchable = (
-            f"{item.get('title', '')} {item.get('summary', '')}".casefold()
+            f"{item.get('title', '')} {item.get('title_zh', '')} "
+            f"{item.get('summary', '')}".casefold()
         )
         if any(term not in searchable for term in search_terms):
             continue

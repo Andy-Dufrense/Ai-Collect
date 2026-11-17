@@ -41,9 +41,9 @@ TEST_RSS = """<?xml version="1.0" encoding="UTF-8"?>
       <description>这是一条与本周消费市场有关的普通新闻。</description>
     </item>
     <item>
-      <title>普通手机产品发布</title>
-      <link>https://example.com/phone</link>
-      <description>本次介绍手机外观和电池容量。</description>
+      <title>今日天气与晚餐建议</title>
+      <link>https://example.com/lifestyle</link>
+      <description>本次介绍周末天气和家常菜。</description>
     </item>
   </channel>
 </rss>

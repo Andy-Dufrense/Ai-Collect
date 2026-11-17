@@ -10,7 +10,7 @@ from __future__ import annotations
 import os
 import tempfile
 import unittest
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from unittest.mock import patch
 
@@ -54,18 +54,60 @@ class NewsFilterTests(unittest.TestCase):
     def test_ai_and_music_can_appear_in_different_fields(self) -> None:
         self.assertTrue(is_relevant_news("大模型新进展", "可用于实时编曲"))
 
-    def test_accepts_news_with_only_one_category(self) -> None:
+    def test_technical_content_is_accepted_but_noise_is_rejected(self) -> None:
         self.assertTrue(is_relevant_news("AI 芯片销量创新高", "半导体行业资讯"))
-        self.assertTrue(is_relevant_news("本周热门音乐榜单", "多位歌手发布新歌"))
+        self.assertFalse(is_relevant_news("本周热门音乐榜单", "多位歌手发布新歌"))
 
     def test_does_not_treat_letters_inside_english_word_as_ai(self) -> None:
-        self.assertFalse(is_relevant_news("Daily news about technology", "普通行业晨报"))
+        self.assertFalse(is_relevant_news("Daily news about cooking", "普通生活晨报"))
 
-    def test_ai_audio_feature_is_now_supported(self) -> None:
+    def test_ai_hardware_is_accepted_as_technology(self) -> None:
         self.assertTrue(
             is_relevant_news(
                 "AI 智能主机发布",
                 "设备支持音频播放、蓝牙连接和会议纪要功能。",
+            )
+        )
+
+    def test_music_software_is_relevant(self) -> None:
+        self.assertTrue(
+            is_relevant_news(
+                "AI 音乐编曲插件更新",
+                "新增生成式分轨和音色编辑功能。",
+            )
+        )
+
+    def test_ai_music_software_from_vertical_media_is_relevant(self) -> None:
+        self.assertTrue(
+            is_relevant_news(
+                "Logic Pro 13 adds intelligent assistant workflow",
+                "A DAW update with new editing features.",
+                category="音乐科技",
+            )
+        )
+        self.assertTrue(
+            is_relevant_news(
+                "Suno launches Bridge for Ableton Live",
+                "AI stems now sync into production projects.",
+                category="音乐科技",
+            )
+        )
+
+    def test_executive_and_artist_gossip_is_rejected(self) -> None:
+        self.assertFalse(
+            is_relevant_news(
+                "唱片公司 CEO 卸任",
+                "音乐行业高管变动。",
+                category="音乐科技",
+            )
+        )
+
+    def test_manual_category_is_always_kept(self) -> None:
+        self.assertTrue(
+            is_relevant_news(
+                "一首歌曲",
+                "普通音乐内容",
+                category="微信公众号",
             )
         )
 
@@ -224,6 +266,23 @@ class DatabaseTests(unittest.TestCase):
         )
         self.assertIsNone(get_all_news()[0]["publish_time"])
 
+    def test_none_translated_title_is_saved_as_null(self) -> None:
+        fetched_at = datetime(2026, 11, 17, 8, 0, tzinfo=timezone.utc)
+        save_news_items(
+            [
+                {
+                    "title": "AI music news",
+                    "title_zh": None,
+                    "link": "https://example.com/no-translation",
+                    "source": "测试源",
+                    "publish_time": "2026-11-17T07:00:00+00:00",
+                    "summary": "测试",
+                }
+            ],
+            fetched_at,
+        )
+        self.assertIsNone(get_all_news()[0]["title_zh"])
+
 
 class FlaskPageTests(unittest.TestCase):
     """验证首页能读取数据库并渲染新闻卡片。"""
@@ -264,6 +323,8 @@ class FlaskPageTests(unittest.TestCase):
         self.assertIn("AI 吉他音色分析", page)
         self.assertIn("测试源", page)
         self.assertIn("总收录", page)
+        self.assertIn('id="filter-form"', page)
+        self.assertIn("显示更多", page)
 
     def test_index_shows_auto_sync_when_heartbeat_is_fresh(self) -> None:
         set_worker_heartbeat(datetime.now(timezone.utc))
@@ -275,22 +336,13 @@ class FlaskPageTests(unittest.TestCase):
         self.assertIn("自动同步中", page)
 
     def test_page_redacts_proxy_credentials_in_error_summary(self) -> None:
-        record_fetch_run(
-            fetched_at=datetime(2026, 11, 16, 8, 0, tzinfo=timezone.utc),
-            source_count=1,
-            successful_sources=0,
-            total_entries=0,
-            matched_entries=0,
-            new_count=0,
-            errors=["ProxyError http://demo:secret@127.0.0.1:7890"],
-        )
-        from app import app
+        import app as app_module
 
-        response = app.test_client().get("/")
-        page = response.get_data(as_text=True)
-        self.assertEqual(response.status_code, 200)
-        self.assertIn("127.0.0.1:7890", page)
-        self.assertNotIn("demo:secret", page)
+        redacted = app_module._redact_error_text(
+            "ProxyError http://demo:secret@127.0.0.1:7890"
+        )
+        self.assertIn("127.0.0.1:7890", redacted)
+        self.assertNotIn("demo:secret", redacted)
 
     def test_manual_entry_is_saved_with_category(self) -> None:
         from app import app
@@ -324,6 +376,30 @@ class FlaskPageTests(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertIn("完整的 http", page)
         self.assertEqual(get_news_count(), 0)
+
+    def test_homepage_marks_only_first_twenty_rows_visible(self) -> None:
+        now = datetime.now(timezone.utc)
+        save_news_items(
+            [
+                {
+                    "title": f"AI 音乐技术资讯 {index}",
+                    "link": f"https://example.com/page-{index}",
+                    "source": "测试源",
+                    "publish_time": (
+                        now - timedelta(minutes=index)
+                    ).isoformat(timespec="seconds"),
+                    "summary": "音乐软件功能更新",
+                    "category": "音乐科技",
+                }
+                for index in range(25)
+            ],
+            now,
+        )
+        from app import app
+
+        page = app.test_client().get("/").get_data(as_text=True)
+        self.assertEqual(page.count('class="feed-row"'), 25)
+        self.assertEqual(page.count(" hidden>"), 5)
 
     def test_admin_routes_can_be_protected_by_basic_auth(self) -> None:
         import app as app_module
