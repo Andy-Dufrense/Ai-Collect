@@ -71,12 +71,25 @@ class GitHubDiscoveryTests(unittest.TestCase):
                         "committer": {"date": "2026-11-18T03:00:00Z"},
                     },
                 },
+                {
+                    "html_url": (
+                        "https://github.com/spam/proxy/commit/spam789"
+                    ),
+                    "repository": {"full_name": "spam/proxy"},
+                    "commit": {
+                        "message": (
+                            "美国海外住宅代理做直播与账号多开"
+                            " music update"
+                        ),
+                        "committer": {"date": "2026-11-18T02:00:00Z"},
+                    },
+                },
             ]
         }
 
         items, total, matched = parse_commit_search(payload)
 
-        self.assertEqual(total, 2)
+        self.assertEqual(total, 3)
         self.assertEqual(matched, 1)
         self.assertEqual(
             items[0]["title"],

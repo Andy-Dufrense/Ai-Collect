@@ -16,6 +16,11 @@ from typing import Any
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 from config import DISPLAY_TIME_ZONE, NEWS_RETENTION_DAYS, get_database_path
+from content_classifier import (
+    CONTENT_CLASSIFICATION_VERSION,
+    classify_content_flags,
+)
+from news_filter import is_github_spam_text
 
 
 # link 使用 UNIQUE 唯一索引，从数据库层面保证同一篇资讯不会重复入库。
@@ -30,7 +35,9 @@ CREATE TABLE IF NOT EXISTS news (
     summary TEXT NOT NULL DEFAULT '',
     category TEXT NOT NULL DEFAULT 'RSS',
     dedupe_key TEXT,
-    title_zh TEXT
+    title_zh TEXT,
+    is_hardware INTEGER NOT NULL DEFAULT 0,
+    is_software INTEGER NOT NULL DEFAULT 0
 );
 
 CREATE UNIQUE INDEX IF NOT EXISTS idx_news_link_unique
@@ -101,6 +108,16 @@ def initialize_database() -> None:
             connection.execute("ALTER TABLE news ADD COLUMN dedupe_key TEXT")
         if "title_zh" not in columns:
             connection.execute("ALTER TABLE news ADD COLUMN title_zh TEXT")
+        if "is_hardware" not in columns:
+            connection.execute(
+                "ALTER TABLE news "
+                "ADD COLUMN is_hardware INTEGER NOT NULL DEFAULT 0"
+            )
+        if "is_software" not in columns:
+            connection.execute(
+                "ALTER TABLE news "
+                "ADD COLUMN is_software INTEGER NOT NULL DEFAULT 0"
+            )
         connection.execute(
             "UPDATE news SET dedupe_key = link "
             "WHERE dedupe_key IS NULL OR dedupe_key = ''"
@@ -109,7 +126,98 @@ def initialize_database() -> None:
             "CREATE UNIQUE INDEX IF NOT EXISTS idx_news_dedupe_unique "
             "ON news(dedupe_key)"
         )
+        connection.execute(
+            "CREATE INDEX IF NOT EXISTS idx_news_content_flags "
+            "ON news(is_hardware, is_software, publish_time DESC)"
+        )
+        _purge_existing_github_spam(connection)
+        _backfill_content_classifications(connection)
         connection.commit()
+
+
+def _purge_existing_github_spam(connection: sqlite3.Connection) -> None:
+    """删除旧版本抓取时已经写入数据库的 GitHub 批量引流内容。"""
+
+    rows = connection.execute(
+        """
+        SELECT id, title, summary
+        FROM news
+        WHERE source LIKE 'GitHub%'
+        """
+    ).fetchall()
+    spam_ids = [
+        int(row["id"])
+        for row in rows
+        if is_github_spam_text(
+            f"{row['title'] or ''} {row['summary'] or ''}"
+        )
+    ]
+    if spam_ids:
+        placeholders = ",".join("?" for _ in spam_ids)
+        connection.execute(
+            f"DELETE FROM news WHERE id IN ({placeholders})",
+            spam_ids,
+        )
+
+
+def _backfill_content_classifications(
+    connection: sqlite3.Connection,
+) -> None:
+    """
+    给旧数据库和旧 JSON 导入的资讯补齐硬件/软件分类。
+
+    版本号保存在 app_meta 中，因此正常启动只检查一次，不会每次打开网页
+    都重新计算全部文章。以后修改分类规则时提升版本号即可自动重算。
+    """
+
+    version_row = connection.execute(
+        """
+        SELECT meta_value
+        FROM app_meta
+        WHERE meta_key = 'content_classification_version'
+        """
+    ).fetchone()
+    if (
+        version_row
+        and str(version_row["meta_value"]) == CONTENT_CLASSIFICATION_VERSION
+    ):
+        return
+
+    rows = connection.execute(
+        """
+        SELECT id, title, summary, category, source
+        FROM news
+        """
+    ).fetchall()
+    updates = []
+    for row in rows:
+        is_hardware, is_software = classify_content_flags(
+            str(row["title"] or ""),
+            str(row["summary"] or ""),
+            category=str(row["category"] or ""),
+            source=str(row["source"] or ""),
+        )
+        updates.append(
+            (int(is_hardware), int(is_software), int(row["id"]))
+        )
+    if updates:
+        connection.executemany(
+            """
+            UPDATE news
+            SET is_hardware = ?, is_software = ?
+            WHERE id = ?
+            """,
+            updates,
+        )
+
+    connection.execute(
+        """
+        INSERT INTO app_meta (meta_key, meta_value)
+        VALUES ('content_classification_version', ?)
+        ON CONFLICT(meta_key) DO UPDATE SET meta_value = excluded.meta_value
+        """,
+        (CONTENT_CLASSIFICATION_VERSION,),
+    )
 
 
 def _normalize_utc_datetime(value: datetime) -> datetime:
@@ -156,9 +264,19 @@ def save_news_items(
             )
             if not title_zh or title_zh.casefold() == "none":
                 title_zh = None
+            is_hardware, is_software = classify_content_flags(
+                title,
+                summary,
+                category=category,
+                source=source,
+            )
 
             # 标题、链接和来源是有效资讯的最低要求，缺失时直接跳过。
             if not title or not link or not source:
+                continue
+            if source.startswith("GitHub") and is_github_spam_text(
+                f"{title} {summary}"
+            ):
                 continue
 
             cursor = connection.execute(
@@ -172,10 +290,12 @@ def save_news_items(
                         summary,
                         category,
                         dedupe_key,
-                        title_zh
+                        title_zh,
+                        is_hardware,
+                        is_software
                     )
                 VALUES
-                    (?, ?, ?, ?, ?, ?, ?, ?)
+                    (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """,
                 (
                     title,
@@ -186,6 +306,8 @@ def save_news_items(
                     category,
                     dedupe_key,
                     title_zh,
+                    int(is_hardware),
+                    int(is_software),
                 ),
             )
             inserted_count += cursor.rowcount
@@ -201,7 +323,9 @@ def save_news_items(
                         publish_time = COALESCE(?, publish_time),
                         summary = ?,
                         category = ?,
-                        title_zh = COALESCE(?, title_zh)
+                        title_zh = COALESCE(?, title_zh),
+                        is_hardware = ?,
+                        is_software = ?
                     WHERE dedupe_key = ?
                     """,
                     (
@@ -212,6 +336,8 @@ def save_news_items(
                         summary,
                         category,
                         title_zh,
+                        int(is_hardware),
+                        int(is_software),
                         dedupe_key,
                     ),
                 )
@@ -250,7 +376,9 @@ def get_all_news() -> list[dict[str, Any]]:
                 summary,
                 category,
                 dedupe_key,
-                title_zh
+                title_zh,
+                is_hardware,
+                is_software
             FROM news
             ORDER BY
                 CASE WHEN publish_time IS NULL OR publish_time = '' THEN 1 ELSE 0 END,
@@ -258,7 +386,13 @@ def get_all_news() -> list[dict[str, Any]]:
                 id DESC
             """
         ).fetchall()
-    return [dict(row) for row in rows]
+    news_items: list[dict[str, Any]] = []
+    for row in rows:
+        item = dict(row)
+        item["is_hardware"] = bool(item["is_hardware"])
+        item["is_software"] = bool(item["is_software"])
+        news_items.append(item)
+    return news_items
 
 
 def get_news_count() -> int:

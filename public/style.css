@@ -193,6 +193,10 @@ a {
     min-width: 130px;
 }
 
+.kind-field select {
+    min-width: 120px;
+}
+
 .date-field input {
     min-width: 145px;
 }

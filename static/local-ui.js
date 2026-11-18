@@ -7,6 +7,7 @@
 const filterForm = document.querySelector("#filter-form");
 const daysFilter = document.querySelector("#days-filter");
 const dateFilter = document.querySelector("#date-filter");
+const contentKindFilter = document.querySelector("#content-kind-filter");
 const searchInput = document.querySelector(".search-field input");
 
 function submitFilters() {
@@ -18,6 +19,7 @@ daysFilter?.addEventListener("change", () => {
     submitFilters();
 });
 dateFilter?.addEventListener("change", submitFilters);
+contentKindFilter?.addEventListener("change", submitFilters);
 
 let searchTimer = null;
 searchInput?.addEventListener("input", () => {

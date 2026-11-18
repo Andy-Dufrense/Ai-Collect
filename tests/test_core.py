@@ -346,6 +346,56 @@ class DatabaseTests(unittest.TestCase):
         self.assertEqual(get_news_count(), 1)
         self.assertIn("token=new", get_all_news()[0]["link"])
 
+    def test_hardware_and_software_flags_are_saved(self) -> None:
+        fetched_at = datetime(2026, 11, 17, 8, 0, tzinfo=timezone.utc)
+        save_news_items(
+            [
+                {
+                    "title": "新型 MIDI 控制器硬件发布",
+                    "link": "https://example.com/content-hardware",
+                    "source": "测试源",
+                    "publish_time": "2026-11-17T07:00:00+00:00",
+                    "summary": "实体演奏设备。",
+                    "category": "音乐科技",
+                },
+                {
+                    "title": "AI 音乐制作插件更新",
+                    "link": "https://example.com/content-software",
+                    "source": "测试源",
+                    "publish_time": "2026-11-17T06:00:00+00:00",
+                    "summary": "新增编曲功能。",
+                    "category": "音乐科技",
+                },
+            ],
+            fetched_at,
+        )
+        by_title = {item["title"]: item for item in get_all_news()}
+        self.assertTrue(by_title["新型 MIDI 控制器硬件发布"]["is_hardware"])
+        self.assertFalse(by_title["新型 MIDI 控制器硬件发布"]["is_software"])
+        self.assertFalse(by_title["AI 音乐制作插件更新"]["is_hardware"])
+        self.assertTrue(by_title["AI 音乐制作插件更新"]["is_software"])
+
+    def test_github_spam_is_rejected_before_database_insert(self) -> None:
+        fetched_at = datetime(2026, 11, 17, 8, 0, tzinfo=timezone.utc)
+        inserted = save_news_items(
+            [
+                {
+                    "title": (
+                        "GitHub - 新更新：美国海外住宅代理做直播与账号多开"
+                        " music update"
+                    ),
+                    "link": "https://github.com/spam/proxy/commit/1",
+                    "source": "GitHub · spam/proxy",
+                    "publish_time": "2026-11-17T07:00:00+00:00",
+                    "summary": "批量引流广告",
+                    "category": "AI音频开发",
+                }
+            ],
+            fetched_at,
+        )
+        self.assertEqual(inserted, 0)
+        self.assertEqual(get_news_count(), 0)
+
     def test_none_publish_time_is_saved_as_null(self) -> None:
         fetched_at = datetime(2026, 11, 17, 8, 0, tzinfo=timezone.utc)
         save_news_items(
@@ -484,9 +534,45 @@ class FlaskPageTests(unittest.TestCase):
         )
         from app import app
 
-        page = app.test_client().get("/").get_data(as_text=True)
+        page = app.test_client().get("/?kind=software").get_data(as_text=True)
         self.assertEqual(page.count('class="feed-row"'), 20)
         self.assertIn("下一页", page)
+        self.assertIn("kind=software", page)
+
+    def test_content_kind_filter_only_returns_selected_type(self) -> None:
+        now = datetime.now(timezone.utc)
+        save_news_items(
+            [
+                {
+                    "title": "新型合成器硬件发布",
+                    "link": "https://example.com/hardware-only",
+                    "source": "测试源",
+                    "publish_time": now.isoformat(timespec="seconds"),
+                    "summary": "独立硬件合成器。",
+                    "category": "音乐科技",
+                },
+                {
+                    "title": "AI 音乐编曲插件更新",
+                    "link": "https://example.com/software-only",
+                    "source": "测试源",
+                    "publish_time": now.isoformat(timespec="seconds"),
+                    "summary": "软件功能更新。",
+                    "category": "音乐科技",
+                },
+            ],
+            now,
+        )
+        from app import app
+
+        client = app.test_client()
+        hardware_page = client.get("/?days=3&kind=hardware").get_data(as_text=True)
+        software_page = client.get("/?days=3&kind=software").get_data(as_text=True)
+
+        self.assertIn('name="kind"', hardware_page)
+        self.assertIn("新型合成器硬件发布", hardware_page)
+        self.assertNotIn("AI 音乐编曲插件更新", hardware_page)
+        self.assertIn("AI 音乐编曲插件更新", software_page)
+        self.assertNotIn("新型合成器硬件发布", software_page)
 
     def test_manual_and_sync_routes_are_removed(self) -> None:
         from app import app

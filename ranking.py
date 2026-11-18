@@ -184,17 +184,23 @@ def filter_and_rank_news(
     days: int = 3,
     keyword: str = "",
     specific_date: str = "",
+    content_kind: str = "all",
     now: datetime | None = None,
 ) -> list[dict[str, Any]]:
     """
     按时间范围和关键词过滤，再计算综合排行。
 
     specific_date 为 YYYY-MM-DD 时只筛选本地时区的那一天，并忽略 days。
+    content_kind 可选 all、hardware、software；软硬结合资讯会同时出现在
+    后两个筛选中。
     days=0 表示全部时间。关键词使用不区分大小写的包含匹配；
     多个空格分隔的词必须同时出现。
     """
 
     current_time = (now or datetime.now(timezone.utc)).astimezone(timezone.utc)
+    selected_kind = content_kind.strip().casefold()
+    if selected_kind not in {"all", "hardware", "software"}:
+        selected_kind = "all"
     # 分号是唯一的多词分隔符；没有分号时整个输入只作为一个搜索词。
     search_terms = [
         term.strip().casefold()
@@ -240,6 +246,16 @@ def filter_and_rank_news(
             f"{item.get('title', '')} {item.get('title_zh', '')} "
             f"{item.get('summary', '')}".casefold()
         )
+        if (
+            selected_kind == "hardware"
+            and not bool(item.get("is_hardware"))
+        ):
+            continue
+        if (
+            selected_kind == "software"
+            and not bool(item.get("is_software"))
+        ):
+            continue
         if any(
             not _search_term_matches(searchable, term)
             for term in search_terms

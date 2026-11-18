@@ -15,6 +15,8 @@ def make_item(
     summary: str = "",
     source: str = "MusicTech",
     category: str = "音乐科技",
+    is_hardware: bool = False,
+    is_software: bool = False,
 ) -> dict[str, str | None]:
     return {
         "title": title,
@@ -22,6 +24,8 @@ def make_item(
         "publish_time": publish_time,
         "source": source,
         "category": category,
+        "is_hardware": is_hardware,
+        "is_software": is_software,
         "link": f"https://example.com/{abs(hash(title))}",
     }
 
@@ -205,6 +209,46 @@ class RankingTests(unittest.TestCase):
         self.assertGreater(
             _relevance_score(hardware),
             _relevance_score(generic_music),
+        )
+
+    def test_content_kind_filter_supports_hybrid_items(self) -> None:
+        items = [
+            make_item(
+                "硬件合成器发布",
+                publish_time="2026-11-17T09:00:00+00:00",
+                is_hardware=True,
+            ),
+            make_item(
+                "AI 编曲插件发布",
+                publish_time="2026-11-17T08:00:00+00:00",
+                is_software=True,
+            ),
+            make_item(
+                "MIDI 控制器与配套软件更新",
+                publish_time="2026-11-17T07:00:00+00:00",
+                is_hardware=True,
+                is_software=True,
+            ),
+        ]
+        hardware = filter_and_rank_news(
+            items,
+            days=3,
+            content_kind="hardware",
+            now=self.now,
+        )
+        software = filter_and_rank_news(
+            items,
+            days=3,
+            content_kind="software",
+            now=self.now,
+        )
+        self.assertEqual(
+            {item["title"] for item in hardware},
+            {"硬件合成器发布", "MIDI 控制器与配套软件更新"},
+        )
+        self.assertEqual(
+            {item["title"] for item in software},
+            {"AI 编曲插件发布", "MIDI 控制器与配套软件更新"},
         )
 
     def test_publication_time_is_primary_sort_key(self) -> None:

@@ -15,6 +15,7 @@ const elements = {
     keyword: document.querySelector("#keyword"),
     days: document.querySelector("#days"),
     specificDate: document.querySelector("#specific-date"),
+    contentKind: document.querySelector("#content-kind"),
     filterForm: document.querySelector("#filter-form"),
     list: document.querySelector("#news-list"),
     empty: document.querySelector("#empty-state"),
@@ -94,6 +95,7 @@ function matchesSearchTerm(text, term) {
 function rankItems() {
     const days = Number(elements.days.value);
     const specificDate = elements.specificDate.value;
+    const contentKind = elements.contentKind.value;
     const terms = elements.keyword.value
         .toLocaleLowerCase()
         .split(/[;；]/)
@@ -135,6 +137,12 @@ function rankItems() {
                 isEnglishTitle(item.title || "")
                 && (!item.title_zh || item.title_zh === "None")
             ) {
+                return false;
+            }
+            if (contentKind === "hardware" && !item.is_hardware) {
+                return false;
+            }
+            if (contentKind === "software" && !item.is_software) {
                 return false;
             }
             const text = [
@@ -246,10 +254,16 @@ function render() {
     elements.empty.hidden = ranked.length > 0;
     const days = Number(elements.days.value);
     const specificDate = elements.specificDate.value;
+    const contentKind = elements.contentKind.value;
     const keyword = elements.keyword.value.trim();
     elements.summary.textContent = [
         `${ranked.length} 条结果`,
         specificDate || (days ? `最近 ${days} 天` : "全部时间"),
+        contentKind === "hardware"
+            ? "硬件相关"
+            : contentKind === "software"
+                ? "软件相关"
+                : "",
         keyword ? `关键词“${keyword}”` : "",
     ].filter(Boolean).join(" · ");
     elements.pagination.hidden = totalPages <= 1;
@@ -297,6 +311,10 @@ elements.days.addEventListener("change", () => {
     render();
 });
 elements.specificDate.addEventListener("change", () => {
+    state.currentPage = 1;
+    render();
+});
+elements.contentKind.addEventListener("change", () => {
     state.currentPage = 1;
     render();
 });

@@ -71,6 +71,8 @@ class GitHubScriptTests(unittest.TestCase):
                 )
             self.assertEqual(payload["total"], 1)
             self.assertGreater(payload["items"][0]["relevance_score"], 0)
+            self.assertIn("is_hardware", payload["items"][0])
+            self.assertIn("is_software", payload["items"][0])
             self.assertTrue(output_path.exists())
 
 

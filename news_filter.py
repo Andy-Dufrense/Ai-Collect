@@ -183,6 +183,28 @@ PRICE_OR_PROMOTION_PATTERN = re.compile(
     re.IGNORECASE,
 )
 
+# GitHub commit 搜索会被批量账号投递的代理、直播引流和电商广告污染。
+# 这些标题通常包含“更新、接口、软件”等泛词，必须在入库前单独排除。
+GITHUB_SPAM_PATTERN = re.compile(
+    r"(?:"
+    r"住宅(?:动态)?IP|海外(?:住宅|家庭|专线|直播|电商)|代理(?:线路|服务)?"
+    r"|跨境电商|数据标注|多机位直播|推流软件|账号|登录态|多开"
+    r"|机房段|出口线路|出口(?:IP|城市|参数)|固定IP|包月线路|带宽"
+    r"|家宽|纯净家宽|线路扩容|频道运营|多频道|红人合作|续费"
+    r"|平台判成|机器行为|海外.{0,8}(?:平台|频道|视频|社交)"
+    r"|residential\s+proxy|proxy\s+service|multi[-\s]?account"
+    r"|traffic\s+bot|click\s+farm"
+    r")",
+    re.IGNORECASE,
+)
+
+
+def is_github_spam_text(text: str) -> bool:
+    """判断文本是否属于 GitHub 搜索中出现过的批量引流垃圾内容。"""
+
+    return GITHUB_SPAM_PATTERN.search(text) is not None
+
+
 def _normalize_text(value: str) -> str:
     """统一大小写并压缩多余空白，减少无意义的匹配差异。"""
 

@@ -13,9 +13,14 @@ import requests
 from config import (
     GITHUB_COMMIT_LOOKBACK_DAYS,
     GITHUB_REPOSITORY_LOOKBACK_DAYS,
+    MUSIC_KEYWORDS,
     REQUEST_TIMEOUT_SECONDS,
 )
-from news_filter import is_relevant_news
+from news_filter import (
+    find_matched_keywords,
+    is_github_spam_text,
+    is_relevant_news,
+)
 
 
 GITHUB_SEARCH_URL = "https://api.github.com/search"
@@ -169,13 +174,18 @@ def parse_commit_search(
             or not link
             or not commit_date
             or _is_low_value_commit(message)
+            or is_github_spam_text(f"{message} {repository_name}")
         ):
             continue
-        if not is_relevant_news(
-            message,
-            repository_name,
-            category="AI音频开发",
+        commit_direction_text = f"{message} {repository_name}"
+        # commit 自动发现只接收明确出现音乐、乐器或音频方向的提交。
+        # 仅出现“更新/软件/接口”等泛词的提交会制造大量无关仓库噪声。
+        if not find_matched_keywords(
+            commit_direction_text,
+            MUSIC_KEYWORDS,
         ):
+            continue
+        if not is_relevant_news(message, repository_name):
             continue
         try:
             published = datetime.fromisoformat(
