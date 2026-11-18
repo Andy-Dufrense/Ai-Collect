@@ -13,7 +13,7 @@
             <div class="brand-block">
                 <p class="product-sign">AI // MUSIC INTELLIGENCE</p>
                 <h1>每日情报台</h1>
-                <p class="product-note">按相关度、热度与新鲜度综合排序</p>
+                <p class="product-note">按真实发布时间倒序展示</p>
             </div>
             <div class="system-panel">
                 <div class="sync-state {{ 'online' if auto_sync_online else 'offline' }}">
@@ -21,9 +21,11 @@
                     <span>
                         {% if auto_sync_online %}
                             {% if next_auto_fetch_at %}
-                                自动同步中 · 下次刷新时间：{{ next_auto_fetch_at | local_time }}
+                                预计下次刷新时间：{{ next_auto_fetch_at | local_time }}
+                                <small class="sync-note">实际刷新时间可能稍晚</small>
                             {% else %}
-                                自动同步中 · 正在安排下次刷新
+                                预计下次刷新时间：正在计算
+                                <small class="sync-note">实际刷新时间可能稍晚</small>
                             {% endif %}
                         {% else %}
                             自动同步离线
@@ -162,7 +164,7 @@
 
         <footer class="app-footer">
             <span>AUTO INGEST · RSS / WEIXIN SEARCH</span>
-            <span>热度为来源权重与热词估算值</span>
+            <span>时间范围依据文章原始发布时间</span>
         </footer>
     </div>
     <script src="{{ url_for('static', filename='local-ui.js') }}" defer></script>

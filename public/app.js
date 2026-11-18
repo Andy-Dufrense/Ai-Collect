@@ -237,8 +237,13 @@ async function loadData() {
         elements.total.textContent = String(payload.total ?? state.items.length);
         elements.generatedAt.textContent = formatTime(payload.generated_at);
         elements.syncState.className = "sync-state online";
-        elements.syncText.textContent =
-            `下次刷新时间：${formatTime(nextScheduledRefresh().toISOString())}`;
+        const estimatedLine = document.createElement("span");
+        estimatedLine.textContent =
+            `预计下次刷新时间：${formatTime(nextScheduledRefresh().toISOString())}`;
+        const delayNote = document.createElement("small");
+        delayNote.className = "sync-note";
+        delayNote.textContent = "实际刷新时间可能稍晚";
+        elements.syncText.replaceChildren(estimatedLine, delayNote);
         render();
     } catch (error) {
         elements.syncState.className = "sync-state offline";
