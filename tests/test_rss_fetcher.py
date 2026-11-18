@@ -162,6 +162,8 @@ class RssFetcherTests(unittest.TestCase):
                     ({"source": "测试源", "url": "https://example.com/feed"},),
                 ),
                 patch("rss_fetcher.SOGOU_WECHAT_QUERIES", ()),
+                patch("rss_fetcher.GITHUB_RELEASE_REPOSITORIES", ()),
+                patch("rss_fetcher.GITHUB_DISCOVERY_ENABLED", False),
                 patch(
                     "rss_fetcher._build_http_session",
                     side_effect=fake_build_session,

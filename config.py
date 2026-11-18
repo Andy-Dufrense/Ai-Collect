@@ -71,11 +71,6 @@ BUILT_IN_RSS_SOURCES: Final[tuple[dict[str, str], ...]] = (
         "category": "国内科技",
     },
     {
-        "source": "虎嗅",
-        "url": "https://www.huxiu.com/rss/0.xml",
-        "category": "国内科技",
-    },
-    {
         "source": "钛媒体",
         "url": "https://www.tmtpost.com/rss.xml",
         "category": "国内科技",
@@ -88,11 +83,6 @@ BUILT_IN_RSS_SOURCES: Final[tuple[dict[str, str], ...]] = (
     {
         "source": "雷锋网",
         "url": "https://www.leiphone.com/feed",
-        "category": "国内科技",
-    },
-    {
-        "source": "品玩",
-        "url": "https://www.pingwest.com/feed",
         "category": "国内科技",
     },
     {
@@ -130,7 +120,42 @@ BUILT_IN_RSS_SOURCES: Final[tuple[dict[str, str], ...]] = (
         "url": "https://musictech.com/feed/",
         "category": "音乐科技",
     },
+    {
+        "source": "Rekkerd",
+        "url": "https://rekkerd.org/feed/",
+        "category": "音乐科技",
+    },
+    {
+        "source": "Synthanatomy",
+        "url": "https://www.synthanatomy.com/feed/",
+        "category": "音乐科技",
+    },
+    {
+        "source": "arXiv Sound",
+        "url": "https://rss.arxiv.org/rss/cs.SD",
+        "category": "AI音频研究",
+    },
 )
+
+
+# 通过 GitHub Releases API 跟踪开源 AI 音频项目的功能与版本更新。
+GITHUB_RELEASE_REPOSITORIES: Final[tuple[str, ...]] = (
+    "facebookresearch/audiocraft",
+    "Stability-AI/stable-audio-tools",
+    "magenta/magenta",
+    "riffusion/riffusion",
+    "facebookresearch/demucs",
+    "sonic-pi-net/sonic-pi",
+)
+
+
+# GitHub 自动发现会搜索近期新建的 AI 音乐仓库，以及相关 commit。
+# 查询窗口刻意大于 12 小时刷新间隔，避免 GitHub Actions 延迟时漏掉内容；
+# 重叠结果会在入库前按链接去重，不会重复显示。
+GITHUB_DISCOVERY_ENABLED: Final[bool] = os.getenv(
+    "GITHUB_DISCOVERY_ENABLED",
+    "1",
+).strip().casefold() not in {"0", "false", "no", "off"}
 
 
 def _load_custom_rss_sources() -> tuple[dict[str, str], ...]:
@@ -309,6 +334,18 @@ def _read_positive_number(name: str, default: float) -> float:
     except ValueError:
         return default
     return value if value > 0 else default
+
+
+# GitHub 查询窗口刻意大于 12 小时刷新间隔，避免 Actions 延迟时漏数据。
+# 两次查询可能命中同一项目，入库时会按唯一链接自动去重。
+GITHUB_REPOSITORY_LOOKBACK_DAYS: Final[int] = max(
+    1,
+    int(_read_positive_number("GITHUB_REPOSITORY_LOOKBACK_DAYS", 14)),
+)
+GITHUB_COMMIT_LOOKBACK_DAYS: Final[int] = max(
+    1,
+    int(_read_positive_number("GITHUB_COMMIT_LOOKBACK_DAYS", 3)),
+)
 
 
 # 搜狗对连续搜索较敏感。默认每 12 小时才刷新一次微信来源，

@@ -71,6 +71,26 @@ function recencyScore(publishTime, now) {
     return Math.max(0, Math.round(100 * (1 - hours / 72)));
 }
 
+function escapeRegExp(value) {
+    return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function matchesSearchTerm(text, term) {
+    if (/[\u3400-\u9fff]/.test(term)) {
+        return text.includes(term);
+    }
+    const words = term
+        .split(/\s+/)
+        .filter(Boolean)
+        .map(escapeRegExp);
+    if (!words.length) return true;
+    // Git 可以命中 GitHub；digital 中间的 git 因为前面是字母而不会命中。
+    return new RegExp(
+        `(?:^|[^a-z0-9])${words.join("\\s+")}`,
+        "i"
+    ).test(text);
+}
+
 function rankItems() {
     const days = Number(elements.days.value);
     const specificDate = elements.specificDate.value;
@@ -122,7 +142,7 @@ function rankItems() {
                 item.title_zh || "",
                 item.summary || "",
             ].join(" ").toLocaleLowerCase();
-            return terms.every((term) => text.includes(term));
+            return terms.every((term) => matchesSearchTerm(text, term));
         })
         .map((item) => {
             const recency = recencyScore(item.publish_time, now);

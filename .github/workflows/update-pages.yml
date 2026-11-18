@@ -34,6 +34,10 @@ jobs:
         run: python -m pip install -r requirements.txt
 
       - name: Fetch and export static data
+        env:
+          # GitHub 自动提供临时令牌，用于提高仓库搜索、commit 搜索和 Releases
+          # API 的限流额度；令牌不会写入仓库或网页数据。
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python scripts/github_update.py
 
       - name: Commit updated news data

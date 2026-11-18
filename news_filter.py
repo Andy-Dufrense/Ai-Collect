@@ -172,8 +172,11 @@ PRICE_OR_PROMOTION_PATTERN = re.compile(
     r"|\d+(?:\.\d+)?\s*(?:元|万元|美元|英镑|欧元)"
     r"|\d+(?:\.\d+)?\s*亿\s*美元"
     r"|\d+(?:\.\d+)?\s*%\s*(?:off|折扣)"
+    r"|save\s+(?:up\s+to\s+)?\d+(?:\.\d+)?\s*%"
+    r"|\d+(?:\.\d+)?\s*%\s+on\b"
     r"|售价|首发价|起售价|价格|定价|折扣|优惠|促销|降价|涨价|黑五"
-    r"|免费领|会员|订阅|会员费|限时"
+    r"|免费领|会员|订阅|会员费|限时|廉价|便宜"
+    r"|gift\s+(?:drop|guide|ideas?)"
     r"|\b(?:price|pricing|discount|deal|deals|sale|bundle|membership|"
     r"subscription)\b"
     r")",
@@ -262,7 +265,7 @@ def is_relevant_news(
     )
 
     # 音乐科技媒体保留音乐、AI 或明确软件功能内容。
-    if category == "音乐科技":
+    if category in {"音乐科技", "AI音频研究", "AI音频开发"}:
         return (
             has_music_keyword
             or has_ai_keyword

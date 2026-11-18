@@ -100,6 +100,13 @@ class NewsFilterTests(unittest.TestCase):
                 category="音乐科技",
             )
         )
+        self.assertFalse(
+            is_relevant_news(
+                "Save up to 81% on UVI audio plugins",
+                "Limited promotion",
+                category="音乐科技",
+            )
+        )
 
     def test_does_not_treat_letters_inside_english_word_as_ai(self) -> None:
         self.assertFalse(is_relevant_news("Daily news about cooking", "普通生活晨报"))

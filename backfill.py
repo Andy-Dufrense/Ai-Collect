@@ -53,11 +53,6 @@ ARCHIVE_SOURCES = (
         "category": "音乐科技",
     },
     {
-        "source": "Gearnews",
-        "api": "https://www.gearnews.com/wp-json/wp/v2/posts",
-        "category": "音乐科技",
-    },
-    {
         "source": "Music Business Worldwide",
         "api": "https://www.musicbusinessworldwide.com/wp-json/wp/v2/posts",
         "category": "音乐科技",

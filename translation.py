@@ -25,6 +25,7 @@ TRANSLATION_ENABLED = os.getenv("TRANSLATION_ENABLED", "1").casefold() not in {
     "off",
 }
 MAX_TRANSLATIONS_PER_RUN = 300
+GITHUB_TITLE_PREFIXES = ("GitHub - 新发布：", "GitHub - 新更新：")
 
 
 def is_probably_english(text: str) -> bool:
@@ -139,6 +140,29 @@ def translate_items(
                 continue
             if translated_count >= MAX_TRANSLATIONS_PER_RUN:
                 break
+
+            # GitHub 标题带有中文分类前缀，不能把整个标题直接送翻译。
+            # 只翻译冒号后的英文简介，并保留固定的“GitHub - 新发布/新更新”
+            # 前缀，方便用户始终用 Git/GitHub 搜索到这些内容。
+            github_prefix = ""
+            github_payload = title
+            for prefix in GITHUB_TITLE_PREFIXES:
+                if title.startswith(prefix):
+                    github_prefix = prefix
+                    github_payload = title[len(prefix):].strip()
+                    break
+            if github_prefix:
+                translated = translate_title(
+                    github_payload,
+                    session=session,
+                )
+                if translated:
+                    item["title_zh"] = github_prefix + translated
+                    cache[key] = item["title_zh"]
+                    translated_count += 1
+                    time.sleep(0.15)
+                continue
+
             if not is_probably_english(title):
                 continue
 

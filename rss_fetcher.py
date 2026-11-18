@@ -28,6 +28,8 @@ from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
 from config import (
+    GITHUB_DISCOVERY_ENABLED,
+    GITHUB_RELEASE_REPOSITORIES,
     PROXY_AUTO_DISCOVERY,
     PROXY_DISCOVERY_PORTS,
     PROXY_PROBE_TIMEOUT_SECONDS,
@@ -52,6 +54,8 @@ from database import (
     set_meta_value,
 )
 from news_filter import is_relevant_news
+from github_discovery import fetch_github_discovery
+from github_releases import fetch_github_releases
 from sogou_wechat import fetch_sogou_query
 from translation import translate_items
 
@@ -505,6 +509,8 @@ def _fetch_and_save_news_unlocked() -> FetchResult:
     total_entries = 0
     sogou_queries: tuple[str, ...] = ()
     sogou_attempted = 0
+    github_attempted = 0
+    github_discovery_attempted = 0
 
     routes = _discover_fetch_routes()
     LOGGER.info(
@@ -555,6 +561,89 @@ def _fetch_and_save_news_unlocked() -> FetchResult:
             successful_sources += 1
             total_entries += source_total
             all_matched_items.extend(items)
+
+        # GitHub Releases 反映开源 AI 音频项目的版本、功能和实现更新。
+        for repository in GITHUB_RELEASE_REPOSITORIES:
+            github_attempted += 1
+            source_name = f"GitHub · {repository}"
+            source_errors = []
+            source_loaded = False
+            for route in routes:
+                LOGGER.info("%s 尝试通过%s抓取", source_name, route.label)
+                try:
+                    items, source_total, _source_matched = fetch_github_releases(
+                        route.session,
+                        repository,
+                    )
+                except requests.RequestException as exc:
+                    route_error = f"{route.label} 失败：{exc}"
+                    LOGGER.warning("%s：%s", source_name, route_error)
+                    source_errors.append(route_error)
+                    continue
+                except (ValueError, TypeError, AttributeError) as exc:
+                    message = f"{source_name} 解析失败：{exc}"
+                    LOGGER.error(message)
+                    errors.append(message)
+                    break
+                else:
+                    source_loaded = True
+                    break
+            if not source_loaded:
+                if source_errors:
+                    errors.append(
+                        f"{source_name} 所有网络通道均失败："
+                        + "；".join(source_errors)
+                    )
+                continue
+            successful_sources += 1
+            total_entries += source_total
+            all_matched_items.extend(items)
+
+        # 自动发现近期新建的 AI 音乐项目和相关 commit。固定项目 Releases
+        # 只能看到“正式发版”，这一步补足尚未发版的新仓库和开发动态。
+        if GITHUB_DISCOVERY_ENABLED:
+            github_discovery_attempted = 1
+            source_name = "GitHub 新项目与提交发现"
+            source_errors = []
+            source_loaded = False
+            for route in routes:
+                LOGGER.info("%s 尝试通过%s抓取", source_name, route.label)
+                try:
+                    items, source_total, _source_matched = (
+                        fetch_github_discovery(
+                            route.session,
+                            now=fetched_at,
+                        )
+                    )
+                except requests.RequestException as exc:
+                    route_error = f"{route.label} 失败：{exc}"
+                    LOGGER.warning("%s：%s", source_name, route_error)
+                    source_errors.append(route_error)
+                    continue
+                except (ValueError, TypeError, AttributeError) as exc:
+                    message = f"{source_name} 解析失败：{exc}"
+                    LOGGER.error(message)
+                    errors.append(message)
+                    break
+                else:
+                    source_loaded = True
+                    LOGGER.info(
+                        "%s 通过%s抓取成功，命中 %d 条",
+                        source_name,
+                        route.label,
+                        len(items),
+                    )
+                    break
+            if not source_loaded:
+                if source_errors:
+                    errors.append(
+                        f"{source_name} 所有网络通道均失败："
+                        + "；".join(source_errors)
+                    )
+            else:
+                successful_sources += 1
+                total_entries += source_total
+                all_matched_items.extend(items)
 
         # 搜狗微信单独限频：每 30 分钟最多刷新一次，查询之间等待 2 秒。
         if _sogou_queries_due(fetched_at):
@@ -642,7 +731,12 @@ def _fetch_and_save_news_unlocked() -> FetchResult:
 
     result = FetchResult(
         fetched_at=fetched_at,
-        source_count=len(RSS_SOURCES) + sogou_attempted,
+        source_count=(
+            len(RSS_SOURCES)
+            + github_attempted
+            + github_discovery_attempted
+            + sogou_attempted
+        ),
         successful_sources=successful_sources,
         total_entries=total_entries,
         matched_entries=len(all_matched_items),

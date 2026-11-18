@@ -123,6 +123,29 @@ def _recency_score(item: dict[str, Any], now: datetime) -> int:
     return max(0, round(100 * (1 - age_hours / 72)))
 
 
+def _search_term_matches(searchable: str, term: str) -> bool:
+    """
+    判断一个搜索词是否命中。
+
+    中文按包含匹配；英文按“词语开头”匹配，既能让 Git 命中 GitHub，
+    又不会让 Git 错误命中 digital 中间的 git。含有分号的多个词仍由
+    调用方拆分，不含分号时整个输入作为一个短语。
+    """
+
+    normalized = term.casefold().strip()
+    if not normalized:
+        return True
+    if re.search(r"[\u3400-\u9fff]", normalized):
+        return normalized in searchable
+
+    # 英文短语允许词与词之间出现一个或多个空白，但第一个词必须从
+    # 单词边界开始，避免把 digital 中间的 git 当成独立关键词。
+    words = [re.escape(word) for word in normalized.split()]
+    phrase_pattern = r"\s+".join(words)
+    pattern = rf"(?<![a-z0-9]){phrase_pattern}"
+    return re.search(pattern, searchable) is not None
+
+
 def filter_and_rank_news(
     items: Iterable[dict[str, Any]],
     *,
@@ -185,7 +208,10 @@ def filter_and_rank_news(
             f"{item.get('title', '')} {item.get('title_zh', '')} "
             f"{item.get('summary', '')}".casefold()
         )
-        if any(term not in searchable for term in search_terms):
+        if any(
+            not _search_term_matches(searchable, term)
+            for term in search_terms
+        ):
             continue
 
         relevance = _relevance_score(item)

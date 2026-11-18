@@ -290,10 +290,10 @@ cd ~/Desktop/Ai-Collect
 python3 -m unittest discover -s tests -v
 ```
 
-预期看到 `OK`。目前共有 56 项测试，会检查过滤、大小写、词边界、模拟 RSS、
+预期看到 `OK`。目前共有 61 项测试，会检查过滤、大小写、词边界、模拟 RSS、
 搜狗微信解析、分类字段、链接去重、抓取状态、工作进程
 心跳、跨进程抓取锁、时间范围筛选、关键词搜索、综合排名、首页渲染和非法
-查询参数，不依赖当前网络状态。
+查询参数，以及 GitHub 新项目与 commit 解析，不依赖当前网络状态。
 
 ### 2. 首页筛选与排行
 
@@ -323,6 +323,26 @@ python3 -m unittest discover -s tests -v
 回填使用已实测可访问的 Synthtopia 和 MusicTech WordPress 归档 API，读取
 接口提供的 `date_gmt` 并以 UTC 入库。没有可靠发布时间的文章不会进入历史
 排行，也不会用抓取当天的时间冒充历史发布时间。
+
+当前额外数据源：
+
+- Rekkerd、Synthanatomy 的 RSS
+- arXiv `cs.SD` 声音与音乐计算 RSS
+- AudioCraft、Stable Audio Tools、Magenta、Riffusion、Demucs、Sonic Pi
+  的 GitHub Releases
+- GitHub 新项目与 commit 自动发现：搜索近 14 天新建的 AI 音乐仓库，以及
+  近 3 天与 AI 音乐、音乐生成、音频生成有关的 commit
+
+Gearnews 当前返回 429 限流，KVR Audio 返回 403，虎嗅持续超时，品玩 RSS
+格式损坏，因此这些来源已停用，避免每轮抓取产生无意义请求。
+
+GitHub 自动发现不要求你提前填写仓库名。程序会查询 `ai music`、
+`music generation`、`ai-music` 主题下的新仓库，并搜索近期相关的 commit；
+每条结果都保存项目简介、真实时间和 GitHub 链接。新项目标题统一为
+`GitHub - 新发布：简介`，Release 和 commit 标题统一为
+`GitHub - 新更新：简介`，可直接搜索 `Git` 或 `GitHub` 找到。README、依赖
+升级、格式化和 CI 等低信息量 commit 会被跳过，重叠结果按链接去重。该模块
+默认启用，可通过环境变量 `GITHUB_DISCOVERY_ENABLED=0` 临时关闭。
 
 指定日期没有数据时，后端会查询这些历史归档接口一次。日期范围筛选始终按
 真实发布时间计算，不使用“抓取时间”代替“发布时间”。
@@ -428,6 +448,10 @@ Flask，而是由 GitHub Actions 每 12 小时执行 Python 抓取，把结果�
 - `public/index.html`、`public/app.js`：静态搜索、天数筛选与排行
 - `translation.py`：英文标题自动翻译和持久缓存
 - `scripts/github_update.py`：恢复历史数据、抓取和导出 JSON
+
+GitHub Actions 会自动把临时 `GITHUB_TOKEN` 传给抓取程序，以提高 API 限流
+额度；这个令牌由 GitHub 临时生成，不会写入网页或仓库文件。不需要你再创建
+额外令牌。
 
 ### 1. 推送代码
 

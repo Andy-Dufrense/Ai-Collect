@@ -114,6 +114,29 @@ class RankingTests(unittest.TestCase):
         )
         self.assertEqual(len(spaced_phrase), 1)
 
+    def test_latin_search_term_matches_word_start_not_middle(self) -> None:
+        items = [
+            make_item(
+                "GitHub - 新发布：AI music toolkit",
+                publish_time="2026-11-17T08:00:00+00:00",
+            ),
+            make_item(
+                "Digital reverb plugin update",
+                publish_time="2026-11-17T07:00:00+00:00",
+                summary="A digital audio effect",
+            ),
+        ]
+        ranked = filter_and_rank_news(
+            items,
+            days=3,
+            keyword="Git",
+            now=self.now,
+        )
+        self.assertEqual(
+            [item["title"] for item in ranked],
+            ["GitHub - 新发布：AI music toolkit"],
+        )
+
     def test_specific_date_overrides_relative_time_range(self) -> None:
         items = [
             make_item(
