@@ -76,7 +76,8 @@ function rankItems() {
     const specificDate = elements.specificDate.value;
     const terms = elements.keyword.value
         .toLocaleLowerCase()
-        .split(/\s+/)
+        .split(/[;；]/)
+        .map((term) => term.trim())
         .filter(Boolean);
     const now = Date.now();
     const todayDate = shanghaiDate(new Date(now).toISOString());

@@ -7,6 +7,7 @@
 
 from __future__ import annotations
 
+import re
 from collections.abc import Iterable
 from datetime import date, datetime, timedelta, timezone
 from typing import Any
@@ -139,7 +140,12 @@ def filter_and_rank_news(
     """
 
     current_time = (now or datetime.now(timezone.utc)).astimezone(timezone.utc)
-    search_terms = [term.casefold() for term in keyword.split() if term.strip()]
+    # 分号是唯一的多词分隔符；没有分号时整个输入只作为一个搜索词。
+    search_terms = [
+        term.strip().casefold()
+        for term in re.split(r"[;；]", keyword)
+        if term.strip()
+    ]
     ranked_items: list[dict[str, Any]] = []
     target_date: date | None = None
     if specific_date:

@@ -73,6 +73,47 @@ class RankingTests(unittest.TestCase):
         self.assertEqual(len(ranked), 1)
         self.assertEqual(ranked[0]["title"], "AI 音乐工具发布")
 
+    def test_semicolon_separates_terms_but_space_does_not(self) -> None:
+        items = [
+            make_item(
+                "MIDI 吉他编曲工具",
+                publish_time="2026-11-17T08:00:00+00:00",
+            ),
+            make_item(
+                "M I D 三个字母与普通音乐",
+                publish_time="2026-11-17T07:30:00+00:00",
+            ),
+        ]
+        midi_only = filter_and_rank_news(
+            items,
+            days=3,
+            keyword="MIDI",
+            now=self.now,
+        )
+        self.assertEqual(
+            [item["title"] for item in midi_only],
+            ["MIDI 吉他编曲工具"],
+        )
+
+        multi_terms = filter_and_rank_news(
+            items,
+            days=3,
+            keyword="MIDI；吉他",
+            now=self.now,
+        )
+        self.assertEqual(
+            [item["title"] for item in multi_terms],
+            ["MIDI 吉他编曲工具"],
+        )
+
+        spaced_phrase = filter_and_rank_news(
+            items,
+            days=3,
+            keyword="MIDI 吉他",
+            now=self.now,
+        )
+        self.assertEqual(len(spaced_phrase), 1)
+
     def test_specific_date_overrides_relative_time_range(self) -> None:
         items = [
             make_item(
