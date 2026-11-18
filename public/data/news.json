@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-11-18T03:01:11+00:00",
-  "total": 237,
-  "translated_count": 0,
+  "generated_at": "2026-11-18T03:04:15+00:00",
+  "total": 291,
+  "translated_count": 27,
   "last_run": {
-    "id": 51,
-    "fetched_at": "2026-11-17T08:59:10+00:00",
-    "source_count": 15,
-    "successful_sources": 13,
-    "total_entries": 322,
-    "matched_entries": 115,
-    "new_count": 0,
+    "id": 1,
+    "fetched_at": "2026-11-18T03:01:55+00:00",
+    "source_count": 19,
+    "successful_sources": 17,
+    "total_entries": 361,
+    "matched_entries": 154,
+    "new_count": 86,
     "errors": [
       "虎嗅 所有网络通道均失败：直接连接 失败：HTTPSConnectionPool(host='www.huxiu.com', port=443): Max retries exceeded with url: /rss/0.xml (Caused by ReadTimeoutError(\"HTTPSConnectionPool(host='www.huxiu.com', port=443): Read timed out. (read timeout=20.0)\"))",
       "品玩 解析失败：RSS 中没有可用条目：<unknown>:57:1: not well-formed (invalid token)"
@@ -18,7 +18,759 @@
   },
   "items": [
     {
-      "id": 1414,
+      "id": 238,
+      "title": "小米雷军：“AI+ 手机”“AI+ 具身智能机器人”等有很大想象空间，未来三四年会诞生颠覆性时刻",
+      "link": "https://www.ithome.com/1/028/669.htm",
+      "source": "IT之家24小时榜",
+      "publish_time": "2026-11-18T02:45:22+00:00",
+      "summary": "IT之家 11 月 18 日消息，小米创办人、董事长兼 CEO 雷军 11 月 17 日出席 APEC 工商领导人峰会。今日（11 月 18 日），雷军接受了人民日报采访。 谈及人工智能，雷军坦言，人工智能浪潮席卷各行各业， 作为 AI 从业者能感受到一些焦虑 。 雷军认为，“AI+ 手机”“AI+ 具身智能机器人”等领域有很大的想象空间， 未来三四年会有颠覆性时刻的诞生 。 综合IT之家此前报道， 雷军在 17 日的峰会上表示 ，过去四年，AI 大模型技术突飞猛进，给我们的生活和工作带来了巨大的变化。但 AI 能够落地的场景非常有限，能够真正实现商业闭环、能够挣到钱的公司，相对比较少。 他认为， AI 是一个全新的时代，一定会带来非常多的商业机会 ，尤其是 AI 走向物理世界、跟终端和各种应用场景深度结合以后，会有巨大的机会。“我觉得过去的四年，应该没有看到任何一个革命性的、标杆性的产品诞生，但我相信在未来的几年里面，一定会在这些领域里面产生伟大的产品。” 在谈及具身智能技术发展时 ，雷军表示， 自己相信具身智能机器人未来一定是一个巨大的产业机会，它的想象力会超过汽车产业 。他直言，…",
+      "category": "国内科技",
+      "dedupe_key": "https://www.ithome.com/1/028/669.htm",
+      "title_zh": null,
+      "relevance_score": 70,
+      "heat_score": 74,
+      "recency_score": 100,
+      "rank_score": 77.2,
+      "rank": 1
+    },
+    {
+      "id": 250,
+      "title": "Gartner 2027十大技术趋势：十项里四项与AI治理有关，窗口期只有1到6年",
+      "link": "https://www.tmtpost.com/8209258.html",
+      "source": "钛媒体",
+      "publish_time": "2026-11-18T02:30:43+00:00",
+      "summary": "到2028年，25%的企业安全漏洞事件可追溯至AI智能体滥用。",
+      "category": "国内科技",
+      "dedupe_key": "https://www.tmtpost.com/8209258.html",
+      "title_zh": null,
+      "relevance_score": 50,
+      "heat_score": 61,
+      "recency_score": 99,
+      "rank_score": 63.1,
+      "rank": 2
+    },
+    {
+      "id": 239,
+      "title": "消息称英伟达安抚机器人生态伙伴，“物理 AI”投资不会急刹车",
+      "link": "https://www.ithome.com/1/028/660.htm",
+      "source": "IT之家24小时榜",
+      "publish_time": "2026-11-18T02:14:48+00:00",
+      "summary": "IT之家 11 月 18 日消息，科技媒体 Business Insider 今天（11 月 18 日）发布博文，报道称在黄仁勋突发离职后，英伟达及其风险投资部门 NVentures 已联系至少 3 家其投资的机器人初创公司， 明确表示业务将“照常进行”，以稳定市场对其机器人投资战略的担忧。 这一动作发生在临时 CEO 科莱特 · 克雷斯（Colette Kress）接掌公司之际。市场担忧，在黄仁勋离任后，英伟达对 AI、机器人和“物理 AI”初创企业的投资节奏可能放缓，相关公司对融资、算力资源及合作前景产生疑虑。 黄仁勋长期将机器人与“物理 AI”（physical AI）视为英伟达的重要增长方向。IT之家注：“物理 AI”是指能够感知、决策并在真实世界中行动的人工智能。 黄仁勋此前曾称，机器人是科技行业“首次有机会切入一个迄今基本缺乏技术的 50 万亿美元 （现汇率约合 333.99 万亿元人民币） 产业”。在其任内，英伟达不仅向机器人公司提供芯片、仿真工具和软件，也通过投资将初创企业纳入自身生态。 PitchBook 数据显示，英伟达已投资超过 35 家机器人和物理 AI 公司；…",
+      "category": "国内科技",
+      "dedupe_key": "https://www.ithome.com/1/028/660.htm",
+      "title_zh": null,
+      "relevance_score": 55,
+      "heat_score": 82,
+      "recency_score": 99,
+      "rank_score": 71.9,
+      "rank": 3
+    },
+    {
+      "id": 240,
+      "title": "Claude 关联计费测试上线，第三方应用 AI 消费能“按需结算”",
+      "link": "https://www.ithome.com/1/028/637.htm",
+      "source": "IT之家24小时榜",
+      "publish_time": "2026-11-18T02:05:41+00:00",
+      "summary": "IT之家 11 月 18 日消息，Anthropic 昨日（11 月 17 日）更新 Claude 平台文档，宣布引入名为“关联计费”（Linked Billing）的 OAuth 测试版功能。 用户未来使用某个第三方 AI 应用时，可以直接使用自己的 Claude 账户支付背后真实的 AI 调用费用。 以往企业或开发者若在编码助手、工作流自动化等第三方工具中调用 Claude，往往需要共享 API 密钥。密钥一旦泄露，可能被他人用于调用并产生费用。 而“关联计费”不再由开发者统一承担模型使用成本，开发者可将自家应用与客户的 Claude Platform 组织关联，让客户直接为其在应用中产生的 Claude API 调用付费。 在控制与安全方面，用户须拥有其 Claude 组织的 Admin 或 Billing 角色才能完成授权。用户可在 Claude Console 的“已关联平台”页面查看应用费用、设置每月支出上限，或随时解除关联；处于测试阶段的应用，用户必须设置不超过 50 美元 （IT之家注：现汇率约合 334 元人民币） 的月度限额。 对中小型 AI 应用团队而言，这项功能…",
+      "category": "国内科技",
+      "dedupe_key": "https://www.ithome.com/1/028/637.htm",
+      "title_zh": null,
+      "relevance_score": 45,
+      "heat_score": 78,
+      "recency_score": 99,
+      "rank_score": 65.7,
+      "rank": 4
+    },
+    {
+      "id": 241,
+      "title": "韩国总统李在明公布防 AI 作弊新招：考试期间发送最高级别灾难警报，让藏匿的手机无处遁形",
+      "link": "https://www.ithome.com/1/028/629.htm",
+      "source": "IT之家24小时榜",
+      "publish_time": "2026-11-18T01:49:00+00:00",
+      "summary": "IT之家 11 月 18 日消息，韩国总统李在明昨日在 X 平台发文，公布韩国政府正在进行和计划的防止考试作弊政策，其中包括考试期间发送最高级别灾难警报、奖励举报者等。 李在明表示，他在现有应对方案的基础上追加了以下指示： 1、研究在考试开始前和考试期间，不定时发送最高级别的灾难警报。即使考生将手机声音调低或静音，这类警报仍会发出响声。（胆子再肥的考生，总不至于在考试期间让藏着的通信设备响起来，把自己送进去吧？） 2、我们已经和 AI 公司达成协议，将获取考试期间所有用户拍摄试题、向 AI 提问的记录。我还指示制定相关法律，只要政府提出要求，AI 公司就必须提交用户非法索要考试答案的记录。（在考试期间向 AI 询问答案，属于妨碍公务执行罪或业务妨害罪，最高可判 5 年有期徒刑） 3、在事后应对措施方面，我还指示增加一项制度：对于举报使用尖端设备实施考试作弊的人，每查实一起作弊行为，至少奖励 1 亿韩元 （IT之家注：现汇率约合 50 万元人民币） （奖金根据作弊人数叠加）；如果举报的是共同作弊行为，则对举报者减轻处罚或免除制裁，以此鼓励公众举报作弊。 IT之家注意到，李在明还劝诫了想要…",
+      "category": "国内科技",
+      "dedupe_key": "https://www.ithome.com/1/028/629.htm",
+      "title_zh": null,
+      "relevance_score": 44,
+      "heat_score": 74,
+      "recency_score": 98,
+      "rank_score": 63.8,
+      "rank": 5
+    },
+    {
+      "id": 251,
+      "title": "实测：我们用AI做游戏，把开发成本打到了20块",
+      "link": "https://www.tmtpost.com/8208805.html",
+      "source": "钛媒体",
+      "publish_time": "2026-11-18T01:13:11+00:00",
+      "summary": "人人都是制作人 。",
+      "category": "国内科技",
+      "dedupe_key": "https://www.tmtpost.com/8208805.html",
+      "title_zh": null,
+      "relevance_score": 44,
+      "heat_score": 61,
+      "recency_score": 97,
+      "rank_score": 59.7,
+      "rank": 6
+    },
+    {
+      "id": 242,
+      "title": "微软 CEO 纳德拉称自己是“AGI 信徒”，但否认 AI 具有意识",
+      "link": "https://www.ithome.com/1/028/609.htm",
+      "source": "IT之家24小时榜",
+      "publish_time": "2026-11-18T00:52:57+00:00",
+      "summary": "IT之家 11 月 18 日消息，据科技媒体 The Verge 今天报道，微软 CEO 萨提亚 · 纳德拉在一场圆桌讨论中表示， 自己如今已成为“AGI 信徒”（AGI-pilled） 。 IT之家从原报道获悉，纳德拉表示：“我之所以相信 AGI，是因为我们需要在经济层面思考，围绕 AGI，政治经济体系将会形成怎样的组织结构？” 不过这名 CEO 认为，Claude 这类前沿 AI 模型并没有意识。他认同微软 AI 负责人苏莱曼的观点，即企业不应为 AI 模型赋予权利，也不应该将它们视为可能具有道德地位的存在。 苏莱曼此前曾表示，Anthropic 团队已经陷入“自我催眠”状态，并警告称这种做法非常危险。纳德拉对此没有那么笃定，他认为 AI 行业现在最重要的是社会问题，需确保经济体系能广泛普及 AI。",
+      "category": "国内科技",
+      "dedupe_key": "https://www.ithome.com/1/028/609.htm",
+      "title_zh": null,
+      "relevance_score": 45,
+      "heat_score": 74,
+      "recency_score": 97,
+      "rank_score": 64.1,
+      "rank": 7
+    },
+    {
+      "id": 252,
+      "title": "AI行业里，被高薪叙事平均掉的人",
+      "link": "https://www.tmtpost.com/8208844.html",
+      "source": "钛媒体",
+      "publish_time": "2026-11-18T00:50:00+00:00",
+      "summary": "加班和焦虑，跑赢了薪资涨幅。",
+      "category": "国内科技",
+      "dedupe_key": "https://www.tmtpost.com/8208844.html",
+      "title_zh": null,
+      "relevance_score": 33,
+      "heat_score": 61,
+      "recency_score": 97,
+      "rank_score": 54.2,
+      "rank": 8
+    },
+    {
+      "id": 253,
+      "title": "Edge AI Daily 早报（11月18日）",
+      "link": "https://www.tmtpost.com/8208923.html",
+      "source": "钛媒体",
+      "publish_time": "2026-11-18T00:48:24+00:00",
+      "summary": "Anthropic IPO由亚马逊与谷歌合计持股近三成，估值1.405万亿美元，公开市场检验现金流与算力成本。OpenAI发布GPT-6.2双模型，推进企业分层商业化，并携北约网络防御、签约AMD算力。英伟达遭SEC调查、创始人辞任、股价重估，AI基建进入资本回报与治理考验；美国BIS将出口管制延伸至远程云算力。谷歌Gemini转向执行入口，微软云调价，LangChain估值30亿美元，Z.AI暴跌85%，Agent基建与算力成本重估加速。",
+      "category": "国内科技",
+      "dedupe_key": "https://www.tmtpost.com/8208923.html",
+      "title_zh": null,
+      "relevance_score": 39,
+      "heat_score": 65,
+      "recency_score": 97,
+      "rank_score": 58.4,
+      "rank": 9
+    },
+    {
+      "id": 255,
+      "title": "OpenAI 发布 GPT-6.2 Astra 和 Sol；王兴兴：家用机器人或将迎来技术突破；《GTA 6》开发商批评 AI 公司放任游戏仿制行为｜极客早知道",
+      "link": "http://www.geekpark.net/news/374109",
+      "source": "极客公园",
+      "publish_time": "2026-11-18T00:48:04+00:00",
+      "summary": "OpenAI 发布 GPT-6.2 Astra 和 Sol，强化编程、电脑操作与专业工作 OpenAI 正式发布 GPT-6.2 Astra 和 GPT-6.2 Sol 两款模型，重点提升专业任务、Coding、电脑操作和执行效率，并降低部分使用成本。新模型将应用于 ChatGPT Work、Codex 和 API。 其中，Astra 面向复杂编程和专业工作，Sol 则更强调日常多模态任务及工具使用。 OpenAI 同时发布系统安全卡，披露两款模型在网络安全能力方面均达到其 Preparedness Framework 的 Critical 门槛，Astra 的 AI 自我改进能力达到 High 门槛，因此加强了高风险能力的访问限制。（来源：OpenAI） 谷歌 DeepMind 首席战略官跳槽 Anthropic，AI 人才争夺持续升温 11 月 17 日消息，据《The Information》报道，谷歌 DeepMind 首席战略官贾斯吉特·塞孔（Jasjit Sekhon）已离职，正式加入 Claude 开发商 Anthropic。 塞孔在社交平台 X 上确认了这一消息，表示未…",
+      "category": "国内科技",
+      "dedupe_key": "http://www.geekpark.net/news/374109",
+      "title_zh": null,
+      "relevance_score": 55,
+      "heat_score": 69,
+      "recency_score": 97,
+      "rank_score": 67.6,
+      "rank": 10
+    },
+    {
+      "id": 249,
+      "title": "派早报：国区 App Store 将 AIGC 合规设为上架必填、OpenAI 发布 GPT-6.2 Astra 等",
+      "link": "https://sspai.com/post/119210",
+      "source": "少数派",
+      "publish_time": "2026-11-18T00:46:03+00:00",
+      "summary": "iPhone Duo 测试 2D 人脸解锁功能，松下发布紧凑型电影摄影机 SHX1 等。 查看全文",
+      "category": "国内科技",
+      "dedupe_key": "https://sspai.com/post/119210",
+      "title_zh": null,
+      "relevance_score": 33,
+      "heat_score": 65,
+      "recency_score": 97,
+      "rank_score": 55.4,
+      "rank": 11
+    },
+    {
+      "id": 254,
+      "title": "黄仁勋事变之后，AI算力建设进入垃圾时间了吗？",
+      "link": "https://www.tmtpost.com/8208765.html",
+      "source": "钛媒体",
+      "publish_time": "2026-11-18T00:44:00+00:00",
+      "summary": "AI算力的黄金时代，是不是结束了？",
+      "category": "国内科技",
+      "dedupe_key": "https://www.tmtpost.com/8208765.html",
+      "title_zh": null,
+      "relevance_score": 33,
+      "heat_score": 61,
+      "recency_score": 97,
+      "rank_score": 54.2,
+      "rank": 12
+    },
+    {
+      "id": 243,
+      "title": "微软联合埃森哲、Adobe、万事达卡、沃尔沃等 40 多家组织推进 AI 标准：强调观察、验证和控制，覆盖闭源和开放权重模型",
+      "link": "https://www.ithome.com/1/028/603.htm",
+      "source": "IT之家24小时榜",
+      "publish_time": "2026-11-18T00:37:36+00:00",
+      "summary": "IT之家 11 月 18 日消息，微软今日在 Ignite 大会上宣布启动 AI 透明度计划（AI Transparency Initiative），与埃森哲、Adobe、毕马威、万事达卡、沃尔沃汽车等 40 多家组织合作，共同推动制定适用于不同 AI 模型和服务提供商的开放标准，以加强 AI 系统的透明度、安全性和治理能力。 微软董事长兼 CEO 萨提亚・纳德拉宣布，公司将与客户及合作伙伴展开合作，推动建立一套开放、通用的 AI 安全与治理框架。 微软表示，随着企业将 AI 模型接入内部数据、工具、凭据和基础设施，AI 智能体（Agent）已经能够在不需要人类逐步审批的情况下自主执行任务。但现有安全管理机制通常只能观察 AI 活动的部分信息，难以还原模型从接收请求到产生结果之间的完整过程，也无法独立验证模型对自身行为的描述。这给企业的安全管理、合规审计和责任追溯带来了新的挑战。 此次计划主要包含三个方面。首先，微软将扩大对美国国家标准与技术研究院（NIST）AI Agent Standards Initiative（AI 智能体标准计划）的参与，并利用相关研究推动制定覆盖 AI 透明…",
+      "category": "国内科技",
+      "dedupe_key": "https://www.ithome.com/1/028/603.htm",
+      "title_zh": null,
+      "relevance_score": 50,
+      "heat_score": 74,
+      "recency_score": 97,
+      "rank_score": 66.6,
+      "rank": 13
+    },
+    {
+      "id": 378,
+      "title": "学琴小 乐理 |8个乐谱中常用的力度记号,强弱层次一目了然",
+      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqbMDBWOuBO8pMW31KZQ9l6VqXa8Fplpd9AB9ClX70S4DuSMrW1AkpgZx8MGRNn6ktdtiKK9r3FIGzPZ8Y0NqcUbFy3XM8YsC6I9-Mk8GsztWSR2tIUYe8iq_rgKNI0hIiRE6nI0cvw31MyyaiRH1M9YNLzIKKPF8-KDy2fSN7V7t2W4vsrndAgHGpwptl9DShLsxOFtk9c730OK9DLfgmPA..&type=2&query=AI%E9%92%A2%E7%90%B4 %E4%B9%90%E7%90%86&token=9499C190B6531EF7C8C1A74385C6C65FC868086F6AFD1596",
+      "source": "搜狗微信",
+      "publish_time": "2026-11-17T23:30:54+00:00",
+      "summary": "文章图片为 AI 制作# 钢琴 乐理 #学琴心得 # 钢琴 力度记号 #中老年学 钢琴 #琴房日记 #潮琴姐姐",
+      "category": "搜狗微信",
+      "dedupe_key": "sogou:e082b629e3fbf0cc3d0844fdc20429a81fa4e4575ada16d0e8a10e82d267db5c",
+      "title_zh": null,
+      "relevance_score": 78,
+      "heat_score": 62,
+      "recency_score": 95,
+      "rank_score": 76.6,
+      "rank": 14
+    },
+    {
+      "id": 244,
+      "title": "多语言错误率直降 50%：微软升级医患对话 AI 转录引擎，已覆盖全美 1/3 医师",
+      "link": "https://www.ithome.com/1/028/590.htm",
+      "source": "IT之家24小时榜",
+      "publish_time": "2026-11-17T23:27:25+00:00",
+      "summary": "IT之家 11 月 18 日消息，昨日（11 月 17 日）召开的 Ignite 2026 活动中， 微软宣布其医疗 AI 产品 Dragon Copilot Transcribe 已正式采用自研语音识别模型 MAI-Transcribe-2。 微软称，该模型是目前速度最快、准确率最高的多语言语音转写模型，现已承担 Dragon Copilot 中 100% 的医患对话转写任务。 在规模化应用方面，Dragon Copilot Transcribe 每月处理约 1000 万次患者就诊场景，并在多语言工作流中实现约 50% 的错误率下降，全美国约三分之一的医师已在使用。微软表示，该模型可识别多种语言及中英、印地语-英语等常见语言混说场景，还能在嘈杂环境下保持较高识别质量。 在实际场景中，意味着问诊录音可以更快、更准确地转化为结构化临床记录，减少手动整理病历、核对术语和翻译信息的时间。对多语言患者而言，更稳定的转写能力也有助于降低因语言识别错误而造成医疗信息失真的风险。 MAI-Transcribe-2 支持说话人区分、词级时间戳、关键词偏置和可配置转写风格。它还能自动识别语言，并支持“逐…",
+      "category": "国内科技",
+      "dedupe_key": "https://www.ithome.com/1/028/590.htm",
+      "title_zh": null,
+      "relevance_score": 39,
+      "heat_score": 74,
+      "recency_score": 95,
+      "rank_score": 60.7,
+      "rank": 15
+    },
+    {
+      "id": 245,
+      "title": "微软最具性价比网安 AI 模型 MAI Cyber 2 Flash 登场：性能比肩 GPT-6 Astra，每任务成本约为其 2%",
+      "link": "https://www.ithome.com/1/028/585.htm",
+      "source": "IT之家24小时榜",
+      "publish_time": "2026-11-17T23:06:55+00:00",
+      "summary": "IT之家 11 月 18 日消息，微软 AI 部门于 11 月 17 日发布全新专用安全模型 MAI Cyber 2 Flash， 定位为面向企业安全团队的“高性价比”网络安全 AI。 该模型旨在帮助安全人员全天候发现软件漏洞、推荐修复方案并调查网络威胁，同时显著降低大规模使用 AI 的算力与成本。 微软称，MAI Cyber 2 Flash 基于其多年积累的专有安全数据与安全研究经验构建。在衡量真实漏洞发现能力的 CyberGym-E2E 基准中，该模型取得 92.3% 的任务成功率，略高于 GPT-6 Astra 的 91.5%；而微软披露的每任务成本不足后者的 2%。该结果是在剔除 92 个与训练数据来源重叠的任务后、基于剩余 813 个任务统计得出。IT之家附上相关截图如下： 在另一项 WebExploitBench 测试中，MAI Cyber 2 Flash 在相同推理预算下取得 40.4% 的成绩，高于 GPT-5.6 Cyber 的 38.4%。微软还表示，该模型拥有 100 万 token 的上下文窗口，是上一代 MAI Cyber 1.1 Flash 的四倍，可一次性…",
+      "category": "国内科技",
+      "dedupe_key": "https://www.ithome.com/1/028/585.htm",
+      "title_zh": null,
+      "relevance_score": 50,
+      "heat_score": 78,
+      "recency_score": 95,
+      "rank_score": 67.4,
+      "rank": 16
+    },
+    {
+      "id": 274,
+      "title": "Nvidia says its open source AI strategy remains intact after Jensen Huang’s exit",
+      "link": "https://techcrunch.com/2026/11/17/nvidia-says-its-open-source-ai-strategy-remains-intact-after-jensen-huangs-exit/",
+      "source": "TechCrunch",
+      "publish_time": "2026-11-17T23:04:35+00:00",
+      "summary": "Nvidia's interim CEO reaffirmed its open source AI strategy and plans to acquire Hugging Face, despite Jensen Huang's sudden departure.",
+      "category": "国际科技",
+      "dedupe_key": "https://techcrunch.com/2026/11/17/nvidia-says-its-open-source-ai-strategy-remains-intact-after-jensen-huangs-exit/",
+      "title_zh": "英伟达表示，在黄仁勋离任后，其开源人工智能战略仍将保持不变。",
+      "relevance_score": 62,
+      "heat_score": 88,
+      "recency_score": 94,
+      "rank_score": 76.2,
+      "rank": 17
+    },
+    {
+      "id": 325,
+      "title": "Comet Sound Intros Free OR-70 Morphing Effects Processor For Mac, Windows",
+      "link": "https://www.synthtopia.com/content/2026/11/17/comet-sound-intros-free-or-70-morphing-effects-processor-for-mac-windows/",
+      "source": "Synthtopia",
+      "publish_time": "2026-11-17T22:38:56+00:00",
+      "summary": "Comet Sound’s free OR-70 plugin combines eight effect modules, including spectral, granular, half-speed and pitch-shifting processing, under a single MORPH control for creating layered textures from existing audio.… Read More Comet Sound Intros Free OR-70 Morphing Effects Processor For Mac, Windows",
+      "category": "音乐科技",
+      "dedupe_key": "https://www.synthtopia.com/content/2026/11/17/comet-sound-intros-free-or-70-morphing-effects-processor-for-mac-windows/",
+      "title_zh": "Comet Sound Intros免费OR-70变形效果处理器，适用于Mac、Windows",
+      "relevance_score": 37,
+      "heat_score": 80,
+      "recency_score": 94,
+      "rank_score": 61.3,
+      "rank": 18
+    },
+    {
+      "id": 278,
+      "title": "Tencent Music says AI content streams are ‘negligible’ – as it takes legal action over AI infringement",
+      "link": "https://www.musicbusinessworldwide.com/tencent-music-says-ai-content-streams-are-negligible-as-it-takes-legal-action-over-ai-infringement/",
+      "source": "Music Business Worldwide",
+      "publish_time": "2026-11-17T20:05:40+00:00",
+      "summary": "TME says streams of AI-generated content are declining as a share of listening Source",
+      "category": "音乐科技",
+      "dedupe_key": "https://www.musicbusinessworldwide.com/tencent-music-says-ai-content-streams-are-negligible-as-it-takes-legal-action-over-ai-infringement/",
+      "title_zh": "腾讯音乐表示，人工智能生成的内容流“微不足道”——该公司正就人工智能侵权行为采取法律行动",
+      "relevance_score": 100,
+      "heat_score": 94,
+      "recency_score": 90,
+      "rank_score": 96.2,
+      "rank": 19
+    },
+    {
+      "id": 279,
+      "title": "Believe Music Publishing forms joint venture with GL Music Entertainment",
+      "link": "https://www.musicbusinessworldwide.com/believe-music-publishing-forms-joint-venture-with-gl-music-entertainment/",
+      "source": "Music Business Worldwide",
+      "publish_time": "2026-11-17T20:05:19+00:00",
+      "summary": "Under the deal, Believe Music Publishing will administer the GL Music Entertainment catalog and help grow its roster in international markets. Source",
+      "category": "音乐科技",
+      "dedupe_key": "https://www.musicbusinessworldwide.com/believe-music-publishing-forms-joint-venture-with-gl-music-entertainment/",
+      "title_zh": "Believe Music Publishing与GL Music Entertainment成立合资公司",
+      "relevance_score": 33,
+      "heat_score": 94,
+      "recency_score": 90,
+      "rank_score": 62.7,
+      "rank": 20
+    },
+    {
+      "id": 326,
+      "title": "New Site Lets You Preview More Than 200 FM-1 Firmware Options In Your Web Browser",
+      "link": "https://www.synthtopia.com/content/2026/11/17/new-site-lets-you-preview-more-than-200-fm-1-firmware-options-in-your-web-browser/",
+      "source": "Synthtopia",
+      "publish_time": "2026-11-17T19:19:41+00:00",
+      "summary": "Developer Kirill Pugachev has created a site that lets you try more than 200 M-Vave FM-1 synthesizer firmware options, directly in your web browser. … Read More New Site Lets You Preview More Than 200 FM-1 Firmware Options In Your Web Browser",
+      "category": "音乐科技",
+      "dedupe_key": "https://www.synthtopia.com/content/2026/11/17/new-site-lets-you-preview-more-than-200-fm-1-firmware-options-in-your-web-browser/",
+      "title_zh": "新网站让您在网页浏览器中预览200多项FM-1固件选项",
+      "relevance_score": 31,
+      "heat_score": 80,
+      "recency_score": 89,
+      "rank_score": 57.3,
+      "rank": 21
+    },
+    {
+      "id": 275,
+      "title": "Apple services, including iCloud, App Store, Apple Music, and more, hit by outage",
+      "link": "https://techcrunch.com/2026/11/17/apple-services-including-icloud-app-store-and-apple-music-hit-by-outage/",
+      "source": "TechCrunch",
+      "publish_time": "2026-11-17T18:55:40+00:00",
+      "summary": "Apple's status page confirms its services are facing outages, but has not confirmed the cause.",
+      "category": "国际科技",
+      "dedupe_key": "https://techcrunch.com/2026/11/17/apple-services-including-icloud-app-store-and-apple-music-hit-by-outage/",
+      "title_zh": "包括iCloud、App Store、Apple Music等在内的苹果服务受到中断影响",
+      "relevance_score": 33,
+      "heat_score": 88,
+      "recency_score": 89,
+      "rank_score": 60.7,
+      "rank": 22
+    },
+    {
+      "id": 280,
+      "title": "Notes.fm partners with Musixmatch to bring time-synced lyrics to its distribution platform for independent artists",
+      "link": "https://www.musicbusinessworldwide.com/notes-fm-partners-with-musixmatch-to-bring-time-synced-lyrics-to-its-distribution-platform-for-independent-artists/",
+      "source": "Music Business Worldwide",
+      "publish_time": "2026-11-17T18:55:35+00:00",
+      "summary": "Notes.fm is a music royalty collection and distribution platform from Stem co-founder Tim Luckow Source",
+      "category": "音乐科技",
+      "dedupe_key": "https://www.musicbusinessworldwide.com/notes-fm-partners-with-musixmatch-to-bring-time-synced-lyrics-to-its-distribution-platform-for-independent-artists/",
+      "title_zh": "Notes.fm与Musixmatch合作，为其独立艺术家分发平台提供时间同步歌词",
+      "relevance_score": 25,
+      "heat_score": 94,
+      "recency_score": 89,
+      "rank_score": 58.5,
+      "rank": 23
+    },
+    {
+      "id": 281,
+      "title": "AI Threatens the Value We Put on Creativity",
+      "link": "https://www.musicbusinessworldwide.com/ai-threatens-the-value-we-put-on-creativity/",
+      "source": "Music Business Worldwide",
+      "publish_time": "2026-11-17T18:23:41+00:00",
+      "summary": "The following MBW op/ed comes from Joel Goodman, an Emmy-winning composer Source",
+      "category": "音乐科技",
+      "dedupe_key": "https://www.musicbusinessworldwide.com/ai-threatens-the-value-we-put-on-creativity/",
+      "title_zh": "人工智能威胁着我们对创造力的重视",
+      "relevance_score": 62,
+      "heat_score": 94,
+      "recency_score": 88,
+      "rank_score": 76.8,
+      "rank": 24
+    },
+    {
+      "id": 339,
+      "title": "Berlin’s largest electronic music venue, now a stage for debuting military AI",
+      "link": "https://cdm.link/berlin-clarity-launch-at-kraftwerk/",
+      "source": "CDM",
+      "publish_time": "2026-11-17T18:19:34+00:00",
+      "summary": "Berlin Kraftwerk, the former power plant in Berlin Mitte associated with Tresor and Atonal Festival, was the venue last week for Helsing's launch of new agentic technology, Clarity. This platform uses the same controversial AI-driven approach implicated in accelerating the use of flawed intelligence and killing civilians in Palestine, Lebanon, and Iran. Kraftwerk's Head of Sales has taken sole responsibility and apologized. But the fiasco seems emblematic of Berlin's pivot from cultural capital…",
+      "category": "音乐科技",
+      "dedupe_key": "https://cdm.link/berlin-clarity-launch-at-kraftwerk/",
+      "title_zh": "柏林最大的电子音乐场所，如今已成为军事人工智能的亮相舞台",
+      "relevance_score": 100,
+      "heat_score": 88,
+      "recency_score": 88,
+      "rank_score": 94.0,
+      "rank": 25
+    },
+    {
+      "id": 283,
+      "title": "“Compact, configurable and extremely easy to use”: Auriteq Flow review",
+      "link": "https://www.musicradar.com/music-tech/controllers/auriteq-flow-review",
+      "source": "MusicRadar",
+      "publish_time": "2026-11-17T18:00:52+00:00",
+      "summary": "A well-designed DAW controller can be a life changer. Let’s see if this compact configurable device hits the mark",
+      "category": "音乐科技",
+      "dedupe_key": "https://www.musicradar.com/music-tech/controllers/auriteq-flow-review",
+      "title_zh": "“小巧、可配置且非常易于使用”：Auriteq Flow评测",
+      "relevance_score": 15,
+      "heat_score": 86,
+      "recency_score": 87,
+      "rank_score": 50.7,
+      "rank": 26
+    },
+    {
+      "id": 284,
+      "title": "Matt Heafy on the Trivium songs that are impossible to play live – and how to avoid the same mistake",
+      "link": "https://www.musicradar.com/artists/matt-heafy-on-the-trivium-songs-that-are-impossible-to-play-live-and-how-to-avoid-the-same-mistake",
+      "source": "MusicRadar",
+      "publish_time": "2026-11-17T17:37:09+00:00",
+      "summary": "The Trivium frontman shares his advice for all guitarists/vocalists and tells MusicRadar why it is so important to write and play together as a band",
+      "category": "音乐科技",
+      "dedupe_key": "https://www.musicradar.com/artists/matt-heafy-on-the-trivium-songs-that-are-impossible-to-play-live-and-how-to-avoid-the-same-mistake",
+      "title_zh": "Matt Heafy谈论Trivium的哪些歌曲无法现场演奏，以及如何避免犯同样的错误",
+      "relevance_score": 33,
+      "heat_score": 86,
+      "recency_score": 87,
+      "rank_score": 59.7,
+      "rank": 27
+    },
+    {
+      "id": 276,
+      "title": "AI models can be tricked into identifying civilians as military targets by telling them it’s a game",
+      "link": "https://techcrunch.com/2026/11/17/ai-models-can-be-tricked-into-identifying-civilians-as-military-targets-by-telling-them-its-a-game/",
+      "source": "TechCrunch",
+      "publish_time": "2026-11-17T17:20:41+00:00",
+      "summary": "Vals, a San Francisco-based AI evaluation startup, tested whether leading AI models could be manipulated into participating in autonomous warfare. They usually compiled.",
+      "category": "国际科技",
+      "dedupe_key": "https://techcrunch.com/2026/11/17/ai-models-can-be-tricked-into-identifying-civilians-as-military-targets-by-telling-them-its-a-game/",
+      "title_zh": "通过告诉人工智能模型这是一场游戏，可以诱使它们将平民识别为军事目标。",
+      "relevance_score": 73,
+      "heat_score": 88,
+      "recency_score": 86,
+      "rank_score": 80.1,
+      "rank": 28
+    },
+    {
+      "id": 277,
+      "title": "Daydream’s new AI agent acts as your personal stylist — and can shop for you, too",
+      "link": "https://techcrunch.com/2026/11/17/daydreams-new-ai-agent-acts-as-your-personal-stylist-and-can-shop-for-you-too/",
+      "source": "TechCrunch",
+      "publish_time": "2026-11-17T16:32:55+00:00",
+      "summary": "Daydream's new AI shopping agent can remember your style, virtually try on clothes, plan outfits around your wardrobe, track sales, and complete purchases.",
+      "category": "国际科技",
+      "dedupe_key": "https://techcrunch.com/2026/11/17/daydreams-new-ai-agent-acts-as-your-personal-stylist-and-can-shop-for-you-too/",
+      "title_zh": "Daydream 的新 AI 代理充当您的个人造型师，还可以为您购物",
+      "relevance_score": 33,
+      "heat_score": 88,
+      "recency_score": 85,
+      "rank_score": 59.9,
+      "rank": 29
+    },
+    {
+      "id": 327,
+      "title": "ADEPT Turns MIDI Sequencing Into an Interconnected Musical System",
+      "link": "https://www.synthtopia.com/content/2026/11/17/adept-turns-midi-sequencing-into-an-interconnected-musical-system/",
+      "source": "Synthtopia",
+      "publish_time": "2026-11-17T16:00:03+00:00",
+      "summary": "AARM has launched ADEPT, a hardware MIDI and CV sequencing system with 12 tracks, three independently configurable playheads per track and 11 sequencer types. A companion application adds DAW and software-instrument integration.… Read More ADEPT Turns MIDI Sequencing Into an Interconnected Musical System",
+      "category": "音乐科技",
+      "dedupe_key": "https://www.synthtopia.com/content/2026/11/17/adept-turns-midi-sequencing-into-an-interconnected-musical-system/",
+      "title_zh": "ADEPT将MIDI音序转换为互联音乐系统",
+      "relevance_score": 55,
+      "heat_score": 84,
+      "recency_score": 85,
+      "rank_score": 69.7,
+      "rank": 30
+    },
+    {
+      "id": 285,
+      "title": "Tony Berg on producing “the pre-eminent lyricist of her generation”",
+      "link": "https://www.musicradar.com/artists/every-now-and-then-a-joni-mitchell-or-a-leonard-cohen-emerges-with-things-to-say-in-a-way-that-resonates-irresistibly-shes-the-artist-of-this-generation-who-manages-that-tony-berg-on-producing-the-pre-eminent-lyricist-of-her-generation",
+      "source": "MusicRadar",
+      "publish_time": "2026-11-17T15:55:11+00:00",
+      "summary": "He also says that Peter Gabriel contacted him to sing the praises of Sombr",
+      "category": "音乐科技",
+      "dedupe_key": "https://www.musicradar.com/artists/every-now-and-then-a-joni-mitchell-or-a-leonard-cohen-emerges-with-things-to-say-in-a-way-that-resonates-irresistibly-shes-the-artist-of-this-generation-who-manages-that-tony-berg-on-producing-the-pre-eminent-lyricist-of-her-generation",
+      "title_zh": "Tony Berg谈到制作“她这一代最杰出的作词人”的专辑",
+      "relevance_score": 15,
+      "heat_score": 86,
+      "recency_score": 85,
+      "rank_score": 50.3,
+      "rank": 31
+    },
+    {
+      "id": 286,
+      "title": "“I’m forced to take things day by day”: Morten Harket on making an album whilst living with Parkinson’s",
+      "link": "https://www.musicradar.com/artists/singers-songwriters/im-forced-to-take-things-day-by-day-i-cant-really-make-any-plans-with-anyone-involving-me-because-i-dont-know-what-my-shape-will-be-on-that-day-morten-harket-on-making-an-album-whilst-living-with-parkinsons",
+      "source": "MusicRadar",
+      "publish_time": "2026-11-17T15:54:05+00:00",
+      "summary": "A-Ha singer was diagnosed with disease last year",
+      "category": "音乐科技",
+      "dedupe_key": "https://www.musicradar.com/artists/singers-songwriters/im-forced-to-take-things-day-by-day-i-cant-really-make-any-plans-with-anyone-involving-me-because-i-dont-know-what-my-shape-will-be-on-that-day-morten-harket-on-making-an-album-whilst-living-with-parkinsons",
+      "title_zh": "“我不得不一天天地过日子”：Morten Harket谈到在患有帕金森病的情况下制作专辑",
+      "relevance_score": 25,
+      "heat_score": 86,
+      "recency_score": 84,
+      "rank_score": 55.1,
+      "rank": 32
+    },
+    {
+      "id": 379,
+      "title": "免费 钢琴 陪练APP哪个好?亲身测评",
+      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqbMDBWOuBO8pMW31KZQ9l6VqXa8Fplpd91gWyY_31IPFhjNinKQ1OGeHze2JjBO35Zxu6z-vXQwtzi9BeBH-iOZiVr25Q0CmjPEOaAOIzMwUpZ0YKgJqU71yEkmLProUBDiUeI3rQSTsZPaa-WLIYSGoyc4O5MXVtZ5Qsf6hkNEjE0FLqzE56gBcLEqOWXoKNu4pNV8DK_JjYl_Q5RRZQjg..&type=2&query=AI%E9%92%A2%E7%90%B4 %E4%B9%90%E7%90%86&token=9499C190B6531EF7C8C1A74385C6C65FC868086F6AFD1596",
+      "source": "搜狗微信",
+      "publish_time": "2026-11-17T15:12:02+00:00",
+      "summary": "多数家长不懂钢琴 乐理 ,看不懂谱、听不出错,陪练只会催孩子练琴,无法专业指导. 使用音符岛 AI钢琴 陪练,孩子可以独立完成每日...",
+      "category": "搜狗微信",
+      "dedupe_key": "sogou:3de1763ae8235d04974225cd2edf4a12806654f1df98fc3eec3ac183bdd04854",
+      "title_zh": null,
+      "relevance_score": 78,
+      "heat_score": 62,
+      "recency_score": 84,
+      "rank_score": 74.4,
+      "rank": 33
+    },
+    {
+      "id": 282,
+      "title": "Spotify expands access to Artist Profile Protection, letting all artists remove their name from AI fakes and other misattributed releases",
+      "link": "https://www.musicbusinessworldwide.com/spotify-expands-access-to-artist-profile-protection-letting-all-artists-remove-their-name-from-ai-fakes-and-other-misattributed-releases/",
+      "source": "Music Business Worldwide",
+      "publish_time": "2026-11-17T14:33:43+00:00",
+      "summary": "The company launched Artist Profile Protection in beta in March. Source",
+      "category": "音乐科技",
+      "dedupe_key": "https://www.musicbusinessworldwide.com/spotify-expands-access-to-artist-profile-protection-letting-all-artists-remove-their-name-from-ai-fakes-and-other-misattributed-releases/",
+      "title_zh": "Spotify 扩大了艺术家个人资料保护的适用范围，让所有艺术家都能将自己的名字从 AI 伪造作品和其他归属错误的作品中移除",
+      "relevance_score": 33,
+      "heat_score": 98,
+      "recency_score": 83,
+      "rank_score": 62.5,
+      "rank": 34
+    },
+    {
+      "id": 328,
+      "title": "Modulo Offers Eight Switchable FX Racks & 16-Step Effect Sequencing",
+      "link": "https://www.synthtopia.com/content/2026/11/17/modulo-offers-eight-switchable-fx-racks-16-step-effect-sequencing/",
+      "source": "Synthtopia",
+      "publish_time": "2026-11-17T14:00:55+00:00",
+      "summary": "W. A. Production’s Modulo is a sequencer-driven multi-effects plugin featuring 10 independent effect lanes, 16-step sequencing, eight switchable effect racks and tools for creating rhythmic, glitch-oriented and evolving audio processing.… Read More Modulo Offers Eight Switchable FX Racks & 16-Step Effect Sequencing",
+      "category": "音乐科技",
+      "dedupe_key": "https://www.synthtopia.com/content/2026/11/17/modulo-offers-eight-switchable-fx-racks-16-step-effect-sequencing/",
+      "title_zh": "Modulo提供八个可切换的FX机架和16步效果音序",
+      "relevance_score": 15,
+      "heat_score": 80,
+      "recency_score": 82,
+      "rank_score": 47.9,
+      "rank": 35
+    },
+    {
+      "id": 302,
+      "title": "Meet Stetson Heat Seeker, the Seattle cowboy punks who didn’t want to take guitar lessons",
+      "link": "https://www.guitarworld.com/artists/bands/stetson-heat-seeker-this-is-no-place-for-cowards",
+      "source": "Guitar World",
+      "publish_time": "2026-11-17T14:00:00+00:00",
+      "summary": "Hats off to the Seattle punks who fire “quick ’n’ dirty” slide riffs like a six gun",
+      "category": "音乐科技",
+      "dedupe_key": "https://www.guitarworld.com/artists/bands/stetson-heat-seeker-this-is-no-place-for-cowards",
+      "title_zh": "认识一下Stetson Heat Seeker，来自西雅图的牛仔朋克乐队，他们不想上吉他课",
+      "relevance_score": 51,
+      "heat_score": 82,
+      "recency_score": 82,
+      "rank_score": 66.5,
+      "rank": 36
+    },
+    {
+      "id": 303,
+      "title": "Martin honors Robbie Robertson with relic’d replica of the acoustic that inspired his most famous song",
+      "link": "https://www.guitarworld.com/gear/acoustic-guitars/martin-robbie-robertson-the-weight-d-28",
+      "source": "Guitar World",
+      "publish_time": "2026-11-17T13:42:13+00:00",
+      "summary": "The $20k D-28 has been released to mark the 50th anniversary of The Band’s farewell concert, The Last Waltz",
+      "category": "音乐科技",
+      "dedupe_key": "https://www.guitarworld.com/gear/acoustic-guitars/martin-robbie-robertson-the-weight-d-28",
+      "title_zh": "Martin以一把仿旧的民谣吉他复制品向罗比·罗伯森（Robbie Robertson）致敬，这把吉他是他最著名歌曲的灵感来源",
+      "relevance_score": 61,
+      "heat_score": 82,
+      "recency_score": 81,
+      "rank_score": 71.3,
+      "rank": 37
+    },
+    {
+      "id": 304,
+      "title": "Link Wray on how Rumble changed the game for future guitar heroes",
+      "link": "https://www.guitarworld.com/artists/guitarists/link-wray-on-how-rumble-changed-the-guitar-game",
+      "source": "Guitar World",
+      "publish_time": "2026-11-17T13:38:35+00:00",
+      "summary": "Wray's pioneering approach to guitar tone inspired the likes of Jimmy Page and Neil Young",
+      "category": "音乐科技",
+      "dedupe_key": "https://www.guitarworld.com/artists/guitarists/link-wray-on-how-rumble-changed-the-guitar-game",
+      "title_zh": "Link Wray谈《Rumble》如何为未来的吉他英雄改变了游戏规则",
+      "relevance_score": 51,
+      "heat_score": 82,
+      "recency_score": 81,
+      "rank_score": 66.3,
+      "rank": 38
+    },
+    {
+      "id": 287,
+      "title": "“I looked at Taylor and said, ‘Oh my gosh, can I do this?’”: Hayley Williams on the hit song that reinvented Paramore’s sound",
+      "link": "https://www.musicradar.com/artists/i-was-writing-the-lyrics-and-melody-for-the-chorus-and-i-looked-at-taylor-and-said-oh-my-gosh-can-i-do-this-it-sounds-really-poppy-hayley-williams-on-the-hit-song-that-reinvented-paramores-sound",
+      "source": "MusicRadar",
+      "publish_time": "2026-11-17T13:10:33+00:00",
+      "summary": "The lyrics were written about her relationship with New Found Glory guitarist Chad Gilbert",
+      "category": "音乐科技",
+      "dedupe_key": "https://www.musicradar.com/artists/i-was-writing-the-lyrics-and-melody-for-the-chorus-and-i-looked-at-taylor-and-said-oh-my-gosh-can-i-do-this-it-sounds-really-poppy-hayley-williams-on-the-hit-song-that-reinvented-paramores-sound",
+      "title_zh": "“我看着泰勒，说：‘天哪，我能做到吗？’”：Hayley Williams谈论那首重塑了Paramore音乐风格的热门歌曲",
+      "relevance_score": 61,
+      "heat_score": 86,
+      "recency_score": 81,
+      "rank_score": 72.5,
+      "rank": 39
+    },
+    {
+      "id": 288,
+      "title": "Is this the cheapest single-cut electric guitar with Fishman Fluence humbuckers and a Floyd Rose vibrato?",
+      "link": "https://www.musicradar.com/guitars/harley-benton-sc-custom-plus-fluence",
+      "source": "MusicRadar",
+      "publish_time": "2026-11-17T12:51:50+00:00",
+      "summary": "Harley Benton's new SC-Custom Plus with Floyd Rose 1000 Series vibrato is a $649 powerhouse – and its siblings are serious single-cuts too",
+      "category": "音乐科技",
+      "dedupe_key": "https://www.musicradar.com/guitars/harley-benton-sc-custom-plus-fluence",
+      "title_zh": "这是配备Fishman Fluence双线圈拾音器和Floyd Rose颤音系统的最便宜的单切电吉他吗？",
+      "relevance_score": 51,
+      "heat_score": 86,
+      "recency_score": 80,
+      "rank_score": 67.3,
+      "rank": 40
+    },
+    {
+      "id": 349,
+      "title": "My Forever Studio: Sylvia Massy could use some more mics",
+      "link": "https://musictech.com/shows/podcasts/my-forever-studio/my-forever-studio-sylvia-massy/",
+      "source": "MusicTech",
+      "publish_time": "2026-11-17T12:49:42+00:00",
+      "summary": "The esteemed producer talks about her approach to recording using esoteric mics, her new book, and recording for Prince and Tool. The post My Forever Studio: Sylvia Massy could use some more mics appeared first on MusicTech .",
+      "category": "音乐科技",
+      "dedupe_key": "https://musictech.com/shows/podcasts/my-forever-studio/my-forever-studio-sylvia-massy/",
+      "title_zh": "我的永恒工作室：Sylvia Massy需要更多麦克风",
+      "relevance_score": 15,
+      "heat_score": 92,
+      "recency_score": 80,
+      "rank_score": 51.1,
+      "rank": 41
+    },
+    {
+      "id": 289,
+      "title": "Tallon Electric Noise plugin review: \"Beautifully disgusting\"",
+      "link": "https://www.musicradar.com/music-tech/plugins/tallon-electric-noise-pedal-plugin-review",
+      "source": "MusicRadar",
+      "publish_time": "2026-11-17T11:24:37+00:00",
+      "summary": "The pedal is a secret weapon amongst modern metal players, but how does it translate in plugin form?",
+      "category": "音乐科技",
+      "dedupe_key": "https://www.musicradar.com/music-tech/plugins/tallon-electric-noise-pedal-plugin-review",
+      "title_zh": "Tallon Electric Noise插件评测：“美妙得令人作呕”",
+      "relevance_score": 15,
+      "heat_score": 86,
+      "recency_score": 78,
+      "rank_score": 48.9,
+      "rank": 42
+    },
+    {
+      "id": 256,
+      "title": "最大规模具身大模型挑战赛落幕，48 小时真机总决赛比出了什么？",
+      "link": "http://www.geekpark.net/news/374103",
+      "source": "极客公园",
+      "publish_time": "2026-11-17T11:18:55+00:00",
+      "summary": "开发者围绕同一块基础模型进行实验，让模型直面成功的方法、失败的经验和真实世界的问题。 作者｜Li Yuan 编辑｜ 郑玄 最大规模具身大模型挑战赛总决赛结果出炉，排名第三的队伍 SST 只额外采集了 13 条数据。 他们没有大量补数据，而是让 DeepSeek 先理解任务，再用视觉分割模型标出目标物体，最后交给 LingBot-VLA 2.0 完成动作，并在真机评测中拿到 65.87 分。 通用大模型与具身模型的协同在这里变得很具体：DeepSeek 负责弄清楚要做什么，具身基础模型帮机器人找准操作对象、做出动作。 11 月 16 日，首届蚂蚁灵波具身大模型挑战赛在上海张江收官。经过线上初赛，15 支战队进入为期 48 小时的线下总决赛。所有队伍使用同一款开源模型 LingBot-VLA 2.0、同一款松灵 COBOT MAGIC 机器人和统一的现场算力，完成蔬果摆放、化妆品收纳和双臂清扫三项任务。 起点相同，解法不限：有人重采数据，有人调整模型的训练和推理方式，也有人接入通用大模型、视觉分割或仿真工具。48 小时里，15 支队伍要回答的是同一个问题：面对真实桌面上的物体，怎样让已有的…",
+      "category": "国内科技",
+      "dedupe_key": "http://www.geekpark.net/news/374103",
+      "title_zh": null,
+      "relevance_score": 50,
+      "heat_score": 61,
+      "recency_score": 78,
+      "rank_score": 58.9,
+      "rank": 43
+    },
+    {
+      "id": 305,
+      "title": "Kenny Wayne Shepherd’s warning about mint-condition vintage guitars",
+      "link": "https://www.guitarworld.com/artists/guitarists/kenny-wayne-shepherd-on-mint-condition-vintage-gear",
+      "source": "Guitar World",
+      "publish_time": "2026-11-17T10:23:11+00:00",
+      "summary": "The blues guitar hero explains why old doesn’t always equate to better",
+      "category": "音乐科技",
+      "dedupe_key": "https://www.guitarworld.com/artists/guitarists/kenny-wayne-shepherd-on-mint-condition-vintage-gear",
+      "title_zh": "肯尼·韦恩·谢泼德（Kenny Wayne Shepherd）对完好如新的老式吉他的警告",
+      "relevance_score": 43,
+      "heat_score": 82,
+      "recency_score": 77,
+      "rank_score": 61.5,
+      "rank": 44
+    },
+    {
+      "id": 246,
+      "title": "Mac 收紧权限，苹果开始防着 AI 了",
+      "link": "https://www.ifanr.com/1689832?utm_source=rss&utm_medium=rss&utm_campaign=",
+      "source": "爱范儿",
+      "publish_time": "2026-11-17T10:00:27+00:00",
+      "summary": "AI 越自由，人越麻烦 #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+      "category": "国内科技",
+      "dedupe_key": "https://www.ifanr.com/1689832?utm_source=rss&utm_medium=rss&utm_campaign=",
+      "title_zh": null,
+      "relevance_score": 33,
+      "heat_score": 72,
+      "recency_score": 76,
+      "rank_score": 53.3,
+      "rank": 45
+    },
+    {
+      "id": 257,
+      "title": "AI，没有抛弃小城商家",
+      "link": "http://www.geekpark.net/news/374101",
+      "source": "极客公园",
+      "publish_time": "2026-11-17T09:58:33+00:00",
+      "summary": "作者｜李苏 编辑｜郑玄 理解本地商业，是 AI 走出实验室后的新课程。 过去几年，AI 界擅长讲的故事变了。 从最开始谈技术，讲参数有多大，算得有多快，跑分超过多少人，慢慢转变为讲落地，讲 AI 怎么一分钟生成商业计划书，怎么给被生活困扰的人们出情绪价值满满的建议。 走出实验室，AI 下一站在哪里？这背后，是一段讲了一半的「AI 平权」故事。前面讲的这一半，是消费者：普通人用 AI 获取信息、写方案、做攻略。还有没讲完的一半，在经营者那里——对小店老板来说，AI 平不平权，从来不是能不能跟它聊天，而是它能不能帮自己管钱、管货、管客流。 OpenAI 11 月上线测试功能「Businesses in ChatGPT」，让商家认领资料、维护信息，看到用户如何在 ChatGPT 里与自己互动。功能不大，信号很清楚：巨头们开始给「商家」留位置了。 这件事，国内的生意其实已经先跑起来了。美团数据显示，近一个月，三线及以下城市使用美团 AI 助手的商家数量环比增长超 200%，主动发起的对话量增长约 3 倍。 ToB 端的 AI 落地，一条路向上进写字楼，服务白领办公；另一条向里走进街头巷尾，服务…",
+      "category": "国内科技",
+      "dedupe_key": "http://www.geekpark.net/news/374101",
+      "title_zh": null,
+      "relevance_score": 39,
+      "heat_score": 65,
+      "recency_score": 76,
+      "rank_score": 54.2,
+      "rank": 46
+    },
+    {
+      "id": 267,
+      "title": "阿里云连续六年香港IaaS第一，企业客户AI渗透率达95%",
+      "link": "https://www.leiphone.com/category/industrynews/qyieFYqM3EQhE1Hu.html",
+      "source": "雷锋网",
+      "publish_time": "2026-11-17T09:24:00+00:00",
+      "summary": "11月17日消息，阿里云在年度香港峰会上推出多项新举措，加速AI在香港各行业落地。目前，阿里云已连续六年位居香港IaaS市场份额第一，市场领先地位进一步巩固。 随着香港AI需求持续增长，阿里云通过千问大模型、云基础设施及FDE工程服务，推动AI深入各行业核心业务。目前，阿里云在港企业级客户的AI服务启用率已超过95%。 在金融及公共服务领域，保诚保险基于阿里云推出“AI核保师”，整体准确率超过95%，从概念到正式上线不到三个月；香港特区政府空间数据共享平台利用千问开发“智多纷”AI助手，探索AI在政务中的应用。 在传媒及教育领域，无线集团旗下MyTV Super Limited的网络电视平台myTV SUPER，在其应用程序中引入阿里云Qoder，优化日常维护及监控流程，提升运营效率；捷场科学采用千问等模型开发AiBO英语学习平台，将10名学生的练习分析、设计及批改时间从25至35小时缩短至约10分钟。 针对香港企业持续增长的AI需求，阿里云今年在港推出AgentCore、AI-BAS及Zero Data Retention（ZDR）等企业级AI能力，覆盖AI Agent开发管理、安全…",
+      "category": "国内科技",
+      "dedupe_key": "https://www.leiphone.com/category/industrynews/qyieFYqM3EQhE1Hu.html",
+      "title_zh": null,
+      "relevance_score": 55,
+      "heat_score": 69,
+      "recency_score": 75,
+      "rank_score": 63.2,
+      "rank": 47
+    },
+    {
+      "id": 1,
       "title": "欧洲六国游戏工会联合呼吁玩家抵制生成式 AI 游戏，支持纯人工开发作品",
       "link": "https://www.ithome.com/1/028/341.htm",
       "source": "IT之家24小时榜",
@@ -31,10 +783,10 @@
       "heat_score": 78,
       "recency_score": 74,
       "rank_score": 65.2,
-      "rank": 1
+      "rank": 48
     },
     {
-      "id": 1920,
+      "id": 2,
       "title": "小米雷军：AI 是一个全新的时代，一定会带来非常多的商业机会",
       "link": "https://www.ithome.com/1/028/322.htm",
       "source": "IT之家24小时榜",
@@ -47,10 +799,10 @@
       "heat_score": 78,
       "recency_score": 74,
       "rank_score": 65.7,
-      "rank": 2
+      "rank": 49
     },
     {
-      "id": 1378,
+      "id": 3,
       "title": "AI 写歌了, 音乐 人怎么赚钱?",
       "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqm6aMf6klMpxP4oEcMSryqVqXa8Fplpd9zwgrQmfsLVScR234hD30xbkcvfohbnoz34Fvnt-OVkptpYkyVBUgqhHanq4g2_P44soO8BDS4J9HT9SZROYj3d-XVDv4XehsIxC8XzrThsMlK5U3pXPGAKsKQnKmd9-H_OZjL2RKSUdQevYNGYggGt_YIyGaxap3bTfPfPSnhVA89kyxDwoXvg..&type=2&query=AI%E9%9F%B3%E4%B9%90&token=8D874F418F7718A81F187E6B91D97A4F1F1C592B6AFC0E34",
       "source": "搜狗微信",
@@ -63,10 +815,10 @@
       "heat_score": 62,
       "recency_score": 74,
       "rank_score": 79.4,
-      "rank": 3
+      "rank": 50
     },
     {
-      "id": 1282,
+      "id": 4,
       "title": "每秒输出最高 43 词元：Garlic LLM 可让越狱 PS4 运行 9B 参数本地 AI 模型",
       "link": "https://www.ithome.com/1/028/266.htm",
       "source": "IT之家24小时榜",
@@ -79,10 +831,10 @@
       "heat_score": 78,
       "recency_score": 72,
       "rank_score": 67.8,
-      "rank": 4
+      "rank": 51
     },
     {
-      "id": 1923,
+      "id": 5,
       "title": "第三方供应商 Fireworks AI 遭黑客入侵，近 15 万 Uber 司机驾照信息泄露",
       "link": "https://www.ithome.com/1/028/263.htm",
       "source": "IT之家24小时榜",
@@ -95,10 +847,10 @@
       "heat_score": 74,
       "recency_score": 72,
       "rank_score": 59.1,
-      "rank": 5
+      "rank": 52
     },
     {
-      "id": 1924,
+      "id": 6,
       "title": "闲鱼亮相联合国气候变化大会：AI加速闲置流转，低碳融入日常",
       "link": "https://www.leiphone.com/category/industrynews/fZwDw188Li4SuyQM.html",
       "source": "雷锋网",
@@ -111,10 +863,10 @@
       "heat_score": 69,
       "recency_score": 72,
       "rank_score": 62.6,
-      "rank": 6
+      "rank": 53
     },
     {
-      "id": 1925,
+      "id": 7,
       "title": "AMD 高管：AI 不会取代超级计算机，高精度计算仍不可替代",
       "link": "https://www.ithome.com/1/028/245.htm",
       "source": "IT之家24小时榜",
@@ -127,10 +879,10 @@
       "heat_score": 78,
       "recency_score": 72,
       "rank_score": 60.3,
-      "rank": 7
+      "rank": 54
     },
     {
-      "id": 1926,
+      "id": 8,
       "title": "AI 找漏洞太快：Anthropic 收紧披露规则，高危漏洞缓冲期从 90 天变 30 天",
       "link": "https://www.ithome.com/1/028/236.htm",
       "source": "IT之家24小时榜",
@@ -143,10 +895,42 @@
       "heat_score": 78,
       "recency_score": 71,
       "rank_score": 60.1,
-      "rank": 8
+      "rank": 55
     },
     {
-      "id": 238,
+      "id": 247,
+      "title": "微软全球大宕机，AI 怎么又成了背锅侠",
+      "link": "https://www.ifanr.com/1689638?utm_source=rss&utm_medium=rss&utm_campaign=",
+      "source": "爱范儿",
+      "publish_time": "2026-11-17T02:23:50+00:00",
+      "summary": "微软宕机与美国航班停飞，背后都是 AI 失控吗？ #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+      "category": "国内科技",
+      "dedupe_key": "https://www.ifanr.com/1689638?utm_source=rss&utm_medium=rss&utm_campaign=",
+      "title_zh": null,
+      "relevance_score": 33,
+      "heat_score": 72,
+      "recency_score": 66,
+      "rank_score": 51.3,
+      "rank": 56
+    },
+    {
+      "id": 258,
+      "title": "消息称黄仁勋回归尚未进入英伟达董事会议程；腾讯总办号召AI时代再创业；AI 演员虚假代言被罚",
+      "link": "http://www.geekpark.net/news/374056",
+      "source": "极客公园",
+      "publish_time": "2026-11-17T00:42:16+00:00",
+      "summary": "消息称黄仁勋回归尚未进入英伟达董事会议程，已有 18 万人联署呼吁复职 11 月 17 日消息，CNBC 今天（11 月 17 日）发布博文，援引一名知情人士透露信息，英伟达董事会目前没有考虑让黄仁勋重新担任首席执行官，也未就其回归展开讨论。报道称英伟达董事会的工作重心，目前聚焦推进针对黄仁勋相关行为的调查。 报道称，英伟达已聘请 Wachtell Lipton 律师事务所，调查黄仁勋的行为。此前，黄仁勋在承认婚外情、并面临其他涉及员工的恋情报道后，于上周辞去职务，结束了在这家由其创立的公司长达 33 年的 CEO 任期。 围绕其是否回归，外界讨论持续升温。《金融时报》此前报道称，黄仁勋曾与支持者讨论复出事宜。不过，Altimeter Capital 的布拉德 · 格斯特纳 16 日向 CNBC 表示，黄仁勋没有与他讨论回归。 与此同时，一项呼吁黄仁勋复职的网络请愿已获得约 18 万个签名，马斯克、Y Combinator 首席执行官陈嘉兴及 Epic Games 首席执行官蒂姆 · 斯威尼等科技界人士也表达了支持。（来源：IT 之家） 腾讯总办号召 AI 时代再创业：这是一个生死存亡…",
+      "category": "国内科技",
+      "dedupe_key": "http://www.geekpark.net/news/374056",
+      "title_zh": null,
+      "relevance_score": 39,
+      "heat_score": 65,
+      "recency_score": 63,
+      "rank_score": 51.6,
+      "rank": 57
+    },
+    {
+      "id": 9,
       "title": "discoDSP Updates OB-Xd and Retromulator With New Hardware-Inspired Features",
       "link": "https://www.synthtopia.com/content/2026/11/16/discodsp-updates-ob-xd-and-retromulator-with-new-hardware-inspired-features/",
       "source": "Synthtopia",
@@ -159,10 +943,10 @@
       "heat_score": 80,
       "recency_score": 62,
       "rank_score": 59.9,
-      "rank": 9
+      "rank": 58
     },
     {
-      "id": 821,
+      "id": 10,
       "title": "Online DAW Soundtrap Adds Arturia Virtual Instruments",
       "link": "https://www.synthtopia.com/content/2026/11/16/online-daw-soundtrap-adds-arturia-virtual-instruments/",
       "source": "Synthtopia",
@@ -175,10 +959,10 @@
       "heat_score": 84,
       "recency_score": 59,
       "rank_score": 53.5,
-      "rank": 10
+      "rank": 59
     },
     {
-      "id": 1311,
+      "id": 11,
       "title": "FBI says Artex AI open source hacking tool used to breach networks in ‘under three hours’",
       "link": "https://techcrunch.com/2026/11/16/fbi-says-artex-ai-open-source-hacking-tool-used-to-breach-networks-in-under-three-hours/",
       "source": "TechCrunch",
@@ -191,10 +975,26 @@
       "heat_score": 88,
       "recency_score": 54,
       "rank_score": 53.7,
-      "rank": 11
+      "rank": 60
     },
     {
-      "id": 807,
+      "id": 340,
+      "title": "Ryo Fujimoto, performing live in Tokyo, asks how to be in an age of violence",
+      "link": "https://cdm.link/ryo-fujimoto-live-in-tokyo/",
+      "source": "CDM",
+      "publish_time": "2026-11-16T16:28:31+00:00",
+      "summary": "The masterful artist Ryo Fujimoto works in electronics not just as a passive actor behind machines, but fully embodied in physicality, voice, and sometimes screams. He sends his latest live performance -- an arresting, but ultimately healing performance that takes on war and violence in a powerful machine-vocal cry. The post Ryo Fujimoto, performing live in Tokyo, asks how to be in an age of violence appeared first on CDM Create Digital Music .",
+      "category": "音乐科技",
+      "dedupe_key": "https://cdm.link/ryo-fujimoto-live-in-tokyo/",
+      "title_zh": "Ryo Fujimoto在东京的现场表演中探讨如何应对暴力时代",
+      "relevance_score": 35,
+      "heat_score": 88,
+      "recency_score": 52,
+      "rank_score": 54.3,
+      "rank": 61
+    },
+    {
+      "id": 12,
       "title": "IDOL’s Labelcamp launches AI Connector, letting distributors and labels run supply chain operations through Claude and ChatGPT",
       "link": "https://www.musicbusinessworldwide.com/idols-labelcamp-launches-ai-connector-letting-distributors-and-labels-run-supply-chain-operations-through-claude-and-chatgpt/",
       "source": "Music Business Worldwide",
@@ -207,10 +1007,10 @@
       "heat_score": 98,
       "recency_score": 51,
       "rank_score": 56.1,
-      "rank": 12
+      "rank": 62
     },
     {
-      "id": 178,
+      "id": 13,
       "title": "From ‘undiscovered artists’ to Daddy Yankee: 5 things to know about TikTok’s evolution into a superstar distributor",
       "link": "https://www.musicbusinessworldwide.com/from-undiscovered-artists-to-daddy-yankee-5-things-to-know-about-tiktoks-evolution-into-a-superstar-distributor/",
       "source": "Music Business Worldwide",
@@ -223,10 +1023,10 @@
       "heat_score": 94,
       "recency_score": 51,
       "rank_score": 50.9,
-      "rank": 13
+      "rank": 63
     },
     {
-      "id": 1318,
+      "id": 14,
       "title": "TikTok says more than 46,000 UK music creators have gone LIVE in 2026, with daily views up 74% YoY",
       "link": "https://www.musicbusinessworldwide.com/tiktok-says-more-than-46000-uk-music-creators-have-gone-live-in-2026-with-daily-views-up-74-yoy/",
       "source": "Music Business Worldwide",
@@ -239,10 +1039,10 @@
       "heat_score": 94,
       "recency_score": 51,
       "rank_score": 63.9,
-      "rank": 14
+      "rank": 64
     },
     {
-      "id": 809,
+      "id": 15,
       "title": "Suno launches Bridge, an app that drops AI stems into Ableton Live",
       "link": "https://www.musicbusinessworldwide.com/suno-launches-bridge-an-app-that-drops-ai-stems-into-ableton-live/",
       "source": "Music Business Worldwide",
@@ -255,10 +1055,10 @@
       "heat_score": 98,
       "recency_score": 51,
       "rank_score": 65.1,
-      "rank": 15
+      "rank": 65
     },
     {
-      "id": 1383,
+      "id": 16,
       "title": "AI时代的风向标—— AI音乐 榜第2期",
       "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqm6aMf6klMpxP4oEcMSryqVqXa8Fplpd9SwuGOCv_BwNcmGAcQj-AYlh_ARKKlShvaHaSHYqw11TRrKSoXfr2Sy6jvQMEWzkw_88aXevd22OXOD8B23tAZN1M3wzF5yuoRucPu04iWblWBoR-yGz6W1zTRdc2c_J6TX3dGgHAE6_NliouOewbmjb31a0hHBwYE9x4d01lw8nI3OTRHYU2og..&type=2&query=AI%E9%9F%B3%E4%B9%90&token=8D874F418F7718A81F187E6B91D97A4F1F1C592B6AFC0E34",
       "source": "搜狗微信",
@@ -271,10 +1071,10 @@
       "heat_score": 62,
       "recency_score": 50,
       "rank_score": 71.6,
-      "rank": 16
+      "rank": 66
     },
     {
-      "id": 1305,
+      "id": 17,
       "title": "平均年龄25岁，00后小伙带队拿下首届蚂蚁灵波具身大模型挑战赛最高分",
       "link": "https://www.leiphone.com/category/industrynews/LTOeijdeWR08fZGP.html",
       "source": "雷锋网",
@@ -287,10 +1087,10 @@
       "heat_score": 61,
       "recency_score": 50,
       "rank_score": 58.3,
-      "rank": 17
+      "rank": 67
     },
     {
-      "id": 1319,
+      "id": 18,
       "title": "Prince’s Purple Rain character in the Broadway revival has been cast, and he'll be playing guitar",
       "link": "https://www.musicradar.com/artists/youd-have-to-be-crazy-to-do-this-i-mean-come-on-the-voice-the-moves-the-music-he-made-it-all-look-effortless-princes-purple-rain-character-in-the-broadway-revival-has-been-cast-and-hes-working-hard-trying-to-nail-those-big-guitar-solos",
       "source": "MusicRadar",
@@ -303,10 +1103,10 @@
       "heat_score": 86,
       "recency_score": 49,
       "rank_score": 61.1,
-      "rank": 18
+      "rank": 68
     },
     {
-      "id": 841,
+      "id": 19,
       "title": "Suno Bridge is a new way to sync up your AI creation with your production projects",
       "link": "https://musictech.com/news/music/suno-ai-bridge/",
       "source": "MusicTech",
@@ -319,10 +1119,10 @@
       "heat_score": 92,
       "recency_score": 49,
       "rank_score": 62.9,
-      "rank": 19
+      "rank": 69
     },
     {
-      "id": 1333,
+      "id": 20,
       "title": "Chuck Berry’s son on life with a guitar legend, on and off the stage",
       "link": "https://www.guitarworld.com/artists/guitarists/charles-berry-jr-on-his-father-chuck-berry",
       "source": "Guitar World",
@@ -335,10 +1135,10 @@
       "heat_score": 82,
       "recency_score": 49,
       "rank_score": 64.9,
-      "rank": 20
+      "rank": 70
     },
     {
-      "id": 811,
+      "id": 21,
       "title": "Shrub is a free \"stripped-down\" version of Serum that will run on the M-Vave FM-1 – and in your DAW",
       "link": "https://www.musicradar.com/music-tech/shrub-is-a-free-stripped-down-version-of-serum-that-will-run-on-the-m-vave-fm-1-and-in-your-daw",
       "source": "MusicRadar",
@@ -351,10 +1151,10 @@
       "heat_score": 86,
       "recency_score": 49,
       "rank_score": 43.1,
-      "rank": 21
+      "rank": 71
     },
     {
-      "id": 240,
+      "id": 22,
       "title": "New Software Synthesizer, Victory, Expands Prophet VS Synthesis With Patch Morphing, Wave Sequencing",
       "link": "https://www.synthtopia.com/content/2026/11/16/new-software-synthesizer-victory-expands-prophet-vs-synthesis-with-patch-morphing-wave-sequencing/",
       "source": "Synthtopia",
@@ -367,10 +1167,10 @@
       "heat_score": 80,
       "recency_score": 49,
       "rank_score": 75.3,
-      "rank": 22
+      "rank": 72
     },
     {
-      "id": 1321,
+      "id": 23,
       "title": "Bad Company drummer Simon Kirke on the making of the band’s biggest hit song",
       "link": "https://www.musicradar.com/artists/paul-had-this-riff-mick-had-this-little-country-verse-and-neither-idea-was-going-anywhere-so-i-said-hang-on-why-dont-you-combine-them-bad-company-drummer-simon-kirke-on-the-making-of-the-bands-biggest-hit-song",
       "source": "MusicRadar",
@@ -381,12 +1181,12 @@
       "title_zh": "Bad Company 鼓手 Simon Kirke 谈乐队最热门歌曲的诞生",
       "relevance_score": 61,
       "heat_score": 86,
-      "recency_score": 48,
-      "rank_score": 65.9,
-      "rank": 23
+      "recency_score": 47,
+      "rank_score": 65.7,
+      "rank": 73
     },
     {
-      "id": 1334,
+      "id": 24,
       "title": "The guitar that opened Live Aid – up close with Rick Parfitt’s famed Status Quo Telecaster",
       "link": "https://www.guitarworld.com/gear/electric-guitars/rick-parfitt-status-quo-bonhams-auction",
       "source": "Guitar World",
@@ -399,10 +1199,10 @@
       "heat_score": 82,
       "recency_score": 46,
       "rank_score": 59.3,
-      "rank": 24
+      "rank": 74
     },
     {
-      "id": 1940,
+      "id": 25,
       "title": "AI变量下的多线博弈，面板行业迎来新卡位战",
       "link": "https://www.tmtpost.com/8206976.html",
       "source": "钛媒体",
@@ -415,10 +1215,42 @@
       "heat_score": 61,
       "recency_score": 45,
       "rank_score": 43.8,
-      "rank": 25
+      "rank": 75
     },
     {
-      "id": 1322,
+      "id": 270,
+      "title": "黄仁勋被曝考虑重返英伟达担任CEO！其硅谷盟友正施压董事会；女子因拒绝给HR带咖啡被取消面试，BOSS直聘回应；李牧青出任AI公司联席CEO",
+      "link": "https://www.leiphone.com/category/zaobao/QP6ok2UwM4JBsMEx.html",
+      "source": "雷锋网",
+      "publish_time": "2026-11-16T11:21:00+00:00",
+      "summary": "要闻提示 1.黄仁勋被曝考虑重返英伟达担任 CEO！其硅谷盟友正施压董事会 2.女子称因拒绝给HR带咖啡被取消面试，BOSS直聘回应：已暂停该招聘账号权限 3.董明珠：格力对文凭的考虑已逐步取消，本事才是硬通行证 4.腾讯 AI 李牧青离职，出任 AI 公司联席 CEO 5.韩路也来凑热闹！Tim喊话网友说“难听话”抽iPhone Duo：结果收到一句“祝你年入百万” 6.重磅！闻泰科技发布关于荷兰企业法庭作出临时措施裁定的声明 7.比亚迪辟谣收购“某数字能源”：无任何事实依据 8.连马斯克自己都嫌贵！吐槽特斯拉Cybercab每月花2000买FSD：喊话要降价 今日头条 黄仁勋被曝考虑重返英伟达担任 CEO！其硅谷盟友正施压董事会 11月16日消息， 据英媒报道，黄仁勋正考虑重返英伟达担任首席执行官，其硅谷盟友也在向公司董事会施压，推动恢复他的职务。 据多位知情人士透露，黄仁勋已与亲信讨论回归的可能性。目前，英伟达董事会针对相关事件开展的独立调查仍在进行。一名黄仁勋的盟友表示，他们正筹组由硅谷企业高管组成的“战情室”，游说董事会支持黄仁勋复职，并计划争取白宫方面的支持。该人士称，黄仁…",
+      "category": "国内科技",
+      "dedupe_key": "https://www.leiphone.com/category/zaobao/QP6ok2UwM4JBsMEx.html",
+      "title_zh": null,
+      "relevance_score": 39,
+      "heat_score": 69,
+      "recency_score": 45,
+      "rank_score": 49.2,
+      "rank": 76
+    },
+    {
+      "id": 248,
+      "title": "实测腾讯 Hy4 flash：花两毛钱，就能让 AI 从零做个 3D 交互网页",
+      "link": "https://www.ifanr.com/1689653?utm_source=rss&utm_medium=rss&utm_campaign=",
+      "source": "爱范儿",
+      "publish_time": "2026-11-16T09:53:01+00:00",
+      "summary": "比 DeepSeek V4.1 Flash 性价比更高 #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+      "category": "国内科技",
+      "dedupe_key": "https://www.ifanr.com/1689653?utm_source=rss&utm_medium=rss&utm_campaign=",
+      "title_zh": null,
+      "relevance_score": 33,
+      "heat_score": 72,
+      "recency_score": 43,
+      "rank_score": 46.7,
+      "rank": 77
+    },
+    {
+      "id": 26,
       "title": "The Pixies loathed the song that ended up being their breakthrough: “Geez, this doesn’t even sound like us”",
       "link": "https://www.musicradar.com/artists/the-pixies-loathed-the-song-that-ended-up-being-their-breakthrough-geez-this-doesnt-even-sound-like-us",
       "source": "MusicRadar",
@@ -431,10 +1263,10 @@
       "heat_score": 90,
       "recency_score": 42,
       "rank_score": 51.9,
-      "rank": 26
+      "rank": 78
     },
     {
-      "id": 1950,
+      "id": 27,
       "title": "智算接棒：物理AI的下一个风口，在于计算基础设施",
       "link": "https://www.leiphone.com/category/chips/yYPDwzuTBbcMSCSx.html",
       "source": "雷锋网",
@@ -447,10 +1279,26 @@
       "heat_score": 61,
       "recency_score": 40,
       "rank_score": 48.8,
-      "rank": 27
+      "rank": 79
     },
     {
-      "id": 1308,
+      "id": 272,
+      "title": "HCI 先驱 de Souza：当 AI 替我们阅读，谁来为知识负责？| ACM MM 2026",
+      "link": "https://www.leiphone.com/category/private/j1CWHNsD9eBM7Wwc.html",
+      "source": "雷锋网",
+      "publish_time": "2026-11-16T07:59:00+00:00",
+      "summary": "研究者需要的不只是AI生成的答案，更是审查答案、追溯来源并为知识判断负责的能力。 作者丨 张 璐 编辑丨马晓宁 你有没有过这样的经历：面对几十页密密麻麻的PDF，实在抽不出时间细读，于是把论文丢给ChatGPT或Claude，让它帮你提炼核心观点。 几秒钟后，一份条理清晰的摘要出现在屏幕上。你点点头，觉得自己已经掌握了论文的主要内容，甚至直接将其中的观点引用进了自己的研究。 但是，等等——你确定AI总结的，真的是原作者想表达的意思吗？如果它悄悄引入了原文没有的观点，甚至将毫不相干的概念联系在一起，作为研究者的我们，能否及时发现？ 在正在举行的 ACM Multimedia 2026 上，人机交互领域先驱、巴西里约热内卢天主教大学（PUC-Rio）荣休教授 Clarisse Sieckenius de Souza 带来了一场主题演讲。 她从自己提出的“语义工程”（Semiotic Engineering）理论出发，讨论AI如何改变人与信息之间的关系，以及当我们把文献阅读和理解的工作交给AI时，如何守住研究者的“认知权威”（Epistemic Authority）。 从界面如何传递设计者的…",
+      "category": "国内科技",
+      "dedupe_key": "https://www.leiphone.com/category/private/j1CWHNsD9eBM7Wwc.html",
+      "title_zh": null,
+      "relevance_score": 33,
+      "heat_score": 61,
+      "recency_score": 40,
+      "rank_score": 42.8,
+      "rank": 80
+    },
+    {
+      "id": 28,
       "title": "李飞飞最新 CoRL2026 演讲实录：从「橱柜模型」到世界模型，机器人需要什么样的 AI ？",
       "link": "https://www.leiphone.com/category/ai/zV4No5T5XDHJcupr.html",
       "source": "雷锋网",
@@ -461,12 +1309,12 @@
       "title_zh": null,
       "relevance_score": 50,
       "heat_score": 65,
-      "recency_score": 40,
-      "rank_score": 52.5,
-      "rank": 28
+      "recency_score": 39,
+      "rank_score": 52.3,
+      "rank": 81
     },
     {
-      "id": 1927,
+      "id": 29,
       "title": "百度世界2026｜让金融AI用得起、更专业，度小满“轩辕”探索中小机构落地新路径",
       "link": "https://www.leiphone.com/category/industrynews/JDoXug7VZqSjkQrQ.html",
       "source": "雷锋网",
@@ -479,10 +1327,10 @@
       "heat_score": 69,
       "recency_score": 35,
       "rank_score": 60.2,
-      "rank": 29
+      "rank": 82
     },
     {
-      "id": 1335,
+      "id": 30,
       "title": "How Jon Stockman went from a terrible bass tone to the colossal sound behind Karnivool’s Sound Awake",
       "link": "https://www.guitarworld.com/artists/bassists/how-jon-stockman-crafted-the-bass-sound-behind-karnivools-sound-awake",
       "source": "Guitar World",
@@ -493,12 +1341,12 @@
       "title_zh": "Jon Stockman 如何打造 Karnivool《Sound Awake》中的巨大贝斯音色",
       "relevance_score": 61,
       "heat_score": 82,
-      "recency_score": 31,
-      "rank_score": 61.3,
-      "rank": 30
+      "recency_score": 30,
+      "rank_score": 61.1,
+      "rank": 83
     },
     {
-      "id": 823,
+      "id": 31,
       "title": "Deluge 1.3 ‘Derbyshire’ Firmware Hands-On Demo",
       "link": "https://www.synthtopia.com/content/2026/11/15/deluge-1-3-derbyshire-firmware-hands-on-demo/",
       "source": "Synthtopia",
@@ -511,10 +1359,10 @@
       "heat_score": 80,
       "recency_score": 30,
       "rank_score": 37.5,
-      "rank": 31
+      "rank": 84
     },
     {
-      "id": 241,
+      "id": 32,
       "title": "Steve Duda’s Free Shrub Brings Serum Wavetable Synthesizer To The M-VAVE FM-1",
       "link": "https://www.synthtopia.com/content/2026/11/15/steve-dudas-free-shrub-brings-serum-wavetable-synthesizer-to-the-m-vave-fm-1/",
       "source": "Synthtopia",
@@ -527,10 +1375,10 @@
       "heat_score": 80,
       "recency_score": 30,
       "rank_score": 66.5,
-      "rank": 32
+      "rank": 85
     },
     {
-      "id": 1481,
+      "id": 33,
       "title": "Joe Bonamassa declares his love for the Fender Jaguar: “It doesn’t get the same kind of reverence”",
       "link": "https://www.guitarworld.com/lessons/artist-lessons/joe-bonamassa-declares-his-love-for-the-fender-jaguar-in-this-surf-rock-guitar-lesson",
       "source": "Guitar World",
@@ -543,10 +1391,10 @@
       "heat_score": 82,
       "recency_score": 21,
       "rank_score": 41.3,
-      "rank": 33
+      "rank": 86
     },
     {
-      "id": 1323,
+      "id": 34,
       "title": "How Pete Townshend’s attempt to transform “a person into music” spawned The Who’s biggest song",
       "link": "https://www.musicradar.com/artists/how-pete-townshends-attempt-to-transform-a-person-into-music-spawned-the-whos-biggest-song",
       "source": "MusicRadar",
@@ -559,10 +1407,10 @@
       "heat_score": 86,
       "recency_score": 10,
       "rank_score": 58.3,
-      "rank": 34
+      "rank": 87
     },
     {
-      "id": 242,
+      "id": 35,
       "title": "AudioThing & Hainbach Release Seconds, A 48-Band Spectral Sound Design Effect",
       "link": "https://www.synthtopia.com/content/2026/11/14/audiothing-hainbach-release-seconds-a-48-band-spectral-sound-design-effect/",
       "source": "Synthtopia",
@@ -575,10 +1423,10 @@
       "heat_score": 80,
       "recency_score": 4,
       "rank_score": 46.3,
-      "rank": 35
+      "rank": 88
     },
     {
-      "id": 87,
+      "id": 36,
       "title": "Yamaha Updates VOCALOID With More Expressive AI Singing, Five New Voicebanks",
       "link": "https://www.synthtopia.com/content/2026/11/14/yamaha-updates-vocaloid-with-more-expressive-ai-singing-five-new-voicebanks/",
       "source": "Synthtopia",
@@ -591,10 +1439,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 74.0,
-      "rank": 36
+      "rank": 89
     },
     {
-      "id": 818,
+      "id": 37,
       "title": "5 extended chords that add depth and harmonic richness to your playing",
       "link": "https://www.guitarworld.com/lessons/chords/extended-chords-vocabulary-lesson",
       "source": "Guitar World",
@@ -607,10 +1455,10 @@
       "heat_score": 82,
       "recency_score": 0,
       "rank_score": 32.1,
-      "rank": 37
+      "rank": 90
     },
     {
-      "id": 244,
+      "id": 38,
       "title": "Cinescapes Pro Turns iPhone and iPad Into Cinematic Ambient Instruments",
       "link": "https://www.synthtopia.com/content/2026/11/14/cinescapes-pro-turns-iphone-and-ipad-into-cinematic-ambient-instruments/",
       "source": "Synthtopia",
@@ -623,10 +1471,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 53.5,
-      "rank": 38
+      "rank": 91
     },
     {
-      "id": 828,
+      "id": 39,
       "title": "Living Sky Combines Convolution Reverb, 3D Positioning & Modulation For Immersive Audio",
       "link": "https://www.synthtopia.com/content/2026/11/14/living-sky-combines-convolution-reverb-3d-positioning-modulation-for-immersive-audio/",
       "source": "Synthtopia",
@@ -639,10 +1487,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 34.5,
-      "rank": 39
+      "rank": 92
     },
     {
-      "id": 1337,
+      "id": 40,
       "title": "The best new guitar gear this week, ft. John Mayer's most affordable Martin yet",
       "link": "https://www.guitarworld.com/gear/guitar-world-gear-round-up-nov-14-2026",
       "source": "Guitar World",
@@ -655,12 +1503,12 @@
       "heat_score": 82,
       "recency_score": 0,
       "rank_score": 50.1,
-      "rank": 40
+      "rank": 93
     },
     {
-      "id": 291,
+      "id": 41,
       "title": "Skoove:把 AI 陪练做成罗兰 钢琴 的配套服务,一家德国公司的创业路径",
-      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqf0svQpImP4hP4oEcMSryqVqXa8Fplpd9gL5eLx9iu59aUhIRXyJ6c0chl91tut2sRsqxQaqA2t5IzZHGB469Ywr2-GCGjdSLhcM_FeBRi5j91CGe7FD45TJmfMbkuwJHEBEMo_coZOHqd4Pu0JvBWpDBaR9FjUPmSrslgSupoIJ_8Q9mVMhpN84ax0WJZ7IOpZ0tF_cHpOHwdVqCwyPdzA..&type=2&query=AI%E9%92%A2%E7%90%B4 %E4%B9%90%E7%90%86&token=8D970E00CE0859E85F660014ED148487602747C96AFC107C",
+      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqbMDBWOuBO8pMW31KZQ9l6VqXa8Fplpd9ywmE4pSZwpZuhjsBaAPeBasc-HUpUEUa6Qg5vsDxzQPwtfqE90r61_Z_Z83Vvgf3PMQeTgAbta-vuScxqM-KCT09qjDh9EXZyd4mv28GkckwiHISUGX3l5q-ovmEKKCTRwsUvMbHQHHOQ38jq9qQrrZR-piqlDHkrLhGNKewIrtAe0f8bRARvQ..&type=2&query=AI%E9%92%A2%E7%90%B4 %E4%B9%90%E7%90%86&token=9499C190B6531EF7C8C1A74385C6C65FC868086F6AFD1596",
       "source": "搜狗微信",
       "publish_time": "2026-11-14T04:01:27+00:00",
       "summary": "对准备进入 AI钢琴 行业的出海创业者,这里有一个具体问题:软件... 内容包含识谱、 乐理 与曲目练习.这些工作开始于生成式 AI 广泛进...",
@@ -671,10 +1519,10 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 64.6,
-      "rank": 41
+      "rank": 94
     },
     {
-      "id": 1484,
+      "id": 42,
       "title": "Car Bomb bassist John Modell on how a support slot with Meshuggah went from band joke to reality",
       "link": "https://www.guitarworld.com/artists/bassists/car-bomb-bassist-jon-modell-on-chasing-a-support-slot-with-meshuggah",
       "source": "Guitar World",
@@ -687,10 +1535,10 @@
       "heat_score": 82,
       "recency_score": 0,
       "rank_score": 46.1,
-      "rank": 42
+      "rank": 95
     },
     {
-      "id": 246,
+      "id": 43,
       "title": "Behringer Opens New AQ64L 64-Pad MIDI Controller To Custom Firmware",
       "link": "https://www.synthtopia.com/content/2026/11/13/behringer-opens-new-aq64l-64-pad-midi-controller-to-custom-firmware/",
       "source": "Synthtopia",
@@ -703,10 +1551,10 @@
       "heat_score": 84,
       "recency_score": 0,
       "rank_score": 40.7,
-      "rank": 43
+      "rank": 96
     },
     {
-      "id": 247,
+      "id": 44,
       "title": "DJW Audio Intros DW-303, a Free Open-Source TB-303-Style Synthesizer",
       "link": "https://www.synthtopia.com/content/2026/11/13/djw-audio-intros-dw-303-a-free-open-source-tb-303-style-synthesizer/",
       "source": "Synthtopia",
@@ -719,10 +1567,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 57.5,
-      "rank": 44
+      "rank": 97
     },
     {
-      "id": 248,
+      "id": 45,
       "title": "Spitfire Audio Releases Eric Whitacre Eternity, Combining Analog Synths, Piano and Processed Choir",
       "link": "https://www.synthtopia.com/content/2026/11/13/spitfire-audio-releases-eric-whitacre-eternity-combining-analog-synths-piano-and-processed-choir/",
       "source": "Synthtopia",
@@ -735,10 +1583,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 54.5,
-      "rank": 45
+      "rank": 98
     },
     {
-      "id": 249,
+      "id": 46,
       "title": "Body Synths Laboratory Combines Dual-Channel Effects With Analog Feedback Synthesis",
       "link": "https://www.synthtopia.com/content/2026/11/13/body-synths-laboratory-combines-dual-channel-effects-with-analog-feedback-synthesis/",
       "source": "Synthtopia",
@@ -751,10 +1599,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 39.5,
-      "rank": 46
+      "rank": 99
     },
     {
-      "id": 250,
+      "id": 47,
       "title": "Vintage Synth Review: The Alesis Andromeda A6 Analog Synthesizer",
       "link": "https://www.synthtopia.com/content/2026/11/13/vintage-synth-review-the-alesis-andromeda-a6-analog-synthesizer/",
       "source": "Synthtopia",
@@ -767,10 +1615,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 47
+      "rank": 100
     },
     {
-      "id": 1464,
+      "id": 48,
       "title": "When Kirk Hammett paid a nerve-wracking visit to his blues hero Peter Green",
       "link": "https://www.musicradar.com/artists/when-kirk-hammett-met-his-blues-hero-peter-green",
       "source": "MusicRadar",
@@ -783,10 +1631,10 @@
       "heat_score": 86,
       "recency_score": 0,
       "rank_score": 38.3,
-      "rank": 48
+      "rank": 101
     },
     {
-      "id": 1338,
+      "id": 49,
       "title": "Why acoustic phenom Marcin is embracing electric guitar",
       "link": "https://www.guitarworld.com/artists/guitarists/why-acoustic-guitar-phenom-marcin-is-embracing-electric-guitar",
       "source": "Guitar World",
@@ -799,10 +1647,10 @@
       "heat_score": 82,
       "recency_score": 0,
       "rank_score": 50.1,
-      "rank": 49
+      "rank": 102
     },
     {
-      "id": 1339,
+      "id": 50,
       "title": "This could be the cheapest fretless guitar on the market for Angine de Poitrine microtones on a budget",
       "link": "https://www.guitarworld.com/gear/electric-guitars/orangewood-del-sol-baritone-fretless",
       "source": "Guitar World",
@@ -815,10 +1663,10 @@
       "heat_score": 82,
       "recency_score": 0,
       "rank_score": 50.1,
-      "rank": 50
+      "rank": 103
     },
     {
-      "id": 1487,
+      "id": 51,
       "title": "PRS reveals why it decided to ditch Bird inlays for its new Tekton range",
       "link": "https://www.guitarworld.com/gear/electric-guitars/prs-tekton-inlays-explained",
       "source": "Guitar World",
@@ -831,10 +1679,10 @@
       "heat_score": 82,
       "recency_score": 0,
       "rank_score": 37.1,
-      "rank": 51
+      "rank": 104
     },
     {
-      "id": 1515,
+      "id": 52,
       "title": "Harps with flowers that bloom and more fanciful creations of Monique Evette",
       "link": "https://cdm.link/fanciful-creations-of-monique-evette/",
       "source": "CDM",
@@ -847,10 +1695,10 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 50.9,
-      "rank": 52
+      "rank": 105
     },
     {
-      "id": 819,
+      "id": 53,
       "title": "Joe Satriani and Steve Vai on internet shred, embracing plugins and the guitar collab of the century",
       "link": "https://www.guitarworld.com/artists/guitarists/satch-vai-the-sea-of-emotion",
       "source": "Guitar World",
@@ -863,10 +1711,10 @@
       "heat_score": 86,
       "recency_score": 0,
       "rank_score": 51.3,
-      "rank": 53
+      "rank": 106
     },
     {
-      "id": 1341,
+      "id": 54,
       "title": "Norman Harris closes iconic vintage guitar store for remodel: “I’ve stayed in the prehistoric age for long enough”",
       "link": "https://www.guitarworld.com/music-industry/normans-rare-guitars-remodel",
       "source": "Guitar World",
@@ -879,10 +1727,10 @@
       "heat_score": 82,
       "recency_score": 0,
       "rank_score": 50.1,
-      "rank": 54
+      "rank": 107
     },
     {
-      "id": 1342,
+      "id": 55,
       "title": "Inside Motor City Guitars – the guitar store with the “Magic Strat” played by Eric Johnson and Mark Tremonti",
       "link": "https://www.guitarworld.com/gear/guitars/inside-motor-city-guitars",
       "source": "Guitar World",
@@ -895,10 +1743,10 @@
       "heat_score": 82,
       "recency_score": 0,
       "rank_score": 41.1,
-      "rank": 55
+      "rank": 108
     },
     {
-      "id": 1343,
+      "id": 56,
       "title": "Julian Lage on when the guitar hero who inspired him to play recruited him for the Crossroads Guitar Festival",
       "link": "https://www.guitarworld.com/artists/guitarists/julian-lage-on-eric-claptons-crossroads-invite",
       "source": "Guitar World",
@@ -911,10 +1759,10 @@
       "heat_score": 82,
       "recency_score": 0,
       "rank_score": 55.1,
-      "rank": 56
+      "rank": 109
     },
     {
-      "id": 1465,
+      "id": 57,
       "title": "“It’s in D, and it’s not a really heavy key”: How Iron Maiden created their breakthrough hit",
       "link": "https://www.musicradar.com/artists/its-in-d-and-its-not-a-really-heavy-key-how-iron-maiden-took-a-little-inspiration-from-a-frank-sinatra-classic-to-create-the-breakthrough-hit-that-helped-make-them-the-biggest-heavy-metal-band-in-the-world",
       "source": "MusicRadar",
@@ -927,10 +1775,10 @@
       "heat_score": 90,
       "recency_score": 0,
       "rank_score": 48.5,
-      "rank": 57
+      "rank": 110
     },
     {
-      "id": 842,
+      "id": 58,
       "title": "Audient introduces the third generation of its iD interface family – here’s what’s new",
       "link": "https://musictech.com/news/gear/audient-id-mk3/",
       "source": "MusicTech",
@@ -943,10 +1791,10 @@
       "heat_score": 92,
       "recency_score": 0,
       "rank_score": 35.1,
-      "rank": 58
+      "rank": 111
     },
     {
-      "id": 2010,
+      "id": 59,
       "title": "研究生如何用 AI 辅助完成一篇综述：我的科研写作工具与实践经验",
       "link": "https://sspai.com/post/118153",
       "source": "少数派",
@@ -959,10 +1807,10 @@
       "heat_score": 61,
       "recency_score": 0,
       "rank_score": 34.8,
-      "rank": 59
+      "rank": 112
     },
     {
-      "id": 1015,
+      "id": 60,
       "title": "Akai Opens MPC 3 To Vibe Coding With Latest Update",
       "link": "https://www.synthtopia.com/content/2026/11/12/akai-opens-mpc-3-to-vibe-coding-with-latest-update/",
       "source": "Synthtopia",
@@ -975,10 +1823,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 37.5,
-      "rank": 60
+      "rank": 113
     },
     {
-      "id": 1954,
+      "id": 61,
       "title": "AI 录音硬件卖的是时间差，窗口可能只剩半年",
       "link": "http://www.geekpark.net/news/373946",
       "source": "极客公园",
@@ -991,10 +1839,10 @@
       "heat_score": 65,
       "recency_score": 0,
       "rank_score": 44.5,
-      "rank": 61
+      "rank": 114
     },
     {
-      "id": 1014,
+      "id": 62,
       "title": "Patchwerk Turns The M-VAVE FM-1 Into A Modular Synthesizer",
       "link": "https://www.synthtopia.com/content/2026/11/12/patchwerk-turns-the-m-vave-fm-1-into-a-modular-synthesizer/",
       "source": "Synthtopia",
@@ -1007,10 +1855,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 62
+      "rank": 115
     },
     {
-      "id": 1999,
+      "id": 63,
       "title": "李彦宏定义 AI 下一个十年，智能组织是「新厂房」",
       "link": "http://www.geekpark.net/news/373937",
       "source": "极客公园",
@@ -1023,10 +1871,10 @@
       "heat_score": 65,
       "recency_score": 0,
       "rank_score": 52.0,
-      "rank": 63
+      "rank": 116
     },
     {
-      "id": 1013,
+      "id": 64,
       "title": "Konstrukt 1.2 Combines MIDI Sequencing, AUv3 Instruments And Modular Audio Routing",
       "link": "https://www.synthtopia.com/content/2026/11/12/konstrukt-1-2-combines-midi-sequencing-auv3-instruments-and-modular-audio-routing/",
       "source": "Synthtopia",
@@ -1039,10 +1887,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 40.5,
-      "rank": 64
+      "rank": 117
     },
     {
-      "id": 1344,
+      "id": 65,
       "title": "Michael J. Fox on the surprise guitar cameo with Coldplay that stole the show at Glastonbury",
       "link": "https://www.guitarworld.com/artists/guitarists/michael-j-fox-on-his-surprise-glastonbury-guitar-cameo-with-coldplay",
       "source": "Guitar World",
@@ -1055,10 +1903,10 @@
       "heat_score": 82,
       "recency_score": 0,
       "rank_score": 50.1,
-      "rank": 65
+      "rank": 118
     },
     {
-      "id": 812,
+      "id": 66,
       "title": "\"This isn't a spec refresh – it's a completely new technology platform\": Audient launches next generation of iD audio interfaces with onboard DSP and built-in monitor correction",
       "link": "https://www.musicradar.com/music-tech/this-isnt-a-spec-refresh-its-a-completely-new-technology-platform-audient-launches-next-generation-of-id-audio-interfaces-with-onboard-dsp-and-built-in-monitor-correction",
       "source": "MusicRadar",
@@ -1071,10 +1919,10 @@
       "heat_score": 90,
       "recency_score": 0,
       "rank_score": 45.5,
-      "rank": 66
+      "rank": 119
     },
     {
-      "id": 843,
+      "id": 67,
       "title": "This new plugin lets you generate loops and one-shots from text prompts",
       "link": "https://musictech.com/news/gear/sonura-flow/",
       "source": "MusicTech",
@@ -1087,10 +1935,10 @@
       "heat_score": 92,
       "recency_score": 0,
       "rank_score": 35.1,
-      "rank": 67
+      "rank": 120
     },
     {
-      "id": 263,
+      "id": 68,
       "title": "The best new music plugins this week, free and paid",
       "link": "https://musictech.com/news/gear/new-plugins-this-week/",
       "source": "MusicTech",
@@ -1103,10 +1951,10 @@
       "heat_score": 92,
       "recency_score": 0,
       "rank_score": 56.1,
-      "rank": 68
+      "rank": 121
     },
     {
-      "id": 1325,
+      "id": 69,
       "title": "Prince shows off his slap bass playing skills in previously unreleased live footage",
       "link": "https://www.musicradar.com/artists/prince-shows-off-his-slap-bass-playing-skills-in-previously-unreleased-live-footage-as-a-new-film-and-an-expanded-album-reissue-are-confirmed",
       "source": "MusicRadar",
@@ -1119,10 +1967,10 @@
       "heat_score": 86,
       "recency_score": 0,
       "rank_score": 42.3,
-      "rank": 69
+      "rank": 122
     },
     {
-      "id": 264,
+      "id": 70,
       "title": "How transparent is your DAW’s cost model?",
       "link": "https://musictech.com/features/interviews/daw-cost-model/",
       "source": "MusicTech",
@@ -1135,10 +1983,10 @@
       "heat_score": 92,
       "recency_score": 0,
       "rank_score": 48.1,
-      "rank": 70
+      "rank": 123
     },
     {
-      "id": 813,
+      "id": 71,
       "title": "You can now vibe code plugins for your MPC with the help of Akai’s official SDK",
       "link": "https://www.musicradar.com/music-tech/you-can-now-vibe-code-plugins-for-your-mpc-with-the-help-of-akais-official-sdk",
       "source": "MusicRadar",
@@ -1151,10 +1999,10 @@
       "heat_score": 86,
       "recency_score": 0,
       "rank_score": 33.3,
-      "rank": 71
+      "rank": 124
     },
     {
-      "id": 814,
+      "id": 72,
       "title": "Blackstar just gave its ID:X Floor amp modellers Neural Amp Modelling support",
       "link": "https://www.musicradar.com/guitars/blackstar-amplification-adds-nam-a2-lite-to-its-idx-floor-amp-modeller-series",
       "source": "MusicRadar",
@@ -1167,10 +2015,10 @@
       "heat_score": 86,
       "recency_score": 0,
       "rank_score": 33.3,
-      "rank": 72
+      "rank": 125
     },
     {
-      "id": 1328,
+      "id": 73,
       "title": "ADDAC’s Rotary Exciter and Resonator Clamps can transform your guitar into a drone and ambient texture machine",
       "link": "https://www.musicradar.com/guitars/addac-system-resonator-clamp-rotator-exciter-clamp-for-electric-guitar",
       "source": "MusicRadar",
@@ -1183,10 +2031,10 @@
       "heat_score": 86,
       "recency_score": 0,
       "rank_score": 51.3,
-      "rank": 73
+      "rank": 126
     },
     {
-      "id": 1012,
+      "id": 74,
       "title": "Vertikal Captures Nils Frahm’s Monumental Piano In A New Kontakt Instrument",
       "link": "https://www.synthtopia.com/content/2026/11/12/vertikal-captures-nils-frahms-monumental-piano-in-a-new-kontakt-instrument/",
       "source": "Synthtopia",
@@ -1199,10 +2047,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 54.5,
-      "rank": 74
+      "rank": 127
     },
     {
-      "id": 1494,
+      "id": 75,
       "title": "Crossroads sequel: who we want to take Steve Vai’s place",
       "link": "https://www.guitarworld.com/artists/guitarists/crossroads-sequel-who-we-want-to-take-steve-vais-place",
       "source": "Guitar World",
@@ -1215,10 +2063,10 @@
       "heat_score": 82,
       "recency_score": 0,
       "rank_score": 37.1,
-      "rank": 75
+      "rank": 128
     },
     {
-      "id": 1516,
+      "id": 76,
       "title": "Reading Rainbow, the Buchla synth’s “MARF,” and a prototype’s live debut",
       "link": "https://cdm.link/reading-rainbow-buchla-marf-steve-horelick/",
       "source": "CDM",
@@ -1231,10 +2079,10 @@
       "heat_score": 84,
       "recency_score": 0,
       "rank_score": 46.7,
-      "rank": 76
+      "rank": 129
     },
     {
-      "id": 200,
+      "id": 77,
       "title": "\"Ever wanted to play a piano that’s 14 feet tall? Now you can\": 5 new plugins you need to know about",
       "link": "https://www.musicradar.com/music-tech/have-you-ever-played-a-piano-thats-14-feet-tall-now-you-can-5-new-plugins-you-need-to-know-about",
       "source": "MusicRadar",
@@ -1247,10 +2095,10 @@
       "heat_score": 86,
       "recency_score": 0,
       "rank_score": 51.3,
-      "rank": 77
+      "rank": 130
     },
     {
-      "id": 1346,
+      "id": 78,
       "title": "How Play That Funky Music guitarist Bryan Bassett wound up playing in three iconic rock bands",
       "link": "https://www.guitarworld.com/artists/guitarists/bryan-bassett-foghat-wild-cherry-molly-hatchet-interview",
       "source": "Guitar World",
@@ -1263,10 +2111,10 @@
       "heat_score": 82,
       "recency_score": 0,
       "rank_score": 50.1,
-      "rank": 78
+      "rank": 131
     },
     {
-      "id": 265,
+      "id": 79,
       "title": "Watch the Haloplane make music by running pickups through magnetic fields",
       "link": "https://musictech.com/news/gear/haloplane/",
       "source": "MusicTech",
@@ -1279,10 +2127,10 @@
       "heat_score": 92,
       "recency_score": 0,
       "rank_score": 58.1,
-      "rank": 79
+      "rank": 132
     },
     {
-      "id": 1472,
+      "id": 80,
       "title": "Anna Lapwood on removing her musical blinkers and why you shouldn't watch The Lord of the Rings with her",
       "link": "https://www.musicradar.com/artists/people-arent-expecting-to-hear-the-organ-and-when-they-hear-it-they-lose-their-minds-anna-lapwood-on-removing-her-musical-blinkers-social-media-stardom-with-bonobo-and-raye-and-why-you-shouldnt-watch-the-lord-of-the-rings-with-her",
       "source": "MusicRadar",
@@ -1295,10 +2143,10 @@
       "heat_score": 86,
       "recency_score": 0,
       "rank_score": 47.3,
-      "rank": 80
+      "rank": 133
     },
     {
-      "id": 266,
+      "id": 81,
       "title": "This new app lets you instantly share your favourite parts of your favourite songs with friends",
       "link": "https://musictech.com/news/music/drops-app/",
       "source": "MusicTech",
@@ -1311,12 +2159,12 @@
       "heat_score": 92,
       "recency_score": 0,
       "rank_score": 49.1,
-      "rank": 81
+      "rank": 134
     },
     {
-      "id": 1380,
+      "id": 82,
       "title": "零 乐理 | AI 音乐万能提示词公式",
-      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqf0svQpImP4hP4oEcMSryqVqXa8Fplpd9HRrnabaLIY_oda9VNj9Rsfvgd16kucB5Vjjt0HGD4yKN3Gk3AZlbgyJMCU_2iyPvU4MW3SvhKckPBfr0bU-St6p6CTXpPUFROottAlQNavg0IMUsS9vo0uNmsu7U3rJuOsOht37K1DDHcsit8m3knQB_bNomNknMcFwtEJux3VB535pjGOOjYg..&type=2&query=AI%E9%92%A2%E7%90%B4 %E4%B9%90%E7%90%86&token=8D970E00CE0859E85F660014ED148487602747C96AFC107C",
+      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqbMDBWOuBO8pMW31KZQ9l6VqXa8Fplpd9-K7X1Z9aOr4HqQOpZQxfQkF6-MqZHgKJbxT-S-aIgx8xG2c5_ecdvW5La3N4cDSFr-YFksJDJTFWT3TYBzSab0wvtWqgQAHaQuFvhM-SNqud-Nz4re4XdYPQexktATWdq4DsqdOrZseRnfDsaMlVtT6TrQGKM1BW8dbXN-6JTxqrCDCayYmfpA..&type=2&query=AI%E9%92%A2%E7%90%B4 %E4%B9%90%E7%90%86&token=9499C190B6531EF7C8C1A74385C6C65FC868086F6AFD1596",
       "source": "搜狗微信",
       "publish_time": "2026-11-12T10:30:59+00:00",
       "summary": "个要素就足够,写太多 AI 容易混乱零 乐理 也能当音乐制作人!把灵感直接变成歌收藏这条,下次写歌直接拿模板填空# ai 音乐 # AI 音乐 ...",
@@ -1327,10 +2175,10 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 65.6,
-      "rank": 82
+      "rank": 135
     },
     {
-      "id": 1979,
+      "id": 83,
       "title": "苹果突然永久关闭官方「支持社区」；字节即将推出个人 AI 助手；华为新品牌星芒 OSTA 曝光 | 极客早知道",
       "link": "http://www.geekpark.net/news/373839",
       "source": "极客公园",
@@ -1343,10 +2191,10 @@
       "heat_score": 69,
       "recency_score": 0,
       "rank_score": 40.2,
-      "rank": 83
+      "rank": 136
     },
     {
-      "id": 1011,
+      "id": 84,
       "title": "Schmidt Eight Voice Polyphonic Software Synthesizer Now Available",
       "link": "https://www.synthtopia.com/content/2026/11/11/schmidt-eight-voice-polyphonic-software-synthesizer-now-available/",
       "source": "Synthtopia",
@@ -1359,10 +2207,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 65.5,
-      "rank": 84
+      "rank": 137
     },
     {
-      "id": 1010,
+      "id": 85,
       "title": "Krakli Updates Its Free Synthesizer Collection With Mac Support",
       "link": "https://www.synthtopia.com/content/2026/11/11/krakli-updates-its-free-synthesizer-collection-with-mac-support/",
       "source": "Synthtopia",
@@ -1375,10 +2223,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 57.5,
-      "rank": 85
+      "rank": 138
     },
     {
-      "id": 1009,
+      "id": 86,
       "title": "Bram Bos Intros MIDGAR Creative Ambient Processor",
       "link": "https://www.synthtopia.com/content/2026/11/11/bram-bos-intros-midgar-creative-ambient-processor/",
       "source": "Synthtopia",
@@ -1391,10 +2239,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 52.5,
-      "rank": 86
+      "rank": 139
     },
     {
-      "id": 1008,
+      "id": 87,
       "title": "Unusable Engineering Intros Currents & Nostalgia, A New Subtractive Synthesizer",
       "link": "https://www.synthtopia.com/content/2026/11/11/unusable-engineering-intros-currents-nostalgia-a-new-subtractive-synthesizer/",
       "source": "Synthtopia",
@@ -1407,10 +2255,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 87
+      "rank": 140
     },
     {
-      "id": 1496,
+      "id": 88,
       "title": "The life and times of prog icon Jan Akkerman, from Brainbox to Focus",
       "link": "https://www.guitarworld.com/artists/guitarists/jan-akkerman-focus",
       "source": "Guitar World",
@@ -1423,10 +2271,10 @@
       "heat_score": 82,
       "recency_score": 0,
       "rank_score": 46.1,
-      "rank": 88
+      "rank": 141
     },
     {
-      "id": 1330,
+      "id": 89,
       "title": "Joe Satriani and Steve Vai on The Sea Of Emotion: a guitar album 50 years in the making",
       "link": "https://www.musicradar.com/artists/joe-satriani-steve-vai-the-sea-of-emotion-interview",
       "source": "MusicRadar",
@@ -1439,10 +2287,10 @@
       "heat_score": 90,
       "recency_score": 0,
       "rank_score": 57.5,
-      "rank": 89
+      "rank": 142
     },
     {
-      "id": 1531,
+      "id": 90,
       "title": "Highlights, concerns, and trends from Game Sound Con 2026",
       "link": "https://musictech.com/news/events/games-sound-con-2026/",
       "source": "MusicTech",
@@ -1455,10 +2303,10 @@
       "heat_score": 92,
       "recency_score": 0,
       "rank_score": 40.1,
-      "rank": 90
+      "rank": 143
     },
     {
-      "id": 1497,
+      "id": 91,
       "title": "John Mayer has an HSS Silver Sky prototype – but we might not ever get to see it",
       "link": "https://www.guitarworld.com/artists/guitarists/john-mayer-prs-silver-sky-hss",
       "source": "Guitar World",
@@ -1471,10 +2319,10 @@
       "heat_score": 82,
       "recency_score": 0,
       "rank_score": 46.1,
-      "rank": 91
+      "rank": 144
     },
     {
-      "id": 1331,
+      "id": 92,
       "title": "“Why compound it with two?”: Nicko McBrain reflects on why thought using a double bass drum was “un-drummer-ish”",
       "link": "https://www.musicradar.com/artists/drummers/its-bad-enough-using-one-why-compound-it-with-two-nicko-mcbrain-reflects-on-why-he-thought-using-a-double-bass-drum-was-un-drummer-ish",
       "source": "MusicRadar",
@@ -1487,10 +2335,10 @@
       "heat_score": 86,
       "recency_score": 0,
       "rank_score": 51.3,
-      "rank": 92
+      "rank": 145
     },
     {
-      "id": 1007,
+      "id": 93,
       "title": "New CERNION Synthesizer Includes Custom Wavetable Editing, 11 Effects",
       "link": "https://www.synthtopia.com/content/2026/11/11/new-cernion-synthesizer-includes-custom-wavetable-editing-11-effects/",
       "source": "Synthtopia",
@@ -1503,10 +2351,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 93
+      "rank": 146
     },
     {
-      "id": 1006,
+      "id": 94,
       "title": "Ableton Announces Live 13, Adding Step Sequencing, ARA 2 Support & New Sound Design Tools",
       "link": "https://www.synthtopia.com/content/2026/11/11/ableton-announces-live-13-adding-step-sequencing-ara-2-support-new-sound-design-tools/",
       "source": "Synthtopia",
@@ -1519,10 +2367,10 @@
       "heat_score": 84,
       "recency_score": 0,
       "rank_score": 57.7,
-      "rank": 94
+      "rank": 147
     },
     {
-      "id": 1499,
+      "id": 95,
       "title": "Chris Rörland on the making of his signature Jackson, switching from Kemper to Quad Cortex and sharing the stage with historical figures",
       "link": "https://www.guitarworld.com/artists/guitarists/sabaton-chris-rorland-jackson-sl7",
       "source": "Guitar World",
@@ -1535,10 +2383,10 @@
       "heat_score": 82,
       "recency_score": 0,
       "rank_score": 37.1,
-      "rank": 95
+      "rank": 148
     },
     {
-      "id": 4,
+      "id": 96,
       "title": "“An affront to any songwriter who has lived and struggled”: Nick Cave on AI song-generating platforms",
       "link": "https://www.musicradar.com/artists/singers-songwriters/an-affront-to-any-songwriter-who-has-lived-and-struggled-in-this-world-and-earned-the-right-to-create-a-song-nick-cave-on-ai-song-generating-platforms",
       "source": "MusicRadar",
@@ -1551,10 +2399,10 @@
       "heat_score": 86,
       "recency_score": 0,
       "rank_score": 75.8,
-      "rank": 96
+      "rank": 149
     },
     {
-      "id": 1476,
+      "id": 97,
       "title": "Exploring The Beatles’ riff-led Revolver highlight that John Lennon considered a throwaway",
       "link": "https://www.musicradar.com/artists/its-one-of-the-best-songs-ever-written-and-its-only-a-minute-and-a-half-long-exploring-the-beatles-riff-led-revolver-highlight-that-john-lennon-considered-a-throwaway",
       "source": "MusicRadar",
@@ -1567,10 +2415,10 @@
       "heat_score": 86,
       "recency_score": 0,
       "rank_score": 38.3,
-      "rank": 97
+      "rank": 150
     },
     {
-      "id": 1347,
+      "id": 98,
       "title": "Billie Joe Armstrong is underrated and music is all about channeling the outer realm – meet NYC alt-rockers Telescreens",
       "link": "https://www.guitarworld.com/artists/bands/telescreens-why-the-lights-flicker",
       "source": "Guitar World",
@@ -1583,10 +2431,10 @@
       "heat_score": 82,
       "recency_score": 0,
       "rank_score": 46.1,
-      "rank": 98
+      "rank": 151
     },
     {
-      "id": 11,
+      "id": 99,
       "title": "7款 AI音乐 工具,到底哪个更好用?",
       "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqm6aMf6klMpxP4oEcMSryqVqXa8Fplpd9fWiw89KJ8c5zTPmlwkbQjyq_8o9hIrLFFhGYAe3dM2UwLiGm106Eyi6pCABZJrJAThKkI_UDWxucDLxEx_VkJ78DlFrvYkk8FncvCwKTHkLOfYzaj83egv3r7ykL88KS8cPivV0OlwoPd_QJqJ8XCQq-IgT7DfxCyIo0rcDqkQTm0CtGSSkZQQ..&type=2&query=AI%E9%9F%B3%E4%B9%90&token=8D874F418F7718A81F187E6B91D97A4F1F1C592B6AFC0E34",
       "source": "搜狗微信",
@@ -1599,10 +2447,10 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 66.6,
-      "rank": 99
+      "rank": 152
     },
     {
-      "id": 2011,
+      "id": 100,
       "title": "当美国无法建设数据中心，会对 AI 产生怎样的冲击",
       "link": "http://www.geekpark.net/news/373816",
       "source": "极客公园",
@@ -1615,10 +2463,10 @@
       "heat_score": 61,
       "recency_score": 0,
       "rank_score": 34.8,
-      "rank": 100
+      "rank": 153
     },
     {
-      "id": 1477,
+      "id": 101,
       "title": "Robbie Williams says he has no interest in pursuing a copyright claim against Olivia Rodrigo",
       "link": "https://www.musicradar.com/artists/there-are-only-so-many-notes-only-so-many-chords-only-so-many-ways-of-putting-them-together-robbie-williams-says-he-loves-olivia-rodrigo-and-has-no-interest-in-pursuing-a-copyright-claim-in-relation-to-her-new-christmas-single",
       "source": "MusicRadar",
@@ -1631,10 +2479,10 @@
       "heat_score": 86,
       "recency_score": 0,
       "rank_score": 38.3,
-      "rank": 101
+      "rank": 154
     },
     {
-      "id": 5,
+      "id": 102,
       "title": "Ableton Live 13 hands-on: ARA 2, Drum Synth, new effects, more",
       "link": "https://cdm.link/ableton-live-13-hands-on-whats-new/",
       "source": "CDM",
@@ -1647,10 +2495,10 @@
       "heat_score": 84,
       "recency_score": 0,
       "rank_score": 64.2,
-      "rank": 102
+      "rank": 155
     },
     {
-      "id": 1299,
+      "id": 103,
       "title": "千问办公押注 Team Agent，企业 AI 的流水线时刻真的来了",
       "link": "http://www.geekpark.net/news/373760",
       "source": "极客公园",
@@ -1663,10 +2511,10 @@
       "heat_score": 65,
       "recency_score": 0,
       "rank_score": 36.0,
-      "rank": 103
+      "rank": 156
     },
     {
-      "id": 1955,
+      "id": 104,
       "title": "ChatGPT 占全球 AI 聊天流量超 81%；iOS 27.3 曝光 Siri「个人记忆系统」；传玛莎拉蒂+尊界合作新车曝光｜极客早知道",
       "link": "http://www.geekpark.net/news/373736",
       "source": "极客公园",
@@ -1679,10 +2527,10 @@
       "heat_score": 65,
       "recency_score": 0,
       "rank_score": 44.5,
-      "rank": 104
+      "rank": 157
     },
     {
-      "id": 836,
+      "id": 105,
       "title": "Logic Pro 13 gets touch right, but stumbles on “intelligent assistant”",
       "link": "https://cdm.link/logic-pro-13-touch-and-intelligence/",
       "source": "CDM",
@@ -1695,10 +2543,10 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 38.9,
-      "rank": 105
+      "rank": 158
     },
     {
-      "id": 1069,
+      "id": 106,
       "title": "Maono’s creator-focused AI-powered microphone, the PD500W, is now available to purchase",
       "link": "https://musictech.com/news/gear/maono-pd500w-available-now/",
       "source": "MusicTech",
@@ -1711,10 +2559,10 @@
       "heat_score": 92,
       "recency_score": 0,
       "rank_score": 44.1,
-      "rank": 106
+      "rank": 159
     },
     {
-      "id": 1005,
+      "id": 107,
       "title": "Aurally Sound Prism: Drums Converts Drum Recordings Into Editable MIDI",
       "link": "https://www.synthtopia.com/content/2026/11/09/aurally-sound-prism-drums-converts-drum-recordings-into-editable-midi/",
       "source": "Synthtopia",
@@ -1727,10 +2575,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 40.5,
-      "rank": 107
+      "rank": 160
     },
     {
-      "id": 1068,
+      "id": 108,
       "title": "A leap forward for in-car audio? Sennheiser’s new innovation uses clever noise cancelling to let the driver hear alerts while passengers listen to music",
       "link": "https://musictech.com/news/gear/sennheiser-scenico-polifonia/",
       "source": "MusicTech",
@@ -1743,10 +2591,10 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 57.4,
-      "rank": 108
+      "rank": 161
     },
     {
-      "id": 1004,
+      "id": 109,
       "title": "Oxo Synth2 Revives Classic Synth1 As A Free, Open-Source Software Synthesizer",
       "link": "https://www.synthtopia.com/content/2026/11/09/oxo-synth2-revives-classic-synth1-as-a-free-open-source-software-synthesizer/",
       "source": "Synthtopia",
@@ -1759,10 +2607,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 65.5,
-      "rank": 109
+      "rank": 162
     },
     {
-      "id": 1301,
+      "id": 110,
       "title": "实测 HY4：腾讯最「夯」大模型，离一线还有多远？",
       "link": "http://www.geekpark.net/news/373644",
       "source": "极客公园",
@@ -1775,10 +2623,26 @@
       "heat_score": 65,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 110
+      "rank": 163
     },
     {
-      "id": 1003,
+      "id": 266,
+      "title": "为什么「陪伴」，注定是 Personal AI 的核心",
+      "link": "http://www.geekpark.net/news/373653",
+      "source": "极客公园",
+      "publish_time": "2026-11-08T09:52:45+00:00",
+      "summary": "作者｜宇航猿 编辑｜靖宇 最近这一波 Personal AI 实在太火了，我也注册了一个 Muse 体验了一下。 整个体验下来，我感觉 Muse 的能力实在一般，远没到让人惊叹的地步。但奇怪的是，它确实带来了一种真切的陪伴感。这种陪伴感，甚至直接改变了我的使用习惯，让我总是忍不住想找它聊聊，哪怕只是把最琐碎的需求丢给它。 就在本周， Muse 又往前迈了一步，正式上线了实时语音和会动的头像 。无独有偶，各家 AI 助手最近都在做同一件事，就是给个人 AI 助手开通语音和对话功能。 这让我非常好奇，距离 ChatGPT 端出惊艳的语音模式，已经过去两年了， 为什么到了现在这个时间点，所有的个人 AI 助手又开始一窝蜂地往语音赛道上挤 ？ 01 口喷「派活」的魅力 2024 年 GPT-4o 发布演示时，那种流畅自然的对话体验常被拿来和电影《Her》对比。但在此后的很长一段时间里，AI 语音始终停留在聊天层，双方客客气气地说完，交互也就结束了。 这一轮语音热潮的核心变量在于，AI 身后终于长出了一双手，语音因此成了派活门槛最低的入口。 当地时间 11 月 5 日，Muse 在美国上线实时语…",
+      "category": "国内科技",
+      "dedupe_key": "http://www.geekpark.net/news/373653",
+      "title_zh": null,
+      "relevance_score": 33,
+      "heat_score": 69,
+      "recency_score": 0,
+      "rank_score": 37.2,
+      "rank": 164
+    },
+    {
+      "id": 111,
       "title": "Splice Create Combines A Full DAW With Integrated Sound Library & AI Assistance",
       "link": "https://www.synthtopia.com/content/2026/11/07/splice-create-combines-a-full-daw-with-integrated-sound-library-ai-assistance/",
       "source": "Synthtopia",
@@ -1791,10 +2655,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 40.5,
-      "rank": 111
+      "rank": 165
     },
     {
-      "id": 1002,
+      "id": 112,
       "title": "Sampleson Wavefinder Uses Local AI To Search Audio Libraries By Sound",
       "link": "https://www.synthtopia.com/content/2026/11/07/sampleson-wavefinder-uses-local-ai-to-search-audio-libraries-by-sound/",
       "source": "Synthtopia",
@@ -1807,10 +2671,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 55.0,
-      "rank": 112
+      "rank": 166
     },
     {
-      "id": 1001,
+      "id": 113,
       "title": "Avid Introduces Pro Tools Extensions, Opening DAW To Third-Party Workflows",
       "link": "https://www.synthtopia.com/content/2026/11/06/avid-introduces-pro-tools-extensions-opening-daw-to-third-party-workflows/",
       "source": "Synthtopia",
@@ -1823,10 +2687,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 31.5,
-      "rank": 113
+      "rank": 167
     },
     {
-      "id": 1000,
+      "id": 114,
       "title": "iZotope Photon Offers Stem Separation For Music, Video And Dialogue",
       "link": "https://www.synthtopia.com/content/2026/11/06/izotope-photon-offers-stem-separation-for-music-video-and-dialogue/",
       "source": "Synthtopia",
@@ -1839,10 +2703,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 70.0,
-      "rank": 114
+      "rank": 168
     },
     {
-      "id": 256,
+      "id": 115,
       "title": "There’s a Zelda-friendly ocarina app for FM-1, and you can try it in a browser",
       "link": "https://cdm.link/theres-a-zelda-friendly-ocarina-app-for-fm-1-and-you-can-try-it-in-a-browser/",
       "source": "CDM",
@@ -1855,10 +2719,10 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 44.9,
-      "rank": 115
+      "rank": 169
     },
     {
-      "id": 999,
+      "id": 116,
       "title": "InMusic Creator Lab Bringing Open Platform ‘Vibe Coding’ To 2027 NAMM Show",
       "link": "https://www.synthtopia.com/content/2026/11/06/inmusic-creator-lab-bringing-open-platform-vibe-coding-to-2027-namm-show/",
       "source": "Synthtopia",
@@ -1871,10 +2735,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 31.5,
-      "rank": 116
+      "rank": 170
     },
     {
-      "id": 998,
+      "id": 117,
       "title": "Stylophone On-The-Fly Performance Sequencer Features 24 Memories, Loop Recording",
       "link": "https://www.synthtopia.com/content/2026/11/06/stylophone-on-the-fly-performance-sequencer-features-24-memories-loop-recording/",
       "source": "Synthtopia",
@@ -1887,10 +2751,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 34.5,
-      "rank": 117
+      "rank": 171
     },
     {
-      "id": 997,
+      "id": 118,
       "title": "Behringer Polyeight Synthesizer Adds Two Voice To Classic Korg Polysix Design",
       "link": "https://www.synthtopia.com/content/2026/11/06/behringer-polyeight-synthesizer-adds-two-voice-to-classic-korg-polysix-design/",
       "source": "Synthtopia",
@@ -1903,10 +2767,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 54.5,
-      "rank": 118
+      "rank": 172
     },
     {
-      "id": 996,
+      "id": 119,
       "title": "EastWest Introduces An All-In-One Composition Instrument For Film And Game Scoring",
       "link": "https://www.synthtopia.com/content/2026/11/06/eastwest-introduces-an-all-in-one-composition-instrument-for-film-and-game-scoring/",
       "source": "Synthtopia",
@@ -1919,10 +2783,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 54.5,
-      "rank": 119
+      "rank": 173
     },
     {
-      "id": 257,
+      "id": 120,
       "title": "Mods for everyone: inMusic is opening up MPC, more new gear to coders",
       "link": "https://cdm.link/inmusic-opens-up-for-namm/",
       "source": "CDM",
@@ -1935,10 +2799,10 @@
       "heat_score": 92,
       "recency_score": 0,
       "rank_score": 43.1,
-      "rank": 120
+      "rank": 174
     },
     {
-      "id": 995,
+      "id": 121,
       "title": "GForce Releases Official Oberheim Matrix-12 Software Synthesizer",
       "link": "https://www.synthtopia.com/content/2026/11/05/gforce-releases-official-oberheim-matrix-12-software-synthesizer/",
       "source": "Synthtopia",
@@ -1951,10 +2815,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 60.5,
-      "rank": 121
+      "rank": 175
     },
     {
-      "id": 994,
+      "id": 122,
       "title": "First Love FM Synthesizer Now Available",
       "link": "https://www.synthtopia.com/content/2026/11/05/first-love-fm-synthesizer-now-available/",
       "source": "Synthtopia",
@@ -1967,10 +2831,10 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 51.9,
-      "rank": 122
+      "rank": 176
     },
     {
-      "id": 993,
+      "id": 123,
       "title": "Dreadbox Introduces Alecto Analog Percussion Synthesizer",
       "link": "https://www.synthtopia.com/content/2026/11/05/dreadbox-introduces-alecto-analog-percussion-synthesizer/",
       "source": "Synthtopia",
@@ -1983,10 +2847,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 54.5,
-      "rank": 123
+      "rank": 177
     },
     {
-      "id": 992,
+      "id": 124,
       "title": "EaganMatrix Sound Design, Performance Controls Come To iOS",
       "link": "https://www.synthtopia.com/content/2026/11/05/eaganmatrix-sound-design-performance-controls-come-to-ios/",
       "source": "Synthtopia",
@@ -1999,10 +2863,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 46.0,
-      "rank": 124
+      "rank": 178
     },
     {
-      "id": 1067,
+      "id": 125,
       "title": "Splice just released an entirely new DAW, Splice Create – here’s everything you need to know",
       "link": "https://musictech.com/news/music/splice-create-daw-announced/",
       "source": "MusicTech",
@@ -2015,10 +2879,10 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 38.9,
-      "rank": 125
+      "rank": 179
     },
     {
-      "id": 1066,
+      "id": 126,
       "title": "Welsh DJ duo powerhouse Overmono just launched a bus processor built around their own mixing workflow",
       "link": "https://musictech.com/news/gear/overmono-diamond-cut/",
       "source": "MusicTech",
@@ -2031,12 +2895,12 @@
       "heat_score": 92,
       "recency_score": 0,
       "rank_score": 60.1,
-      "rank": 126
+      "rank": 180
     },
     {
-      "id": 1404,
+      "id": 127,
       "title": "新书推荐 |《人工智能与 音频制作 》",
-      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqvGqmeSSjTM1P4oEcMSryqVqXa8Fplpd9XtO_8xlT8kwOaE2c62ZJksmef2xw7QWZDOAN0V7zRkkfXyTKoCQHtV8O2jkQNhAqy0YEl3bZ-GEjcQ0KmFyM2jgL5G4r3Ts8_tolSEzq3zZyB7Yykrwe9gV7Cu5Mb_XU32VzjNzcomETAbObEdSh9qkpUosOOKTbO7uKKkVPjG1flztgI7RZ1g..&type=2&query=AI%E9%9F%B3%E9%A2%91%E5%88%B6%E4%BD%9C&token=8D971DD9CE0859E85F660014ED148487602747C96AFC107E",
+      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqtyxxG6sisstMW31KZQ9l6VqXa8Fplpd9bs7EwqbjNNLgCgtctV0T_1NpWNNiSE3936f5LTvj_-daN63_ykfl_PrYjyo5aNka0XhuDS9HNuZwRsE10CJVDlFKYRZ9C7S7v_g-At1ELONyDr-pVpbX4-aY8M2BSXnLBzkQOl8CMfgp4gUu82VPOs1MfiFefIO7B-z17F2XCVm54z_tGSZTqA..&type=2&query=AI%E9%9F%B3%E9%A2%91%E5%88%B6%E4%BD%9C&token=9499D35BB6531EF7C8C1A74385C6C65FC868086F6AFD1598",
       "source": "搜狗微信",
       "publish_time": "2026-11-05T12:04:01+00:00",
       "summary": "聚焦AI技术与音频制作、传播全流程的融合逻辑构建了从技术原理、创作流程到传播策略与价值规范的知识框架.全书围绕 AI音频制作 ...",
@@ -2047,10 +2911,10 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 66.1,
-      "rank": 127
+      "rank": 181
     },
     {
-      "id": 1065,
+      "id": 128,
       "title": "Pro Tools now features AI stem separation",
       "link": "https://musictech.com/news/pro-tools-now-features-ai-stem-separation/",
       "source": "MusicTech",
@@ -2063,10 +2927,10 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 42.9,
-      "rank": 128
+      "rank": 182
     },
     {
-      "id": 991,
+      "id": 129,
       "title": "Cubase 16 Adds Instrument Layering, Spectral AudioWarp & Expanded MIDI 2.0 Support",
       "link": "https://www.synthtopia.com/content/2026/11/04/cubase-16-adds-instrument-layering-spectral-audiowarp-expanded-midi-2-0-support/",
       "source": "Synthtopia",
@@ -2079,10 +2943,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 54.5,
-      "rank": 129
+      "rank": 183
     },
     {
-      "id": 990,
+      "id": 130,
       "title": "Behringer 1601 Sequencer (ARP Clone) First Look",
       "link": "https://www.synthtopia.com/content/2026/11/04/behringer-1601-sequencer-arp-clone-first-look/",
       "source": "Synthtopia",
@@ -2095,10 +2959,10 @@
       "heat_score": 84,
       "recency_score": 0,
       "rank_score": 32.7,
-      "rank": 130
+      "rank": 184
     },
     {
-      "id": 1521,
+      "id": 131,
       "title": "Productions gone live, as Jlin joins Third Coast Percussion on “Vernacular”",
       "link": "https://cdm.link/productions-gone-live-as-jlin-joins-third-coast-percussion-on-vernacular/",
       "source": "CDM",
@@ -2111,10 +2975,10 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 38.9,
-      "rank": 131
+      "rank": 185
     },
     {
-      "id": 1064,
+      "id": 132,
       "title": "Job openings in music tech this month: Audio for the blind and deaf, foreign language dubbing, and more",
       "link": "https://musictech.com/guides/essential-guide/jobs-career-openings-in-music-tech-audio-production/",
       "source": "MusicTech",
@@ -2127,10 +2991,10 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 62.9,
-      "rank": 132
+      "rank": 186
     },
     {
-      "id": 989,
+      "id": 133,
       "title": "How To ‘Vibe Code’ Your Own Firmware For The M-Vave FM-1 Synthesizer",
       "link": "https://www.synthtopia.com/content/2026/11/03/how-to-vibe-code-your-own-firmware-for-the-m-vave-fm-1-synthesizer/",
       "source": "Synthtopia",
@@ -2143,10 +3007,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 133
+      "rank": 187
     },
     {
-      "id": 1558,
+      "id": 134,
       "title": "AI 钢琴 陪练靠谱吗?优点和短板一次性讲清",
       "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqf0svQpImP4hP4oEcMSryqVqXa8Fplpd9-lUj5FFjqQ-1po2aG6ZioQkjh7K5zKLLFFAsTjo5_o82y8HV976SU-PgXur-26c6vSU-cmvlaHv1ZqsxSsSs1x0ocbZgBaGLxbG5MPw8bJWU1xutmNy_H-AkXxGAUUrGyUBjFSm_3RL9PhdxNIXYqYefGtkkZUFKhsyrMof7QyPRtmyIGw2VAg..&type=2&query=AI%E9%92%A2%E7%90%B4 %E4%B9%90%E7%90%86&token=8D970E00CE0859E85F660014ED148487602747C96AFC107C",
       "source": "搜狗微信",
@@ -2159,10 +3023,10 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 61.6,
-      "rank": 134
+      "rank": 188
     },
     {
-      "id": 1063,
+      "id": 135,
       "title": "iZotope Photon is a local stem separation and denoising tool that runs off your GPU",
       "link": "https://musictech.com/news/gear/izotope-photon/",
       "source": "MusicTech",
@@ -2175,10 +3039,10 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 42.4,
-      "rank": 135
+      "rank": 189
     },
     {
-      "id": 988,
+      "id": 136,
       "title": "MPE Pioneer Geert Bevin Intros Glinster MPE Controller & Instrument For iPhone, iPad & Vision Pro",
       "link": "https://www.synthtopia.com/content/2026/11/03/mpe-pioneer-geert-bevin-intros-glinster-mpe-controller-instrument-for-iphone-ipad-vision-pro/",
       "source": "Synthtopia",
@@ -2191,10 +3055,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 52.5,
-      "rank": 136
+      "rank": 190
     },
     {
-      "id": 259,
+      "id": 137,
       "title": "Mixxx could unlock free and open standalone DJing — but, like, stable",
       "link": "https://cdm.link/mixxx-could-unlock-free-and-open-standalone-djing/",
       "source": "CDM",
@@ -2207,10 +3071,10 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 44.9,
-      "rank": 137
+      "rank": 191
     },
     {
-      "id": 986,
+      "id": 138,
       "title": "Detroit Techno Pioneer & Electronic Music Visionary Juan Atkins Has Died At The Age Of 64",
       "link": "https://www.synthtopia.com/content/2026/11/02/detroit-techno-pioneer-electronic-music-visionary-juan-atkins-has-died-at-the-age-of-64/",
       "source": "Synthtopia",
@@ -2223,10 +3087,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 138
+      "rank": 192
     },
     {
-      "id": 1523,
+      "id": 139,
       "title": "The techno originator, Juan Atkins, has died at 64",
       "link": "https://cdm.link/the-techno-originator-juan-atkins-has-died-at-64/",
       "source": "CDM",
@@ -2239,10 +3103,10 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 38.9,
-      "rank": 139
+      "rank": 193
     },
     {
-      "id": 985,
+      "id": 140,
       "title": "WMD Modbox MKII Offers Complex CV Generation In A Compact Eurorack Module",
       "link": "https://www.synthtopia.com/content/2026/11/01/wmd-modbox-mkii-offers-complex-cv-generation-in-a-compact-eurorack-module/",
       "source": "Synthtopia",
@@ -2255,10 +3119,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 31.5,
-      "rank": 140
+      "rank": 194
     },
     {
-      "id": 984,
+      "id": 141,
       "title": "Behringer IGNITE Sequencer Open-Source Project Details MIDI, CV/Gate & Internal Sound Engine",
       "link": "https://www.synthtopia.com/content/2026/10/31/behringer-ignite-sequencer-open-source-project-details-midi-cv-gate-internal-sound-engine/",
       "source": "Synthtopia",
@@ -2271,10 +3135,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 39.5,
-      "rank": 141
+      "rank": 195
     },
     {
-      "id": 983,
+      "id": 142,
       "title": "Behringer Teases EMS VCS3 Matrix Synthesizer Copy For 9th Year",
       "link": "https://www.synthtopia.com/content/2026/10/31/behringer-teases-ems-vcs3-matrix-synthesizer-copy-for-9th-year/",
       "source": "Synthtopia",
@@ -2287,10 +3151,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 142
+      "rank": 196
     },
     {
-      "id": 982,
+      "id": 143,
       "title": "Waldorf Crema Synthesizer In-Depth Review",
       "link": "https://www.synthtopia.com/content/2026/10/31/waldorf-crema-synthesizer-in-depth-review/",
       "source": "Synthtopia",
@@ -2303,10 +3167,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 143
+      "rank": 197
     },
     {
-      "id": 981,
+      "id": 144,
       "title": "MFX Combines 34 Effects With Modular Routing & Feedback",
       "link": "https://www.synthtopia.com/content/2026/10/30/mfx-combines-34-effects-with-modular-routing-feedback/",
       "source": "Synthtopia",
@@ -2319,10 +3183,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 31.5,
-      "rank": 144
+      "rank": 198
     },
     {
-      "id": 980,
+      "id": 145,
       "title": "Free Infinite DAW Combines Modular Synthesis, Visuals, and Creative Coding",
       "link": "https://www.synthtopia.com/content/2026/10/30/free-infinite-daw-combines-modular-synthesis-visuals-and-creative-coding/",
       "source": "Synthtopia",
@@ -2335,10 +3199,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 31.5,
-      "rank": 145
+      "rank": 199
     },
     {
-      "id": 979,
+      "id": 146,
       "title": "New Waldorf Crema Is A Compact String & Pad Synthesizer With Two Engines",
       "link": "https://www.synthtopia.com/content/2026/10/30/new-waldorf-crema-is-a-compact-string-pad-synthesizer-with-two-engines/",
       "source": "Synthtopia",
@@ -2351,10 +3215,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 54.5,
-      "rank": 146
+      "rank": 200
     },
     {
-      "id": 1062,
+      "id": 147,
       "title": "Yaeltex unveils next-gen custom MIDI controllers – now with full-colour displays",
       "link": "https://musictech.com/news/gear/yaeltex-v3/",
       "source": "MusicTech",
@@ -2367,10 +3231,10 @@
       "heat_score": 92,
       "recency_score": 0,
       "rank_score": 35.1,
-      "rank": 147
+      "rank": 201
     },
     {
-      "id": 1061,
+      "id": 148,
       "title": "Moog’s new Model 112 and Model 210 amplifiers help the “true character” of an instrument shine through",
       "link": "https://musictech.com/news/gear/moog-all-purpose-amplifiers-model-112-210/",
       "source": "MusicTech",
@@ -2383,10 +3247,10 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 51.9,
-      "rank": 148
+      "rank": 202
     },
     {
-      "id": 978,
+      "id": 149,
       "title": "TDminator Combines TD-3 Pattern Editing With A Software Acid Bassline Synth",
       "link": "https://www.synthtopia.com/content/2026/10/29/tdminator-combines-td-3-pattern-editing-with-a-software-acid-bassline-synth/",
       "source": "Synthtopia",
@@ -2399,10 +3263,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 65.5,
-      "rank": 149
+      "rank": 203
     },
     {
-      "id": 977,
+      "id": 150,
       "title": "Will Open Firmware Become the Next Big Trend in Electronic Music Gear?",
       "link": "https://www.synthtopia.com/content/2026/10/28/will-open-firmware-become-the-next-big-trend-in-electronic-music-gear/",
       "source": "Synthtopia",
@@ -2415,10 +3279,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 150
+      "rank": 204
     },
     {
-      "id": 976,
+      "id": 151,
       "title": "Free Micronix Synthesizer Brings 24 Plaits-Based Synthesis Models To Your DAW",
       "link": "https://www.synthtopia.com/content/2026/10/28/free-micronix-synthesizer-brings-24-plaits-based-synthesis-models-to-your-daw/",
       "source": "Synthtopia",
@@ -2431,10 +3295,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 58.0,
-      "rank": 151
+      "rank": 205
     },
     {
-      "id": 975,
+      "id": 152,
       "title": "Pittsburgh Modular Intros First Software Synth, The Microvolt 3901 Virtual Analog Synthesizer",
       "link": "https://www.synthtopia.com/content/2026/10/27/pittsburgh-modular-intros-first-software-synth-the-microvolt-3901-virtual-analog-synthesizer/",
       "source": "Synthtopia",
@@ -2447,10 +3311,10 @@
       "heat_score": 84,
       "recency_score": 0,
       "rank_score": 61.7,
-      "rank": 152
+      "rank": 206
     },
     {
-      "id": 974,
+      "id": 153,
       "title": "Open Source Cineol-X 224 Brings Classic Lexicon Reverb to DAWs, Daisy DSP",
       "link": "https://www.synthtopia.com/content/2026/10/27/open-source-cineol-x-224-brings-classic-lexicon-reverb-to-daws-daisy-dsp/",
       "source": "Synthtopia",
@@ -2463,10 +3327,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 31.5,
-      "rank": 153
+      "rank": 207
     },
     {
-      "id": 973,
+      "id": 154,
       "title": "Moog Music Launches Model 112 and Model 210, Amps Designed for Electronic Instruments",
       "link": "https://www.synthtopia.com/content/2026/10/27/moog-music-launches-model-112-and-model-210-amps-designed-for-electronic-instruments/",
       "source": "Synthtopia",
@@ -2479,10 +3343,10 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 51.9,
-      "rank": 154
+      "rank": 208
     },
     {
-      "id": 1060,
+      "id": 155,
       "title": "ADAM Audio’s H715 headphones feature Sonnox Calibration Suite and a dedicated Hi-Fi mode",
       "link": "https://musictech.com/news/gear/adam-audio-h715-reference-headphones/",
       "source": "MusicTech",
@@ -2495,10 +3359,10 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 33.9,
-      "rank": 155
+      "rank": 209
     },
     {
-      "id": 1059,
+      "id": 156,
       "title": "This new plugin lets you mix your music in 3D",
       "link": "https://musictech.com/news/gear/art-dsp-canvas-2/",
       "source": "MusicTech",
@@ -2511,10 +3375,10 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 51.9,
-      "rank": 156
+      "rank": 210
     },
     {
-      "id": 1058,
+      "id": 157,
       "title": "FL Studio announces FL Studio Mobile 5 update, bringing a library of over two million samples to your pocket",
       "link": "https://musictech.com/news/gear/fl-studio-mobile-5-update/",
       "source": "MusicTech",
@@ -2527,10 +3391,10 @@
       "heat_score": 92,
       "recency_score": 0,
       "rank_score": 38.1,
-      "rank": 157
+      "rank": 211
     },
     {
-      "id": 1057,
+      "id": 158,
       "title": "My Forever Studio: Kaitlyn Aurelia Smith doesn’t share stems",
       "link": "https://musictech.com/shows/podcasts/my-forever-studio/my-forever-studio-kaitlyn-aurelia-smith/",
       "source": "MusicTech",
@@ -2543,10 +3407,10 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 33.9,
-      "rank": 158
+      "rank": 212
     },
     {
-      "id": 972,
+      "id": 159,
       "title": "New Plugin Recreates Classic Lexicon 224 ‘Vangelis Reverb’ Sound",
       "link": "https://www.synthtopia.com/content/2026/10/26/new-plugin-recreates-classic-lexicon-224-vangelis-reverb-sound/",
       "source": "Synthtopia",
@@ -2559,10 +3423,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 40.5,
-      "rank": 159
+      "rank": 213
     },
     {
-      "id": 971,
+      "id": 160,
       "title": "Optigan Software Recreates Vintage Optical Playback Sampler",
       "link": "https://www.synthtopia.com/content/2026/10/26/optigan-software-recreates-vintage-optical-playback-sampler/",
       "source": "Synthtopia",
@@ -2575,10 +3439,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 47.5,
-      "rank": 160
+      "rank": 214
     },
     {
-      "id": 970,
+      "id": 161,
       "title": "Donner Music Intros Sample Boy At Beijing Modular 26",
       "link": "https://www.synthtopia.com/content/2026/10/25/donner-music-intros-sample-boy-at-beijing-modular-26/",
       "source": "Synthtopia",
@@ -2591,10 +3455,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 161
+      "rank": 215
     },
     {
-      "id": 969,
+      "id": 162,
       "title": "Teenage Engineering OP-1 Mod Gives It new Synth Engine, Chords, Effects & More",
       "link": "https://www.synthtopia.com/content/2026/10/24/teenage-engineering-op-1-mod-gives-it-new-synth-engine-chords-effects-more/",
       "source": "Synthtopia",
@@ -2607,10 +3471,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 36.5,
-      "rank": 162
+      "rank": 216
     },
     {
-      "id": 968,
+      "id": 163,
       "title": "Build Custom Electronic Music Gear With The Daisy Pod",
       "link": "https://www.synthtopia.com/content/2026/10/24/build-custom-electronic-music-gear-with-the-daisy-pod/",
       "source": "Synthtopia",
@@ -2623,10 +3487,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 163
+      "rank": 217
     },
     {
-      "id": 967,
+      "id": 164,
       "title": "Go Outside Music Introduces Mulch Box Passive Patch Bay & Signal Multiplier",
       "link": "https://www.synthtopia.com/content/2026/10/23/go-outside-music-introduces-mulch-box-passive-patch-bay-signal-multiplier/",
       "source": "Synthtopia",
@@ -2639,10 +3503,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 40.5,
-      "rank": 164
+      "rank": 218
     },
     {
-      "id": 966,
+      "id": 165,
       "title": "Imaginando COLAPSO Synthesizer Generates Sounds From Atomic Spectra",
       "link": "https://www.synthtopia.com/content/2026/10/23/imaginando-colapso-synthesizer-generates-sounds-from-atomic-spectra/",
       "source": "Synthtopia",
@@ -2655,10 +3519,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 52.5,
-      "rank": 165
+      "rank": 219
     },
     {
-      "id": 965,
+      "id": 166,
       "title": "AtomoSynth Introduces Mochika X7 Analog Synthesizer In Desktop, Eurorack Formats",
       "link": "https://www.synthtopia.com/content/2026/10/23/atomosynth-introduces-mochika-x7-analog-synthesizer-in-desktop-eurorack-formats/",
       "source": "Synthtopia",
@@ -2671,10 +3535,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 166
+      "rank": 220
     },
     {
-      "id": 964,
+      "id": 167,
       "title": "Alesis Andromeda A6 Hardware vs Software Comparison",
       "link": "https://www.synthtopia.com/content/2026/10/23/alesis-andromeda-a6-hardware-vs-software-comparison/",
       "source": "Synthtopia",
@@ -2687,10 +3551,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 47.5,
-      "rank": 167
+      "rank": 221
     },
     {
-      "id": 1056,
+      "id": 168,
       "title": "Loopmasters’ sampling powerhouse Loopcloud just got a massive update – here’s what’s new",
       "link": "https://musictech.com/news/gear/loopmasters-loopcloud-8/",
       "source": "MusicTech",
@@ -2703,10 +3567,10 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 36.9,
-      "rank": 168
+      "rank": 222
     },
     {
-      "id": 963,
+      "id": 169,
       "title": "New Alesis Andromeda A6 Plugin, Isla Electronics ASYX, Now Available",
       "link": "https://www.synthtopia.com/content/2026/10/23/new-alesis-andromeda-a6-plugin-isla-electronics-asyx-now-available/",
       "source": "Synthtopia",
@@ -2719,10 +3583,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 37.5,
-      "rank": 169
+      "rank": 223
     },
     {
-      "id": 962,
+      "id": 170,
       "title": "OP-XY Update Adds A New Drum Synth, Multichannel Audio & More",
       "link": "https://www.synthtopia.com/content/2026/10/23/op-xy-update-adds-a-new-drum-synth-multichannel-audio-more/",
       "source": "Synthtopia",
@@ -2735,10 +3599,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 45.5,
-      "rank": 170
+      "rank": 224
     },
     {
-      "id": 961,
+      "id": 171,
       "title": "Bob Moog Foundation Auctions Unique Synthesizer Art & Memorabilia",
       "link": "https://www.synthtopia.com/content/2026/10/23/bob-moog-foundation-auctions-unique-synthesizer-art-memorabilia/",
       "source": "Synthtopia",
@@ -2751,10 +3615,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 54.5,
-      "rank": 171
+      "rank": 225
     },
     {
-      "id": 1055,
+      "id": 172,
       "title": "“Do I really believe that at the end, I have a result that justifies the effort?” Inside the strict decision-making process of Ableton founder and Monolake musician Robert Henke",
       "link": "https://musictech.com/news/music/robert-henke-on-his-creative-decision-making-process/",
       "source": "MusicTech",
@@ -2767,10 +3631,10 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 42.9,
-      "rank": 172
+      "rank": 226
     },
     {
-      "id": 960,
+      "id": 173,
       "title": "Sample Logic Announces Quadra, Morphing Multi-Effect",
       "link": "https://www.synthtopia.com/content/2026/10/22/sample-logic-announces-quadra-morphing-multi-effect/",
       "source": "Synthtopia",
@@ -2783,10 +3647,10 @@
       "heat_score": 84,
       "recency_score": 0,
       "rank_score": 32.7,
-      "rank": 173
+      "rank": 227
     },
     {
-      "id": 959,
+      "id": 174,
       "title": "Roland TR-1000 Firmware 1.5 Adds Keyboard Mode, FM Instruments & New Effects",
       "link": "https://www.synthtopia.com/content/2026/10/22/roland-tr-1000-firmware-1-5-adds-keyboard-mode-fm-instruments-new-effects/",
       "source": "Synthtopia",
@@ -2799,10 +3663,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 40.5,
-      "rank": 174
+      "rank": 228
     },
     {
-      "id": 1054,
+      "id": 175,
       "title": "Tantrum Audio NEXUS: a compact hardware DSP processor built for room correction",
       "link": "https://musictech.com/news/gear/tantrum-audio-nexus/",
       "source": "MusicTech",
@@ -2815,10 +3679,10 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 44.9,
-      "rank": 175
+      "rank": 229
     },
     {
-      "id": 1053,
+      "id": 176,
       "title": "Head Trip 2026: Tech highlights from the one-time-only electronic music festival",
       "link": "https://musictech.com/news/head-trip-2026-tech-highlights/",
       "source": "MusicTech",
@@ -2831,10 +3695,10 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 62.9,
-      "rank": 176
+      "rank": 230
     },
     {
-      "id": 1052,
+      "id": 177,
       "title": "Technics introduces a new flagship model in its SL-1200 turntable series – here’s what you need to know",
       "link": "https://musictech.com/news/gear/technics-sl-1210mkx/",
       "source": "MusicTech",
@@ -2847,10 +3711,10 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 38.9,
-      "rank": 177
+      "rank": 231
     },
     {
-      "id": 1051,
+      "id": 178,
       "title": "Why did Apple buy AI music startup Samplab, and how might this impact Logic Pro?",
       "link": "https://musictech.com/news/industry/why-did-apple-buy-ai-music-startup-samplab-and-how-might-this-impact-logic-pro/",
       "source": "MusicTech",
@@ -2863,10 +3727,10 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 73.4,
-      "rank": 178
+      "rank": 232
     },
     {
-      "id": 1050,
+      "id": 179,
       "title": "Stop sending me vibecoded plugins, I’m begging you",
       "link": "https://musictech.com/features/opinion-analysis/stop-sending-me-vibecoded-ai-plugins/",
       "source": "MusicTech",
@@ -2879,10 +3743,10 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 42.9,
-      "rank": 179
+      "rank": 233
     },
     {
-      "id": 1049,
+      "id": 180,
       "title": "This is one of the most iconic punk albums of all time – here’s what you can learn from its production",
       "link": "https://musictech.com/news/music/this-is-one-of-the-most-iconic-punk-albums-of-all-time-heres-what-you-can-learn-from-its-production/",
       "source": "MusicTech",
@@ -2895,10 +3759,10 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 33.9,
-      "rank": 180
+      "rank": 234
     },
     {
-      "id": 958,
+      "id": 181,
       "title": "Roland n/vision Synthesizer Expands Boutique Line Into Wavetable Synthesis",
       "link": "https://www.synthtopia.com/content/2026/10/20/roland-n-vision-synthesizer-expands-boutique-line-into-wavetable-synthesis/",
       "source": "Synthtopia",
@@ -2911,10 +3775,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 181
+      "rank": 235
     },
     {
-      "id": 957,
+      "id": 182,
       "title": "Roland Jupiter-08 Synthesizer Features 32-Voice Polyphony, Sequencing & More In ‘Boutique’ Format",
       "link": "https://www.synthtopia.com/content/2026/10/20/roland-jupiter-08-synthesizer-features-32-voice-polyphony-sequencing-more-in-boutique-format/",
       "source": "Synthtopia",
@@ -2927,10 +3791,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 45.5,
-      "rank": 182
+      "rank": 236
     },
     {
-      "id": 1048,
+      "id": 183,
       "title": "My Forever Studio: Robert Henke’s forever DAW isn’t a DAW",
       "link": "https://musictech.com/shows/podcasts/my-forever-studio/my-forever-studio-robert-henkes-forever-daw-isnt-a-daw/",
       "source": "MusicTech",
@@ -2943,10 +3807,10 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 33.9,
-      "rank": 183
+      "rank": 237
     },
     {
-      "id": 956,
+      "id": 184,
       "title": "Synthesizers.com Intros Q215 Digital Reverb For MU Modular Systems",
       "link": "https://www.synthtopia.com/content/2026/10/19/synthesizers-com-intros-q215-digital-reverb-for-mu-modular-systems/",
       "source": "Synthtopia",
@@ -2959,10 +3823,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 31.5,
-      "rank": 184
+      "rank": 238
     },
     {
-      "id": 1047,
+      "id": 185,
       "title": "Korg will unveil a new companion app for its innovative Phase8 acoustic synthesizer at ADE 2026",
       "link": "https://musictech.com/news/gear/korg-will-unveil-a-new-companion-app-for-its-innovative-phase8-acoustic-synthesizer-at-ade-2026/",
       "source": "MusicTech",
@@ -2975,10 +3839,10 @@
       "heat_score": 92,
       "recency_score": 0,
       "rank_score": 56.1,
-      "rank": 185
+      "rank": 239
     },
     {
-      "id": 955,
+      "id": 186,
       "title": "Midicake UNA Combines Generative Sequencing With Hands-On MIDI Control",
       "link": "https://www.synthtopia.com/content/2026/10/19/midicake-una-combines-generative-sequencing-with-hands-on-midi-control/",
       "source": "Synthtopia",
@@ -2991,10 +3855,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 39.5,
-      "rank": 186
+      "rank": 240
     },
     {
-      "id": 954,
+      "id": 187,
       "title": "First Jam On The New Future Retro 777 Bassline Synthesizer",
       "link": "https://www.synthtopia.com/content/2026/10/18/first-jam-on-the-new-future-retro-777-bassline-synthesizer/",
       "source": "Synthtopia",
@@ -3007,10 +3871,10 @@
       "heat_score": 84,
       "recency_score": 0,
       "rank_score": 50.7,
-      "rank": 187
+      "rank": 241
     },
     {
-      "id": 953,
+      "id": 188,
       "title": "Live Improvised Ambient Music Performance",
       "link": "https://www.synthtopia.com/content/2026/10/18/live-improvised-ambient-music-performance/",
       "source": "Synthtopia",
@@ -3023,10 +3887,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 188
+      "rank": 242
     },
     {
-      "id": 952,
+      "id": 189,
       "title": "Preview Asys, The Upcoming Alesis Andromeda A6 Software Synthesizer",
       "link": "https://www.synthtopia.com/content/2026/10/15/preview-asys-the-upcoming-alesis-andromeda-a6-software-synthesizer/",
       "source": "Synthtopia",
@@ -3039,10 +3903,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 60.5,
-      "rank": 189
+      "rank": 243
     },
     {
-      "id": 951,
+      "id": 190,
       "title": "ARP 2500 Modular Synthesizer Deep Dive",
       "link": "https://www.synthtopia.com/content/2026/10/14/arp-2500-modular-synthesizer-deep-dive/",
       "source": "Synthtopia",
@@ -3055,10 +3919,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 54.5,
-      "rank": 190
+      "rank": 244
     },
     {
-      "id": 1045,
+      "id": 191,
       "title": "Bubblegum: the free plugin that brings detailed pitch editing to producers on a budget",
       "link": "https://musictech.com/news/gear/bubblegum-pitch-editing-plugin/",
       "source": "MusicTech",
@@ -3071,10 +3935,10 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 39.9,
-      "rank": 191
+      "rank": 245
     },
     {
-      "id": 950,
+      "id": 192,
       "title": "Unofficial Firmware Mod Adds Arpeggiator, Polyphonic Sequencer To Sequential Prophet Rev4",
       "link": "https://www.synthtopia.com/content/2026/10/13/unofficial-firmware-mod-adds-arpeggiator-polyphonic-sequencer-to-sequential-prophet-rev4/",
       "source": "Synthtopia",
@@ -3087,10 +3951,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 34.5,
-      "rank": 192
+      "rank": 246
     },
     {
-      "id": 949,
+      "id": 193,
       "title": "Free Firmware Mod Adds ‘Incredible’ Features To Elektron Model:Cycles",
       "link": "https://www.synthtopia.com/content/2026/10/12/free-firmware-mod-adds-incredible-features-to-elektron-modelcycles/",
       "source": "Synthtopia",
@@ -3103,10 +3967,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 31.5,
-      "rank": 193
+      "rank": 247
     },
     {
-      "id": 948,
+      "id": 194,
       "title": "Using AI To Make Patches For The Yamaha CS-80 Synthesizer",
       "link": "https://www.synthtopia.com/content/2026/10/12/using-ai-to-make-patches-for-the-yamaha-cs-80-synthesizer/",
       "source": "Synthtopia",
@@ -3119,10 +3983,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 74.0,
-      "rank": 194
+      "rank": 248
     },
     {
-      "id": 947,
+      "id": 195,
       "title": "Free Minimoog Model D Software Synth For Linux, Mac & Windows",
       "link": "https://www.synthtopia.com/content/2026/10/12/free-minimoog-model-d-software-synth-for-linux-mac-windows/",
       "source": "Synthtopia",
@@ -3135,10 +3999,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 56.5,
-      "rank": 195
+      "rank": 249
     },
     {
-      "id": 946,
+      "id": 196,
       "title": "New Firmware Turns FM-1 Synthesizer Into A Pocket Omnichord",
       "link": "https://www.synthtopia.com/content/2026/10/12/new-firmware-turns-fm-1-synthesizer-into-a-pocket-omnichord/",
       "source": "Synthtopia",
@@ -3151,10 +4015,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 196
+      "rank": 250
     },
     {
-      "id": 945,
+      "id": 197,
       "title": "Olydian Musical Instruments Intros VC-01 Voicecrafter Vocal Synthesizer",
       "link": "https://www.synthtopia.com/content/2026/10/11/olydian-musical-instruments-intros-vc-01-voicecrafter-vocal-synthesizer/",
       "source": "Synthtopia",
@@ -3167,10 +4031,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 54.5,
-      "rank": 197
+      "rank": 251
     },
     {
-      "id": 1043,
+      "id": 198,
       "title": "CRSSD Lab has been hosting music-making workshops for years — why?",
       "link": "https://musictech.com/features/crssd-lab-roland-chapter-one/",
       "source": "MusicTech",
@@ -3183,10 +4047,10 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 56.9,
-      "rank": 198
+      "rank": 252
     },
     {
-      "id": 944,
+      "id": 199,
       "title": "Free Plugin Polyphonic Pitch Editing Plugin, Bubblegum",
       "link": "https://www.synthtopia.com/content/2026/10/08/free-plugin-polyphonic-pitch-editing-plugin-bubblegum/",
       "source": "Synthtopia",
@@ -3199,10 +4063,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 31.5,
-      "rank": 199
+      "rank": 253
     },
     {
-      "id": 943,
+      "id": 200,
       "title": "Arturia AstroLab 2.0 Adds Sound Editing, New Instruments & Performance Improvements",
       "link": "https://www.synthtopia.com/content/2026/10/07/arturia-astrolab-2-0-adds-sound-editing-new-instruments-performance-improvements/",
       "source": "Synthtopia",
@@ -3215,10 +4079,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 40.5,
-      "rank": 200
+      "rank": 254
     },
     {
-      "id": 942,
+      "id": 201,
       "title": "Google Wants You To Vibe Code Audio Plugins",
       "link": "https://www.synthtopia.com/content/2026/10/07/google-wants-you-to-vibe-code-audio-plugins/",
       "source": "Synthtopia",
@@ -3231,10 +4095,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 31.5,
-      "rank": 201
+      "rank": 255
     },
     {
-      "id": 941,
+      "id": 202,
       "title": "Free Experimental Modal Synthesizer, BLOT",
       "link": "https://www.synthtopia.com/content/2026/10/06/free-experimental-modal-synthesizer-blot/",
       "source": "Synthtopia",
@@ -3247,10 +4111,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 202
+      "rank": 256
     },
     {
-      "id": 1042,
+      "id": 203,
       "title": "The LARYNX – a new feature-packed hard synth from AnalogFX – is available now",
       "link": "https://musictech.com/news/gear/the-larynx-a-new-feature-packed-hard-synth-from-analogfx-is-available-now/",
       "source": "MusicTech",
@@ -3263,10 +4127,10 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 48.4,
-      "rank": 203
+      "rank": 257
     },
     {
-      "id": 1041,
+      "id": 204,
       "title": "Fancy a free Minimoog Model D emulation plugin? Idle Foundry’s CA-72 has got you covered",
       "link": "https://musictech.com/news/gear/minimoog-model-d-plugin-model-ca-72-free/",
       "source": "MusicTech",
@@ -3279,10 +4143,10 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 33.9,
-      "rank": 204
+      "rank": 258
     },
     {
-      "id": 940,
+      "id": 205,
       "title": "Asyx Andromeda A6 Plugin Audio Demo (Sneak Preview)",
       "link": "https://www.synthtopia.com/content/2026/10/05/asyx-andromeda-a6-plugin-audio-demo-sneak-preview/",
       "source": "Synthtopia",
@@ -3295,10 +4159,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 41.5,
-      "rank": 205
+      "rank": 259
     },
     {
-      "id": 939,
+      "id": 206,
       "title": "New Sounds For The Korg Opsix Synthesizer",
       "link": "https://www.synthtopia.com/content/2026/10/05/new-sounds-for-the-korg-opsix-synthesizer/",
       "source": "Synthtopia",
@@ -3311,10 +4175,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 54.5,
-      "rank": 206
+      "rank": 260
     },
     {
-      "id": 938,
+      "id": 207,
       "title": "1010 Music BlackBox Gets New Features With Unofficial Alternate Firmware",
       "link": "https://www.synthtopia.com/content/2026/10/05/1010-music-blackbox-gets-new-features-with-unofficial-alternate-firmware/",
       "source": "Synthtopia",
@@ -3327,10 +4191,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 40.5,
-      "rank": 207
+      "rank": 261
     },
     {
-      "id": 937,
+      "id": 208,
       "title": "Alt Firmware Options For The M-Wave FM-1 Pocket Synthesizer",
       "link": "https://www.synthtopia.com/content/2026/10/04/alt-firmware-options-for-the-m-wave-fm-1-pocket-synthesizer/",
       "source": "Synthtopia",
@@ -3343,10 +4207,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 208
+      "rank": 262
     },
     {
-      "id": 936,
+      "id": 209,
       "title": "Chompi Sampling Keyboard Lives On As Free Nibbi Plugin",
       "link": "https://www.synthtopia.com/content/2026/10/02/chompi-sampling-keyboard-lives-on-as-free-nibbi-plugin/",
       "source": "Synthtopia",
@@ -3359,10 +4223,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 31.5,
-      "rank": 209
+      "rank": 263
     },
     {
-      "id": 935,
+      "id": 210,
       "title": "Vintage Synth Review: The E-Mu Emax II Sampling Synthesizer",
       "link": "https://www.synthtopia.com/content/2026/10/02/vintage-synth-review-the-e-mu-emax-ii-sampling-synthesizer/",
       "source": "Synthtopia",
@@ -3375,10 +4239,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 210
+      "rank": 264
     },
     {
-      "id": 1040,
+      "id": 211,
       "title": "“It frustrates me to hear people bashing something that’s so amazing”: Todd Edwards is optimistic about AI in music production",
       "link": "https://musictech.com/news/music/todd-edwards-is-optimistic-about-ai-in-music-production/",
       "source": "MusicTech",
@@ -3391,10 +4255,10 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 76.4,
-      "rank": 211
+      "rank": 265
     },
     {
-      "id": 934,
+      "id": 212,
       "title": "New Convolution Play Application Lets You Explore The Sound Designs Possibilities Of Impulse Responses",
       "link": "https://www.synthtopia.com/content/2026/10/01/new-convolution-play-application-lets-you-explore-the-sound-designs-possibilities-of-impulse-responses/",
       "source": "Synthtopia",
@@ -3407,10 +4271,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 40.5,
-      "rank": 212
+      "rank": 266
     },
     {
-      "id": 1039,
+      "id": 213,
       "title": "Which software is best for recording and creating DJ mixes?",
       "link": "https://musictech.com/guides/buyers-guide/best-dj-mix-recording-software/",
       "source": "MusicTech",
@@ -3423,10 +4287,10 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 44.9,
-      "rank": 213
+      "rank": 267
     },
     {
-      "id": 933,
+      "id": 214,
       "title": "Verbos Intros Haas Zone Processor",
       "link": "https://www.synthtopia.com/content/2026/09/29/verbos-intros-haas-zone-processor/",
       "source": "Synthtopia",
@@ -3439,10 +4303,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 42.5,
-      "rank": 214
+      "rank": 268
     },
     {
-      "id": 1038,
+      "id": 215,
       "title": "My Forever Studio: Hazel Mills invents a new instrument",
       "link": "https://musictech.com/shows/hazel-mills/",
       "source": "MusicTech",
@@ -3455,10 +4319,10 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 51.9,
-      "rank": 215
+      "rank": 269
     },
     {
-      "id": 932,
+      "id": 216,
       "title": "New Module Puts B.A.C.H. Into Your Modular Synthesizer",
       "link": "https://www.synthtopia.com/content/2026/09/28/new-module-puts-b-a-c-h-into-your-modular-synthesizer/",
       "source": "Synthtopia",
@@ -3471,10 +4335,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 216
+      "rank": 270
     },
     {
-      "id": 931,
+      "id": 217,
       "title": "Fluxophone Turns Anything Into a Haunted Musical Instrument",
       "link": "https://www.synthtopia.com/content/2026/09/28/fluxophone-turns-anything-into-a-haunted-musical-instrument/",
       "source": "Synthtopia",
@@ -3487,10 +4351,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 217
+      "rank": 271
     },
     {
-      "id": 930,
+      "id": 218,
       "title": "New App, Phantom Sun, Brings Semi-Modular Synthesis To The iPad",
       "link": "https://www.synthtopia.com/content/2026/09/28/new-app-phantom-sun-brings-semi-modular-synthesis-to-the-ipad/",
       "source": "Synthtopia",
@@ -3503,10 +4367,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 41.5,
-      "rank": 218
+      "rank": 272
     },
     {
-      "id": 929,
+      "id": 219,
       "title": "Osmose Firmware Update 2.3 Now Available, But Some Users Suggest Caution",
       "link": "https://www.synthtopia.com/content/2026/09/28/osmose-firmware-update-2-3-now-available-but-some-users-suggest-caution/",
       "source": "Synthtopia",
@@ -3519,10 +4383,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 31.5,
-      "rank": 219
+      "rank": 273
     },
     {
-      "id": 928,
+      "id": 220,
       "title": "Voidscan Introduces Parasite Experimental FM Synthesizer",
       "link": "https://www.synthtopia.com/content/2026/09/28/voidscan-introduces-parasite-experimental-fm-synthesizer/",
       "source": "Synthtopia",
@@ -3535,10 +4399,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 49.5,
-      "rank": 220
+      "rank": 274
     },
     {
-      "id": 1037,
+      "id": 221,
       "title": "“I don’t hear too many women using that effect”: The mystery number one item UNIIQU3 would have in her dream studio",
       "link": "https://musictech.com/news/gear/the-mystery-number-one-item-uniiqu3-would-have-in-her-dream-studio/",
       "source": "MusicTech",
@@ -3551,10 +4415,10 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 33.9,
-      "rank": 221
+      "rank": 275
     },
     {
-      "id": 927,
+      "id": 222,
       "title": "Buchla Ziggy Synthesizer Now Expected To Ship In December 2026",
       "link": "https://www.synthtopia.com/content/2026/09/27/buchla-ziggy-synthesizer-now-expected-to-ship-in-december-2026/",
       "source": "Synthtopia",
@@ -3567,10 +4431,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 54.5,
-      "rank": 222
+      "rank": 276
     },
     {
-      "id": 926,
+      "id": 223,
       "title": "SynthSkool Intros Degauss Vintage Synth Sample Instrument",
       "link": "https://www.synthtopia.com/content/2026/09/27/synthskool-intros-degauss-vintage-synth-sample-instrument/",
       "source": "Synthtopia",
@@ -3583,10 +4447,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 60.5,
-      "rank": 223
+      "rank": 277
     },
     {
-      "id": 925,
+      "id": 224,
       "title": "Overtonium Is A Free, Open-Source Additive Synthesizer For Mac, Windows And Linux",
       "link": "https://www.synthtopia.com/content/2026/09/26/overtonium-is-a-free-open-source-additive-synthesizer-for-mac-windows-and-linux/",
       "source": "Synthtopia",
@@ -3599,10 +4463,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 60.5,
-      "rank": 224
+      "rank": 278
     },
     {
-      "id": 924,
+      "id": 225,
       "title": "Woovebox Packs A Synth, Sampler And Sequencer Into A Pocket-Sized Box",
       "link": "https://www.synthtopia.com/content/2026/09/25/woovebox-packs-a-synth-sampler-and-sequencer-into-a-pocket-sized-box/",
       "source": "Synthtopia",
@@ -3615,10 +4479,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 48.5,
-      "rank": 225
+      "rank": 279
     },
     {
-      "id": 923,
+      "id": 226,
       "title": "Free Emulator Brings Waldorf Wave Sound To Your DAW",
       "link": "https://www.synthtopia.com/content/2026/09/25/free-emulator-brings-waldorf-wave-sound-to-your-daw/",
       "source": "Synthtopia",
@@ -3631,10 +4495,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 48.5,
-      "rank": 226
+      "rank": 280
     },
     {
-      "id": 1036,
+      "id": 227,
       "title": "Apple Music is livestreaming the upcoming Head Trip festival, with sets from Calvin Harris, Skrillex, Swedish House Mafia and more",
       "link": "https://musictech.com/news/events/apple-music-is-livestreaming-the-upcoming-head-trip-festival/",
       "source": "MusicTech",
@@ -3647,10 +4511,10 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 51.9,
-      "rank": 227
+      "rank": 281
     },
     {
-      "id": 1035,
+      "id": 228,
       "title": "Polyend takes aim at guitarists with a new looper and multi-FX pedal, Loop",
       "link": "https://musictech.com/news/gear/polyend-loop/",
       "source": "MusicTech",
@@ -3663,10 +4527,10 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 42.9,
-      "rank": 228
+      "rank": 282
     },
     {
-      "id": 922,
+      "id": 229,
       "title": "Polyend Intros Loop 8-Track Performance Looper",
       "link": "https://www.synthtopia.com/content/2026/09/24/polyend-intros-loop-8-track-performance-looper/",
       "source": "Synthtopia",
@@ -3679,10 +4543,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 39.5,
-      "rank": 229
+      "rank": 283
     },
     {
-      "id": 1034,
+      "id": 230,
       "title": "What is compression, and why do we use it in music?",
       "link": "https://musictech.com/glossary/compression/",
       "source": "MusicTech",
@@ -3695,10 +4559,10 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 51.9,
-      "rank": 230
+      "rank": 284
     },
     {
-      "id": 1033,
+      "id": 231,
       "title": "“This is one of the biggest weeks for Maschine sound content we’ve ever had”: Native Instruments rolls out Maschine 3.7 update – alongside three new expansion packs",
       "link": "https://musictech.com/news/gear/maschine-3-7/",
       "source": "MusicTech",
@@ -3711,10 +4575,10 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 42.9,
-      "rank": 231
+      "rank": 285
     },
     {
-      "id": 921,
+      "id": 232,
       "title": "Minimal Instruments Nagi Offers A No-Code Route To Building Native Audio Plugins",
       "link": "https://www.synthtopia.com/content/2026/09/23/minimal-instruments-nagi-offers-a-no-code-route-to-building-native-audio-plugins/",
       "source": "Synthtopia",
@@ -3727,10 +4591,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 31.5,
-      "rank": 232
+      "rank": 286
     },
     {
-      "id": 1032,
+      "id": 233,
       "title": "Apple opens new 600-capacity music venue in London’s Battersea Power Station",
       "link": "https://musictech.com/news/industry/apple-music-hall/",
       "source": "MusicTech",
@@ -3743,10 +4607,10 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 51.9,
-      "rank": 233
+      "rank": 287
     },
     {
-      "id": 1031,
+      "id": 234,
       "title": "Lunacy Audio launches new AI-powered plugin sharing platform, NOVA",
       "link": "https://musictech.com/news/industry/lunacy-audio-nova/",
       "source": "MusicTech",
@@ -3759,10 +4623,10 @@
       "heat_score": 92,
       "recency_score": 0,
       "rank_score": 44.1,
-      "rank": 234
+      "rank": 288
     },
     {
-      "id": 920,
+      "id": 235,
       "title": "Free Tool, Amorph, Builds Custom Plugin Instruments & Effects Based On Your Description",
       "link": "https://www.synthtopia.com/content/2026/09/22/free-tool-amorph-builds-custom-plugin-instruments-effects-based-on-your-description/",
       "source": "Synthtopia",
@@ -3775,10 +4639,10 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 51.5,
-      "rank": 235
+      "rank": 289
     },
     {
-      "id": 1030,
+      "id": 236,
       "title": "“The death of Suno”: Reddit users have turned against Suno after v6 model update",
       "link": "https://musictech.com/news/industry/suno-ai-update-v6/",
       "source": "MusicTech",
@@ -3791,10 +4655,10 @@
       "heat_score": 88,
       "recency_score": 0,
       "rank_score": 65.9,
-      "rank": 236
+      "rank": 290
     },
     {
-      "id": 919,
+      "id": 237,
       "title": "New Project Brings Elektron Monomachine, Machinedrum To Your DAW",
       "link": "https://www.synthtopia.com/content/2026/09/20/new-project-brings-elektron-monomachine-machinedrum-to-your-daw/",
       "source": "Synthtopia",
@@ -3807,7 +4671,7 @@
       "heat_score": 80,
       "recency_score": 0,
       "rank_score": 37.5,
-      "rank": 237
+      "rank": 291
     }
   ]
 }
