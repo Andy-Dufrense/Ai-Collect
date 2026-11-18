@@ -1,21 +1,20 @@
 {
-  "generated_at": "2026-11-18T02:47:08+00:00",
-  "total": 408,
+  "generated_at": "2026-11-18T02:56:13+00:00",
+  "total": 410,
   "translated_count": 0,
   "last_run": {
     "id": 1,
-    "fetched_at": "2026-11-18T02:45:29+00:00",
+    "fetched_at": "2026-11-18T02:54:38+00:00",
     "source_count": 19,
-    "successful_sources": 16,
-    "total_entries": 345,
-    "matched_entries": 150,
-    "new_count": 1,
+    "successful_sources": 17,
+    "total_entries": 361,
+    "matched_entries": 154,
+    "new_count": 2,
     "errors": [
       "虎嗅 所有网络通道均失败：直接连接 失败：HTTPSConnectionPool(host='www.huxiu.com', port=443): Max retries exceeded with url: /rss/0.xml (Caused by ReadTimeoutError(\"HTTPSConnectionPool(host='www.huxiu.com', port=443): Read timed out. (read timeout=20.0)\"))",
-      "钛媒体 所有网络通道均失败：直接连接 失败：404 Client Error: Not Found for url: https://www.tmtpost.com/rss.xml",
       "品玩 解析失败：RSS 中没有可用条目：<unknown>:57:1: not well-formed (invalid token)"
     ],
-    "failed_sources": 3
+    "failed_sources": 2
   },
   "items": [
     {
@@ -30,8 +29,8 @@
       "title_zh": null,
       "relevance_score": 50,
       "heat_score": 61,
-      "recency_score": 100,
-      "rank_score": 63.3,
+      "recency_score": 99,
+      "rank_score": 63.1,
       "rank": 1
     },
     {
@@ -78,8 +77,8 @@
       "title_zh": null,
       "relevance_score": 44,
       "heat_score": 74,
-      "recency_score": 99,
-      "rank_score": 64.0,
+      "recency_score": 98,
+      "rank_score": 63.8,
       "rank": 4
     },
     {
@@ -197,7 +196,7 @@
     {
       "id": 12,
       "title": "学琴小 乐理 |8个乐谱中常用的力度记号,强弱层次一目了然",
-      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqPndIWun0K3xMW31KZQ9l6VqXa8Fplpd9AB9ClX70S4DuSMrW1AkpgZx8MGRNn6ktdtiKK9r3FIGzPZ8Y0NqcUbFy3XM8YsC6I9-Mk8GsztWSR2tIUYe8ihMJCDgTTF6EpCvCBl62tkNyZYcE0p23BWXdGoAm6PwInrIJP_Bog61r0TrsiAJ_imDMeCZtwdnmL6zJh3cCOPufxjh3za6jWA..&type=2&query=AI%E9%92%A2%E7%90%B4 %E4%B9%90%E7%90%86&token=9480F21EF221CE33383E57B33155AF4038790C386AFD11A9",
+      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqafPlfP-UlhZMW31KZQ9l6VqXa8Fplpd9AB9ClX70S4DuSMrW1AkpgZx8MGRNn6ktdtiKK9r3FIGzPZ8Y0NqcUbFy3XM8YsC6I9-Mk8GsztWSR2tIUYe8iloNCggT8nvqorjRvYnzg936AHZK0wi6DsXwJOg-UlEXoe3RpcdqVSn9z3htowY1dhtIICg-HCSvfYrhXxaNQz_yPfCoem7FzA..&type=2&query=AI%E9%92%A2%E7%90%B4 %E4%B9%90%E7%90%86&token=948E6F80741BF5A2B5B3D5319353EC55B60690036AFD13CA",
       "source": "搜狗微信",
       "publish_time": "2026-11-17T23:30:54+00:00",
       "summary": "文章图片为 AI 制作# 钢琴 乐理 #学琴心得 # 钢琴 力度记号 #中老年学 钢琴 #琴房日记 #潮琴姐姐",
@@ -270,8 +269,8 @@
       "title_zh": null,
       "relevance_score": 39,
       "heat_score": 78,
-      "recency_score": 95,
-      "rank_score": 61.9,
+      "recency_score": 94,
+      "rank_score": 61.7,
       "rank": 16
     },
     {
@@ -318,8 +317,8 @@
       "title_zh": "腾讯音乐表示，AI生成的内容流“微不足道”——该公司正就AI侵权行为采取法律行动",
       "relevance_score": 94,
       "heat_score": 94,
-      "recency_score": 91,
-      "rank_score": 93.4,
+      "recency_score": 90,
+      "rank_score": 93.2,
       "rank": 19
     },
     {
@@ -334,8 +333,8 @@
       "title_zh": "Believe Music Publishing与GL Music Entertainment成立合资公司",
       "relevance_score": 33,
       "heat_score": 94,
-      "recency_score": 91,
-      "rank_score": 62.9,
+      "recency_score": 90,
+      "rank_score": 62.7,
       "rank": 20
     },
     {
@@ -350,8 +349,8 @@
       "title_zh": "新网站让您在网页浏览器中预览 200 多种 FM-1 固件选项",
       "relevance_score": 31,
       "heat_score": 80,
-      "recency_score": 90,
-      "rank_score": 57.5,
+      "recency_score": 89,
+      "rank_score": 57.3,
       "rank": 21
     },
     {
@@ -547,9 +546,9 @@
       "rank": 33
     },
     {
-      "id": 545,
+      "id": 34,
       "title": "免费 钢琴 陪练APP哪个好?亲身测评",
-      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqPndIWun0K3xMW31KZQ9l6VqXa8Fplpd91gWyY_31IPFhjNinKQ1OGeHze2JjBO35Zxu6z-vXQwtzi9BeBH-iOZiVr25Q0CmjPEOaAOIzMwUpZ0YKgJqU78HdZMPjIPv8BwYGiMGVA4YPT09a8zgRN1eBgfW3_aVUHMUUD5Viq80Evx05LZT4N7U9lMjLJcrs0et90dMDVsN5Nu7CnoSqqg..&type=2&query=AI%E9%92%A2%E7%90%B4 %E4%B9%90%E7%90%86&token=9480F21EF221CE33383E57B33155AF4038790C386AFD11A9",
+      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqafPlfP-UlhZMW31KZQ9l6VqXa8Fplpd91gWyY_31IPFhjNinKQ1OGeHze2JjBO35Zxu6z-vXQwtzi9BeBH-iOZiVr25Q0CmjPEOaAOIzMwUpZ0YKgJqU78JN98vUxYy8nTKCuFXB3vSYNbdP5ykREXo6UTNFubpGOmq1f43RDifNlPZ6FYslmwGFyUsWLBsNhS7tthpFGJvdrgozfSg6bw..&type=2&query=AI%E9%92%A2%E7%90%B4 %E4%B9%90%E7%90%86&token=948E6F80741BF5A2B5B3D5319353EC55B60690036AFD13CA",
       "source": "搜狗微信",
       "publish_time": "2026-11-17T15:12:02+00:00",
       "summary": "多数家长不懂钢琴 乐理 ,看不懂谱、听不出错,陪练只会催孩子练琴,无法专业指导. 使用音符岛 AI钢琴 陪练,孩子可以独立完成每日...",
@@ -563,7 +562,7 @@
       "rank": 34
     },
     {
-      "id": 34,
+      "id": 35,
       "title": "Instagram’s new tool for creators targets unauthorized reposts and AI-modified videos",
       "link": "https://techcrunch.com/2026/11/17/instagrams-new-tool-for-creators-targets-unauthorized-reposts-and-ai-modified-videos/",
       "source": "TechCrunch",
@@ -574,12 +573,12 @@
       "title_zh": "Instagram面向创作者推出新工具，旨在打击未经授权的转发和经过人工智能修改的视频",
       "relevance_score": 72,
       "heat_score": 92,
-      "recency_score": 84,
-      "rank_score": 80.4,
+      "recency_score": 83,
+      "rank_score": 80.2,
       "rank": 35
     },
     {
-      "id": 35,
+      "id": 36,
       "title": "Spotify expands access to Artist Profile Protection, letting all artists remove their name from AI fakes and other misattributed releases",
       "link": "https://www.musicbusinessworldwide.com/spotify-expands-access-to-artist-profile-protection-letting-all-artists-remove-their-name-from-ai-fakes-and-other-misattributed-releases/",
       "source": "Music Business Worldwide",
@@ -595,7 +594,7 @@
       "rank": 36
     },
     {
-      "id": 36,
+      "id": 37,
       "title": "Modulo Offers Eight Switchable FX Racks & 16-Step Effect Sequencing",
       "link": "https://www.synthtopia.com/content/2026/11/17/modulo-offers-eight-switchable-fx-racks-16-step-effect-sequencing/",
       "source": "Synthtopia",
@@ -611,7 +610,7 @@
       "rank": 37
     },
     {
-      "id": 37,
+      "id": 38,
       "title": "Meet Stetson Heat Seeker, the Seattle cowboy punks who didn’t want to take guitar lessons",
       "link": "https://www.guitarworld.com/artists/bands/stetson-heat-seeker-this-is-no-place-for-cowards",
       "source": "Guitar World",
@@ -627,7 +626,7 @@
       "rank": 38
     },
     {
-      "id": 38,
+      "id": 39,
       "title": "Martin honors Robbie Robertson with relic’d replica of the acoustic that inspired his most famous song",
       "link": "https://www.guitarworld.com/gear/acoustic-guitars/martin-robbie-robertson-the-weight-d-28",
       "source": "Guitar World",
@@ -643,7 +642,7 @@
       "rank": 39
     },
     {
-      "id": 39,
+      "id": 40,
       "title": "Link Wray on how Rumble changed the game for future guitar heroes",
       "link": "https://www.guitarworld.com/artists/guitarists/link-wray-on-how-rumble-changed-the-guitar-game",
       "source": "Guitar World",
@@ -659,7 +658,7 @@
       "rank": 40
     },
     {
-      "id": 40,
+      "id": 41,
       "title": "“I looked at Taylor and said, ‘Oh my gosh, can I do this?’”: Hayley Williams on the hit song that reinvented Paramore’s sound",
       "link": "https://www.musicradar.com/artists/i-was-writing-the-lyrics-and-melody-for-the-chorus-and-i-looked-at-taylor-and-said-oh-my-gosh-can-i-do-this-it-sounds-really-poppy-hayley-williams-on-the-hit-song-that-reinvented-paramores-sound",
       "source": "MusicRadar",
@@ -675,7 +674,7 @@
       "rank": 41
     },
     {
-      "id": 41,
+      "id": 42,
       "title": "大模型发力动态输出调度策略，我国快递业务量已连续两个月超 170 亿件",
       "link": "https://www.ithome.com/1/028/524.htm",
       "source": "IT之家24小时榜",
@@ -691,7 +690,7 @@
       "rank": 42
     },
     {
-      "id": 42,
+      "id": 43,
       "title": "AI 冲击大学数学课堂，加州理工学院教授不再依据答案对错批改作业",
       "link": "https://www.ithome.com/1/028/522.htm",
       "source": "IT之家24小时榜",
@@ -707,7 +706,7 @@
       "rank": 43
     },
     {
-      "id": 43,
+      "id": 44,
       "title": "Is this the cheapest single-cut electric guitar with Fishman Fluence humbuckers and a Floyd Rose vibrato?",
       "link": "https://www.musicradar.com/guitars/harley-benton-sc-custom-plus-fluence",
       "source": "MusicRadar",
@@ -718,12 +717,12 @@
       "title_zh": "这是配备Fishman Fluence双线圈拾音器和Floyd Rose颤音系统的最便宜的单切电吉他吗？",
       "relevance_score": 51,
       "heat_score": 86,
-      "recency_score": 81,
-      "rank_score": 67.5,
+      "recency_score": 80,
+      "rank_score": 67.3,
       "rank": 44
     },
     {
-      "id": 44,
+      "id": 45,
       "title": "My Forever Studio: Sylvia Massy could use some more mics",
       "link": "https://musictech.com/shows/podcasts/my-forever-studio/my-forever-studio-sylvia-massy/",
       "source": "MusicTech",
@@ -734,12 +733,12 @@
       "title_zh": "我的永恒工作室：Sylvia Massy需要更多麦克风",
       "relevance_score": 15,
       "heat_score": 92,
-      "recency_score": 81,
-      "rank_score": 51.3,
+      "recency_score": 80,
+      "rank_score": 51.1,
       "rank": 45
     },
     {
-      "id": 45,
+      "id": 46,
       "title": "击败传统 K-pop 偶像，AI 辅助制作歌曲首次登顶韩国热门音乐排行榜",
       "link": "https://www.ithome.com/1/028/518.htm",
       "source": "IT之家24小时榜",
@@ -755,7 +754,7 @@
       "rank": 46
     },
     {
-      "id": 46,
+      "id": 47,
       "title": "Tallon Electric Noise plugin review: \"Beautifully disgusting\"",
       "link": "https://www.musicradar.com/music-tech/plugins/tallon-electric-noise-pedal-plugin-review",
       "source": "MusicRadar",
@@ -766,12 +765,12 @@
       "title_zh": "Tallon Electric Noise插件评测：“美得令人作呕”",
       "relevance_score": 15,
       "heat_score": 86,
-      "recency_score": 79,
-      "rank_score": 49.1,
+      "recency_score": 78,
+      "rank_score": 48.9,
       "rank": 47
     },
     {
-      "id": 47,
+      "id": 48,
       "title": "最大规模具身大模型挑战赛落幕，48 小时真机总决赛比出了什么？",
       "link": "http://www.geekpark.net/news/374103",
       "source": "极客公园",
@@ -782,12 +781,12 @@
       "title_zh": null,
       "relevance_score": 50,
       "heat_score": 61,
-      "recency_score": 79,
-      "rank_score": 59.1,
+      "recency_score": 78,
+      "rank_score": 58.9,
       "rank": 48
     },
     {
-      "id": 48,
+      "id": 49,
       "title": "Kenny Wayne Shepherd’s warning about mint-condition vintage guitars",
       "link": "https://www.guitarworld.com/artists/guitarists/kenny-wayne-shepherd-on-mint-condition-vintage-gear",
       "source": "Guitar World",
@@ -803,7 +802,7 @@
       "rank": 49
     },
     {
-      "id": 49,
+      "id": 50,
       "title": "Mac 收紧权限，苹果开始防着 AI 了",
       "link": "https://www.ifanr.com/1689832?utm_source=rss&utm_medium=rss&utm_campaign=",
       "source": "爱范儿",
@@ -814,12 +813,12 @@
       "title_zh": null,
       "relevance_score": 33,
       "heat_score": 72,
-      "recency_score": 77,
-      "rank_score": 53.5,
+      "recency_score": 76,
+      "rank_score": 53.3,
       "rank": 50
     },
     {
-      "id": 50,
+      "id": 51,
       "title": "AI，没有抛弃小城商家",
       "link": "http://www.geekpark.net/news/374101",
       "source": "极客公园",
@@ -830,12 +829,12 @@
       "title_zh": null,
       "relevance_score": 39,
       "heat_score": 65,
-      "recency_score": 77,
-      "rank_score": 54.4,
+      "recency_score": 76,
+      "rank_score": 54.2,
       "rank": 51
     },
     {
-      "id": 51,
+      "id": 52,
       "title": "阿里云连续六年香港IaaS第一，企业客户AI渗透率达95%",
       "link": "https://www.leiphone.com/category/industrynews/qyieFYqM3EQhE1Hu.html",
       "source": "雷锋网",
@@ -851,7 +850,7 @@
       "rank": 52
     },
     {
-      "id": 52,
+      "id": 53,
       "title": "瑞士生物科技企业Orbis Medicines研发AI驱动高通量药物发现工艺，设计新型口服大环药物",
       "link": "https://www.tmtpost.com/8207902.html",
       "source": "钛媒体",
@@ -867,7 +866,7 @@
       "rank": 53
     },
     {
-      "id": 53,
+      "id": 54,
       "title": "腾讯加速挺进AI下半场",
       "link": "https://www.tmtpost.com/8207501.html",
       "source": "钛媒体",
@@ -883,7 +882,7 @@
       "rank": 54
     },
     {
-      "id": 54,
+      "id": 55,
       "title": "腾讯音乐 2026 财年前三季度归母净利润 67.16 亿元，同比下降 24.14%",
       "link": "https://www.ithome.com/1/028/417.htm",
       "source": "IT之家24小时榜",
@@ -899,7 +898,7 @@
       "rank": 55
     },
     {
-      "id": 55,
+      "id": 56,
       "title": "欧洲六国游戏工会联合呼吁玩家抵制生成式 AI 游戏，支持纯人工开发作品",
       "link": "https://www.ithome.com/1/028/341.htm",
       "source": "IT之家24小时榜",
@@ -915,7 +914,7 @@
       "rank": 56
     },
     {
-      "id": 56,
+      "id": 57,
       "title": "小米雷军：AI 是一个全新的时代，一定会带来非常多的商业机会",
       "link": "https://www.ithome.com/1/028/322.htm",
       "source": "IT之家24小时榜",
@@ -931,7 +930,7 @@
       "rank": 57
     },
     {
-      "id": 57,
+      "id": 58,
       "title": "AI 写歌了, 音乐 人怎么赚钱?",
       "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqm6aMf6klMpxP4oEcMSryqVqXa8Fplpd9zwgrQmfsLVScR234hD30xbkcvfohbnoz34Fvnt-OVkptpYkyVBUgqhHanq4g2_P44soO8BDS4J9HT9SZROYj3d-XVDv4XehsIxC8XzrThsMlK5U3pXPGAKsKQnKmd9-H_OZjL2RKSUdQevYNGYggGt_YIyGaxap3bTfPfPSnhVA89kyxDwoXvg..&type=2&query=AI%E9%9F%B3%E4%B9%90&token=8D874F418F7718A81F187E6B91D97A4F1F1C592B6AFC0E34",
       "source": "搜狗微信",
@@ -947,7 +946,7 @@
       "rank": 58
     },
     {
-      "id": 58,
+      "id": 59,
       "title": "Take-Two CEO 批评 Anthropic、OpenAI：别放任用户用 AI 克隆游戏",
       "link": "https://www.ithome.com/1/028/287.htm",
       "source": "IT之家24小时榜",
@@ -963,7 +962,7 @@
       "rank": 59
     },
     {
-      "id": 59,
+      "id": 60,
       "title": "每秒输出最高 43 词元：Garlic LLM 可让越狱 PS4 运行 9B 参数本地 AI 模型",
       "link": "https://www.ithome.com/1/028/266.htm",
       "source": "IT之家24小时榜",
@@ -979,7 +978,7 @@
       "rank": 60
     },
     {
-      "id": 60,
+      "id": 61,
       "title": "第三方供应商 Fireworks AI 遭黑客入侵，近 15 万 Uber 司机驾照信息泄露",
       "link": "https://www.ithome.com/1/028/263.htm",
       "source": "IT之家24小时榜",
@@ -990,12 +989,12 @@
       "title_zh": null,
       "relevance_score": 45,
       "heat_score": 74,
-      "recency_score": 73,
-      "rank_score": 59.3,
+      "recency_score": 72,
+      "rank_score": 59.1,
       "rank": 61
     },
     {
-      "id": 61,
+      "id": 62,
       "title": "闲鱼亮相联合国气候变化大会：AI加速闲置流转，低碳融入日常",
       "link": "https://www.leiphone.com/category/industrynews/fZwDw188Li4SuyQM.html",
       "source": "雷锋网",
@@ -1011,7 +1010,7 @@
       "rank": 62
     },
     {
-      "id": 62,
+      "id": 63,
       "title": "AMD 高管：AI 不会取代超级计算机，高精度计算仍不可替代",
       "link": "https://www.ithome.com/1/028/245.htm",
       "source": "IT之家24小时榜",
@@ -1027,7 +1026,7 @@
       "rank": 63
     },
     {
-      "id": 63,
+      "id": 64,
       "title": "AI 找漏洞太快：Anthropic 收紧披露规则，高危漏洞缓冲期从 90 天变 30 天",
       "link": "https://www.ithome.com/1/028/236.htm",
       "source": "IT之家24小时榜",
@@ -1043,7 +1042,7 @@
       "rank": 64
     },
     {
-      "id": 64,
+      "id": 65,
       "title": "AI音乐 课+11月生日会|暖心家园项目圆满收官~",
       "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwq4Fh4fB3-FxVMW31KZQ9l6VqXa8Fplpd9KUldzF3L7h3UDCUYrSvqZxu_4DeeNioSnqBIBJshtBn134ICLAbenoza_gjUeWoUxbDzONbq7WNupKi-Hs6NLzYlBpdMBPhTES_CKEK9wUL51FPZUZqlQG4eM1g7Oybwb4T-HRzPSBnHU08TzWZQU-UCz7h0Jkv0Gg4x2K2CirxFH6In5Ei3zg..&type=2&query=AI%E9%9F%B3%E4%B9%90&token=94773E6FFB554CE4CFC9B04C213DD700D05A720F6AFD1019",
       "source": "搜狗微信",
@@ -1059,7 +1058,7 @@
       "rank": 65
     },
     {
-      "id": 65,
+      "id": 66,
       "title": "“学霸”自首AI作弊，韩国高考紧急布防",
       "link": "https://www.tmtpost.com/8208106.html",
       "source": "钛媒体",
@@ -1075,7 +1074,7 @@
       "rank": 66
     },
     {
-      "id": 66,
+      "id": 67,
       "title": "微软全球大宕机，AI 怎么又成了背锅侠",
       "link": "https://www.ifanr.com/1689638?utm_source=rss&utm_medium=rss&utm_campaign=",
       "source": "爱范儿",
@@ -1091,7 +1090,7 @@
       "rank": 67
     },
     {
-      "id": 67,
+      "id": 68,
       "title": "消息称黄仁勋回归尚未进入英伟达董事会议程；腾讯总办号召AI时代再创业；AI 演员虚假代言被罚",
       "link": "http://www.geekpark.net/news/374056",
       "source": "极客公园",
@@ -1107,7 +1106,7 @@
       "rank": 68
     },
     {
-      "id": 68,
+      "id": 69,
       "title": "discoDSP Updates OB-Xd and Retromulator With New Hardware-Inspired Features",
       "link": "https://www.synthtopia.com/content/2026/11/16/discodsp-updates-ob-xd-and-retromulator-with-new-hardware-inspired-features/",
       "source": "Synthtopia",
@@ -1118,12 +1117,12 @@
       "title_zh": "discoDSP更新OB-Xd和Retromulator，推出受硬件启发的新功能",
       "relevance_score": 47,
       "heat_score": 80,
-      "recency_score": 63,
-      "rank_score": 60.1,
+      "recency_score": 62,
+      "rank_score": 59.9,
       "rank": 69
     },
     {
-      "id": 69,
+      "id": 70,
       "title": "爱音乐 爱唱歌爱人民,身体健康,开心快乐每一天!:谢谢大家的支持和鼓励!",
       "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwq4Fh4fB3-FxVMW31KZQ9l6VqXa8Fplpd9Iqpkttf7PfJLTxCL0l8H6ubnkp7eRVzpHXuO5LxLMBctM-ckoomMzeYHrn8FrU9QI-TOdua2pHRLvSUnnU6RVaGpieR4JJNAxWYS_rCw_auGJaey4l8Cmdwd02T3jqDlghrW9VWSYupxAlIiv1DvcCiSPUhBLe4qLUoRstV2ZXU5eBgmN3LoYQ..&type=2&query=AI%E9%9F%B3%E4%B9%90&token=94773E6FFB554CE4CFC9B04C213DD700D05A720F6AFD1019",
       "source": "搜狗微信",
@@ -1139,7 +1138,7 @@
       "rank": 70
     },
     {
-      "id": 70,
+      "id": 71,
       "title": "Online DAW Soundtrap Adds Arturia Virtual Instruments",
       "link": "https://www.synthtopia.com/content/2026/11/16/online-daw-soundtrap-adds-arturia-virtual-instruments/",
       "source": "Synthtopia",
@@ -1150,12 +1149,12 @@
       "title_zh": "在线DAW Soundtrap新增Arturia虚拟乐器",
       "relevance_score": 33,
       "heat_score": 84,
-      "recency_score": 60,
-      "rank_score": 53.7,
+      "recency_score": 59,
+      "rank_score": 53.5,
       "rank": 71
     },
     {
-      "id": 71,
+      "id": 72,
       "title": "Apple reveals new Mac security controls as AI agents raise privacy risks",
       "link": "https://techcrunch.com/2026/11/16/apple-reveals-new-mac-security-controls-as-ai-agents-raise-privacy-risks/",
       "source": "TechCrunch",
@@ -1166,12 +1165,12 @@
       "title_zh": "随着AI代理增加隐私风险，苹果发布了新的Mac安全控制措施",
       "relevance_score": 50,
       "heat_score": 92,
-      "recency_score": 59,
-      "rank_score": 64.4,
+      "recency_score": 58,
+      "rank_score": 64.2,
       "rank": 72
     },
     {
-      "id": 72,
+      "id": 73,
       "title": "Never mind his success with Ella Langley’s Choosin’ Texas – Charlie Worsham’s biggest accolade came with Vince Gill",
       "link": "https://www.guitarworld.com/artists/guitarists/charlie-worsham-once-upon-a-second-time-around",
       "source": "Guitar World",
@@ -1182,12 +1181,12 @@
       "title_zh": "先不说他在Ella Langley的《Choosin’ Texas》中取得的成功，Charlie Worsham的最大荣誉来自Vince Gill。",
       "relevance_score": 15,
       "heat_score": 82,
-      "recency_score": 58,
-      "rank_score": 43.7,
+      "recency_score": 57,
+      "rank_score": 43.5,
       "rank": 73
     },
     {
-      "id": 73,
+      "id": 74,
       "title": "Tesla goes all-in on the Cybercab with upcoming €3B Berlin gigafactory expansion",
       "link": "https://techcrunch.com/2026/11/16/tesla-goes-all-in-on-the-cybercab-with-upcoming-e3b-berlin-gigafactory-expansion/",
       "source": "TechCrunch",
@@ -1203,7 +1202,7 @@
       "rank": 74
     },
     {
-      "id": 74,
+      "id": 75,
       "title": "FBI says Artex AI open source hacking tool used to breach networks in ‘under three hours’",
       "link": "https://techcrunch.com/2026/11/16/fbi-says-artex-ai-open-source-hacking-tool-used-to-breach-networks-in-under-three-hours/",
       "source": "TechCrunch",
@@ -1219,7 +1218,7 @@
       "rank": 75
     },
     {
-      "id": 75,
+      "id": 76,
       "title": "Jordan Belfort’s new AI voice startup, Tone, wants to sell like the ‘Wolf of Wall Street’",
       "link": "https://techcrunch.com/2026/11/16/jordan-belforts-new-ai-voice-startup-tone-wants-to-sell-like-the-wolf-of-wall-street/",
       "source": "TechCrunch",
@@ -1235,7 +1234,7 @@
       "rank": 76
     },
     {
-      "id": 76,
+      "id": 77,
       "title": "OpenAI will embed safety researchers to investigate AI subversion",
       "link": "https://techcrunch.com/2026/11/16/openai-will-embed-apollo-researchers-to-investigate-ai-subversion/",
       "source": "TechCrunch",
@@ -1251,6 +1250,22 @@
       "rank": 77
     },
     {
+      "id": 79,
+      "title": "Instagram now lets creators add Amazon affiliate links in reels and feed posts",
+      "link": "https://techcrunch.com/2026/11/16/instagram-now-lets-creators-add-amazon-affiliate-links-in-reels-and-feed-posts/",
+      "source": "TechCrunch",
+      "publish_time": "2026-11-16T17:00:00+00:00",
+      "summary": "While creators have long shared Amazon affiliate links through stories, DMs, and their bios, the new integration brings them to new parts of the app.",
+      "category": "国际科技",
+      "dedupe_key": "https://techcrunch.com/2026/11/16/instagram-now-lets-creators-add-amazon-affiliate-links-in-reels-and-feed-posts/",
+      "title_zh": "Instagram 现在允许创作者在 Reels 短视频和动态帖子中添加亚马逊联盟营销链接",
+      "relevance_score": 15,
+      "heat_score": 88,
+      "recency_score": 53,
+      "rank_score": 44.5,
+      "rank": 78
+    },
+    {
       "id": 78,
       "title": "OpenAI releases a new image classifier and ChatGPT warnings to combat CSAM",
       "link": "https://techcrunch.com/2026/11/16/openai-releases-a-new-image-classifier-and-chatgpt-warnings-to-combat-csam/",
@@ -1264,26 +1279,10 @@
       "heat_score": 88,
       "recency_score": 53,
       "rank_score": 44.5,
-      "rank": 78
-    },
-    {
-      "id": 77,
-      "title": "Instagram now lets creators add Amazon affiliate links in reels and feed posts",
-      "link": "https://techcrunch.com/2026/11/16/instagram-now-lets-creators-add-amazon-affiliate-links-in-reels-and-feed-posts/",
-      "source": "TechCrunch",
-      "publish_time": "2026-11-16T17:00:00+00:00",
-      "summary": "While creators have long shared Amazon affiliate links through stories, DMs, and their bios, the new integration brings them to new parts of the app.",
-      "category": "国际科技",
-      "dedupe_key": "https://techcrunch.com/2026/11/16/instagram-now-lets-creators-add-amazon-affiliate-links-in-reels-and-feed-posts/",
-      "title_zh": "Instagram 现在允许创作者在 Reels 短视频和动态帖子中添加亚马逊联盟营销链接",
-      "relevance_score": 15,
-      "heat_score": 88,
-      "recency_score": 53,
-      "rank_score": 44.5,
       "rank": 79
     },
     {
-      "id": 79,
+      "id": 80,
       "title": "Ryo Fujimoto, performing live in Tokyo, asks how to be in an age of violence",
       "link": "https://cdm.link/ryo-fujimoto-live-in-tokyo/",
       "source": "CDM",
@@ -1299,7 +1298,7 @@
       "rank": 80
     },
     {
-      "id": 80,
+      "id": 81,
       "title": "IDOL’s Labelcamp launches AI Connector, letting distributors and labels run supply chain operations through Claude and ChatGPT",
       "link": "https://www.musicbusinessworldwide.com/idols-labelcamp-launches-ai-connector-letting-distributors-and-labels-run-supply-chain-operations-through-claude-and-chatgpt/",
       "source": "Music Business Worldwide",
@@ -1310,12 +1309,12 @@
       "title_zh": "IDOL的Labelcamp推出AI Connector，让经销商和唱片公司通过Claude和ChatGPT开展供应链运营",
       "relevance_score": 33,
       "heat_score": 98,
-      "recency_score": 52,
-      "rank_score": 56.3,
+      "recency_score": 51,
+      "rank_score": 56.1,
       "rank": 81
     },
     {
-      "id": 81,
+      "id": 82,
       "title": "Audible turns to AI to help users discover audiobooks",
       "link": "https://techcrunch.com/2026/11/16/audible-turns-to-ai-to-help-users-discover-audiobooks/",
       "source": "TechCrunch",
@@ -1326,12 +1325,12 @@
       "title_zh": "Audible 借助人工智能帮助用户发现有声读物",
       "relevance_score": 62,
       "heat_score": 88,
-      "recency_score": 52,
-      "rank_score": 67.8,
+      "recency_score": 51,
+      "rank_score": 67.6,
       "rank": 82
     },
     {
-      "id": 82,
+      "id": 83,
       "title": "From ‘undiscovered artists’ to Daddy Yankee: 5 things to know about TikTok’s evolution into a superstar distributor",
       "link": "https://www.musicbusinessworldwide.com/from-undiscovered-artists-to-daddy-yankee-5-things-to-know-about-tiktoks-evolution-into-a-superstar-distributor/",
       "source": "Music Business Worldwide",
@@ -1347,7 +1346,7 @@
       "rank": 83
     },
     {
-      "id": 83,
+      "id": 84,
       "title": "TikTok says more than 46,000 UK music creators have gone LIVE in 2026, with daily views up 74% YoY",
       "link": "https://www.musicbusinessworldwide.com/tiktok-says-more-than-46000-uk-music-creators-have-gone-live-in-2026-with-daily-views-up-74-yoy/",
       "source": "Music Business Worldwide",
@@ -1363,7 +1362,7 @@
       "rank": 84
     },
     {
-      "id": 84,
+      "id": 85,
       "title": "Suno launches Bridge, an app that drops AI stems into Ableton Live",
       "link": "https://www.musicbusinessworldwide.com/suno-launches-bridge-an-app-that-drops-ai-stems-into-ableton-live/",
       "source": "Music Business Worldwide",
@@ -1379,7 +1378,7 @@
       "rank": 85
     },
     {
-      "id": 85,
+      "id": 86,
       "title": "AI时代的风向标—— AI音乐 榜第2期",
       "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqBqbPmEzrZFP20CusUO7sHlqXa8Fplpd9EyntwsCmuaonwU0cr7Wv252Z9lEcfqQJhTpDjzWgb553VeDw24emBWvp8fDFQIYMhY7xq7vCwjlMoE7OLlM2ENR6L5CeRlvEOJWGLlEMdqBnqIGN92y9BSJtpOMyzuX8e1Yf_dj06Dy-nGSAoJ10DQ7kicRr3XoJlnbmz0lKk1DyPfCoem7FzA..&type=2&query=AI%E9%9F%B3%E4%B9%90&token=8DE26A55444C3ED7D2D4B3A783AE9BDBD37952E36AFC1AE6",
       "source": "搜狗微信",
@@ -1390,12 +1389,12 @@
       "title_zh": null,
       "relevance_score": 86,
       "heat_score": 62,
-      "recency_score": 51,
-      "rank_score": 71.8,
+      "recency_score": 50,
+      "rank_score": 71.6,
       "rank": 86
     },
     {
-      "id": 86,
+      "id": 87,
       "title": "US tightens AI chip export controls to deter Chinese companies from accessing compute remotely",
       "link": "https://techcrunch.com/2026/11/16/us-tightens-ai-chip-export-controls-to-deter-chinese-companies-from-accessing-compute-remotely/",
       "source": "TechCrunch",
@@ -1411,7 +1410,7 @@
       "rank": 87
     },
     {
-      "id": 87,
+      "id": 88,
       "title": "平均年龄25岁，00后小伙带队拿下首届蚂蚁灵波具身大模型挑战赛最高分",
       "link": "https://www.leiphone.com/category/industrynews/LTOeijdeWR08fZGP.html",
       "source": "雷锋网",
@@ -1427,7 +1426,7 @@
       "rank": 88
     },
     {
-      "id": 88,
+      "id": 89,
       "title": "Google Maps can now build trip itineraries with real-time details about each stop",
       "link": "https://techcrunch.com/2026/11/16/google-maps-can-now-build-trip-itineraries-with-real-time-details-about-each-stop/",
       "source": "TechCrunch",
@@ -1443,7 +1442,7 @@
       "rank": 89
     },
     {
-      "id": 89,
+      "id": 90,
       "title": "Prince’s Purple Rain character in the Broadway revival has been cast, and he'll be playing guitar",
       "link": "https://www.musicradar.com/artists/youd-have-to-be-crazy-to-do-this-i-mean-come-on-the-voice-the-moves-the-music-he-made-it-all-look-effortless-princes-purple-rain-character-in-the-broadway-revival-has-been-cast-and-hes-working-hard-trying-to-nail-those-big-guitar-solos",
       "source": "MusicRadar",
@@ -1459,7 +1458,7 @@
       "rank": 90
     },
     {
-      "id": 90,
+      "id": 91,
       "title": "Suno Bridge is a new way to sync up your AI creation with your production projects",
       "link": "https://musictech.com/news/music/suno-ai-bridge/",
       "source": "MusicTech",
@@ -1475,7 +1474,7 @@
       "rank": 91
     },
     {
-      "id": 91,
+      "id": 92,
       "title": "Chuck Berry’s son on life with a guitar legend, on and off the stage",
       "link": "https://www.guitarworld.com/artists/guitarists/charles-berry-jr-on-his-father-chuck-berry",
       "source": "Guitar World",
@@ -1486,12 +1485,12 @@
       "title_zh": "Chuck Berry 之子谈与吉他传奇共同生活及舞台内外的经历",
       "relevance_score": 61,
       "heat_score": 82,
-      "recency_score": 50,
-      "rank_score": 65.1,
+      "recency_score": 49,
+      "rank_score": 64.9,
       "rank": 92
     },
     {
-      "id": 92,
+      "id": 93,
       "title": "Shrub is a free \"stripped-down\" version of Serum that will run on the M-Vave FM-1 – and in your DAW",
       "link": "https://www.musicradar.com/music-tech/shrub-is-a-free-stripped-down-version-of-serum-that-will-run-on-the-m-vave-fm-1-and-in-your-daw",
       "source": "MusicRadar",
@@ -1507,7 +1506,7 @@
       "rank": 93
     },
     {
-      "id": 93,
+      "id": 94,
       "title": "当充电像加油一样快，租车自驾的边界被拓宽",
       "link": "https://www.leiphone.com/category/industrynews/kfphRdgYwSdN13Nv.html",
       "source": "雷锋网",
@@ -1523,7 +1522,7 @@
       "rank": 94
     },
     {
-      "id": 94,
+      "id": 95,
       "title": "New Software Synthesizer, Victory, Expands Prophet VS Synthesis With Patch Morphing, Wave Sequencing",
       "link": "https://www.synthtopia.com/content/2026/11/16/new-software-synthesizer-victory-expands-prophet-vs-synthesis-with-patch-morphing-wave-sequencing/",
       "source": "Synthtopia",
@@ -1539,7 +1538,7 @@
       "rank": 95
     },
     {
-      "id": 95,
+      "id": 96,
       "title": "Bad Company drummer Simon Kirke on the making of the band’s biggest hit song",
       "link": "https://www.musicradar.com/artists/paul-had-this-riff-mick-had-this-little-country-verse-and-neither-idea-was-going-anywhere-so-i-said-hang-on-why-dont-you-combine-them-bad-company-drummer-simon-kirke-on-the-making-of-the-bands-biggest-hit-song",
       "source": "MusicRadar",
@@ -1555,7 +1554,7 @@
       "rank": 96
     },
     {
-      "id": 96,
+      "id": 97,
       "title": "新增51款1类新药、129万CAR-T首次纳入：医保目录的平衡与商保新变量丨行业风向标",
       "link": "https://www.tmtpost.com/8207495.html",
       "source": "钛媒体",
@@ -1571,7 +1570,7 @@
       "rank": 97
     },
     {
-      "id": 97,
+      "id": 98,
       "title": "The guitar that opened Live Aid – up close with Rick Parfitt’s famed Status Quo Telecaster",
       "link": "https://www.guitarworld.com/gear/electric-guitars/rick-parfitt-status-quo-bonhams-auction",
       "source": "Guitar World",
@@ -1582,12 +1581,12 @@
       "title_zh": "回顾 Live Aid 开场吉他：Rick Parfitt 的 Status Quo Telecaster",
       "relevance_score": 51,
       "heat_score": 82,
-      "recency_score": 47,
-      "rank_score": 59.5,
+      "recency_score": 46,
+      "rank_score": 59.3,
       "rank": 98
     },
     {
-      "id": 98,
+      "id": 99,
       "title": "The Flight tell us about composing for the extraordinary James Bond video game, 007 First Light",
       "link": "https://www.musicradar.com/artists/the-bond-theme-has-been-recorded-so-many-times-you-wouldnt-want-to-be-the-people-who-do-a-weaker-version-of-it-the-flight-tell-us-about-composing-for-the-extraordinary-james-bond-video-game-007-first-light",
       "source": "MusicRadar",
@@ -1603,7 +1602,7 @@
       "rank": 99
     },
     {
-      "id": 99,
+      "id": 100,
       "title": "维眸生物：十年无产品商业化，累计亏损近11亿，现金链承压",
       "link": "https://www.tmtpost.com/8200883.html",
       "source": "钛媒体",
@@ -1619,7 +1618,7 @@
       "rank": 100
     },
     {
-      "id": 100,
+      "id": 101,
       "title": "影石这张「魔法相纸」，怎么治好了我的相册吃灰症？",
       "link": "https://www.ifanr.com/1689594?utm_source=rss&utm_medium=rss&utm_campaign=",
       "source": "爱范儿",
@@ -1635,7 +1634,7 @@
       "rank": 101
     },
     {
-      "id": 101,
+      "id": 102,
       "title": "AI变量下的多线博弈，面板行业迎来新卡位战",
       "link": "https://www.tmtpost.com/8206976.html",
       "source": "钛媒体",
@@ -1651,7 +1650,7 @@
       "rank": 102
     },
     {
-      "id": 102,
+      "id": 103,
       "title": "黄仁勋被曝考虑重返英伟达担任CEO！其硅谷盟友正施压董事会；女子因拒绝给HR带咖啡被取消面试，BOSS直聘回应；李牧青出任AI公司联席CEO",
       "link": "https://www.leiphone.com/category/zaobao/QP6ok2UwM4JBsMEx.html",
       "source": "雷锋网",
@@ -1667,7 +1666,7 @@
       "rank": 103
     },
     {
-      "id": 103,
+      "id": 104,
       "title": "苹果眼镜明年见：没有屏幕，全靠 Siri 撑场面？",
       "link": "https://www.ifanr.com/1689712?utm_source=rss&utm_medium=rss&utm_campaign=",
       "source": "爱范儿",
@@ -1678,12 +1677,12 @@
       "title_zh": null,
       "relevance_score": 15,
       "heat_score": 72,
-      "recency_score": 45,
-      "rank_score": 38.1,
+      "recency_score": 44,
+      "rank_score": 37.9,
       "rank": 104
     },
     {
-      "id": 104,
+      "id": 105,
       "title": "几乎每家国产新能源都在营销的「6 人 12 箱」，原来根本就是违法的！",
       "link": "https://www.ifanr.com/1689701?utm_source=rss&utm_medium=rss&utm_campaign=",
       "source": "爱范儿",
@@ -1699,7 +1698,7 @@
       "rank": 105
     },
     {
-      "id": 105,
+      "id": 106,
       "title": "派评 | 近期值得关注的 App",
       "link": "https://sspai.com/post/119148",
       "source": "少数派",
@@ -1710,12 +1709,12 @@
       "title_zh": null,
       "relevance_score": 21,
       "heat_score": 61,
-      "recency_score": 44,
-      "rank_score": 37.6,
+      "recency_score": 43,
+      "rank_score": 37.4,
       "rank": 106
     },
     {
-      "id": 106,
+      "id": 107,
       "title": "AI 音乐 |去 AI 味!质感优化高阶关键词",
       "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwq4Fh4fB3-FxVMW31KZQ9l6VqXa8Fplpd9-K7X1Z9aOr4HqQOpZQxfQkF6-MqZHgKJbxT-S-aIgx8xG2c5_ecdvbnvIyX6tXDRHqDlfvXlDkoD1o-9-uQgh2pk8mRmDhWoM3kUGJdWTQGoTys-ShbzhGfqDuoIN0IHmNHs8qkfjhefGQwQPFUhCWe-dqjtLeVNxLlfLwbR4JMO8fIRwtipOg..&type=2&query=AI%E9%9F%B3%E4%B9%90&token=94773E6FFB554CE4CFC9B04C213DD700D05A720F6AFD1019",
       "source": "搜狗微信",
@@ -1731,7 +1730,7 @@
       "rank": 107
     },
     {
-      "id": 107,
+      "id": 108,
       "title": "实测腾讯 Hy4 flash：花两毛钱，就能让 AI 从零做个 3D 交互网页",
       "link": "https://www.ifanr.com/1689653?utm_source=rss&utm_medium=rss&utm_campaign=",
       "source": "爱范儿",
@@ -1747,7 +1746,7 @@
       "rank": 108
     },
     {
-      "id": 108,
+      "id": 109,
       "title": "The Pixies loathed the song that ended up being their breakthrough: “Geez, this doesn’t even sound like us”",
       "link": "https://www.musicradar.com/artists/the-pixies-loathed-the-song-that-ended-up-being-their-breakthrough-geez-this-doesnt-even-sound-like-us",
       "source": "MusicRadar",
@@ -1763,7 +1762,7 @@
       "rank": 109
     },
     {
-      "id": 109,
+      "id": 110,
       "title": "智算接棒：物理AI的下一个风口，在于计算基础设施",
       "link": "https://www.leiphone.com/category/chips/yYPDwzuTBbcMSCSx.html",
       "source": "雷锋网",
@@ -1774,12 +1773,12 @@
       "title_zh": null,
       "relevance_score": 45,
       "heat_score": 61,
-      "recency_score": 41,
-      "rank_score": 49.0,
+      "recency_score": 40,
+      "rank_score": 48.8,
       "rank": 110
     },
     {
-      "id": 110,
+      "id": 111,
       "title": "HCI 先驱 de Souza：当 AI 替我们阅读，谁来为知识负责？| ACM MM 2026",
       "link": "https://www.leiphone.com/category/private/j1CWHNsD9eBM7Wwc.html",
       "source": "雷锋网",
@@ -1790,12 +1789,12 @@
       "title_zh": null,
       "relevance_score": 33,
       "heat_score": 61,
-      "recency_score": 41,
-      "rank_score": 43.0,
+      "recency_score": 40,
+      "rank_score": 42.8,
       "rank": 111
     },
     {
-      "id": 111,
+      "id": 112,
       "title": "Rosetta 2 即将退役，Mac 老应用何去何从？",
       "link": "https://sspai.com/post/118100",
       "source": "少数派",
@@ -1811,7 +1810,7 @@
       "rank": 112
     },
     {
-      "id": 112,
+      "id": 113,
       "title": "李飞飞最新 CoRL2026 演讲实录：从「橱柜模型」到世界模型，机器人需要什么样的 AI ？",
       "link": "https://www.leiphone.com/category/ai/zV4No5T5XDHJcupr.html",
       "source": "雷锋网",
@@ -1827,7 +1826,7 @@
       "rank": 113
     },
     {
-      "id": 113,
+      "id": 114,
       "title": "百度世界2026｜让金融AI用得起、更专业，度小满“轩辕”探索中小机构落地新路径",
       "link": "https://www.leiphone.com/category/industrynews/JDoXug7VZqSjkQrQ.html",
       "source": "雷锋网",
@@ -1843,7 +1842,7 @@
       "rank": 114
     },
     {
-      "id": 114,
+      "id": 115,
       "title": "超 16 万人请愿，黄仁勋准备「回宫」",
       "link": "https://www.ifanr.com/1689559?utm_source=rss&utm_medium=rss&utm_campaign=",
       "source": "爱范儿",
@@ -1859,7 +1858,7 @@
       "rank": 115
     },
     {
-      "id": 115,
+      "id": 116,
       "title": "How Jon Stockman went from a terrible bass tone to the colossal sound behind Karnivool’s Sound Awake",
       "link": "https://www.guitarworld.com/artists/bassists/how-jon-stockman-crafted-the-bass-sound-behind-karnivools-sound-awake",
       "source": "Guitar World",
@@ -1875,7 +1874,7 @@
       "rank": 116
     },
     {
-      "id": 116,
+      "id": 117,
       "title": "Deluge 1.3 ‘Derbyshire’ Firmware Hands-On Demo",
       "link": "https://www.synthtopia.com/content/2026/11/15/deluge-1-3-derbyshire-firmware-hands-on-demo/",
       "source": "Synthtopia",
@@ -1891,7 +1890,7 @@
       "rank": 117
     },
     {
-      "id": 117,
+      "id": 118,
       "title": "Steve Duda’s Free Shrub Brings Serum Wavetable Synthesizer To The M-VAVE FM-1",
       "link": "https://www.synthtopia.com/content/2026/11/15/steve-dudas-free-shrub-brings-serum-wavetable-synthesizer-to-the-m-vave-fm-1/",
       "source": "Synthtopia",
@@ -1907,7 +1906,7 @@
       "rank": 118
     },
     {
-      "id": 118,
+      "id": 119,
       "title": "派早报：逾十万人次联署要求黄仁勋复职",
       "link": "https://sspai.com/post/119119",
       "source": "少数派",
@@ -1918,12 +1917,12 @@
       "title_zh": null,
       "relevance_score": 27,
       "heat_score": 61,
-      "recency_score": 29,
-      "rank_score": 37.6,
+      "recency_score": 28,
+      "rank_score": 37.4,
       "rank": 119
     },
     {
-      "id": 119,
+      "id": 120,
       "title": "Joe Bonamassa declares his love for the Fender Jaguar: “It doesn’t get the same kind of reverence”",
       "link": "https://www.guitarworld.com/lessons/artist-lessons/joe-bonamassa-declares-his-love-for-the-fender-jaguar-in-this-surf-rock-guitar-lesson",
       "source": "Guitar World",
@@ -1939,7 +1938,7 @@
       "rank": 120
     },
     {
-      "id": 120,
+      "id": 121,
       "title": "The one Gibson Yngwie Malmsteen always comes back to (and it’s not a Les Paul)",
       "link": "https://www.guitarworld.com/artists/guitarists/yngwie-malmsteen-on-his-favorite-gibson",
       "source": "Guitar World",
@@ -1955,7 +1954,7 @@
       "rank": 121
     },
     {
-      "id": 121,
+      "id": 122,
       "title": "J Mascis is still looking for his stolen vintage Fenders: “Somebody followed us to a hotel and jacked the trailer”",
       "link": "https://www.guitarworld.com/artists/guitarists/j-mascis-on-the-vintage-fender-guitars-stolen-from-dinosaur-jr",
       "source": "Guitar World",
@@ -1971,7 +1970,7 @@
       "rank": 122
     },
     {
-      "id": 122,
+      "id": 123,
       "title": "How Pete Townshend’s attempt to transform “a person into music” spawned The Who’s biggest song",
       "link": "https://www.musicradar.com/artists/how-pete-townshends-attempt-to-transform-a-person-into-music-spawned-the-whos-biggest-song",
       "source": "MusicRadar",
@@ -1987,7 +1986,7 @@
       "rank": 123
     },
     {
-      "id": 123,
+      "id": 124,
       "title": "Elliot Easton was seriously ill when he made the Cars’ smash-hit debut",
       "link": "https://www.guitarworld.com/artists/guitarists/elliot-easton-on-the-making-of-the-cars-debut",
       "source": "Guitar World",
@@ -2003,7 +2002,7 @@
       "rank": 124
     },
     {
-      "id": 124,
+      "id": 125,
       "title": "Aerial Switcher：给 Mac 的航拍壁纸排个时间表",
       "link": "https://sspai.com/post/118392",
       "source": "少数派",
@@ -2019,7 +2018,7 @@
       "rank": 125
     },
     {
-      "id": 125,
+      "id": 126,
       "title": "AudioThing & Hainbach Release Seconds, A 48-Band Spectral Sound Design Effect",
       "link": "https://www.synthtopia.com/content/2026/11/14/audiothing-hainbach-release-seconds-a-48-band-spectral-sound-design-effect/",
       "source": "Synthtopia",
@@ -2035,7 +2034,7 @@
       "rank": 126
     },
     {
-      "id": 126,
+      "id": 127,
       "title": "刚刚，马斯克再创历史，人类首次用「筷子」夹住星舰飞船",
       "link": "https://www.ifanr.com/1689501?utm_source=rss&utm_medium=rss&utm_campaign=",
       "source": "爱范儿",
@@ -2051,7 +2050,7 @@
       "rank": 127
     },
     {
-      "id": 127,
+      "id": 128,
       "title": "Yamaha Updates VOCALOID With More Expressive AI Singing, Five New Voicebanks",
       "link": "https://www.synthtopia.com/content/2026/11/14/yamaha-updates-vocaloid-with-more-expressive-ai-singing-five-new-voicebanks/",
       "source": "Synthtopia",
@@ -2067,7 +2066,7 @@
       "rank": 128
     },
     {
-      "id": 128,
+      "id": 129,
       "title": "5 extended chords that add depth and harmonic richness to your playing",
       "link": "https://www.guitarworld.com/lessons/chords/extended-chords-vocabulary-lesson",
       "source": "Guitar World",
@@ -2083,7 +2082,7 @@
       "rank": 129
     },
     {
-      "id": 129,
+      "id": 130,
       "title": "Cinescapes Pro Turns iPhone and iPad Into Cinematic Ambient Instruments",
       "link": "https://www.synthtopia.com/content/2026/11/14/cinescapes-pro-turns-iphone-and-ipad-into-cinematic-ambient-instruments/",
       "source": "Synthtopia",
@@ -2099,7 +2098,7 @@
       "rank": 130
     },
     {
-      "id": 130,
+      "id": 131,
       "title": "Living Sky Combines Convolution Reverb, 3D Positioning & Modulation For Immersive Audio",
       "link": "https://www.synthtopia.com/content/2026/11/14/living-sky-combines-convolution-reverb-3d-positioning-modulation-for-immersive-audio/",
       "source": "Synthtopia",
@@ -2115,7 +2114,7 @@
       "rank": 131
     },
     {
-      "id": 131,
+      "id": 132,
       "title": "我不喜欢 AI音乐 ,但我不想成为一个反AI的人",
       "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwq4Fh4fB3-FxVMW31KZQ9l6VqXa8Fplpd9fJlgRO_k0_9FKpDtPQP2To2wApU9PN3dhfI0ofX8TtRdGovY_MzcaCPfUBZXu_RnM-W3B966gf6WJbS74Kf_Qx4o1JuCAl0f_wjV6nU_IF7Wngt9Rry86TXeB03P8CEtSHV2l0wNdYC_-jtywY6-XyncYJyDnuqTXGujN_tuo5YHpHkoPMgL3A..&type=2&query=AI%E9%9F%B3%E4%B9%90&token=94773E6FFB554CE4CFC9B04C213DD700D05A720F6AFD1019",
       "source": "搜狗微信",
@@ -2131,7 +2130,7 @@
       "rank": 132
     },
     {
-      "id": 132,
+      "id": 133,
       "title": "“A producer’s role in a rap record is different to what it is in a rock record”: How Rick Rubin broke the mould",
       "link": "https://www.musicradar.com/artists/a-producers-role-in-a-rap-record-is-different-to-what-it-is-in-a-rock-record-how-rick-rubin-broke-the-mould-as-a-producer-and-record-company-mogul-and-why-he-rates-mutt-lange-as-the-goat",
       "source": "MusicRadar",
@@ -2147,7 +2146,7 @@
       "rank": 133
     },
     {
-      "id": 133,
+      "id": 134,
       "title": "The best new guitar gear this week, ft. John Mayer's most affordable Martin yet",
       "link": "https://www.guitarworld.com/gear/guitar-world-gear-round-up-nov-14-2026",
       "source": "Guitar World",
@@ -2163,9 +2162,9 @@
       "rank": 134
     },
     {
-      "id": 134,
+      "id": 135,
       "title": "Skoove:把 AI 陪练做成罗兰 钢琴 的配套服务,一家德国公司的创业路径",
-      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqPndIWun0K3xMW31KZQ9l6VqXa8Fplpd9ywmE4pSZwpZuhjsBaAPeBasc-HUpUEUa6Qg5vsDxzQPwtfqE90r61_Z_Z83Vvgf3PMQeTgAbta-vuScxqM-KCfC2Ft1moa0_BNCB8JTKUAuZa4LfwT9Mh5Swrl-4emp64MkqA_2zCPAGsDZDSJwu1TfO1BPqRmga9wrNh8TPC1le0WC6Sbi7DA..&type=2&query=AI%E9%92%A2%E7%90%B4 %E4%B9%90%E7%90%86&token=9480F21EF221CE33383E57B33155AF4038790C386AFD11A9",
+      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqafPlfP-UlhZMW31KZQ9l6VqXa8Fplpd9ywmE4pSZwpZuhjsBaAPeBasc-HUpUEUa6Qg5vsDxzQPwtfqE90r61_Z_Z83Vvgf3PMQeTgAbta-vuScxqM-KCcDLbpJ6jG6ptRrnu3ef91eGdG7E966IrnHQeO4rH-y9QyrxJrdgCh_016onH9SH1JQmSHifSeCja33rAUXvTj4SYTqT4eyLmA..&type=2&query=AI%E9%92%A2%E7%90%B4 %E4%B9%90%E7%90%86&token=948E6F80741BF5A2B5B3D5319353EC55B60690036AFD13CA",
       "source": "搜狗微信",
       "publish_time": "2026-11-14T04:01:27+00:00",
       "summary": "对准备进入 AI钢琴 行业的出海创业者,这里有一个具体问题:软件... 内容包含识谱、 乐理 与曲目练习.这些工作开始于生成式 AI 广泛进...",
@@ -2179,7 +2178,7 @@
       "rank": 135
     },
     {
-      "id": 135,
+      "id": 136,
       "title": "Car Bomb bassist John Modell on how a support slot with Meshuggah went from band joke to reality",
       "link": "https://www.guitarworld.com/artists/bassists/car-bomb-bassist-jon-modell-on-chasing-a-support-slot-with-meshuggah",
       "source": "Guitar World",
@@ -2195,7 +2194,7 @@
       "rank": 136
     },
     {
-      "id": 136,
+      "id": 137,
       "title": "Behringer Opens New AQ64L 64-Pad MIDI Controller To Custom Firmware",
       "link": "https://www.synthtopia.com/content/2026/11/13/behringer-opens-new-aq64l-64-pad-midi-controller-to-custom-firmware/",
       "source": "Synthtopia",
@@ -2211,7 +2210,7 @@
       "rank": 137
     },
     {
-      "id": 137,
+      "id": 138,
       "title": "DJW Audio Intros DW-303, a Free Open-Source TB-303-Style Synthesizer",
       "link": "https://www.synthtopia.com/content/2026/11/13/djw-audio-intros-dw-303-a-free-open-source-tb-303-style-synthesizer/",
       "source": "Synthtopia",
@@ -2227,7 +2226,7 @@
       "rank": 138
     },
     {
-      "id": 138,
+      "id": 139,
       "title": "Spitfire Audio Releases Eric Whitacre Eternity, Combining Analog Synths, Piano and Processed Choir",
       "link": "https://www.synthtopia.com/content/2026/11/13/spitfire-audio-releases-eric-whitacre-eternity-combining-analog-synths-piano-and-processed-choir/",
       "source": "Synthtopia",
@@ -2243,7 +2242,7 @@
       "rank": 139
     },
     {
-      "id": 139,
+      "id": 140,
       "title": "Body Synths Laboratory Combines Dual-Channel Effects With Analog Feedback Synthesis",
       "link": "https://www.synthtopia.com/content/2026/11/13/body-synths-laboratory-combines-dual-channel-effects-with-analog-feedback-synthesis/",
       "source": "Synthtopia",
@@ -2259,7 +2258,7 @@
       "rank": 140
     },
     {
-      "id": 140,
+      "id": 141,
       "title": "Vintage Synth Review: The Alesis Andromeda A6 Analog Synthesizer",
       "link": "https://www.synthtopia.com/content/2026/11/13/vintage-synth-review-the-alesis-andromeda-a6-analog-synthesizer/",
       "source": "Synthtopia",
@@ -2275,7 +2274,7 @@
       "rank": 141
     },
     {
-      "id": 141,
+      "id": 142,
       "title": "When Kirk Hammett paid a nerve-wracking visit to his blues hero Peter Green",
       "link": "https://www.musicradar.com/artists/when-kirk-hammett-met-his-blues-hero-peter-green",
       "source": "MusicRadar",
@@ -2291,7 +2290,7 @@
       "rank": 142
     },
     {
-      "id": 142,
+      "id": 143,
       "title": "Why acoustic phenom Marcin is embracing electric guitar",
       "link": "https://www.guitarworld.com/artists/guitarists/why-acoustic-guitar-phenom-marcin-is-embracing-electric-guitar",
       "source": "Guitar World",
@@ -2307,7 +2306,7 @@
       "rank": 143
     },
     {
-      "id": 143,
+      "id": 144,
       "title": "This could be the cheapest fretless guitar on the market for Angine de Poitrine microtones on a budget",
       "link": "https://www.guitarworld.com/gear/electric-guitars/orangewood-del-sol-baritone-fretless",
       "source": "Guitar World",
@@ -2323,7 +2322,7 @@
       "rank": 144
     },
     {
-      "id": 144,
+      "id": 145,
       "title": "PRS reveals why it decided to ditch Bird inlays for its new Tekton range",
       "link": "https://www.guitarworld.com/gear/electric-guitars/prs-tekton-inlays-explained",
       "source": "Guitar World",
@@ -2339,7 +2338,7 @@
       "rank": 145
     },
     {
-      "id": 145,
+      "id": 146,
       "title": "Harps with flowers that bloom and more fanciful creations of Monique Evette",
       "link": "https://cdm.link/fanciful-creations-of-monique-evette/",
       "source": "CDM",
@@ -2355,7 +2354,7 @@
       "rank": 146
     },
     {
-      "id": 146,
+      "id": 147,
       "title": "Joe Satriani and Steve Vai on internet shred, embracing plugins and the guitar collab of the century",
       "link": "https://www.guitarworld.com/artists/guitarists/satch-vai-the-sea-of-emotion",
       "source": "Guitar World",
@@ -2371,7 +2370,7 @@
       "rank": 147
     },
     {
-      "id": 147,
+      "id": 148,
       "title": "Norman Harris closes iconic vintage guitar store for remodel: “I’ve stayed in the prehistoric age for long enough”",
       "link": "https://www.guitarworld.com/music-industry/normans-rare-guitars-remodel",
       "source": "Guitar World",
@@ -2387,7 +2386,7 @@
       "rank": 148
     },
     {
-      "id": 148,
+      "id": 149,
       "title": "Inside Motor City Guitars – the guitar store with the “Magic Strat” played by Eric Johnson and Mark Tremonti",
       "link": "https://www.guitarworld.com/gear/guitars/inside-motor-city-guitars",
       "source": "Guitar World",
@@ -2403,7 +2402,7 @@
       "rank": 149
     },
     {
-      "id": 149,
+      "id": 150,
       "title": "Julian Lage on when the guitar hero who inspired him to play recruited him for the Crossroads Guitar Festival",
       "link": "https://www.guitarworld.com/artists/guitarists/julian-lage-on-eric-claptons-crossroads-invite",
       "source": "Guitar World",
@@ -2419,7 +2418,7 @@
       "rank": 150
     },
     {
-      "id": 150,
+      "id": 151,
       "title": "“It’s in D, and it’s not a really heavy key”: How Iron Maiden created their breakthrough hit",
       "link": "https://www.musicradar.com/artists/its-in-d-and-its-not-a-really-heavy-key-how-iron-maiden-took-a-little-inspiration-from-a-frank-sinatra-classic-to-create-the-breakthrough-hit-that-helped-make-them-the-biggest-heavy-metal-band-in-the-world",
       "source": "MusicRadar",
@@ -2435,7 +2434,7 @@
       "rank": 151
     },
     {
-      "id": 151,
+      "id": 152,
       "title": "Audient introduces the third generation of its iD interface family – here’s what’s new",
       "link": "https://musictech.com/news/gear/audient-id-mk3/",
       "source": "MusicTech",
@@ -2451,7 +2450,7 @@
       "rank": 152
     },
     {
-      "id": 152,
+      "id": 153,
       "title": "研究生如何用 AI 辅助完成一篇综述：我的科研写作工具与实践经验",
       "link": "https://sspai.com/post/118153",
       "source": "少数派",
@@ -2467,7 +2466,7 @@
       "rank": 153
     },
     {
-      "id": 153,
+      "id": 154,
       "title": "Akai Opens MPC 3 To Vibe Coding With Latest Update",
       "link": "https://www.synthtopia.com/content/2026/11/12/akai-opens-mpc-3-to-vibe-coding-with-latest-update/",
       "source": "Synthtopia",
@@ -2483,7 +2482,7 @@
       "rank": 154
     },
     {
-      "id": 154,
+      "id": 155,
       "title": "AI 录音硬件卖的是时间差，窗口可能只剩半年",
       "link": "http://www.geekpark.net/news/373946",
       "source": "极客公园",
@@ -2499,7 +2498,7 @@
       "rank": 155
     },
     {
-      "id": 155,
+      "id": 156,
       "title": "Patchwerk Turns The M-VAVE FM-1 Into A Modular Synthesizer",
       "link": "https://www.synthtopia.com/content/2026/11/12/patchwerk-turns-the-m-vave-fm-1-into-a-modular-synthesizer/",
       "source": "Synthtopia",
@@ -2515,7 +2514,7 @@
       "rank": 156
     },
     {
-      "id": 156,
+      "id": 157,
       "title": "李彦宏定义 AI 下一个十年，智能组织是「新厂房」",
       "link": "http://www.geekpark.net/news/373937",
       "source": "极客公园",
@@ -2531,7 +2530,7 @@
       "rank": 157
     },
     {
-      "id": 157,
+      "id": 158,
       "title": "Konstrukt 1.2 Combines MIDI Sequencing, AUv3 Instruments And Modular Audio Routing",
       "link": "https://www.synthtopia.com/content/2026/11/12/konstrukt-1-2-combines-midi-sequencing-auv3-instruments-and-modular-audio-routing/",
       "source": "Synthtopia",
@@ -2547,7 +2546,7 @@
       "rank": 158
     },
     {
-      "id": 158,
+      "id": 159,
       "title": "Michael J. Fox on the surprise guitar cameo with Coldplay that stole the show at Glastonbury",
       "link": "https://www.guitarworld.com/artists/guitarists/michael-j-fox-on-his-surprise-glastonbury-guitar-cameo-with-coldplay",
       "source": "Guitar World",
@@ -2563,7 +2562,7 @@
       "rank": 159
     },
     {
-      "id": 159,
+      "id": 160,
       "title": "\"This isn't a spec refresh – it's a completely new technology platform\": Audient launches next generation of iD audio interfaces with onboard DSP and built-in monitor correction",
       "link": "https://www.musicradar.com/music-tech/this-isnt-a-spec-refresh-its-a-completely-new-technology-platform-audient-launches-next-generation-of-id-audio-interfaces-with-onboard-dsp-and-built-in-monitor-correction",
       "source": "MusicRadar",
@@ -2579,7 +2578,7 @@
       "rank": 160
     },
     {
-      "id": 160,
+      "id": 161,
       "title": "This new plugin lets you generate loops and one-shots from text prompts",
       "link": "https://musictech.com/news/gear/sonura-flow/",
       "source": "MusicTech",
@@ -2595,7 +2594,7 @@
       "rank": 161
     },
     {
-      "id": 161,
+      "id": 162,
       "title": "The best new music plugins this week, free and paid",
       "link": "https://musictech.com/news/gear/new-plugins-this-week/",
       "source": "MusicTech",
@@ -2611,7 +2610,7 @@
       "rank": 162
     },
     {
-      "id": 162,
+      "id": 163,
       "title": "Prince shows off his slap bass playing skills in previously unreleased live footage",
       "link": "https://www.musicradar.com/artists/prince-shows-off-his-slap-bass-playing-skills-in-previously-unreleased-live-footage-as-a-new-film-and-an-expanded-album-reissue-are-confirmed",
       "source": "MusicRadar",
@@ -2627,7 +2626,7 @@
       "rank": 163
     },
     {
-      "id": 163,
+      "id": 164,
       "title": "How transparent is your DAW’s cost model?",
       "link": "https://musictech.com/features/interviews/daw-cost-model/",
       "source": "MusicTech",
@@ -2643,7 +2642,7 @@
       "rank": 164
     },
     {
-      "id": 164,
+      "id": 165,
       "title": "You can now vibe code plugins for your MPC with the help of Akai’s official SDK",
       "link": "https://www.musicradar.com/music-tech/you-can-now-vibe-code-plugins-for-your-mpc-with-the-help-of-akais-official-sdk",
       "source": "MusicRadar",
@@ -2659,7 +2658,7 @@
       "rank": 165
     },
     {
-      "id": 165,
+      "id": 166,
       "title": "Blackstar just gave its ID:X Floor amp modellers Neural Amp Modelling support",
       "link": "https://www.musicradar.com/guitars/blackstar-amplification-adds-nam-a2-lite-to-its-idx-floor-amp-modeller-series",
       "source": "MusicRadar",
@@ -2675,7 +2674,7 @@
       "rank": 166
     },
     {
-      "id": 166,
+      "id": 167,
       "title": "ADDAC’s Rotary Exciter and Resonator Clamps can transform your guitar into a drone and ambient texture machine",
       "link": "https://www.musicradar.com/guitars/addac-system-resonator-clamp-rotator-exciter-clamp-for-electric-guitar",
       "source": "MusicRadar",
@@ -2691,7 +2690,7 @@
       "rank": 167
     },
     {
-      "id": 167,
+      "id": 168,
       "title": "Vertikal Captures Nils Frahm’s Monumental Piano In A New Kontakt Instrument",
       "link": "https://www.synthtopia.com/content/2026/11/12/vertikal-captures-nils-frahms-monumental-piano-in-a-new-kontakt-instrument/",
       "source": "Synthtopia",
@@ -2707,7 +2706,7 @@
       "rank": 168
     },
     {
-      "id": 168,
+      "id": 169,
       "title": "Crossroads sequel: who we want to take Steve Vai’s place",
       "link": "https://www.guitarworld.com/artists/guitarists/crossroads-sequel-who-we-want-to-take-steve-vais-place",
       "source": "Guitar World",
@@ -2723,7 +2722,7 @@
       "rank": 169
     },
     {
-      "id": 169,
+      "id": 170,
       "title": "Reading Rainbow, the Buchla synth’s “MARF,” and a prototype’s live debut",
       "link": "https://cdm.link/reading-rainbow-buchla-marf-steve-horelick/",
       "source": "CDM",
@@ -2739,7 +2738,7 @@
       "rank": 170
     },
     {
-      "id": 170,
+      "id": 171,
       "title": "\"Ever wanted to play a piano that’s 14 feet tall? Now you can\": 5 new plugins you need to know about",
       "link": "https://www.musicradar.com/music-tech/have-you-ever-played-a-piano-thats-14-feet-tall-now-you-can-5-new-plugins-you-need-to-know-about",
       "source": "MusicRadar",
@@ -2755,7 +2754,7 @@
       "rank": 171
     },
     {
-      "id": 171,
+      "id": 172,
       "title": "How Play That Funky Music guitarist Bryan Bassett wound up playing in three iconic rock bands",
       "link": "https://www.guitarworld.com/artists/guitarists/bryan-bassett-foghat-wild-cherry-molly-hatchet-interview",
       "source": "Guitar World",
@@ -2771,7 +2770,7 @@
       "rank": 172
     },
     {
-      "id": 172,
+      "id": 173,
       "title": "Watch the Haloplane make music by running pickups through magnetic fields",
       "link": "https://musictech.com/news/gear/haloplane/",
       "source": "MusicTech",
@@ -2787,7 +2786,7 @@
       "rank": 173
     },
     {
-      "id": 173,
+      "id": 174,
       "title": "Anna Lapwood on removing her musical blinkers and why you shouldn't watch The Lord of the Rings with her",
       "link": "https://www.musicradar.com/artists/people-arent-expecting-to-hear-the-organ-and-when-they-hear-it-they-lose-their-minds-anna-lapwood-on-removing-her-musical-blinkers-social-media-stardom-with-bonobo-and-raye-and-why-you-shouldnt-watch-the-lord-of-the-rings-with-her",
       "source": "MusicRadar",
@@ -2803,7 +2802,7 @@
       "rank": 174
     },
     {
-      "id": 174,
+      "id": 175,
       "title": "This new app lets you instantly share your favourite parts of your favourite songs with friends",
       "link": "https://musictech.com/news/music/drops-app/",
       "source": "MusicTech",
@@ -2819,7 +2818,7 @@
       "rank": 175
     },
     {
-      "id": 175,
+      "id": 176,
       "title": "活动回顾| AI音乐 的2026:产业重构与技术新浪潮——卢小旭老师学术讲座成功举办",
       "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqBqbPmEzrZFP20CusUO7sHlqXa8Fplpd9hb0jc78opJkREF9JqK5AnTlNJabn8EgsxqIUYBoHQZmEYu_QYtpM9t4GyGTmmoazeoItb3N70m6wXVltbdFsb_DMLnAV8oEbhSJzNCgtiVR0qbOb8kEsVDyAi1iunuSTdAwr-F6HQQ5tdKmAVf5tv_-6pe7iYrCELnWno2sQ-rf2CsG6-xMgzQ..&type=2&query=AI%E9%9F%B3%E4%B9%90&token=8DE26A55444C3ED7D2D4B3A783AE9BDBD37952E36AFC1AE6",
       "source": "搜狗微信",
@@ -2835,9 +2834,9 @@
       "rank": 176
     },
     {
-      "id": 176,
+      "id": 177,
       "title": "零 乐理 | AI 音乐万能提示词公式",
-      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqPndIWun0K3xMW31KZQ9l6VqXa8Fplpd9-K7X1Z9aOr4HqQOpZQxfQkF6-MqZHgKJbxT-S-aIgx8xG2c5_ecdvW5La3N4cDSFr-YFksJDJTFWT3TYBzSab5uGOjPrVdeuqnZWXsaLfxaeX7BrHwy2MMTjNWaGCvFqkoyfkq3W4zXIMcy96smta6tw5W7Uj-pA4hl6aczFpkVOJBjQH7pCxQ..&type=2&query=AI%E9%92%A2%E7%90%B4 %E4%B9%90%E7%90%86&token=9480F21EF221CE33383E57B33155AF4038790C386AFD11A9",
+      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqafPlfP-UlhZMW31KZQ9l6VqXa8Fplpd9-K7X1Z9aOr4HqQOpZQxfQkF6-MqZHgKJbxT-S-aIgx8xG2c5_ecdvW5La3N4cDSFr-YFksJDJTFWT3TYBzSab8a0cnMLN4xOEl1JJFTNTX4Dm4eKXa5MVo6MnBGlju_xa_ErWtwJGntK60HgS4W3NctoOetM7krJCp7dMzprZ1Ls46dn8Efgxg..&type=2&query=AI%E9%92%A2%E7%90%B4 %E4%B9%90%E7%90%86&token=948E6F80741BF5A2B5B3D5319353EC55B60690036AFD13CA",
       "source": "搜狗微信",
       "publish_time": "2026-11-12T10:30:59+00:00",
       "summary": "个要素就足够,写太多 AI 容易混乱零 乐理 也能当音乐制作人!把灵感直接变成歌收藏这条,下次写歌直接拿模板填空# ai 音乐 # AI 音乐 ...",
@@ -2851,7 +2850,7 @@
       "rank": 177
     },
     {
-      "id": 177,
+      "id": 178,
       "title": "AI音乐 过签其实很简单!零基础保姆级教程",
       "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwq4Fh4fB3-FxVMW31KZQ9l6VqXa8Fplpd9-KyO_Xv5NKUHrn9El-wECwBkojRHcinFqzaAnrFyDZHHeSUPJowWAFfhZ8v7LkJ3ATScBI9QGaaaEDiyVY6fquFbm_EncLURbWLdylugzfWxBZd4z-IB2YQ49qWPapgG8mXj3PonwoZVtlxhZjYEPLFZHPtT0ozArq9gI8dO-yACYioxHkzTmA..&type=2&query=AI%E9%9F%B3%E4%B9%90&token=94773E6FFB554CE4CFC9B04C213DD700D05A720F6AFD1019",
       "source": "搜狗微信",
@@ -2867,7 +2866,7 @@
       "rank": 178
     },
     {
-      "id": 178,
+      "id": 179,
       "title": "苹果突然永久关闭官方「支持社区」；字节即将推出个人 AI 助手；华为新品牌星芒 OSTA 曝光 | 极客早知道",
       "link": "http://www.geekpark.net/news/373839",
       "source": "极客公园",
@@ -2883,7 +2882,7 @@
       "rank": 179
     },
     {
-      "id": 179,
+      "id": 180,
       "title": "Schmidt Eight Voice Polyphonic Software Synthesizer Now Available",
       "link": "https://www.synthtopia.com/content/2026/11/11/schmidt-eight-voice-polyphonic-software-synthesizer-now-available/",
       "source": "Synthtopia",
@@ -2899,7 +2898,7 @@
       "rank": 180
     },
     {
-      "id": 180,
+      "id": 181,
       "title": "Krakli Updates Its Free Synthesizer Collection With Mac Support",
       "link": "https://www.synthtopia.com/content/2026/11/11/krakli-updates-its-free-synthesizer-collection-with-mac-support/",
       "source": "Synthtopia",
@@ -2915,7 +2914,7 @@
       "rank": 181
     },
     {
-      "id": 181,
+      "id": 182,
       "title": "Bram Bos Intros MIDGAR Creative Ambient Processor",
       "link": "https://www.synthtopia.com/content/2026/11/11/bram-bos-intros-midgar-creative-ambient-processor/",
       "source": "Synthtopia",
@@ -2931,7 +2930,7 @@
       "rank": 182
     },
     {
-      "id": 182,
+      "id": 183,
       "title": "Unusable Engineering Intros Currents & Nostalgia, A New Subtractive Synthesizer",
       "link": "https://www.synthtopia.com/content/2026/11/11/unusable-engineering-intros-currents-nostalgia-a-new-subtractive-synthesizer/",
       "source": "Synthtopia",
@@ -2947,7 +2946,7 @@
       "rank": 183
     },
     {
-      "id": 183,
+      "id": 184,
       "title": "The life and times of prog icon Jan Akkerman, from Brainbox to Focus",
       "link": "https://www.guitarworld.com/artists/guitarists/jan-akkerman-focus",
       "source": "Guitar World",
@@ -2963,7 +2962,7 @@
       "rank": 184
     },
     {
-      "id": 184,
+      "id": 185,
       "title": "Joe Satriani and Steve Vai on The Sea Of Emotion: a guitar album 50 years in the making",
       "link": "https://www.musicradar.com/artists/joe-satriani-steve-vai-the-sea-of-emotion-interview",
       "source": "MusicRadar",
@@ -2979,7 +2978,7 @@
       "rank": 185
     },
     {
-      "id": 185,
+      "id": 186,
       "title": "Highlights, concerns, and trends from Game Sound Con 2026",
       "link": "https://musictech.com/news/events/games-sound-con-2026/",
       "source": "MusicTech",
@@ -2995,7 +2994,7 @@
       "rank": 186
     },
     {
-      "id": 186,
+      "id": 187,
       "title": "Dua Lipa, Madonna, Tame Impala and SZA all confirmed for next year’s Coachella - but Drake's not happy",
       "link": "https://www.musicradar.com/artists/shows-festivals/dua-lipa-madonna-tame-impala-and-sza-all-confirmed-for-next-years-coachella-but-drakes-not-happy",
       "source": "MusicRadar",
@@ -3011,7 +3010,7 @@
       "rank": 187
     },
     {
-      "id": 187,
+      "id": 188,
       "title": "John Mayer has an HSS Silver Sky prototype – but we might not ever get to see it",
       "link": "https://www.guitarworld.com/artists/guitarists/john-mayer-prs-silver-sky-hss",
       "source": "Guitar World",
@@ -3027,7 +3026,7 @@
       "rank": 188
     },
     {
-      "id": 188,
+      "id": 189,
       "title": "AlphaTheta’s newest four-channel mixer comes as a budget answer to the DJM-A9",
       "link": "https://musictech.com/news/gear/djm-a7-alphatheta-mixer/",
       "source": "MusicTech",
@@ -3043,7 +3042,7 @@
       "rank": 189
     },
     {
-      "id": 189,
+      "id": 190,
       "title": "“Why compound it with two?”: Nicko McBrain reflects on why thought using a double bass drum was “un-drummer-ish”",
       "link": "https://www.musicradar.com/artists/drummers/its-bad-enough-using-one-why-compound-it-with-two-nicko-mcbrain-reflects-on-why-he-thought-using-a-double-bass-drum-was-un-drummer-ish",
       "source": "MusicRadar",
@@ -3059,7 +3058,7 @@
       "rank": 190
     },
     {
-      "id": 190,
+      "id": 191,
       "title": "Al Di Meola picks his five greatest jazz albums – and names the Beatles masterpiece that blew his mind",
       "link": "https://www.musicradar.com/artists/they-had-the-energy-of-a-great-rock-band-but-the-musicianship-was-on-another-planet-the-odd-meters-the-improvisation-the-precision-the-power-al-di-meola-picks-his-five-greatest-jazz-albums-and-names-the-beatles-masterpiece-that-blew-his-mind",
       "source": "MusicRadar",
@@ -3075,7 +3074,7 @@
       "rank": 191
     },
     {
-      "id": 191,
+      "id": 192,
       "title": "New CERNION Synthesizer Includes Custom Wavetable Editing, 11 Effects",
       "link": "https://www.synthtopia.com/content/2026/11/11/new-cernion-synthesizer-includes-custom-wavetable-editing-11-effects/",
       "source": "Synthtopia",
@@ -3091,7 +3090,7 @@
       "rank": 192
     },
     {
-      "id": 192,
+      "id": 193,
       "title": "Ableton Announces Live 13, Adding Step Sequencing, ARA 2 Support & New Sound Design Tools",
       "link": "https://www.synthtopia.com/content/2026/11/11/ableton-announces-live-13-adding-step-sequencing-ara-2-support-new-sound-design-tools/",
       "source": "Synthtopia",
@@ -3107,7 +3106,7 @@
       "rank": 193
     },
     {
-      "id": 193,
+      "id": 194,
       "title": "Chris Rörland on the making of his signature Jackson, switching from Kemper to Quad Cortex and sharing the stage with historical figures",
       "link": "https://www.guitarworld.com/artists/guitarists/sabaton-chris-rorland-jackson-sl7",
       "source": "Guitar World",
@@ -3123,7 +3122,7 @@
       "rank": 194
     },
     {
-      "id": 194,
+      "id": 195,
       "title": "爱音乐 ,更爱古筝",
       "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwq4Fh4fB3-FxVMW31KZQ9l6VqXa8Fplpd9yZTdE7rg58bTtEXxV0FRJyvukQAn98r_kxZLezswPIFy_-2bd6WXZe8E3GXE4hVT6Lo_X-X-P87oPOZvSLqLJSLMSbkptTISv53i9jp0gToflxCyh4Jg0udphpL7FtNzzJ9tC9Jk2za_PTfyIcBH0xbfqBbANvC8vFuSa_OsagqjotuuiAmOIg..&type=2&query=AI%E9%9F%B3%E4%B9%90&token=94773E6FFB554CE4CFC9B04C213DD700D05A720F6AFD1019",
       "source": "搜狗微信",
@@ -3139,7 +3138,7 @@
       "rank": 195
     },
     {
-      "id": 195,
+      "id": 196,
       "title": "“An affront to any songwriter who has lived and struggled”: Nick Cave on AI song-generating platforms",
       "link": "https://www.musicradar.com/artists/singers-songwriters/an-affront-to-any-songwriter-who-has-lived-and-struggled-in-this-world-and-earned-the-right-to-create-a-song-nick-cave-on-ai-song-generating-platforms",
       "source": "MusicRadar",
@@ -3155,7 +3154,7 @@
       "rank": 196
     },
     {
-      "id": 196,
+      "id": 197,
       "title": "Exploring The Beatles’ riff-led Revolver highlight that John Lennon considered a throwaway",
       "link": "https://www.musicradar.com/artists/its-one-of-the-best-songs-ever-written-and-its-only-a-minute-and-a-half-long-exploring-the-beatles-riff-led-revolver-highlight-that-john-lennon-considered-a-throwaway",
       "source": "MusicRadar",
@@ -3171,7 +3170,7 @@
       "rank": 197
     },
     {
-      "id": 197,
+      "id": 198,
       "title": "Billie Joe Armstrong is underrated and music is all about channeling the outer realm – meet NYC alt-rockers Telescreens",
       "link": "https://www.guitarworld.com/artists/bands/telescreens-why-the-lights-flicker",
       "source": "Guitar World",
@@ -3187,7 +3186,7 @@
       "rank": 198
     },
     {
-      "id": 198,
+      "id": 199,
       "title": "7款 AI音乐 工具,到底哪个更好用?",
       "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwq4Fh4fB3-FxVMW31KZQ9l6VqXa8Fplpd9E9KeLtLEcH-PoSdGmy2R8CYssQMVnAvJrNB1-Rs4MNacZtRQjvx_6NZH9Owh-fPoZsWRgRDTYtPJN4maD0kHRCUDvR5wnSRj8MMnwIGkxcEfR7UI2_HhXPkJnsOCqsRbN6Ni_K6DV8zwBS4nXeL5dlTBf1BorDop58S3ldZ9fRzuL0unUdKkuw..&type=2&query=AI%E9%9F%B3%E4%B9%90&token=94773E6FFB554CE4CFC9B04C213DD700D05A720F6AFD1019",
       "source": "搜狗微信",
@@ -3203,7 +3202,7 @@
       "rank": 199
     },
     {
-      "id": 199,
+      "id": 200,
       "title": "当美国无法建设数据中心，会对 AI 产生怎样的冲击",
       "link": "http://www.geekpark.net/news/373816",
       "source": "极客公园",
@@ -3219,7 +3218,7 @@
       "rank": 200
     },
     {
-      "id": 200,
+      "id": 201,
       "title": "Anthropic 启动 IPO 路演，创始人将套现 17.5 亿美元；谷歌最强 AI 模型正式开放；任天堂招新：经典游戏保存员",
       "link": "http://www.geekpark.net/news/373796",
       "source": "极客公园",
@@ -3235,7 +3234,7 @@
       "rank": 201
     },
     {
-      "id": 201,
+      "id": 202,
       "title": "Robbie Williams says he has no interest in pursuing a copyright claim against Olivia Rodrigo",
       "link": "https://www.musicradar.com/artists/there-are-only-so-many-notes-only-so-many-chords-only-so-many-ways-of-putting-them-together-robbie-williams-says-he-loves-olivia-rodrigo-and-has-no-interest-in-pursuing-a-copyright-claim-in-relation-to-her-new-christmas-single",
       "source": "MusicRadar",
@@ -3251,7 +3250,7 @@
       "rank": 202
     },
     {
-      "id": 202,
+      "id": 203,
       "title": "Ableton Live 13 hands-on: ARA 2, Drum Synth, new effects, more",
       "link": "https://cdm.link/ableton-live-13-hands-on-whats-new/",
       "source": "CDM",
@@ -3267,7 +3266,7 @@
       "rank": 203
     },
     {
-      "id": 203,
+      "id": 204,
       "title": "千问办公押注 Team Agent，企业 AI 的流水线时刻真的来了",
       "link": "http://www.geekpark.net/news/373760",
       "source": "极客公园",
@@ -3283,7 +3282,7 @@
       "rank": 204
     },
     {
-      "id": 204,
+      "id": 205,
       "title": "ChatGPT 占全球 AI 聊天流量超 81%；iOS 27.3 曝光 Siri「个人记忆系统」；传玛莎拉蒂+尊界合作新车曝光｜极客早知道",
       "link": "http://www.geekpark.net/news/373736",
       "source": "极客公园",
@@ -3299,7 +3298,7 @@
       "rank": 205
     },
     {
-      "id": 205,
+      "id": 206,
       "title": "Logic Pro 13 gets touch right, but stumbles on “intelligent assistant”",
       "link": "https://cdm.link/logic-pro-13-touch-and-intelligence/",
       "source": "CDM",
@@ -3315,7 +3314,7 @@
       "rank": 206
     },
     {
-      "id": 206,
+      "id": 207,
       "title": "Maono’s creator-focused AI-powered microphone, the PD500W, is now available to purchase",
       "link": "https://musictech.com/news/gear/maono-pd500w-available-now/",
       "source": "MusicTech",
@@ -3331,7 +3330,7 @@
       "rank": 207
     },
     {
-      "id": 207,
+      "id": 208,
       "title": "Aurally Sound Prism: Drums Converts Drum Recordings Into Editable MIDI",
       "link": "https://www.synthtopia.com/content/2026/11/09/aurally-sound-prism-drums-converts-drum-recordings-into-editable-midi/",
       "source": "Synthtopia",
@@ -3347,7 +3346,7 @@
       "rank": 208
     },
     {
-      "id": 208,
+      "id": 209,
       "title": "A leap forward for in-car audio? Sennheiser’s new innovation uses clever noise cancelling to let the driver hear alerts while passengers listen to music",
       "link": "https://musictech.com/news/gear/sennheiser-scenico-polifonia/",
       "source": "MusicTech",
@@ -3363,7 +3362,7 @@
       "rank": 209
     },
     {
-      "id": 209,
+      "id": 210,
       "title": "Oxo Synth2 Revives Classic Synth1 As A Free, Open-Source Software Synthesizer",
       "link": "https://www.synthtopia.com/content/2026/11/09/oxo-synth2-revives-classic-synth1-as-a-free-open-source-software-synthesizer/",
       "source": "Synthtopia",
@@ -3379,7 +3378,7 @@
       "rank": 210
     },
     {
-      "id": 210,
+      "id": 211,
       "title": "实测 HY4：腾讯最「夯」大模型，离一线还有多远？",
       "link": "http://www.geekpark.net/news/373644",
       "source": "极客公园",
@@ -3395,7 +3394,7 @@
       "rank": 211
     },
     {
-      "id": 211,
+      "id": 212,
       "title": "为什么「陪伴」，注定是 Personal AI 的核心",
       "link": "http://www.geekpark.net/news/373653",
       "source": "极客公园",
@@ -3411,7 +3410,7 @@
       "rank": 212
     },
     {
-      "id": 212,
+      "id": 213,
       "title": "Splice Create Combines A Full DAW With Integrated Sound Library & AI Assistance",
       "link": "https://www.synthtopia.com/content/2026/11/07/splice-create-combines-a-full-daw-with-integrated-sound-library-ai-assistance/",
       "source": "Synthtopia",
@@ -3427,7 +3426,7 @@
       "rank": 213
     },
     {
-      "id": 213,
+      "id": 214,
       "title": "Sampleson Wavefinder Uses Local AI To Search Audio Libraries By Sound",
       "link": "https://www.synthtopia.com/content/2026/11/07/sampleson-wavefinder-uses-local-ai-to-search-audio-libraries-by-sound/",
       "source": "Synthtopia",
@@ -3443,7 +3442,7 @@
       "rank": 214
     },
     {
-      "id": 214,
+      "id": 215,
       "title": "马斯克官宣 Cybertruck 停产：销量不足预期一成；李飞飞团队推出世界模型「模拟掌机」；小米汽车成立国际事业部｜极客早知道",
       "link": "http://www.geekpark.net/news/373639",
       "source": "极客公园",
@@ -3459,7 +3458,7 @@
       "rank": 215
     },
     {
-      "id": 215,
+      "id": 216,
       "title": "Avid Introduces Pro Tools Extensions, Opening DAW To Third-Party Workflows",
       "link": "https://www.synthtopia.com/content/2026/11/06/avid-introduces-pro-tools-extensions-opening-daw-to-third-party-workflows/",
       "source": "Synthtopia",
@@ -3475,7 +3474,7 @@
       "rank": 216
     },
     {
-      "id": 216,
+      "id": 217,
       "title": "iZotope Photon Offers Stem Separation For Music, Video And Dialogue",
       "link": "https://www.synthtopia.com/content/2026/11/06/izotope-photon-offers-stem-separation-for-music-video-and-dialogue/",
       "source": "Synthtopia",
@@ -3491,7 +3490,7 @@
       "rank": 217
     },
     {
-      "id": 217,
+      "id": 218,
       "title": "There’s a Zelda-friendly ocarina app for FM-1, and you can try it in a browser",
       "link": "https://cdm.link/theres-a-zelda-friendly-ocarina-app-for-fm-1-and-you-can-try-it-in-a-browser/",
       "source": "CDM",
@@ -3507,7 +3506,7 @@
       "rank": 218
     },
     {
-      "id": 218,
+      "id": 219,
       "title": "InMusic Creator Lab Bringing Open Platform ‘Vibe Coding’ To 2027 NAMM Show",
       "link": "https://www.synthtopia.com/content/2026/11/06/inmusic-creator-lab-bringing-open-platform-vibe-coding-to-2027-namm-show/",
       "source": "Synthtopia",
@@ -3523,7 +3522,7 @@
       "rank": 219
     },
     {
-      "id": 219,
+      "id": 220,
       "title": "Stylophone On-The-Fly Performance Sequencer Features 24 Memories, Loop Recording",
       "link": "https://www.synthtopia.com/content/2026/11/06/stylophone-on-the-fly-performance-sequencer-features-24-memories-loop-recording/",
       "source": "Synthtopia",
@@ -3539,7 +3538,7 @@
       "rank": 220
     },
     {
-      "id": 220,
+      "id": 221,
       "title": "Behringer Polyeight Synthesizer Adds Two Voice To Classic Korg Polysix Design",
       "link": "https://www.synthtopia.com/content/2026/11/06/behringer-polyeight-synthesizer-adds-two-voice-to-classic-korg-polysix-design/",
       "source": "Synthtopia",
@@ -3555,7 +3554,7 @@
       "rank": 221
     },
     {
-      "id": 221,
+      "id": 222,
       "title": "EastWest Introduces An All-In-One Composition Instrument For Film And Game Scoring",
       "link": "https://www.synthtopia.com/content/2026/11/06/eastwest-introduces-an-all-in-one-composition-instrument-for-film-and-game-scoring/",
       "source": "Synthtopia",
@@ -3571,7 +3570,7 @@
       "rank": 222
     },
     {
-      "id": 222,
+      "id": 223,
       "title": "AI 时代没有标准答案的问题，我们面对面聊",
       "link": "http://www.geekpark.net/news/373636",
       "source": "极客公园",
@@ -3587,7 +3586,7 @@
       "rank": 223
     },
     {
-      "id": 223,
+      "id": 224,
       "title": "Mods for everyone: inMusic is opening up MPC, more new gear to coders",
       "link": "https://cdm.link/inmusic-opens-up-for-namm/",
       "source": "CDM",
@@ -3603,7 +3602,7 @@
       "rank": 224
     },
     {
-      "id": 224,
+      "id": 225,
       "title": "GForce Releases Official Oberheim Matrix-12 Software Synthesizer",
       "link": "https://www.synthtopia.com/content/2026/11/05/gforce-releases-official-oberheim-matrix-12-software-synthesizer/",
       "source": "Synthtopia",
@@ -3619,7 +3618,7 @@
       "rank": 225
     },
     {
-      "id": 225,
+      "id": 226,
       "title": "First Love FM Synthesizer Now Available",
       "link": "https://www.synthtopia.com/content/2026/11/05/first-love-fm-synthesizer-now-available/",
       "source": "Synthtopia",
@@ -3635,7 +3634,7 @@
       "rank": 226
     },
     {
-      "id": 226,
+      "id": 227,
       "title": "Dreadbox Introduces Alecto Analog Percussion Synthesizer",
       "link": "https://www.synthtopia.com/content/2026/11/05/dreadbox-introduces-alecto-analog-percussion-synthesizer/",
       "source": "Synthtopia",
@@ -3651,7 +3650,7 @@
       "rank": 227
     },
     {
-      "id": 227,
+      "id": 228,
       "title": "EaganMatrix Sound Design, Performance Controls Come To iOS",
       "link": "https://www.synthtopia.com/content/2026/11/05/eaganmatrix-sound-design-performance-controls-come-to-ios/",
       "source": "Synthtopia",
@@ -3667,7 +3666,7 @@
       "rank": 228
     },
     {
-      "id": 228,
+      "id": 229,
       "title": "Splice just released an entirely new DAW, Splice Create – here’s everything you need to know",
       "link": "https://musictech.com/news/music/splice-create-daw-announced/",
       "source": "MusicTech",
@@ -3683,7 +3682,7 @@
       "rank": 229
     },
     {
-      "id": 229,
+      "id": 230,
       "title": "Welsh DJ duo powerhouse Overmono just launched a bus processor built around their own mixing workflow",
       "link": "https://musictech.com/news/gear/overmono-diamond-cut/",
       "source": "MusicTech",
@@ -3699,7 +3698,7 @@
       "rank": 230
     },
     {
-      "id": 230,
+      "id": 231,
       "title": "极客公园创新大会 2027 首批嘉宾揭晓！",
       "link": "http://www.geekpark.net/news/373553",
       "source": "极客公园",
@@ -3715,9 +3714,9 @@
       "rank": 231
     },
     {
-      "id": 231,
+      "id": 232,
       "title": "新书推荐 |《人工智能与 音频制作 》",
-      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqWLMw2_s6aqhMW31KZQ9l6VqXa8Fplpd9bs7EwqbjNNLgCgtctV0T_1NpWNNiSE3936f5LTvj_-daN63_ykfl_PrYjyo5aNka0XhuDS9HNuZwRsE10CJVDgjIETewIkvpQLyLasWxVeMUfMS7Y6EhE4KpRUvF_IG1GilcpxYRkY_KJqXbHdVRVcVEcw--E13eDjAQT24E4sNQ_LeJW-Rhtg..&type=2&query=AI%E9%9F%B3%E9%A2%91%E5%88%B6%E4%BD%9C&token=94810081F221CE33383E57B33155AF4038790C386AFD11AB",
+      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqGaCbdS4PMk1MW31KZQ9l6VqXa8Fplpd9bs7EwqbjNNLgCgtctV0T_1NpWNNiSE3936f5LTvj_-daN63_ykfl_PrYjyo5aNka0XhuDS9HNuZwRsE10CJVDn2jkm8g6wZH0YV6dCFKqZgNOCZIDOtogD5gtxMOf-eUHv9nfY8cp0J7ruPKap3GCv-Haz8LdgWLQ3w1XaDupn6jotuuiAmOIg..&type=2&query=AI%E9%9F%B3%E9%A2%91%E5%88%B6%E4%BD%9C&token=948E80BB741BF5A2B5B3D5319353EC55B60690036AFD13CC",
       "source": "搜狗微信",
       "publish_time": "2026-11-05T12:04:01+00:00",
       "summary": "聚焦AI技术与音频制作、传播全流程的融合逻辑构建了从技术原理、创作流程到传播策略与价值规范的知识框架.全书围绕 AI音频制作 ...",
@@ -3731,7 +3730,7 @@
       "rank": 232
     },
     {
-      "id": 232,
+      "id": 233,
       "title": "Pro Tools now features AI stem separation",
       "link": "https://musictech.com/news/pro-tools-now-features-ai-stem-separation/",
       "source": "MusicTech",
@@ -3747,7 +3746,7 @@
       "rank": 233
     },
     {
-      "id": 233,
+      "id": 234,
       "title": "Cubase 16 Adds Instrument Layering, Spectral AudioWarp & Expanded MIDI 2.0 Support",
       "link": "https://www.synthtopia.com/content/2026/11/04/cubase-16-adds-instrument-layering-spectral-audiowarp-expanded-midi-2-0-support/",
       "source": "Synthtopia",
@@ -3763,7 +3762,7 @@
       "rank": 234
     },
     {
-      "id": 234,
+      "id": 235,
       "title": "爱音乐 爱生活",
       "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwq4Fh4fB3-FxVMW31KZQ9l6VqXa8Fplpd9S2yuDKDWu9uDBS8gq370S-qk3x9sDre0VAQvh13PKA0cmB8tzJSQ026-ZkWwRub-tqi2Dx8sE30KaOwzYD1gJLY7P9AUeLV-zjSHp9rIxDsvVYOOcjUNY_RMLQGCakPA-bFmaHqAKsqxk11UJszwMmWlAOiO7RWJbD1DWVe30VrYl_Q5RRZQjg..&type=2&query=AI%E9%9F%B3%E4%B9%90&token=94773E6FFB554CE4CFC9B04C213DD700D05A720F6AFD1019",
       "source": "搜狗微信",
@@ -3779,7 +3778,7 @@
       "rank": 235
     },
     {
-      "id": 235,
+      "id": 236,
       "title": "Behringer 1601 Sequencer (ARP Clone) First Look",
       "link": "https://www.synthtopia.com/content/2026/11/04/behringer-1601-sequencer-arp-clone-first-look/",
       "source": "Synthtopia",
@@ -3795,7 +3794,7 @@
       "rank": 236
     },
     {
-      "id": 236,
+      "id": 237,
       "title": "Productions gone live, as Jlin joins Third Coast Percussion on “Vernacular”",
       "link": "https://cdm.link/productions-gone-live-as-jlin-joins-third-coast-percussion-on-vernacular/",
       "source": "CDM",
@@ -3811,7 +3810,7 @@
       "rank": 237
     },
     {
-      "id": 237,
+      "id": 238,
       "title": "Job openings in music tech this month: Audio for the blind and deaf, foreign language dubbing, and more",
       "link": "https://musictech.com/guides/essential-guide/jobs-career-openings-in-music-tech-audio-production/",
       "source": "MusicTech",
@@ -3827,7 +3826,7 @@
       "rank": 238
     },
     {
-      "id": 238,
+      "id": 239,
       "title": "How To ‘Vibe Code’ Your Own Firmware For The M-Vave FM-1 Synthesizer",
       "link": "https://www.synthtopia.com/content/2026/11/03/how-to-vibe-code-your-own-firmware-for-the-m-vave-fm-1-synthesizer/",
       "source": "Synthtopia",
@@ -3843,7 +3842,7 @@
       "rank": 239
     },
     {
-      "id": 239,
+      "id": 240,
       "title": "AI 钢琴 陪练靠谱吗?优点和短板一次性讲清",
       "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqDO6D_Vtr6QP20CusUO7sHlqXa8Fplpd90PpeAdfJfjU7s5zsVpA9AePy2iCHVogMjH__5GWaPuOu1UhoBZp6HOUwahfZRdLoh5eR7oA6PAqY_LUxjewvrfAf0i-ueBin3pGqJrIxnI9S53SJ3HnqIB_03hlRdTPN21Ma4Sad5x5iSN_ydml1j7c9dMD96lbHRv-zPZ5PJuBAe0f8bRARvQ..&type=2&query=AI%E9%92%A2%E7%90%B4 %E4%B9%90%E7%90%86&token=8E004AAFDEA5050E3C3A5C49AC668B3C3D2250F66AFC1F0A",
       "source": "搜狗微信",
@@ -3859,7 +3858,7 @@
       "rank": 240
     },
     {
-      "id": 240,
+      "id": 241,
       "title": "iZotope Photon is a local stem separation and denoising tool that runs off your GPU",
       "link": "https://musictech.com/news/gear/izotope-photon/",
       "source": "MusicTech",
@@ -3875,7 +3874,7 @@
       "rank": 241
     },
     {
-      "id": 241,
+      "id": 242,
       "title": "MPE Pioneer Geert Bevin Intros Glinster MPE Controller & Instrument For iPhone, iPad & Vision Pro",
       "link": "https://www.synthtopia.com/content/2026/11/03/mpe-pioneer-geert-bevin-intros-glinster-mpe-controller-instrument-for-iphone-ipad-vision-pro/",
       "source": "Synthtopia",
@@ -3891,7 +3890,7 @@
       "rank": 242
     },
     {
-      "id": 242,
+      "id": 243,
       "title": "Mixxx could unlock free and open standalone DJing — but, like, stable",
       "link": "https://cdm.link/mixxx-could-unlock-free-and-open-standalone-djing/",
       "source": "CDM",
@@ -3907,7 +3906,7 @@
       "rank": 243
     },
     {
-      "id": 243,
+      "id": 244,
       "title": "Detroit Techno Pioneer & Electronic Music Visionary Juan Atkins Has Died At The Age Of 64",
       "link": "https://www.synthtopia.com/content/2026/11/02/detroit-techno-pioneer-electronic-music-visionary-juan-atkins-has-died-at-the-age-of-64/",
       "source": "Synthtopia",
@@ -3923,7 +3922,7 @@
       "rank": 244
     },
     {
-      "id": 244,
+      "id": 245,
       "title": "The techno originator, Juan Atkins, has died at 64",
       "link": "https://cdm.link/the-techno-originator-juan-atkins-has-died-at-64/",
       "source": "CDM",
@@ -3939,7 +3938,7 @@
       "rank": 245
     },
     {
-      "id": 245,
+      "id": 246,
       "title": "WMD Modbox MKII Offers Complex CV Generation In A Compact Eurorack Module",
       "link": "https://www.synthtopia.com/content/2026/11/01/wmd-modbox-mkii-offers-complex-cv-generation-in-a-compact-eurorack-module/",
       "source": "Synthtopia",
@@ -3955,7 +3954,7 @@
       "rank": 246
     },
     {
-      "id": 246,
+      "id": 247,
       "title": "Behringer IGNITE Sequencer Open-Source Project Details MIDI, CV/Gate & Internal Sound Engine",
       "link": "https://www.synthtopia.com/content/2026/10/31/behringer-ignite-sequencer-open-source-project-details-midi-cv-gate-internal-sound-engine/",
       "source": "Synthtopia",
@@ -3971,7 +3970,7 @@
       "rank": 247
     },
     {
-      "id": 247,
+      "id": 248,
       "title": "Behringer Teases EMS VCS3 Matrix Synthesizer Copy For 9th Year",
       "link": "https://www.synthtopia.com/content/2026/10/31/behringer-teases-ems-vcs3-matrix-synthesizer-copy-for-9th-year/",
       "source": "Synthtopia",
@@ -3987,7 +3986,7 @@
       "rank": 248
     },
     {
-      "id": 248,
+      "id": 249,
       "title": "Waldorf Crema Synthesizer In-Depth Review",
       "link": "https://www.synthtopia.com/content/2026/10/31/waldorf-crema-synthesizer-in-depth-review/",
       "source": "Synthtopia",
@@ -4003,7 +4002,7 @@
       "rank": 249
     },
     {
-      "id": 249,
+      "id": 250,
       "title": "MFX Combines 34 Effects With Modular Routing & Feedback",
       "link": "https://www.synthtopia.com/content/2026/10/30/mfx-combines-34-effects-with-modular-routing-feedback/",
       "source": "Synthtopia",
@@ -4019,7 +4018,7 @@
       "rank": 250
     },
     {
-      "id": 250,
+      "id": 251,
       "title": "Free Infinite DAW Combines Modular Synthesis, Visuals, and Creative Coding",
       "link": "https://www.synthtopia.com/content/2026/10/30/free-infinite-daw-combines-modular-synthesis-visuals-and-creative-coding/",
       "source": "Synthtopia",
@@ -4035,7 +4034,7 @@
       "rank": 251
     },
     {
-      "id": 251,
+      "id": 252,
       "title": "New Waldorf Crema Is A Compact String & Pad Synthesizer With Two Engines",
       "link": "https://www.synthtopia.com/content/2026/10/30/new-waldorf-crema-is-a-compact-string-pad-synthesizer-with-two-engines/",
       "source": "Synthtopia",
@@ -4051,7 +4050,7 @@
       "rank": 252
     },
     {
-      "id": 252,
+      "id": 253,
       "title": "Yaeltex unveils next-gen custom MIDI controllers – now with full-colour displays",
       "link": "https://musictech.com/news/gear/yaeltex-v3/",
       "source": "MusicTech",
@@ -4067,7 +4066,7 @@
       "rank": 253
     },
     {
-      "id": 253,
+      "id": 254,
       "title": "Moog’s new Model 112 and Model 210 amplifiers help the “true character” of an instrument shine through",
       "link": "https://musictech.com/news/gear/moog-all-purpose-amplifiers-model-112-210/",
       "source": "MusicTech",
@@ -4083,7 +4082,7 @@
       "rank": 254
     },
     {
-      "id": 254,
+      "id": 255,
       "title": "TDminator Combines TD-3 Pattern Editing With A Software Acid Bassline Synth",
       "link": "https://www.synthtopia.com/content/2026/10/29/tdminator-combines-td-3-pattern-editing-with-a-software-acid-bassline-synth/",
       "source": "Synthtopia",
@@ -4099,7 +4098,7 @@
       "rank": 255
     },
     {
-      "id": 255,
+      "id": 256,
       "title": "Will Open Firmware Become the Next Big Trend in Electronic Music Gear?",
       "link": "https://www.synthtopia.com/content/2026/10/28/will-open-firmware-become-the-next-big-trend-in-electronic-music-gear/",
       "source": "Synthtopia",
@@ -4115,7 +4114,7 @@
       "rank": 256
     },
     {
-      "id": 256,
+      "id": 257,
       "title": "Free Micronix Synthesizer Brings 24 Plaits-Based Synthesis Models To Your DAW",
       "link": "https://www.synthtopia.com/content/2026/10/28/free-micronix-synthesizer-brings-24-plaits-based-synthesis-models-to-your-daw/",
       "source": "Synthtopia",
@@ -4131,7 +4130,7 @@
       "rank": 257
     },
     {
-      "id": 257,
+      "id": 258,
       "title": "Pittsburgh Modular Intros First Software Synth, The Microvolt 3901 Virtual Analog Synthesizer",
       "link": "https://www.synthtopia.com/content/2026/10/27/pittsburgh-modular-intros-first-software-synth-the-microvolt-3901-virtual-analog-synthesizer/",
       "source": "Synthtopia",
@@ -4147,7 +4146,7 @@
       "rank": 258
     },
     {
-      "id": 258,
+      "id": 259,
       "title": "Open Source Cineol-X 224 Brings Classic Lexicon Reverb to DAWs, Daisy DSP",
       "link": "https://www.synthtopia.com/content/2026/10/27/open-source-cineol-x-224-brings-classic-lexicon-reverb-to-daws-daisy-dsp/",
       "source": "Synthtopia",
@@ -4163,7 +4162,7 @@
       "rank": 259
     },
     {
-      "id": 259,
+      "id": 260,
       "title": "Moog Music Launches Model 112 and Model 210, Amps Designed for Electronic Instruments",
       "link": "https://www.synthtopia.com/content/2026/10/27/moog-music-launches-model-112-and-model-210-amps-designed-for-electronic-instruments/",
       "source": "Synthtopia",
@@ -4179,7 +4178,7 @@
       "rank": 260
     },
     {
-      "id": 260,
+      "id": 261,
       "title": "ADAM Audio’s H715 headphones feature Sonnox Calibration Suite and a dedicated Hi-Fi mode",
       "link": "https://musictech.com/news/gear/adam-audio-h715-reference-headphones/",
       "source": "MusicTech",
@@ -4195,7 +4194,7 @@
       "rank": 261
     },
     {
-      "id": 261,
+      "id": 262,
       "title": "This new plugin lets you mix your music in 3D",
       "link": "https://musictech.com/news/gear/art-dsp-canvas-2/",
       "source": "MusicTech",
@@ -4211,7 +4210,7 @@
       "rank": 262
     },
     {
-      "id": 262,
+      "id": 263,
       "title": "FL Studio announces FL Studio Mobile 5 update, bringing a library of over two million samples to your pocket",
       "link": "https://musictech.com/news/gear/fl-studio-mobile-5-update/",
       "source": "MusicTech",
@@ -4227,7 +4226,7 @@
       "rank": 263
     },
     {
-      "id": 263,
+      "id": 264,
       "title": "My Forever Studio: Kaitlyn Aurelia Smith doesn’t share stems",
       "link": "https://musictech.com/shows/podcasts/my-forever-studio/my-forever-studio-kaitlyn-aurelia-smith/",
       "source": "MusicTech",
@@ -4243,7 +4242,7 @@
       "rank": 264
     },
     {
-      "id": 264,
+      "id": 265,
       "title": "New Plugin Recreates Classic Lexicon 224 ‘Vangelis Reverb’ Sound",
       "link": "https://www.synthtopia.com/content/2026/10/26/new-plugin-recreates-classic-lexicon-224-vangelis-reverb-sound/",
       "source": "Synthtopia",
@@ -4259,7 +4258,7 @@
       "rank": 265
     },
     {
-      "id": 265,
+      "id": 266,
       "title": "Optigan Software Recreates Vintage Optical Playback Sampler",
       "link": "https://www.synthtopia.com/content/2026/10/26/optigan-software-recreates-vintage-optical-playback-sampler/",
       "source": "Synthtopia",
@@ -4275,7 +4274,7 @@
       "rank": 266
     },
     {
-      "id": 266,
+      "id": 267,
       "title": "Donner Music Intros Sample Boy At Beijing Modular 26",
       "link": "https://www.synthtopia.com/content/2026/10/25/donner-music-intros-sample-boy-at-beijing-modular-26/",
       "source": "Synthtopia",
@@ -4291,7 +4290,7 @@
       "rank": 267
     },
     {
-      "id": 267,
+      "id": 268,
       "title": "Teenage Engineering OP-1 Mod Gives It new Synth Engine, Chords, Effects & More",
       "link": "https://www.synthtopia.com/content/2026/10/24/teenage-engineering-op-1-mod-gives-it-new-synth-engine-chords-effects-more/",
       "source": "Synthtopia",
@@ -4307,7 +4306,7 @@
       "rank": 268
     },
     {
-      "id": 268,
+      "id": 269,
       "title": "Build Custom Electronic Music Gear With The Daisy Pod",
       "link": "https://www.synthtopia.com/content/2026/10/24/build-custom-electronic-music-gear-with-the-daisy-pod/",
       "source": "Synthtopia",
@@ -4323,7 +4322,7 @@
       "rank": 269
     },
     {
-      "id": 269,
+      "id": 270,
       "title": "Go Outside Music Introduces Mulch Box Passive Patch Bay & Signal Multiplier",
       "link": "https://www.synthtopia.com/content/2026/10/23/go-outside-music-introduces-mulch-box-passive-patch-bay-signal-multiplier/",
       "source": "Synthtopia",
@@ -4339,7 +4338,7 @@
       "rank": 270
     },
     {
-      "id": 270,
+      "id": 271,
       "title": "Imaginando COLAPSO Synthesizer Generates Sounds From Atomic Spectra",
       "link": "https://www.synthtopia.com/content/2026/10/23/imaginando-colapso-synthesizer-generates-sounds-from-atomic-spectra/",
       "source": "Synthtopia",
@@ -4355,7 +4354,7 @@
       "rank": 271
     },
     {
-      "id": 271,
+      "id": 272,
       "title": "AtomoSynth Introduces Mochika X7 Analog Synthesizer In Desktop, Eurorack Formats",
       "link": "https://www.synthtopia.com/content/2026/10/23/atomosynth-introduces-mochika-x7-analog-synthesizer-in-desktop-eurorack-formats/",
       "source": "Synthtopia",
@@ -4371,7 +4370,7 @@
       "rank": 272
     },
     {
-      "id": 272,
+      "id": 273,
       "title": "Alesis Andromeda A6 Hardware vs Software Comparison",
       "link": "https://www.synthtopia.com/content/2026/10/23/alesis-andromeda-a6-hardware-vs-software-comparison/",
       "source": "Synthtopia",
@@ -4387,7 +4386,7 @@
       "rank": 273
     },
     {
-      "id": 273,
+      "id": 274,
       "title": "Loopmasters’ sampling powerhouse Loopcloud just got a massive update – here’s what’s new",
       "link": "https://musictech.com/news/gear/loopmasters-loopcloud-8/",
       "source": "MusicTech",
@@ -4403,7 +4402,7 @@
       "rank": 274
     },
     {
-      "id": 274,
+      "id": 275,
       "title": "New Alesis Andromeda A6 Plugin, Isla Electronics ASYX, Now Available",
       "link": "https://www.synthtopia.com/content/2026/10/23/new-alesis-andromeda-a6-plugin-isla-electronics-asyx-now-available/",
       "source": "Synthtopia",
@@ -4419,7 +4418,7 @@
       "rank": 275
     },
     {
-      "id": 275,
+      "id": 276,
       "title": "OP-XY Update Adds A New Drum Synth, Multichannel Audio & More",
       "link": "https://www.synthtopia.com/content/2026/10/23/op-xy-update-adds-a-new-drum-synth-multichannel-audio-more/",
       "source": "Synthtopia",
@@ -4435,7 +4434,7 @@
       "rank": 276
     },
     {
-      "id": 276,
+      "id": 277,
       "title": "Bob Moog Foundation Auctions Unique Synthesizer Art & Memorabilia",
       "link": "https://www.synthtopia.com/content/2026/10/23/bob-moog-foundation-auctions-unique-synthesizer-art-memorabilia/",
       "source": "Synthtopia",
@@ -4451,7 +4450,7 @@
       "rank": 277
     },
     {
-      "id": 277,
+      "id": 278,
       "title": "“Do I really believe that at the end, I have a result that justifies the effort?” Inside the strict decision-making process of Ableton founder and Monolake musician Robert Henke",
       "link": "https://musictech.com/news/music/robert-henke-on-his-creative-decision-making-process/",
       "source": "MusicTech",
@@ -4467,7 +4466,7 @@
       "rank": 278
     },
     {
-      "id": 278,
+      "id": 279,
       "title": "Sample Logic Announces Quadra, Morphing Multi-Effect",
       "link": "https://www.synthtopia.com/content/2026/10/22/sample-logic-announces-quadra-morphing-multi-effect/",
       "source": "Synthtopia",
@@ -4483,7 +4482,7 @@
       "rank": 279
     },
     {
-      "id": 279,
+      "id": 280,
       "title": "Roland TR-1000 Firmware 1.5 Adds Keyboard Mode, FM Instruments & New Effects",
       "link": "https://www.synthtopia.com/content/2026/10/22/roland-tr-1000-firmware-1-5-adds-keyboard-mode-fm-instruments-new-effects/",
       "source": "Synthtopia",
@@ -4499,7 +4498,7 @@
       "rank": 280
     },
     {
-      "id": 280,
+      "id": 281,
       "title": "Tantrum Audio NEXUS: a compact hardware DSP processor built for room correction",
       "link": "https://musictech.com/news/gear/tantrum-audio-nexus/",
       "source": "MusicTech",
@@ -4515,7 +4514,7 @@
       "rank": 281
     },
     {
-      "id": 281,
+      "id": 282,
       "title": "Head Trip 2026: Tech highlights from the one-time-only electronic music festival",
       "link": "https://musictech.com/news/head-trip-2026-tech-highlights/",
       "source": "MusicTech",
@@ -4531,7 +4530,7 @@
       "rank": 282
     },
     {
-      "id": 282,
+      "id": 283,
       "title": "Technics introduces a new flagship model in its SL-1200 turntable series – here’s what you need to know",
       "link": "https://musictech.com/news/gear/technics-sl-1210mkx/",
       "source": "MusicTech",
@@ -4547,7 +4546,7 @@
       "rank": 283
     },
     {
-      "id": 283,
+      "id": 284,
       "title": "Why did Apple buy AI music startup Samplab, and how might this impact Logic Pro?",
       "link": "https://musictech.com/news/industry/why-did-apple-buy-ai-music-startup-samplab-and-how-might-this-impact-logic-pro/",
       "source": "MusicTech",
@@ -4563,7 +4562,7 @@
       "rank": 284
     },
     {
-      "id": 284,
+      "id": 285,
       "title": "Stop sending me vibecoded plugins, I’m begging you",
       "link": "https://musictech.com/features/opinion-analysis/stop-sending-me-vibecoded-ai-plugins/",
       "source": "MusicTech",
@@ -4579,7 +4578,7 @@
       "rank": 285
     },
     {
-      "id": 285,
+      "id": 286,
       "title": "This is one of the most iconic punk albums of all time – here’s what you can learn from its production",
       "link": "https://musictech.com/news/music/this-is-one-of-the-most-iconic-punk-albums-of-all-time-heres-what-you-can-learn-from-its-production/",
       "source": "MusicTech",
@@ -4595,7 +4594,7 @@
       "rank": 286
     },
     {
-      "id": 286,
+      "id": 287,
       "title": "Roland n/vision Synthesizer Expands Boutique Line Into Wavetable Synthesis",
       "link": "https://www.synthtopia.com/content/2026/10/20/roland-n-vision-synthesizer-expands-boutique-line-into-wavetable-synthesis/",
       "source": "Synthtopia",
@@ -4611,7 +4610,7 @@
       "rank": 287
     },
     {
-      "id": 287,
+      "id": 288,
       "title": "Roland Jupiter-08 Synthesizer Features 32-Voice Polyphony, Sequencing & More In ‘Boutique’ Format",
       "link": "https://www.synthtopia.com/content/2026/10/20/roland-jupiter-08-synthesizer-features-32-voice-polyphony-sequencing-more-in-boutique-format/",
       "source": "Synthtopia",
@@ -4627,7 +4626,7 @@
       "rank": 288
     },
     {
-      "id": 288,
+      "id": 289,
       "title": "My Forever Studio: Robert Henke’s forever DAW isn’t a DAW",
       "link": "https://musictech.com/shows/podcasts/my-forever-studio/my-forever-studio-robert-henkes-forever-daw-isnt-a-daw/",
       "source": "MusicTech",
@@ -4643,7 +4642,7 @@
       "rank": 289
     },
     {
-      "id": 289,
+      "id": 290,
       "title": "Synthesizers.com Intros Q215 Digital Reverb For MU Modular Systems",
       "link": "https://www.synthtopia.com/content/2026/10/19/synthesizers-com-intros-q215-digital-reverb-for-mu-modular-systems/",
       "source": "Synthtopia",
@@ -4659,7 +4658,7 @@
       "rank": 290
     },
     {
-      "id": 290,
+      "id": 291,
       "title": "Korg will unveil a new companion app for its innovative Phase8 acoustic synthesizer at ADE 2026",
       "link": "https://musictech.com/news/gear/korg-will-unveil-a-new-companion-app-for-its-innovative-phase8-acoustic-synthesizer-at-ade-2026/",
       "source": "MusicTech",
@@ -4675,7 +4674,7 @@
       "rank": 291
     },
     {
-      "id": 291,
+      "id": 292,
       "title": "Midicake UNA Combines Generative Sequencing With Hands-On MIDI Control",
       "link": "https://www.synthtopia.com/content/2026/10/19/midicake-una-combines-generative-sequencing-with-hands-on-midi-control/",
       "source": "Synthtopia",
@@ -4691,7 +4690,7 @@
       "rank": 292
     },
     {
-      "id": 292,
+      "id": 293,
       "title": "First Jam On The New Future Retro 777 Bassline Synthesizer",
       "link": "https://www.synthtopia.com/content/2026/10/18/first-jam-on-the-new-future-retro-777-bassline-synthesizer/",
       "source": "Synthtopia",
@@ -4707,7 +4706,7 @@
       "rank": 293
     },
     {
-      "id": 293,
+      "id": 294,
       "title": "Live Improvised Ambient Music Performance",
       "link": "https://www.synthtopia.com/content/2026/10/18/live-improvised-ambient-music-performance/",
       "source": "Synthtopia",
@@ -4723,7 +4722,7 @@
       "rank": 294
     },
     {
-      "id": 294,
+      "id": 295,
       "title": "Preview Asys, The Upcoming Alesis Andromeda A6 Software Synthesizer",
       "link": "https://www.synthtopia.com/content/2026/10/15/preview-asys-the-upcoming-alesis-andromeda-a6-software-synthesizer/",
       "source": "Synthtopia",
@@ -4739,7 +4738,7 @@
       "rank": 295
     },
     {
-      "id": 295,
+      "id": 296,
       "title": "ARP 2500 Modular Synthesizer Deep Dive",
       "link": "https://www.synthtopia.com/content/2026/10/14/arp-2500-modular-synthesizer-deep-dive/",
       "source": "Synthtopia",
@@ -4755,7 +4754,7 @@
       "rank": 296
     },
     {
-      "id": 296,
+      "id": 297,
       "title": "Bubblegum: the free plugin that brings detailed pitch editing to producers on a budget",
       "link": "https://musictech.com/news/gear/bubblegum-pitch-editing-plugin/",
       "source": "MusicTech",
@@ -4771,7 +4770,7 @@
       "rank": 297
     },
     {
-      "id": 297,
+      "id": 298,
       "title": "Unofficial Firmware Mod Adds Arpeggiator, Polyphonic Sequencer To Sequential Prophet Rev4",
       "link": "https://www.synthtopia.com/content/2026/10/13/unofficial-firmware-mod-adds-arpeggiator-polyphonic-sequencer-to-sequential-prophet-rev4/",
       "source": "Synthtopia",
@@ -4787,7 +4786,7 @@
       "rank": 298
     },
     {
-      "id": 298,
+      "id": 299,
       "title": "Free Firmware Mod Adds ‘Incredible’ Features To Elektron Model:Cycles",
       "link": "https://www.synthtopia.com/content/2026/10/12/free-firmware-mod-adds-incredible-features-to-elektron-modelcycles/",
       "source": "Synthtopia",
@@ -4803,7 +4802,7 @@
       "rank": 299
     },
     {
-      "id": 299,
+      "id": 300,
       "title": "Using AI To Make Patches For The Yamaha CS-80 Synthesizer",
       "link": "https://www.synthtopia.com/content/2026/10/12/using-ai-to-make-patches-for-the-yamaha-cs-80-synthesizer/",
       "source": "Synthtopia",
@@ -4819,7 +4818,7 @@
       "rank": 300
     },
     {
-      "id": 300,
+      "id": 301,
       "title": "Free Minimoog Model D Software Synth For Linux, Mac & Windows",
       "link": "https://www.synthtopia.com/content/2026/10/12/free-minimoog-model-d-software-synth-for-linux-mac-windows/",
       "source": "Synthtopia",
@@ -4835,7 +4834,7 @@
       "rank": 301
     },
     {
-      "id": 301,
+      "id": 302,
       "title": "New Firmware Turns FM-1 Synthesizer Into A Pocket Omnichord",
       "link": "https://www.synthtopia.com/content/2026/10/12/new-firmware-turns-fm-1-synthesizer-into-a-pocket-omnichord/",
       "source": "Synthtopia",
@@ -4851,7 +4850,7 @@
       "rank": 302
     },
     {
-      "id": 302,
+      "id": 303,
       "title": "Olydian Musical Instruments Intros VC-01 Voicecrafter Vocal Synthesizer",
       "link": "https://www.synthtopia.com/content/2026/10/11/olydian-musical-instruments-intros-vc-01-voicecrafter-vocal-synthesizer/",
       "source": "Synthtopia",
@@ -4867,7 +4866,7 @@
       "rank": 303
     },
     {
-      "id": 303,
+      "id": 304,
       "title": "CRSSD Lab has been hosting music-making workshops for years — why?",
       "link": "https://musictech.com/features/crssd-lab-roland-chapter-one/",
       "source": "MusicTech",
@@ -4883,7 +4882,7 @@
       "rank": 304
     },
     {
-      "id": 304,
+      "id": 305,
       "title": "Free Plugin Polyphonic Pitch Editing Plugin, Bubblegum",
       "link": "https://www.synthtopia.com/content/2026/10/08/free-plugin-polyphonic-pitch-editing-plugin-bubblegum/",
       "source": "Synthtopia",
@@ -4899,7 +4898,7 @@
       "rank": 305
     },
     {
-      "id": 305,
+      "id": 306,
       "title": "Arturia AstroLab 2.0 Adds Sound Editing, New Instruments & Performance Improvements",
       "link": "https://www.synthtopia.com/content/2026/10/07/arturia-astrolab-2-0-adds-sound-editing-new-instruments-performance-improvements/",
       "source": "Synthtopia",
@@ -4915,7 +4914,7 @@
       "rank": 306
     },
     {
-      "id": 306,
+      "id": 307,
       "title": "Google Wants You To Vibe Code Audio Plugins",
       "link": "https://www.synthtopia.com/content/2026/10/07/google-wants-you-to-vibe-code-audio-plugins/",
       "source": "Synthtopia",
@@ -4931,7 +4930,7 @@
       "rank": 307
     },
     {
-      "id": 307,
+      "id": 308,
       "title": "Free Experimental Modal Synthesizer, BLOT",
       "link": "https://www.synthtopia.com/content/2026/10/06/free-experimental-modal-synthesizer-blot/",
       "source": "Synthtopia",
@@ -4947,7 +4946,7 @@
       "rank": 308
     },
     {
-      "id": 308,
+      "id": 309,
       "title": "The LARYNX – a new feature-packed hard synth from AnalogFX – is available now",
       "link": "https://musictech.com/news/gear/the-larynx-a-new-feature-packed-hard-synth-from-analogfx-is-available-now/",
       "source": "MusicTech",
@@ -4963,7 +4962,7 @@
       "rank": 309
     },
     {
-      "id": 309,
+      "id": 310,
       "title": "Fancy a free Minimoog Model D emulation plugin? Idle Foundry’s CA-72 has got you covered",
       "link": "https://musictech.com/news/gear/minimoog-model-d-plugin-model-ca-72-free/",
       "source": "MusicTech",
@@ -4979,7 +4978,7 @@
       "rank": 310
     },
     {
-      "id": 310,
+      "id": 311,
       "title": "Asyx Andromeda A6 Plugin Audio Demo (Sneak Preview)",
       "link": "https://www.synthtopia.com/content/2026/10/05/asyx-andromeda-a6-plugin-audio-demo-sneak-preview/",
       "source": "Synthtopia",
@@ -4995,7 +4994,7 @@
       "rank": 311
     },
     {
-      "id": 311,
+      "id": 312,
       "title": "New Sounds For The Korg Opsix Synthesizer",
       "link": "https://www.synthtopia.com/content/2026/10/05/new-sounds-for-the-korg-opsix-synthesizer/",
       "source": "Synthtopia",
@@ -5011,7 +5010,7 @@
       "rank": 312
     },
     {
-      "id": 312,
+      "id": 313,
       "title": "1010 Music BlackBox Gets New Features With Unofficial Alternate Firmware",
       "link": "https://www.synthtopia.com/content/2026/10/05/1010-music-blackbox-gets-new-features-with-unofficial-alternate-firmware/",
       "source": "Synthtopia",
@@ -5027,7 +5026,7 @@
       "rank": 313
     },
     {
-      "id": 313,
+      "id": 314,
       "title": "Alt Firmware Options For The M-Wave FM-1 Pocket Synthesizer",
       "link": "https://www.synthtopia.com/content/2026/10/04/alt-firmware-options-for-the-m-wave-fm-1-pocket-synthesizer/",
       "source": "Synthtopia",
@@ -5043,7 +5042,7 @@
       "rank": 314
     },
     {
-      "id": 314,
+      "id": 315,
       "title": "Chompi Sampling Keyboard Lives On As Free Nibbi Plugin",
       "link": "https://www.synthtopia.com/content/2026/10/02/chompi-sampling-keyboard-lives-on-as-free-nibbi-plugin/",
       "source": "Synthtopia",
@@ -5059,7 +5058,7 @@
       "rank": 315
     },
     {
-      "id": 315,
+      "id": 316,
       "title": "Vintage Synth Review: The E-Mu Emax II Sampling Synthesizer",
       "link": "https://www.synthtopia.com/content/2026/10/02/vintage-synth-review-the-e-mu-emax-ii-sampling-synthesizer/",
       "source": "Synthtopia",
@@ -5075,7 +5074,7 @@
       "rank": 316
     },
     {
-      "id": 316,
+      "id": 317,
       "title": "“It frustrates me to hear people bashing something that’s so amazing”: Todd Edwards is optimistic about AI in music production",
       "link": "https://musictech.com/news/music/todd-edwards-is-optimistic-about-ai-in-music-production/",
       "source": "MusicTech",
@@ -5091,7 +5090,7 @@
       "rank": 317
     },
     {
-      "id": 317,
+      "id": 318,
       "title": "New Convolution Play Application Lets You Explore The Sound Designs Possibilities Of Impulse Responses",
       "link": "https://www.synthtopia.com/content/2026/10/01/new-convolution-play-application-lets-you-explore-the-sound-designs-possibilities-of-impulse-responses/",
       "source": "Synthtopia",
@@ -5107,7 +5106,7 @@
       "rank": 318
     },
     {
-      "id": 318,
+      "id": 319,
       "title": "Which software is best for recording and creating DJ mixes?",
       "link": "https://musictech.com/guides/buyers-guide/best-dj-mix-recording-software/",
       "source": "MusicTech",
@@ -5123,7 +5122,7 @@
       "rank": 319
     },
     {
-      "id": 319,
+      "id": 320,
       "title": "Verbos Intros Haas Zone Processor",
       "link": "https://www.synthtopia.com/content/2026/09/29/verbos-intros-haas-zone-processor/",
       "source": "Synthtopia",
@@ -5139,7 +5138,7 @@
       "rank": 320
     },
     {
-      "id": 320,
+      "id": 321,
       "title": "My Forever Studio: Hazel Mills invents a new instrument",
       "link": "https://musictech.com/shows/hazel-mills/",
       "source": "MusicTech",
@@ -5155,7 +5154,7 @@
       "rank": 321
     },
     {
-      "id": 321,
+      "id": 322,
       "title": "New Module Puts B.A.C.H. Into Your Modular Synthesizer",
       "link": "https://www.synthtopia.com/content/2026/09/28/new-module-puts-b-a-c-h-into-your-modular-synthesizer/",
       "source": "Synthtopia",
@@ -5171,7 +5170,7 @@
       "rank": 322
     },
     {
-      "id": 322,
+      "id": 323,
       "title": "Fluxophone Turns Anything Into a Haunted Musical Instrument",
       "link": "https://www.synthtopia.com/content/2026/09/28/fluxophone-turns-anything-into-a-haunted-musical-instrument/",
       "source": "Synthtopia",
@@ -5187,7 +5186,7 @@
       "rank": 323
     },
     {
-      "id": 323,
+      "id": 324,
       "title": "New App, Phantom Sun, Brings Semi-Modular Synthesis To The iPad",
       "link": "https://www.synthtopia.com/content/2026/09/28/new-app-phantom-sun-brings-semi-modular-synthesis-to-the-ipad/",
       "source": "Synthtopia",
@@ -5203,7 +5202,7 @@
       "rank": 324
     },
     {
-      "id": 324,
+      "id": 325,
       "title": "Osmose Firmware Update 2.3 Now Available, But Some Users Suggest Caution",
       "link": "https://www.synthtopia.com/content/2026/09/28/osmose-firmware-update-2-3-now-available-but-some-users-suggest-caution/",
       "source": "Synthtopia",
@@ -5219,7 +5218,7 @@
       "rank": 325
     },
     {
-      "id": 325,
+      "id": 326,
       "title": "Voidscan Introduces Parasite Experimental FM Synthesizer",
       "link": "https://www.synthtopia.com/content/2026/09/28/voidscan-introduces-parasite-experimental-fm-synthesizer/",
       "source": "Synthtopia",
@@ -5235,7 +5234,7 @@
       "rank": 326
     },
     {
-      "id": 326,
+      "id": 327,
       "title": "“I don’t hear too many women using that effect”: The mystery number one item UNIIQU3 would have in her dream studio",
       "link": "https://musictech.com/news/gear/the-mystery-number-one-item-uniiqu3-would-have-in-her-dream-studio/",
       "source": "MusicTech",
@@ -5251,7 +5250,7 @@
       "rank": 327
     },
     {
-      "id": 327,
+      "id": 328,
       "title": "Buchla Ziggy Synthesizer Now Expected To Ship In December 2026",
       "link": "https://www.synthtopia.com/content/2026/09/27/buchla-ziggy-synthesizer-now-expected-to-ship-in-december-2026/",
       "source": "Synthtopia",
@@ -5267,7 +5266,7 @@
       "rank": 328
     },
     {
-      "id": 328,
+      "id": 329,
       "title": "SynthSkool Intros Degauss Vintage Synth Sample Instrument",
       "link": "https://www.synthtopia.com/content/2026/09/27/synthskool-intros-degauss-vintage-synth-sample-instrument/",
       "source": "Synthtopia",
@@ -5283,7 +5282,7 @@
       "rank": 329
     },
     {
-      "id": 329,
+      "id": 330,
       "title": "Overtonium Is A Free, Open-Source Additive Synthesizer For Mac, Windows And Linux",
       "link": "https://www.synthtopia.com/content/2026/09/26/overtonium-is-a-free-open-source-additive-synthesizer-for-mac-windows-and-linux/",
       "source": "Synthtopia",
@@ -5299,7 +5298,7 @@
       "rank": 330
     },
     {
-      "id": 330,
+      "id": 331,
       "title": "Woovebox Packs A Synth, Sampler And Sequencer Into A Pocket-Sized Box",
       "link": "https://www.synthtopia.com/content/2026/09/25/woovebox-packs-a-synth-sampler-and-sequencer-into-a-pocket-sized-box/",
       "source": "Synthtopia",
@@ -5315,7 +5314,7 @@
       "rank": 331
     },
     {
-      "id": 331,
+      "id": 332,
       "title": "Free Emulator Brings Waldorf Wave Sound To Your DAW",
       "link": "https://www.synthtopia.com/content/2026/09/25/free-emulator-brings-waldorf-wave-sound-to-your-daw/",
       "source": "Synthtopia",
@@ -5331,7 +5330,7 @@
       "rank": 332
     },
     {
-      "id": 332,
+      "id": 333,
       "title": "Apple Music is livestreaming the upcoming Head Trip festival, with sets from Calvin Harris, Skrillex, Swedish House Mafia and more",
       "link": "https://musictech.com/news/events/apple-music-is-livestreaming-the-upcoming-head-trip-festival/",
       "source": "MusicTech",
@@ -5347,7 +5346,7 @@
       "rank": 333
     },
     {
-      "id": 333,
+      "id": 334,
       "title": "Polyend takes aim at guitarists with a new looper and multi-FX pedal, Loop",
       "link": "https://musictech.com/news/gear/polyend-loop/",
       "source": "MusicTech",
@@ -5363,7 +5362,7 @@
       "rank": 334
     },
     {
-      "id": 334,
+      "id": 335,
       "title": "Polyend Intros Loop 8-Track Performance Looper",
       "link": "https://www.synthtopia.com/content/2026/09/24/polyend-intros-loop-8-track-performance-looper/",
       "source": "Synthtopia",
@@ -5379,7 +5378,7 @@
       "rank": 335
     },
     {
-      "id": 335,
+      "id": 336,
       "title": "What is compression, and why do we use it in music?",
       "link": "https://musictech.com/glossary/compression/",
       "source": "MusicTech",
@@ -5395,7 +5394,7 @@
       "rank": 336
     },
     {
-      "id": 336,
+      "id": 337,
       "title": "“This is one of the biggest weeks for Maschine sound content we’ve ever had”: Native Instruments rolls out Maschine 3.7 update – alongside three new expansion packs",
       "link": "https://musictech.com/news/gear/maschine-3-7/",
       "source": "MusicTech",
@@ -5411,7 +5410,7 @@
       "rank": 337
     },
     {
-      "id": 337,
+      "id": 338,
       "title": "Minimal Instruments Nagi Offers A No-Code Route To Building Native Audio Plugins",
       "link": "https://www.synthtopia.com/content/2026/09/23/minimal-instruments-nagi-offers-a-no-code-route-to-building-native-audio-plugins/",
       "source": "Synthtopia",
@@ -5427,7 +5426,7 @@
       "rank": 338
     },
     {
-      "id": 338,
+      "id": 339,
       "title": "Apple opens new 600-capacity music venue in London’s Battersea Power Station",
       "link": "https://musictech.com/news/industry/apple-music-hall/",
       "source": "MusicTech",
@@ -5443,7 +5442,7 @@
       "rank": 339
     },
     {
-      "id": 339,
+      "id": 340,
       "title": "Lunacy Audio launches new AI-powered plugin sharing platform, NOVA",
       "link": "https://musictech.com/news/industry/lunacy-audio-nova/",
       "source": "MusicTech",
@@ -5459,7 +5458,7 @@
       "rank": 340
     },
     {
-      "id": 340,
+      "id": 341,
       "title": "Free Tool, Amorph, Builds Custom Plugin Instruments & Effects Based On Your Description",
       "link": "https://www.synthtopia.com/content/2026/09/22/free-tool-amorph-builds-custom-plugin-instruments-effects-based-on-your-description/",
       "source": "Synthtopia",
@@ -5475,7 +5474,7 @@
       "rank": 341
     },
     {
-      "id": 341,
+      "id": 342,
       "title": "“The death of Suno”: Reddit users have turned against Suno after v6 model update",
       "link": "https://musictech.com/news/industry/suno-ai-update-v6/",
       "source": "MusicTech",
@@ -5491,7 +5490,7 @@
       "rank": 342
     },
     {
-      "id": 342,
+      "id": 343,
       "title": "New Project Brings Elektron Monomachine, Machinedrum To Your DAW",
       "link": "https://www.synthtopia.com/content/2026/09/20/new-project-brings-elektron-monomachine-machinedrum-to-your-daw/",
       "source": "Synthtopia",
@@ -5507,7 +5506,7 @@
       "rank": 343
     },
     {
-      "id": 343,
+      "id": 344,
       "title": "内蒙古小伙零基础跨界 AI音乐 竟收获10万+粉丝",
       "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwq0YrIJUE7U8RMW31KZQ9l6VqXa8Fplpd9Fp8D_3Es_dv6h7f2MGdkHrMPsjunUcTGmlhsRSdnH1cNVwzJLIctSRZ_kYLQBh0xU1eSPbnBhqdnM5E8dgAQDTebB53dVTce6BQD3QlBjnPVYvhk9fftDu7WL9twZb8bs9vkruyMqf6aTvp9Zgo0X6MoRig5TGTb0IkQ-yRPBTvS-e4Yz84xMA..&type=2&query=AI%E9%9F%B3%E4%B9%90&token=9480CFC5F221CE33383E57B33155AF4038790C386AFD11A4",
       "source": "搜狗微信",
@@ -5523,7 +5522,7 @@
       "rank": 344
     },
     {
-      "id": 344,
+      "id": 345,
       "title": "AI音频 生成工具深度测评:3款主流产品音质与创作体验对比",
       "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqhliOkNNjE2NMW31KZQ9l6VqXa8Fplpd9RQS41ZPjBxUlqgWEUMtdQBDT-v2FiByWMKBfv_brFeYTH6YidEn71x_2pBGhiV6kYL8hbR4m5yoqVz4kSa6Dslaj2vyvVOndwx0vUb_uWcKBw9ncJBOgR9RKO0F3WoHzStK4b4e9LoZPDaw6ECMONbl0BOIFn1drGmmXV-YBe5gCn9lOoZLP2Q..&type=2&query=AI%E9%9F%B3%E9%A2%91%E5%88%B6%E4%BD%9C&token=94777331FB554CE4CFC9B04C213DD700D05A720F6AFD1021",
       "source": "搜狗微信",
@@ -5539,9 +5538,9 @@
       "rank": 345
     },
     {
-      "id": 345,
+      "id": 346,
       "title": "【 AI音频 】 Audio cleaner:免费AI人声消除神器,音乐 制作 人必备",
-      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqWLMw2_s6aqhMW31KZQ9l6VqXa8Fplpd9PDOFcaf3yEOwxi2T-C_ZH2cl25blZ61JrUqskAI0Stk90FicmxeoS8n1MQeOPLGIMz_xYujSuJLlo8KnUbdZOzI06Yl846nB2nJny4wPfw05ugBeP4fIAotXLFOnLXfefcNbEKyfNpVYvyrbbODFJW542HIhwMEY3U_pdiuVmGlAe0f8bRARvQ..&type=2&query=AI%E9%9F%B3%E9%A2%91%E5%88%B6%E4%BD%9C&token=94810081F221CE33383E57B33155AF4038790C386AFD11AB",
+      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqGaCbdS4PMk1MW31KZQ9l6VqXa8Fplpd9PDOFcaf3yEOwxi2T-C_ZH2cl25blZ61JrUqskAI0Stk90FicmxeoS8n1MQeOPLGIMz_xYujSuJLlo8KnUbdZOxOD-6aW7E1Q--Z9a9rYrF58wlx2-4xVnAgUKG1PnUWr2ikUhFmMNZyb0M-L_h1gU_Q33ReVdO1wr1EzSnlJ5wvvzHZXxeLdyg..&type=2&query=AI%E9%9F%B3%E9%A2%91%E5%88%B6%E4%BD%9C&token=948E80BB741BF5A2B5B3D5319353EC55B60690036AFD13CC",
       "source": "搜狗微信",
       "publish_time": "2026-03-28T13:00:17+00:00",
       "summary": "这款来自海外的 AI音频 处理工具,主打免费使用,即时将音频中的人声或背景噪音智能分离,让音乐 制作 人、播客主持人和内容创作者...",
@@ -5555,7 +5554,7 @@
       "rank": 346
     },
     {
-      "id": 346,
+      "id": 347,
       "title": "AI 写歌走红程序员9个月赚20万",
       "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqLLNGI7CcGsRMW31KZQ9l6VqXa8Fplpd9EAn_Ak315U4TSLh_KZrD5t9KRl7Dj1gexnnhDZtqGxtSrJ4L-izLGw6jD1xrX6j6isd9Wg0V-EfzNN0uSv7SDZVlD2_INvqmUHF8diQh1RfcxrHQkv4-2l0NJpb2jFT8l3_Iy7c8Sh14Lgsoj1tEXkv-r38T8SImeUuAXRSSO6cNGbbB75bUeA..&type=2&query=AI%E9%92%A2%E7%90%B4 %E4%B9%90%E7%90%86&token=94776298FB554CE4CFC9B04C213DD700D05A720F6AFD101F",
       "source": "搜狗微信",
@@ -5571,9 +5570,9 @@
       "rank": 347
     },
     {
-      "id": 347,
+      "id": 348,
       "title": "一款 AI 在线 音频 处理工具,快速实现人声去除、乐器轨道分离、BPM与音调检测等功能",
-      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqWLMw2_s6aqhMW31KZQ9l6VqXa8Fplpd9yaYLqA-TgghWH56YwQFxgR9t8frn9s7mb1-YUOHC_I8xnSMTBFyqC7igGQB4ZmshlU_Lu3eISvAhT3W5WsJFAy_8Hzcg56Mwp-B-pQ5HN7R9AjomRojgqOIIjgzLLsd95BCdmliHUxDZq6zwxPAwxSBSkmCyXMXuuKpy4qgZfxF6VKrzu_4XKA..&type=2&query=AI%E9%9F%B3%E9%A2%91%E5%88%B6%E4%BD%9C&token=94810081F221CE33383E57B33155AF4038790C386AFD11AB",
+      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqGaCbdS4PMk1MW31KZQ9l6VqXa8Fplpd9yaYLqA-TgghWH56YwQFxgR9t8frn9s7mb1-YUOHC_I8xnSMTBFyqC7igGQB4ZmshlU_Lu3eISvAhT3W5WsJFA65YH5jVMXXfw53_0kLNW9bTwiH9EEcLOs4zfTJ0wHvSh9E2wxtK_hlo1TMbVg-Zjh-GpjiK_cOF4TRJ5j-X3JHyPfCoem7FzA..&type=2&query=AI%E9%9F%B3%E9%A2%91%E5%88%B6%E4%BD%9C&token=948E80BB741BF5A2B5B3D5319353EC55B60690036AFD13CC",
       "source": "搜狗微信",
       "publish_time": "2026-03-21T07:13:56+00:00",
       "summary": "Coolo. ai 是一款 AI 驱动的在线 音频 处理工具,功能强大且完全免费、无任何使用限制,无需安装,网页端直接操作,可快速实现人声去...",
@@ -5587,9 +5586,9 @@
       "rank": 348
     },
     {
-      "id": 348,
+      "id": 349,
       "title": "AI吉他 能让小白秒变高手?算了吧,高歌一旦猛进,就是尬歌好不好?",
-      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqjq4GWrQiu7dMW31KZQ9l6VqXa8Fplpd90IAYQ0_pOm2QT94bQfyLcSMTzaK8qMsYQvcWrADS5nGIsLz5JDMu9zgUNu-1mLMFqaJUTsZs8Y5g_UPz31QoC6mBdllhiKEH_nrbvXre2dbid0Q2opaXnOMzjFFkmPgi8bXKLO-C8HSIO7laAukV2Vy83xc_QRT_DMCQTrE-1nUHpHkoPMgL3A..&type=2&query=AI%E5%90%89%E4%BB%96&token=9480E3A7F221CE33383E57B33155AF4038790C386AFD11A6",
+      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwq2Bu4G5uOfpVMW31KZQ9l6VqXa8Fplpd90IAYQ0_pOm2QT94bQfyLcSMTzaK8qMsYQvcWrADS5nGIsLz5JDMu9zgUNu-1mLMFqaJUTsZs8Y5g_UPz31QoC6J1jeaK4hBryMkgdzWIqh1ksIqMvMsx5mZhD9E50RCNvMpC8-B1JN15PSBN4Ue0l4XjAsgfQU_6NR2B76jrmMA5eBgmN3LoYQ..&type=2&query=AI%E5%90%89%E4%BB%96&token=948E602F741BF5A2B5B3D5319353EC55B60690036AFD13C7",
       "source": "搜狗微信",
       "publish_time": "2026-03-19T12:22:33+00:00",
       "summary": "但这个“智能 吉他 ”确已超过了我所能承受的最后一道心理防线,包括很快就会(或已经出现)的“智能钢琴”“智能提琴”“ AI 琵琶...",
@@ -5603,9 +5602,9 @@
       "rank": 349
     },
     {
-      "id": 349,
+      "id": 350,
       "title": "我靠!原来 AI 写歌不用学 乐理 ,这套公式直接套用就行!",
-      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqPndIWun0K3xMW31KZQ9l6VqXa8Fplpd9zHl8XPfItEpT2RG-_YnuuhVV7Gh16vSmhLajjkGPu72tC7K3OczTVXdgluLZHbKtHSNCEKqQYsy1an8T4cCjnJfHVojFF7VO7DK48sYMQ3K4SNmJprhx9-UYSj3RPtxiQPHYfYbYILpSWLAtcS2rNtIIPWqy-RpaKPb_6smag5Bj3x9Nw6p-Fg..&type=2&query=AI%E9%92%A2%E7%90%B4 %E4%B9%90%E7%90%86&token=9480F21EF221CE33383E57B33155AF4038790C386AFD11A9",
+      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqafPlfP-UlhZMW31KZQ9l6VqXa8Fplpd9zHl8XPfItEpT2RG-_YnuuhVV7Gh16vSmhLajjkGPu72tC7K3OczTVXdgluLZHbKtHSNCEKqQYsy1an8T4cCjnEj0eP_nbW7AxGyPN6nfsAzv2qCBcg-I7nNbMsYoaK5mtp3LtsIy_ioILvJDnEisgoT2oxBouZxe2MUXJczcLtvvzHZXxeLdyg..&type=2&query=AI%E9%92%A2%E7%90%B4 %E4%B9%90%E7%90%86&token=948E6F80741BF5A2B5B3D5319353EC55B60690036AFD13CA",
       "source": "搜狗微信",
       "publish_time": "2026-03-19T09:49:19+00:00",
       "summary": "直到我发现了 AI 音乐,它很适合我这种不会音乐不会 乐理 还想写歌的人.目前玩蘑兔 AI 也有小半年了,也生成过几十首音乐.期间虽然...",
@@ -5619,9 +5618,9 @@
       "rank": 350
     },
     {
-      "id": 350,
+      "id": 351,
       "title": "【最新2026年 ai 音乐编曲系统教程】",
-      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqPndIWun0K3xMW31KZQ9l6VqXa8Fplpd9aXf7-W83eA7yk6GB6RwBXVLcE9MBUudmCz5ces-HnGREOKs1cy76JVEj7o8f6q4Xxbl01S4fAN11dl6RDxbc6Z7ZH4NHGFb9HFQU2SDbzi48IS4LgBTk_7W3i3Tly4uQgcL9q9zyHsTNgykWA_3McmjMIVm8QOZyOVHT7-89AyZS6t2rFt2rnA..&type=2&query=AI%E9%92%A2%E7%90%B4 %E4%B9%90%E7%90%86&token=9480F21EF221CE33383E57B33155AF4038790C386AFD11A9",
+      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqafPlfP-UlhZMW31KZQ9l6VqXa8Fplpd9aXf7-W83eA7yk6GB6RwBXVLcE9MBUudmCz5ces-HnGREOKs1cy76JVEj7o8f6q4Xxbl01S4fAN11dl6RDxbc6RjnvDFXfjZYWqn--q2JF23ISCA8eD_ZqAArFI8mIxrOLtS53GrEwDqPjkbwQRLKoaJBotBvEQlGtvubKvsWPbpS6t2rFt2rnA..&type=2&query=AI%E9%92%A2%E7%90%B4 %E4%B9%90%E7%90%86&token=948E6F80741BF5A2B5B3D5319353EC55B60690036AFD13CA",
       "source": "搜狗微信",
       "publish_time": "2026-03-18T01:00:26+00:00",
       "summary": "【日本音乐大师 钢琴 & 乐理 教学课程】(有带中文字幕)耿然老师8套课程50首【中国作品 钢琴 手写教学笔记】【小众比赛曲目 钢琴 教...",
@@ -5635,9 +5634,9 @@
       "rank": 351
     },
     {
-      "id": 351,
+      "id": 352,
       "title": "AI 音效生成器来了!Sound Effect 让创作者告别＂找音效＂的烦恼",
-      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqWLMw2_s6aqhMW31KZQ9l6VqXa8Fplpd931iABTkb4AUqmD8gPn8x1RJJqSifw6QwsKulnXXVCmnQA5xwCu5p5fvNokEPpo8oUwJaH_QjhEGS3wDudYt57Xjcv_W9ZYmWh_2z-6NgxVRYqLvgtcD_fyPKWmPUwwY0VQ2qBq6yn22ODMoUW_7XMRiD4N15vj4MUGBs7Ewfvrvs46dn8Efgxg..&type=2&query=AI%E9%9F%B3%E9%A2%91%E5%88%B6%E4%BD%9C&token=94810081F221CE33383E57B33155AF4038790C386AFD11AB",
+      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqGaCbdS4PMk1MW31KZQ9l6VqXa8Fplpd931iABTkb4AUqmD8gPn8x1RJJqSifw6QwsKulnXXVCmnQA5xwCu5p5fvNokEPpo8oUwJaH_QjhEGS3wDudYt57TrNhJhfiN9Z3hK0Di9pYbgI7glbGhL8PgJXol4CdeKYmNk6nwwT-jN6mCRwAjCAv-XzPaMsTFFAaiTRVntHLMMSYTqT4eyLmA..&type=2&query=AI%E9%9F%B3%E9%A2%91%E5%88%B6%E4%BD%9C&token=948E80BB741BF5A2B5B3D5319353EC55B60690036AFD13CC",
       "source": "搜狗微信",
       "publish_time": "2026-03-10T03:09:14+00:00",
       "summary": "AI 即可在几秒内生成相应的 音频 文件.这种＂所想即所得＂的交互方式,大大降低了音效 制作 的门槛.二、灵活的参数调节除了基础的...",
@@ -5651,9 +5650,9 @@
       "rank": 352
     },
     {
-      "id": 352,
+      "id": 353,
       "title": "AI 音频 故事创作平台 Sohri Studio 让创作者轻松 制作 和分享有声读物",
-      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqWLMw2_s6aqhMW31KZQ9l6VqXa8Fplpd9utNslz4w_rq2twTRbUthLnuV0PX0Ye8sUyVxMF30a6B4M8MIvsXfNn9y17aSfpdlENVNn6h57rM45jlEVIHe_TUBfheSMrmEhlXH5dJwyAe24Qm2inDD6VxtlVMdO5x8vreGfpPa9-H7J3B5A1bdVFjgtkEJcWXdGf9B2Ws4b-rf3q8uRDTfkw..&type=2&query=AI%E9%9F%B3%E9%A2%91%E5%88%B6%E4%BD%9C&token=94810081F221CE33383E57B33155AF4038790C386AFD11AB",
+      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqGaCbdS4PMk1MW31KZQ9l6VqXa8Fplpd9utNslz4w_rq2twTRbUthLnuV0PX0Ye8sUyVxMF30a6B4M8MIvsXfNn9y17aSfpdlENVNn6h57rM45jlEVIHe_f28vtsZ2iPCXYdKJ9P6o9svtQKYOqCJ3KWDR5FbcdH2nNPsJxR22EYXWQEXnG0IiLKWweiDoRUbO5BhBQMI2OxQ_LeJW-Rhtg..&type=2&query=AI%E9%9F%B3%E9%A2%91%E5%88%B6%E4%BD%9C&token=948E80BB741BF5A2B5B3D5319353EC55B60690036AFD13CC",
       "source": "搜狗微信",
       "publish_time": "2026-03-03T08:27:01+00:00",
       "summary": "在有声书市场持续增长、创作者不断寻求高效率 制作 方式的背景下,Sohri Studio 作为一款 AI 驱动的 音频 叙事平台,正在尝试重新定义...",
@@ -5667,7 +5666,7 @@
       "rank": 353
     },
     {
-      "id": 353,
+      "id": 354,
       "title": "8 款最佳 AI 音频 增强器提升你的声音设计",
       "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqhliOkNNjE2NMW31KZQ9l6VqXa8Fplpd9dmPxvUXNGRa7mJqbc_zz01nuFBTjhbX8Qr_gKTSVoUGiR_T8rFb_07uFBsfNqrGqulYEUx2lRWLyiaYyramIJ0aEMJ8RfTzg1Vr-40hTqd9U8dOcsCG4Wk6hGqda2ShIKbgyzL0crRvxk-C-YKtIeqK4NsL71TIM1yOU-qsgiRrYl_Q5RRZQjg..&type=2&query=AI%E9%9F%B3%E9%A2%91%E5%88%B6%E4%BD%9C&token=94777331FB554CE4CFC9B04C213DD700D05A720F6AFD1021",
       "source": "搜狗微信",
@@ -5683,7 +5682,7 @@
       "rank": 354
     },
     {
-      "id": 354,
+      "id": 355,
       "title": "AI音乐 热潮下,“神曲工作室”率先失业",
       "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwq0YrIJUE7U8RMW31KZQ9l6VqXa8Fplpd9i0DZ12g_r6-AvNxjZAeXH4hfq1BlJQGNLgANJ7oLC_3Th83LBOA3WMI4RCKtwqYDPZRY37Y3QWqU1vmN4GOAg6kxgrGSlUrO-l8wBLsxNZpNAJOAILz-ZHbvcpCN4UKvmNDzSULuLtuz85eRzkPg-jxfvQpcXAPLjs0Ak1YwlnLS-e4Yz84xMA..&type=2&query=AI%E9%9F%B3%E4%B9%90&token=9480CFC5F221CE33383E57B33155AF4038790C386AFD11A4",
       "source": "搜狗微信",
@@ -5699,9 +5698,9 @@
       "rank": 355
     },
     {
-      "id": 355,
+      "id": 356,
       "title": "吉他手可以关注下AI时代:和AI谈谈AI音乐 AI吉他 以及近期的创作",
-      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqjq4GWrQiu7dMW31KZQ9l6VqXa8Fplpd9dpQ1AVGaXscYFne_A80hRG87-FSLeefPNzV-vKE5C2EMDG65h_U4d7nitYgdRdtuvJ_9tjHJAwnjWdk2xtp0gTQEOw6zOJbUOB7McAH4hStSo1U0ckFV09CWzTHN5EV26z4h2Hg60UuCCoZm0sj1gpG2ZZcGUlXxqYvjUiDhE0b0OK9DLfgmPA..&type=2&query=AI%E5%90%89%E4%BB%96&token=9480E3A7F221CE33383E57B33155AF4038790C386AFD11A6",
+      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwq2Bu4G5uOfpVMW31KZQ9l6VqXa8Fplpd9dpQ1AVGaXscYFne_A80hRG87-FSLeefPNzV-vKE5C2EMDG65h_U4d7nitYgdRdtuvJ_9tjHJAwnjWdk2xtp0gaW-qfS5LZhJQHStu358-XppDFbwJzlKnpxP_L2yTMzcFxR27joo-E-2ZkdY9999Myv3nKy1chhjqaDkLuDUI3Rj32-j2KiwUw..&type=2&query=AI%E5%90%89%E4%BB%96&token=948E602F741BF5A2B5B3D5319353EC55B60690036AFD13C7",
       "source": "搜狗微信",
       "publish_time": "2024-04-19T02:10:30+00:00",
       "summary": "而对于演奏、尤其是现场,包括 吉他 独奏、乐队、器乐演奏, AI 目前还是无法替代的,演奏家的临场演奏感觉 AI 可以模仿,但很难是...",
@@ -5715,7 +5714,23 @@
       "rank": 356
     },
     {
-      "id": 356,
+      "id": 533,
+      "title": "天工Sky Music 开启公测! AI音乐 概念火了",
+      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqXcBqOROaBTBMW31KZQ9l6VqXa8Fplpd99v0Cc-cHhFebFE2o0f8ZTdLJLiTFsb3ZGnAT6DcTz1gLdPh6cl62oXxlRrwoNU5Fr-jfouQ2Fg2SkMM_7zQIiJTikgClo0uQsyIYAev-0PtrTXxN_Mj62QhrmF7eH4rT1IJdVjiHOgdNhwCu8v8fNXn7OfhWnrxXQnjJmrB08owO8fIRwtipOg..&type=2&query=AI%E9%9F%B3%E4%B9%90&token=948E4DA6741BF5A2B5B3D5319353EC55B60690036AFD13C4",
+      "source": "搜狗微信",
+      "publish_time": "2024-04-18T23:48:24+00:00",
+      "summary": "AI音乐 模型火了今年以来,演出市场火热的势头,带动音乐产业的繁荣.尤其在2024年 AI音乐 生产大模型技术的爆发下, AI音乐 应用市...",
+      "category": "搜狗微信",
+      "dedupe_key": "sogou:714c7278629d9985a446886cbbbe8f8b4432f06ce26ba2d3d08100a66cbf09d0",
+      "title_zh": null,
+      "relevance_score": 100,
+      "heat_score": 62,
+      "recency_score": 0,
+      "rank_score": 68.6,
+      "rank": 357
+    },
+    {
+      "id": 357,
       "title": "AI音乐 开始抢饭碗了?246位知名艺人联名写信!",
       "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwq4Fh4fB3-FxVMW31KZQ9l6VqXa8Fplpd9XMMn6RIdUPZkSw3hnIeSbrdi7ZjCPcDmX-OcTJjfev4_e3aNluXxLMzXEebKD1fXON8m_y_Sxwtsan7ND8p7VIpctqr_au7aYliPRGHeUwSvicaQoUOhy1BceWCRdMsQjH4kpIhPs01uNJ0SjvoAsSSrWdG9_kB_WLHnfTW7Mvh5Nu7CnoSqqg..&type=2&query=AI%E9%9F%B3%E4%B9%90&token=94773E6FFB554CE4CFC9B04C213DD700D05A720F6AFD1019",
       "source": "搜狗微信",
@@ -5728,10 +5743,10 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 61.6,
-      "rank": 357
+      "rank": 358
     },
     {
-      "id": 357,
+      "id": 358,
       "title": "国内首款 AI音乐 大模型一曲封神!核心技术业内首公开,爆改霉霉周杰伦效果惊艳",
       "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqm6aMf6klMpxP4oEcMSryqVqXa8Fplpd9fSrncheallyxCoY54oC9Z1TGpuRcxqjSKqYQ9651SQW_OjXftysACFi9DuPuz3jY4jW4ABfnypMhrvvyIoQwio9zAaD0Xj7pQhX8sZYA6Mtrbrmk1uO-bfgC0whytK0qPmqe5HHShObBf5N_pblIw3SNWfV3oMXDUCKOycip0dPdrgozfSg6bw..&type=2&query=AI%E9%9F%B3%E4%B9%90&token=8D874F418F7718A81F187E6B91D97A4F1F1C592B6AFC0E34",
       "source": "搜狗微信",
@@ -5744,12 +5759,12 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 68.6,
-      "rank": 358
+      "rank": 359
     },
     {
-      "id": 358,
+      "id": 359,
       "title": "瞬息音宇宙 Pika的 AI 口形同步与音效生成开放",
-      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqWLMw2_s6aqhMW31KZQ9l6VqXa8Fplpd9utNslz4w_rq2twTRbUthLnuV0PX0Ye8sUyVxMF30a6B4M8MIvsXfNnbta5NRIVjUbrscQyhVA4wjYg1gVyUILDs2YtRQiUWiaphIoeKFz2zk_oOzq-v54a2ZJStFMhT7bjLIlxV6Y4npid6sJEsturcOd9tLMsiMDqq5AIBSqevzAjcIGepUqA..&type=2&query=AI%E9%9F%B3%E9%A2%91%E5%88%B6%E4%BD%9C&token=94810081F221CE33383E57B33155AF4038790C386AFD11AB",
+      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqGaCbdS4PMk1MW31KZQ9l6VqXa8Fplpd9utNslz4w_rq2twTRbUthLnuV0PX0Ye8sUyVxMF30a6B4M8MIvsXfNnbta5NRIVjUbrscQyhVA4wjYg1gVyUILMc0hdRMRuNx76d2Fn6E44M11UDoe_LbtigCCFX2DVfyiotrpG6taTof-x3TzrNV3-QQKjmEbqoE-Vc8gJT66DJ5Nu7CnoSqqg..&type=2&query=AI%E9%9F%B3%E9%A2%91%E5%88%B6%E4%BD%9C&token=948E80BB741BF5A2B5B3D5319353EC55B60690036AFD13CC",
       "source": "搜狗微信",
       "publish_time": "2024-03-25T09:03:19+00:00",
       "summary": "静默的视频让我们以为声音 制作 还有时间窗口,冷眼旁观没几天, AI音频 领域的领先者ElevenLabs就给Sora视频用AI加上了声音,AI视...",
@@ -5760,12 +5775,12 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 61.6,
-      "rank": 359
+      "rank": 360
     },
     {
-      "id": 359,
+      "id": 360,
       "title": "《宫保鸡丁》杀入全球 AI音乐 榜前十!音乐版ChatGPT被玩疯了",
-      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqC0fUvvNrRZVP4oEcMSryqVqXa8Fplpd9GU6wORVsk3cknyhzGdFQNxJXWXV1lIplj3Ip4GkTO0coNWpJILRfU0J3jr3Mi2GA_MNsE0yiDX-ueAJIVWdJdON554uuczzRWA4ddhPdagF1vrEs3UCLqOfcyAOWYIgqXaengP4Z8WZXAsB4LcjBrKWwEMQYRPv6XqoTdvl29TT1AfaFW2DefQ..&type=2&query=AI%E9%9F%B3%E4%B9%90&token=8D96EDE9CE0859E85F660014ED148487602747C96AFC1078",
+      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqXcBqOROaBTBMW31KZQ9l6VqXa8Fplpd9DwyyCHzWV1hQmtzNV69GAMP4eA9FTVhQWwjKEJ3Z1d90wrodT9vwZ65oypPnmZQdyNpamB9sIxWdD-UorEBBFSPt7ZkPcqJM4WcbHkMD1BZKVl8BGF5lD7lEFmYQNVaNqqa3q--pQHj4sGYc0RoNIHSD1_ib69XYPD6qz72xzhxAe0f8bRARvQ..&type=2&query=AI%E9%9F%B3%E4%B9%90&token=948E4DA6741BF5A2B5B3D5319353EC55B60690036AFD13C4",
       "source": "搜狗微信",
       "publish_time": "2024-03-25T04:50:58+00:00",
       "summary": "瞬间高大上了起来~于是这首歌随即登上了全球 AI音乐 热门榜前十.这两天,这个被称之为音乐版ChatGPT——Suno被玩疯了.△图源...",
@@ -5776,12 +5791,12 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 61.6,
-      "rank": 360
+      "rank": 361
     },
     {
-      "id": 360,
+      "id": 361,
       "title": "给Sora补位,一批 AI 音效生成工具来袭!文生视频告别“默片时代”",
-      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqWLMw2_s6aqhMW31KZQ9l6VqXa8Fplpd91FCHgSME67cRyy0h_iWW_nQMgOJHQLftzIUOCkprMuLuJTZMjyNiU6PPs-U6940WRAleJfISaCzB2tlA9IaobW-eZKPobXWcevhdBHAoK8B83Eb48nwJYCGq6ME6dJBpm5W48EZmsR1IK3Xl2YCs19G0yoj2F0vqUznupVAVxlHI3OTRHYU2og..&type=2&query=AI%E9%9F%B3%E9%A2%91%E5%88%B6%E4%BD%9C&token=94810081F221CE33383E57B33155AF4038790C386AFD11AB",
+      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqGaCbdS4PMk1MW31KZQ9l6VqXa8Fplpd91FCHgSME67cRyy0h_iWW_nQMgOJHQLftzIUOCkprMuLuJTZMjyNiU6PPs-U6940WRAleJfISaCzB2tlA9IaobYRn_E8dLniS42hATOuaIz0qE0TTziJwitQH1j4apmsmJUxKT8WKQidkDHoitGhA6G9yYF0sqOeExcBbufC8eOZOJBjQH7pCxQ..&type=2&query=AI%E9%9F%B3%E9%A2%91%E5%88%B6%E4%BD%9C&token=948E80BB741BF5A2B5B3D5319353EC55B60690036AFD13CC",
       "source": "搜狗微信",
       "publish_time": "2024-03-11T11:14:38+00:00",
       "summary": "第五步:点击回车键,静待片刻系统即可生成5段 音频 .-7-总结这类 AI 音效生成工具确实在一定程度上提升视频 制作 效率,使视频更真...",
@@ -5792,12 +5807,12 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 56.6,
-      "rank": 361
+      "rank": 362
     },
     {
-      "id": 361,
+      "id": 362,
       "title": "再聊AI - 能用的 AI音频 生成工具,还会远吗?",
-      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqWLMw2_s6aqhMW31KZQ9l6VqXa8Fplpd9crR-S_xsezSHkfIThXnX7LLUJ_osMd0976mlMJ6GGdj_AowDayeQN2gUUEijlryIhIM5dyXv3Z0ZJsncGS8wPmDtiV0lHtC-j2_2GOH1FpWduLKUhYTWDzpjkVl2W5ZOfjksPc1jZAWGART0oJs7ZfSR760FvMD8msNt6os44G3wdVqCwyPdzA..&type=2&query=AI%E9%9F%B3%E9%A2%91%E5%88%B6%E4%BD%9C&token=94810081F221CE33383E57B33155AF4038790C386AFD11AB",
+      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqGaCbdS4PMk1MW31KZQ9l6VqXa8Fplpd9crR-S_xsezSHkfIThXnX7LLUJ_osMd0976mlMJ6GGdj_AowDayeQN2gUUEijlryIhIM5dyXv3Z0ZJsncGS8wPvcvV5qTE1j9oUOQg4k3sR7UEBGeQuU9Z6WxtFMu5rywcERD97qmIkUf42azanlM_T0rH8PYqvvlNO1lQ5_oOiVhWLv6O878UA..&type=2&query=AI%E9%9F%B3%E9%A2%91%E5%88%B6%E4%BD%9C&token=948E80BB741BF5A2B5B3D5319353EC55B60690036AFD13CC",
       "source": "搜狗微信",
       "publish_time": "2024-02-22T02:19:49+00:00",
       "summary": "从前年Stable Diffusion开始逐渐爆发以来,这个频道我可能除了 音频 写的最多的就是 AI ,哪怕再不敏感的人也都知道这一定是next big ...",
@@ -5808,12 +5823,12 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 56.6,
-      "rank": 362
+      "rank": 363
     },
     {
-      "id": 362,
+      "id": 363,
       "title": "我为自己唱首歌 | 智能 AI吉他 音乐会圆满落幕",
-      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqjq4GWrQiu7dMW31KZQ9l6VqXa8Fplpd9wvigBxU9F0XV43NwDAOBHEl-TZRdDX_w3vc98_7XNs6w2T_VkvSuOKCALHIYgO2pw2CP_krHQlROeqq342qZlfygcLyX6xmz4cA7iLs3DvGKvOW5vHnBgjZmNA2lr2pHjc0P8Ae6F2s8Y6hdcZUaUrPTfbrvNL8jHIuaWQphJkvP28temKTOwg..&type=2&query=AI%E5%90%89%E4%BB%96&token=9480E3A7F221CE33383E57B33155AF4038790C386AFD11A6",
+      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwq2Bu4G5uOfpVMW31KZQ9l6VqXa8Fplpd9wvigBxU9F0XV43NwDAOBHEl-TZRdDX_w3vc98_7XNs6w2T_VkvSuOKCALHIYgO2pw2CP_krHQlROeqq342qZlasgc78Jjbmv2T-Vr5rMMDWQazQsiim59YDT0IgRKS7832q-qts-FVvtu1Q-KVuhG8HemuYY0415UzQe7mNEKBXS-e4Yz84xMA..&type=2&query=AI%E5%90%89%E4%BB%96&token=948E602F741BF5A2B5B3D5319353EC55B60690036AFD13C7",
       "source": "搜狗微信",
       "publish_time": "2023-12-25T10:18:36+00:00",
       "summary": "在这个充满科技与艺术氛围的夜晚,我们迎来了第六期【我为自己唱首歌】智能 AI吉他 音乐会的精彩落幕. 本次音乐会,智云、理...",
@@ -5824,12 +5839,12 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 68.6,
-      "rank": 363
+      "rank": 364
     },
     {
-      "id": 363,
+      "id": 364,
       "title": "【我为自己唱首歌】智能 AI吉他 音乐会圆满落幕",
-      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqjq4GWrQiu7dMW31KZQ9l6VqXa8Fplpd9e7WdIWfaJLprsqPm8yB2pDrtP3dcKkhpbdlXNAGAOSEz3Vu8WVO6kN6HGKMWIwAjVNdA33fxFCCFX88lINi8XkrpAfoDPDPoHpKceo0xLEN6pB4OXm1XvGrTilNgtv_D7u7wKXAPL90XonFq6QdMf4X1vRASfaN4JflMsZdEjd1hlgeRt7bSzA..&type=2&query=AI%E5%90%89%E4%BB%96&token=9480E3A7F221CE33383E57B33155AF4038790C386AFD11A6",
+      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwq2Bu4G5uOfpVMW31KZQ9l6VqXa8Fplpd9e7WdIWfaJLprsqPm8yB2pDrtP3dcKkhpbdlXNAGAOSEz3Vu8WVO6kN6HGKMWIwAjVNdA33fxFCCFX88lINi8XpNtwvkZeNK37qFTCvEFFg1PahzMnzW83T-WQWDhDkgm6qkiJTy7GSN_1Xo33gLO8kOHKBXZTnNVGEuZQqdpRR1r1dbZWbKUeQ..&type=2&query=AI%E5%90%89%E4%BB%96&token=948E602F741BF5A2B5B3D5319353EC55B60690036AFD13C7",
       "source": "搜狗微信",
       "publish_time": "2023-12-22T10:29:15+00:00",
       "summary": "在这个充满科技与艺术氛围的夜晚,我们迎来了第六期【我为自己唱首歌】智能 AI吉他 音乐会的精彩落幕.这次的音乐会,智云再次携...",
@@ -5840,12 +5855,12 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 68.6,
-      "rank": 364
+      "rank": 365
     },
     {
-      "id": 364,
+      "id": 365,
       "title": "深圳坂田 | 智能 AI吉他 音乐会再度来袭!",
-      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqjq4GWrQiu7dMW31KZQ9l6VqXa8Fplpd9e7WdIWfaJLprsqPm8yB2pDrtP3dcKkhpbdlXNAGAOSEz3Vu8WVO6kFfLDz_T_PkdYKcqD-zvTtA6ZvqREBDfwOm6XtFsiVd0xHwmKEUSCID8JNQxqz0iXODiTJTG5RncPHD3_i_b91vqLgXL0uGjqh1D4CsaIN6IprRiNL0_QgsO8fIRwtipOg..&type=2&query=AI%E5%90%89%E4%BB%96&token=9480E3A7F221CE33383E57B33155AF4038790C386AFD11A6",
+      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwq2Bu4G5uOfpVMW31KZQ9l6VqXa8Fplpd9e7WdIWfaJLprsqPm8yB2pDrtP3dcKkhpbdlXNAGAOSEz3Vu8WVO6kFfLDz_T_PkdYKcqD-zvTtA6ZvqREBDfwG8yN1E0lquAcx7imFm0VcXltYAM5gs4w7r_CZv0-vKZpaPyzKFwnCt8s4ogFv45GKrwy75unhbzMTHTt6n_eoY6Ebq8fk9diw..&type=2&query=AI%E5%90%89%E4%BB%96&token=948E602F741BF5A2B5B3D5319353EC55B60690036AFD13C7",
       "source": "搜狗微信",
       "publish_time": "2023-12-16T01:00:53+00:00",
       "summary": "本次智能 AI吉他 音乐会由智云携手星河控股集团、理光映像共同打造.星河控股集团提供全方位的场地、赞助等支持,理光映像提供全...",
@@ -5856,12 +5871,12 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 65.6,
-      "rank": 365
+      "rank": 366
     },
     {
-      "id": 365,
+      "id": 366,
       "title": "智云公益智能 AI吉他 音乐会:一场充满科技与艺术的跨界盛宴",
-      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqjq4GWrQiu7dMW31KZQ9l6VqXa8Fplpd9wvigBxU9F0XV43NwDAOBHEl-TZRdDX_w3vc98_7XNs6w2T_VkvSuOPLOeQTCFmvj7Mtkpdc0VgV9ll6qHJW3QGBGz19cN-9BvrpA00ZUuP4bA3LXJ5yFEtGqc0M5tW04cHXXugx0orfTWQQq9IK-qbMDLrSZu5NluVG09vLztXMCYioxHkzTmA..&type=2&query=AI%E5%90%89%E4%BB%96&token=9480E3A7F221CE33383E57B33155AF4038790C386AFD11A6",
+      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwq2Bu4G5uOfpVMW31KZQ9l6VqXa8Fplpd9wvigBxU9F0XV43NwDAOBHEl-TZRdDX_w3vc98_7XNs6w2T_VkvSuOPLOeQTCFmvj7Mtkpdc0VgV9ll6qHJW3QHpdmdtOZcTIDeGauVYGB3ii7wJPzW-sBtTNyyrCRFNOk7WpgeMNl2YlxoOhYcP_iUuuC34AB4brtW2Iw_qBIApe0WC6Sbi7DA..&type=2&query=AI%E5%90%89%E4%BB%96&token=948E602F741BF5A2B5B3D5319353EC55B60690036AFD13C7",
       "source": "搜狗微信",
       "publish_time": "2023-12-08T03:01:27+00:00",
       "summary": "5,既是星河WORLD·COCO Park 5周年,也是智云入驻星河WORLD园区5周年,还是智能 AI吉他 音乐会第5期.11月30日晚,一场...",
@@ -5872,12 +5887,12 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 68.6,
-      "rank": 366
+      "rank": 367
     },
     {
-      "id": 366,
+      "id": 367,
       "title": "全能 AI 教你弹 吉他",
-      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqjq4GWrQiu7dMW31KZQ9l6VqXa8Fplpd933V-_zP8kovOpbA94wa-VpePqeNJERqASzBHVtVezV3viLRlHlW7VmH-C__r3sNuLxijiJde2f4bMFu1rboXDDCWUwJE6j0Lxt055qUuGacWs7P9ExKBF6aNI9wE89xxW1KzgK6dPuUAZIae4Mqd7yiaYTGrmCFBOyFNRBWt4vCTJmCU1UgHwQ..&type=2&query=AI%E5%90%89%E4%BB%96&token=9480E3A7F221CE33383E57B33155AF4038790C386AFD11A6",
+      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwq2Bu4G5uOfpVMW31KZQ9l6VqXa8Fplpd933V-_zP8kovOpbA94wa-VpePqeNJERqASzBHVtVezV3viLRlHlW7VmH-C__r3sNuLxijiJde2f4bMFu1rboXDD5AQZJoQKy1rE4F009Wez5J0IyX8RXZbr6Myni4ZvIdCSGMjgoOYvkStLD4PqT8omuE6-psnqBL9lkvehtJG_wNGbbB75bUeA..&type=2&query=AI%E5%90%89%E4%BB%96&token=948E602F741BF5A2B5B3D5319353EC55B60690036AFD13C7",
       "source": "搜狗微信",
       "publish_time": "2023-12-04T12:02:31+00:00",
       "summary": "mu6label是你的 AI吉他 老师,以最快、最高效的方式教你弹吉他.简化你的吉他演奏体验.不再需要设置和拥有多个设备,如节拍器、...",
@@ -5888,12 +5903,12 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 56.6,
-      "rank": 367
+      "rank": 368
     },
     {
-      "id": 367,
+      "id": 368,
       "title": "抖音集团全新的 AI音乐 创作工具Ripple,能为音乐产业带来哪些新变化?",
-      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwq0YrIJUE7U8RMW31KZQ9l6VqXa8Fplpd9ZjK-HV2tAbjBLWXy2TU8R9Rb33IOfAj2Ivcqo1IT4LDeaDDFM_L1ZLuEV7LdJ2QFD3mUrqauBmrHe3bLlTz0A72WNOU_DSViRQnhRAVjGjXE0Z_Dl3JvIwiKCKX615pJFO4VwKJjx5N1MFm954Plcqt51qur6CMUEtMd-C-CEFL6zvkPgoArRQ..&type=2&query=AI%E9%9F%B3%E4%B9%90&token=9480CFC5F221CE33383E57B33155AF4038790C386AFD11A4",
+      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqXcBqOROaBTBMW31KZQ9l6VqXa8Fplpd9ZjK-HV2tAbjBLWXy2TU8R9Rb33IOfAj2Ivcqo1IT4LDeaDDFM_L1ZLuEV7LdJ2QFD3mUrqauBmrHe3bLlTz0A3SZgxpS0IFsVxipfVkE-fek72XrVf5DJfN5BdUBqPpQNUbOBLWRTnUM-bhgIkmzhRV9oHUSj7xid20zPW_o2V9OJBjQH7pCxQ..&type=2&query=AI%E9%9F%B3%E4%B9%90&token=948E4DA6741BF5A2B5B3D5319353EC55B60690036AFD13C4",
       "source": "搜狗微信",
       "publish_time": "2023-07-04T09:05:44+00:00",
       "summary": "Ripple的核心功能: AI音乐 生成Ripple是字节跳动旗下的一个独立项目,核心功能是利用人工智能技术,根据用户的声音、风格和情感...",
@@ -5904,10 +5919,10 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 67.6,
-      "rank": 368
+      "rank": 369
     },
     {
-      "id": 368,
+      "id": 369,
       "title": "AI音乐 目前走到哪了?",
       "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqC0fUvvNrRZVP4oEcMSryqVqXa8Fplpd9nQxKDIWaBfRw0f4jg8FjBEA-8Ew8E8fuwKk7yhq5UWd1U6zqXdReWuRpDeFS5wjLG_ZC7Z2Vzxl6BQ3KRF22IZleBiArPYG66YW2qpzHuxLTS9uD7LvL2ARHKbl2r_n5ym6rCB7aGcqqPRpakdUFmLLvPkOt2wkRCrGeU2xttWIC2Qmj7RgGwQ..&type=2&query=AI%E9%9F%B3%E4%B9%90&token=8D96EDE9CE0859E85F660014ED148487602747C96AFC1078",
       "source": "搜狗微信",
@@ -5920,10 +5935,10 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 56.6,
-      "rank": 369
+      "rank": 370
     },
     {
-      "id": 369,
+      "id": 370,
       "title": "智绘天津:当 AI音乐 机器人跳起《四小天鹅》",
       "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwq3LA0RKGVmKT20CusUO7sHlqXa8Fplpd9-r966aMe7K73_zba0vD6kp2v2Mk8gAWtY-hLVhZ6-CjdM5NylEtIz35RDtyOC_0ZMeQRDBhVoxli17BfY7vTb6P2OpLviGEa4JeJBN1kISHc9ck4c6sym7RDJLWcNFzxIX5_ffdSHLLHN-OpX_9_Nn2wcoiX8z70tCCsEHnDKan2CsG6-xMgzQ..&type=2&query=AI%E9%9F%B3%E4%B9%90&token=8E0021ADDEA5050E3C3A5C49AC668B3C3D2250F66AFC1F05",
       "source": "搜狗微信",
@@ -5936,10 +5951,10 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 56.6,
-      "rank": 370
+      "rank": 371
     },
     {
-      "id": 370,
+      "id": 371,
       "title": "AI音乐 30秒写一首歌,音乐人还混个P!",
       "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwq0YrIJUE7U8RMW31KZQ9l6VqXa8Fplpd9h6Szha08rLgBDrlAZGOLcddHHUuAhEF9Ffeo-h2YaoCTrPlH3lPsBUB4oKpctGP3zYJlmBSc4ysh5D3kPqmayotIHVkknAAFjnOqRwGiQpAsIdYYBscWZEw8h8Wms2_yJ5H_SHzZHlVvOAgzZK8I2dycmzOywgXKJD6sTc3EWhwY-UZGbO56rA..&type=2&query=AI%E9%9F%B3%E4%B9%90&token=9480CFC5F221CE33383E57B33155AF4038790C386AFD11A4",
       "source": "搜狗微信",
@@ -5952,12 +5967,12 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 64.6,
-      "rank": 371
+      "rank": 372
     },
     {
-      "id": 371,
+      "id": 372,
       "title": "AI音乐 ,腾讯音乐、网易云音乐的新版图?",
-      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwq0YrIJUE7U8RMW31KZQ9l6VqXa8Fplpd9FE46aFOYDxO2UT_Gn4qbITU1w9tHPqlcweU2uw08gnIP2E4ulEPgRxzmXrB-jnvcessi_ayuTVVwegiQ8agw7f7SWvoSFJ6Uy1flmIrj9nmRkQeOQuSRjtd5QVdQ11ixdp3L_hWXCEwSZ-JYWV7b0pjxDkd6ZSMpuyie4TPUe8kNGbbB75bUeA..&type=2&query=AI%E9%9F%B3%E4%B9%90&token=9480CFC5F221CE33383E57B33155AF4038790C386AFD11A4",
+      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqXcBqOROaBTBMW31KZQ9l6VqXa8Fplpd9FE46aFOYDxO2UT_Gn4qbITU1w9tHPqlcweU2uw08gnIP2E4ulEPgRxzmXrB-jnvcessi_ayuTVVwegiQ8agw7XCh8ddJvhuc2awXB8LuLbHkq4MwymgpTuqXGAvwWV6Irwj9KaEadB_U_MhYJs0un2nMK8DRHs6MubyC34yMU_1hlgeRt7bSzA..&type=2&query=AI%E9%9F%B3%E4%B9%90&token=948E4DA6741BF5A2B5B3D5319353EC55B60690036AFD13C4",
       "source": "搜狗微信",
       "publish_time": "2022-02-16T01:56:14+00:00",
       "summary": "值得注意的是, AI音乐 不仅仅让在线音乐市场受益,涉及音乐产业的各行各业也将享受 AI音乐 带来的利好.因此,多个领域的玩家也都...",
@@ -5968,10 +5983,10 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 56.6,
-      "rank": 372
+      "rank": 373
     },
     {
-      "id": 372,
+      "id": 373,
       "title": "钢琴 的基础 乐理 知识点合集",
       "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqLLNGI7CcGsRMW31KZQ9l6VqXa8Fplpd9GHib0QAVyuSlklNQNdgJwJrmcwSK3TWJUv_vYoppeQwj8HY1KCjxW5dmyHURYQUVna-j7QmJ-wgPLkfz8k7nYxFG2eBqVVv1YIwDJjmZFpWPn-28qIV95yWjjIMyqVPrWwCdoZ3bf6Qw4laedSX1CIxTTlfU1K2ZkzG6_tT27fYO8fIRwtipOg..&type=2&query=AI%E9%92%A2%E7%90%B4 %E4%B9%90%E7%90%86&token=94776298FB554CE4CFC9B04C213DD700D05A720F6AFD101F",
       "source": "搜狗微信",
@@ -5984,10 +5999,10 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 49.1,
-      "rank": 373
+      "rank": 374
     },
     {
-      "id": 373,
+      "id": 374,
       "title": "专门为学 钢琴 设计的屏幕,居然能有这么大魔力?",
       "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqMZTNbGM3xopMW31KZQ9l6VqXa8Fplpd9daPmDRu7v83YzZEC24R70yjnxK5899igJXnUfyDMd30We0m5rpU8uKCa7VCsI9P5M8Q7F2En_f6fy6oaHwvdzlgL0boG6NjiymdTBq2WRULVrQSGNDe5X0-cvQ2NTiI0tHf_di2zta5y7rcRiBhvX91xY7VRRyXj9YrqsdGQUtcCn9lOoZLP2Q..&type=2&query=AI%E9%92%A2%E7%90%B4 %E4%B9%90%E7%90%86&token=933691DDB84BA1AFBBBADC3DAEF1B81CBC30E7ED6AFCE04D",
       "source": "搜狗微信",
@@ -6000,12 +6015,12 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 46.1,
-      "rank": 374
+      "rank": 375
     },
     {
-      "id": 374,
+      "id": 375,
       "title": "爱吉他 的几位音乐家是如何战胜逆境的?",
-      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqjq4GWrQiu7dMW31KZQ9l6VqXa8Fplpd9GRDdwaK7he0Wld5IPE34wQ6nEU3JkMwTIULm5jMpj7st1pVlDFCnGpXkVNRiJrG9Bc0CheCcC48qza26ATjKNWnkoXugniXpu7vbjxfpdv0VTEUezBV5epRlHC3bKMXSi2MyJK_TetVmQqvVldbnWwJ_S4grD6R2LiMRJy7IOcICYioxHkzTmA..&type=2&query=AI%E5%90%89%E4%BB%96&token=9480E3A7F221CE33383E57B33155AF4038790C386AFD11A6",
+      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwq2Bu4G5uOfpVMW31KZQ9l6VqXa8Fplpd9GRDdwaK7he0Wld5IPE34wQ6nEU3JkMwTIULm5jMpj7st1pVlDFCnGpXkVNRiJrG9Bc0CheCcC48qza26ATjKNUz9KjYHmdtAdNT8bCD9ZYGhmO69JWzx2PnmKIQmUCQhD-9TEs_8rFhdb32sySJ1arPRdAT3i1loMzcYQDEEbo6q3X8EKMKOIA..&type=2&query=AI%E5%90%89%E4%BB%96&token=948E602F741BF5A2B5B3D5319353EC55B60690036AFD13C7",
       "source": "搜狗微信",
       "publish_time": "2021-08-31T14:25:34+00:00",
       "summary": "第一个把“电 吉他 ”和“摇滚乐”两个词连接在一起的男人-Chuck Berry于2017.3.1去世,留给了我们他的最后一张专辑《Chuck》....",
@@ -6016,10 +6031,10 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 44.1,
-      "rank": 375
+      "rank": 376
     },
     {
-      "id": 375,
+      "id": 376,
       "title": "小叶子叶滨: AI 是音乐教育行业最大的机遇 | OpenTalk",
       "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqLLNGI7CcGsRMW31KZQ9l6VqXa8Fplpd9ejHsVo0OeUw3-0b2Z6ub-raSx_3hXfWLNnFWoJo1O07lBA8pTjuImuzolPpCBeYAMOzYBz5fs8DLsFfVjnMGeEpU3CiL08aP6Vfd3XFlJy0MtNL9U0QEZKoWbQuP4sQW1-kpBuEEKRPA_a4l_ylsXok5kQvorFFsYCoCAVPMJSt6VKrzu_4XKA..&type=2&query=AI%E9%92%A2%E7%90%B4 %E4%B9%90%E7%90%86&token=94776298FB554CE4CFC9B04C213DD700D05A720F6AFD101F",
       "source": "搜狗微信",
@@ -6032,12 +6047,12 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 66.6,
-      "rank": 376
+      "rank": 377
     },
     {
-      "id": 376,
+      "id": 377,
       "title": "蓝莓评测|带娃练琴总靠吼?2021最佳 钢琴 AI 陪练app评测",
-      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqPndIWun0K3xMW31KZQ9l6VqXa8Fplpd9tMZFzngE9bw_1cCt9WEW7uHtV6YTG4PUskNsr42barcTrwti8_Be1yMFmzBDQ_k_8apqpZFt7LWV7wuoP90ZTCSGHG2is7kOKfuyzjinWqC9HWcippy5v56EOJ-8Q4fxdk41DVMA2vB73sg0poLXY_DPjBo04W0X8NiWnU3efWyE8RsmObDbtQ..&type=2&query=AI%E9%92%A2%E7%90%B4 %E4%B9%90%E7%90%86&token=9480F21EF221CE33383E57B33155AF4038790C386AFD11A9",
+      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqafPlfP-UlhZMW31KZQ9l6VqXa8Fplpd9tMZFzngE9bw_1cCt9WEW7uHtV6YTG4PUskNsr42barcTrwti8_Be1yMFmzBDQ_k_8apqpZFt7LWV7wuoP90ZTMpY37OY5UZ8KB1IlxESG3HVJAQKotGEwHBiYcJgWlJ-Daucd0qBBQgx024m_6NkScckn_u-Lg-vmSO7ONOlvmNOJBjQH7pCxQ..&type=2&query=AI%E9%92%A2%E7%90%B4 %E4%B9%90%E7%90%86&token=948E6F80741BF5A2B5B3D5319353EC55B60690036AFD13CA",
       "source": "搜狗微信",
       "publish_time": "2021-06-17T11:01:37+00:00",
       "summary": "而其在 乐理 知识、双手协调性以及合声方面的优势,也使得 钢琴 成为了很多家庭为孩子进行音乐启蒙的首选.图片来源:中央音乐学院...",
@@ -6048,12 +6063,12 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 66.6,
-      "rank": 377
+      "rank": 378
     },
     {
-      "id": 377,
+      "id": 378,
       "title": "歌剧《红船》在爱新聚福完成后期 音频制作",
-      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqWLMw2_s6aqhMW31KZQ9l6VqXa8Fplpd9PCsQNXenKrvoXv_kwmuha_hcsXkk_PKHWONaLb7Omm1fBEP18j3ejoqHiGqs8S6kD2Mz8puXbyy_QSHd-j93qa08qxx3NrrqibuSiOaRjgHh5hRA08bQYf5UFfNytje7LjuKzUZaJ-Cae1YXnRiV5L7fQXW580pu6-WyVDntn78NGbbB75bUeA..&type=2&query=AI%E9%9F%B3%E9%A2%91%E5%88%B6%E4%BD%9C&token=94810081F221CE33383E57B33155AF4038790C386AFD11AB",
+      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqGaCbdS4PMk1MW31KZQ9l6VqXa8Fplpd9PCsQNXenKrvoXv_kwmuha_hcsXkk_PKHWONaLb7Omm1fBEP18j3ejoqHiGqs8S6kD2Mz8puXbyy_QSHd-j93qY-Cvv6T0jl4QPwu9vYq79ecPxJNk8WNpJwNaqddN33rGRs12wfO0DDG39CyFZzMDID39_9LrD432QpbMcTDvH-fxjh3za6jWA..&type=2&query=AI%E9%9F%B3%E9%A2%91%E5%88%B6%E4%BD%9C&token=948E80BB741BF5A2B5B3D5319353EC55B60690036AFD13CC",
       "source": "搜狗微信",
       "publish_time": "2020-09-15T07:21:34+00:00",
       "summary": "最终在爱新聚福混音棚完成了150多轨5.1环绕声和2.0立体声两个版本的声音 制作 .二、后期混音师介绍: 赵平录音师,国际 音频 工程...",
@@ -6064,12 +6079,12 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 31.1,
-      "rank": 378
+      "rank": 379
     },
     {
-      "id": 378,
+      "id": 379,
       "title": "AI音乐 的“原创”激辩",
-      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwq0YrIJUE7U8RMW31KZQ9l6VqXa8Fplpd9BRxCEhnHfRK8K22gTVJwCgtPmctV7GkTiSeDXYfUujs1lF73Paw49hdwrEYGV_9O6OeZLPDLGyaacbbVkmwTPtcD9TkTAGcKVOHyHIkLXtcg_ARxfx7qaY8hH3nntGvucOCLPVWrcuKNtb7R4842FIkiZy8D9Z1cCad5mxQQ1qs89kyxDwoXvg..&type=2&query=AI%E9%9F%B3%E4%B9%90&token=9480CFC5F221CE33383E57B33155AF4038790C386AFD11A4",
+      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqXcBqOROaBTBMW31KZQ9l6VqXa8Fplpd9BRxCEhnHfRK8K22gTVJwCgtPmctV7GkTiSeDXYfUujs1lF73Paw49hdwrEYGV_9O6OeZLPDLGyaacbbVkmwTPnzSzmkrXc5Z8fYPT021jmu6T35HMiOvrsvIVhhc4WA_gJDdqSpnMGodXOq6YQTqcsP4DKgt8Rxt6ZTmKKcYEMy00NVofL2iDw..&type=2&query=AI%E9%9F%B3%E4%B9%90&token=948E4DA6741BF5A2B5B3D5319353EC55B60690036AFD13C4",
       "source": "搜狗微信",
       "publish_time": "2020-07-27T13:23:47+00:00",
       "summary": "AI创作音乐的性质该如何界定?你认为他是一种和人创作的作品一样独特艺术品,还只是对人类作品的一种拙劣模仿?在 AI音乐 越来越...",
@@ -6080,12 +6095,12 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 56.6,
-      "rank": 379
+      "rank": 380
     },
     {
-      "id": 379,
+      "id": 380,
       "title": "硅谷前沿② | AI 攻破 音乐 :自动生成高仿歌曲,但也会跑调",
-      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwq0YrIJUE7U8RMW31KZQ9l6VqXa8Fplpd9WXORbZDPq66t92xyrDphzhMmWXHJMw9WK8NJUEl1NMX0Gkb65xfeWzR2ddTQ24KE8Ddv8hc_A2-8BS0DIyP9ZZTwReao68QW9oxjnGSl0ecr5W7mYTuXMRQiDxz_t4DPodcDHUlXH6nmJpxzgcecJ9rSAQei0B9S8PebdWTTOYs89kyxDwoXvg..&type=2&query=AI%E9%9F%B3%E4%B9%90&token=9480CFC5F221CE33383E57B33155AF4038790C386AFD11A4",
+      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqXcBqOROaBTBMW31KZQ9l6VqXa8Fplpd9WXORbZDPq66t92xyrDphzhMmWXHJMw9WK8NJUEl1NMX0Gkb65xfeWzR2ddTQ24KE8Ddv8hc_A2-8BS0DIyP9ZeNN-GV5sR-CyXTB9jpLhvP64gD1kw_E7W23f7tEISRkNwH7FemahsEOkrmTZ2NKvr4iNcGeGjU18RH2y-Ai9xhf_71bqkOtiw..&type=2&query=AI%E9%9F%B3%E4%B9%90&token=948E4DA6741BF5A2B5B3D5319353EC55B60690036AFD13C4",
       "source": "搜狗微信",
       "publish_time": "2020-05-15T05:38:06+00:00",
       "summary": "AI 生成 音乐 技术自动 音乐 生成其实已经不是一项很新的技术了.即使在人工智能的方向上,也已经有很多前序的研究,其中有不少也启...",
@@ -6096,10 +6111,10 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 68.6,
-      "rank": 380
+      "rank": 381
     },
     {
-      "id": 380,
+      "id": 381,
       "title": "出门问问推出「魔音工坊」 AI 音频 创作平台,深圳湾邀你一起来体验",
       "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqhliOkNNjE2NMW31KZQ9l6VqXa8Fplpd9N9YrZ_EYXEMTR_SCFxCEj52MV425nYj3jrp69ZfjaJv7hcyfVV2b8cncOkaL_Lx5-FftvD5fVC82hj4A61iKjznW1G09gBaTmJe8pvOwXLmcHkHFMeQxbP4b4jy2P2BTYor99SyMeQylj2lkWQjNeQ_Kf8VHWU6dwfg9NhGhZDiAFV_3u-a3OQ..&type=2&query=AI%E9%9F%B3%E9%A2%91%E5%88%B6%E4%BD%9C&token=94777331FB554CE4CFC9B04C213DD700D05A720F6AFD1021",
       "source": "搜狗微信",
@@ -6112,12 +6127,12 @@
       "heat_score": 70,
       "recency_score": 0,
       "rank_score": 59.0,
-      "rank": 381
+      "rank": 382
     },
     {
-      "id": 381,
+      "id": 382,
       "title": "使用音频创作平台「魔音工坊」 尽享 AI音频 创作乐趣",
-      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqWLMw2_s6aqhMW31KZQ9l6VqXa8Fplpd9Es40zFcmhOvBD0jDXotTGTevx_7Sn5_DqxUsCYr0Te8gNfSSjxHB7wf8UcGvsjfwpigOO3qyCk5KRdH2TSirfcNz39AXVdmTc0Anfyz1Le09ucY05wBaoLbzpySQDz579KALEDUcWZeDlxqdbSR_KjGu-X24ypLLqytt26yIURh6VKrzu_4XKA..&type=2&query=AI%E9%9F%B3%E9%A2%91%E5%88%B6%E4%BD%9C&token=94810081F221CE33383E57B33155AF4038790C386AFD11AB",
+      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqGaCbdS4PMk1MW31KZQ9l6VqXa8Fplpd9Es40zFcmhOvBD0jDXotTGTevx_7Sn5_DqxUsCYr0Te8gNfSSjxHB7wf8UcGvsjfwpigOO3qyCk5KRdH2TSirfSolXCgfljS8WGEu8XvpQZGayzgxd488rPEh783NBugF21T__2xJ15pLWck8LpytM4k0XN6T6fUP19HCsFBhJB8Y-UZGbO56rA..&type=2&query=AI%E9%9F%B3%E9%A2%91%E5%88%B6%E4%BD%9C&token=948E80BB741BF5A2B5B3D5319353EC55B60690036AFD13CC",
       "source": "搜狗微信",
       "publish_time": "2020-04-03T01:48:57+00:00",
       "summary": "魔音工坊就是结合了AI的强大和人的专业的一款 AI音频生产 工具.以下是魔音工坊的介绍,挺好玩的,未来会推出更多好玩使用的功能...",
@@ -6128,12 +6143,12 @@
       "heat_score": 66,
       "recency_score": 0,
       "rank_score": 66.8,
-      "rank": 382
+      "rank": 383
     },
     {
-      "id": 382,
+      "id": 383,
       "title": "爱音乐 的深圳小孩,和海归音乐家一起浪漫演奏!",
-      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwq0YrIJUE7U8RMW31KZQ9l6VqXa8Fplpd9we4abPUs6_ckyIubf8isGc9Xz42dD_KRgkXrIVp-BXhZJl_E62JTqPUzcV3uODW6kNxEbJ18ys6bbJcqA9pzhLNF7cz6EWZlbWKhxmD-ngbEDjd5zI45VigUd9R85RFYpD8VqxoMpSOiFOmPhSnooMjzgshtNihpFm4dO6ekZNhQ_LeJW-Rhtg..&type=2&query=AI%E9%9F%B3%E4%B9%90&token=9480CFC5F221CE33383E57B33155AF4038790C386AFD11A4",
+      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqXcBqOROaBTBMW31KZQ9l6VqXa8Fplpd9we4abPUs6_ckyIubf8isGc9Xz42dD_KRgkXrIVp-BXhZJl_E62JTqPUzcV3uODW6kNxEbJ18ys6bbJcqA9pzhNGOcle1-G-0PuETLtltxM9s_c0kFfF59_GSvr_WT5Z85r6A3FhR12liPh0rhsuYP3hJpmoz13kdDrFQFCFvno7f3q8uRDTfkw..&type=2&query=AI%E9%9F%B3%E4%B9%90&token=948E4DA6741BF5A2B5B3D5319353EC55B60690036AFD13C4",
       "source": "搜狗微信",
       "publish_time": "2020-01-20T04:37:37+00:00",
       "summary": "的专业实力 爱音乐 的深圳小孩太幸福了~现在这家古典音乐机构仍在招生中感兴趣的家长,可以找这个地址哦Sarah Wong古典音乐艺术...",
@@ -6144,12 +6159,12 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 35.1,
-      "rank": 383
+      "rank": 384
     },
     {
-      "id": 383,
+      "id": 384,
       "title": "极悲极喜, 爱音乐 的你不能错过这部电影!",
-      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqT_zMsoR4vpdMW31KZQ9l6VqXa8Fplpd9n_5CZUKK5xNjirvY9fujGJp3nPoTT1AcSOJwA5Z4D09gsLC26g7LRrVTaVL9erfRYhlnHyobrFM3-Y-Nb86n8QiseJnH7QRCl4upMNI1XmizWDuYz1IaIB72LIQleHIW-VhxpVnZK7seFkKS037RmRw7PljRUd_nvkWj0AEuAfUO8fIRwtipOg..&type=2&query=AI%E9%9F%B3%E4%B9%90&token=93366711B84BA1AFBBBADC3DAEF1B81CBC30E7ED6AFCE048",
+      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqXcBqOROaBTBMW31KZQ9l6VqXa8Fplpd9n_5CZUKK5xNjirvY9fujGJp3nPoTT1AcSOJwA5Z4D09gsLC26g7LRvosUjRPQMMdWnrSAa8SeYkQ_Sy7Qli8p5Qxnyg5457Qx6ca8Bt-Htlev0QaBajTMMqE1cVY65hWHJDnswHaz9e4knHQqJpSaABM-hYU9KYu3j9bO1O87__2CsG6-xMgzQ..&type=2&query=AI%E9%9F%B3%E4%B9%90&token=948E4DA6741BF5A2B5B3D5319353EC55B60690036AFD13C4",
       "source": "搜狗微信",
       "publish_time": "2019-01-21T14:21:36+00:00",
       "summary": "这是一部 音乐 传记电影.讲述的就是我前面所提到的法国国宝级女歌手Edith Piaf(伊蒂·琵雅芙,以下统一用伊蒂)的一生.法国女...",
@@ -6160,10 +6175,26 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 40.1,
-      "rank": 384
+      "rank": 385
     },
     {
-      "id": 384,
+      "id": 531,
+      "title": "开团啦!每一个 爱音乐 的人,都值得拥有它!",
+      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqXcBqOROaBTBMW31KZQ9l6VqXa8Fplpd9y2BcTIknTvJnZZX4BlVokgv0A-NrJVeHsU7dC9o4jyS0hCbG8ZXE6b9uGWOSxtZPQgreyb8MFRNbKKqCx2lb7ntFc_chCZAkLljAOCM4a011UWkmo5pnzeA4KaK5PHtML03v9Cxbtn4lDIWpQeHMlAndUt0tnV1mVNliYCwFpdgCn9lOoZLP2Q..&type=2&query=AI%E9%9F%B3%E4%B9%90&token=948E4DA6741BF5A2B5B3D5319353EC55B60690036AFD13C4",
+      "source": "搜狗微信",
+      "publish_time": "2018-05-04T11:00:38+00:00",
+      "summary": "民歌中国民歌领域第一自媒体“喜欢 音乐 的人,无论在哪儿、干什么都希望有 音乐 做伴. 然而用手机播放 音乐 ,声音不够大,音质也不...",
+      "category": "搜狗微信",
+      "dedupe_key": "sogou:ab9eb3d4259cb837e19fbf0e46275ccd266483895b814c12de2347653c8d473b",
+      "title_zh": null,
+      "relevance_score": 39,
+      "heat_score": 62,
+      "recency_score": 0,
+      "rank_score": 38.1,
+      "rank": 386
+    },
+    {
+      "id": 385,
       "title": "我 爱吉他 ,我们是永不放弃的吉他手!",
       "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxTSeI6shcwqgzvubo7AfmNMW31KZQ9l6VqXa8Fplpd9GRDdwaK7he0Wld5IPE34wQ6nEU3JkMwTIULm5jMpj7st1pVlDFCnGo51sbnYegR01F_8vSGs-norRN7CfDR2v8r_CcXlyPqmrNBb7O9r8lR7j4iCKNeqOjx-_H50ZAXUa-kUmlh2U0f0Bk-qnouzfhjcBH_j_zZxJJAbTlSIRt3wdVqCwyPdzA..&type=2&query=AI%E5%90%89%E4%BB%96&token=94774F77FB554CE4CFC9B04C213DD700D05A720F6AFD101C",
       "source": "搜狗微信",
@@ -6176,10 +6207,10 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 35.1,
-      "rank": 385
+      "rank": 387
     },
     {
-      "id": 385,
+      "id": 386,
       "title": "钢琴 乐理 知识之谱表、谱号",
       "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6ft3wfAVofsP5Peu-UiA4DArqDUx0JXpf6mXZPt_qfCaVgrFeYQugDgRl4S2ku5Y0rSpD3dZcjHeXsDquyxLz4gigNVCxR8aPYWaMFp07P25YCBzo4kBynFhKLV4ElQ0siyEG7RK72ZIvNoIqSlfA9aiDlrLWnBGNry0bY4kD5mkyOybXHCp4uOzrtRMxsH1Cor1y4WB3AeMlAm0O8RyjmjnIT2XeX0bELc6xkKh3XMowrXMIk9xp8BcpNKf7RYDxanPix1LSDbndtiUYOATqSpy5pXMocNmCiZqwg0yoRFw.&type=2&query=AI%E9%92%A2%E7%90%B4 %E4%B9%90%E7%90%86&token=94776298FB554CE4CFC9B04C213DD700D05A720F6AFD101F",
       "source": "搜狗微信",
@@ -6192,12 +6223,12 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 49.1,
-      "rank": 386
+      "rank": 388
     },
     {
-      "id": 386,
+      "id": 387,
       "title": "爱吉他 的人都要拜读!前辈吴子彪深度好文:《琴德与琴韵》附视频",
-      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6ft3wfAVofsP5Peu-UiA4DNKtokwETZjIiN5RhDl5XmmVgrFeYQugDv-2yCOjmvbRHFQXytYsfGknsG_EFiRTh4rIJ4JZI1nO5_7Gslx39TskBvHJFk811c756dEuBDpVaZguN5qxjF7UsO_BlWIL8JA2qtb1mvrEbc65Tn1H8ZvTq_U1Yl7238hSRi5a-I4V4Gttxe5dQ7MJZG_z9mQJ9dcju5kA_QGQdIBdah6kM-dtMspzNcQbwbxsNom1kECeb1cApRjrM_pHZjn9FruWTKlT64lMjGVYiZqwg0yoRFw.&type=2&query=AI%E5%90%89%E4%BB%96&token=9480E3A7F221CE33383E57B33155AF4038790C386AFD11A6",
+      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6ft3wfAVofsP5Peu-UiA4DNKtokwETZjISkRYNPZanqyVgrFeYQugDv-2yCOjmvbRHFQXytYsfGknsG_EFiRTh4rIJ4JZI1nO5_7Gslx39TskBvHJFk811c756dEuBDpVaZguN5qxjF7UsO_BlWIL8JA2qtb1mvrEbc65Tn1H8ZvTq_U1Yl7238hSRi5a-I4V4Gttxe5dQ7MJZG_z9mQJ9dcju5kA_QGQVZD2xALMBQxXXN4OVYX1mc0tYcZdKlgNM9P7dRef7qyd77VKaFqJvufFdPtwleyRiZqwg0yoRFw.&type=2&query=AI%E5%90%89%E4%BB%96&token=948E602F741BF5A2B5B3D5319353EC55B60690036AFD13C7",
       "source": "搜狗微信",
       "publish_time": "2016-12-12T01:05:07+00:00",
       "summary": "此文章里,对从事 吉他 音乐,演奏和爱好的人,写出了一个长辈语重心长的期望,拜读后无不让人深思良久并深受教育启发. 吴子...",
@@ -6208,10 +6239,10 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 40.1,
-      "rank": 387
+      "rank": 389
     },
     {
-      "id": 387,
+      "id": 388,
       "title": "爱音乐 的,都不会错过这么浪的音磅",
       "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6ft3wfAVofsP5Peu-UiA4DNKtokwETZjIrWiUalRKYZ-VgrFeYQugDoMzRok4lKJIuv0-9ZjWqbadSX4nHBtUz35XXNGw85MFz6ScNiemEMnUm5_8i45Qbp04BN6zQfzNeTAE1xOoOljPAuPD7_BRBpW3i21NPiSeDMDgN995Nv_vvHVE_x3E13gFUdqJYg3PExtzRDt9ZfrRk4YgN3qNAlhhBwEUPHSa1SVHD1vYiW7IfVjWqUYMkf__8GIrXnub7gIgc1pGbZiGCgd9c8UWUZLpassNdB0kiZqwg0yoRFw.&type=2&query=AI%E9%9F%B3%E4%B9%90&token=9480CFC5F221CE33383E57B33155AF4038790C386AFD11A4",
       "source": "搜狗微信",
@@ -6224,10 +6255,10 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 40.1,
-      "rank": 388
+      "rank": 390
     },
     {
-      "id": 388,
+      "id": 389,
       "title": "明星私享会|林薇琪: 爱音乐 也爱公益",
       "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6ft3wfAVofsP5Peu-UiA4DBtWjekjRDvGjfmWeDWh47GVgrFeYQugDgbWdrsV7tZ4-lAyQkPs_8eBO85xTJKAZ6wkXW7haxEwS4Oy_-SztrkZf2mjrV3x2g0c34RHvXdZC7D2sC_GphqGVh0VvTMqvZvuEobWabheesT5b2Ya4t_WTyXS70KLorGBZ1BeelSJ5whUsrHAEG_vakky-FVdSj0y_BPorKoBt7MrlDaHivhnYDtrL3dpYJkSOcJq3BDW3E_3GBz8pI5fx-ulsYkYrRmkh5XVLPd4iZqwg0yoRFw.&type=2&query=AI%E9%9F%B3%E4%B9%90&token=8D96EDE9CE0859E85F660014ED148487602747C96AFC1078",
       "source": "搜狗微信",
@@ -6240,12 +6271,12 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 35.1,
-      "rank": 389
+      "rank": 391
     },
     {
-      "id": 389,
+      "id": 390,
       "title": "G&M DOTCH梦想基金中国行┇那些 爱吉他 的人最终都会走到一起——夏涛篇",
-      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6ft3wfAVofsP5Peu-UiA4DNKtokwETZjIiN5RhDl5XmmVgrFeYQugDqCVurG9yNgrBMYz0iwvkFoTAuANOGF6dTu2IbMcM6lLwPgT_NCfL-ROcrjnfTVdFs9rZk_Yb8qJ0nVYQlCMZrX55Z9Yk5lJwBx8anAPd-SvlbVGOAsbwrqBUI-t5BWRSNuQmc_3qmAmwW1CgIr_Rpt89UxI3R46gPII2OGKdz1vak2clqiMR56dQ99DABBUkCTZhG0DpMJMGvQPXb8Xh7NZNMqUXPCFuiY25l7YIiLLiZqwg0yoRFw.&type=2&query=AI%E5%90%89%E4%BB%96&token=9480E3A7F221CE33383E57B33155AF4038790C386AFD11A6",
+      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6ft3wfAVofsP5Peu-UiA4DNKtokwETZjISkRYNPZanqyVgrFeYQugDqCVurG9yNgrBMYz0iwvkFoTAuANOGF6dTu2IbMcM6lLwPgT_NCfL-ROcrjnfTVdFs9rZk_Yb8qJ0nVYQlCMZrX55Z9Yk5lJwBx8anAPd-SvlbVGOAsbwrqBUI-t5BWRSNuQmc_3qmAmwW1CgIr_Rpt89UxI3R46gPII2OGKdz1v_Ygnq0nGlEeGQKirMgFuRzeC27tYE9LC83de6lsfAbiNLs1SFSUCEGUBYI5TbRpWiZqwg0yoRFw.&type=2&query=AI%E5%90%89%E4%BB%96&token=948E602F741BF5A2B5B3D5319353EC55B60690036AFD13C7",
       "source": "搜狗微信",
       "publish_time": "2016-06-06T12:58:17+00:00",
       "summary": "那个从年少起就响在耳边的 吉他 梦如今是否仍能听见?有人带着 吉他 旅行他的行李只有 吉他 一步,一步从来也没有回身的念头终于,...",
@@ -6256,12 +6287,12 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 35.1,
-      "rank": 390
+      "rank": 392
     },
     {
-      "id": 390,
+      "id": 391,
       "title": "犬马君 爱音乐 音乐、福利,都给我奏起!",
-      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6ft3wfAVofsP5Peu-UiA4DNKtokwETZjIrWiUalRKYZ-VgrFeYQugDpibmmhs2Z01E1J59TMQMQNPTK5EjKm25eqCLfIPjzDBhrLtZI66GC1_EJ2c2xBD7lttvps5NAe0ZQK_SsAXhuYiNO5YyeVzr_P5RLObga8yIPF-CtgitHHGfDmq-o2TKmKbwAeD9KsBmNqbzjpSKAXiuUeV6Oem27oDnF1lfS3uTrP_a38lfLL4KiogszcL1NrVY8u2cxCjPXUaJQBLMmwxqlkaaBuUgq9f2MMztO_2iZqwg0yoRFw.&type=2&query=AI%E9%9F%B3%E4%B9%90&token=9480CFC5F221CE33383E57B33155AF4038790C386AFD11A4",
+      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6ft3wfAVofsP5Peu-UiA4DNKtokwETZjIESyxhDw9hcKVgrFeYQugDpibmmhs2Z01E1J59TMQMQNPTK5EjKm25eqCLfIPjzDBhrLtZI66GC1_EJ2c2xBD7lttvps5NAe0ZQK_SsAXhuYiNO5YyeVzr_P5RLObga8yIPF-CtgitHHGfDmq-o2TKmKbwAeD9KsBmNqbzjpSKAXiuUeV6Oem27oDnF1lfS3u1Ql6dAzqK4taPD39vMPV_DhG82ou3tHU-aDbKbUr20C824QGlU1o9FT9FqaCeBiKiZqwg0yoRFw.&type=2&query=AI%E9%9F%B3%E4%B9%90&token=948E4DA6741BF5A2B5B3D5319353EC55B60690036AFD13C4",
       "source": "搜狗微信",
       "publish_time": "2016-05-23T13:30:56+00:00",
       "summary": "“犬马君 爱音乐 ”文末写评论根据入选评论的最终diǎn zàn数为你计入等值积分 【 积分越高,获得奖品越丰富哦!】注意啦注意啦,晒...",
@@ -6272,10 +6303,10 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 35.1,
-      "rank": 391
+      "rank": 393
     },
     {
-      "id": 391,
+      "id": 392,
       "title": "AI孙燕姿爆火背后:全民 制造 的歌手,陷入争议的 音乐",
       "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSzvBszNeu-u6DtfztVfS8eFP4oEcMSryqVqXa8Fplpd9-q1IXCUTWEtXUi7rMBNKhY_ZfXxoXCWukmFXq8WW4RWgofwLQRNvfmAncceCyw-H0jrld_5pNGSJo-DFzQreibtF4LC-pCwpT2JQ75rgahMVIG-M3UjukvjK3r0I0TTiQ_xlbYjcQJzxmHJrLpvsPFBNMNz-qwCqt0U5eKMsxNWAFV_3u-a3OQ..&type=2&query=%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD %E9%9F%B3%E4%B9%90%E5%88%B6%E4%BD%9C&token=8B4B0B502AD2BC0DBBBDDBD40FFAE2BBBB908F986AFBBCB6",
       "source": "搜狗微信",
@@ -6288,39 +6319,55 @@
       "heat_score": 66,
       "recency_score": 0,
       "rank_score": 69.8,
-      "rank": 392
+      "rank": 394
+    },
+    {
+      "id": 398,
+      "title": "学术前沿∣ 音乐 人工智能 系系列讲座——“智能音频 制作 ”",
+      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSzvBszNeu-u6JBRsO64p1GdP4oEcMSryqVqXa8Fplpd9Fu02Mhr_KXMv8kmpsuX42nfcDBJovInadkjeeEO8D4lXKrMNgYj1o1DvFZ1qsWc818Gv3JbOz7XjYzpt0-_J8DHxjhm5HAz8PLeq7X79N_KdKJXXKhPxWxpGBFqtsvsUaalynTiqvBIvxCSgFHkb2qK1De8yuNipQwkqbBuAjXBf_71bqkOtiw..&type=2&query=%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD %E9%9F%B3%E4%B9%90%E5%88%B6%E4%BD%9C&token=8B3BC1CF34CEA311A6A3C6C928D54EADA6E95B496AFBBA3C",
+      "source": "搜狗微信",
+      "publish_time": null,
+      "summary": "也是《 智能 音乐制作 》( Intelligent Music Production )和《音频效... 供稿: 音乐 人工智能 与 音乐 信息科技系文:张渊、周子雅责任编辑/...",
+      "category": "搜狗微信",
+      "dedupe_key": "sogou:c05c926079e24f6bcb79cb61de4d271348f439e02e4a7a134a7606da5b093b6f",
+      "title_zh": null,
+      "relevance_score": 100,
+      "heat_score": 62,
+      "recency_score": 0,
+      "rank_score": 68.6,
+      "rank": 395
     },
     {
       "id": 397,
-      "title": "浅谈 人工智能 技术在 音乐 创作中的应用",
-      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSzvBszNeu-u6DtfztVfS8eFP4oEcMSryqVqXa8Fplpd9SG_jmo4OSxiaQWdgyjXINqMX2mIWuFGJ1qCJITHc4sT9jnJRMsZXobfI3TUYSWjQ5tt9g7EJXlBZ6O6OlvFZgxDZmnXAjK2m1yTk2OYADarTiKk8HNFby9DKp_Q7Al4QxjmTQDq-HUvMufoLon4TLeQD5TubKFT_VSOsmfpvmkDy08OLTBhW0A..&type=2&query=%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD %E9%9F%B3%E4%B9%90%E5%88%B6%E4%BD%9C&token=8B4B0B502AD2BC0DBBBDDBD40FFAE2BBBB908F986AFBBCB6",
+      "title": "词曲创作只需几秒,「AI作曲家」Suno引爆 音乐 圈,第一手体验和攻略来了",
+      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSzvBszNeu-u6DtfztVfS8eFP4oEcMSryqVqXa8Fplpd9W7Wq1wsxyyZBM_5-2a-4-LPPZo38b4E8xqJNGZdnYqazuappbPbNhSB5UQ4YZs3n7Kobvdeo9ltat5Ojazr5i8tjDIatwZDc5GXSNlDgZxTKb3RiYcE3pXzwMpuVLI3H9ivv1xL16jjqxHP98o1MnnBCMEM-mRw3YAjQxaOg2xwCYioxHkzTmA..&type=2&query=%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD %E9%9F%B3%E4%B9%90%E5%88%B6%E4%BD%9C&token=8B4B0B502AD2BC0DBBBDDBD40FFAE2BBBB908F986AFBBCB6",
       "source": "搜狗微信",
       "publish_time": null,
-      "summary": "人工智能 ( Artificial Intelligence )并不是一个新名词.早在20世纪... 技术能够在各个方面影响 音乐制作 的流程.由3位好莱坞作曲家创...",
+      "summary": "当用户将其用于短视频等背景 音乐 的 制作 时,我们是否真的不需要... 本次大会由中国 人工智能 学会(CAAI)主办,CAAI 具身智能专委...",
       "category": "搜狗微信",
-      "dedupe_key": "sogou:27593f29b13204d3b3ae109e361b3a79c7e9343a09189c48feb75bcc74fde8d8",
+      "dedupe_key": "sogou:feb5ba87b9f388703cbcaac26a9cb32ae7bc82c3cfbc2d21fb6f5b1c155c96a3",
       "title_zh": null,
       "relevance_score": 100,
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 68.6,
-      "rank": 393
+      "rank": 396
     },
     {
       "id": 396,
-      "title": "音乐制作 中的 AI 人工智能 :工具,术语和实例",
-      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSzvBszNeu-u6DtfztVfS8eFP4oEcMSryqVqXa8Fplpd9XRBHT8Amgb_noIpe4TxL-DaE6gKBoGbQ3Bwe_KmDxATTkpFWjxFibx4UehJcsfQ5L1LqbA-y4MD3qbucZDaFx8Ld74FOxuMOyprnIILZTBREmTu8Y-2pwdxLD8RxP7zuMnlwShXATtAAw7PleCHC2evf81SI80WL6lj0eUzGIqr2CsG6-xMgzQ..&type=2&query=%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD %E9%9F%B3%E4%B9%90%E5%88%B6%E4%BD%9C&token=8B4B0B502AD2BC0DBBBDDBD40FFAE2BBBB908F986AFBBCB6",
+      "title": "【在线辅导】 人工智能 和 音乐制作 (上篇):AI 音乐制作 的现状",
+      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSzvBszNeu-u6DtfztVfS8eFP4oEcMSryqVqXa8Fplpd9Jmfo6ptNjk1vFVEP8NOexd89grY5-7EKCwH4DCosX-TFg-Akgh2HjDZAurCgpnwGbFMtqsLEvv1AEkS0_vQ6Lyp75b2Dl6kn93cAQHZxIWmtuuVKgO4YDxe6FW8UZZ1GWp7B4sVRPJdt1Cl-_Osv9UJnqLiVpOwUZblPYAFRopo5eBgmN3LoYQ..&type=2&query=%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD %E9%9F%B3%E4%B9%90%E5%88%B6%E4%BD%9C&token=8B4B0B502AD2BC0DBBBDDBD40FFAE2BBBB908F986AFBBCB6",
       "source": "搜狗微信",
       "publish_time": null,
-      "summary": "“ 人工智能 (AI)是对于 音乐制作 的意义是革命性的,它为创作者提供新的可能性的同时改变了我们日常听歌和的方式,并且开拓了更...",
+      "summary": "人工智能 工具有可能动摇 音乐制作 的传统工作过程.在第 1 部分中,我们将探索目前存在的一些工具,并了解这些工具将来可能如何发...",
       "category": "搜狗微信",
-      "dedupe_key": "sogou:55f2eded40d583607cee1213b45e10617d9af649bb487724b05bda80eea4ff75",
+      "dedupe_key": "sogou:f343eb05eb252aed8c871f18d824b98288d9f947bb3581fa7255ac0363b0bb82",
       "title_zh": null,
       "relevance_score": 100,
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 68.6,
-      "rank": 394
+      "rank": 397
     },
     {
       "id": 395,
@@ -6336,55 +6383,55 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 68.6,
-      "rank": 395
+      "rank": 398
     },
     {
       "id": 394,
-      "title": "【在线辅导】 人工智能 和 音乐制作 (上篇):AI 音乐制作 的现状",
-      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSzvBszNeu-u6DtfztVfS8eFP4oEcMSryqVqXa8Fplpd9Jmfo6ptNjk1vFVEP8NOexd89grY5-7EKCwH4DCosX-TFg-Akgh2HjDZAurCgpnwGbFMtqsLEvv1AEkS0_vQ6Lyp75b2Dl6kn93cAQHZxIWmtuuVKgO4YDxe6FW8UZZ1GWp7B4sVRPJdt1Cl-_Osv9UJnqLiVpOwUZblPYAFRopo5eBgmN3LoYQ..&type=2&query=%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD %E9%9F%B3%E4%B9%90%E5%88%B6%E4%BD%9C&token=8B4B0B502AD2BC0DBBBDDBD40FFAE2BBBB908F986AFBBCB6",
+      "title": "音乐制作 中的 AI 人工智能 :工具,术语和实例",
+      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSzvBszNeu-u6DtfztVfS8eFP4oEcMSryqVqXa8Fplpd9XRBHT8Amgb_noIpe4TxL-DaE6gKBoGbQ3Bwe_KmDxATTkpFWjxFibx4UehJcsfQ5L1LqbA-y4MD3qbucZDaFx8Ld74FOxuMOyprnIILZTBREmTu8Y-2pwdxLD8RxP7zuMnlwShXATtAAw7PleCHC2evf81SI80WL6lj0eUzGIqr2CsG6-xMgzQ..&type=2&query=%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD %E9%9F%B3%E4%B9%90%E5%88%B6%E4%BD%9C&token=8B4B0B502AD2BC0DBBBDDBD40FFAE2BBBB908F986AFBBCB6",
       "source": "搜狗微信",
       "publish_time": null,
-      "summary": "人工智能 工具有可能动摇 音乐制作 的传统工作过程.在第 1 部分中,我们将探索目前存在的一些工具,并了解这些工具将来可能如何发...",
+      "summary": "“ 人工智能 (AI)是对于 音乐制作 的意义是革命性的,它为创作者提供新的可能性的同时改变了我们日常听歌和的方式,并且开拓了更...",
       "category": "搜狗微信",
-      "dedupe_key": "sogou:f343eb05eb252aed8c871f18d824b98288d9f947bb3581fa7255ac0363b0bb82",
+      "dedupe_key": "sogou:55f2eded40d583607cee1213b45e10617d9af649bb487724b05bda80eea4ff75",
       "title_zh": null,
       "relevance_score": 100,
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 68.6,
-      "rank": 396
+      "rank": 399
     },
     {
       "id": 393,
-      "title": "词曲创作只需几秒,「AI作曲家」Suno引爆 音乐 圈,第一手体验和攻略来了",
-      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSzvBszNeu-u6DtfztVfS8eFP4oEcMSryqVqXa8Fplpd9W7Wq1wsxyyZBM_5-2a-4-LPPZo38b4E8xqJNGZdnYqazuappbPbNhSB5UQ4YZs3n7Kobvdeo9ltat5Ojazr5i8tjDIatwZDc5GXSNlDgZxTKb3RiYcE3pXzwMpuVLI3H9ivv1xL16jjqxHP98o1MnnBCMEM-mRw3YAjQxaOg2xwCYioxHkzTmA..&type=2&query=%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD %E9%9F%B3%E4%B9%90%E5%88%B6%E4%BD%9C&token=8B4B0B502AD2BC0DBBBDDBD40FFAE2BBBB908F986AFBBCB6",
+      "title": "浅谈 人工智能 技术在 音乐 创作中的应用",
+      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSzvBszNeu-u6DtfztVfS8eFP4oEcMSryqVqXa8Fplpd9SG_jmo4OSxiaQWdgyjXINqMX2mIWuFGJ1qCJITHc4sT9jnJRMsZXobfI3TUYSWjQ5tt9g7EJXlBZ6O6OlvFZgxDZmnXAjK2m1yTk2OYADarTiKk8HNFby9DKp_Q7Al4QxjmTQDq-HUvMufoLon4TLeQD5TubKFT_VSOsmfpvmkDy08OLTBhW0A..&type=2&query=%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD %E9%9F%B3%E4%B9%90%E5%88%B6%E4%BD%9C&token=8B4B0B502AD2BC0DBBBDDBD40FFAE2BBBB908F986AFBBCB6",
       "source": "搜狗微信",
       "publish_time": null,
-      "summary": "当用户将其用于短视频等背景 音乐 的 制作 时,我们是否真的不需要... 本次大会由中国 人工智能 学会(CAAI)主办,CAAI 具身智能专委...",
+      "summary": "人工智能 ( Artificial Intelligence )并不是一个新名词.早在20世纪... 技术能够在各个方面影响 音乐制作 的流程.由3位好莱坞作曲家创...",
       "category": "搜狗微信",
-      "dedupe_key": "sogou:feb5ba87b9f388703cbcaac26a9cb32ae7bc82c3cfbc2d21fb6f5b1c155c96a3",
+      "dedupe_key": "sogou:27593f29b13204d3b3ae109e361b3a79c7e9343a09189c48feb75bcc74fde8d8",
       "title_zh": null,
       "relevance_score": 100,
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 68.6,
-      "rank": 397
+      "rank": 400
     },
     {
-      "id": 392,
-      "title": "学术前沿∣ 音乐 人工智能 系系列讲座——“智能音频 制作 ”",
-      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSzvBszNeu-u6JBRsO64p1GdP4oEcMSryqVqXa8Fplpd9Fu02Mhr_KXMv8kmpsuX42nfcDBJovInadkjeeEO8D4lXKrMNgYj1o1DvFZ1qsWc818Gv3JbOz7XjYzpt0-_J8DHxjhm5HAz8PLeq7X79N_KdKJXXKhPxWxpGBFqtsvsUaalynTiqvBIvxCSgFHkb2qK1De8yuNipQwkqbBuAjXBf_71bqkOtiw..&type=2&query=%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD %E9%9F%B3%E4%B9%90%E5%88%B6%E4%BD%9C&token=8B3BC1CF34CEA311A6A3C6C928D54EADA6E95B496AFBBA3C",
+      "id": 400,
+      "title": "基础 音乐制作 等岗位或将被AI取代",
+      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSzvBszNeu-u6DtfztVfS8eFP4oEcMSryqVqXa8Fplpd9U9ce1b1TPqt247JMBWtubeGdZXnKKBU37pGJHUfViJI1Pn-DYoLLlon05rxDxha3w4u0LNS9b7HSfuBQ7sbALU5iyr646-KCCeE5sFZsImMLO43V2tHwpodXmo1hiNTZw_L9WT6I1NNeeP4XILCrLrBuC_cllyxBgWPKYcRtg33vzHZXxeLdyg..&type=2&query=%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD %E9%9F%B3%E4%B9%90%E5%88%B6%E4%BD%9C&token=8B4B0B502AD2BC0DBBBDDBD40FFAE2BBBB908F986AFBBCB6",
       "source": "搜狗微信",
       "publish_time": null,
-      "summary": "也是《 智能 音乐制作 》( Intelligent Music Production )和《音频效... 供稿: 音乐 人工智能 与 音乐 信息科技系文:张渊、周子雅责任编辑/...",
+      "summary": "基础 音乐制作 等工作岗位或将被 人工智能 取代.与此同时, 人工智能 也将催生音乐产业新兴岗位.比如,懂得将最新的科技应用于 音乐 ...",
       "category": "搜狗微信",
-      "dedupe_key": "sogou:c05c926079e24f6bcb79cb61de4d271348f439e02e4a7a134a7606da5b093b6f",
+      "dedupe_key": "sogou:b4295ebbc5f2aa513345bfc6b9df29db57c3cc788bbb68f17fe09b34e58f2ca9",
       "title_zh": null,
-      "relevance_score": 100,
+      "relevance_score": 98,
       "heat_score": 62,
       "recency_score": 0,
-      "rank_score": 68.6,
-      "rank": 398
+      "rank_score": 67.6,
+      "rank": 401
     },
     {
       "id": 399,
@@ -6400,26 +6447,10 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 67.6,
-      "rank": 399
+      "rank": 402
     },
     {
-      "id": 398,
-      "title": "基础 音乐制作 等岗位或将被AI取代",
-      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSzvBszNeu-u6DtfztVfS8eFP4oEcMSryqVqXa8Fplpd9U9ce1b1TPqt247JMBWtubeGdZXnKKBU37pGJHUfViJI1Pn-DYoLLlon05rxDxha3w4u0LNS9b7HSfuBQ7sbALU5iyr646-KCCeE5sFZsImMLO43V2tHwpodXmo1hiNTZw_L9WT6I1NNeeP4XILCrLrBuC_cllyxBgWPKYcRtg33vzHZXxeLdyg..&type=2&query=%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD %E9%9F%B3%E4%B9%90%E5%88%B6%E4%BD%9C&token=8B4B0B502AD2BC0DBBBDDBD40FFAE2BBBB908F986AFBBCB6",
-      "source": "搜狗微信",
-      "publish_time": null,
-      "summary": "基础 音乐制作 等工作岗位或将被 人工智能 取代.与此同时, 人工智能 也将催生音乐产业新兴岗位.比如,懂得将最新的科技应用于 音乐 ...",
-      "category": "搜狗微信",
-      "dedupe_key": "sogou:b4295ebbc5f2aa513345bfc6b9df29db57c3cc788bbb68f17fe09b34e58f2ca9",
-      "title_zh": null,
-      "relevance_score": 98,
-      "heat_score": 62,
-      "recency_score": 0,
-      "rank_score": 67.6,
-      "rank": 400
-    },
-    {
-      "id": 400,
+      "id": 401,
       "title": "小叶子单月营收过亿:从智能 钢琴 到 AI 陪练的三阶进化",
       "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSzvBszNeu-u6c3QqpXpHRYdP4oEcMSryqVqXa8Fplpd9pC1tMdSgMfxtfXrUg-bjJZrlAt_Pq9OfQ4VZ19-RK7rjQKI0CfmpnonaUxiI8CpKvcvmp3Sw55H5lRQ0zm7sqNMLIPsX4wcUQ_K7y-5y2mFAGG0qRMlORfuLwWsEtIBRdtzIB2no6Z8e1ZPoS9kaMrdzA4h6JcdFBOSY_96GGoT6zvkPgoArRQ..&type=2&query=AI%E9%92%A2%E7%90%B4 %E4%B9%90%E7%90%86&token=8BBBAFA354ADC372C5C0A6B577D59555C62006016AFBCD5C",
       "source": "搜狗微信",
@@ -6432,10 +6463,10 @@
       "heat_score": 66,
       "recency_score": 0,
       "rank_score": 62.8,
-      "rank": 401
+      "rank": 403
     },
     {
-      "id": 401,
+      "id": 402,
       "title": "Soundful: 人工智能 音乐 创作平台",
       "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSzvBszNeu-u6DtfztVfS8eFP4oEcMSryqVqXa8Fplpd9oMCRgvRpHdVFsr0hr3vybBs1WTNAebeSG-GmxQoo7CJw7ho-oujZNXtb1Ksw2ZcOj6L8-_yamD3VJTH5i4d0_oj9AjUqFwTmLeNcaB9X8UUzn_w_XEA0Eq2OEKz9RMT81gtDz-_cBr_Isk0ikCTfm4OcHAQrC8Q6P5umHN48QVx535pjGOOjYg..&type=2&query=%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD %E9%9F%B3%E4%B9%90%E5%88%B6%E4%BD%9C&token=8B4B0B502AD2BC0DBBBDDBD40FFAE2BBBB908F986AFBBCB6",
       "source": "搜狗微信",
@@ -6448,10 +6479,10 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 62.1,
-      "rank": 402
+      "rank": 404
     },
     {
-      "id": 402,
+      "id": 403,
       "title": "AI音乐 算什么?有了这些神器,一天爆肝10首歌!",
       "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSzvBszNeu-u6jhg4jUjhzHhP4oEcMSryqVqXa8Fplpd9PPQ--Ltu9z_xngatG_iwdhtWfzDL4Ji85UYmt3Iy7ceHa_0IGF2sLWXhfig3xnftVGszEhs6dg6bnjFuhN6vDjToH4LGJhRzoXryilhhAlrV97-FCXuQ-cFb9ARU6DaL178zGzokrjmejKnnA-7WXWi3wdrYBPRLDI0FqqTQkJR535pjGOOjYg..&type=2&query=AI%E9%9F%B3%E4%B9%90&token=8BBB930C54ADC372C5C0A6B577D59555C62006016AFBCD58",
       "source": "搜狗微信",
@@ -6464,10 +6495,10 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 59.6,
-      "rank": 403
+      "rank": 405
     },
     {
-      "id": 403,
+      "id": 404,
       "title": "阿里 AI音乐 创作平台快乐虾米(HappyShrimp)正式上线APP!",
       "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSzvBszNeu-u6JBRsO64p1GdP4oEcMSryqVqXa8Fplpd9A6B5W90MzoG-6NsQR4vRTFyXJaOUPeBfeEg8O3cDf4eorhb9IpzEP5l4875FKS4owBT_dZs5FkIm7AgLHi380nqretB5m2I_z9vHELIesvuPMRasQE28vHKw8DMAxA2EwecIBSWog8rXBAj1G9FksdzrZHwX77yk9K37WEVCt7B5LU3lqtPw9g..&type=2&query=AI%E9%9F%B3%E4%B9%90&token=8B3BBE3034CEA311A6A3C6C928D54EADA6E95B496AFBBA3B",
       "source": "搜狗微信",
@@ -6480,23 +6511,39 @@
       "heat_score": 66,
       "recency_score": 0,
       "rank_score": 57.8,
-      "rank": 404
+      "rank": 406
     },
     {
-      "id": 407,
-      "title": "AI 终于走进专业录音棚:Pro Tools 新增 智能 分轨, 音乐制作 方式要变了",
-      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSzvBszNeu-u6DtfztVfS8eFP4oEcMSryqVqXa8Fplpd947xf_P53vV_I3s98-LSZLy4aLgCIOlz7St0DQbrd8e81DsGLDqp6_EhH_eXH5CbRLA-x4hs0u0naGNnt_NEt1OIDTwX9p5FreWvajGIql49eTyES86qF3zl0HiR5mFLLncy5oOGBoJrxy82MbCSY108cJE3Tn5PXEV73xGlmI_nyPfCoem7FzA..&type=2&query=%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD %E9%9F%B3%E4%B9%90%E5%88%B6%E4%BD%9C&token=8B4B0B502AD2BC0DBBBDDBD40FFAE2BBBB908F986AFBBCB6",
+      "id": 408,
+      "title": "AI音乐 是什么,它能帮我们实现何种创造?",
+      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSzvBszNeu-u6JBRsO64p1GdP4oEcMSryqVqXa8Fplpd9R2yKWBYAwSA2e8gElgEI2XBUQjNZ1YQjKuNJa23AJOSR-ewN2l2Ybkyf3Atku_Pp0SmGYyEZDB4c3PtB60OZHUQ-7RHjEqyA7x8sYrkldc8lEMt8wxGLV0N25y1rxWTFDhsUqMfwGcYg2fkvYn1I7AQ7o670w1GQRBeYDv-ROiFS6t2rFt2rnA..&type=2&query=AI%E9%9F%B3%E4%B9%90&token=8B3BBE3034CEA311A6A3C6C928D54EADA6E95B496AFBBA3B",
       "source": "搜狗微信",
       "publish_time": null,
-      "summary": "Stem Separator( 智能 分轨) 功能.它可以在 Pro Tools 内部,将... 02 对 音乐制作 人来说,它到底有什么用?真正值得关注的,不只...",
+      "summary": "绮画 · 音乐成长笔记 · 第二期 AI音乐 是什么,它能帮我们实现何种创造?如果孩子说:“我想给今天画的小怪兽配一段音乐.”这个...",
       "category": "搜狗微信",
-      "dedupe_key": "sogou:1d31d185baf319a9c0c863ffdfbdecd4c6e0ad4f4a84f81773cd48e6f8d68284",
+      "dedupe_key": "sogou:15570d10e5fa8f2798a4422151aecc2d4dd8266bc0e591a6c2c285ec25862393",
       "title_zh": null,
       "relevance_score": 76,
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 56.6,
-      "rank": 405
+      "rank": 407
+    },
+    {
+      "id": 407,
+      "title": "AI音乐 工具怎么选?新手看这张,少走弯路",
+      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSzvBszNeu-u6JBRsO64p1GdP4oEcMSryqVqXa8Fplpd9kAxd8kqrWaCnbFOewAy_yMCbjR_-1qjIgRe69chiCxGg7aLFmjWTCAwGAC7bGmz5Wz3QWxdah3_53kbVbO9egZ29SvUwznxWD7CiU0NGQDzXEEwK5Bl29n4ZUUgiqE4vjU8Yoqm97vJO3PUVZxKpUeNu2nZkkWmjO7CziRX0NG9f_71bqkOtiw..&type=2&query=AI%E9%9F%B3%E4%B9%90&token=8B3BBE3034CEA311A6A3C6C928D54EADA6E95B496AFBBA3B",
+      "source": "搜狗微信",
+      "publish_time": null,
+      "summary": "AI 音乐 越来越火,很多人一上来就收藏一堆工具,结果反而不知道从哪开始. 其实新手最重要的不是工具数量,而是能不能把一个想...",
+      "category": "搜狗微信",
+      "dedupe_key": "sogou:75d3ad710e2608880fb2dec4d1d488861571c947972dae3c75625c4c525510e7",
+      "title_zh": null,
+      "relevance_score": 76,
+      "heat_score": 62,
+      "recency_score": 0,
+      "rank_score": 56.6,
+      "rank": 408
     },
     {
       "id": 406,
@@ -6512,39 +6559,23 @@
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 56.6,
-      "rank": 406
+      "rank": 409
     },
     {
       "id": 405,
-      "title": "AI音乐 工具怎么选?新手看这张,少走弯路",
-      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSzvBszNeu-u6JBRsO64p1GdP4oEcMSryqVqXa8Fplpd9kAxd8kqrWaCnbFOewAy_yMCbjR_-1qjIgRe69chiCxGg7aLFmjWTCAwGAC7bGmz5Wz3QWxdah3_53kbVbO9egZ29SvUwznxWD7CiU0NGQDzXEEwK5Bl29n4ZUUgiqE4vjU8Yoqm97vJO3PUVZxKpUeNu2nZkkWmjO7CziRX0NG9f_71bqkOtiw..&type=2&query=AI%E9%9F%B3%E4%B9%90&token=8B3BBE3034CEA311A6A3C6C928D54EADA6E95B496AFBBA3B",
+      "title": "AI 终于走进专业录音棚:Pro Tools 新增 智能 分轨, 音乐制作 方式要变了",
+      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSzvBszNeu-u6DtfztVfS8eFP4oEcMSryqVqXa8Fplpd947xf_P53vV_I3s98-LSZLy4aLgCIOlz7St0DQbrd8e81DsGLDqp6_EhH_eXH5CbRLA-x4hs0u0naGNnt_NEt1OIDTwX9p5FreWvajGIql49eTyES86qF3zl0HiR5mFLLncy5oOGBoJrxy82MbCSY108cJE3Tn5PXEV73xGlmI_nyPfCoem7FzA..&type=2&query=%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD %E9%9F%B3%E4%B9%90%E5%88%B6%E4%BD%9C&token=8B4B0B502AD2BC0DBBBDDBD40FFAE2BBBB908F986AFBBCB6",
       "source": "搜狗微信",
       "publish_time": null,
-      "summary": "AI 音乐 越来越火,很多人一上来就收藏一堆工具,结果反而不知道从哪开始. 其实新手最重要的不是工具数量,而是能不能把一个想...",
+      "summary": "Stem Separator( 智能 分轨) 功能.它可以在 Pro Tools 内部,将... 02 对 音乐制作 人来说,它到底有什么用?真正值得关注的,不只...",
       "category": "搜狗微信",
-      "dedupe_key": "sogou:75d3ad710e2608880fb2dec4d1d488861571c947972dae3c75625c4c525510e7",
+      "dedupe_key": "sogou:1d31d185baf319a9c0c863ffdfbdecd4c6e0ad4f4a84f81773cd48e6f8d68284",
       "title_zh": null,
       "relevance_score": 76,
       "heat_score": 62,
       "recency_score": 0,
       "rank_score": 56.6,
-      "rank": 407
-    },
-    {
-      "id": 404,
-      "title": "AI音乐 是什么,它能帮我们实现何种创造?",
-      "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSzvBszNeu-u6JBRsO64p1GdP4oEcMSryqVqXa8Fplpd9R2yKWBYAwSA2e8gElgEI2XBUQjNZ1YQjKuNJa23AJOSR-ewN2l2Ybkyf3Atku_Pp0SmGYyEZDB4c3PtB60OZHUQ-7RHjEqyA7x8sYrkldc8lEMt8wxGLV0N25y1rxWTFDhsUqMfwGcYg2fkvYn1I7AQ7o670w1GQRBeYDv-ROiFS6t2rFt2rnA..&type=2&query=AI%E9%9F%B3%E4%B9%90&token=8B3BBE3034CEA311A6A3C6C928D54EADA6E95B496AFBBA3B",
-      "source": "搜狗微信",
-      "publish_time": null,
-      "summary": "绮画 · 音乐成长笔记 · 第二期 AI音乐 是什么,它能帮我们实现何种创造?如果孩子说:“我想给今天画的小怪兽配一段音乐.”这个...",
-      "category": "搜狗微信",
-      "dedupe_key": "sogou:15570d10e5fa8f2798a4422151aecc2d4dd8266bc0e591a6c2c285ec25862393",
-      "title_zh": null,
-      "relevance_score": 76,
-      "heat_score": 62,
-      "recency_score": 0,
-      "rank_score": 56.6,
-      "rank": 408
+      "rank": 410
     }
   ]
 }
