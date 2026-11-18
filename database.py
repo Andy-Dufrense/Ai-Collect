@@ -11,10 +11,11 @@ import json
 import sqlite3
 from collections.abc import Iterable, Iterator, Mapping
 from contextlib import contextmanager
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from typing import Any
+from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
-from config import get_database_path
+from config import DISPLAY_TIME_ZONE, NEWS_RETENTION_DAYS, get_database_path
 
 
 # link 使用 UNIQUE 唯一索引，从数据库层面保证同一篇资讯不会重复入库。
@@ -289,6 +290,40 @@ def delete_news_by_ids(news_ids: Iterable[int]) -> int:
         cursor = connection.execute(
             f"DELETE FROM news WHERE id IN ({placeholders})",
             ids,
+        )
+        connection.commit()
+    return cursor.rowcount
+
+
+def purge_news_outside_retention(
+    retention_days: int = NEWS_RETENTION_DAYS,
+) -> int:
+    """
+    删除超出自然日保留窗口以及发布时间未知的新闻。
+
+    60 天窗口按北京时间计算，例如 11 月 18 日保留 9 月 20 日至 11 月 18 日。
+    """
+
+    try:
+        zone = ZoneInfo(DISPLAY_TIME_ZONE)
+    except ZoneInfoNotFoundError:
+        zone = ZoneInfo("Asia/Shanghai")
+    today_local = datetime.now(timezone.utc).astimezone(zone).date()
+    first_local_date = today_local - timedelta(days=max(1, retention_days) - 1)
+    cutoff_utc = datetime(
+        first_local_date.year,
+        first_local_date.month,
+        first_local_date.day,
+        tzinfo=zone,
+    ).astimezone(timezone.utc)
+
+    with get_connection() as connection:
+        cursor = connection.execute(
+            """
+            DELETE FROM news
+            WHERE publish_time IS NULL OR publish_time < ?
+            """,
+            (cutoff_utc.isoformat(timespec="seconds"),),
         )
         connection.commit()
     return cursor.rowcount

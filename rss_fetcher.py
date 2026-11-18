@@ -46,6 +46,7 @@ from database import (
     get_all_news,
     get_meta_value,
     initialize_database,
+    purge_news_outside_retention,
     record_fetch_run,
     save_news_items,
     set_meta_value,
@@ -634,6 +635,10 @@ def _fetch_and_save_news_unlocked() -> FetchResult:
     except Exception:
         # 翻译服务故障不应影响资讯抓取和已有数据。
         LOGGER.exception("中文标题翻译失败，保留英文原标题")
+
+    purged_count = purge_news_outside_retention()
+    if purged_count:
+        LOGGER.info("已清理超出保留期的资讯：%d 条", purged_count)
 
     result = FetchResult(
         fetched_at=fetched_at,

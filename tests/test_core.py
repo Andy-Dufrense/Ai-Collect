@@ -22,6 +22,7 @@ from database import (
     get_news_count,
     get_worker_heartbeat,
     initialize_database,
+    purge_news_outside_retention,
     record_fetch_run,
     set_worker_heartbeat,
     save_news_items,
@@ -338,6 +339,39 @@ class DatabaseTests(unittest.TestCase):
             fetched_at,
         )
         self.assertIsNone(get_all_news()[0]["title_zh"])
+
+    def test_retention_removes_old_and_undated_news(self) -> None:
+        now = datetime.now(timezone.utc)
+        save_news_items(
+            [
+                {
+                    "title": "2023 年旧报告",
+                    "link": "https://example.com/old-report",
+                    "source": "测试源",
+                    "publish_time": "2023-05-21T10:00:00+00:00",
+                    "summary": "音乐技术",
+                },
+                {
+                    "title": "没有时间的内容",
+                    "link": "https://example.com/no-date-retention",
+                    "source": "测试源",
+                    "publish_time": None,
+                    "summary": "音乐技术",
+                },
+                {
+                    "title": "最近的音乐技术",
+                    "link": "https://example.com/recent-retention",
+                    "source": "测试源",
+                    "publish_time": now.isoformat(timespec="seconds"),
+                    "summary": "音乐技术",
+                },
+            ],
+            now,
+        )
+        removed = purge_news_outside_retention(60)
+        self.assertEqual(removed, 2)
+        self.assertEqual(get_news_count(), 1)
+        self.assertEqual(get_all_news()[0]["title"], "最近的音乐技术")
 
 
 class FlaskPageTests(unittest.TestCase):

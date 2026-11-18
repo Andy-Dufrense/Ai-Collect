@@ -21,6 +21,7 @@ from database import (
     get_all_news,
     get_meta_value,
     initialize_database,
+    purge_news_outside_retention,
     save_news_items,
     set_meta_value,
 )
@@ -205,6 +206,7 @@ def _save_items(
         )
         if translated_count:
             save_news_items(stored_items, fetched_at)
+    purge_news_outside_retention()
     return new_count
 
 

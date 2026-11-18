@@ -371,6 +371,10 @@ AUTO_FETCH_TIME_ZONE: Final[str] = os.getenv(
 )
 AUTO_FETCH_SCHEDULE_HOURS: Final[tuple[int, ...]] = (0, 12)
 AUTO_FETCH_HEARTBEAT_MAX_AGE_SECONDS: Final[int] = 13 * 3600
+NEWS_RETENTION_DAYS: Final[int] = max(
+    1,
+    int(_read_positive_number("NEWS_RETENTION_DAYS", 60)),
+)
 
 # requests 会自动识别 HTTP_PROXY / HTTPS_PROXY。
 # 某些 cron 环境不会继承终端的代理变量，因此这里额外支持统一的 NEWS_PROXY。

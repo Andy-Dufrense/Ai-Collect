@@ -113,7 +113,7 @@ def index():
     all_news_items = get_all_news()
     keyword = request.args.get("q", "").strip()[:100]
     raw_days = request.args.get("days", "3")
-    allowed_days = {0, 1, 3, 7, 14, 30, 60}
+    allowed_days = {1, 3, 7, 14, 30, 60}
     try:
         selected_days = int(raw_days)
     except ValueError:
