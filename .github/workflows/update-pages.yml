@@ -38,6 +38,9 @@ jobs:
           # GitHub 自动提供临时令牌，用于提高仓库搜索、commit 搜索和 Releases
           # API 的限流额度；令牌不会写入仓库或网页数据。
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # 只在主动推送或手动运行时回填一次 60 天历史；
+          # 每天两次的定时任务继续只抓当期数据，避免重复执行重任务。
+          BACKFILL_DAYS: ${{ github.event_name == 'schedule' && '0' || '60' }}
         run: python scripts/github_update.py
 
       - name: Commit updated news data

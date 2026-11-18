@@ -30,12 +30,15 @@ RSS 不是真正的实时推送协议，所以这里采用固定时间轮询。
   当前网络可直接访问的官方 RSS 和 Bing News RSS：
   - IT之家：`https://www.ithome.com/rss/`
   - 爱范儿：`https://www.ifanr.com/feed`
-  - 少数派、虎嗅、钛媒体、极客公园、雷锋网、品玩：国内科技 RSS
+  - 36氪、少数派、钛媒体、极客公园、雷锋网：国内科技 RSS
   - TechCrunch：`https://techcrunch.com/feed/`
+  - Bing 中文新闻搜索：AI 音乐硬件、智能乐器、音频硬件、合成器，用于
+    补充没有稳定公开 RSS 的国内行业网站和中文媒体
   - Music Business Worldwide、MusicRadar、Guitar World、Synthtopia、CDM、
-    MusicTech：面向音乐产业、乐器、音频制作和音乐科技的垂直媒体
-  - 公共 RSSHub、36氪 Feed、机器之心 Feed 和 Bing News RSS 经实测存在超时或
-    XML 格式错误，已移除，避免每轮产生无效请求
+    MusicTech、Rekkerd、Synthanatomy、Attack Magazine、ProSoundNetwork、
+    MIX、Matrixsynth：面向音乐产业、乐器、音频制作和音乐科技的垂直媒体
+  - 公共 RSSHub 实例和机器之心 Feed 经实测存在超时或 XML 格式错误，已移除，
+    避免每轮产生无效请求
 - 资讯只要包含 AI、音乐或乐器关键词之一就会保留；同时命中 AI 与音乐
   的内容会获得额外相关度加权并优先排名。
   - AI 关键词：`ai`、`人工智能`、`大模型`、`aigc`、`机器学习`，
@@ -290,7 +293,7 @@ cd ~/Desktop/Ai-Collect
 python3 -m unittest discover -s tests -v
 ```
 
-预期看到 `OK`。目前共有 72 项测试，会检查过滤、大小写、词边界、模拟 RSS、
+预期看到 `OK`。目前共有 75 项测试，会检查过滤、大小写、词边界、模拟 RSS、
 搜狗微信解析、分类字段、链接去重、抓取状态、工作进程
 心跳、跨进程抓取锁、时间范围筛选、关键词搜索、综合排名、首页渲染和非法
 查询参数，以及 GitHub 新项目与 commit 解析，不依赖当前网络状态。
@@ -301,7 +304,7 @@ python3 -m unittest discover -s tests -v
 或者指定某一个具体日期。时间范围、日期和搜索条件改变后会自动刷新，不需要
 再次点击“筛选”。列表每页固定显示 20 条，底部通过上一页、下一页和页码切换。
 
-资讯类型选择器提供“全部、硬件相关、软件相关”三个选项，并与时间范围、指定
+资讯筛选栏恢复使用“全部、硬件相关、软件相关”下拉框，并与时间范围、指定
 日期、关键词和分页共同生效。数据库为每条资讯保存 `is_hardware` 和
 `is_software` 两个标记；同时涉及实体设备与配套软件的资讯允许两个标记都为真，
 因此会同时出现在硬件和软件筛选结果中。旧数据库首次启动时会自动补分类，以后
@@ -326,13 +329,20 @@ python3 -m unittest discover -s tests -v
 ./manage.sh backfill 60
 ```
 
-回填使用已实测可访问的 Synthtopia 和 MusicTech WordPress 归档 API，读取
-接口提供的 `date_gmt` 并以 UTC 入库。没有可靠发布时间的文章不会进入历史
-排行，也不会用抓取当天的时间冒充历史发布时间。
+回填过程会逐来源、逐页输出进度。标题翻译与历史下载分开处理，避免上千条
+英文标题逐条调用翻译接口时让命令看起来卡死；需要补齐翻译时单独运行
+`./manage.sh translate`。
+
+回填会依次尝试 Synthtopia、MusicTech、Synthanatomy、Rekkerd、Attack
+Magazine、ProSoundNetwork、MIX、Music Business Worldwide、爱范儿和
+TechCrunch 的 WordPress 归档 API，读取接口提供的 `date_gmt` 并以 UTC
+入库。没有可靠发布时间的文章不会进入历史排行，也不会用抓取当天的时间冒充
+历史发布时间。
 
 当前额外数据源：
 
-- Rekkerd、Synthanatomy 的 RSS
+- Rekkerd、Synthanatomy、Attack Magazine、ProSoundNetwork、MIX、
+  Matrixsynth 的 RSS
 - arXiv `cs.SD` 声音与音乐计算 RSS
 - AudioCraft、Stable Audio Tools、Magenta、Riffusion、Demucs、Sonic Pi
   的 GitHub Releases
@@ -423,7 +433,7 @@ curl http://127.0.0.1:5000/health
 普通公开结果页，不会绕过验证码、登录或风控；平台限制该来源时，只在日志中
 记录失败，不影响稳定 RSS 来源。
 
-搜狗来源默认每 12 小时刷新一次，七个关键词之间间隔 2 秒。如果第一个关键词
+搜狗来源默认每 12 小时刷新一次，十一个关键词之间间隔 2 秒。如果第一个关键词
 遇到访问限制，本轮会停止剩余关键词，避免连续请求扩大限制。搜狗跳转链接包含
 临时 token，因此数据库使用“规范化标题指纹”去重，而不直接依赖链接去重。
 
@@ -462,7 +472,8 @@ Flask，而是由 GitHub Actions 每 12 小时执行 Python 抓取，把结果�
 
 GitHub Actions 会自动把临时 `GITHUB_TOKEN` 传给抓取程序，以提高 API 限流
 额度；这个令牌由 GitHub 临时生成，不会写入网页或仓库文件。不需要你再创建
-额外令牌。
+额外令牌。主动推送代码或手动运行工作流时，Actions 会先执行一次最近 60 天
+历史回填再导出网页；每 12 小时的定时任务只抓取当期资讯。
 
 ### 1. 推送代码
 

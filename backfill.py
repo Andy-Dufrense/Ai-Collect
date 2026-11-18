@@ -18,7 +18,6 @@ from bs4 import BeautifulSoup
 
 from config import DISPLAY_TIME_ZONE, ON_DEMAND_DATE_BACKFILL_SECONDS
 from database import (
-    get_all_news,
     get_meta_value,
     initialize_database,
     purge_news_outside_retention,
@@ -26,7 +25,6 @@ from database import (
     set_meta_value,
 )
 from news_filter import is_relevant_news
-from translation import translate_items
 
 
 LOGGER = logging.getLogger(__name__)
@@ -50,6 +48,21 @@ ARCHIVE_SOURCES = (
     {
         "source": "Rekkerd",
         "api": "https://rekkerd.org/wp-json/wp/v2/posts",
+        "category": "音乐科技",
+    },
+    {
+        "source": "Attack Magazine",
+        "api": "https://www.attackmagazine.com/wp-json/wp/v2/posts",
+        "category": "音乐科技",
+    },
+    {
+        "source": "ProSoundNetwork",
+        "api": "https://www.prosoundnetwork.com/wp-json/wp/v2/posts",
+        "category": "音乐科技",
+    },
+    {
+        "source": "MIX",
+        "api": "https://www.mixonline.com/wp-json/wp/v2/posts",
         "category": "音乐科技",
     },
     {
@@ -143,7 +156,14 @@ def _fetch_archive_range(
     session.headers.update({"User-Agent": "AI-Music-Collector/1.0"})
     try:
         for source in ARCHIVE_SOURCES:
+            LOGGER.info(
+                "%s 历史归档开始：%s 至 %s",
+                source["source"],
+                start_date.isoformat(),
+                end_date.isoformat(),
+            )
             page = 1
+            source_items = 0
             while page <= 10:
                 try:
                     response = session.get(
@@ -180,9 +200,22 @@ def _fetch_archive_range(
                     )
                     if item is not None:
                         items.append(item)
+                        source_items += 1
+                LOGGER.info(
+                    "%s 历史归档第 %d 页：返回 %d 条，命中 %d 条",
+                    source["source"],
+                    page,
+                    len(rows),
+                    source_items,
+                )
                 if len(rows) < 100:
                     break
                 page += 1
+            LOGGER.info(
+                "%s 历史归档结束：命中 %d 条",
+                source["source"],
+                source_items,
+            )
     finally:
         session.close()
     return items
@@ -193,15 +226,15 @@ def _save_items(
     fetched_at: datetime,
 ) -> int:
     new_count = save_news_items(items, fetched_at)
-    if items:
-        stored_items = get_all_news()
-        translated_count = translate_items(
-            stored_items,
-            existing_items=stored_items,
-        )
-        if translated_count:
-            save_news_items(stored_items, fetched_at)
-    purge_news_outside_retention()
+    # 历史回填可能一次写入上千条英文标题。翻译接口限速严重，如果在这里
+    # 逐条翻译，会让命令长时间没有输出，看起来像卡死。先快速完成归档入库，
+    # 翻译交给后台抓取或单独的 ./manage.sh translate 命令处理。
+    purged_count = purge_news_outside_retention()
+    LOGGER.info(
+        "历史归档入库完成：新增 %d 条，清理过期 %d 条；标题翻译将另行处理",
+        new_count,
+        purged_count,
+    )
     return new_count
 
 

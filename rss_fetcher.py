@@ -328,6 +328,12 @@ def _discover_fetch_routes() -> list[FetchRoute]:
 def _sogou_queries_due(now: datetime) -> bool:
     """根据上次尝试时间判断搜狗微信来源是否到达刷新时间。"""
 
+    current_signature = "|".join(SOGOU_WECHAT_QUERIES)
+    if get_meta_value("sogou_query_signature") != current_signature:
+        # 关键词列表发生变化时立即执行一次，确保新增的国内容器检索
+        # 不需要等待旧的 12 小时冷却结束。
+        return True
+
     last_attempt = get_meta_value("sogou_last_attempt_at")
     if not last_attempt:
         return True
@@ -651,6 +657,10 @@ def _fetch_and_save_news_unlocked() -> FetchResult:
             set_meta_value(
                 "sogou_last_attempt_at",
                 fetched_at.isoformat(timespec="seconds"),
+            )
+            set_meta_value(
+                "sogou_query_signature",
+                "|".join(SOGOU_WECHAT_QUERIES),
             )
         else:
             LOGGER.info("搜狗微信尚未到达刷新时间，本轮跳过")

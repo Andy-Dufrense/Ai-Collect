@@ -150,6 +150,20 @@ class NewsFilterTests(unittest.TestCase):
                 category="国内科技",
             )
         )
+        self.assertTrue(
+            is_relevant_news(
+                "英伟达发布新一代 AI 服务器，搭载自研 GPU",
+                "面向智算中心和端侧推理的硬件产品。",
+                category="国内科技",
+            )
+        )
+        self.assertTrue(
+            is_relevant_news(
+                "国产智能终端搭载新一代 NPU 芯片",
+                "芯片面向端侧人工智能推理。",
+                category="国内科技",
+            )
+        )
 
     def test_music_software_is_relevant(self) -> None:
         self.assertTrue(
@@ -210,7 +224,10 @@ class NewsFilterTests(unittest.TestCase):
     def test_ai_music_cross_topic_has_higher_ranking_than_ai_only(self) -> None:
         from ranking import _relevance_score
 
-        ai_only = {"title": "AI 芯片新进展", "summary": "人工智能产业消息"}
+        ai_only = {
+            "title": "AI 编程工具新进展",
+            "summary": "人工智能软件开发",
+        }
         cross_topic = {
             "title": "AI 吉他工具发布",
             "summary": "人工智能用于音乐和乐器创作",
@@ -480,17 +497,18 @@ class FlaskPageTests(unittest.TestCase):
         self.temp_dir.cleanup()
 
     def test_index_renders_saved_news(self) -> None:
+        now = datetime.now(timezone.utc)
         save_news_items(
             [
                 {
                     "title": "AI 吉他音色分析",
                     "link": "https://example.com/guitar-ai",
                     "source": "测试源",
-                    "publish_time": "2026-11-16T07:00:00+00:00",
+                    "publish_time": now.isoformat(timespec="seconds"),
                     "summary": "机器学习帮助分析吉他音色。",
                 }
             ],
-            datetime(2026, 11, 16, 8, 0, tzinfo=timezone.utc),
+            now,
         )
 
         # 在测试方法内部导入，确保其他测试修改环境变量时不受模块缓存影响。
@@ -568,7 +586,8 @@ class FlaskPageTests(unittest.TestCase):
         hardware_page = client.get("/?days=3&kind=hardware").get_data(as_text=True)
         software_page = client.get("/?days=3&kind=software").get_data(as_text=True)
 
-        self.assertIn('name="kind"', hardware_page)
+        self.assertIn('<select id="content-kind-filter"', hardware_page)
+        self.assertIn('value="hardware"', hardware_page)
         self.assertIn("新型合成器硬件发布", hardware_page)
         self.assertNotIn("AI 音乐编曲插件更新", hardware_page)
         self.assertIn("AI 音乐编曲插件更新", software_page)

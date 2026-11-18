@@ -11,6 +11,7 @@ GitHub Actions 数据更新入口。
 from __future__ import annotations
 
 import json
+import os
 import shutil
 import sys
 from datetime import datetime, timezone
@@ -29,6 +30,7 @@ from database import (
     initialize_database,
     save_news_items,
 )
+from backfill import backfill_history
 from ranking import filter_and_rank_news
 from rss_fetcher import fetch_and_save_news
 from translation import translate_items
@@ -114,6 +116,15 @@ def main() -> int:
 
     restored = import_existing_news()
     print(f"恢复已有资讯：{restored} 条新写入（其余已存在）")
+
+    raw_backfill_days = os.getenv("BACKFILL_DAYS", "0").strip()
+    try:
+        backfill_days = max(0, int(raw_backfill_days))
+    except ValueError:
+        backfill_days = 0
+    if backfill_days:
+        backfilled = backfill_history(backfill_days)
+        print(f"已完成最近 {backfill_days} 天历史回填：新增 {backfilled} 条")
 
     result = fetch_and_save_news()
     print(

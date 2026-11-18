@@ -61,6 +61,11 @@ BUILT_IN_RSS_SOURCES: Final[tuple[dict[str, str], ...]] = (
         "category": "国内科技",
     },
     {
+        "source": "36氪",
+        "url": "https://36kr.com/feed",
+        "category": "国内科技",
+    },
+    {
         "source": "爱范儿",
         "url": "https://www.ifanr.com/feed",
         "category": "国内科技",
@@ -89,6 +94,55 @@ BUILT_IN_RSS_SOURCES: Final[tuple[dict[str, str], ...]] = (
         "source": "TechCrunch",
         "url": "https://techcrunch.com/feed/",
         "category": "国际科技",
+    },
+    {
+        "source": "Bing新闻：AI音乐硬件",
+        "url": (
+            "https://www.bing.com/news/search?"
+            "q=AI+%E9%9F%B3%E4%B9%90+%E7%A1%AC%E4%BB%B6&format=rss"
+        ),
+        "category": "国内科技",
+    },
+    {
+        "source": "Bing新闻：智能乐器",
+        "url": (
+            "https://www.bing.com/news/search?"
+            "q=%E6%99%BA%E8%83%BD%E4%B9%90%E5%99%A8&format=rss"
+        ),
+        "category": "国内科技",
+    },
+    {
+        "source": "Bing新闻：音频硬件",
+        "url": (
+            "https://www.bing.com/news/search?"
+            "q=%E9%9F%B3%E9%A2%91%E7%A1%AC%E4%BB%B6&format=rss"
+        ),
+        "category": "国内科技",
+    },
+    {
+        "source": "Bing新闻：合成器",
+        "url": (
+            "https://www.bing.com/news/search?"
+            "q=%E5%90%88%E6%88%90%E5%99%A8&format=rss"
+        ),
+        "category": "国内科技",
+    },
+    {
+        "source": "Bing新闻：IT之家智能硬件",
+        "url": (
+            "https://www.bing.com/news/search?"
+            "q=site%3Aithome.com+%E6%99%BA%E8%83%BD%E7%A1%AC%E4%BB%B6"
+            "&format=rss"
+        ),
+        "category": "国内科技",
+    },
+    {
+        "source": "Bing新闻：36氪硬件",
+        "url": (
+            "https://www.bing.com/news/search?"
+            "q=site%3A36kr.com+%E7%A1%AC%E4%BB%B6&format=rss"
+        ),
+        "category": "国内科技",
     },
     {
         "source": "Music Business Worldwide",
@@ -128,6 +182,26 @@ BUILT_IN_RSS_SOURCES: Final[tuple[dict[str, str], ...]] = (
     {
         "source": "Synthanatomy",
         "url": "https://www.synthanatomy.com/feed/",
+        "category": "音乐科技",
+    },
+    {
+        "source": "Attack Magazine",
+        "url": "https://www.attackmagazine.com/feed/",
+        "category": "音乐科技",
+    },
+    {
+        "source": "ProSoundNetwork",
+        "url": "https://www.prosoundnetwork.com/feed/",
+        "category": "音乐科技",
+    },
+    {
+        "source": "MIX",
+        "url": "https://www.mixonline.com/feed/",
+        "category": "音乐科技",
+    },
+    {
+        "source": "Matrixsynth",
+        "url": "https://www.matrixsynth.com/feeds/posts/default",
         "category": "音乐科技",
     },
     {
@@ -206,6 +280,10 @@ SOGOU_WECHAT_QUERIES: Final[tuple[str, ...]] = (
     "AI硬件 音乐",
     "智能乐器",
     "音频硬件",
+    "国产合成器",
+    "MIDI控制器",
+    "电子乐器 硬件",
+    "智能音频硬件",
 )
 
 # AI 与音乐/乐器关键词采用并集收录；交叉命中会在排行榜中获得额外加权。
@@ -291,6 +369,27 @@ AI_HARDWARE_KEYWORDS: Final[tuple[str, ...]] = (
     "智能音箱",
     "智能穿戴",
     "可穿戴设备",
+    "智能终端",
+    "ai终端",
+    "ai 终端",
+    "端侧设备",
+    "边缘计算设备",
+    "芯片",
+    "半导体",
+    "显卡",
+    "处理器",
+    "加速卡",
+    "推理卡",
+    "ai服务器",
+    "ai 服务器",
+    "智算中心",
+    "算力中心",
+    "算力设备",
+    "服务器",
+    "光模块",
+    "传感器",
+    "机器人",
+    "具身智能",
     "ai pc",
     "ai手机",
     "ai 手机",
@@ -313,6 +412,19 @@ AI_HARDWARE_KEYWORDS: Final[tuple[str, ...]] = (
     "smart glasses",
     "smart speaker",
     "wearable device",
+    "smart terminal",
+    "edge device",
+    "semiconductor",
+    "gpu",
+    "cpu",
+    "accelerator card",
+    "inference card",
+    "ai server",
+    "data center hardware",
+    "optical module",
+    "sensor",
+    "robot",
+    "robotics",
 )
 
 MUSIC_HARDWARE_KEYWORDS: Final[tuple[str, ...]] = (
@@ -327,6 +439,9 @@ MUSIC_HARDWARE_KEYWORDS: Final[tuple[str, ...]] = (
     "midi 控制器",
     "键盘控制器",
     "合成器",
+    "硬件合成器",
+    "模拟合成器",
+    "数字合成器",
     "模块合成器",
     "模块化合成器",
     "鼓机",
@@ -344,13 +459,23 @@ MUSIC_HARDWARE_KEYWORDS: Final[tuple[str, ...]] = (
     "混音台",
     "音序器",
     "打击垫",
+    "硬件工作站",
+    "音乐工作站",
+    "功放",
+    "监听设备",
     "music hardware",
     "audio hardware",
     "instrument hardware",
     "midi controller",
     "synthesizer",
+    "synthesizers",
+    "synth",
+    "analog synth",
+    "digital synth",
+    "hardware synth",
     "modular synth",
     "eurorack",
+    "modular",
     "drum machine",
     "sampler",
     "effects pedal",
@@ -359,6 +484,8 @@ MUSIC_HARDWARE_KEYWORDS: Final[tuple[str, ...]] = (
     "sound card",
     "microphone",
     "studio monitor",
+    "amplifier",
+    "music workstation",
     "groovebox",
     "sequencer",
     "digital instrument",

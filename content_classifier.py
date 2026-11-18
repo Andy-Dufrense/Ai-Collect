@@ -7,13 +7,15 @@
 
 from __future__ import annotations
 
+import re
+
 from config import DIRECTION_HARDWARE_KEYWORDS
 from news_filter import find_matched_keywords
 
 
 # 分类版本会写入数据库。以后如果大幅修改分类规则，把版本加一，
 # 程序会在下一次启动时自动重新分类已有资讯。
-CONTENT_CLASSIFICATION_VERSION = "1"
+CONTENT_CLASSIFICATION_VERSION = "4"
 
 
 SOFTWARE_CLASSIFICATION_KEYWORDS = (
@@ -32,7 +34,6 @@ SOFTWARE_CLASSIFICATION_KEYWORDS = (
     "开源",
     "接口",
     "工作流",
-    "功能",
     "更新",
     "升级",
     "版本",
@@ -67,7 +68,6 @@ SOFTWARE_CLASSIFICATION_KEYWORDS = (
     "api",
     "sdk",
     "workflow",
-    "feature",
     "update",
     "upgrade",
     "version",
@@ -86,32 +86,31 @@ SOFTWARE_CLASSIFICATION_KEYWORDS = (
 TITLE_HARDWARE_HINTS = (
     "硬件",
     "设备",
-    "芯片",
-    "处理器",
     "控制器",
-    "接口",
+    "音频接口",
     "声卡",
     "麦克风",
-    "监听",
+    "监听音箱",
+    "监听耳机",
+    "功放",
     "踏板",
     "模块",
     "鼓机",
-    "采样器",
     "调音台",
     "混音台",
+    "打击垫",
+    "硬件工作站",
     "hardware",
     "device",
-    "chip",
-    "processor",
     "controller",
-    "interface",
+    "audio interface",
     "sound card",
     "microphone",
-    "monitor",
+    "studio monitor",
+    "amplifier",
     "pedal",
     "module",
     "drum machine",
-    "sampler",
     "mixer",
 )
 
@@ -125,7 +124,6 @@ TITLE_SOFTWARE_HINTS = (
     "代码",
     "开源",
     "工作流",
-    "功能",
     "更新",
     "升级",
     "版本",
@@ -145,11 +143,35 @@ TITLE_SOFTWARE_HINTS = (
     "api",
     "sdk",
     "workflow",
-    "feature",
     "update",
     "upgrade",
     "firmware",
     "virtual instrument",
+)
+
+TITLE_SOFTWARE_ONLY_HINTS = (
+    "软件",
+    "应用",
+    "app",
+    "网页版",
+    "web app",
+    "插件",
+    "plugin",
+    "daw",
+    "vst",
+    "software",
+    "application",
+    "virtual instrument",
+    "音源",
+)
+
+GENERAL_NON_PRODUCT_HARDWARE_PATTERN = re.compile(
+    r"(?:"
+    r"表示|认为|想象空间|商业机会|行业趋势|生态伙伴|高管|访谈"
+    r"|早报|日报|周报|早知道|盘点|总结|观察|评论"
+    r"|thinks|believes|interview|roundup|daily briefing"
+    r")",
+    re.IGNORECASE,
 )
 
 
@@ -197,6 +219,9 @@ def classify_content_flags(
     title_has_software_hint = bool(
         find_matched_keywords(title_text, TITLE_SOFTWARE_HINTS)
     )
+    title_has_strong_software_hint = bool(
+        find_matched_keywords(title_text, TITLE_SOFTWARE_ONLY_HINTS)
+    )
 
     # 开源项目、commit 和开发分类默认属于软件，但保留命中明确硬件词的例外。
     if category == "AI音频开发" or source.startswith("GitHub"):
@@ -207,7 +232,7 @@ def classify_content_flags(
 
     # “software synthesizer”“合成器插件”等标题虽然包含硬件词表中的
     # synthesizer/合成器，但明确写了软件，且没有实体设备提示，应只归软件类。
-    if title_has_software_hint and not title_has_hardware_hint:
+    if title_has_strong_software_hint and not title_has_hardware_hint:
         is_hardware = False
         is_software = True
 
@@ -215,11 +240,21 @@ def classify_content_flags(
     if title_has_hardware_hint and not title_has_software_hint:
         is_hardware = True
 
-    # 防止极短、无方向的内容被简介中的单个常见词误分类。
-    if not find_matched_keywords(
-        combined_text,
-        DIRECTION_HARDWARE_KEYWORDS + SOFTWARE_CLASSIFICATION_KEYWORDS,
-    ):
-        return False, False
+    # 综合科技媒体中的“人物观点、早报汇总、行业评论”经常顺便提到
+    # 手机、机器人或算力设备，但文章主体并不是硬件产品。此类内容只允许
+    # 根据标题中的直接硬件描述分类，不能因为 RSS 简介提到了设备就误标。
+    if category in {"国内科技", "国际科技"}:
+        title_hardware_direction = bool(
+            title_has_hardware_hint
+            or find_matched_keywords(
+                title_text,
+                DIRECTION_HARDWARE_KEYWORDS,
+            )
+        )
+        if (
+            not title_hardware_direction
+            or GENERAL_NON_PRODUCT_HARDWARE_PATTERN.search(title_text)
+        ):
+            is_hardware = False
 
     return is_hardware, is_software

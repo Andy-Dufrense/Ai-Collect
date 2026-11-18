@@ -30,9 +30,16 @@ SOURCE_HEAT = {
     "MusicRadar": 74,
     "CDM": 72,
     "Synthtopia": 68,
+    "Synthanatomy": 69,
+    "Rekkerd": 67,
+    "Attack Magazine": 70,
+    "ProSoundNetwork": 71,
+    "MIX": 70,
+    "Matrixsynth": 66,
     "Guitar World": 70,
     "TechCrunch": 80,
     "IT之家24小时榜": 68,
+    "36氪": 68,
     "爱范儿": 66,
 }
 
