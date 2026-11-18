@@ -119,6 +119,38 @@ class NewsFilterTests(unittest.TestCase):
             )
         )
 
+    def test_direction_hardware_is_accepted_but_generic_hardware_stays_out(
+        self,
+    ) -> None:
+        self.assertTrue(
+            is_relevant_news(
+                "国产 NPU 与端侧 AI 推理盒子发布",
+                "面向开发者的神经网络处理器硬件。",
+                category="国内科技",
+            )
+        )
+        self.assertTrue(
+            is_relevant_news(
+                "New MIDI controller and audio interface launched",
+                "USB-C music hardware for studio recording.",
+                category="国际科技",
+            )
+        )
+        self.assertTrue(
+            is_relevant_news(
+                "智能乐器硬件新增触控演奏功能",
+                "面向电子乐器开发者。",
+                category="国内科技",
+            )
+        )
+        self.assertFalse(
+            is_relevant_news(
+                "普通机械键盘硬件新品上架",
+                "介绍按键轴体和外观颜色。",
+                category="国内科技",
+            )
+        )
+
     def test_music_software_is_relevant(self) -> None:
         self.assertTrue(
             is_relevant_news(

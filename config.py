@@ -203,6 +203,9 @@ SOGOU_WECHAT_QUERIES: Final[tuple[str, ...]] = (
     "AI吉他",
     "AI钢琴 乐理",
     "AI音频制作",
+    "AI硬件 音乐",
+    "智能乐器",
+    "音频硬件",
 )
 
 # AI 与音乐/乐器关键词采用并集收录；交叉命中会在排行榜中获得额外加权。
@@ -267,6 +270,103 @@ MUSIC_KEYWORDS: Final[tuple[str, ...]] = (
     "audio generation",
     "sound design",
     "sound effect",
+)
+
+# 与 AI 或音乐方向直接相关的硬件词。
+# 普通手机、机械键盘、家电等只有出现“AI/音乐/乐器/音频”等方向词时才收录，
+# 避免单纯按“硬件”二字把所有消费电子产品都抓进来。
+AI_HARDWARE_KEYWORDS: Final[tuple[str, ...]] = (
+    "ai硬件",
+    "ai 硬件",
+    "ai芯片",
+    "ai 芯片",
+    "人工智能硬件",
+    "端侧ai",
+    "边缘ai",
+    "推理芯片",
+    "神经网络处理器",
+    "张量处理器",
+    "智能硬件",
+    "智能眼镜",
+    "智能音箱",
+    "智能穿戴",
+    "可穿戴设备",
+    "ai pc",
+    "ai手机",
+    "ai 手机",
+    "ai眼镜",
+    "ai 眼镜",
+    "ai耳机",
+    "ai 耳机",
+    "ai hardware",
+    "ai chip",
+    "ai accelerator",
+    "edge ai device",
+    "neural processing unit",
+    "tensor processing unit",
+    "npu",
+    "tpu",
+    "ai pc",
+    "ai phone",
+    "ai glasses",
+    "ai earbuds",
+    "smart glasses",
+    "smart speaker",
+    "wearable device",
+)
+
+MUSIC_HARDWARE_KEYWORDS: Final[tuple[str, ...]] = (
+    "乐器硬件",
+    "音乐硬件",
+    "音频硬件",
+    "智能乐器",
+    "电子乐器",
+    "数字乐器",
+    "midi",
+    "midi控制器",
+    "midi 控制器",
+    "键盘控制器",
+    "合成器",
+    "模块合成器",
+    "模块化合成器",
+    "鼓机",
+    "采样器",
+    "效果器",
+    "吉他效果器",
+    "贝斯效果器",
+    "效果踏板",
+    "音频接口",
+    "声卡",
+    "麦克风",
+    "监听音箱",
+    "监听耳机",
+    "调音台",
+    "混音台",
+    "音序器",
+    "打击垫",
+    "music hardware",
+    "audio hardware",
+    "instrument hardware",
+    "midi controller",
+    "synthesizer",
+    "modular synth",
+    "eurorack",
+    "drum machine",
+    "sampler",
+    "effects pedal",
+    "guitar pedal",
+    "audio interface",
+    "sound card",
+    "microphone",
+    "studio monitor",
+    "groovebox",
+    "sequencer",
+    "digital instrument",
+)
+
+# 供筛选器和排序器共同使用，避免两个模块的硬件范围不一致。
+DIRECTION_HARDWARE_KEYWORDS: Final[tuple[str, ...]] = (
+    AI_HARDWARE_KEYWORDS + MUSIC_HARDWARE_KEYWORDS
 )
 
 

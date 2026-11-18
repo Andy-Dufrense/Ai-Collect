@@ -13,7 +13,14 @@ from datetime import date, datetime, timedelta, timezone
 from typing import Any
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
-from config import AI_KEYWORDS, DISPLAY_TIME_ZONE, MUSIC_KEYWORDS, TECH_KEYWORDS
+from config import (
+    AI_HARDWARE_KEYWORDS,
+    AI_KEYWORDS,
+    DISPLAY_TIME_ZONE,
+    MUSIC_HARDWARE_KEYWORDS,
+    MUSIC_KEYWORDS,
+    TECH_KEYWORDS,
+)
 from news_filter import find_matched_keywords
 
 
@@ -85,20 +92,45 @@ def _relevance_score(item: dict[str, Any]) -> int:
     ai_matches = find_matched_keywords(combined, AI_KEYWORDS)
     music_matches = find_matched_keywords(combined, MUSIC_KEYWORDS)
     tech_matches = find_matched_keywords(combined, TECH_KEYWORDS)
+    ai_hardware_matches = find_matched_keywords(
+        combined,
+        AI_HARDWARE_KEYWORDS,
+    )
+    music_hardware_matches = find_matched_keywords(
+        combined,
+        MUSIC_HARDWARE_KEYWORDS,
+    )
     title_ai = find_matched_keywords(f"{title} {title_zh}", AI_KEYWORDS)
     title_music = find_matched_keywords(f"{title} {title_zh}", MUSIC_KEYWORDS)
     title_tech = find_matched_keywords(f"{title} {title_zh}", TECH_KEYWORDS)
+    title_ai_hardware = find_matched_keywords(
+        f"{title} {title_zh}",
+        AI_HARDWARE_KEYWORDS,
+    )
+    title_music_hardware = find_matched_keywords(
+        f"{title} {title_zh}",
+        MUSIC_HARDWARE_KEYWORDS,
+    )
 
     score = 15
     score += min(len(ai_matches), 3) * 10
     score += min(len(music_matches), 3) * 10
     score += min(len(tech_matches), 2) * 6
+    score += min(len(ai_hardware_matches), 2) * 9
+    score += min(len(music_hardware_matches), 2) * 9
     if ai_matches and music_matches:
         # AI + 音乐/乐器交叉命中是本项目的核心目标，给予明显加权。
         score += 25
+    if (ai_hardware_matches or music_hardware_matches) and (
+        ai_matches or music_matches
+    ):
+        # 硬件是当前项目的扩展方向，AI/音乐硬件获得额外排序权重。
+        score += 15
     score += min(len(title_ai), 2) * 8
     score += min(len(title_music), 2) * 8
     score += min(len(title_tech), 2) * 5
+    score += min(len(title_ai_hardware), 2) * 6
+    score += min(len(title_music_hardware), 2) * 6
     return min(100, score)
 
 

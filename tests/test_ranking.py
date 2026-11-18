@@ -191,6 +191,22 @@ class RankingTests(unittest.TestCase):
         self.assertEqual(ranked[0]["title"], "AI 钢琴与乐理工具")
         self.assertTrue(all(item["rank"] > 0 for item in ranked))
 
+    def test_music_hardware_gets_relevance_boost(self) -> None:
+        from ranking import _relevance_score
+
+        hardware = {
+            "title": "智能乐器硬件与 MIDI 控制器发布",
+            "summary": "面向电子乐器开发者的音频接口",
+        }
+        generic_music = {
+            "title": "音乐学习方法更新",
+            "summary": "面向普通音乐爱好者",
+        }
+        self.assertGreater(
+            _relevance_score(hardware),
+            _relevance_score(generic_music),
+        )
+
     def test_publication_time_is_primary_sort_key(self) -> None:
         items = [
             make_item(

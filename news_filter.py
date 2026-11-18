@@ -11,7 +11,7 @@ from __future__ import annotations
 import re
 from collections.abc import Iterable
 
-from config import AI_KEYWORDS, MUSIC_KEYWORDS
+from config import AI_KEYWORDS, DIRECTION_HARDWARE_KEYWORDS, MUSIC_KEYWORDS
 from filter_learning import is_learned_accepted, is_learned_excluded
 
 
@@ -240,6 +240,9 @@ def is_relevant_news(
     has_software_signal = bool(
         find_matched_keywords(combined_text, SOFTWARE_SIGNAL_KEYWORDS)
     )
+    has_hardware_signal = bool(
+        find_matched_keywords(combined_text, DIRECTION_HARDWARE_KEYWORDS)
+    )
     title_for_review = str(text_parts[0]) if text_parts else ""
     if is_learned_excluded(title_for_review):
         return False
@@ -260,6 +263,9 @@ def is_relevant_news(
 
     title_ai = bool(find_matched_keywords(title_text, AI_KEYWORDS))
     title_music = bool(find_matched_keywords(title_text, MUSIC_KEYWORDS))
+    title_hardware = bool(
+        find_matched_keywords(title_text, DIRECTION_HARDWARE_KEYWORDS)
+    )
     title_software = bool(
         find_matched_keywords(title_text, SOFTWARE_SIGNAL_KEYWORDS)
     )
@@ -270,15 +276,20 @@ def is_relevant_news(
             has_music_keyword
             or has_ai_keyword
             or has_software_signal
+            or has_hardware_signal
         )
 
-    # 综合科技媒体只保留标题涉及 AI 或音乐的内容。AI 人物、公司和商业新闻
-    # 同样属于 AI 范围，不与音乐明星八卦规则混用。
+    # 综合科技媒体只保留标题涉及 AI、音乐或方向硬件的内容。
+    # 普通硬件不会因为“硬件”二字直接通过。
     if category in {"国内科技", "国际科技"}:
-        return title_ai or title_music
+        return title_ai or title_music or title_hardware
 
     # 搜狗微信允许 AI 或音乐单类内容。
     if category == "搜狗微信":
-        return has_ai_keyword or has_music_keyword
+        return (
+            has_ai_keyword
+            or has_music_keyword
+            or has_hardware_signal
+        )
 
-    return has_ai_keyword or has_music_keyword
+    return has_ai_keyword or has_music_keyword or has_hardware_signal
