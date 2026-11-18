@@ -93,6 +93,24 @@ class RankingTests(unittest.TestCase):
         self.assertEqual(len(ranked), 1)
         self.assertEqual(ranked[0]["title"], "当天 AI 音乐资讯")
 
+    def test_three_days_means_three_calendar_days(self) -> None:
+        local_now = datetime(2026, 11, 18, 2, 0, tzinfo=timezone.utc)
+        items = [
+            make_item(
+                "16 日零点后资讯",
+                publish_time="2026-11-15T16:01:00+00:00",
+            ),
+            make_item(
+                "15 日深夜资讯",
+                publish_time="2026-11-15T15:59:00+00:00",
+            ),
+        ]
+        ranked = filter_and_rank_news(items, days=3, now=local_now)
+        self.assertEqual(
+            [item["title"] for item in ranked],
+            ["16 日零点后资讯"],
+        )
+
     def test_newer_relevant_item_usually_ranks_first(self) -> None:
         items = [
             make_item(

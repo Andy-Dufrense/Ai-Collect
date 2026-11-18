@@ -79,7 +79,13 @@ function rankItems() {
         .split(/\s+/)
         .filter(Boolean);
     const now = Date.now();
-    const cutoff = days > 0 ? now - days * 86400000 : null;
+    const todayDate = shanghaiDate(new Date(now).toISOString());
+    let startDate = "";
+    if (days > 0) {
+        const startInstant = new Date(`${todayDate}T00:00:00+08:00`);
+        startInstant.setUTCDate(startInstant.getUTCDate() - (days - 1));
+        startDate = shanghaiDate(startInstant.toISOString());
+    }
 
     return state.items
         .filter((item) => {
@@ -93,8 +99,14 @@ function rankItems() {
                 ) {
                     return false;
                 }
-            } else if (cutoff !== null) {
-                if (Number.isNaN(publishTimestamp) || publishTimestamp < cutoff) {
+            } else if (days > 0) {
+                const itemDate = shanghaiDate(item.publish_time);
+                if (
+                    Number.isNaN(publishTimestamp)
+                    || !itemDate
+                    || itemDate < startDate
+                    || itemDate > todayDate
+                ) {
                     return false;
                 }
             }

@@ -8,7 +8,7 @@
 from __future__ import annotations
 
 from collections.abc import Iterable
-from datetime import date, datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 from typing import Any
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
@@ -139,9 +139,6 @@ def filter_and_rank_news(
     """
 
     current_time = (now or datetime.now(timezone.utc)).astimezone(timezone.utc)
-    cutoff = (
-        current_time.timestamp() - days * 86400 if days > 0 else None
-    )
     search_terms = [term.casefold() for term in keyword.split() if term.strip()]
     ranked_items: list[dict[str, Any]] = []
     target_date: date | None = None
@@ -154,6 +151,12 @@ def filter_and_rank_news(
         display_time_zone = ZoneInfo(DISPLAY_TIME_ZONE)
     except ZoneInfoNotFoundError:
         display_time_zone = ZoneInfo("Asia/Shanghai")
+    current_local_date = current_time.astimezone(display_time_zone).date()
+    range_start_date = (
+        current_local_date - timedelta(days=days - 1)
+        if days > 0
+        else None
+    )
 
     for original_item in items:
         item = dict(original_item)
@@ -165,10 +168,11 @@ def filter_and_rank_news(
                 != target_date
             ):
                 continue
-        if cutoff is not None:
-            if target_date is not None:
-                pass
-            elif publish_time is None or publish_time.timestamp() < cutoff:
+        elif range_start_date is not None:
+            if publish_time is None:
+                continue
+            publish_date = publish_time.astimezone(display_time_zone).date()
+            if not (range_start_date <= publish_date <= current_local_date):
                 continue
 
         searchable = (
