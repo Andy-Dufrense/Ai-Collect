@@ -177,12 +177,43 @@ BUILT_IN_RSS_SOURCES: Final[tuple[dict[str, str], ...]] = (
         "category": "音乐科技",
         "focus": "hardware",
     },
-    # 百度只用“AI + 音乐/音频/乐器”等方向词发现内容，不在搜索阶段
-    # 直接写“硬件/软件”结论。抓回后统一经过相关性筛查和内容分类。
+    # 百度只使用宽泛方向词发现内容。具体硬件/软件分类在入库后完成。
     {
         "source": "百度新闻：AI音乐",
         "url": (
             "https://news.baidu.com/ns?word=AI%E9%9F%B3%E4%B9%90"
+            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
+        ),
+        "category": "国内科技",
+    },
+    {
+        "source": "百度新闻：AI音频",
+        "url": (
+            "https://news.baidu.com/ns?word=AI%E9%9F%B3%E9%A2%91"
+            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
+        ),
+        "category": "国内科技",
+    },
+    {
+        "source": "百度新闻：音乐制作",
+        "url": (
+            "https://news.baidu.com/ns?word=%E9%9F%B3%E4%B9%90%E5%88%B6%E4%BD%9C"
+            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
+        ),
+        "category": "国内科技",
+    },
+    {
+        "source": "百度新闻：音乐生成",
+        "url": (
+            "https://news.baidu.com/ns?word=%E9%9F%B3%E4%B9%90%E7%94%9F%E6%88%90"
+            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
+        ),
+        "category": "国内科技",
+    },
+    {
+        "source": "百度新闻：乐器",
+        "url": (
+            "https://news.baidu.com/ns?word=%E4%B9%90%E5%99%A8"
             "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
         ),
         "category": "国内科技",
@@ -194,66 +225,14 @@ BUILT_IN_RSS_SOURCES: Final[tuple[dict[str, str], ...]] = (
             "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
         ),
         "category": "国内科技",
-        "focus": "hardware",
     },
     {
-        "source": "百度新闻：吉他新品",
+        "source": "百度新闻：音频",
         "url": (
-            "https://news.baidu.com/ns?"
-            "word=%E5%90%89%E4%BB%96%E6%96%B0%E5%93%81"
+            "https://news.baidu.com/ns?word=%E9%9F%B3%E9%A2%91"
             "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
         ),
         "category": "国内科技",
-        "focus": "hardware",
-    },
-    {
-        "source": "百度新闻：钢琴新品",
-        "url": (
-            "https://news.baidu.com/ns?"
-            "word=%E9%92%A2%E7%90%B4%E6%96%B0%E5%93%81"
-            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
-        ),
-        "category": "国内科技",
-        "focus": "hardware",
-    },
-    {
-        "source": "百度新闻：音频设备",
-        "url": (
-            "https://news.baidu.com/ns?word=%E9%9F%B3%E9%A2%91%E8%AE%BE%E5%A4%87"
-            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
-        ),
-        "category": "国内科技",
-        "focus": "hardware",
-    },
-    {
-        "source": "百度新闻：智能乐器",
-        "url": (
-            "https://news.baidu.com/ns?"
-            "word=%E6%99%BA%E8%83%BD%E4%B9%90%E5%99%A8"
-            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
-        ),
-        "category": "国内科技",
-        "focus": "hardware",
-    },
-    {
-        "source": "百度新闻：琴弦新品",
-        "url": (
-            "https://news.baidu.com/ns?"
-            "word=%E7%90%B4%E5%BC%A6%E6%96%B0%E5%93%81"
-            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
-        ),
-        "category": "国内科技",
-        "focus": "hardware",
-    },
-    {
-        "source": "百度新闻：AI芯片发布",
-        "url": (
-            "https://news.baidu.com/ns?"
-            "word=AI%E8%8A%AF%E7%89%87%E5%8F%91%E5%B8%83"
-            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
-        ),
-        "category": "国内科技",
-        "focus": "hardware",
     },
     {
         "source": "百度新闻：AI编程",
@@ -264,10 +243,17 @@ BUILT_IN_RSS_SOURCES: Final[tuple[dict[str, str], ...]] = (
         "category": "国内科技",
     },
     {
-        "source": "百度新闻：AI模型发布",
+        "source": "百度新闻：AI模型",
         "url": (
-            "https://news.baidu.com/ns?"
-            "word=AI%E6%A8%A1%E5%9E%8B%E5%8F%91%E5%B8%83"
+            "https://news.baidu.com/ns?word=AI%E6%A8%A1%E5%9E%8B"
+            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
+        ),
+        "category": "国内科技",
+    },
+    {
+        "source": "百度新闻：AI芯片",
+        "url": (
+            "https://news.baidu.com/ns?word=AI%E8%8A%AF%E7%89%87"
             "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
         ),
         "category": "国内科技",
@@ -400,8 +386,8 @@ SOGOU_EXPLICIT_SITES: Final[dict[str, dict[str, str]]] = {
         "url": "https://www.cndzq.com/",
     },
     "MIDI协会": {"name": "MIDI协会", "url": "https://midi.org/"},
-    "刘润 AI音乐 硬件": {"name": "刘润", "url": "https://www.runliu.com/"},
-    "黑马创业 AI音乐 硬件": {
+    "刘润 AI音乐": {"name": "刘润", "url": "https://www.runliu.com/"},
+    "黑马创业 AI音乐": {
         "name": "黑马创业",
         "url": "https://www.iheima.com/",
     },
@@ -411,61 +397,113 @@ SOGOU_SOURCE_QUERIES: Final[tuple[str, ...]] = tuple(
     SOGOU_EXPLICIT_SITES
 )
 
-SOGOU_KEYWORD_QUERIES: Final[tuple[str, ...]] = (
-    "耳机 音频",
-    "声卡",
-    "音频发射器",
-    "监听音箱",
-    "MIDI键盘",
-    "打击垫",
-    "USB声卡",
-    "无线麦克风",
-    "监听耳机",
-    "DAW更新",
-    "宿主软件",
-    "VST3",
-    "AUv3",
-    "CLAP插件",
+AI_MUSIC_SEARCH_QUERIES: Final[tuple[str, ...]] = (
+    "AI",
+    "人工智能",
+    "音乐",
+    "音频",
+    "乐器",
+    "编曲",
+    "混音",
+    "母带",
+    "MIDI",
+    "音源",
+    "插件",
+    "录音",
+    "声音设计",
+    "AI音乐",
+    "AI音频",
+    "AI编曲",
+    "AI作曲",
+    "AI写歌",
     "AI混音",
     "AI母带",
     "AI分轨",
     "AI修音",
-    "人声分离",
-    "音频修复",
-    "插件更新",
+    "AI音频修复",
+    "AI音效",
+    "声音克隆",
+    "音乐生成",
+    "音乐大模型",
+    "音频大模型",
+    "AI MV",
+    "音乐视频",
+    "Suno",
+    "Udio",
+    "Stable Audio",
+    "ElevenLabs Music",
+    "AI编程",
+    "AI芯片",
+    "AI模型",
+)
+
+SOFTWARE_SEARCH_QUERIES: Final[tuple[str, ...]] = (
+    "音乐软件",
+    "音乐制作软件",
+    "编曲软件",
+    "混音软件",
+    "母带软件",
+    "修音软件",
+    "制谱软件",
+    "DAW",
+    "DAW更新",
+    "宿主软件",
+    "VST3",
+    "AUv3",
+    "AAX",
+    "CLAP插件",
+    "音频插件",
     "音源插件",
     "效果器插件",
     "母带插件",
     "混音插件",
-    "AI编程",
-    "AI芯片发布",
-    "智能乐器",
-    "AIGC",
-    "AI音乐",
-    "AI音频",
-    "音乐",
-    "AI吉他",
-    "吉他",
-    "吉他新品",
-    "乐器",
-    "钢琴新品",
-    "琴弦新品",
-    "合成器新品",
-    "音频",
-    "编曲",
-    "乐理",
-    "音乐制作",
-    "MIDI",
-    "混音",
-    "母带",
-    "音频插件",
-    "DAW",
+    "插件更新",
     "音源",
-    "音乐生成",
-    "Suno",
-    "Suno AI MV",
-    "AI MV",
-    "音乐视频",
+    "人声分离",
+    "伴奏提取",
+    "音频修复",
+    "降噪插件",
+    "混响插件",
+    "Kontakt",
+    "Serum",
+)
+
+HARDWARE_SEARCH_QUERIES: Final[tuple[str, ...]] = (
+    "声卡",
+    "音频接口",
+    "USB声卡",
+    "耳机",
+    "监听耳机",
+    "监听音箱",
+    "音箱",
+    "音响",
+    "音频发射器",
+    "无线音频",
+    "接收器",
+    "无线麦克风",
+    "MIDI键盘",
+    "MIDI控制器",
+    "打击垫",
+    "合成器",
+    "鼓机",
+    "电子鼓",
+    "电钢琴",
+    "舞台钢琴",
+    "电子琴",
+    "吉他",
+    "钢琴",
+    "琴弦",
+    "智能乐器",
+    "智能吉他",
+    "智能钢琴",
+)
+
+SOGOU_KEYWORD_QUERIES: Final[tuple[str, ...]] = tuple(
+    dict.fromkeys(
+        AI_MUSIC_SEARCH_QUERIES
+        + SOFTWARE_SEARCH_QUERIES
+        + HARDWARE_SEARCH_QUERIES
+    )
 )
 
 SOGOU_WECHAT_QUERIES: Final[tuple[str, ...]] = (

@@ -30,7 +30,10 @@ from database import (
 )
 from news_filter import is_promotional_title, is_relevant_news
 from config import (
+    AI_MUSIC_SEARCH_QUERIES,
+    HARDWARE_SEARCH_QUERIES,
     RSS_SOURCES,
+    SOFTWARE_SEARCH_QUERIES,
     SOGOU_KEYWORD_QUERIES,
     SOGOU_SOURCE_QUERIES,
     SOGOU_WECHAT_QUERIES,
@@ -219,6 +222,22 @@ class NewsFilterTests(unittest.TestCase):
                 "普通手机系统升级和内测机型名单。",
                 category="国内科技",
                 source="IT之家24小时榜",
+            )
+        )
+        self.assertFalse(
+            is_relevant_news(
+                "四大 AI 模型发布，用于地质勘探和矿产分析",
+                "AI 模型用于地质数据识别。",
+                category="国内科技",
+                source="IT之家24小时榜",
+            )
+        )
+        self.assertTrue(
+            is_relevant_news(
+                "物理建模合成器插件发布",
+                "用于音乐制作的软件合成器。",
+                category="音乐科技",
+                source="Rekkerd",
             )
         )
 
@@ -556,7 +575,7 @@ class NewsFilterTests(unittest.TestCase):
             "叉烧网",
             "键盘中国",
             "小旭音乐",
-            "耳机 音频",
+            "耳机",
             "声卡",
             "音频发射器",
             "监听音箱",
@@ -577,16 +596,13 @@ class NewsFilterTests(unittest.TestCase):
             "AI分轨",
             "人声分离",
             "AI编程",
-            "AI芯片发布",
+            "AI芯片",
             "AI音乐",
             "音乐",
             "吉他",
-            "吉他新品",
             "乐器",
             "智能乐器",
-            "钢琴新品",
-            "琴弦新品",
-            "合成器新品",
+            "合成器",
             "音频",
             "编曲",
             "MIDI",
@@ -597,13 +613,16 @@ class NewsFilterTests(unittest.TestCase):
         ):
             self.assertIn(keyword, SOGOU_WECHAT_QUERIES)
         self.assertNotIn("SUNO AI MV", SOGOU_WECHAT_QUERIES)
-        self.assertNotIn("MIDI控制器", SOGOU_WECHAT_QUERIES)
         for source_name in ("Midifan", "叉烧网", "键盘中国", "小旭音乐"):
             self.assertIn(source_name, SOGOU_SOURCE_QUERIES)
             self.assertNotIn(source_name, SOGOU_KEYWORD_QUERIES)
-        for category_term in ("耳机 音频", "声卡", "监听音箱", "MIDI键盘"):
+        for category_term in ("耳机", "声卡", "监听音箱", "MIDI键盘"):
             self.assertIn(category_term, SOGOU_KEYWORD_QUERIES)
             self.assertNotIn(category_term, SOGOU_SOURCE_QUERIES)
+        self.assertIn("AI音乐", AI_MUSIC_SEARCH_QUERIES)
+        self.assertIn("VST3", SOFTWARE_SEARCH_QUERIES)
+        self.assertIn("音频接口", HARDWARE_SEARCH_QUERIES)
+        self.assertIn("智能吉他", HARDWARE_SEARCH_QUERIES)
 
     def test_hardware_specific_sources_are_configured(self) -> None:
         names = {source["source"] for source in RSS_SOURCES}
@@ -613,12 +632,7 @@ class NewsFilterTests(unittest.TestCase):
             "Guitar.com",
             "Guitar Player",
             "百度新闻：合成器",
-            "百度新闻：吉他新品",
-            "百度新闻：钢琴新品",
-            "百度新闻：音频设备",
-            "百度新闻：智能乐器",
-            "百度新闻：琴弦新品",
-            "百度新闻：AI芯片发布",
+            "百度新闻：AI芯片",
         ):
             self.assertIn(name, names)
 
@@ -626,8 +640,11 @@ class NewsFilterTests(unittest.TestCase):
         names = {source["source"] for source in RSS_SOURCES}
         for name in (
             "百度新闻：AI音乐",
+            "百度新闻：AI音频",
+            "百度新闻：音乐制作",
+            "百度新闻：音乐生成",
             "百度新闻：AI编程",
-            "百度新闻：AI模型发布",
+            "百度新闻：AI模型",
             "Bedroom Producers Blog",
             "VI-Control",
             "Hugging Face Blog",
@@ -639,11 +656,11 @@ class NewsFilterTests(unittest.TestCase):
 
         names = [source["source"] for source in RSS_SOURCES]
         self.assertLess(
-            names.index("百度新闻：合成器"),
-            names.index("百度新闻：AI模型发布"),
+            names.index("百度新闻：乐器"),
+            names.index("百度新闻：AI模型"),
         )
         self.assertLess(
-            names.index("百度新闻：吉他新品"),
+            names.index("百度新闻：合成器"),
             names.index("百度新闻：AI编程"),
         )
 

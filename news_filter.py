@@ -560,6 +560,19 @@ AI_HARDWARE_STRONG_TITLE_SIGNALS = (
     "算力中心",
 )
 
+# 搜索宽泛的 AI/硬件关键词容易带入手机系统、地质、医疗、物理等领域。
+# 这些领域只有在标题同时具备音乐/音频/乐器方向时才允许保留。
+UNRELATED_DOMAIN_TITLE_PATTERN = re.compile(
+    r"(?:"
+    r"手机|平板电脑|MagicOS|鸿蒙|安卓系统|系统升级|内测机型"
+    r"|地质|地矿|矿产|勘探|医疗|健康|疾病|临床|药物"
+    r"|自动驾驶|汽车芯片|电商|商品素材"
+    r"|\b(?:smartphone|phone launch|geology|mining|medical|clinical|"
+    r"healthcare|automotive|e-commerce)\b"
+    r")",
+    re.IGNORECASE,
+)
+
 GENERAL_TECH_ROUNDUP_PATTERN = re.compile(
     r"(?:早报|日报|晚报|周报|盘点|汇总|一览|速览|简报)",
     re.IGNORECASE,
@@ -835,6 +848,15 @@ def is_relevant_news(
     if (
         COMMON_LOW_VALUE_TITLE_PATTERN.search(title_text)
         or AI_JOB_GOSSIP_PATTERN.search(title_text)
+    ):
+        return False
+    title_music_direction = bool(
+        find_matched_keywords(title_text, MUSIC_KEYWORDS)
+        or find_matched_keywords(title_text, MUSIC_HARDWARE_KEYWORDS)
+    )
+    if (
+        UNRELATED_DOMAIN_TITLE_PATTERN.search(title_text)
+        and not title_music_direction
     ):
         return False
     if (
