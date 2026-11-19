@@ -62,7 +62,11 @@ function nextScheduledRefresh() {
         candidates.push(new Date(midnight.getTime() + 4 * 3600000));
         candidates.push(new Date(midnight.getTime() + 16 * 3600000));
     }
-    return candidates.find((candidate) => candidate > now) || candidates.at(-1);
+    const scheduled =
+        candidates.find((candidate) => candidate > now) || candidates.at(-1);
+    // 实际调度仍在北京时间 00:00、12:00；页面展示通常约 7 小时后
+    // 才能看到 Actions 完成抓取和部署的结果。
+    return new Date(scheduled.getTime() + 7 * 3600000);
 }
 
 function recencyScore(publishTime, now) {

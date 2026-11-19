@@ -29,7 +29,7 @@ from database import (
     initialize_database,
 )
 from ranking import filter_and_rank_news
-from scheduler_utils import next_scheduled_refresh
+from scheduler_utils import next_estimated_refresh
 from translation import is_title_displayable
 
 
@@ -176,7 +176,7 @@ def index():
         last_fetch_at=get_last_fetch_time(),
         auto_sync_online=_is_auto_sync_online(get_worker_heartbeat()),
         # 页面始终按固定日程实时计算，不信任重启前可能残留的旧 meta 值。
-        next_auto_fetch_at=next_scheduled_refresh().isoformat(
+        next_auto_fetch_at=next_estimated_refresh().isoformat(
             timespec="seconds"
         ),
     )

@@ -8,6 +8,9 @@ from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 from config import AUTO_FETCH_SCHEDULE_HOURS, AUTO_FETCH_TIME_ZONE
 
 
+ESTIMATED_REFRESH_DELAY_HOURS = 7
+
+
 def schedule_time_zone() -> ZoneInfo:
     """返回自动刷新时区，异常时回退北京时间。"""
 
@@ -40,3 +43,17 @@ def next_scheduled_refresh(now: datetime | None = None) -> datetime:
             if candidate_utc > current_utc:
                 candidates.append(candidate_utc)
     return min(candidates)
+
+
+def next_estimated_refresh(now: datetime | None = None) -> datetime:
+    """
+    返回页面展示的预计可看到新内容时间。
+
+    实际任务仍在北京时间 00:00、12:00 触发；根据当前运行观察，
+    GitHub Actions 排队、抓取和部署通常还会延迟约 7 小时，因此页面
+    统一展示 07:00、19:00。此函数不会改变后台真实调度。
+    """
+
+    return next_scheduled_refresh(now) + timedelta(
+        hours=ESTIMATED_REFRESH_DELAY_HOURS
+    )

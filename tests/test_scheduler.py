@@ -5,7 +5,7 @@ from __future__ import annotations
 import unittest
 from datetime import datetime, timezone
 
-from scheduler_utils import next_scheduled_refresh
+from scheduler_utils import next_estimated_refresh, next_scheduled_refresh
 
 
 class SchedulerTests(unittest.TestCase):
@@ -20,6 +20,19 @@ class SchedulerTests(unittest.TestCase):
         now = datetime(2026, 11, 17, 5, 0, tzinfo=timezone.utc)
         expected = datetime(2026, 11, 17, 16, 0, tzinfo=timezone.utc)
         self.assertEqual(next_scheduled_refresh(now), expected)
+
+    def test_display_estimate_is_seven_hours_after_schedule(self) -> None:
+        morning = datetime(2026, 11, 17, 1, 0, tzinfo=timezone.utc)
+        self.assertEqual(
+            next_estimated_refresh(morning),
+            datetime(2026, 11, 17, 11, 0, tzinfo=timezone.utc),
+        )
+
+        afternoon = datetime(2026, 11, 17, 5, 0, tzinfo=timezone.utc)
+        self.assertEqual(
+            next_estimated_refresh(afternoon),
+            datetime(2026, 11, 17, 23, 0, tzinfo=timezone.utc),
+        )
 
 
 if __name__ == "__main__":
