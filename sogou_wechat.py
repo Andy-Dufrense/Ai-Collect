@@ -10,14 +10,19 @@ from __future__ import annotations
 
 import hashlib
 import re
+import time
 from datetime import datetime, timezone
 from urllib.parse import quote_plus, urljoin
 
 import requests
 from bs4 import BeautifulSoup
 
-from config import REQUEST_TIMEOUT_SECONDS
-from config import DATA_DIR
+from config import (
+    DATA_DIR,
+    REQUEST_TIMEOUT_SECONDS,
+    SOGOU_PAGE_DELAY_SECONDS,
+    SOGOU_PAGES_PER_QUERY,
+)
 from news_filter import is_relevant_news
 
 
@@ -94,6 +99,7 @@ def build_sogou_url(
     *,
     start_date: str = "",
     end_date: str = "",
+    page: int = 1,
 ) -> str:
     """构造普通关键词搜索 URL，不包含登录凭据或规避验证参数。"""
 
@@ -104,6 +110,8 @@ def build_sogou_url(
     if start_date and end_date:
         # tsn=5 是搜狗公开页面的自定义日期范围模式。
         url += f"&tsn=5&ft={start_date}&et={end_date}"
+    if page > 1:
+        url += f"&page={page}"
     return url
 
 
@@ -175,6 +183,7 @@ def fetch_sogou_query(
     *,
     start_date: str = "",
     end_date: str = "",
+    pages: int = SOGOU_PAGES_PER_QUERY,
 ) -> tuple[list[dict[str, str | None]], int, int]:
     """
     请求并解析一个搜狗微信关键词。
@@ -196,37 +205,67 @@ def fetch_sogou_query(
         session.headers.update({"Referer": "https://weixin.sogou.com/"})
         session._ai_music_sogou_warmed = True
 
-    url = build_sogou_url(
-        query,
-        start_date=start_date,
-        end_date=end_date,
-    )
-    response = session.get(url, timeout=REQUEST_TIMEOUT_SECONDS)
-    response.raise_for_status()
-    response.encoding = response.apparent_encoding or response.encoding
-
-    if (
-        "请输入验证码" in response.text
-        or "seccodeImage" in response.text
-        or "antispider" in response.text
-        or "访问过于频繁" in response.text
-    ):
-        raise ValueError("搜狗要求输入验证码，本类来源本轮跳过")
-
-    parsed_result = parse_sogou_results(response.text, page_url=response.url)
-    if parsed_result[1] == 0:
-        SOGOU_DEBUG_PATH.parent.mkdir(parents=True, exist_ok=True)
-        SOGOU_DEBUG_PATH.write_text(
-            f"URL: {response.url}\n"
-            f"STATUS: {response.status_code}\n"
-            f"LENGTH: {len(response.text)}\n\n"
-            "HISTORY:\n"
-            + "\n".join(
-                f"{item.status_code} {item.url}" for item in response.history
-            )
-            + "\n\n"
-            + response.text,
-            encoding="utf-8",
+    all_items: list[dict[str, str | None]] = []
+    total_entries = 0
+    page_count = max(1, pages)
+    for page in range(1, page_count + 1):
+        url = build_sogou_url(
+            query,
+            start_date=start_date,
+            end_date=end_date,
+            page=page,
         )
-        raise ValueError("搜狗没有返回搜索结果，可能为空结果或页面访问受限")
-    return parsed_result
+        try:
+            response = session.get(url, timeout=REQUEST_TIMEOUT_SECONDS)
+            response.raise_for_status()
+            response.encoding = response.apparent_encoding or response.encoding
+        except requests.RequestException:
+            if page == 1:
+                raise
+            break
+
+        if (
+            "请输入验证码" in response.text
+            or "seccodeImage" in response.text
+            or "antispider" in response.text
+            or "访问过于频繁" in response.text
+        ):
+            raise ValueError("搜狗要求输入验证码，本类来源本轮跳过")
+
+        page_items, page_total, _page_matched = parse_sogou_results(
+            response.text,
+            page_url=response.url,
+        )
+        if page_total == 0:
+            if page == 1:
+                SOGOU_DEBUG_PATH.parent.mkdir(parents=True, exist_ok=True)
+                SOGOU_DEBUG_PATH.write_text(
+                    f"URL: {response.url}\n"
+                    f"STATUS: {response.status_code}\n"
+                    f"LENGTH: {len(response.text)}\n\n"
+                    "HISTORY:\n"
+                    + "\n".join(
+                        f"{item.status_code} {item.url}"
+                        for item in response.history
+                    )
+                    + "\n\n"
+                    + response.text,
+                    encoding="utf-8",
+                )
+                raise ValueError(
+                    "搜狗没有返回搜索结果，可能为空结果或页面访问受限"
+                )
+            break
+
+        total_entries += page_total
+        all_items.extend(page_items)
+        if page_total < 10 or page >= page_count:
+            break
+        time.sleep(SOGOU_PAGE_DELAY_SECONDS)
+
+    unique_items = {
+        str(item.get("dedupe_key") or item.get("link")): item
+        for item in all_items
+    }
+    result_items = list(unique_items.values())
+    return result_items, total_entries, len(result_items)

@@ -294,6 +294,10 @@ SOGOU_WECHAT_QUERIES: Final[tuple[str, ...]] = (
     "DAW",
     "音源",
     "音乐生成",
+    "Suno",
+    "Suno AI MV",
+    "AI MV",
+    "音乐视频",
 )
 
 # AI 与音乐/乐器关键词采用并集收录；交叉命中会在排行榜中获得额外加权。
@@ -596,6 +600,18 @@ def _read_positive_number(name: str, default: float) -> float:
     except ValueError:
         return default
     return value if value > 0 else default
+
+
+# 每个搜狗查询读取前两页。宽领域词第一页通常被通用内容占满，
+# 第二页能明显增加行业文章覆盖；查询之间仍保留较长冷却时间。
+SOGOU_PAGES_PER_QUERY: Final[int] = max(
+    1,
+    int(_read_positive_number("SOGOU_PAGES_PER_QUERY", 2)),
+)
+SOGOU_PAGE_DELAY_SECONDS: Final[float] = max(
+    0.5,
+    _read_positive_number("SOGOU_PAGE_DELAY_SECONDS", 1.5),
+)
 
 
 # GitHub 查询窗口刻意大于 12 小时刷新间隔，避免 Actions 延迟时漏数据。

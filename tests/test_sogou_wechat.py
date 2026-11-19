@@ -54,6 +54,10 @@ class SogouWechatTests(unittest.TestCase):
         self.assertIn("ft=2026-11-01", url)
         self.assertIn("et=2026-11-01", url)
 
+    def test_second_page_parameter_is_included(self) -> None:
+        url = build_sogou_url("Suno", page=2)
+        self.assertIn("page=2", url)
+
     def test_only_dedicated_time_element_is_used(self) -> None:
         node = BeautifulSoup(
             """
