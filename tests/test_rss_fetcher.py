@@ -250,7 +250,10 @@ class RssFetcherTests(unittest.TestCase):
                 _source: str,
                 _url: str,
                 _category: str = "RSS",
+                *,
+                source_focus: str = "",
             ):
+                del source_focus
                 nonlocal call_count
                 call_count += 1
                 if call_count == 1:

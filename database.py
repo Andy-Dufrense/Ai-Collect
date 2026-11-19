@@ -603,6 +603,7 @@ def save_news_items(
                 repair_mojibake(str(item.get("category", ""))).strip()
                 or "RSS"
             )
+            source_focus = str(item.get("source_focus", "")).strip().casefold()
             dedupe_key = str(item.get("dedupe_key", "")).strip() or link
             raw_title_zh = item.get("title_zh")
             title_zh = (
@@ -617,6 +618,7 @@ def save_news_items(
                 summary,
                 category=category,
                 source=source,
+                focus=source_focus,
             )
 
             # 标题、链接和来源是有效资讯的最低要求，缺失时直接跳过。

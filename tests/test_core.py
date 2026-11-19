@@ -552,6 +552,10 @@ class NewsFilterTests(unittest.TestCase):
             "百度新闻：音频硬件",
             "百度新闻：AI硬件",
             "百度新闻：MIDI控制器",
+            "百度新闻：合成器新品",
+            "百度新闻：音频接口新品",
+            "百度新闻：电子乐器新品",
+            "百度新闻：智能吉他",
         ):
             self.assertIn(name, names)
 

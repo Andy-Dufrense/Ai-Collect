@@ -182,6 +182,46 @@ BUILT_IN_RSS_SOURCES: Final[tuple[dict[str, str], ...]] = (
         "focus": "hardware",
     },
     {
+        "source": "百度新闻：合成器新品",
+        "url": (
+            "https://news.baidu.com/ns?"
+            "word=%E5%90%88%E6%88%90%E5%99%A8+%E6%96%B0%E5%93%81"
+            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
+        ),
+        "category": "国内科技",
+        "focus": "hardware",
+    },
+    {
+        "source": "百度新闻：音频接口新品",
+        "url": (
+            "https://news.baidu.com/ns?"
+            "word=%E9%9F%B3%E9%A2%91%E6%8E%A5%E5%8F%A3+%E6%96%B0%E5%93%81"
+            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
+        ),
+        "category": "国内科技",
+        "focus": "hardware",
+    },
+    {
+        "source": "百度新闻：电子乐器新品",
+        "url": (
+            "https://news.baidu.com/ns?"
+            "word=%E7%94%B5%E5%AD%90%E4%B9%90%E5%99%A8+%E6%96%B0%E5%93%81"
+            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
+        ),
+        "category": "国内科技",
+        "focus": "hardware",
+    },
+    {
+        "source": "百度新闻：智能吉他",
+        "url": (
+            "https://news.baidu.com/ns?"
+            "word=%E6%99%BA%E8%83%BD%E5%90%89%E4%BB%96"
+            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
+        ),
+        "category": "国内科技",
+        "focus": "hardware",
+    },
+    {
         "source": "百度新闻：AI音乐软件",
         "url": (
             "https://news.baidu.com/ns?"

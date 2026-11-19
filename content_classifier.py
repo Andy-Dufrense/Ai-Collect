@@ -207,6 +207,7 @@ def classify_content_flags(
     *,
     category: str = "",
     source: str = "",
+    focus: str = "",
 ) -> tuple[bool, bool]:
     """
     返回 ``(is_hardware, is_software)``。
@@ -314,6 +315,17 @@ def classify_content_flags(
             or GENERAL_NON_PRODUCT_HARDWARE_PATTERN.search(title_text)
         ):
             is_hardware = False
+
+    # 百度“合成器新品”“音频接口新品”等检索入口已经明确表达分类意图。
+    # 只有标题没有明确的插件/App/软件信号时，才使用来源焦点补足分类。
+    if focus == "hardware" and not (
+        title_has_strong_software_hint
+        or summary_has_strong_software_hint
+        or GENERAL_NON_PRODUCT_HARDWARE_PATTERN.search(title_text)
+    ):
+        is_hardware = True
+    elif focus == "software" and not title_has_hardware_hint:
+        is_software = True
 
     # arXiv 声音与音乐计算论文通常是算法/模型研究，除非标题明确写硬件。
     if category == "AI音频研究" and not title_has_hardware_hint:

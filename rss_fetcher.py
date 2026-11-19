@@ -773,6 +773,8 @@ def fetch_one_source(
     source: str,
     url: str,
     category: str = "RSS",
+    *,
+    source_focus: str = "",
 ) -> tuple[list[dict[str, str | None]], int, int]:
     """
     抓取并解析一个 RSS 源。
@@ -820,6 +822,7 @@ def fetch_one_source(
             "publish_time": entry.publish_time,
             "summary": summary,
             "category": category,
+            "source_focus": source_focus,
         }
         if source.startswith("百度新闻："):
             item["dedupe_key"] = _baidu_dedupe_key(title)
@@ -912,6 +915,7 @@ def _fetch_and_save_news_unlocked() -> FetchResult:
                         source_name,
                         source_url,
                         source_category,
+                        source_focus=source_config.get("focus", ""),
                     )
                 except requests.RequestException as exc:
                     route_error = f"{route.label} 失败：{exc}"

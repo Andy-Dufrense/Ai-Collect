@@ -139,6 +139,30 @@ class ContentClassifierTests(unittest.TestCase):
         self.assertTrue(is_hardware)
         self.assertTrue(is_software)
 
+    def test_source_focus_helps_hardware_query_without_keyword(self) -> None:
+        """精准硬件搜索词可补足标题中缺失的“硬件/设备”实体词。"""
+
+        is_hardware, is_software = classify_content_flags(
+            "Nova 智能吉他在中国发布",
+            "面向吉他学习者的新一代产品。",
+            category="国内科技",
+            source="百度新闻：智能吉他",
+            focus="hardware",
+        )
+        self.assertTrue(is_hardware)
+        self.assertFalse(is_software)
+
+    def test_source_focus_does_not_override_explicit_software(self) -> None:
+        is_hardware, is_software = classify_content_flags(
+            "Nova 吉他音源插件更新",
+            "适用于 DAW 的 VST3 插件。",
+            category="国内科技",
+            source="百度新闻：智能吉他",
+            focus="hardware",
+        )
+        self.assertFalse(is_hardware)
+        self.assertTrue(is_software)
+
     def test_ai_industry_article_without_product_is_unclassified(self) -> None:
         is_hardware, is_software = classify_content_flags(
             "OpenAI CEO discusses the next stage of AI",
