@@ -33,8 +33,6 @@ SOURCE_HEAT = {
     "Synthanatomy": 69,
     "Rekkerd": 67,
     "Attack Magazine": 70,
-    "ProSoundNetwork": 71,
-    "MIX": 70,
     "Matrixsynth": 66,
     "Guitar World": 70,
     "TechCrunch": 80,

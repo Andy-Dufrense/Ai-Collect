@@ -27,16 +27,14 @@ RSS 不是真正的实时推送协议，所以这里采用固定时间轮询。
 
 - 使用 `feedparser` 循环抓取多个 RSS 源，并正确处理代理与网络请求。
 - 初始计划使用公共 RSSHub，但该实例在当前虚拟机网络下连接超时，因此已切换为
-  当前网络可直接访问的官方 RSS 和 Bing News RSS：
+  当前网络可直接访问的官方 RSS：
   - IT之家：`https://www.ithome.com/rss/`
   - 爱范儿：`https://www.ifanr.com/feed`
-  - 36氪、少数派、钛媒体、极客公园、雷锋网：国内科技 RSS
+  - 少数派、钛媒体、极客公园、雷锋网：国内科技 RSS
   - TechCrunch：`https://techcrunch.com/feed/`
-  - Bing 中文新闻搜索：AI 音乐硬件、智能乐器、音频硬件、合成器，用于
-    补充没有稳定公开 RSS 的国内行业网站和中文媒体
   - Music Business Worldwide、MusicRadar、Guitar World、Synthtopia、CDM、
-    MusicTech、Rekkerd、Synthanatomy、Attack Magazine、ProSoundNetwork、
-    MIX、Matrixsynth：面向音乐产业、乐器、音频制作和音乐科技的垂直媒体
+    MusicTech、Rekkerd、Synthanatomy、Attack Magazine、Matrixsynth：
+    面向音乐产业、乐器、音频制作和音乐科技的垂直媒体
   - 公共 RSSHub 实例和机器之心 Feed 经实测存在超时或 XML 格式错误，已移除，
     避免每轮产生无效请求
 - 资讯只要包含 AI、音乐或乐器关键词之一就会保留；同时命中 AI 与音乐
@@ -334,15 +332,13 @@ python3 -m unittest discover -s tests -v
 `./manage.sh translate`。
 
 回填会依次尝试 Synthtopia、MusicTech、Synthanatomy、Rekkerd、Attack
-Magazine、ProSoundNetwork、MIX、Music Business Worldwide、爱范儿和
-TechCrunch 的 WordPress 归档 API，读取接口提供的 `date_gmt` 并以 UTC
-入库。没有可靠发布时间的文章不会进入历史排行，也不会用抓取当天的时间冒充
-历史发布时间。
+Magazine、Music Business Worldwide、爱范儿和 TechCrunch 的 WordPress
+归档 API，读取接口提供的 `date_gmt` 并以 UTC 入库。没有可靠发布时间的
+文章不会进入历史排行，也不会用抓取当天的时间冒充历史发布时间。
 
 当前额外数据源：
 
-- Rekkerd、Synthanatomy、Attack Magazine、ProSoundNetwork、MIX、
-  Matrixsynth 的 RSS
+- Rekkerd、Synthanatomy、Attack Magazine、Matrixsynth 的 RSS
 - arXiv `cs.SD` 声音与音乐计算 RSS
 - AudioCraft、Stable Audio Tools、Magenta、Riffusion、Demucs、Sonic Pi
   的 GitHub Releases
@@ -455,7 +451,8 @@ curl http://127.0.0.1:5000/health
 
 已经确认的重要文章可以写入项目根目录的 `watched_articles.json`。程序会像
 普通来源一样直接读取文章页面、解析真实发布时间并在后续每轮抓取时自动去重，
-这样即使搜狗没有索引也能保留。该文件默认包含本次提供的 SUNO 微信公众号文章。
+这样即使搜狗没有索引也能保留。当前已按用户决定清空默认文章列表，但功能保留，
+待以后确认需要长期补录的文章时再添加。
 
 没有解析到真实发布时间的文章不会入库，避免旧文章被误认为近期内容。
 

@@ -56,16 +56,6 @@ ARCHIVE_SOURCES = (
         "category": "音乐科技",
     },
     {
-        "source": "ProSoundNetwork",
-        "api": "https://www.prosoundnetwork.com/wp-json/wp/v2/posts",
-        "category": "音乐科技",
-    },
-    {
-        "source": "MIX",
-        "api": "https://www.mixonline.com/wp-json/wp/v2/posts",
-        "category": "音乐科技",
-    },
-    {
         "source": "Music Business Worldwide",
         "api": "https://www.musicbusinessworldwide.com/wp-json/wp/v2/posts",
         "category": "音乐科技",

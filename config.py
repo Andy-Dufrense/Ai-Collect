@@ -61,11 +61,6 @@ BUILT_IN_RSS_SOURCES: Final[tuple[dict[str, str], ...]] = (
         "category": "国内科技",
     },
     {
-        "source": "36氪",
-        "url": "https://36kr.com/feed",
-        "category": "国内科技",
-    },
-    {
         "source": "爱范儿",
         "url": "https://www.ifanr.com/feed",
         "category": "国内科技",
@@ -94,55 +89,6 @@ BUILT_IN_RSS_SOURCES: Final[tuple[dict[str, str], ...]] = (
         "source": "TechCrunch",
         "url": "https://techcrunch.com/feed/",
         "category": "国际科技",
-    },
-    {
-        "source": "Bing新闻：AI音乐硬件",
-        "url": (
-            "https://www.bing.com/news/search?"
-            "q=AI+%E9%9F%B3%E4%B9%90+%E7%A1%AC%E4%BB%B6&format=rss"
-        ),
-        "category": "国内科技",
-    },
-    {
-        "source": "Bing新闻：智能乐器",
-        "url": (
-            "https://www.bing.com/news/search?"
-            "q=%E6%99%BA%E8%83%BD%E4%B9%90%E5%99%A8&format=rss"
-        ),
-        "category": "国内科技",
-    },
-    {
-        "source": "Bing新闻：音频硬件",
-        "url": (
-            "https://www.bing.com/news/search?"
-            "q=%E9%9F%B3%E9%A2%91%E7%A1%AC%E4%BB%B6&format=rss"
-        ),
-        "category": "国内科技",
-    },
-    {
-        "source": "Bing新闻：合成器",
-        "url": (
-            "https://www.bing.com/news/search?"
-            "q=%E5%90%88%E6%88%90%E5%99%A8&format=rss"
-        ),
-        "category": "国内科技",
-    },
-    {
-        "source": "Bing新闻：IT之家智能硬件",
-        "url": (
-            "https://www.bing.com/news/search?"
-            "q=site%3Aithome.com+%E6%99%BA%E8%83%BD%E7%A1%AC%E4%BB%B6"
-            "&format=rss"
-        ),
-        "category": "国内科技",
-    },
-    {
-        "source": "Bing新闻：36氪硬件",
-        "url": (
-            "https://www.bing.com/news/search?"
-            "q=site%3A36kr.com+%E7%A1%AC%E4%BB%B6&format=rss"
-        ),
-        "category": "国内科技",
     },
     {
         "source": "Music Business Worldwide",
@@ -187,16 +133,6 @@ BUILT_IN_RSS_SOURCES: Final[tuple[dict[str, str], ...]] = (
     {
         "source": "Attack Magazine",
         "url": "https://www.attackmagazine.com/feed/",
-        "category": "音乐科技",
-    },
-    {
-        "source": "ProSoundNetwork",
-        "url": "https://www.prosoundnetwork.com/feed/",
-        "category": "音乐科技",
-    },
-    {
-        "source": "MIX",
-        "url": "https://www.mixonline.com/feed/",
         "category": "音乐科技",
     },
     {
