@@ -454,6 +454,7 @@ case "${1:-}" in
         ;;
     translate)
         "${PYTHON_BIN}" "${PROJECT_DIR}/scripts/translate_missing.py" \
+            --limit 1000 \
             2>&1 | tee -a "${TRANSLATION_LOG}"
         ;;
     doctor)
