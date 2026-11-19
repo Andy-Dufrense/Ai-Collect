@@ -8,6 +8,7 @@
 from __future__ import annotations
 
 import os
+import re
 import tempfile
 import unittest
 from datetime import datetime, timedelta, timezone
@@ -782,6 +783,52 @@ class FlaskPageTests(unittest.TestCase):
         self.assertEqual(page.count('class="feed-row"'), 20)
         self.assertIn("下一页", page)
         self.assertIn("kind=software", page)
+
+    def test_rank_numbers_are_continuous_after_hidden_translation(self) -> None:
+        now = datetime.now(timezone.utc)
+        save_news_items(
+            [
+                {
+                    "title": "New AI music plugin released",
+                    "link": "https://example.com/untranslated",
+                    "source": "测试源",
+                    "publish_time": now.isoformat(timespec="seconds"),
+                    "summary": "Music software update",
+                    "category": "音乐科技",
+                    "title_zh": None,
+                },
+                {
+                    "title": "AI 音乐中文资讯一",
+                    "link": "https://example.com/chinese-one",
+                    "source": "测试源",
+                    "publish_time": (
+                        now - timedelta(minutes=1)
+                    ).isoformat(timespec="seconds"),
+                    "summary": "音乐软件更新",
+                    "category": "音乐科技",
+                },
+                {
+                    "title": "AI 音乐中文资讯二",
+                    "link": "https://example.com/chinese-two",
+                    "source": "测试源",
+                    "publish_time": (
+                        now - timedelta(minutes=2)
+                    ).isoformat(timespec="seconds"),
+                    "summary": "音乐软件更新",
+                    "category": "音乐科技",
+                },
+            ],
+            now,
+        )
+        from app import app
+
+        page = app.test_client().get("/").get_data(as_text=True)
+        ranks = re.findall(
+            r'class="rank-number[^"]*">\s*(\d+)\s*<',
+            page,
+        )
+        self.assertEqual(ranks[:2], ["1", "2"])
+        self.assertNotIn("New AI music plugin released", page)
 
     def test_content_kind_filter_only_returns_selected_type(self) -> None:
         now = datetime.now(timezone.utc)

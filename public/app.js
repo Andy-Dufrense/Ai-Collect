@@ -320,7 +320,7 @@ function render() {
     const visibleItems = ranked.slice(pageStart, pageStart + PAGE_SIZE);
     elements.list.replaceChildren();
     visibleItems.forEach((item, index) => {
-        elements.list.append(renderRow(item, index + 1));
+        elements.list.append(renderRow(item, pageStart + index + 1));
     });
 
     elements.empty.hidden = ranked.length > 0;
