@@ -34,6 +34,7 @@ from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
 from config import (
+    BAIDU_QUERY_DELAY_SECONDS,
     DATA_DIR,
     GITHUB_DISCOVERY_ENABLED,
     GITHUB_RELEASE_REPOSITORIES,
@@ -895,6 +896,7 @@ def _fetch_and_save_news_unlocked() -> FetchResult:
     watched_attempted = 0
 
     routes = _discover_fetch_routes()
+    baidu_source_seen = False
     LOGGER.info(
         "可用网络通道：%s",
         "、".join(route.label for route in routes),
@@ -904,6 +906,10 @@ def _fetch_and_save_news_unlocked() -> FetchResult:
             source_name = source_config["source"]
             source_url = source_config["url"]
             source_category = source_config.get("category", "RSS")
+            if source_name.startswith("百度新闻："):
+                if baidu_source_seen:
+                    time.sleep(BAIDU_QUERY_DELAY_SECONDS)
+                baidu_source_seen = True
             source_errors: list[str] = []
             source_loaded = False
 

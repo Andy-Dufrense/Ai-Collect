@@ -551,7 +551,6 @@ class NewsFilterTests(unittest.TestCase):
             "百度新闻：合成器",
             "百度新闻：乐器",
             "百度新闻：音频设备",
-            "百度新闻：MIDI",
         ):
             self.assertIn(name, names)
 
@@ -559,18 +558,26 @@ class NewsFilterTests(unittest.TestCase):
         names = {source["source"] for source in RSS_SOURCES}
         for name in (
             "百度新闻：AI音乐",
-            "百度新闻：AI音频",
             "百度新闻：AI编程",
             "百度新闻：AI模型发布",
             "百度新闻：AI算力提升",
-            "百度新闻：音乐制作",
-            "百度新闻：音乐软件",
             "百度新闻：音乐生成",
-            "百度新闻：编曲",
-            "百度新闻：混音",
             "百度新闻：音频插件",
         ):
             self.assertIn(name, names)
+
+    def test_baidu_hardware_queries_run_before_later_queries(self) -> None:
+        """硬件方向应排在前面，避免百度触发验证后只留下软件结果。"""
+
+        names = [source["source"] for source in RSS_SOURCES]
+        self.assertLess(
+            names.index("百度新闻：合成器"),
+            names.index("百度新闻：AI模型发布"),
+        )
+        self.assertLess(
+            names.index("百度新闻：乐器"),
+            names.index("百度新闻：音乐生成"),
+        )
 
     def test_sogou_rejects_generic_ai_job_replacement_article(self) -> None:
         """职业替代八卦应排除，但 AI 模型、编程和算力技术应保留。"""

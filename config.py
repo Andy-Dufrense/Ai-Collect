@@ -152,9 +152,9 @@ BUILT_IN_RSS_SOURCES: Final[tuple[dict[str, str], ...]] = (
         "category": "国内科技",
     },
     {
-        "source": "百度新闻：AI音频",
+        "source": "百度新闻：合成器",
         "url": (
-            "https://news.baidu.com/ns?word=AI%E9%9F%B3%E9%A2%91"
+            "https://news.baidu.com/ns?word=%E5%90%88%E6%88%90%E5%99%A8"
             "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
         ),
         "category": "国内科技",
@@ -163,6 +163,14 @@ BUILT_IN_RSS_SOURCES: Final[tuple[dict[str, str], ...]] = (
         "source": "百度新闻：AI编程",
         "url": (
             "https://news.baidu.com/ns?word=AI%E7%BC%96%E7%A8%8B"
+            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
+        ),
+        "category": "国内科技",
+    },
+    {
+        "source": "百度新闻：乐器",
+        "url": (
+            "https://news.baidu.com/ns?word=%E4%B9%90%E5%99%A8"
             "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
         ),
         "category": "国内科技",
@@ -186,17 +194,9 @@ BUILT_IN_RSS_SOURCES: Final[tuple[dict[str, str], ...]] = (
         "category": "国内科技",
     },
     {
-        "source": "百度新闻：音乐制作",
+        "source": "百度新闻：音频设备",
         "url": (
-            "https://news.baidu.com/ns?word=%E9%9F%B3%E4%B9%90%E5%88%B6%E4%BD%9C"
-            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
-        ),
-        "category": "国内科技",
-    },
-    {
-        "source": "百度新闻：音乐软件",
-        "url": (
-            "https://news.baidu.com/ns?word=%E9%9F%B3%E4%B9%90%E8%BD%AF%E4%BB%B6"
+            "https://news.baidu.com/ns?word=%E9%9F%B3%E9%A2%91%E8%AE%BE%E5%A4%87"
             "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
         ),
         "category": "国内科技",
@@ -210,57 +210,9 @@ BUILT_IN_RSS_SOURCES: Final[tuple[dict[str, str], ...]] = (
         "category": "国内科技",
     },
     {
-        "source": "百度新闻：编曲",
-        "url": (
-            "https://news.baidu.com/ns?word=%E7%BC%96%E6%9B%B2"
-            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
-        ),
-        "category": "国内科技",
-    },
-    {
-        "source": "百度新闻：混音",
-        "url": (
-            "https://news.baidu.com/ns?word=%E6%B7%B7%E9%9F%B3"
-            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
-        ),
-        "category": "国内科技",
-    },
-    {
         "source": "百度新闻：音频插件",
         "url": (
             "https://news.baidu.com/ns?word=%E9%9F%B3%E9%A2%91%E6%8F%92%E4%BB%B6"
-            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
-        ),
-        "category": "国内科技",
-    },
-    {
-        "source": "百度新闻：MIDI",
-        "url": (
-            "https://news.baidu.com/ns?word=MIDI"
-            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
-        ),
-        "category": "国内科技",
-    },
-    {
-        "source": "百度新闻：合成器",
-        "url": (
-            "https://news.baidu.com/ns?word=%E5%90%88%E6%88%90%E5%99%A8"
-            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
-        ),
-        "category": "国内科技",
-    },
-    {
-        "source": "百度新闻：乐器",
-        "url": (
-            "https://news.baidu.com/ns?word=%E4%B9%90%E5%99%A8"
-            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
-        ),
-        "category": "国内科技",
-    },
-    {
-        "source": "百度新闻：音频设备",
-        "url": (
-            "https://news.baidu.com/ns?word=%E9%9F%B3%E9%A2%91%E8%AE%BE%E5%A4%87"
             "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
         ),
         "category": "国内科技",
@@ -757,6 +709,17 @@ SOGOU_MIN_INTERVAL_SECONDS: Final[float] = max(
 SOGOU_QUERY_DELAY_SECONDS: Final[float] = max(
     1.0,
     _read_positive_number("SOGOU_QUERY_DELAY_SECONDS", 2.0),
+)
+
+# 百度新闻搜索页会在一批连续请求后触发安全验证。最多保留 9 个宽方向
+# 查询，并在查询之间等待 3 秒；相同查询组合 6 小时内不重复请求。
+BAIDU_MIN_INTERVAL_SECONDS: Final[float] = max(
+    3600.0,
+    _read_positive_number("BAIDU_MIN_INTERVAL_SECONDS", 21600.0),
+)
+BAIDU_QUERY_DELAY_SECONDS: Final[float] = max(
+    1.0,
+    _read_positive_number("BAIDU_QUERY_DELAY_SECONDS", 3.0),
 )
 
 HISTORY_BACKFILL_DAYS: Final[int] = max(
