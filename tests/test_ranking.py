@@ -251,6 +251,39 @@ class RankingTests(unittest.TestCase):
             {"AI 编曲插件发布", "MIDI 控制器与配套软件更新"},
         )
 
+    def test_one_source_cannot_fill_an_entire_page(self) -> None:
+        sogou_items = [
+            make_item(
+                f"搜狗微信资讯 {index}",
+                publish_time=(
+                    f"2026-11-17T{9 - index // 60:02d}:"
+                    f"{59 - index % 60:02d}:00+00:00"
+                ),
+                source="搜狗微信",
+                category="搜狗微信",
+            )
+            for index in range(25)
+        ]
+        other_items = [
+            make_item(
+                f"其他来源资讯 {index}",
+                publish_time=f"2026-11-17T08:{20 - index:02d}:00+00:00",
+                source=f"其他来源 {index}",
+            )
+            for index in range(20)
+        ]
+        ranked = filter_and_rank_news(
+            sogou_items + other_items,
+            days=3,
+            now=self.now,
+        )
+        first_page = ranked[:20]
+        self.assertLessEqual(
+            sum(item["source"] == "搜狗微信" for item in first_page),
+            6,
+        )
+        self.assertGreater(len({item["source"] for item in first_page}), 6)
+
     def test_publication_time_is_primary_sort_key(self) -> None:
         items = [
             make_item(

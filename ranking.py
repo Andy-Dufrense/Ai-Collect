@@ -72,6 +72,9 @@ HOT_TERMS = (
     "first",
 )
 
+PAGE_SIZE = 20
+MAX_ITEMS_PER_SOURCE_PER_PAGE = 6
+
 
 def _parse_utc(value: str | None) -> datetime | None:
     """解析数据库中的 ISO 时间；无时间或格式异常时返回 None。"""
@@ -183,6 +186,60 @@ def _search_term_matches(searchable: str, term: str) -> bool:
     return re.search(pattern, searchable) is not None
 
 
+def _source_group(item: dict[str, Any]) -> str:
+    """把同一批 GitHub 仓库归为一个来源组，便于控制首页来源比例。"""
+
+    source = str(item.get("source", "")).strip()
+    category = str(item.get("category", "")).strip()
+    if category == "搜狗微信":
+        return "搜狗微信"
+    if source.casefold().startswith("github"):
+        return "GitHub"
+    return source or "未知来源"
+
+
+def balance_source_diversity(
+    items: list[dict[str, Any]],
+    *,
+    page_size: int = PAGE_SIZE,
+    max_per_source: int = MAX_ITEMS_PER_SOURCE_PER_PAGE,
+) -> list[dict[str, Any]]:
+    """
+    为每一页设置同来源数量上限，避免一个来源占满整页。
+
+    输入已经按发布时间排序；每页仍保持时间倒序，但会选择不同来源填充，
+    被推迟的条目进入后续页面。
+    """
+
+    remaining = list(items)
+    balanced: list[dict[str, Any]] = []
+    while remaining:
+        selected: list[dict[str, Any]] = []
+        deferred: list[dict[str, Any]] = []
+        consumed = 0
+        counts: dict[str, int] = {}
+
+        for index, item in enumerate(remaining):
+            if len(selected) >= page_size:
+                consumed = index
+                break
+            group = _source_group(item)
+            if counts.get(group, 0) < max_per_source:
+                selected.append(item)
+                counts[group] = counts.get(group, 0) + 1
+            else:
+                deferred.append(item)
+        else:
+            consumed = len(remaining)
+
+        fill_count = min(page_size - len(selected), len(deferred))
+        selected.extend(deferred[:fill_count])
+        balanced.extend(selected)
+        remaining = deferred[fill_count:] + remaining[consumed:]
+
+    return balanced
+
+
 def filter_and_rank_news(
     items: Iterable[dict[str, Any]],
     *,
@@ -286,6 +343,7 @@ def filter_and_rank_news(
         ),
         reverse=True,
     )
+    ranked_items = balance_source_diversity(ranked_items)
     for rank, item in enumerate(ranked_items, start=1):
         item["rank"] = rank
     return ranked_items

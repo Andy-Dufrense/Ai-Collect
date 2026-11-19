@@ -10,6 +10,7 @@ const state = {
     currentPage: 1,
 };
 const PAGE_SIZE = 20;
+const MAX_ITEMS_PER_SOURCE_PER_PAGE = 6;
 
 const elements = {
     keyword: document.querySelector("#keyword"),
@@ -92,6 +93,56 @@ function matchesSearchTerm(text, term) {
     ).test(text);
 }
 
+function sourceGroup(item) {
+    if (item.category === "搜狗微信") return "搜狗微信";
+    if (String(item.source || "").toLowerCase().startsWith("github")) {
+        return "GitHub";
+    }
+    return item.source || "未知来源";
+}
+
+function balanceSourceDiversity(items) {
+    let remaining = [...items];
+    const balanced = [];
+    while (remaining.length) {
+        const selected = [];
+        const deferred = [];
+        const counts = new Map();
+        let consumed = 0;
+
+        for (let index = 0; index < remaining.length; index += 1) {
+            if (selected.length >= PAGE_SIZE) {
+                consumed = index;
+                break;
+            }
+            const item = remaining[index];
+            const group = sourceGroup(item);
+            const count = counts.get(group) || 0;
+            if (count < MAX_ITEMS_PER_SOURCE_PER_PAGE) {
+                selected.push(item);
+                counts.set(group, count + 1);
+            } else {
+                deferred.push(item);
+            }
+        }
+        if (consumed === 0) {
+            consumed = remaining.length;
+        }
+
+        const fillCount = Math.min(
+            PAGE_SIZE - selected.length,
+            deferred.length
+        );
+        selected.push(...deferred.slice(0, fillCount));
+        balanced.push(...selected);
+        remaining = [
+            ...deferred.slice(fillCount),
+            ...remaining.slice(consumed),
+        ];
+    }
+    return balanced;
+}
+
 function rankItems() {
     const days = Number(elements.days.value);
     const specificDate = elements.specificDate.value;
@@ -110,7 +161,7 @@ function rankItems() {
         startDate = shanghaiDate(startInstant.toISOString());
     }
 
-    return state.items
+    const sortedItems = state.items
         .filter((item) => {
             const publishTimestamp = item.publish_time
                 ? new Date(item.publish_time).getTime()
@@ -173,6 +224,7 @@ function rankItems() {
             }
             return right.rank_score - left.rank_score;
         });
+    return balanceSourceDiversity(sortedItems);
 }
 
 function shanghaiDate(value) {

@@ -132,6 +132,7 @@ def initialize_database() -> None:
         )
         _purge_existing_github_spam(connection)
         _purge_existing_promotional_news(connection)
+        _purge_future_news(connection)
         _backfill_content_classifications(connection)
         connection.commit()
 
@@ -186,6 +187,28 @@ def _purge_existing_promotional_news(
             f"DELETE FROM news WHERE id IN ({placeholders})",
             promotional_ids,
         )
+
+
+def _purge_future_news(connection: sqlite3.Connection) -> None:
+    """
+    清理明显不可信的未来发布时间。
+
+    不可信 GitHub 仓库会伪造 2035、2070 等 commit 时间；如果不拦截，
+    它们会因为“发布时间倒序”长期占据首页。
+    """
+
+    maximum_future = (
+        datetime.now(timezone.utc) + timedelta(days=1)
+    ).isoformat(timespec="seconds")
+    connection.execute(
+        """
+        DELETE FROM news
+        WHERE publish_time IS NOT NULL
+          AND publish_time != ''
+          AND publish_time > ?
+        """,
+        (maximum_future,),
+    )
 
 
 def _backfill_content_classifications(
@@ -284,6 +307,21 @@ def save_news_items(
             )
             if not publish_time or publish_time.casefold() == "none":
                 publish_time = None
+            if publish_time:
+                try:
+                    parsed_publish_time = datetime.fromisoformat(
+                        publish_time.replace("Z", "+00:00")
+                    )
+                    if parsed_publish_time.tzinfo is None:
+                        parsed_publish_time = parsed_publish_time.replace(
+                            tzinfo=timezone.utc
+                        )
+                    if parsed_publish_time.astimezone(
+                        timezone.utc
+                    ) > fetched_at_utc + timedelta(days=1):
+                        continue
+                except ValueError:
+                    continue
             category = str(item.get("category", "")).strip() or "RSS"
             dedupe_key = str(item.get("dedupe_key", "")).strip() or link
             raw_title_zh = item.get("title_zh")

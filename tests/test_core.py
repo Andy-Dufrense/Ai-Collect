@@ -487,6 +487,24 @@ class DatabaseTests(unittest.TestCase):
         )
         self.assertIsNone(get_all_news()[0]["publish_time"])
 
+    def test_obviously_future_publish_time_is_rejected(self) -> None:
+        now = datetime(2026, 11, 19, 8, 0, tzinfo=timezone.utc)
+        inserted = save_news_items(
+            [
+                {
+                    "title": "伪造未来的 GitHub MIDI 提交",
+                    "link": "https://example.com/future-commit",
+                    "source": "GitHub · spam/future",
+                    "publish_time": "2071-10-10T19:46:01+00:00",
+                    "summary": "fake future commit",
+                    "category": "AI音频开发",
+                }
+            ],
+            now,
+        )
+        self.assertEqual(inserted, 0)
+        self.assertEqual(get_news_count(), 0)
+
     def test_none_translated_title_is_saved_as_null(self) -> None:
         fetched_at = datetime(2026, 11, 17, 8, 0, tzinfo=timezone.utc)
         save_news_items(
