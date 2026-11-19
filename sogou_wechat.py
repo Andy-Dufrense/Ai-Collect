@@ -166,16 +166,10 @@ def parse_sogou_results(
             else ""
         )
         if not account:
-            query_kind = (
-                "网站/账号"
-                if query in SOGOU_SOURCE_QUERIES
-                else "关键词"
-            )
-            account = (
-                f"搜狗搜索（{query_kind}）· {query}"
-                if query
-                else "搜狗微信"
-            )
+            if query and query in SOGOU_SOURCE_QUERIES:
+                account = f"搜狗搜索 · {query}"
+            else:
+                account = "搜狗搜索"
         link = urljoin(page_url, relative_link)
         matched_items.append(
             {

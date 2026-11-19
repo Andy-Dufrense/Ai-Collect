@@ -100,10 +100,10 @@ class SogouWechatTests(unittest.TestCase):
         self.assertEqual(matched, 1)
         self.assertEqual(
             items[0]["source"],
-            "搜狗搜索（网站/账号）· Midifan",
+            "搜狗搜索 · Midifan",
         )
 
-    def test_keyword_query_is_labelled_separately(self) -> None:
+    def test_keyword_query_uses_generic_fallback(self) -> None:
         html = SOGOU_HTML.replace(
             '<a class="account">音乐科技观察</a>',
             "",
@@ -116,7 +116,7 @@ class SogouWechatTests(unittest.TestCase):
         self.assertEqual(matched, 1)
         self.assertEqual(
             items[0]["source"],
-            "搜狗搜索（关键词）· AI编程",
+            "搜狗搜索",
         )
 
 

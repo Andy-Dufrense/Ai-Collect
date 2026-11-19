@@ -51,7 +51,6 @@ from config import (
     SOGOU_MIN_INTERVAL_SECONDS,
     SOGOU_MAX_QUERIES_PER_RUN,
     SOGOU_QUERY_DELAY_SECONDS,
-    SOGOU_SOURCE_QUERIES,
     SOGOU_WECHAT_QUERIES,
     WATCHED_ARTICLE_URLS,
     get_fetch_lock_path,
@@ -402,14 +401,6 @@ def _next_sogou_query_batch() -> tuple[str, ...]:
     ) % len(queries)
     set_meta_value("sogou_batch_cursor", str(next_cursor))
     return selected
-
-
-def _sogou_query_kind(query: str) -> str:
-    """区分搜狗查询是在找网站/账号，还是在找品类关键词。"""
-
-    if query in SOGOU_SOURCE_QUERIES:
-        return "网站/账号"
-    return "关键词"
 
 
 def _clean_html(raw_html: str) -> str:
@@ -1173,9 +1164,7 @@ def _fetch_and_save_news_unlocked() -> FetchResult:
 
         for query_index, query in enumerate(sogou_queries):
             sogou_attempted += 1
-            source_name = (
-                f"搜狗搜索（{_sogou_query_kind(query)}）：{query}"
-            )
+            source_name = f"搜狗搜索 · {query}"
             source_errors = []
             source_loaded = False
             stop_sogou_batch = False
