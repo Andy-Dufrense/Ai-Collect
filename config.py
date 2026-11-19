@@ -373,17 +373,13 @@ WATCHED_ARTICLE_URLS: Final[tuple[dict[str, str], ...]] = (
 # 搜狗微信搜索使用公开结果页，不绕过登录、验证码或平台风控。
 # 这里只负责用宽泛领域词发现内容，硬件/软件分类在入库阶段完成。
 # 不在这里预先堆叠具体产品名，否则会漏掉尚未预见的新产品和新技术。
-SOGOU_WECHAT_QUERIES: Final[tuple[str, ...]] = (
+# 这两组故意分开：前者是在找网站、媒体或公众号，后者是在找硬件/软件品类。
+# 抓取日志和前端来源会明确标注查询类型，避免把“AI编程”这类关键词误认为网站。
+SOGOU_SOURCE_QUERIES: Final[tuple[str, ...]] = (
     "Midifan",
     "叉烧网",
     "键盘中国",
     "小旭音乐",
-    "耳机 音频",
-    "声卡",
-    "音频发射器",
-    "监听音箱",
-    "MIDI键盘",
-    "打击垫",
     "KVR Audio",
     "Gearspace",
     "Production Expert",
@@ -395,6 +391,20 @@ SOGOU_WECHAT_QUERIES: Final[tuple[str, ...]] = (
     "吉他中国",
     "中国电子琴信息网",
     "MIDI协会",
+    "刘润 AI音乐 硬件",
+    "黑马创业 AI音乐 硬件",
+)
+
+SOGOU_KEYWORD_QUERIES: Final[tuple[str, ...]] = (
+    "耳机 音频",
+    "声卡",
+    "音频发射器",
+    "监听音箱",
+    "MIDI键盘",
+    "打击垫",
+    "USB声卡",
+    "无线麦克风",
+    "监听耳机",
     "DAW更新",
     "宿主软件",
     "VST3",
@@ -411,9 +421,6 @@ SOGOU_WECHAT_QUERIES: Final[tuple[str, ...]] = (
     "效果器插件",
     "母带插件",
     "混音插件",
-    "USB声卡",
-    "无线麦克风",
-    "监听耳机",
     "AI编程",
     "AI芯片发布",
     "智能乐器",
@@ -443,8 +450,10 @@ SOGOU_WECHAT_QUERIES: Final[tuple[str, ...]] = (
     "Suno AI MV",
     "AI MV",
     "音乐视频",
-    "刘润 AI音乐 硬件",
-    "黑马创业 AI音乐 硬件",
+)
+
+SOGOU_WECHAT_QUERIES: Final[tuple[str, ...]] = (
+    SOGOU_SOURCE_QUERIES + SOGOU_KEYWORD_QUERIES
 )
 
 # AI 与音乐/乐器关键词采用并集收录；交叉命中会在排行榜中获得额外加权。

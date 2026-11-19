@@ -98,7 +98,26 @@ class SogouWechatTests(unittest.TestCase):
             query="Midifan",
         )
         self.assertEqual(matched, 1)
-        self.assertEqual(items[0]["source"], "搜狗搜索 · Midifan")
+        self.assertEqual(
+            items[0]["source"],
+            "搜狗搜索（网站/账号）· Midifan",
+        )
+
+    def test_keyword_query_is_labelled_separately(self) -> None:
+        html = SOGOU_HTML.replace(
+            '<a class="account">音乐科技观察</a>',
+            "",
+        )
+        items, _total, matched = parse_sogou_results(
+            html,
+            page_url="https://weixin.sogou.com/weixin?type=2&query=AI编程",
+            query="AI编程",
+        )
+        self.assertEqual(matched, 1)
+        self.assertEqual(
+            items[0]["source"],
+            "搜狗搜索（关键词）· AI编程",
+        )
 
 
 if __name__ == "__main__":

@@ -22,6 +22,7 @@ from config import (
     REQUEST_TIMEOUT_SECONDS,
     SOGOU_PAGE_DELAY_SECONDS,
     SOGOU_PAGES_PER_QUERY,
+    SOGOU_SOURCE_QUERIES,
 )
 from news_filter import is_relevant_news
 
@@ -165,8 +166,15 @@ def parse_sogou_results(
             else ""
         )
         if not account:
+            query_kind = (
+                "网站/账号"
+                if query in SOGOU_SOURCE_QUERIES
+                else "关键词"
+            )
             account = (
-                f"搜狗搜索 · {query}" if query else "搜狗微信"
+                f"搜狗搜索（{query_kind}）· {query}"
+                if query
+                else "搜狗微信"
             )
         link = urljoin(page_url, relative_link)
         matched_items.append(
