@@ -124,41 +124,6 @@ BUILT_IN_RSS_SOURCES: Final[tuple[dict[str, str], ...]] = (
         "focus": "hardware",
     },
     {
-        "source": "Midifan",
-        "url": "https://www.midifan.com/rss.php",
-        "category": "国内科技",
-        "focus": "hardware",
-    },
-    {
-        "source": "叉烧网",
-        "url": "https://www.exound.com/feed",
-        "category": "国内科技",
-        "focus": "hardware",
-    },
-    {
-        "source": "我爱音频网",
-        "url": "https://www.52audio.com/feed/",
-        "category": "国内科技",
-        "focus": "hardware",
-    },
-    {
-        "source": "吉他中国",
-        "url": "https://www.guitarchina.com/feed/",
-        "category": "国内科技",
-        "focus": "hardware",
-    },
-    {
-        "source": "MIDI Association",
-        "url": "https://midi.org/news?format=rss",
-        "category": "音乐科技",
-    },
-    {
-        "source": "Keyboard Magazine",
-        "url": "https://www.keyboardmag.com/feed/",
-        "category": "音乐科技",
-        "focus": "hardware",
-    },
-    {
         "source": "Synthtopia",
         "url": "https://www.synthtopia.com/feed/",
         "category": "音乐科技",
@@ -195,21 +160,10 @@ BUILT_IN_RSS_SOURCES: Final[tuple[dict[str, str], ...]] = (
         "focus": "software",
     },
     {
-        "source": "Production Expert",
-        "url": "https://www.production-expert.com/home-blog?format=rss",
-        "category": "音乐科技",
-        "focus": "software",
-    },
-    {
         "source": "VI-Control",
         "url": "https://vi-control.net/community/forums/-/index.rss",
         "category": "音乐科技",
         "focus": "software",
-    },
-    {
-        "source": "Music Ally",
-        "url": "https://musically.com/feed/",
-        "category": "音乐科技",
     },
     {
         "source": "Hugging Face Blog",
@@ -432,6 +386,9 @@ SOGOU_WECHAT_QUERIES: Final[tuple[str, ...]] = (
     "打击垫",
     "KVR Audio",
     "Gearspace",
+    "Production Expert",
+    "Music Ally",
+    "Keyboard Magazine",
     "Soomal",
     "我爱音频网",
     "音频应用",

@@ -119,6 +119,7 @@ def parse_sogou_results(
     html: str,
     *,
     page_url: str,
+    query: str = "",
 ) -> tuple[list[dict[str, str | None]], int, int]:
     """
     从搜狗微信结果页解析文章。
@@ -155,12 +156,18 @@ def parse_sogou_results(
         if publish_time is None:
             continue
 
-        account_node = node.select_one(".account")
+        account_node = node.select_one(
+            ".account, .s-p a, [class*='account'], a[uigsig]"
+        )
         account = (
             " ".join(account_node.get_text(" ", strip=True).split())
             if account_node is not None
-            else "搜狗微信"
+            else ""
         )
+        if not account:
+            account = (
+                f"搜狗搜索 · {query}" if query else "搜狗微信"
+            )
         link = urljoin(page_url, relative_link)
         matched_items.append(
             {
@@ -235,6 +242,7 @@ def fetch_sogou_query(
         page_items, page_total, _page_matched = parse_sogou_results(
             response.text,
             page_url=response.url,
+            query=query,
         )
         if page_total == 0:
             if page == 1:

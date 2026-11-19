@@ -341,11 +341,11 @@ Magazine、Music Business Worldwide、爱范儿和 TechCrunch 的 WordPress
 - Rekkerd、Synthanatomy、Attack Magazine、Matrixsynth 的 RSS
 - Premier Guitar、Guitar.com、Guitar Player、Keyboard Magazine 的乐器与
   键盘硬件 RSS
-- Midifan、叉烧网等国内音乐科技来源；键盘中国、小旭音乐通过搜狗公开搜索
-  监控。刘润、黑马创业只保留明确涉及 AI 音乐或音频硬件技术的内容
-- 我爱音频网、吉他中国、MIDI Association 的音频 3C、乐器和 MIDI 来源
-- Bedroom Producers Blog、Production Expert、VI-Control、Music Ally 和
-  Hugging Face Blog 等软件、DAW、AI 音频与研究来源
+- Midifan、叉烧网、我爱音频网、吉他中国、键盘中国、中国电子琴信息网、
+  MIDI 协会和小旭音乐通过搜狗公开搜索监控。刘润、黑马创业只保留明确涉及
+  AI 音乐或音频硬件技术的内容
+- Bedroom Producers Blog、VI-Control 和 Hugging Face Blog 的软件、虚拟
+  乐器与 AI 音频来源；Production Expert、Music Ally 通过搜狗搜索补充
 - 百度新闻使用 AI 音乐、AI 编程、AI 模型发布、合成器、吉他新品、
   钢琴新品、智能乐器、琴弦新品、音频设备、AI 芯片发布等方向词发现内容，
   抓回后再统一分类为硬件或软件。乐器硬件查询优先执行，查询之间自动等待。

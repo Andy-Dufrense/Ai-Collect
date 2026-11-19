@@ -87,6 +87,19 @@ class SogouWechatTests(unittest.TestCase):
         self.assertTrue(str(items[0]["dedupe_key"]).startswith("sogou:"))
         self.assertTrue(str(items[0]["link"]).startswith("https://weixin.sogou.com/"))
 
+    def test_query_is_used_when_account_name_is_missing(self) -> None:
+        html = SOGOU_HTML.replace(
+            '<a class="account">音乐科技观察</a>',
+            "",
+        )
+        items, _total, matched = parse_sogou_results(
+            html,
+            page_url="https://weixin.sogou.com/weixin?type=2&query=Midifan",
+            query="Midifan",
+        )
+        self.assertEqual(matched, 1)
+        self.assertEqual(items[0]["source"], "搜狗搜索 · Midifan")
+
 
 if __name__ == "__main__":
     unittest.main()
