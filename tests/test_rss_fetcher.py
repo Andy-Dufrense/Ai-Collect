@@ -69,6 +69,43 @@ STRICT_FOREIGN_RSS = """<?xml version="1.0" encoding="UTF-8"?>
 </rss>
 """.encode("utf-8")
 
+MALFORMED_SEARCH_RSS = """<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Malformed Search Feed</title>
+    <item>
+      <title>AI 音乐软件 &amp; MIDI 工具更新</title>
+      <link>https://example.com/search?q=ai&type=2</link>
+      <description><![CDATA[AI 编曲工具发布<br>支持 MIDI 和混音功能]]></description>
+      <pubDate>Wed, 19 Nov 2026 07:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>普通天气新闻</title>
+      <link>https://example.com/weather?date=today&city=beijing</link>
+      <description>今日天气晴朗&nbsp;适合出行</description>
+      <pubDate>Wed, 19 Nov 2026 06:00:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>
+""".encode("utf-8")
+
+BAIDU_SEARCH_HTML = """<!doctype html>
+<html><body>
+  <ul class="news-list">
+    <li class="result">
+      <h3><a href="/link?url=ai-music-1">AI 音乐编曲软件新增 MIDI 混音功能</a></h3>
+      <span>2026-11-19 14:20</span>
+      <p>该工具支持 AI 编曲和音频编辑。</p>
+    </li>
+    <li class="result">
+      <h3><a href="/link?url=weather-1">今天北京天气晴朗</a></h3>
+      <span>2026-11-19 13:00</span>
+      <p>普通天气新闻。</p>
+    </li>
+  </ul>
+</body></html>
+""".encode("utf-8")
+
 
 class FakeResponse:
     """模拟 requests.Response 中最少的必要接口。"""
@@ -140,6 +177,44 @@ class RssFetcherTests(unittest.TestCase):
         self.assertEqual(
             items[0]["title"],
             "New MIDI controller and audio interface released",
+        )
+
+    def test_malformed_search_rss_is_recovered(self) -> None:
+        """百度搜索 RSS 的裸 & 和 HTML 标签不应导致整份结果被丢弃。"""
+
+        items, total, matched = fetch_one_source(
+            FakeSession(MALFORMED_SEARCH_RSS),
+            "百度新闻：AI音乐软件",
+            "https://example.com/malformed.xml",
+            "国内科技",
+        )
+
+        self.assertEqual(total, 2)
+        self.assertEqual(matched, 1)
+        self.assertEqual(len(items), 1)
+        self.assertEqual(
+            items[0]["link"],
+            "https://example.com/search?q=ai&type=2",
+        )
+        self.assertIn("AI 编曲工具发布", items[0]["summary"])
+
+    def test_baidu_html_search_results_are_recovered(self) -> None:
+        """百度 RSS 失效但返回搜索网页时，仍应提取标题、链接和真实日期。"""
+
+        items, total, matched = fetch_one_source(
+            FakeSession(BAIDU_SEARCH_HTML),
+            "百度新闻：AI音乐软件",
+            "https://news.baidu.com/ns?word=AI音乐",
+            "国内科技",
+        )
+
+        self.assertEqual(total, 2)
+        self.assertEqual(matched, 1)
+        self.assertEqual(len(items), 1)
+        self.assertIn("AI 音乐编曲软件", items[0]["title"])
+        self.assertEqual(
+            items[0]["publish_time"],
+            "2026-11-19T06:20:00+00:00",
         )
 
     def test_second_fetch_is_rejected_while_lock_is_held(self) -> None:

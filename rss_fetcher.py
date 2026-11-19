@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import calendar
 import fcntl
+import html
 import ipaddress
 import logging
 import os
@@ -18,8 +19,12 @@ import time
 from collections.abc import Iterator
 from contextlib import contextmanager
 from dataclasses import dataclass, field
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
+from email.utils import parsedate_to_datetime
+from pathlib import Path
 from typing import Any
+from urllib.parse import urljoin, urlparse
+from zoneinfo import ZoneInfo
 
 import feedparser
 import requests
@@ -28,6 +33,7 @@ from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
 from config import (
+    DATA_DIR,
     GITHUB_DISCOVERY_ENABLED,
     GITHUB_RELEASE_REPOSITORIES,
     PROXY_AUTO_DISCOVERY,
@@ -93,6 +99,16 @@ class FetchResult:
         """网络或解析失败的数据源数量。"""
 
         return self.source_count - self.successful_sources
+
+
+@dataclass(frozen=True)
+class ParsedFeedEntry:
+    """feedparser 和容错解析器共用的最小条目结构。"""
+
+    title: str
+    link: str
+    summary: str
+    publish_time: str | None
 
 
 def _build_http_session(
@@ -399,6 +415,350 @@ def _extract_summary(entry: Any) -> str:
     return _clean_html(str(summary))
 
 
+def _parse_date_text(value: str) -> str | None:
+    """解析 RSS 常见日期文本，并统一转换为 UTC ISO 时间。"""
+
+    text = html.unescape(str(value or "")).strip()
+    if not text:
+        return None
+    try:
+        parsed = parsedate_to_datetime(text)
+    except (TypeError, ValueError, OverflowError):
+        try:
+            parsed = datetime.fromisoformat(text.replace("Z", "+00:00"))
+        except ValueError:
+            return None
+    if parsed.tzinfo is None:
+        parsed = parsed.replace(tzinfo=timezone.utc)
+    return parsed.astimezone(timezone.utc).isoformat(timespec="seconds")
+
+
+def _feedparser_entries(parsed_feed: Any) -> list[ParsedFeedEntry]:
+    """把 feedparser 条目转换成统一结构，方便容错解析共用后续逻辑。"""
+
+    return [
+        ParsedFeedEntry(
+            title=str(getattr(entry, "title", "")),
+            link=str(getattr(entry, "link", "")).strip(),
+            summary=_extract_summary(entry),
+            publish_time=_parse_publish_time(entry),
+        )
+        for entry in parsed_feed.entries
+    ]
+
+
+def _repair_xml_text(raw_content: bytes) -> str:
+    """
+    修复新闻 RSS 中常见的 XML 小错误。
+
+    百度等搜索 RSS 会把 URL 中未转义的 &、HTML 命名实体或控制字符直接
+    写进 XML。标准解析器遇到这些内容会放弃整份文档；先做保守修复，
+    通常就能恢复绝大多数条目。
+    """
+
+    text = raw_content.decode("utf-8", errors="replace").lstrip("\ufeff")
+    text = "".join(
+        char
+        for char in text
+        if char in "\t\r\n" or ord(char) >= 32
+    )
+
+    predefined = {"amp", "lt", "gt", "quot", "apos"}
+
+    def replace_named_entity(match: re.Match[str]) -> str:
+        entity = match.group(1)
+        if entity.casefold() in predefined:
+            return match.group(0)
+        return html.unescape(match.group(0))
+
+    text = re.sub(
+        r"&([A-Za-z][A-Za-z0-9]+);",
+        replace_named_entity,
+        text,
+    )
+    return re.sub(
+        r"&(?!#\d+;|#x[0-9A-Fa-f]+;|amp;|lt;|gt;|quot;|apos;)",
+        "&amp;",
+        text,
+    )
+
+
+def _extract_xml_tag(block: str, *tag_names: str) -> str:
+    """从不严格 XML 的 item/entry 文本中读取第一个可用标签内容。"""
+
+    for tag_name in tag_names:
+        match = re.search(
+            rf"<{re.escape(tag_name)}\b[^>]*>(.*?)"
+            rf"</{re.escape(tag_name)}\s*>",
+            block,
+            re.IGNORECASE | re.DOTALL,
+        )
+        if not match:
+            continue
+        value = match.group(1).strip()
+        cdata_match = re.fullmatch(
+            r"<!\[CDATA\[(.*?)\]\]>",
+            value,
+            re.DOTALL,
+        )
+        if cdata_match:
+            value = cdata_match.group(1)
+        return html.unescape(value).strip()
+    return ""
+
+
+def _fallback_xml_entries(raw_content: bytes) -> list[ParsedFeedEntry]:
+    """
+    在不严格 XML 解析器也无法读取时，用正则提取 RSS/Atom 条目。
+
+    这里只处理普通新闻 Feed，不执行脚本，也不绕过验证码；当接口确实
+    返回 HTML 登录页时仍会返回空列表并正常记录失败。
+    """
+
+    text = _repair_xml_text(raw_content)
+    entry_blocks = re.findall(
+        r"<(item|entry)\b[^>]*>(.*?)</\1\s*>",
+        text,
+        re.IGNORECASE | re.DOTALL,
+    )
+    entries: list[ParsedFeedEntry] = []
+    for _tag_name, block in entry_blocks:
+        title = _extract_xml_tag(block, "title")
+        summary_html = _extract_xml_tag(
+            block,
+            "description",
+            "summary",
+            "content:encoded",
+            "content",
+        )
+        link = _extract_xml_tag(block, "link", "guid")
+        if not link:
+            atom_link = re.search(
+                r"<link\b[^>]*\bhref=[\"']([^\"']+)[\"']",
+                block,
+                re.IGNORECASE,
+            )
+            link = html.unescape(atom_link.group(1)) if atom_link else ""
+        date_text = _extract_xml_tag(
+            block,
+            "pubDate",
+            "published",
+            "updated",
+            "dc:date",
+        )
+        entries.append(
+            ParsedFeedEntry(
+                title=_clean_html(title),
+                link=link.strip(),
+                summary=_clean_html(summary_html),
+                publish_time=_parse_date_text(date_text),
+            )
+        )
+    return entries
+
+
+def _parse_search_page_time(text: str) -> str | None:
+    """从中文新闻搜索页文字中提取绝对或相对发布时间。"""
+
+    now = datetime.now(ZoneInfo("Asia/Shanghai"))
+    absolute_patterns = (
+        re.compile(
+            r"(20\d{2})[-年/](\d{1,2})[-月/](\d{1,2})日?"
+            r"(?:\s*(\d{1,2}):(\d{2}))?"
+        ),
+        re.compile(
+            r"(\d{1,2})月(\d{1,2})日"
+            r"(?:\s*(\d{1,2}):(\d{2}))?"
+        ),
+    )
+    for index, pattern in enumerate(absolute_patterns):
+        match = pattern.search(text)
+        if not match:
+            continue
+        try:
+            if index == 0:
+                year = int(match.group(1))
+                month = int(match.group(2))
+                day = int(match.group(3))
+                hour = int(match.group(4) or 0)
+                minute = int(match.group(5) or 0)
+            else:
+                year = now.year
+                month = int(match.group(1))
+                day = int(match.group(2))
+                hour = int(match.group(3) or 0)
+                minute = int(match.group(4) or 0)
+            parsed = datetime(
+                year,
+                month,
+                day,
+                hour,
+                minute,
+                tzinfo=now.tzinfo,
+            )
+            if parsed > now + timedelta(hours=1):
+                parsed = parsed.replace(year=year - 1)
+            return parsed.astimezone(timezone.utc).isoformat(
+                timespec="seconds"
+            )
+        except ValueError:
+            continue
+
+    relative_match = re.search(
+        r"(\d+)\s*(分钟|小时|天)前",
+        text,
+    )
+    if relative_match:
+        amount = int(relative_match.group(1))
+        unit = relative_match.group(2)
+        seconds = amount * {
+            "分钟": 60,
+            "小时": 3600,
+            "天": 86400,
+        }[unit]
+        return datetime.fromtimestamp(
+            now.timestamp() - seconds,
+            tz=timezone.utc,
+        ).isoformat(timespec="seconds")
+    if "昨天" in text:
+        return datetime.fromtimestamp(
+            now.timestamp() - 86400,
+            tz=timezone.utc,
+        ).isoformat(timespec="seconds")
+    return None
+
+
+def _fallback_baidu_search_entries(
+    raw_content: bytes,
+) -> list[ParsedFeedEntry]:
+    """
+    从百度新闻搜索 HTML 中提取结果。
+
+    百度旧 RSS 入口目前经常返回损坏的 XML 或 HTML。这里只读取搜索结果
+    中的普通标题链接和页面显示时间，不绕过验证码、登录或访问限制。
+    """
+
+    text = raw_content.decode("utf-8", errors="replace")
+    soup = BeautifulSoup(text, "html.parser")
+    entries: list[ParsedFeedEntry] = []
+    seen_links: set[str] = set()
+    navigation_titles = {
+        "首页",
+        "新闻",
+        "网页",
+        "贴吧",
+        "知道",
+        "图片",
+        "视频",
+        "地图",
+        "更多",
+    }
+    for anchor in soup.find_all("a", href=True):
+        title = " ".join(anchor.get_text(" ", strip=True).split())
+        if (
+            len(title) < 8
+            or title in navigation_titles
+            or title.startswith(("登录", "注册", "帮助", "意见反馈"))
+        ):
+            continue
+        href = str(anchor.get("href") or "").strip()
+        if not href or href.startswith(("#", "javascript:")):
+            continue
+        link = urljoin("https://news.baidu.com", href)
+        parsed_link = urlparse(link)
+        if parsed_link.scheme not in {"http", "https"}:
+            continue
+        if (
+            parsed_link.netloc.endswith("baidu.com")
+            and parsed_link.path in {"", "/", "/ns"}
+        ):
+            continue
+        if link in seen_links:
+            continue
+
+        container = anchor
+        context = title
+        for _depth in range(4):
+            parent = container.parent
+            if parent is None:
+                break
+            container = parent
+            candidate_text = " ".join(
+                container.get_text(" ", strip=True).split()
+            )
+            if len(candidate_text) >= len(title) + 4:
+                context = candidate_text
+            if _parse_search_page_time(context):
+                break
+        publish_time = _parse_search_page_time(context)
+        if not publish_time:
+            continue
+
+        summary = context.replace(title, "", 1).strip()
+        seen_links.add(link)
+        entries.append(
+            ParsedFeedEntry(
+                title=_clean_html(title),
+                link=link,
+                summary=_clean_html(summary),
+                publish_time=publish_time,
+            )
+        )
+    return entries
+
+
+def _save_failed_feed_debug(
+    source: str,
+    raw_content: bytes,
+) -> None:
+    """保存无法解析的原始响应，便于以后针对真实格式增加适配器。"""
+
+    try:
+        debug_dir = DATA_DIR / "feed_debug"
+        debug_dir.mkdir(parents=True, exist_ok=True)
+        safe_name = re.sub(r"[^0-9A-Za-z\u3400-\u9fff_-]+", "_", source)
+        Path(debug_dir / f"{safe_name}.txt").write_bytes(raw_content[:2_000_000])
+    except OSError as exc:
+        LOGGER.warning("保存失败 RSS 调试内容时出错：%s", exc)
+
+
+def _parse_feed_content(
+    raw_content: bytes,
+    *,
+    source: str = "",
+) -> tuple[list[ParsedFeedEntry], str]:
+    """依次用标准解析、修复后解析和容错提取读取 RSS。"""
+
+    parsed_feed = feedparser.parse(raw_content)
+    entries = _feedparser_entries(parsed_feed)
+    if entries:
+        return entries, ""
+
+    first_error = str(
+        getattr(parsed_feed, "bozo_exception", "没有找到可解析的条目")
+    )
+    repaired_content = _repair_xml_text(raw_content).encode("utf-8")
+    repaired_feed = feedparser.parse(repaired_content)
+    entries = _feedparser_entries(repaired_feed)
+    if entries:
+        LOGGER.info("RSS 格式存在小错误，已自动修复后解析")
+        return entries, ""
+
+    fallback_entries = _fallback_xml_entries(raw_content)
+    if fallback_entries:
+        LOGGER.info("标准 RSS 解析失败，已使用容错提取恢复 %d 条", len(fallback_entries))
+        return fallback_entries, ""
+    if source.startswith("百度新闻："):
+        search_entries = _fallback_baidu_search_entries(raw_content)
+        if search_entries:
+            LOGGER.info(
+                "百度 RSS 已失效，已从搜索结果网页恢复 %d 条",
+                len(search_entries),
+            )
+            return search_entries, ""
+    return [], first_error
+
+
 def fetch_one_source(
     session: requests.Session,
     source: str,
@@ -417,18 +777,19 @@ def fetch_one_source(
     response = session.get(url, timeout=REQUEST_TIMEOUT_SECONDS)
     response.raise_for_status()
 
-    # 把原始字节交给 feedparser，让它自行识别常见的 RSS 编码。
-    parsed_feed = feedparser.parse(response.content)
-    entries = parsed_feed.entries
+    entries, parse_error = _parse_feed_content(
+        response.content,
+        source=source,
+    )
     if not entries:
-        detail = getattr(parsed_feed, "bozo_exception", "没有找到可解析的条目")
-        raise ValueError(f"RSS 中没有可用条目：{detail}")
+        _save_failed_feed_debug(source, response.content)
+        raise ValueError(f"RSS 中没有可用条目：{parse_error}")
 
     matched_items: list[dict[str, str | None]] = []
     for entry in entries:
-        title = _clean_html(str(getattr(entry, "title", "")))
-        link = str(getattr(entry, "link", "")).strip()
-        summary = _extract_summary(entry)
+        title = _clean_html(entry.title)
+        link = entry.link.strip()
+        summary = entry.summary
 
         # 标题、简介中任一位置同时覆盖两类关键词即可保留。
         if (
@@ -448,7 +809,7 @@ def fetch_one_source(
                 "title": title,
                 "link": link,
                 "source": source,
-                "publish_time": _parse_publish_time(entry),
+                "publish_time": entry.publish_time,
                 "summary": summary,
                 "category": category,
             }
