@@ -481,18 +481,31 @@ SOGOU_LOW_VALUE_PATTERN = re.compile(
     re.IGNORECASE,
 )
 
-# 百度新闻搜索会把普通网页导航、股市评论、留学申请和活动预告混进结果。
-# 这些标题虽然可能同时出现“AI、硬件、音乐制作”等词，并不是产品、技术
-# 或创作工具动态，因此在百度来源中单独排除。
-BAIDU_SEARCH_NOISE_PATTERN = re.compile(
+# 新闻搜索页自身会产生“去网页搜”等导航链接。它只适用于搜索页面解析，
+# 不属于统一的编辑规则。
+SEARCH_PAGE_NAVIGATION_PATTERN = re.compile(
+    r"(?:去网页搜|网页搜索|搜索结果)",
+    re.IGNORECASE,
+)
+
+# 以下规则是全部来源共用的最低质量门槛。无论来自 RSS、公众号、百度、
+# GitHub 还是其他自定义来源，只要标题属于金融行情、就业焦虑、培训活动、
+# 艺人八卦或非技术商业动态，都不能进入资讯库。
+COMMON_LOW_VALUE_TITLE_PATTERN = re.compile(
     r"(?:"
-    r"去网页搜|网页搜索|搜索结果"
-    r"|股跌|股涨|股价|概念股|投资者|基金|清盘预警|重仓|板块"
+    r"股跌|股涨|股价|概念股|投资者|基金|清盘预警|重仓|板块"
     r"|资本开支|机构预测|下修|市场共识|市场情绪|券商|研报"
     r"|汇丰|投行|分析师|偏科生死局|逻辑大变天|狂欢过后"
-    r"|市场已经在赌|榜第一易主|热榜|榜单"
-    r"|留学|申请截止|招生|报考|考试培训"
-    r"|研讨会|音乐周|活动预告|论坛|峰会|大会|沙龙"
+    r"|市场已经在赌|榜第一易主|热榜|榜单|销量排行"
+    r"|留学|申请截止|招生|报考|考试培训|培训课程|报名入口"
+    r"|研讨会|音乐周|活动预告|论坛|峰会|大会|沙龙|大赛|比赛"
+    r"|融资|估值|财报|收购|裁员|卸任|离职|上任|任命|接任|辞职"
+    r"|诉讼|起诉|和解|版权纠纷|巡演|演唱会|音乐节|致敬|纪念"
+    r"|去世|逝世|八卦|绯闻|恋情|代言"
+    r"|\b(?:funding|valuation|earnings|acquisition|acquires|"
+    r"layoffs?|resign|resigns|resigned|chairman|ceo|executive|"
+    r"lawsuit|sues|sued|settlement|grammy|tour|concert|"
+    r"obituary|dies)\b"
     r")",
     re.IGNORECASE,
 )
@@ -787,11 +800,14 @@ def is_relevant_news(
     if is_promotional_title(title_text):
         return False
     if (
+        COMMON_LOW_VALUE_TITLE_PATTERN.search(title_text)
+        or AI_JOB_GOSSIP_PATTERN.search(title_text)
+    ):
+        return False
+    if (
         category in {"音乐科技", "搜狗微信"}
         and find_matched_keywords(title_text, GOSSIP_OR_BUSINESS_NOISE)
     ):
-        return False
-    if AI_JOB_GOSSIP_PATTERN.search(title_text):
         return False
 
     # 国外来源使用独立的严格编辑规则。该判断放在人工保留白名单之前，
@@ -803,7 +819,7 @@ def is_relevant_news(
         )
     if _matches_source(source, FOREIGN_GENERAL_TECH_SOURCES):
         return _foreign_general_tech_is_relevant(title_text)
-    if source.startswith("百度新闻：") and BAIDU_SEARCH_NOISE_PATTERN.search(
+    if source.startswith("百度新闻：") and SEARCH_PAGE_NAVIGATION_PATTERN.search(
         title_text
     ):
         return False

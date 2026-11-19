@@ -604,6 +604,53 @@ class NewsFilterTests(unittest.TestCase):
             )
         )
 
+    def test_common_quality_rules_apply_across_all_sources(self) -> None:
+        """金融、就业、培训和娱乐八卦规则不能只针对某一个来源。"""
+
+        source_cases = (
+            ("国内科技", "IT之家24小时榜"),
+            ("搜狗微信", "搜狗微信"),
+            ("音乐科技", "MusicRadar"),
+            ("国际科技", "TechCrunch"),
+            ("AI音频开发", "GitHub · example/ai-music"),
+        )
+        noisy_titles = (
+            "AI 音乐软件公司宣布裁员并缩减岗位",
+            "AI 音乐硬件基金清盘预警，相关概念股重挫",
+            "AI 编曲培训课程报名入口正式开放",
+            "顶级音乐人巡演与恋情八卦引发热议",
+            "AI music startup layoffs hit product team",
+        )
+        for category, source in source_cases:
+            for title in noisy_titles:
+                with self.subTest(category=category, source=source, title=title):
+                    self.assertFalse(
+                        is_relevant_news(
+                            title,
+                            "普通娱乐、商业或活动信息。",
+                            category=category,
+                            source=source,
+                        )
+                    )
+
+    def test_technical_ai_programming_is_kept_across_main_sources(self) -> None:
+        """新模型、编程工具和算力提升不受职业八卦规则影响。"""
+
+        for category, source in (
+            ("国内科技", "IT之家24小时榜"),
+            ("搜狗微信", "搜狗微信"),
+            ("AI音频开发", "GitHub · example/model"),
+        ):
+            with self.subTest(category=category, source=source):
+                self.assertTrue(
+                    is_relevant_news(
+                        "OpenAI 发布新版编程模型，代码生成与推理算力提升",
+                        "新模型提供代码生成 API 和开发工具。",
+                        category=category,
+                        source=source,
+                    )
+                )
+
 
 class DatabaseTests(unittest.TestCase):
     """使用临时目录测试数据库，确保不会碰正式 news.db。"""
