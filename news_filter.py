@@ -497,6 +497,23 @@ BAIDU_SEARCH_NOISE_PATTERN = re.compile(
     re.IGNORECASE,
 )
 
+# AI 对程序员职业的影响属于泛就业讨论，不是 AI 技术情报。这里只排除
+# 就业、裁员、被取代、岗位和薪资焦虑，不阻止新模型、编程工具、代码
+# 生成、算力提升、API 和开发框架等技术内容。
+AI_JOB_GOSSIP_PATTERN = re.compile(
+    r"(?:"
+    r"(?:程序员|工程师|开发者|技术岗位).{0,10}"
+    r"(?:就业|失业|裁员|被裁|被取代|取代|淘汰|转行|求职|招聘|"
+    r"岗位|职场|薪资|工资|饭碗|生存空间|职业前景)"
+    r"|(?:就业|失业|裁员|被裁|取代|淘汰|挤压|抢饭碗|转行).{0,10}"
+    r"(?:程序员|工程师|开发者|技术岗位)"
+    r"|\b(?:replace(?:s|d)? (?:programmers|developers)|"
+    r"take (?:people's )?jobs|programmer jobs?|developer jobs?|"
+    r"tech layoffs?|software engineering jobs?)\b"
+    r")",
+    re.IGNORECASE,
+)
+
 GENERAL_TECH_ROUNDUP_PATTERN = re.compile(
     r"(?:早报|日报|晚报|周报|盘点|汇总|一览|速览|简报)",
     re.IGNORECASE,
@@ -575,6 +592,10 @@ SOGOU_CONCRETE_SOFTWARE_SIGNALS = (
     "模型发布",
     "模型更新",
     "开源模型",
+    "新模型",
+    "算力",
+    "推理",
+    "训练",
 )
 
 
@@ -770,6 +791,8 @@ def is_relevant_news(
         and find_matched_keywords(title_text, GOSSIP_OR_BUSINESS_NOISE)
     ):
         return False
+    if AI_JOB_GOSSIP_PATTERN.search(title_text):
+        return False
 
     # 国外来源使用独立的严格编辑规则。该判断放在人工保留白名单之前，
     # 确保旧白名单不会继续放行艺人八卦或促销类内容。
@@ -840,10 +863,18 @@ def is_relevant_news(
             return False
         if SOGOU_LOW_VALUE_PATTERN.search(title_text):
             return False
+        title_concrete_software = bool(
+            find_matched_keywords(
+                title_text,
+                SOGOU_CONCRETE_SOFTWARE_SIGNALS,
+            )
+        )
         has_real_direction = (
             title_ai and (title_music or title_hardware)
         ) or (
             title_music and (title_hardware or title_software)
+        ) or (
+            title_ai and title_concrete_software
         )
         return has_real_direction
 

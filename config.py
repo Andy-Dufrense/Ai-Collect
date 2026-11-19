@@ -160,6 +160,32 @@ BUILT_IN_RSS_SOURCES: Final[tuple[dict[str, str], ...]] = (
         "category": "国内科技",
     },
     {
+        "source": "百度新闻：AI编程",
+        "url": (
+            "https://news.baidu.com/ns?word=AI%E7%BC%96%E7%A8%8B"
+            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
+        ),
+        "category": "国内科技",
+    },
+    {
+        "source": "百度新闻：AI模型发布",
+        "url": (
+            "https://news.baidu.com/ns?"
+            "word=AI%E6%A8%A1%E5%9E%8B%E5%8F%91%E5%B8%83"
+            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
+        ),
+        "category": "国内科技",
+    },
+    {
+        "source": "百度新闻：AI算力提升",
+        "url": (
+            "https://news.baidu.com/ns?"
+            "word=AI%E7%AE%97%E5%8A%9B%E6%8F%90%E5%8D%87"
+            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
+        ),
+        "category": "国内科技",
+    },
+    {
         "source": "百度新闻：音乐制作",
         "url": (
             "https://news.baidu.com/ns?word=%E9%9F%B3%E4%B9%90%E5%88%B6%E4%BD%9C"
@@ -375,6 +401,13 @@ AI_KEYWORDS: Final[tuple[str, ...]] = (
     "aigc",
     "机器学习",
     "生成式人工智能",
+    "openai",
+    "anthropic",
+    "claude",
+    "gemini",
+    "deepseek",
+    "通义千问",
+    "豆包",
     "suno",
     "udio",
     "riffusion",

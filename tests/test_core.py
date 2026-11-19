@@ -560,6 +560,9 @@ class NewsFilterTests(unittest.TestCase):
         for name in (
             "百度新闻：AI音乐",
             "百度新闻：AI音频",
+            "百度新闻：AI编程",
+            "百度新闻：AI模型发布",
+            "百度新闻：AI算力提升",
             "百度新闻：音乐制作",
             "百度新闻：音乐软件",
             "百度新闻：音乐生成",
@@ -570,7 +573,7 @@ class NewsFilterTests(unittest.TestCase):
             self.assertIn(name, names)
 
     def test_sogou_rejects_generic_ai_job_replacement_article(self) -> None:
-        """泛 AI 编程、职业替代新闻没有音乐/音频方向，不应从公众号收录。"""
+        """职业替代八卦应排除，但 AI 模型、编程和算力技术应保留。"""
 
         self.assertFalse(
             is_relevant_news(
@@ -583,6 +586,20 @@ class NewsFilterTests(unittest.TestCase):
             is_relevant_news(
                 "AI 编程工具新增音频插件开发接口",
                 "面向音乐软件开发者。",
+                category="搜狗微信",
+            )
+        )
+        self.assertTrue(
+            is_relevant_news(
+                "OpenAI 发布新版编程模型，代码生成与推理算力提升",
+                "新模型面向软件开发和代码生成，提供 API 接口。",
+                category="搜狗微信",
+            )
+        )
+        self.assertFalse(
+            is_relevant_news(
+                "AI 取代初级程序员：招聘岗位缩减，程序员就业焦虑加剧",
+                "讨论裁员、转行和薪资变化。",
                 category="搜狗微信",
             )
         )
