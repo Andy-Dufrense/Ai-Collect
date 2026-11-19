@@ -139,6 +139,65 @@ BUILT_IN_RSS_SOURCES: Final[tuple[dict[str, str], ...]] = (
         "source": "Matrixsynth",
         "url": "https://www.matrixsynth.com/feeds/posts/default",
         "category": "音乐科技",
+        "focus": "hardware",
+    },
+    {
+        "source": "Sound On Sound",
+        "url": "https://www.soundonsound.com/rss",
+        "category": "音乐科技",
+        "focus": "hardware",
+    },
+    {
+        "source": "AudioTechnology",
+        "url": "https://www.audiotechnology.com/feed/",
+        "category": "音乐科技",
+        "focus": "hardware",
+    },
+    {
+        "source": "Mixdown Magazine",
+        "url": "https://mixdownmag.com.au/feed/",
+        "category": "音乐科技",
+        "focus": "hardware",
+    },
+    {
+        "source": "百度新闻：智能乐器",
+        "url": (
+            "https://news.baidu.com/ns?"
+            "word=%E6%99%BA%E8%83%BD%E4%B9%90%E5%99%A8"
+            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
+        ),
+        "category": "国内科技",
+        "focus": "hardware",
+    },
+    {
+        "source": "百度新闻：音频硬件",
+        "url": (
+            "https://news.baidu.com/ns?"
+            "word=%E9%9F%B3%E9%A2%91%E7%A1%AC%E4%BB%B6"
+            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
+        ),
+        "category": "国内科技",
+        "focus": "hardware",
+    },
+    {
+        "source": "百度新闻：AI硬件",
+        "url": (
+            "https://news.baidu.com/ns?"
+            "word=AI%E7%A1%AC%E4%BB%B6"
+            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
+        ),
+        "category": "国内科技",
+        "focus": "hardware",
+    },
+    {
+        "source": "百度新闻：MIDI控制器",
+        "url": (
+            "https://news.baidu.com/ns?"
+            "word=MIDI%E6%8E%A7%E5%88%B6%E5%99%A8"
+            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
+        ),
+        "category": "国内科技",
+        "focus": "hardware",
     },
     {
         "source": "arXiv Sound",

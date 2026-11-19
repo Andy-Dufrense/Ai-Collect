@@ -28,7 +28,7 @@ from database import (
     save_news_items,
 )
 from news_filter import is_promotional_title, is_relevant_news
-from config import SOGOU_WECHAT_QUERIES
+from config import RSS_SOURCES, SOGOU_WECHAT_QUERIES
 
 
 class NewsFilterTests(unittest.TestCase):
@@ -355,6 +355,20 @@ class NewsFilterTests(unittest.TestCase):
             self.assertIn(keyword, SOGOU_WECHAT_QUERIES)
         self.assertNotIn("SUNO AI MV", SOGOU_WECHAT_QUERIES)
         self.assertNotIn("MIDI控制器", SOGOU_WECHAT_QUERIES)
+
+    def test_hardware_specific_sources_are_configured(self) -> None:
+        names = {source["source"] for source in RSS_SOURCES}
+        for name in (
+            "Matrixsynth",
+            "Sound On Sound",
+            "AudioTechnology",
+            "Mixdown Magazine",
+            "百度新闻：智能乐器",
+            "百度新闻：音频硬件",
+            "百度新闻：AI硬件",
+            "百度新闻：MIDI控制器",
+        ):
+            self.assertIn(name, names)
 
 
 class DatabaseTests(unittest.TestCase):
