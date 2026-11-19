@@ -370,6 +370,20 @@ class NewsFilterTests(unittest.TestCase):
         ):
             self.assertIn(name, names)
 
+    def test_software_specific_sources_are_configured(self) -> None:
+        names = {source["source"] for source in RSS_SOURCES}
+        for name in (
+            "百度新闻：AI音乐软件",
+            "百度新闻：音乐制作软件",
+            "百度新闻：AI编曲",
+            "百度新闻：混音软件",
+            "百度新闻：DAW音乐制作",
+            "百度新闻：音乐生成工具",
+            "百度新闻：MIDI编曲",
+            "百度新闻：音频插件",
+        ):
+            self.assertIn(name, names)
+
 
 class DatabaseTests(unittest.TestCase):
     """使用临时目录测试数据库，确保不会碰正式 news.db。"""

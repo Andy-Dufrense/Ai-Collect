@@ -291,7 +291,7 @@ cd ~/Desktop/Ai-Collect
 python3 -m unittest discover -s tests -v
 ```
 
-预期看到 `OK`。目前共有 93 项测试，会检查过滤、大小写、词边界、模拟 RSS、
+预期看到 `OK`。目前共有 94 项测试，会检查过滤、大小写、词边界、模拟 RSS、
 搜狗微信解析、分类字段、链接去重、抓取状态、工作进程
 心跳、跨进程抓取锁、时间范围筛选、关键词搜索、综合排名、首页渲染和非法
 查询参数，以及 GitHub 新项目与 commit 解析，不依赖当前网络状态。
@@ -341,6 +341,8 @@ Magazine、Music Business Worldwide、爱范儿和 TechCrunch 的 WordPress
 - Rekkerd、Synthanatomy、Attack Magazine、Matrixsynth 的 RSS
 - Sound On Sound、AudioTechnology、Mixdown Magazine 硬件媒体
 - 百度新闻的智能乐器、音频硬件、AI 硬件、MIDI 控制器检索入口
+- 百度新闻的 AI 音乐软件、音乐制作软件、AI 编曲、混音软件、
+  DAW 音乐制作、音乐生成工具、MIDI 编曲、音频插件检索入口
 - arXiv `cs.SD` 声音与音乐计算 RSS
 - AudioCraft、Stable Audio Tools、Magenta、Riffusion、Demucs、Sonic Pi
   的 GitHub Releases

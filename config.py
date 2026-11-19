@@ -200,6 +200,86 @@ BUILT_IN_RSS_SOURCES: Final[tuple[dict[str, str], ...]] = (
         "focus": "hardware",
     },
     {
+        "source": "百度新闻：AI音乐软件",
+        "url": (
+            "https://news.baidu.com/ns?"
+            "word=AI%E9%9F%B3%E4%B9%90%E8%BD%AF%E4%BB%B6"
+            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
+        ),
+        "category": "国内科技",
+        "focus": "software",
+    },
+    {
+        "source": "百度新闻：音乐制作软件",
+        "url": (
+            "https://news.baidu.com/ns?"
+            "word=%E9%9F%B3%E4%B9%90%E5%88%B6%E4%BD%9C%E8%BD%AF%E4%BB%B6"
+            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
+        ),
+        "category": "国内科技",
+        "focus": "software",
+    },
+    {
+        "source": "百度新闻：AI编曲",
+        "url": (
+            "https://news.baidu.com/ns?"
+            "word=AI%E7%BC%96%E6%9B%B2"
+            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
+        ),
+        "category": "国内科技",
+        "focus": "software",
+    },
+    {
+        "source": "百度新闻：混音软件",
+        "url": (
+            "https://news.baidu.com/ns?"
+            "word=%E6%B7%B7%E9%9F%B3%E8%BD%AF%E4%BB%B6"
+            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
+        ),
+        "category": "国内科技",
+        "focus": "software",
+    },
+    {
+        "source": "百度新闻：DAW音乐制作",
+        "url": (
+            "https://news.baidu.com/ns?"
+            "word=DAW%E9%9F%B3%E4%B9%90%E5%88%B6%E4%BD%9C"
+            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
+        ),
+        "category": "国内科技",
+        "focus": "software",
+    },
+    {
+        "source": "百度新闻：音乐生成工具",
+        "url": (
+            "https://news.baidu.com/ns?"
+            "word=%E9%9F%B3%E4%B9%90%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7"
+            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
+        ),
+        "category": "国内科技",
+        "focus": "software",
+    },
+    {
+        "source": "百度新闻：MIDI编曲",
+        "url": (
+            "https://news.baidu.com/ns?"
+            "word=MIDI%E7%BC%96%E6%9B%B2"
+            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
+        ),
+        "category": "国内科技",
+        "focus": "software",
+    },
+    {
+        "source": "百度新闻：音频插件",
+        "url": (
+            "https://news.baidu.com/ns?"
+            "word=%E9%9F%B3%E9%A2%91%E6%8F%92%E4%BB%B6"
+            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
+        ),
+        "category": "国内科技",
+        "focus": "software",
+    },
+    {
         "source": "arXiv Sound",
         "url": "https://rss.arxiv.org/rss/cs.SD",
         "category": "AI音频研究",
