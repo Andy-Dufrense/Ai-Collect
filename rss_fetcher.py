@@ -49,6 +49,7 @@ from config import (
     REQUEST_TIMEOUT_SECONDS,
     RSS_SOURCES,
     SOGOU_MIN_INTERVAL_SECONDS,
+    SOGOU_MAX_QUERIES_PER_RUN,
     SOGOU_QUERY_DELAY_SECONDS,
     SOGOU_WECHAT_QUERIES,
     WATCHED_ARTICLE_URLS,
@@ -372,6 +373,33 @@ def _sogou_queries_due(now: datetime) -> bool:
         return elapsed >= SOGOU_MIN_INTERVAL_SECONDS
     except (TypeError, ValueError):
         return True
+
+
+def _next_sogou_query_batch() -> tuple[str, ...]:
+    """
+    分轮次执行搜狗关键词，避免一次请求过多触发验证。
+
+    查询列表按顺序循环切片，12 小时后的下一轮会自动从上次结束处继续。
+    两到三轮即可覆盖全部关键词，同时每轮请求量保持可控。
+    """
+
+    queries = SOGOU_WECHAT_QUERIES
+    if len(queries) <= SOGOU_MAX_QUERIES_PER_RUN:
+        return queries
+    try:
+        cursor = int(get_meta_value("sogou_batch_cursor") or "0")
+    except ValueError:
+        cursor = 0
+    cursor %= len(queries)
+    selected = tuple(
+        queries[(cursor + offset) % len(queries)]
+        for offset in range(SOGOU_MAX_QUERIES_PER_RUN)
+    )
+    next_cursor = (
+        cursor + SOGOU_MAX_QUERIES_PER_RUN
+    ) % len(queries)
+    set_meta_value("sogou_batch_cursor", str(next_cursor))
+    return selected
 
 
 def _clean_html(raw_html: str) -> str:
@@ -1116,7 +1144,12 @@ def _fetch_and_save_news_unlocked() -> FetchResult:
 
         # 搜狗微信单独限频：每 30 分钟最多刷新一次，查询之间等待 2 秒。
         if _sogou_queries_due(fetched_at):
-            sogou_queries = SOGOU_WECHAT_QUERIES
+            sogou_queries = _next_sogou_query_batch()
+            LOGGER.info(
+                "本轮搜狗关键词批次：%d/%d",
+                len(sogou_queries),
+                len(SOGOU_WECHAT_QUERIES),
+            )
             set_meta_value(
                 "sogou_last_attempt_at",
                 fetched_at.isoformat(timespec="seconds"),

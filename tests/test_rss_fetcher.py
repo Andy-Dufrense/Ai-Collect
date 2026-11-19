@@ -20,6 +20,7 @@ import requests
 from config import get_fetch_lock_path
 from rss_fetcher import (
     FetchAlreadyRunningError,
+    _next_sogou_query_batch,
     _parse_feed_content,
     fetch_and_save_news,
     fetch_one_source,
@@ -140,6 +141,27 @@ class ClosingSession:
 
 
 class RssFetcherTests(unittest.TestCase):
+    def test_sogou_queries_rotate_across_runs(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            database_path = Path(temp_dir) / "sogou-batches.db"
+            with (
+                patch.dict(os.environ, {"NEWS_DB_PATH": str(database_path)}),
+                patch(
+                    "rss_fetcher.SOGOU_WECHAT_QUERIES",
+                    ("a", "b", "c", "d", "e"),
+                ),
+                patch(
+                    "rss_fetcher.SOGOU_MAX_QUERIES_PER_RUN",
+                    2,
+                ),
+            ):
+                from database import initialize_database
+
+                initialize_database()
+                self.assertEqual(_next_sogou_query_batch(), ("a", "b"))
+                self.assertEqual(_next_sogou_query_batch(), ("c", "d"))
+                self.assertEqual(_next_sogou_query_batch(), ("e", "a"))
+
     def test_baidu_security_page_is_reported_explicitly(self) -> None:
         entries, error = _parse_feed_content(
             "<html><title>百度安全验证</title><body></body></html>".encode(),
