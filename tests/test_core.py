@@ -335,6 +335,15 @@ class NewsFilterTests(unittest.TestCase):
                 category="搜狗微信",
             )
         )
+        priced_feature_title = "SUNO AI MV 一秒只需3毛钱"
+        self.assertFalse(is_promotional_title(priced_feature_title))
+        self.assertTrue(
+            is_relevant_news(
+                priced_feature_title,
+                "AI 音乐视频功能上线及使用成本说明。",
+                category="搜狗微信",
+            )
+        )
 
     def test_sogou_queries_use_broad_discovery_terms(self) -> None:
         for keyword in (
