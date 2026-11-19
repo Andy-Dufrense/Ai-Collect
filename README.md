@@ -341,9 +341,13 @@ Magazine、Music Business Worldwide、爱范儿和 TechCrunch 的 WordPress
 - Rekkerd、Synthanatomy、Attack Magazine、Matrixsynth 的 RSS
 - Premier Guitar、Guitar.com、Guitar Player、Keyboard Magazine 的乐器与
   键盘硬件 RSS
+- Midifan、叉烧网等国内音乐科技来源；键盘中国、小旭音乐通过搜狗公开搜索
+  监控。刘润、黑马创业只保留明确涉及 AI 音乐或音频硬件技术的内容
 - 百度新闻使用 AI 音乐、AI 编程、AI 模型发布、合成器、吉他新品、
   钢琴新品、智能乐器、琴弦新品、音频设备、AI 芯片发布等方向词发现内容，
   抓回后再统一分类为硬件或软件。乐器硬件查询优先执行，查询之间自动等待。
+  搜狗同步搜索 Midifan、叉烧网、键盘中国、小旭音乐，以及耳机、声卡、
+  发射器、监听音箱、MIDI 键盘、打击垫等硬件品类。
   AI 职业替代、就业和裁员讨论会被排除
 - arXiv `cs.SD` 声音与音乐计算 RSS
 - AudioCraft、Stable Audio Tools、Magenta、Riffusion、Demucs、Sonic Pi

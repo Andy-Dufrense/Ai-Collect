@@ -62,6 +62,24 @@ class ContentClassifierTests(unittest.TestCase):
                 )
                 self.assertTrue(is_hardware)
 
+    def test_audio_midi_and_3c_hardware_terms(self) -> None:
+        for title, summary in (
+            ("新款无线音频发射器与接收器发布", "适合舞台和监听系统。"),
+            ("专业监听耳机与耳放新品上市", "面向录音棚和音乐制作。"),
+            ("Yamaha launches a new MIDI keyboard controller", "49-key USB MIDI keyboard."),
+            ("便携式声卡与 DAC 解码器发布", "支持高解析音频监听。"),
+            ("New drum pad controller for live performance", "A hardware pad controller."),
+        ):
+            with self.subTest(title=title):
+                is_hardware, _is_software = classify_content_flags(
+                    title,
+                    summary,
+                    category="国内科技",
+                    source="Midifan",
+                    focus="hardware",
+                )
+                self.assertTrue(is_hardware)
+
     def test_summary_hardware_compatibility_does_not_override_plugin(self) -> None:
         is_hardware, is_software = classify_content_flags(
             "OMEGA-50 software synthesizer (VST3/AU)",

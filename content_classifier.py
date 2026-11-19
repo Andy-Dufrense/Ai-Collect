@@ -15,7 +15,7 @@ from news_filter import find_matched_keywords
 
 # 分类版本会写入数据库。以后如果大幅修改分类规则，把版本加一，
 # 程序会在下一次启动时自动重新分类已有资讯。
-CONTENT_CLASSIFICATION_VERSION = "11"
+CONTENT_CLASSIFICATION_VERSION = "12"
 
 
 SOFTWARE_CLASSIFICATION_KEYWORDS = (
@@ -109,13 +109,25 @@ TITLE_HARDWARE_HINTS = (
     "device",
     "controller",
     "daw controller",
+    "midi keyboard",
+    "drum pad",
+    "pad controller",
     "stage keyboard",
     "keyboard synthesizer",
     "audio interface",
+    "audio transmitter",
+    "wireless audio transmitter",
+    "audio receiver",
     "sound card",
     "microphone",
     "mic",
     "headphones",
+    "in-ear monitor",
+    "iem",
+    "headphone amplifier",
+    "dac",
+    "audio capture card",
+    "speaker",
     "studio monitor",
     "amplifier",
     "pedal",
@@ -128,12 +140,24 @@ TITLE_HARDWARE_HINTS = (
 # 使用完整产品词而不是泛泛的 hardware/device，减少软件文章误判。
 SUMMARY_STRONG_HARDWARE_HINTS = (
     "audio interface",
+    "audio transmitter",
+    "wireless audio transmitter",
+    "audio receiver",
     "sound card",
     "microphone",
     "mic",
     "headphones",
+    "in-ear monitor",
+    "iem",
+    "headphone amplifier",
+    "dac",
+    "audio capture card",
+    "speaker",
     "daw controller",
     "midi controller",
+    "midi keyboard",
+    "drum pad",
+    "pad controller",
     "hardware synthesizer",
     "analog synthesizer",
     "stage keyboard",
@@ -148,7 +172,10 @@ SUMMARY_STRONG_HARDWARE_HINTS = (
     "监听音箱",
     "监听耳机",
     "midi控制器",
+    "midi键盘",
+    "打击垫",
     "硬件合成器",
+    "音频发射器",
 )
 
 # 琴弦、吉他、钢琴等词既可能出现在艺人故事中，也可能是实体乐器新品。

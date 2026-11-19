@@ -536,6 +536,16 @@ class NewsFilterTests(unittest.TestCase):
 
     def test_sogou_queries_use_broad_discovery_terms(self) -> None:
         for keyword in (
+            "Midifan",
+            "叉烧网",
+            "键盘中国",
+            "小旭音乐",
+            "耳机 音频",
+            "声卡",
+            "音频发射器",
+            "监听音箱",
+            "MIDI键盘",
+            "打击垫",
             "AI编程",
             "AI芯片发布",
             "AI音乐",
@@ -567,6 +577,8 @@ class NewsFilterTests(unittest.TestCase):
             "Guitar.com",
             "Guitar Player",
             "Keyboard Magazine",
+            "Midifan",
+            "叉烧网",
             "百度新闻：合成器",
             "百度新闻：吉他新品",
             "百度新闻：钢琴新品",
