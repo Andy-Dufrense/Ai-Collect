@@ -50,6 +50,7 @@ from config import (
     RSS_SOURCES,
     SOGOU_MIN_INTERVAL_SECONDS,
     SOGOU_MAX_QUERIES_PER_RUN,
+    SOGOU_FILTER_VERSION,
     SOGOU_QUERY_DELAY_SECONDS,
     SOGOU_WECHAT_QUERIES,
     WATCHED_ARTICLE_URLS,
@@ -357,6 +358,11 @@ def _sogou_queries_due(now: datetime) -> bool:
     """根据上次尝试时间判断搜狗微信来源是否到达刷新时间。"""
 
     current_signature = "|".join(SOGOU_WECHAT_QUERIES)
+    stored_filter_version = get_meta_value("sogou_filter_version")
+    if stored_filter_version != SOGOU_FILTER_VERSION:
+        set_meta_value("sogou_batch_cursor", "0")
+        set_meta_value("sogou_filter_version", SOGOU_FILTER_VERSION)
+        return True
     if get_meta_value("sogou_query_signature") != current_signature:
         # 关键词列表发生变化时立即执行，并从第一批重新开始，确保新增的
         # 国内来源不会因为旧游标而排到后续批次。

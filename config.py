@@ -886,6 +886,7 @@ SOGOU_MAX_QUERIES_PER_RUN: Final[int] = max(
     1,
     int(_read_positive_number("SOGOU_MAX_QUERIES_PER_RUN", 32)),
 )
+SOGOU_FILTER_VERSION: Final[str] = "3"
 
 # 百度新闻搜索页会在一批连续请求后触发安全验证。最多保留 9 个宽方向
 # 查询，并在查询之间等待 3 秒；相同查询组合 6 小时内不重复请求。
