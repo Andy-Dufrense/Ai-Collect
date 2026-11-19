@@ -8,6 +8,7 @@ SQLite 数据持久化模块。
 from __future__ import annotations
 
 import json
+import hashlib
 import re
 import sqlite3
 from collections.abc import Iterable, Iterator, Mapping
@@ -156,6 +157,7 @@ def initialize_database() -> None:
         _purge_existing_promotional_news(connection)
         _purge_future_news(connection)
         _purge_low_value_sogou_news(connection)
+        _dedupe_existing_baidu_news(connection)
         _purge_existing_out_of_scope_news(connection)
         _backfill_content_classifications(connection)
         connection.commit()
@@ -376,6 +378,78 @@ def _purge_low_value_sogou_news(connection: sqlite3.Connection) -> None:
         connection.execute(
             f"DELETE FROM news WHERE id IN ({placeholders})",
             rejected_ids,
+        )
+
+
+def _dedupe_existing_baidu_news(connection: sqlite3.Connection) -> None:
+    """
+    按规范化标题合并百度重复结果。
+
+    百度搜索会为同一篇文章生成多个带不同 token 的跳转链接。仅按 URL
+    去重会保留多份相同标题，因此百度来源额外使用稳定标题哈希作为键。
+    """
+
+    rows = connection.execute(
+        """
+        SELECT id, title, publish_time, source
+        FROM news
+        WHERE source LIKE '百度新闻：%'
+        ORDER BY publish_time DESC, id DESC
+        """
+    ).fetchall()
+    seen_keys: set[str] = set()
+    updates: list[tuple[str, int]] = []
+    duplicate_ids: list[int] = []
+    kept_titles_by_source: dict[str, list[set[str]]] = {}
+
+    def title_grams(title: str) -> set[str]:
+        normalized = re.sub(r"[^0-9a-z\u3400-\u9fff]", "", title.casefold())
+        if len(normalized) < 4:
+            return {normalized} if normalized else set()
+        return {
+            normalized[index:index + 2]
+            for index in range(len(normalized) - 1)
+        }
+
+    def is_near_duplicate(left: set[str], right: set[str]) -> bool:
+        if not left or not right:
+            return False
+        overlap = len(left & right)
+        return overlap / len(left | right) >= 0.35
+
+    for row in rows:
+        title = str(row["title"] or "").strip()
+        source = str(row["source"] or "").strip()
+        normalized = re.sub(r"\s+", "", title).casefold()
+        dedupe_key = (
+            "baidu:"
+            + hashlib.sha256(normalized.encode("utf-8")).hexdigest()
+        )
+        if dedupe_key in seen_keys:
+            duplicate_ids.append(int(row["id"]))
+            continue
+        signature = title_grams(title)
+        source_signatures = kept_titles_by_source.setdefault(source, [])
+        if any(
+            is_near_duplicate(signature, existing)
+            for existing in source_signatures
+        ):
+            duplicate_ids.append(int(row["id"]))
+            continue
+        seen_keys.add(dedupe_key)
+        source_signatures.append(signature)
+        updates.append((dedupe_key, int(row["id"])))
+
+    if duplicate_ids:
+        placeholders = ",".join("?" for _ in duplicate_ids)
+        connection.execute(
+            f"DELETE FROM news WHERE id IN ({placeholders})",
+            duplicate_ids,
+        )
+    if updates:
+        connection.executemany(
+            "UPDATE news SET dedupe_key = ? WHERE id = ?",
+            updates,
         )
 
 

@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import calendar
 import fcntl
+import hashlib
 import html
 import ipaddress
 import logging
@@ -109,6 +110,14 @@ class ParsedFeedEntry:
     link: str
     summary: str
     publish_time: str | None
+
+
+def _baidu_dedupe_key(title: str) -> str:
+    """百度搜索会为同一文章返回不同跳转链接，因此用规范化标题去重。"""
+
+    normalized = re.sub(r"\s+", "", title).casefold()
+    digest = hashlib.sha256(normalized.encode("utf-8")).hexdigest()
+    return f"baidu:{digest}"
 
 
 def _build_http_session(
@@ -804,16 +813,17 @@ def fetch_one_source(
         ):
             continue
 
-        matched_items.append(
-            {
-                "title": title,
-                "link": link,
-                "source": source,
-                "publish_time": entry.publish_time,
-                "summary": summary,
-                "category": category,
-            }
-        )
+        item: dict[str, str | None] = {
+            "title": title,
+            "link": link,
+            "source": source,
+            "publish_time": entry.publish_time,
+            "summary": summary,
+            "category": category,
+        }
+        if source.startswith("百度新闻："):
+            item["dedupe_key"] = _baidu_dedupe_key(title)
+        matched_items.append(item)
 
     LOGGER.info(
         "抓取完成：%s，共 %d 条，命中 %d 条",

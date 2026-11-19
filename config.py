@@ -142,24 +142,6 @@ BUILT_IN_RSS_SOURCES: Final[tuple[dict[str, str], ...]] = (
         "focus": "hardware",
     },
     {
-        "source": "Sound On Sound",
-        "url": "https://www.soundonsound.com/rss",
-        "category": "音乐科技",
-        "focus": "hardware",
-    },
-    {
-        "source": "AudioTechnology",
-        "url": "https://www.audiotechnology.com/feed/",
-        "category": "音乐科技",
-        "focus": "hardware",
-    },
-    {
-        "source": "Mixdown Magazine",
-        "url": "https://mixdownmag.com.au/feed/",
-        "category": "音乐科技",
-        "focus": "hardware",
-    },
-    {
         "source": "百度新闻：智能乐器",
         "url": (
             "https://news.baidu.com/ns?"
@@ -254,16 +236,6 @@ BUILT_IN_RSS_SOURCES: Final[tuple[dict[str, str], ...]] = (
         "url": (
             "https://news.baidu.com/ns?"
             "word=%E9%9F%B3%E4%B9%90%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7"
-            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
-        ),
-        "category": "国内科技",
-        "focus": "software",
-    },
-    {
-        "source": "百度新闻：MIDI编曲",
-        "url": (
-            "https://news.baidu.com/ns?"
-            "word=MIDI%E7%BC%96%E6%9B%B2"
             "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
         ),
         "category": "国内科技",

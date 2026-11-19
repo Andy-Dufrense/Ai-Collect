@@ -373,6 +373,37 @@ class NewsFilterTests(unittest.TestCase):
             )
         )
 
+    def test_baidu_search_noise_is_rejected(self) -> None:
+        """百度搜索页导航、股市评论、留学和活动稿不应进入资讯库。"""
+
+        for title in (
+            "去网页搜：AI硬件",
+            "AI硬件股跌势延续，机构大幅下修算力需求预测",
+            "AI硬件逻辑大变天，汇丰称市场已经在赌2028年",
+            "多只重仓AI硬件的基金出现清盘预警",
+            "全球AI音乐榜第一易主，中国产品首次登顶",
+            "英国音乐制作专业研究生留学申请截止时间",
+            "人工智能与电子音乐研讨会暨电子音乐会",
+        ):
+            with self.subTest(title=title):
+                self.assertFalse(
+                    is_relevant_news(
+                        title,
+                        "百度新闻搜索结果",
+                        category="国内科技",
+                        source="百度新闻：AI硬件",
+                    )
+                )
+
+        self.assertTrue(
+            is_relevant_news(
+                "海伦钢琴发布新一代智能电吹管，支持 MIDI 连接",
+                "面向演奏者的智能乐器硬件。",
+                category="国内科技",
+                source="百度新闻：智能乐器",
+            )
+        )
+
     def test_strict_foreign_rule_does_not_change_other_sources(self) -> None:
         """国内来源或未登记来源继续使用原有较宽规则。"""
 
@@ -517,9 +548,6 @@ class NewsFilterTests(unittest.TestCase):
         names = {source["source"] for source in RSS_SOURCES}
         for name in (
             "Matrixsynth",
-            "Sound On Sound",
-            "AudioTechnology",
-            "Mixdown Magazine",
             "百度新闻：智能乐器",
             "百度新闻：音频硬件",
             "百度新闻：AI硬件",
@@ -536,7 +564,6 @@ class NewsFilterTests(unittest.TestCase):
             "百度新闻：混音软件",
             "百度新闻：DAW音乐制作",
             "百度新闻：音乐生成工具",
-            "百度新闻：MIDI编曲",
             "百度新闻：音频插件",
         ):
             self.assertIn(name, names)
@@ -785,6 +812,46 @@ class DatabaseTests(unittest.TestCase):
                     "（example/notable）"
                 ),
             },
+        )
+
+    def test_initialization_dedupes_baidu_title_with_different_links(
+        self,
+    ) -> None:
+        """同一百度文章的不同 token 链接应合并为一条。"""
+
+        now = datetime(2026, 11, 19, 8, 0, tzinfo=timezone.utc)
+        base = {
+            "title": "阿里上线 AI 音乐创作平台快乐虾米",
+            "source": "百度新闻：AI音乐软件",
+            "publish_time": now.isoformat(timespec="seconds"),
+            "summary": "AI 音乐生成工具正式发布。",
+            "category": "国内科技",
+        }
+        save_news_items(
+            [
+                {
+                    **base,
+                    "link": "https://www.baidu.com/link?url=first-token",
+                },
+                {
+                    **base,
+                    "link": "https://www.baidu.com/link?url=second-token",
+                },
+                {
+                    **base,
+                    "title": "阿里正式上线 AI 音乐创作平台快乐虾米 APP",
+                    "link": "https://www.baidu.com/link?url=third-token",
+                },
+            ],
+            now,
+        )
+        self.assertEqual(get_news_count(), 3)
+
+        initialize_database()
+
+        self.assertEqual(get_news_count(), 1)
+        self.assertTrue(
+            get_all_news()[0]["dedupe_key"].startswith("baidu:")
         )
 
     def test_promotional_item_is_rejected_before_database_insert(self) -> None:

@@ -212,6 +212,7 @@ class RssFetcherTests(unittest.TestCase):
         self.assertEqual(matched, 1)
         self.assertEqual(len(items), 1)
         self.assertIn("AI 音乐编曲软件", items[0]["title"])
+        self.assertTrue(items[0]["dedupe_key"].startswith("baidu:"))
         self.assertEqual(
             items[0]["publish_time"],
             "2026-11-19T06:20:00+00:00",

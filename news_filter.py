@@ -481,6 +481,22 @@ SOGOU_LOW_VALUE_PATTERN = re.compile(
     re.IGNORECASE,
 )
 
+# 百度新闻搜索会把普通网页导航、股市评论、留学申请和活动预告混进结果。
+# 这些标题虽然可能同时出现“AI、硬件、音乐制作”等词，并不是产品、技术
+# 或创作工具动态，因此在百度来源中单独排除。
+BAIDU_SEARCH_NOISE_PATTERN = re.compile(
+    r"(?:"
+    r"去网页搜|网页搜索|搜索结果"
+    r"|股跌|股涨|股价|概念股|投资者|基金|清盘预警|重仓|板块"
+    r"|资本开支|机构预测|下修|市场共识|市场情绪|券商|研报"
+    r"|汇丰|投行|分析师|偏科生死局|逻辑大变天|狂欢过后"
+    r"|市场已经在赌|榜第一易主|热榜|榜单"
+    r"|留学|申请截止|招生|报考|考试培训"
+    r"|研讨会|音乐周|活动预告|论坛|峰会|大会|沙龙"
+    r")",
+    re.IGNORECASE,
+)
+
 GENERAL_TECH_ROUNDUP_PATTERN = re.compile(
     r"(?:早报|日报|晚报|周报|盘点|汇总|一览|速览|简报)",
     re.IGNORECASE,
@@ -764,6 +780,10 @@ def is_relevant_news(
         )
     if _matches_source(source, FOREIGN_GENERAL_TECH_SOURCES):
         return _foreign_general_tech_is_relevant(title_text)
+    if source.startswith("百度新闻：") and BAIDU_SEARCH_NOISE_PATTERN.search(
+        title_text
+    ):
+        return False
 
     # 人工保留白名单只保护音乐科技文章，价格和优惠仍优先生效。
     if category == "音乐科技" and is_learned_accepted(title_for_review):
