@@ -548,29 +548,44 @@ class NewsFilterTests(unittest.TestCase):
         names = {source["source"] for source in RSS_SOURCES}
         for name in (
             "Matrixsynth",
-            "百度新闻：智能乐器",
-            "百度新闻：音频硬件",
-            "百度新闻：AI硬件",
-            "百度新闻：MIDI控制器",
-            "百度新闻：合成器新品",
-            "百度新闻：音频接口新品",
-            "百度新闻：电子乐器新品",
-            "百度新闻：智能吉他",
+            "百度新闻：合成器",
+            "百度新闻：乐器",
+            "百度新闻：音频设备",
+            "百度新闻：MIDI",
         ):
             self.assertIn(name, names)
 
     def test_software_specific_sources_are_configured(self) -> None:
         names = {source["source"] for source in RSS_SOURCES}
         for name in (
-            "百度新闻：AI音乐软件",
-            "百度新闻：音乐制作软件",
-            "百度新闻：AI编曲",
-            "百度新闻：混音软件",
-            "百度新闻：DAW音乐制作",
-            "百度新闻：音乐生成工具",
+            "百度新闻：AI音乐",
+            "百度新闻：AI音频",
+            "百度新闻：音乐制作",
+            "百度新闻：音乐软件",
+            "百度新闻：音乐生成",
+            "百度新闻：编曲",
+            "百度新闻：混音",
             "百度新闻：音频插件",
         ):
             self.assertIn(name, names)
+
+    def test_sogou_rejects_generic_ai_job_replacement_article(self) -> None:
+        """泛 AI 编程、职业替代新闻没有音乐/音频方向，不应从公众号收录。"""
+
+        self.assertFalse(
+            is_relevant_news(
+                "AI 重塑软件工程：AI 挤压初级程序员生存空间",
+                "文章讨论 AI 编程助手、软件研发岗位和就业变化。",
+                category="搜狗微信",
+            )
+        )
+        self.assertTrue(
+            is_relevant_news(
+                "AI 编程工具新增音频插件开发接口",
+                "面向音乐软件开发者。",
+                category="搜狗微信",
+            )
+        )
 
 
 class DatabaseTests(unittest.TestCase):
@@ -826,7 +841,7 @@ class DatabaseTests(unittest.TestCase):
         now = datetime(2026, 11, 19, 8, 0, tzinfo=timezone.utc)
         base = {
             "title": "阿里上线 AI 音乐创作平台快乐虾米",
-            "source": "百度新闻：AI音乐软件",
+            "source": "百度新闻：AI音乐",
             "publish_time": now.isoformat(timespec="seconds"),
             "summary": "AI 音乐生成工具正式发布。",
             "category": "国内科技",

@@ -141,155 +141,103 @@ BUILT_IN_RSS_SOURCES: Final[tuple[dict[str, str], ...]] = (
         "category": "音乐科技",
         "focus": "hardware",
     },
+    # 百度只用“AI + 音乐/音频/乐器”等方向词发现内容，不在搜索阶段
+    # 直接写“硬件/软件”结论。抓回后统一经过相关性筛查和内容分类。
     {
-        "source": "百度新闻：智能乐器",
+        "source": "百度新闻：AI音乐",
         "url": (
-            "https://news.baidu.com/ns?"
-            "word=%E6%99%BA%E8%83%BD%E4%B9%90%E5%99%A8"
+            "https://news.baidu.com/ns?word=AI%E9%9F%B3%E4%B9%90"
             "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
         ),
         "category": "国内科技",
-        "focus": "hardware",
     },
     {
-        "source": "百度新闻：音频硬件",
+        "source": "百度新闻：AI音频",
         "url": (
-            "https://news.baidu.com/ns?"
-            "word=%E9%9F%B3%E9%A2%91%E7%A1%AC%E4%BB%B6"
+            "https://news.baidu.com/ns?word=AI%E9%9F%B3%E9%A2%91"
             "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
         ),
         "category": "国内科技",
-        "focus": "hardware",
     },
     {
-        "source": "百度新闻：AI硬件",
+        "source": "百度新闻：音乐制作",
         "url": (
-            "https://news.baidu.com/ns?"
-            "word=AI%E7%A1%AC%E4%BB%B6"
+            "https://news.baidu.com/ns?word=%E9%9F%B3%E4%B9%90%E5%88%B6%E4%BD%9C"
             "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
         ),
         "category": "国内科技",
-        "focus": "hardware",
     },
     {
-        "source": "百度新闻：MIDI控制器",
+        "source": "百度新闻：音乐软件",
         "url": (
-            "https://news.baidu.com/ns?"
-            "word=MIDI%E6%8E%A7%E5%88%B6%E5%99%A8"
+            "https://news.baidu.com/ns?word=%E9%9F%B3%E4%B9%90%E8%BD%AF%E4%BB%B6"
             "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
         ),
         "category": "国内科技",
-        "focus": "hardware",
     },
     {
-        "source": "百度新闻：合成器新品",
+        "source": "百度新闻：音乐生成",
         "url": (
-            "https://news.baidu.com/ns?"
-            "word=%E5%90%88%E6%88%90%E5%99%A8+%E6%96%B0%E5%93%81"
+            "https://news.baidu.com/ns?word=%E9%9F%B3%E4%B9%90%E7%94%9F%E6%88%90"
             "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
         ),
         "category": "国内科技",
-        "focus": "hardware",
     },
     {
-        "source": "百度新闻：音频接口新品",
+        "source": "百度新闻：编曲",
         "url": (
-            "https://news.baidu.com/ns?"
-            "word=%E9%9F%B3%E9%A2%91%E6%8E%A5%E5%8F%A3+%E6%96%B0%E5%93%81"
+            "https://news.baidu.com/ns?word=%E7%BC%96%E6%9B%B2"
             "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
         ),
         "category": "国内科技",
-        "focus": "hardware",
     },
     {
-        "source": "百度新闻：电子乐器新品",
+        "source": "百度新闻：混音",
         "url": (
-            "https://news.baidu.com/ns?"
-            "word=%E7%94%B5%E5%AD%90%E4%B9%90%E5%99%A8+%E6%96%B0%E5%93%81"
+            "https://news.baidu.com/ns?word=%E6%B7%B7%E9%9F%B3"
             "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
         ),
         "category": "国内科技",
-        "focus": "hardware",
-    },
-    {
-        "source": "百度新闻：智能吉他",
-        "url": (
-            "https://news.baidu.com/ns?"
-            "word=%E6%99%BA%E8%83%BD%E5%90%89%E4%BB%96"
-            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
-        ),
-        "category": "国内科技",
-        "focus": "hardware",
-    },
-    {
-        "source": "百度新闻：AI音乐软件",
-        "url": (
-            "https://news.baidu.com/ns?"
-            "word=AI%E9%9F%B3%E4%B9%90%E8%BD%AF%E4%BB%B6"
-            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
-        ),
-        "category": "国内科技",
-        "focus": "software",
-    },
-    {
-        "source": "百度新闻：音乐制作软件",
-        "url": (
-            "https://news.baidu.com/ns?"
-            "word=%E9%9F%B3%E4%B9%90%E5%88%B6%E4%BD%9C%E8%BD%AF%E4%BB%B6"
-            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
-        ),
-        "category": "国内科技",
-        "focus": "software",
-    },
-    {
-        "source": "百度新闻：AI编曲",
-        "url": (
-            "https://news.baidu.com/ns?"
-            "word=AI%E7%BC%96%E6%9B%B2"
-            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
-        ),
-        "category": "国内科技",
-        "focus": "software",
-    },
-    {
-        "source": "百度新闻：混音软件",
-        "url": (
-            "https://news.baidu.com/ns?"
-            "word=%E6%B7%B7%E9%9F%B3%E8%BD%AF%E4%BB%B6"
-            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
-        ),
-        "category": "国内科技",
-        "focus": "software",
-    },
-    {
-        "source": "百度新闻：DAW音乐制作",
-        "url": (
-            "https://news.baidu.com/ns?"
-            "word=DAW%E9%9F%B3%E4%B9%90%E5%88%B6%E4%BD%9C"
-            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
-        ),
-        "category": "国内科技",
-        "focus": "software",
-    },
-    {
-        "source": "百度新闻：音乐生成工具",
-        "url": (
-            "https://news.baidu.com/ns?"
-            "word=%E9%9F%B3%E4%B9%90%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7"
-            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
-        ),
-        "category": "国内科技",
-        "focus": "software",
     },
     {
         "source": "百度新闻：音频插件",
         "url": (
-            "https://news.baidu.com/ns?"
-            "word=%E9%9F%B3%E9%A2%91%E6%8F%92%E4%BB%B6"
+            "https://news.baidu.com/ns?word=%E9%9F%B3%E9%A2%91%E6%8F%92%E4%BB%B6"
             "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
         ),
         "category": "国内科技",
-        "focus": "software",
+    },
+    {
+        "source": "百度新闻：MIDI",
+        "url": (
+            "https://news.baidu.com/ns?word=MIDI"
+            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
+        ),
+        "category": "国内科技",
+    },
+    {
+        "source": "百度新闻：合成器",
+        "url": (
+            "https://news.baidu.com/ns?word=%E5%90%88%E6%88%90%E5%99%A8"
+            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
+        ),
+        "category": "国内科技",
+    },
+    {
+        "source": "百度新闻：乐器",
+        "url": (
+            "https://news.baidu.com/ns?word=%E4%B9%90%E5%99%A8"
+            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
+        ),
+        "category": "国内科技",
+    },
+    {
+        "source": "百度新闻：音频设备",
+        "url": (
+            "https://news.baidu.com/ns?word=%E9%9F%B3%E9%A2%91%E8%AE%BE%E5%A4%87"
+            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
+        ),
+        "category": "国内科技",
     },
     {
         "source": "arXiv Sound",

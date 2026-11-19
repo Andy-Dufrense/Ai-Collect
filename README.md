@@ -339,10 +339,9 @@ Magazine、Music Business Worldwide、爱范儿和 TechCrunch 的 WordPress
 当前额外数据源：
 
 - Rekkerd、Synthanatomy、Attack Magazine、Matrixsynth 的 RSS
-- 百度新闻的智能乐器、音频硬件、AI 硬件、MIDI 控制器、合成器新品、
-  音频接口新品、电子乐器新品、智能吉他硬件检索入口
-- 百度新闻的 AI 音乐软件、音乐制作软件、AI 编曲、混音软件、
-  DAW 音乐制作、音乐生成工具、音频插件检索入口
+- 百度新闻使用 AI 音乐、AI 音频、音乐制作、音乐软件、音乐生成、编曲、
+  混音、音频插件、MIDI、合成器、乐器、音频设备等方向词发现内容，
+  抓回后再统一分类为硬件或软件
 - arXiv `cs.SD` 声音与音乐计算 RSS
 - AudioCraft、Stable Audio Tools、Magenta、Riffusion、Demucs、Sonic Pi
   的 GitHub Releases

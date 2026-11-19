@@ -24,6 +24,7 @@ from config import (
     GITHUB_NEW_REPOSITORY_MIN_STARS,
     GITHUB_RELEASE_REPOSITORIES,
     NEWS_RETENTION_DAYS,
+    RSS_SOURCES,
     get_database_path,
 )
 from content_classifier import (
@@ -158,6 +159,7 @@ def initialize_database() -> None:
         _purge_future_news(connection)
         _purge_low_value_sogou_news(connection)
         _dedupe_existing_baidu_news(connection)
+        _purge_retired_baidu_sources(connection)
         _purge_existing_out_of_scope_news(connection)
         _backfill_content_classifications(connection)
         connection.commit()
@@ -480,6 +482,26 @@ def _purge_existing_out_of_scope_news(
             f"DELETE FROM news WHERE id IN ({placeholders})",
             rejected_ids,
         )
+
+
+def _purge_retired_baidu_sources(connection: sqlite3.Connection) -> None:
+    """清理已经不在当前配置中的旧百度查询，避免更换关键词后残留。"""
+
+    active_sources = {
+        str(source.get("source", "")).strip()
+        for source in RSS_SOURCES
+        if str(source.get("source", "")).startswith("百度新闻：")
+    }
+    if not active_sources:
+        connection.execute("DELETE FROM news WHERE source LIKE '百度新闻：%'")
+        return
+    placeholders = ",".join("?" for _ in active_sources)
+    connection.execute(
+        "DELETE FROM news "
+        "WHERE source LIKE '百度新闻：%' "
+        f"AND source NOT IN ({placeholders})",
+        tuple(sorted(active_sources)),
+    )
 
 
 def _backfill_content_classifications(

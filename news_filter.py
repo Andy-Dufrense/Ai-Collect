@@ -840,18 +840,10 @@ def is_relevant_news(
             return False
         if SOGOU_LOW_VALUE_PATTERN.search(title_text):
             return False
-        title_concrete_software = bool(
-            find_matched_keywords(
-                title_text,
-                SOGOU_CONCRETE_SOFTWARE_SIGNALS,
-            )
-        )
         has_real_direction = (
             title_ai and (title_music or title_hardware)
         ) or (
             title_music and (title_hardware or title_software)
-        ) or (
-            title_ai and title_concrete_software
         )
         return has_real_direction
 
