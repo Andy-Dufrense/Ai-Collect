@@ -8,6 +8,7 @@ from bs4 import BeautifulSoup
 
 from sogou_wechat import (
     _extract_publish_time,
+    _resolve_sogou_article_link,
     build_sogou_url,
     parse_sogou_results,
 )
@@ -100,7 +101,7 @@ class SogouWechatTests(unittest.TestCase):
         self.assertEqual(matched, 1)
         self.assertEqual(
             items[0]["source"],
-            "搜狗搜索 · Midifan",
+            "Midifan",
         )
 
     def test_keyword_query_uses_generic_fallback(self) -> None:
@@ -117,6 +118,27 @@ class SogouWechatTests(unittest.TestCase):
         self.assertEqual(
             items[0]["source"],
             "搜狗搜索",
+        )
+
+    def test_sogou_redirect_script_can_be_resolved(self) -> None:
+        class RedirectResponse:
+            url = "https://weixin.sogou.com/link?url=test"
+            text = (
+                "<script>var url='';"
+                "url += 'https://mp.weixin.qq.com/s?__biz=abc\\x26id=1';"
+                "</script>"
+            )
+
+        class RedirectSession:
+            def get(self, _link: str, **_kwargs: object) -> RedirectResponse:
+                return RedirectResponse()
+
+        self.assertEqual(
+            _resolve_sogou_article_link(
+                RedirectSession(),  # type: ignore[arg-type]
+                "https://weixin.sogou.com/link?url=test",
+            ),
+            "https://mp.weixin.qq.com/s?__biz=abc&id=1",
         )
 
 

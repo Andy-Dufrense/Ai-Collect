@@ -9,6 +9,7 @@
 from __future__ import annotations
 
 import hashlib
+import html
 import re
 import time
 from datetime import datetime, timezone
@@ -20,9 +21,9 @@ from bs4 import BeautifulSoup
 from config import (
     DATA_DIR,
     REQUEST_TIMEOUT_SECONDS,
+    SOGOU_EXPLICIT_SITES,
     SOGOU_PAGE_DELAY_SECONDS,
     SOGOU_PAGES_PER_QUERY,
-    SOGOU_SOURCE_QUERIES,
 )
 from news_filter import is_relevant_news
 
@@ -166,8 +167,9 @@ def parse_sogou_results(
             else ""
         )
         if not account:
-            if query and query in SOGOU_SOURCE_QUERIES:
-                account = f"搜狗搜索 · {query}"
+            site = SOGOU_EXPLICIT_SITES.get(query)
+            if site:
+                account = site["name"]
             else:
                 account = "搜狗搜索"
         link = urljoin(page_url, relative_link)
@@ -184,6 +186,50 @@ def parse_sogou_results(
         )
 
     return matched_items, len(result_nodes), len(matched_items)
+
+
+def _resolve_sogou_article_link(
+    session: requests.Session,
+    link: str,
+) -> str:
+    """
+    尝试把搜狗跳转链接解析成真实文章链接。
+
+    搜狗可能直接 302，也可能返回一段包含目标 URL 的脚本。解析失败时保留
+    原链接，仍然可以在浏览器中打开文章。
+    """
+
+    if "/link?" not in link:
+        return link
+    try:
+        response = session.get(
+            link,
+            allow_redirects=True,
+            timeout=REQUEST_TIMEOUT_SECONDS,
+        )
+        if not response.url.startswith("https://weixin.sogou.com/"):
+            return response.url
+        response_text = response.text
+    except requests.RequestException:
+        return link
+
+    redirect_match = re.search(
+        r"window\.location\.replace\([\"']([^\"']+)[\"']\)",
+        response_text,
+    )
+    if redirect_match:
+        target = redirect_match.group(1)
+    else:
+        parts = re.findall(
+            r"url\s*\+=\s*[\"']([^\"']+)[\"']",
+            response_text,
+        )
+        target = "".join(parts)
+    if not target:
+        return link
+    target = target.replace("\\x26", "&").replace("\\/", "/")
+    target = html.unescape(target)
+    return target if target.startswith(("http://", "https://")) else link
 
 
 def fetch_sogou_query(
@@ -268,6 +314,31 @@ def fetch_sogou_query(
             break
 
         total_entries += page_total
+        explicit_site = SOGOU_EXPLICIT_SITES.get(query)
+        resolved_links = 0
+        for item in page_items:
+            if explicit_site:
+                item["source"] = explicit_site["name"]
+            # 每个站点关键词只额外解析少量链接，避免为了真实地址再次触发风控。
+            if explicit_site and resolved_links < 3:
+                original_link = str(item.get("link") or "")
+                item["link"] = _resolve_sogou_article_link(
+                    session,
+                    original_link,
+                )
+                resolved_links += 1
+            if (
+                explicit_site
+                and "weixin.sogou.com/link" in str(item.get("link") or "")
+            ):
+                # 无法解析真实文章地址时，链接回退到明确站点首页，
+                # 用标题哈希作为片段保持每条资讯的链接唯一。
+                title_digest = hashlib.sha256(
+                    str(item.get("title") or "").encode("utf-8")
+                ).hexdigest()[:12]
+                item["link"] = (
+                    f"{explicit_site['url']}#article-{title_digest}"
+                )
         all_items.extend(page_items)
         if page_total < 10 or page >= page_count:
             break

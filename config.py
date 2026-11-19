@@ -373,26 +373,42 @@ WATCHED_ARTICLE_URLS: Final[tuple[dict[str, str], ...]] = (
 # 搜狗微信搜索使用公开结果页，不绕过登录、验证码或平台风控。
 # 这里只负责用宽泛领域词发现内容，硬件/软件分类在入库阶段完成。
 # 不在这里预先堆叠具体产品名，否则会漏掉尚未预见的新产品和新技术。
-# 这两组故意分开：前者是在找网站、媒体或公众号，后者是在找硬件/软件品类。
-# 抓取日志和前端来源会明确标注查询类型，避免把“AI编程”这类关键词误认为网站。
-SOGOU_SOURCE_QUERIES: Final[tuple[str, ...]] = (
-    "Midifan",
-    "叉烧网",
-    "键盘中国",
-    "小旭音乐",
-    "KVR Audio",
-    "Gearspace",
-    "Production Expert",
-    "Music Ally",
-    "Keyboard Magazine",
-    "Soomal",
-    "我爱音频网",
-    "音频应用",
-    "吉他中国",
-    "中国电子琴信息网",
-    "MIDI协会",
-    "刘润 AI音乐 硬件",
-    "黑马创业 AI音乐 硬件",
+# 明确站点查询使用展示名称和站点首页。页面来源只显示站点名；Sogou
+# 跳转链接无法解析成文章真实地址时，链接回退到对应站点首页。
+SOGOU_EXPLICIT_SITES: Final[dict[str, dict[str, str]]] = {
+    "Midifan": {"name": "Midifan", "url": "https://www.midifan.com/"},
+    "叉烧网": {"name": "叉烧网", "url": "https://www.exound.com/"},
+    "键盘中国": {"name": "键盘中国", "url": "https://www.cnkeyboard.com/"},
+    "小旭音乐": {"name": "小旭音乐", "url": "https://www.xiaoxumusic.com/"},
+    "KVR Audio": {"name": "KVR Audio", "url": "https://www.kvraudio.com/"},
+    "Gearspace": {"name": "Gearspace", "url": "https://gearspace.com/"},
+    "Production Expert": {
+        "name": "Production Expert",
+        "url": "https://www.production-expert.com/",
+    },
+    "Music Ally": {"name": "Music Ally", "url": "https://musically.com/"},
+    "Keyboard Magazine": {
+        "name": "Keyboard Magazine",
+        "url": "https://www.keyboardmag.com/",
+    },
+    "Soomal": {"name": "Soomal", "url": "https://www.soomal.com/"},
+    "我爱音频网": {"name": "我爱音频网", "url": "https://www.52audio.com/"},
+    "音频应用": {"name": "音频应用", "url": "https://www.audiobar.cn/"},
+    "吉他中国": {"name": "吉他中国", "url": "https://www.guitarchina.com/"},
+    "中国电子琴信息网": {
+        "name": "中国电子琴信息网",
+        "url": "https://www.cndzq.com/",
+    },
+    "MIDI协会": {"name": "MIDI协会", "url": "https://midi.org/"},
+    "刘润 AI音乐 硬件": {"name": "刘润", "url": "https://www.runliu.com/"},
+    "黑马创业 AI音乐 硬件": {
+        "name": "黑马创业",
+        "url": "https://www.iheima.com/",
+    },
+}
+
+SOGOU_SOURCE_QUERIES: Final[tuple[str, ...]] = tuple(
+    SOGOU_EXPLICIT_SITES
 )
 
 SOGOU_KEYWORD_QUERIES: Final[tuple[str, ...]] = (
