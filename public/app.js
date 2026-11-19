@@ -367,7 +367,7 @@ async function loadData() {
             `预计下次刷新时间：${formatTime(nextScheduledRefresh().toISOString())}`;
         const delayNote = document.createElement("small");
         delayNote.className = "sync-note";
-        delayNote.textContent = "实际刷新时间可能稍晚";
+        delayNote.textContent = "实际刷新时间存在偏差";
         elements.syncText.replaceChildren(estimatedLine, delayNote);
         render();
     } catch (error) {

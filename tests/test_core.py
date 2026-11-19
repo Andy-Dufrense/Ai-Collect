@@ -747,7 +747,7 @@ class FlaskPageTests(unittest.TestCase):
         page = response.get_data(as_text=True)
         self.assertEqual(response.status_code, 200)
         self.assertIn("预计下次刷新时间", page)
-        self.assertIn("实际刷新时间可能稍晚", page)
+        self.assertIn("实际刷新时间存在偏差", page)
 
     def test_homepage_marks_only_first_twenty_rows_visible(self) -> None:
         now = datetime.now(timezone.utc)
