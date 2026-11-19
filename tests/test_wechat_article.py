@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import unittest
 
-from wechat_article import parse_wechat_article
+from wechat_article import fetch_wechat_article, parse_wechat_article
 
 
 ARTICLE_HTML = """
@@ -37,6 +37,28 @@ class WechatArticleTests(unittest.TestCase):
             items[0]["publish_time"],
             "2025-11-18T21:06:40+00:00",
         )
+
+    def test_utf8_response_is_not_mojibake(self) -> None:
+        class FakeResponse:
+            content = ARTICLE_HTML.encode("utf-8")
+            apparent_encoding = "Windows-1252"
+            encoding = "ISO-8859-1"
+            text = content.decode("latin-1")
+
+            def raise_for_status(self) -> None:
+                return None
+
+        class FakeSession:
+            def get(self, *_args, **_kwargs) -> FakeResponse:
+                return FakeResponse()
+
+        items, _total, matched = fetch_wechat_article(
+            FakeSession(),  # type: ignore[arg-type]
+            "https://mp.weixin.qq.com/s/example",
+            source="微信公众号 · SUNO",
+        )
+        self.assertEqual(matched, 1)
+        self.assertEqual(items[0]["title"], "SUNO 发布 AI MV 重磅上线")
 
 
 if __name__ == "__main__":

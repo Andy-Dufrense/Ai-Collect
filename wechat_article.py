@@ -163,14 +163,20 @@ def fetch_wechat_article(
         timeout=REQUEST_TIMEOUT_SECONDS,
     )
     response.raise_for_status()
-    response.encoding = response.apparent_encoding or response.encoding
+    # 微信公众号文章主体通常是 UTF-8。requests 对缺少 charset 的 HTML 会
+    # 猜测成 ISO-8859-1，直接使用 apparent_encoding 也会把中文变成乱码。
+    try:
+        response_text = response.content.decode("utf-8")
+    except UnicodeDecodeError:
+        response.encoding = response.apparent_encoding or response.encoding
+        response_text = response.text
     if any(
-        marker in response.text
+        marker in response_text
         for marker in ("环境异常", "访问过于频繁", "请输入验证码")
     ):
         raise ValueError("微信公众号页面要求验证或限制访问")
     return parse_wechat_article(
-        response.text,
+        response_text,
         link=url,
         source=source,
     )
