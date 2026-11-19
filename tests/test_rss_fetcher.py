@@ -20,6 +20,7 @@ import requests
 from config import get_fetch_lock_path
 from rss_fetcher import (
     FetchAlreadyRunningError,
+    _parse_feed_content,
     fetch_and_save_news,
     fetch_one_source,
 )
@@ -139,6 +140,14 @@ class ClosingSession:
 
 
 class RssFetcherTests(unittest.TestCase):
+    def test_baidu_security_page_is_reported_explicitly(self) -> None:
+        entries, error = _parse_feed_content(
+            "<html><title>百度安全验证</title><body></body></html>".encode(),
+            source="百度新闻：合成器",
+        )
+        self.assertEqual(entries, [])
+        self.assertEqual(error, "百度安全验证")
+
     def test_relevant_item_is_parsed_and_cleaned(self) -> None:
         items, total, matched = fetch_one_source(
             FakeSession(TEST_RSS),

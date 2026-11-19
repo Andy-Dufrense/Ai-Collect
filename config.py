@@ -721,6 +721,17 @@ BAIDU_QUERY_DELAY_SECONDS: Final[float] = max(
     1.0,
     _read_positive_number("BAIDU_QUERY_DELAY_SECONDS", 3.0),
 )
+BAIDU_BLOCK_COOLDOWN_SECONDS: Final[float] = max(
+    600.0,
+    _read_positive_number("BAIDU_BLOCK_COOLDOWN_SECONDS", 21600.0),
+)
+
+# 频繁执行 manage.sh restart 时，如果上一轮刚完成，不立即再次抓取全部来源。
+# 这可以避免用户在调试网页时反复触发百度、Synthanatomy 等来源的限流。
+STARTUP_FETCH_MIN_INTERVAL_SECONDS: Final[float] = max(
+    60.0,
+    _read_positive_number("STARTUP_FETCH_MIN_INTERVAL_SECONDS", 900.0),
+)
 
 HISTORY_BACKFILL_DAYS: Final[int] = max(
     1,

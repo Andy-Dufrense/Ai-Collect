@@ -34,6 +34,7 @@ from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
 from config import (
+    BAIDU_BLOCK_COOLDOWN_SECONDS,
     BAIDU_QUERY_DELAY_SECONDS,
     DATA_DIR,
     GITHUB_DISCOVERY_ENABLED,
@@ -739,6 +740,10 @@ def _parse_feed_content(
 ) -> tuple[list[ParsedFeedEntry], str]:
     """依次用标准解析、修复后解析和容错提取读取 RSS。"""
 
+    decoded_preview = raw_content[:20_000].decode("utf-8", errors="replace")
+    if "百度安全验证" in decoded_preview:
+        return [], "百度安全验证"
+
     parsed_feed = feedparser.parse(raw_content)
     entries = _feedparser_entries(parsed_feed)
     if entries:
@@ -894,6 +899,8 @@ def _fetch_and_save_news_unlocked() -> FetchResult:
     github_attempted = 0
     github_discovery_attempted = 0
     watched_attempted = 0
+    rss_attempted = 0
+    baidu_blocked_for_batch = False
 
     routes = _discover_fetch_routes()
     baidu_source_seen = False
@@ -907,9 +914,28 @@ def _fetch_and_save_news_unlocked() -> FetchResult:
             source_url = source_config["url"]
             source_category = source_config.get("category", "RSS")
             if source_name.startswith("百度新闻："):
+                blocked_until = get_meta_value("baidu_blocked_until")
+                if blocked_until:
+                    try:
+                        blocked_time = datetime.fromisoformat(blocked_until)
+                        if blocked_time.tzinfo is None:
+                            blocked_time = blocked_time.replace(
+                                tzinfo=timezone.utc
+                            )
+                        if blocked_time > fetched_at:
+                            LOGGER.info(
+                                "%s 处于百度安全验证冷却期，本轮跳过",
+                                source_name,
+                            )
+                            continue
+                    except ValueError:
+                        pass
+                if baidu_blocked_for_batch:
+                    continue
                 if baidu_source_seen:
                     time.sleep(BAIDU_QUERY_DELAY_SECONDS)
                 baidu_source_seen = True
+            rss_attempted += 1
             source_errors: list[str] = []
             source_loaded = False
 
@@ -932,6 +958,18 @@ def _fetch_and_save_news_unlocked() -> FetchResult:
                     message = f"{source_name} 解析失败：{exc}"
                     LOGGER.error(message)
                     errors.append(message)
+                    if (
+                        source_name.startswith("百度新闻：")
+                        and "百度安全验证" in str(exc)
+                    ):
+                        blocked_until = fetched_at + timedelta(
+                            seconds=BAIDU_BLOCK_COOLDOWN_SECONDS
+                        )
+                        set_meta_value(
+                            "baidu_blocked_until",
+                            blocked_until.isoformat(timespec="seconds"),
+                        )
+                        baidu_blocked_for_batch = True
                     break
                 else:
                     source_loaded = True
@@ -1172,7 +1210,7 @@ def _fetch_and_save_news_unlocked() -> FetchResult:
     result = FetchResult(
         fetched_at=fetched_at,
         source_count=(
-            len(RSS_SOURCES)
+            rss_attempted
             + github_attempted
             + github_discovery_attempted
             + watched_attempted

@@ -21,10 +21,14 @@ from collections.abc import Callable
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-from config import AUTO_FETCH_RETRY_SECONDS
+from config import (
+    AUTO_FETCH_RETRY_SECONDS,
+    STARTUP_FETCH_MIN_INTERVAL_SECONDS,
+)
 from database import (
     clear_meta_value,
     clear_worker_heartbeat,
+    get_last_fetch_time,
     initialize_database,
     set_meta_value,
     set_worker_heartbeat,
@@ -37,6 +41,29 @@ LOGGER = logging.getLogger("auto_fetcher")
 STOP_EVENT = threading.Event()
 PROJECT_DIR = Path(__file__).resolve().parent
 TRANSLATION_LOG = PROJECT_DIR / "data" / "translation.log"
+
+
+def should_fetch_on_startup(now: datetime | None = None) -> bool:
+    """
+    判断启动时是否应立即抓取。
+
+    每次 restart 都全量请求会被百度、Synthanatomy 等来源视为异常流量。
+    如果上一轮刚刚完成，本次启动只恢复后台调度，等待下一次固定刷新；
+    用户仍可通过 ./manage.sh fetch 主动执行一次。
+    """
+
+    last_value = get_last_fetch_time()
+    if not last_value:
+        return True
+    try:
+        last_time = datetime.fromisoformat(last_value)
+        if last_time.tzinfo is None:
+            last_time = last_time.replace(tzinfo=timezone.utc)
+        current = now or datetime.now(timezone.utc)
+        elapsed = (current - last_time.astimezone(timezone.utc)).total_seconds()
+        return elapsed >= STARTUP_FETCH_MIN_INTERVAL_SECONDS
+    except (TypeError, ValueError):
+        return True
 
 
 def launch_background_translation() -> None:
@@ -138,9 +165,13 @@ def run_forever(
     LOGGER.info("自动抓取进程已启动，计划为北京时间每天 00:00 和 12:00")
     next_run = (
         datetime.now(timezone.utc)
-        if run_immediately
+        if run_immediately and should_fetch_on_startup()
         else next_scheduled_refresh()
     )
+    if run_immediately and next_run > datetime.now(timezone.utc):
+        LOGGER.info(
+            "上一轮抓取刚完成，本次启动不重复抓取；等待下一次固定刷新"
+        )
     try:
         while not STOP_EVENT.is_set():
             set_meta_value(

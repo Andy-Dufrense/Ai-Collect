@@ -14,12 +14,33 @@ from datetime import datetime, timezone
 from pathlib import Path
 from unittest.mock import patch
 
-from auto_fetcher import STOP_EVENT, run_fetch_cycle, run_forever
-from database import get_worker_heartbeat, initialize_database
+from auto_fetcher import (
+    STOP_EVENT,
+    run_fetch_cycle,
+    run_forever,
+    should_fetch_on_startup,
+)
+from database import (
+    get_worker_heartbeat,
+    initialize_database,
+    set_meta_value,
+)
 from rss_fetcher import FetchResult
 
 
 class AutoFetcherTests(unittest.TestCase):
+    def test_startup_fetch_respects_recent_run_cooldown(self) -> None:
+        """刚抓取完成后 restart 不应再次请求全部来源。"""
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            database_path = Path(temp_dir) / "startup-cooldown.db"
+            with patch.dict(os.environ, {"NEWS_DB_PATH": str(database_path)}):
+                initialize_database()
+                now = datetime.now(timezone.utc)
+                self.assertTrue(should_fetch_on_startup(now))
+                set_meta_value("last_fetch_at", now.isoformat(timespec="seconds"))
+                self.assertFalse(should_fetch_on_startup(now))
+
     def test_fetch_cycle_updates_heartbeat(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
             database_path = Path(temp_dir) / "auto-test.db"
