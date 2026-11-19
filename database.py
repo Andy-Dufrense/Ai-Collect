@@ -222,7 +222,7 @@ def _purge_low_value_sogou_news(connection: sqlite3.Connection) -> None:
 
     rows = connection.execute(
         """
-        SELECT id, title, summary, category
+        SELECT id, title, summary, category, source
         FROM news
         WHERE category = '搜狗微信'
         """
@@ -234,6 +234,7 @@ def _purge_low_value_sogou_news(connection: sqlite3.Connection) -> None:
             str(row["title"] or ""),
             str(row["summary"] or ""),
             category=str(row["category"] or ""),
+            source=str(row["source"] or ""),
         )
     ]
     if rejected_ids:
@@ -251,7 +252,7 @@ def _purge_existing_out_of_scope_news(
 
     rows = connection.execute(
         """
-        SELECT id, title, summary, category
+        SELECT id, title, summary, category, source
         FROM news
         """
     ).fetchall()
@@ -262,6 +263,7 @@ def _purge_existing_out_of_scope_news(
             str(row["title"] or ""),
             str(row["summary"] or ""),
             category=str(row["category"] or ""),
+            source=str(row["source"] or ""),
         )
     ]
     if rejected_ids:

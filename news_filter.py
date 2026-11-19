@@ -17,6 +17,7 @@ from config import (
     DIRECTION_HARDWARE_KEYWORDS,
     DISCOVERY_KEYWORDS,
     MUSIC_KEYWORDS,
+    MUSIC_HARDWARE_KEYWORDS,
 )
 from filter_learning import is_learned_accepted, is_learned_excluded
 
@@ -91,6 +92,265 @@ SOFTWARE_SIGNAL_KEYWORDS = (
     "production",
     "composition",
     "developer",
+)
+
+# 国外音乐科技媒体同时报道产品、行业、艺人和设备文化。只按“音乐、AI、
+# 工具”等宽泛词判断时，人物访谈、专辑故事、巡演和收藏轶事会大量进入
+# 资讯库。下面这组来源需要标题具备明确的工具、制作、录音、乐器硬件或
+# 学习价值；普通“吉他人物故事”不能仅因出现 guitar/music 就通过。
+FOREIGN_MUSIC_TECH_SOURCES = frozenset(
+    {
+        "music business worldwide",
+        "musicradar",
+        "guitar world",
+        "synthtopia",
+        "cdm",
+        "musictech",
+        "rekkerd",
+        "synthanatomy",
+        "attack magazine",
+        "matrixsynth",
+        "sound on sound",
+        "audiotechnology",
+        "mixdown magazine",
+    }
+)
+
+# TechCrunch 属于综合科技媒体，不能因为它写了 AI 就全部收录。这里只
+# 保留 AI 与音乐/音频/硬件有明确联系，或真正涉及模型、API、SDK、开发
+# 工具和开源项目的文章；纯人物观点、监管、安全评论和社会话题会被排除。
+FOREIGN_GENERAL_TECH_SOURCES = frozenset({"techcrunch"})
+
+# 标题中直接出现这些词，通常意味着文章讲的是可操作的产品、制作技术、
+# 录音硬件或音乐知识，而不是艺人履历。这里故意不放入单独的 music、
+# guitar、song、artist 等泛词，避免文化类文章绕过严格规则。
+FOREIGN_TITLE_TECHNICAL_SIGNALS = (
+    *MUSIC_HARDWARE_KEYWORDS,
+    "plugin",
+    "plugins",
+    "vst",
+    "vst2",
+    "vst3",
+    "auv3",
+    "aax",
+    "daw",
+    "midi",
+    "sequencer",
+    "synthesizer",
+    "synthesizers",
+    "synth",
+    "sampler",
+    "sample pack",
+    "soundbank",
+    "voicebank",
+    "firmware",
+    "software",
+    "audio app",
+    "music app",
+    "music software",
+    "production software",
+    "recording software",
+    "mixing software",
+    "mastering software",
+    "audio interface",
+    "audio interfaces",
+    "controller",
+    "controllers",
+    "instrument",
+    "instruments",
+    "looper",
+    "processors",
+    "processor",
+    "effects processor",
+    "effect processor",
+    "dsp",
+    "amp modeller",
+    "amp modeler",
+    "amplifier",
+    "amplifiers",
+    "microphone",
+    "microphones",
+    "headphones",
+    "drums",
+    "drum machine",
+    "groovebox",
+    "eurorack",
+    "modular",
+    "pedal",
+    "pedals",
+    "stems",
+    "stem separation",
+    "mixing",
+    "mastering",
+    "compression",
+    "reverb",
+    "synthesis",
+    "sampling",
+    "gear",
+    "sound design",
+    "audio editing",
+    "audio library",
+    "sound library",
+    "music generation",
+    "generative audio",
+    "ai creation",
+    "ai music",
+    "ai singing",
+    "voice model",
+    "logic pro",
+    "ableton",
+    "fl studio",
+    "cubase",
+    "pro tools",
+    "bitwig",
+    "garageband",
+    "mpc",
+    "maschine",
+    "api",
+    "sdk",
+    "open source",
+    "open-source",
+    "developer tool",
+    "framework",
+    "update",
+    "updates",
+    "tutorial",
+    "lesson",
+    "chord",
+    "chords",
+    "music theory",
+    "harmony",
+    "technique",
+)
+
+# 文化类标题（album、song、tour、interview）即使顺带提到 synth、guitar、
+# instrument，也仍然可能只是艺人故事。只有在标题出现下面这种更强的软件、
+# 工作流、研究或制作技术信号时，才允许覆盖文化类排除规则。
+FOREIGN_CULTURE_SAFE_TECHNICAL_SIGNALS = (
+    "plugin",
+    "plugins",
+    "vst",
+    "vst2",
+    "vst3",
+    "auv3",
+    "aax",
+    "daw",
+    "midi",
+    "software",
+    "firmware",
+    "audio app",
+    "music app",
+    "music software",
+    "production software",
+    "audio interface",
+    "audio interfaces",
+    "controller",
+    "controllers",
+    "processor",
+    "processors",
+    "looper",
+    "sampler",
+    "drum machine",
+    "groovebox",
+    "stems",
+    "stem separation",
+    "mixing",
+    "mastering",
+    "sound design",
+    "music generation",
+    "generative audio",
+    "ai creation",
+    "ai music",
+    "ai-generated music",
+    "ai singing",
+    "voice model",
+    "logic pro",
+    "ableton",
+    "fl studio",
+    "cubase",
+    "pro tools",
+    "bitwig",
+    "garageband",
+    "mpc",
+    "api",
+    "sdk",
+    "open source",
+    "open-source",
+    "tutorial",
+    "lesson",
+    "chord",
+    "chords",
+    "music theory",
+    "harmony",
+)
+
+# 新品、评测和教程虽然可能没有直接写 plugin/synth，但只要标题同时有
+# 乐器或音乐语境，就依然具有产品/学习价值。艺人故事通常缺少这些动作词。
+FOREIGN_PRODUCT_ACTION_PATTERN = re.compile(
+    r"(?:"
+    r"\b(?:launch(?:es|ed)?|intros|introduc(?:es|ed|ing)|release(?:s|d)?|"
+    r"announc(?:es|ed|ing)|unveil(?:s|ed)?|update(?:s|d)?|"
+    r"upgrad(?:es|ed)|add(?:s|ed)|expand(?:s|ed)?|"
+    r"debut(?:s|ed)?|recreat(?:es|ed)|review(?:s|ed)?|"
+    r"hands-on|now available|new version|new release)\b"
+    r"|测评|评测|发布|推出|上市|更新|升级|教程|指南"
+    r")",
+    re.IGNORECASE,
+)
+
+# 这些词只说明文章是艺人/文化内容。只要标题同时存在非常明确的制作工具、
+# 软件或硬件技术信号，仍可保留；否则严格来源直接排除。
+FOREIGN_CULTURE_ONLY_PATTERN = re.compile(
+    r"(?:"
+    r"\b(?:album|song|songs|single|track|tour|concert|festival|band|"
+    r"guitarist|singer|songwriter|artist|interview|documentary|biography|"
+    r"memoir|auction|broadway|movie|film|footage|career|legacy|"
+    r"tribute|remember|meet)\b"
+    r"|访谈|人物|传记|回忆录|巡演|演唱会|音乐节|榜单|致敬|拍卖"
+    r")",
+    re.IGNORECASE,
+)
+
+# 国外综合科技媒体经常报道 AI 监管、出口管制、诉讼、安全和融资，这些
+# 与“AI + 音乐”并不是同一类信息。此规则只用于国外综合科技来源。
+FOREIGN_POLICY_OR_BUSINESS_PATTERN = re.compile(
+    r"(?:"
+    r"\b(?:lawsuit|sues|sued|subpoena|court|regulator|regulation|"
+    r"export controls?|antitrust|privacy risks?|data breach|"
+    r"funding|valuation|earnings|acquisition|acquires|merger|"
+    r"layoffs?|stock price|shares)\b"
+    r"|诉讼|起诉|传票|监管|出口管制|隐私风险|融资|估值|财报|裁员"
+    r")",
+    re.IGNORECASE,
+)
+
+# 国外综合科技来源中，只有这些 AI 开发信号才值得在“AI 音乐情报”
+# 系统中作为扩展技术资讯保留。单独出现 app、feature 等消费功能词不够。
+FOREIGN_AI_DEVELOPMENT_SIGNALS = (
+    "api",
+    "sdk",
+    "model",
+    "models",
+    "open source",
+    "open-source",
+    "developer",
+    "developers",
+    "development",
+    "framework",
+    "fine-tuning",
+    "fine tuning",
+    "training",
+    "inference",
+    "tool",
+    "tools",
+    "workflow",
+    "integration",
+    "automation",
+    "code",
+    "coding",
+    "推理",
+    "训练",
+    "开发",
 )
 
 GOSSIP_OR_BUSINESS_NOISE = (
@@ -187,6 +447,8 @@ PRICE_OR_PROMOTION_PATTERN = re.compile(
     r"|\b(?:price|pricing|discount|coupon|deal|deals|sale|bundle|"
     r"membership|subscriptions?|clearance|markdown|budget)\b"
     r"|black friday|cyber monday|prime day|limited time"
+    r"|christmas shopping|holiday shopping|shopping season"
+    r"|gift guide|gift ideas"
     r")",
     re.IGNORECASE,
 )
@@ -355,9 +617,107 @@ def find_matched_keywords(
     )
 
 
+def _matches_source(source: str, candidates: frozenset[str]) -> bool:
+    """按忽略大小写和多余空白的方式匹配来源名称。"""
+
+    normalized_source = re.sub(r"\s+", " ", source.casefold()).strip()
+    return normalized_source in candidates
+
+
+def _foreign_music_tech_is_relevant(
+    title_text: str,
+    combined_text: str,
+) -> bool:
+    """
+    对国外音乐科技媒体执行更严格的编辑准入。
+
+    标题首次出现直接技术信号时保留，例如插件、合成器、DAW、MIDI、
+    录音/混音、音频接口和制作教程。标题只写艺人、专辑或巡演时不保留。
+    “Madrona Labs Introduces”这类短标题如果正文简介明确提到合成器，
+    且标题含发布动作，也可以保留，避免误删真实新品消息。
+    """
+
+    title_technical = bool(
+        find_matched_keywords(
+            title_text,
+            FOREIGN_TITLE_TECHNICAL_SIGNALS,
+        )
+    )
+    title_has_action = (
+        FOREIGN_PRODUCT_ACTION_PATTERN.search(title_text) is not None
+    )
+    title_has_culture_story = (
+        FOREIGN_CULTURE_ONLY_PATTERN.search(title_text) is not None
+    )
+    combined_music = bool(find_matched_keywords(combined_text, MUSIC_KEYWORDS))
+    combined_hardware = bool(
+        find_matched_keywords(
+            combined_text,
+            DIRECTION_HARDWARE_KEYWORDS,
+        )
+    )
+    combined_software = bool(
+        find_matched_keywords(combined_text, SOFTWARE_SIGNAL_KEYWORDS)
+    )
+
+    # 艺人访谈、专辑故事、巡演、拍卖和文化回顾默认不保留。只有标题还
+    # 同时明确提到插件、DAW、MIDI、分轨、混音等制作技术时才例外。
+    if title_has_culture_story:
+        return bool(
+            find_matched_keywords(
+                title_text,
+                FOREIGN_CULTURE_SAFE_TECHNICAL_SIGNALS,
+            )
+        )
+
+    # 非文化类标题出现明确的产品、工具、制作技术或音乐知识信号时保留。
+    if title_technical:
+        return True
+
+    # 处理很短的官方新品标题：标题有发布/评测动作，简介能确认音乐、音频
+    # 硬件或软件技术方向，才允许通过。
+    if title_has_action and (
+        combined_music or combined_hardware or combined_software
+    ):
+        return True
+    return False
+
+
+def _foreign_general_tech_is_relevant(
+    title_text: str,
+) -> bool:
+    """
+    收紧国外综合科技媒体：只保留 AI 音乐/音频/硬件或真实 AI 开发内容。
+
+    这条规则避免 TechCrunch 中的人物观点、监管、安全和社会话题挤占
+    “AI + 音乐”资讯。国内综合科技媒体仍使用原规则，不受此函数影响。
+    """
+
+    title_ai = bool(find_matched_keywords(title_text, AI_KEYWORDS))
+    title_music = bool(find_matched_keywords(title_text, MUSIC_KEYWORDS))
+    title_hardware = bool(
+        find_matched_keywords(
+            title_text,
+            DIRECTION_HARDWARE_KEYWORDS,
+        )
+    )
+    title_development = bool(
+        find_matched_keywords(
+            title_text,
+            FOREIGN_AI_DEVELOPMENT_SIGNALS,
+        )
+    )
+    if FOREIGN_POLICY_OR_BUSINESS_PATTERN.search(title_text):
+        return False
+    return (title_ai and title_music) or (title_ai and title_hardware) or (
+        title_ai and title_development
+    )
+
+
 def is_relevant_news(
     *text_parts: str,
     category: str = "",
+    source: str = "",
 ) -> bool:
     """
     判断一条资讯是否属于 AI、音乐或乐器相关领域。
@@ -394,6 +754,16 @@ def is_relevant_news(
         and find_matched_keywords(title_text, GOSSIP_OR_BUSINESS_NOISE)
     ):
         return False
+
+    # 国外来源使用独立的严格编辑规则。该判断放在人工保留白名单之前，
+    # 确保旧白名单不会继续放行艺人八卦或促销类内容。
+    if _matches_source(source, FOREIGN_MUSIC_TECH_SOURCES):
+        return _foreign_music_tech_is_relevant(
+            title_text,
+            combined_text,
+        )
+    if _matches_source(source, FOREIGN_GENERAL_TECH_SOURCES):
+        return _foreign_general_tech_is_relevant(title_text)
 
     # 人工保留白名单只保护音乐科技文章，价格和优惠仍优先生效。
     if category == "音乐科技" and is_learned_accepted(title_for_review):

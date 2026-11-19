@@ -47,6 +47,7 @@ def parse_github_releases(
             title,
             body,
             category="AI音频开发",
+            source=f"GitHub · {repository}",
         ):
             continue
 

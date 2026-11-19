@@ -118,7 +118,12 @@ def _convert_article(
     if (
         not title
         or not link
-        or not is_relevant_news(title, summary, category=category)
+        or not is_relevant_news(
+            title,
+            summary,
+            category=category,
+            source=source,
+        )
     ):
         return None
     return {

@@ -49,6 +49,26 @@ TEST_RSS = """<?xml version="1.0" encoding="UTF-8"?>
 </rss>
 """.encode("utf-8")
 
+STRICT_FOREIGN_RSS = """<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Strict Foreign Feed</title>
+    <item>
+      <title>Artist interview about a classic album</title>
+      <link>https://example.com/culture-story</link>
+      <description>A singer discusses the making of a hit song.</description>
+      <pubDate>Sun, 16 Nov 2026 07:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>New MIDI controller and audio interface released</title>
+      <link>https://example.com/studio-hardware</link>
+      <description>USB-C music hardware for a home studio.</description>
+      <pubDate>Sun, 16 Nov 2026 08:00:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>
+""".encode("utf-8")
+
 
 class FakeResponse:
     """模拟 requests.Response 中最少的必要接口。"""
@@ -103,6 +123,24 @@ class RssFetcherTests(unittest.TestCase):
                 "错误源",
                 "https://example.com/broken",
             )
+
+    def test_foreign_source_passes_source_into_strict_filter(self) -> None:
+        """RSS 适配器必须把来源名称传给过滤器，严格规则才会生效。"""
+
+        items, total, matched = fetch_one_source(
+            FakeSession(STRICT_FOREIGN_RSS),
+            "MusicRadar",
+            "https://example.com/feed.xml",
+            "音乐科技",
+        )
+
+        self.assertEqual(total, 2)
+        self.assertEqual(matched, 1)
+        self.assertEqual(len(items), 1)
+        self.assertEqual(
+            items[0]["title"],
+            "New MIDI controller and audio interface released",
+        )
 
     def test_second_fetch_is_rejected_while_lock_is_held(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:

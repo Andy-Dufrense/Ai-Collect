@@ -111,6 +111,7 @@ def parse_repository_search(
         if not is_relevant_news(
             full_name,
             f"{description} {topics}",
+            source="GitHub 项目发现",
         ):
             continue
         try:
@@ -179,7 +180,11 @@ def parse_commit_search(
             continue
         # 与所有其他来源共用同一组 DISCOVERY_KEYWORDS：
         # AI、音乐、乐器、音频、MIDI、混音等任一方向均可被发现。
-        if not is_relevant_news(message, repository_name):
+        if not is_relevant_news(
+            message,
+            repository_name,
+            source=f"GitHub · {repository_name}",
+        ):
             continue
         try:
             published = datetime.fromisoformat(

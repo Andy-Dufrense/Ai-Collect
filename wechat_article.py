@@ -124,7 +124,12 @@ def parse_wechat_article(
     publish_time = _publish_time(html_text, soup)
     if not title or not publish_time:
         raise ValueError("微信公众号文章缺少标题或真实发布时间")
-    if not is_relevant_news(title, summary, category="微信公众号"):
+    if not is_relevant_news(
+        title,
+        summary,
+        category="微信公众号",
+        source=resolved_source,
+    ):
         return [], 1, 0
     return (
         [

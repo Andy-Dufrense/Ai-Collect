@@ -141,6 +141,7 @@ class NewsFilterTests(unittest.TestCase):
             "音频插件限时降价 50%",
             "Black Friday plugin deals",
             "Studio software subscriptions now available",
+            "Guitar Center exclusives for Christmas shopping season",
         ):
             with self.subTest(title=title):
                 self.assertTrue(is_promotional_title(title))
@@ -235,6 +236,152 @@ class NewsFilterTests(unittest.TestCase):
                 "唱片公司 CEO 卸任",
                 "音乐行业高管变动。",
                 category="音乐科技",
+            )
+        )
+
+    def test_foreign_music_media_rejects_artist_and_album_stories(self) -> None:
+        """国外音乐媒体的艺人故事不能仅因 guitar/music 泛词进入资讯库。"""
+
+        rejected_cases = (
+            (
+                "MusicRadar",
+                (
+                    "Levi Seacer Jr on giving one of Prince's funkiest hits "
+                    "its X-rated chorus"
+                ),
+                "The story behind a classic song and its one-take guitar solo.",
+            ),
+            (
+                "Guitar World",
+                "Robert Pattinson once played guitar on a Death Grips track",
+                "A celebrity interview about music and guitar collecting.",
+            ),
+            (
+                "Music Business Worldwide",
+                (
+                    "Universal Music Canada strikes a label distribution "
+                    "partnership with First Class Music Group"
+                ),
+                "The two companies will jointly sign and develop artists.",
+            ),
+            (
+                "Synthtopia",
+                (
+                    "New Album Features Classics Played On A Famous "
+                    "Analog Synthesizer"
+                ),
+                "An album story about a classic synthesizer collection.",
+            ),
+        )
+        for source, title, summary in rejected_cases:
+            with self.subTest(source=source, title=title):
+                self.assertFalse(
+                    is_relevant_news(
+                        title,
+                        summary,
+                        category="音乐科技",
+                        source=source,
+                    )
+                )
+
+    def test_foreign_music_media_keeps_products_software_and_tutorials(
+        self,
+    ) -> None:
+        """严格规则仍应保留插件、合成器、MIDI、音频接口和制作教程。"""
+
+        accepted_cases = (
+            (
+                "Rekkerd",
+                "HoRNet Plugins releases RhyGenerator MK2 MIDI sequencer",
+                "A new Euclidean MIDI sequencer plugin for music producers.",
+            ),
+            (
+                "Synthtopia",
+                "Magerit Introduces Laniakea Pro Eight-Voice Synthesizer",
+                "A new hardware synthesizer for Eurorack and standalone use.",
+            ),
+            (
+                "Music Business Worldwide",
+                "Suno launches Bridge, an app that drops AI stems into Ableton",
+                "AI audio stems now sync into production projects.",
+            ),
+            (
+                "Attack Magazine",
+                "How To Deconstruct Any Beat In Ableton Live",
+                "A production tutorial using Ableton Live.",
+            ),
+            (
+                "MusicRadar",
+                "Audient launches next-generation audio interfaces with onboard DSP",
+                "New studio recording hardware with monitor correction.",
+            ),
+        )
+        for source, title, summary in accepted_cases:
+            with self.subTest(source=source, title=title):
+                self.assertTrue(
+                    is_relevant_news(
+                        title,
+                        summary,
+                        category="音乐科技",
+                        source=source,
+                    )
+                )
+
+    def test_foreign_general_tech_requires_ai_music_or_development_value(
+        self,
+    ) -> None:
+        """TechCrunch 只保留 AI 音乐、AI 硬件或真实 AI 开发资讯。"""
+
+        self.assertTrue(
+            is_relevant_news(
+                "New open-source AI model generates audio stems",
+                "Developers can run the audio generation model locally.",
+                category="国际科技",
+                source="TechCrunch",
+            )
+        )
+        self.assertTrue(
+            is_relevant_news(
+                "Snapchat lets developers build AR lenses with AI assistants",
+                "The new SDK exposes AI development tools.",
+                category="国际科技",
+                source="TechCrunch",
+            )
+        )
+        self.assertFalse(
+            is_relevant_news(
+                "Satya Nadella predicts AI agents will reshuffle the web",
+                "An executive shares an industry prediction.",
+                category="国际科技",
+                source="TechCrunch",
+            )
+        )
+        self.assertFalse(
+            is_relevant_news(
+                "US tightens AI chip export controls",
+                "New regulation restricts access to AI compute.",
+                category="国际科技",
+                source="TechCrunch",
+            )
+        )
+        self.assertFalse(
+            is_relevant_news(
+                "Apple launches a new AI app to study health",
+                "A consumer app for health research.",
+                category="国际科技",
+                source="TechCrunch",
+            )
+        )
+
+    def test_strict_foreign_rule_does_not_change_other_sources(self) -> None:
+        """国内来源或未登记来源继续使用原有较宽规则。"""
+
+        self.assertTrue(
+            is_relevant_news(
+                "钢琴基础知识与和弦练习",
+                "面向初学者的音乐学习文章。",
+                category="音乐科技",
+                source="国内音乐媒体",
             )
         )
 
@@ -655,6 +802,44 @@ class DatabaseTests(unittest.TestCase):
         self.assertEqual(get_news_count(), 2)
         initialize_database()
         self.assertEqual(get_news_count(), 0)
+
+    def test_initialization_purges_foreign_culture_stories(self) -> None:
+        """升级后首次初始化应清理旧库中不符合严格国外规则的艺人内容。"""
+
+        now = datetime(2026, 11, 19, 8, 0, tzinfo=timezone.utc)
+        save_news_items(
+            [
+                {
+                    "title": (
+                        "Artist interview about the making of a hit album"
+                    ),
+                    "link": "https://example.com/foreign-culture",
+                    "source": "MusicRadar",
+                    "publish_time": now.isoformat(timespec="seconds"),
+                    "summary": "A singer discusses a classic song.",
+                    "category": "音乐科技",
+                },
+                {
+                    "title": "New MIDI controller and audio interface released",
+                    "link": "https://example.com/foreign-hardware",
+                    "source": "MusicRadar",
+                    "publish_time": now.isoformat(timespec="seconds"),
+                    "summary": "USB-C music hardware for studio recording.",
+                    "category": "音乐科技",
+                },
+            ],
+            now,
+        )
+        self.assertEqual(get_news_count(), 2)
+
+        initialize_database()
+
+        remaining = get_all_news()
+        self.assertEqual(len(remaining), 1)
+        self.assertEqual(
+            remaining[0]["title"],
+            "New MIDI controller and audio interface released",
+        )
 
     def test_none_translated_title_is_saved_as_null(self) -> None:
         fetched_at = datetime(2026, 11, 17, 8, 0, tzinfo=timezone.utc)

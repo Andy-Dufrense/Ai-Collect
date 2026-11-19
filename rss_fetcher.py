@@ -438,6 +438,7 @@ def fetch_one_source(
                 title,
                 summary,
                 category=category,
+                source=source,
             )
         ):
             continue
