@@ -19,7 +19,7 @@ class GitHubDiscoveryTests(unittest.TestCase):
                     "description": "AI music stem separation for DAWs",
                     "html_url": "https://github.com/example/ai-stem-studio",
                     "created_at": "2026-11-18T03:00:00Z",
-                    "stargazers_count": 48,
+                    "stargazers_count": 16,
                     "language": "Python",
                     "topics": ["ai-music", "audio"],
                 },
@@ -52,12 +52,23 @@ class GitHubDiscoveryTests(unittest.TestCase):
                     "created_at": "2026-11-17T23:00:00Z",
                     "stargazers_count": 500,
                 },
+                {
+                    "full_name": "example/ai-coding-assistant",
+                    "description": (
+                        "AI coding assistant for software developers"
+                    ),
+                    "html_url": (
+                        "https://github.com/example/ai-coding-assistant"
+                    ),
+                    "created_at": "2026-11-17T22:00:00Z",
+                    "stargazers_count": 500,
+                },
             ]
         }
 
         items, total, matched = parse_repository_search(payload)
 
-        self.assertEqual(total, 5)
+        self.assertEqual(total, 6)
         self.assertEqual(matched, 1)
         self.assertEqual(
             items[0]["link"],
@@ -65,7 +76,7 @@ class GitHubDiscoveryTests(unittest.TestCase):
         )
         self.assertTrue(
             items[0]["title"].startswith(
-                "GitHub - 新发布：AI music stem separation"
+                "GitHub · AI+音乐新项目：AI music stem separation"
             )
         )
         self.assertIn("Python", items[0]["summary"])
@@ -80,7 +91,7 @@ class GitHubDiscoveryTests(unittest.TestCase):
                     ),
                     "repository": {
                         "full_name": "example/ai-music",
-                        "stargazers_count": 320,
+                        "stargazers_count": 60,
                     },
                     "commit": {
                         "message": "Add AI music generation workflow\n\nDetails",
@@ -93,7 +104,7 @@ class GitHubDiscoveryTests(unittest.TestCase):
                     ),
                     "repository": {
                         "full_name": "example/ai-music",
-                        "stargazers_count": 320,
+                        "stargazers_count": 60,
                     },
                     "commit": {
                         "message": "Update documentation",
@@ -122,7 +133,7 @@ class GitHubDiscoveryTests(unittest.TestCase):
                     ),
                     "repository": {
                         "full_name": "example/agent",
-                        "stargazers_count": 180,
+                        "stargazers_count": 55,
                     },
                     "commit": {
                         "message": "Implement AI agent workflow for audio tools",
@@ -135,7 +146,7 @@ class GitHubDiscoveryTests(unittest.TestCase):
                     ),
                     "repository": {
                         "full_name": "example/ai-music",
-                        "stargazers_count": 320,
+                        "stargazers_count": 60,
                     },
                     "commit": {
                         "message": "Add some more log output to audio generation",
@@ -155,16 +166,29 @@ class GitHubDiscoveryTests(unittest.TestCase):
                         "committer": {"date": "2026-11-18T00:20:00Z"},
                     },
                 },
+                {
+                    "html_url": (
+                        "https://github.com/medium/project/commit/medium456"
+                    ),
+                    "repository": {
+                        "full_name": "medium/project",
+                        "stargazers_count": 45,
+                    },
+                    "commit": {
+                        "message": "Add music generation engine",
+                        "committer": {"date": "2026-11-18T00:10:00Z"},
+                    },
+                },
             ]
         }
 
         items, total, matched = parse_commit_search(payload)
 
-        self.assertEqual(total, 6)
+        self.assertEqual(total, 7)
         self.assertEqual(matched, 2)
         self.assertEqual(
             items[0]["title"],
-            "GitHub - 新更新：Add AI music generation workflow"
+            "GitHub · AI+音乐新功能：Add AI music generation workflow"
             "（example/ai-music）",
         )
         self.assertIn("点击标题", items[0]["summary"])

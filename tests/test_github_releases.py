@@ -35,7 +35,7 @@ class GitHubReleaseTests(unittest.TestCase):
         self.assertEqual(matched, 1)
         self.assertEqual(
             items[0]["title"],
-            "GitHub - 新更新：MusicGen audio generation update"
+            "GitHub · AI+音乐新发布：MusicGen audio generation update"
             "（example/musicgen）",
         )
         self.assertEqual(items[0]["publish_time"], "2026-11-17T10:00:00+00:00")

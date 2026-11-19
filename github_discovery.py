@@ -18,6 +18,8 @@ from config import (
     GITHUB_MAX_SIGNIFICANT_COMMITS_PER_RUN,
     GITHUB_NEW_REPOSITORY_MIN_STARS,
     GITHUB_REPOSITORY_LOOKBACK_DAYS,
+    MUSIC_HARDWARE_KEYWORDS,
+    MUSIC_KEYWORDS,
     REQUEST_TIMEOUT_SECONDS,
 )
 from github_quality import (
@@ -114,9 +116,18 @@ def parse_repository_search(
             if isinstance(topic, str)
         )
         project_context = f"{full_name} {description} {topics}"
-        # 新项目发现只面向 AI 音频/音乐开发。单纯上传商业 DAW 安装包、
-        # 普通桌面工具或没有 AI 能力的播放器不属于本系统关注范围。
-        if not find_matched_keywords(project_context, AI_KEYWORDS):
+        # 新项目必须同时强关联 AI 和音乐/音频/乐器方向。单纯 AI 工具、
+        # 普通 DAW 或没有 AI 能力的音乐播放器都不收录。
+        has_ai_direction = bool(
+            find_matched_keywords(project_context, AI_KEYWORDS)
+        )
+        has_music_direction = bool(
+            find_matched_keywords(
+                project_context,
+                MUSIC_KEYWORDS + MUSIC_HARDWARE_KEYWORDS,
+            )
+        )
+        if not (has_ai_direction and has_music_direction):
             continue
         if not is_relevant_news(
             full_name,
@@ -131,10 +142,10 @@ def parse_repository_search(
         language = str(repository.get("language") or "未标注")
         matched.append(
             {
-                # 统一使用“GitHub - 新发布：简介”格式。标题前缀让用户
-                # 可以直接搜索 GitHub/Git，翻译模块会单独翻译冒号后的简介。
+                # 统一使用“GitHub · AI+音乐新项目”格式，明确这是强相关
+                # 项目发现，而不是任意代码更新。
                 "title": (
-                    f"GitHub - 新发布：{description or full_name}"
+                    f"GitHub · AI+音乐新项目：{description or full_name}"
                     f"（{full_name}）"
                 )[:400],
                 "link": link,
@@ -202,8 +213,7 @@ def parse_commit_search(
             )
         ):
             continue
-        # 与所有其他来源共用同一组 DISCOVERY_KEYWORDS：
-        # AI、音乐、乐器、音频、MIDI、混音等任一方向均可被发现。
+        # 提交必须来自与 AI 音乐强相关的仓库，并代表新功能或核心能力变化。
         if not is_relevant_news(
             message,
             repository_name,
@@ -219,7 +229,8 @@ def parse_commit_search(
         matched.append(
             {
                 "title": (
-                    f"GitHub - 新更新：{message}（{repository_name}）"
+                    f"GitHub · AI+音乐新功能：{message}"
+                    f"（{repository_name}）"
                 ),
                 "link": link,
                 "source": f"GitHub · {repository_name}",

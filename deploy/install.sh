@@ -47,9 +47,6 @@ install -m 644 \
     "${TARGET_DIR}/deploy/ai-music-web.service" \
     /etc/systemd/system/ai-music-web.service
 install -m 644 \
-    "${TARGET_DIR}/deploy/ai-music-worker.service" \
-    /etc/systemd/system/ai-music-worker.service
-install -m 644 \
     "${TARGET_DIR}/deploy/nginx-ai-music.conf" \
     /etc/nginx/sites-available/ai-music
 ln -sfn /etc/nginx/sites-available/ai-music /etc/nginx/sites-enabled/ai-music
@@ -59,7 +56,11 @@ chown -R "${APP_USER}:${APP_USER}" "${TARGET_DIR}"
 
 systemctl daemon-reload
 systemctl enable --now ai-music-web.service
-systemctl enable --now ai-music-worker.service
+# 升级旧安装时停止并移除历史自动抓取服务。本地仅允许手动 fetch，
+# 定时抓取统一由 GitHub Actions 执行。
+systemctl disable --now ai-music-worker.service 2>/dev/null || true
+rm -f /etc/systemd/system/ai-music-worker.service
+systemctl daemon-reload
 nginx -t
 systemctl enable --now nginx
 systemctl reload nginx
@@ -72,5 +73,5 @@ server_ip="$(hostname -I 2>/dev/null | awk '{print $1}')"
 echo
 echo "部署完成。"
 echo "访问地址：http://${server_ip}/"
-echo "服务状态：systemctl status ai-music-web ai-music-worker"
-echo "实时日志：journalctl -u ai-music-worker -f"
+echo "服务状态：systemctl status ai-music-web"
+echo "本地自动抓取已禁用；需要时请手动进入项目目录执行抓取命令。"

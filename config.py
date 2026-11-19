@@ -684,19 +684,19 @@ GITHUB_COMMIT_LOOKBACK_DAYS: Final[int] = max(
 # 调整，避免把 0～几颗星的一次性练手项目误当成行业动态。
 GITHUB_NEW_REPOSITORY_MIN_STARS: Final[int] = max(
     0,
-    int(_read_positive_number("GITHUB_NEW_REPOSITORY_MIN_STARS", 30)),
+    int(_read_positive_number("GITHUB_NEW_REPOSITORY_MIN_STARS", 15)),
 )
 GITHUB_COMMIT_MIN_STARS: Final[int] = max(
     0,
-    int(_read_positive_number("GITHUB_COMMIT_MIN_STARS", 100)),
+    int(_read_positive_number("GITHUB_COMMIT_MIN_STARS", 50)),
 )
 GITHUB_MAX_NEW_REPOSITORIES_PER_RUN: Final[int] = max(
     1,
-    int(_read_positive_number("GITHUB_MAX_NEW_REPOSITORIES_PER_RUN", 5)),
+    int(_read_positive_number("GITHUB_MAX_NEW_REPOSITORIES_PER_RUN", 10)),
 )
 GITHUB_MAX_SIGNIFICANT_COMMITS_PER_RUN: Final[int] = max(
     1,
-    int(_read_positive_number("GITHUB_MAX_SIGNIFICANT_COMMITS_PER_RUN", 5)),
+    int(_read_positive_number("GITHUB_MAX_SIGNIFICANT_COMMITS_PER_RUN", 8)),
 )
 
 

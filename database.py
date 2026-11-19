@@ -238,7 +238,13 @@ def _github_update_payload(title: str) -> str:
     """从统一的 GitHub 标题格式中提取 commit 或 Release 正文。"""
 
     value = str(title or "").strip()
-    for prefix in ("GitHub - 新发布：", "GitHub - 新更新："):
+    for prefix in (
+        "GitHub · AI+音乐新项目：",
+        "GitHub · AI+音乐新功能：",
+        "GitHub · AI+音乐新发布：",
+        "GitHub - 新发布：",
+        "GitHub - 新更新：",
+    ):
         if value.startswith(prefix):
             value = value[len(prefix):].strip()
             break

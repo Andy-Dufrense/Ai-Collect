@@ -28,7 +28,14 @@ TRANSLATION_ENABLED = os.getenv("TRANSLATION_ENABLED", "1").casefold() not in {
 }
 MAX_TRANSLATIONS_PER_RUN = 300
 LOGGER = logging.getLogger(__name__)
-GITHUB_TITLE_PREFIXES = ("GitHub - 新发布：", "GitHub - 新更新：")
+GITHUB_TITLE_PREFIXES = (
+    "GitHub · AI+音乐新项目：",
+    "GitHub · AI+音乐新功能：",
+    "GitHub · AI+音乐新发布：",
+    # 兼容旧数据库中尚未清理的历史标题。
+    "GitHub - 新发布：",
+    "GitHub - 新更新：",
+)
 
 
 def is_probably_english(text: str) -> bool:

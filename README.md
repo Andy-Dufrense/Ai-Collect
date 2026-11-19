@@ -4,15 +4,13 @@
 筛选 AI、音乐/乐器以及与两者方向相关的硬件内容，保存到 SQLite，并用 Flask
 以卡片形式展示。
 
-当前运行模式为“后端常驻自动同步”：
+当前运行模式：
 
-1. 执行 `./manage.sh start` 后同时启动 Flask 网页和后台自动抓取进程。
-2. 自动抓取进程在北京时间每天 00:00 和 12:00 刷新全部来源。
-3. 新资讯经过去重后写入 SQLite；网页只读取数据库。
-4. 你日常打开网页或刷新页面即可看到最新内容，不需要手动点击抓取。
-5. 执行 `./manage.sh stop` 后，网页和自动抓取进程同时停止。
-
-RSS 不是真正的实时推送协议，所以这里采用固定时间轮询。
+1. 执行 `./manage.sh start` 只启动 Flask 网页，不启动本地自动抓取。
+2. 本地需要更新数据时，手动执行 `./manage.sh fetch`。
+3. 唯一的自动定时抓取由 GitHub Actions 执行。
+4. 新资讯经过去重后写入 SQLite；网页只读取数据库。
+5. 执行 `./manage.sh stop` 后停止网页和旧版遗留抓取进程。
 
 ## 一、原始项目需求
 
@@ -49,7 +47,7 @@ RSS 不是真正的实时推送协议，所以这里采用固定时间轮询。
   `id`、`title`、`link`、`source`、`publish_time`、`summary`、`category`。
 - 以 `link` 作为唯一标识去重。
 - Flask 首页按发布时间倒序展示标题、简介、来源和发布时间，并显示抓取时间与总条数。
-- 抓取入口可以独立调用，以便之后用 Linux cron 定时运行。
+- 抓取入口只允许用户手动调用，本地不配置自动定时任务。
 - 增加搜狗微信公开搜索适配器；不绕过验证码、登录或平台访问限制。
 
 ## 二、当前实现结构
@@ -77,19 +75,16 @@ Ai-Collect/
 ```
 
 数据库默认位于 `data/news.db`。新闻存放在 `news` 表中，每次抓取的成功源数量、
-命中数量、新增数量和错误信息存放在 `fetch_runs` 表中。后台工作进程还会定期
-写入心跳，网页据此显示自动同步是否在线。时间是 UTC 入库，页面默认转换为
-`Asia/Shanghai` 时区显示。
+命中数量、新增数量和错误信息存放在 `fetch_runs` 表中。时间是 UTC 入库，
+页面默认转换为 `Asia/Shanghai` 时区显示。
 
-Flask 和自动抓取分别运行在两个进程中：
+本地只运行 Flask：
 
 ```text
 manage.sh
 ├── app.py            读取 SQLite，提供网页；不负责定时抓取
-└── auto_fetcher.py   定时下载 RSS，过滤并写入 SQLite
+└── fetch_news.py     仅在手动执行 ./manage.sh fetch 时下载并写入 SQLite
 ```
-
-两个进程共享一个 Linux 文件锁，避免多个后台任务同时抓取。
 
 ## 三、第一次运行
 
@@ -100,14 +95,20 @@ cd ~/Desktop/Ai-Collect
 ./manage.sh start
 ```
 
-启动脚本后，后台会按北京时间每天 00:00 和 12:00 自动更新。在浏览器打开：
+启动脚本不会自动抓取。手动抓取一次使用：
+
+```bash
+./manage.sh fetch
+```
+
+在浏览器打开：
 
 ```text
 http://127.0.0.1:5000/
 ```
 
-页面右上角会显示“后台自动同步中”，以及最近一次抓取时间。之后只需要刷新
-浏览器，新数据会从 SQLite 自动读取出来。
+网页会读取最近一次手动抓取或 GitHub Actions 写入的数据。刷新浏览器即可看到
+SQLite 中已有的新内容。
 
 如果依赖意外缺失，可先执行：
 
@@ -238,10 +239,9 @@ export NEWS_PROXY="http://127.0.0.1:7890"
 ./manage.sh restart
 ```
 
-请把端口替换成你本机实际使用的代理端口。设置代理后需要重启后端，让后台
-自动抓取进程继承新环境变量。不要在代码里写死代理地址。
-
-自动刷新时间是固定的北京时间每天 `00:00` 和 `12:00`，不需要修改环境变量。
+请把端口替换成你本机实际使用的代理端口。设置代理后重新打开终端，再手动
+执行 `./manage.sh fetch` 即可。不要在代码里写死代理地址。自动定时抓取只由
+GitHub Actions 执行。
 
 ### 常见启动问题
 
@@ -346,8 +346,8 @@ Magazine、Music Business Worldwide、爱范儿和 TechCrunch 的 WordPress
 - arXiv `cs.SD` 声音与音乐计算 RSS
 - AudioCraft、Stable Audio Tools、Magenta、Riffusion、Demucs、Sonic Pi
   的 GitHub Releases
-- GitHub 新项目与 commit 自动发现：搜索近 14 天新建的 AI 音乐仓库，以及
-  近 3 天与 AI 音乐、音乐生成、音频生成有关的 commit
+- GitHub 的“AI+音乐强相关项目”发现：新项目必须同时包含 AI 与音乐/音频/
+  乐器方向，最低 Stars 约 15；新功能 commit 来自最低约 50 Stars 的仓库
 
 Gearnews 当前返回 429 限流，KVR Audio 返回 403，虎嗅持续超时，品玩 RSS
 格式损坏，因此这些来源已停用，避免每轮抓取产生无意义请求。
@@ -356,9 +356,9 @@ GitHub 自动发现不要求你提前填写仓库名。程序会查询 `ai music
 `music generation`、`music production`、`MIDI` 和 `ai-music`
 主题下的新仓库，并搜索包含音乐生成、音频生成、MIDI、混音等方向的近期
 commit；
-每条结果都保存项目简介、真实时间和 GitHub 链接。新项目标题统一为
-`GitHub - 新发布：简介`，Release 和 commit 标题统一为
-`GitHub - 新更新：简介`，可直接搜索 `Git` 或 `GitHub` 找到。README、依赖
+每条结果都保存项目简介、真实时间和 GitHub 链接。标题统一为
+`GitHub · AI+音乐新项目`、`GitHub · AI+音乐新发布` 或
+`GitHub · AI+音乐新功能`，可直接搜索 `Git` 或 `GitHub` 找到。README、依赖
 升级、格式化和 CI 等低信息量 commit 会被跳过，重叠结果按链接去重。该模块
 默认启用，可通过环境变量 `GITHUB_DISCOVERY_ENABLED=0` 临时关闭。批量账号
 投递的代理、直播引流、账号多开等垃圾 commit 会在入库前被剔除。
@@ -577,7 +577,6 @@ IP，但 RSS 和授权公众号 RSS 不受影响。
 ```text
 deploy/install.sh
 deploy/ai-music-web.service
-deploy/ai-music-worker.service
 deploy/nginx-ai-music.conf
 wsgi.py
 ```
@@ -617,7 +616,7 @@ sudo bash deploy/install.sh
 - 创建独立系统用户 `ai-music`
 - 安装到 `/opt/ai-music`
 - 创建 Python 虚拟环境
-- 启动 Web 和自动抓取服务
+- 启动只读 Web 服务
 - 设置开机自启和崩溃自动重启
 - 配置 Nginx 反向代理
 
@@ -634,9 +633,9 @@ http://服务器公网IP/
 
 ```bash
 systemctl status ai-music-web
-systemctl status ai-music-worker
-journalctl -u ai-music-worker -f
 ```
+
+本地不安装自动抓取服务；需要抓取时在代码目录手动执行抓取命令。
 
 ### 7. 更新代码
 
@@ -651,30 +650,10 @@ sudo bash deploy/install.sh
 如果需要域名和 HTTPS，下一步可以为服务器公网 IP 绑定域名，并使用 Certbot
 申请免费 TLS 证书。
 
-## 十二、cron 定时抓取（可选替代方案）
+## 十二、本地抓取策略
 
-正常使用时不需要 cron：只要执行 `./manage.sh start`，后台工作进程就会持续
-抓取；执行 `./manage.sh stop` 后同步停止。
-
-如果你以后不希望保持后端常驻，才可以用 cron 替代自动工作进程。不要同时
-启用常驻工作进程和同一间隔的 cron，否则只是重复触发，虽然文件锁和数据库
-去重能保证不重复入库，但会产生不必要的网络请求。
-
-先确认 Python 绝对路径：
-
-```bash
-command -v python3
-```
-
-用 `crontab -e` 编辑定时任务。下面的示例表示北京时间每天 00:00 和 12:00
-抓取：
-
-```cron
-0 0,12 * * * cd /home/andy/Desktop/Ai-Collect && /usr/bin/python3 fetch_news.py >> /home/andy/Desktop/Ai-Collect/data/cron.log 2>&1
-```
-
-如果不需要代理，删除 `NEWS_PROXY=...` 部分。网页服务与抓取任务分离，
-使用 cron 时不需要为抓取保持 Flask 常驻运行。
+本地不运行 cron、systemd worker 或后台定时抓取。GitHub Actions 是唯一的
+自动抓取入口；本地只在用户主动执行 `./manage.sh fetch` 时请求来源。
 
 ## 十三、后续扩展
 

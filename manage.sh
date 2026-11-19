@@ -3,18 +3,18 @@
 # AI + 音乐资讯系统的一键管理脚本。
 #
 # 用法：
-#   ./manage.sh start    同时启动 Flask 网页和后台自动抓取进程
+#   ./manage.sh start    只启动 Flask 网页，不启动本地自动抓取
 #   ./manage.sh stop     停止自动抓取和 Flask 网页
-#   ./manage.sh restart  重启整个后端
-#   ./manage.sh status   查看两个进程及自动同步状态
-#   ./manage.sh fetch    手动立即抓取一次
+#   ./manage.sh restart  重启 Flask 网页
+#   ./manage.sh status   查看网页与本地抓取进程状态
+#   ./manage.sh fetch    手动立即抓取一次（本地唯一抓取入口）
 #   ./manage.sh logs     查看网页、自动抓取、手动抓取或翻译日志
 #   ./manage.sh review   在终端中审核新闻并调整过滤规则
 #   ./manage.sh backfill 按真实发布日期回填最近 60 天
 #   ./manage.sh translate 补齐数据库中的英文标题翻译
 #
-# 启动后后台会立即抓取一次，然后按配置间隔持续轮询 RSS。
-# 网页只读取 SQLite，所以日常只需刷新页面，不需要再次点击抓取。
+# 本地不再自动定时抓取；GitHub Actions 仍按自己的日程运行。
+# 本地需要新数据时手动执行 ./manage.sh fetch。
 
 set -euo pipefail
 
@@ -207,40 +207,7 @@ start_web() {
     web_urls
 }
 
-start_worker() {
-    if worker_running; then
-        echo "自动抓取进程已运行，PID: $(cat "${WORKER_PID_FILE}")"
-        return 0
-    fi
-
-    nohup "${PYTHON_BIN}" "${PROJECT_DIR}/auto_fetcher.py" >> "${WORKER_LOG}" 2>&1 &
-    local pid=$!
-    echo "${pid}" > "${WORKER_PID_FILE}"
-
-    # 自动进程会立即抓取，这里只检查进程是否存活，不等待全部网络请求完成。
-    sleep 2
-    if ! worker_running; then
-        rm -f "${WORKER_PID_FILE}"
-        echo "自动抓取进程启动失败，最近日志：" >&2
-        tail -n 30 "${WORKER_LOG}" >&2 || true
-        return 1
-    fi
-
-    echo "自动抓取进程已启动，PID: ${pid}"
-    echo "自动刷新计划：北京时间每天 00:00 和 12:00。"
-}
-
 start_service() {
-    local web_started_here=0
-
-    if web_running && worker_running; then
-        echo "后端已经在运行。"
-        echo "网页 PID: $(cat "${FLASK_PID_FILE}")"
-        echo "自动抓取 PID: $(cat "${WORKER_PID_FILE}")"
-        web_urls
-        return 0
-    fi
-
     # 首次启动时确保数据库和表结构已经存在。
     "${PYTHON_BIN}" -c "from database import initialize_database; initialize_database()"
 
@@ -264,25 +231,20 @@ start_service() {
 
     if ! web_running; then
         start_web
-        web_started_here=1
     else
         echo "网页进程已运行，PID: $(cat "${FLASK_PID_FILE}")"
     fi
 
-    if ! worker_running; then
-        if ! start_worker; then
-            # 如果本次已经启动了网页，但自动抓取进程无法启动，就回滚网页，
-            # 避免出现“看似已启动但不会更新数据”的假运行状态。
-            if [[ "${web_started_here}" -eq 1 ]]; then
-                stop_one_process "网页" "${FLASK_PID_FILE}" "${PROJECT_DIR}/app.py"
-            fi
-            return 1
-        fi
-    else
-        echo "自动抓取进程已运行，PID: $(cat "${WORKER_PID_FILE}")"
+    # 清理旧版本可能遗留的本地自动抓取进程，避免 restart 后仍自动请求来源。
+    if worker_running; then
+        stop_one_process \
+            "旧版自动抓取进程" \
+            "${WORKER_PID_FILE}" \
+            "${PROJECT_DIR}/auto_fetcher.py"
     fi
 
-    echo "后端启动完成：网页可随时刷新，后台会自动更新资讯。"
+    echo "网页启动完成：刷新页面即可读取当前 SQLite 数据。"
+    echo "本地自动抓取已禁用；需要抓取时手动运行：./manage.sh fetch"
     echo "查看运行状态：./manage.sh status"
 }
 
@@ -341,10 +303,10 @@ show_status() {
     fi
 
     if worker_running; then
-        echo "自动抓取进程：运行中（PID $(cat "${WORKER_PID_FILE}")）"
-    else
-        echo "自动抓取进程：未运行"
+        echo "本地自动抓取：检测到旧进程（PID $(cat "${WORKER_PID_FILE}")），请运行 ./manage.sh restart"
         all_running=1
+    else
+        echo "本地自动抓取：已禁用（手动运行 ./manage.sh fetch）"
     fi
 
     return "${all_running}"

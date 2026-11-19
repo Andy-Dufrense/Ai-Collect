@@ -73,7 +73,7 @@ def parse_github_releases(
             continue
         matched.append(
             {
-                "title": f"GitHub - 新更新：{title}（{repository}）",
+                "title": f"GitHub · AI+音乐新发布：{title}（{repository}）",
                 "link": link,
                 "source": f"GitHub · {repository}",
                 "publish_time": published.astimezone(timezone.utc).isoformat(
