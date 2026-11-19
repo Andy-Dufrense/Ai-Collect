@@ -8,6 +8,7 @@ GitHub Pages 是静态站点，因此翻译在 GitHub Actions 生成 JSON 时完
 from __future__ import annotations
 
 import html
+import logging
 import os
 import re
 import time
@@ -25,6 +26,7 @@ TRANSLATION_ENABLED = os.getenv("TRANSLATION_ENABLED", "1").casefold() not in {
     "off",
 }
 MAX_TRANSLATIONS_PER_RUN = 300
+LOGGER = logging.getLogger(__name__)
 GITHUB_TITLE_PREFIXES = ("GitHub - 新发布：", "GitHub - 新更新：")
 
 
@@ -115,6 +117,7 @@ def translate_items(
     *,
     existing_items: Iterable[Mapping[str, Any]] = (),
     enabled: bool | None = None,
+    max_translations: int = MAX_TRANSLATIONS_PER_RUN,
 ) -> int:
     """
     为英文标题增加 title_zh 字段，返回本轮新翻译数量。
@@ -138,7 +141,7 @@ def translate_items(
             if key in cache:
                 item["title_zh"] = cache[key]
                 continue
-            if translated_count >= MAX_TRANSLATIONS_PER_RUN:
+            if translated_count >= max(0, max_translations):
                 break
 
             # GitHub 标题带有中文分类前缀，不能把整个标题直接送翻译。
@@ -161,6 +164,8 @@ def translate_items(
                     cache[key] = item["title_zh"]
                     translated_count += 1
                     time.sleep(0.15)
+                    if translated_count == 1 or translated_count % 10 == 0:
+                        LOGGER.info("英文标题翻译进度：%d 条", translated_count)
                 continue
 
             if not is_probably_english(title):
@@ -172,4 +177,6 @@ def translate_items(
                 cache[key] = translated
                 translated_count += 1
                 time.sleep(0.15)
+                if translated_count == 1 or translated_count % 10 == 0:
+                    LOGGER.info("英文标题翻译进度：%d 条", translated_count)
     return translated_count

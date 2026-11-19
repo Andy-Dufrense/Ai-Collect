@@ -14,9 +14,12 @@ from __future__ import annotations
 
 import logging
 import signal
+import subprocess
+import sys
 import threading
 from collections.abc import Callable
 from datetime import datetime, timedelta, timezone
+from pathlib import Path
 
 from config import AUTO_FETCH_RETRY_SECONDS
 from database import (
@@ -32,6 +35,33 @@ from scheduler_utils import next_scheduled_refresh
 
 LOGGER = logging.getLogger("auto_fetcher")
 STOP_EVENT = threading.Event()
+PROJECT_DIR = Path(__file__).resolve().parent
+TRANSLATION_LOG = PROJECT_DIR / "data" / "translation.log"
+
+
+def launch_background_translation() -> None:
+    """
+    启动独立的限速翻译进程。
+
+    翻译不是抓取成功的前置条件。进程被 detach 后，即使接口很慢也不会
+    占用抓取锁或阻止下一轮自动抓取。
+    """
+
+    TRANSLATION_LOG.parent.mkdir(parents=True, exist_ok=True)
+    with TRANSLATION_LOG.open("a", encoding="utf-8") as log_file:
+        subprocess.Popen(
+            [
+                sys.executable,
+                str(PROJECT_DIR / "scripts" / "translate_missing.py"),
+                "--limit",
+                "80",
+            ],
+            cwd=PROJECT_DIR,
+            stdout=log_file,
+            stderr=subprocess.STDOUT,
+            start_new_session=True,
+            close_fds=True,
+        )
 
 
 def _handle_stop_signal(signum: int, _frame: object) -> None:
@@ -47,6 +77,7 @@ def _handle_stop_signal(signum: int, _frame: object) -> None:
 
 def run_fetch_cycle(
     fetch_function: Callable[[], FetchResult] = fetch_and_save_news,
+    translation_launcher: Callable[[], None] | None = None,
 ) -> FetchResult | None:
     """
     执行一轮抓取并更新心跳。
@@ -78,6 +109,13 @@ def run_fetch_cycle(
     )
     for error in result.errors:
         LOGGER.warning("数据源错误：%s", error)
+    if translation_launcher is not None:
+        try:
+            translation_launcher()
+            LOGGER.info("已启动后台标题翻译任务")
+        except Exception:
+            # 翻译失败不能影响已经完成的抓取任务。
+            LOGGER.exception("后台标题翻译任务启动失败")
     return result
 
 
@@ -85,6 +123,7 @@ def run_forever(
     fetch_function: Callable[[], FetchResult] = fetch_and_save_news,
     *,
     run_immediately: bool = False,
+    translation_launcher: Callable[[], None] | None = None,
 ) -> None:
     """按北京时间 00:00、12:00 调度，直到收到停止信号。"""
 
@@ -119,7 +158,10 @@ def run_forever(
             if STOP_EVENT.wait(wait_seconds):
                 break
 
-            result = run_fetch_cycle(fetch_function)
+            result = run_fetch_cycle(
+                fetch_function,
+                translation_launcher=translation_launcher,
+            )
 
             if result is not None and result.successful_sources == 0:
                 LOGGER.info(
@@ -149,7 +191,7 @@ def main() -> None:
         level=logging.INFO,
         format="%(asctime)s | %(levelname)s | %(name)s | %(message)s",
     )
-    run_forever()
+    run_forever(translation_launcher=launch_background_translation)
 
 
 if __name__ == "__main__":

@@ -61,6 +61,29 @@ class AutoFetcherTests(unittest.TestCase):
                 run_forever(fake_fetch_and_stop, run_immediately=True)
                 self.assertIsNone(get_worker_heartbeat())
 
+    def test_fetch_cycle_can_launch_background_translation(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            database_path = Path(temp_dir) / "auto-translation-test.db"
+            with patch.dict(os.environ, {"NEWS_DB_PATH": str(database_path)}):
+                initialize_database()
+                called = []
+
+                def fake_fetch() -> FetchResult:
+                    return FetchResult(
+                        fetched_at=datetime.now(timezone.utc),
+                        source_count=1,
+                        successful_sources=1,
+                        total_entries=1,
+                        matched_entries=1,
+                        new_count=1,
+                    )
+
+                run_fetch_cycle(
+                    fake_fetch,
+                    translation_launcher=lambda: called.append(True),
+                )
+                self.assertEqual(called, [True])
+
 
 if __name__ == "__main__":
     unittest.main()

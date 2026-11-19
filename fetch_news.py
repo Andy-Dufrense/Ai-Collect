@@ -14,6 +14,7 @@ from __future__ import annotations
 import logging
 import sys
 
+from auto_fetcher import launch_background_translation
 from rss_fetcher import fetch_and_save_news
 
 
@@ -40,6 +41,13 @@ def main() -> int:
     )
     for error in result.errors:
         print(f"数据源错误：{error}", file=sys.stderr)
+
+    if result.successful_sources > 0:
+        try:
+            launch_background_translation()
+            print("英文标题已交给独立后台翻译任务处理。")
+        except Exception:
+            logging.exception("后台翻译任务启动失败，但不影响本轮抓取")
 
     # 全部源失败时返回非零，让 cron 能识别这次任务并没有成功。
     return 0 if result.successful_sources > 0 else 2

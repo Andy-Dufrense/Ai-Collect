@@ -8,7 +8,7 @@
 #   ./manage.sh restart  重启整个后端
 #   ./manage.sh status   查看两个进程及自动同步状态
 #   ./manage.sh fetch    手动立即抓取一次
-#   ./manage.sh logs     查看网页、自动抓取或手动抓取日志
+#   ./manage.sh logs     查看网页、自动抓取、手动抓取或翻译日志
 #   ./manage.sh review   在终端中审核新闻并调整过滤规则
 #   ./manage.sh backfill 按真实发布日期回填最近 60 天
 #   ./manage.sh translate 补齐数据库中的英文标题翻译
@@ -28,6 +28,7 @@ WORKER_PID_FILE="${PROJECT_DIR}/data/worker.pid"
 FLASK_LOG="${PROJECT_DIR}/data/flask.log"
 WORKER_LOG="${PROJECT_DIR}/data/worker.log"
 FETCH_LOG="${PROJECT_DIR}/data/fetch.log"
+TRANSLATION_LOG="${PROJECT_DIR}/data/translation.log"
 
 mkdir -p "${PROJECT_DIR}/data"
 cd "${PROJECT_DIR}"
@@ -369,8 +370,11 @@ show_logs() {
         fetch)
             selected_log="${FETCH_LOG}"
             ;;
+        translation)
+            selected_log="${TRANSLATION_LOG}"
+            ;;
         *)
-            echo "日志类型只能是 flask、worker 或 fetch。" >&2
+            echo "日志类型只能是 flask、worker、fetch 或 translation。" >&2
             return 1
             ;;
     esac
@@ -487,14 +491,15 @@ case "${1:-}" in
             --days "${2:-60}" 2>&1 | tee -a "${PROJECT_DIR}/data/backfill.log"
         ;;
     translate)
-        "${PYTHON_BIN}" "${PROJECT_DIR}/scripts/translate_missing.py"
+        "${PYTHON_BIN}" "${PROJECT_DIR}/scripts/translate_missing.py" \
+            2>&1 | tee -a "${TRANSLATION_LOG}"
         ;;
     doctor)
         doctor
         ;;
     *)
         echo "用法：$0 {start|stop|restart|status|fetch|logs|review|backfill|translate|doctor}" >&2
-        echo "日志用法：$0 logs [flask|worker|fetch] [行数]" >&2
+        echo "日志用法：$0 logs [flask|worker|fetch|translation] [行数]" >&2
         exit 1
         ;;
 esac
