@@ -56,6 +56,79 @@ class ContentClassifierTests(unittest.TestCase):
         self.assertFalse(is_hardware)
         self.assertTrue(is_software)
 
+    def test_plugins_and_mobile_or_web_tools_are_software(self) -> None:
+        for title, summary in (
+            (
+                "4 new Sinevibes oscillator plugins for Korg NTS-1 mkII",
+                "VST3 and AU plugins.",
+            ),
+            (
+                "Photophore 2 returns to iOS",
+                "A software synthesizer app.",
+            ),
+            (
+                "SynthMaker modular synthesis environment for your browser",
+                "Runs in Safari and Chrome.",
+            ),
+            (
+                "MIDI velocity Transformer for piano transcription",
+                "A machine-learning research model.",
+            ),
+        ):
+            with self.subTest(title=title):
+                category = (
+                    "AI音频研究"
+                    if "Transformer" in title
+                    else "音乐科技"
+                )
+                is_hardware, is_software = classify_content_flags(
+                    title,
+                    summary,
+                    category=category,
+                    source="Synthanatomy",
+                )
+                self.assertFalse(is_hardware)
+                self.assertTrue(is_software)
+
+    def test_summary_plugin_signal_overrides_ambiguous_synth_title(self) -> None:
+        for title, summary in (
+            (
+                "Imaginando FRMS 2 synthesizer gets a wavetable upgrade",
+                "A major upgrade to its granular FM synthesizer plugin.",
+            ),
+            (
+                "BackLab Audio updates Filament synth to v1.1",
+                "Available for Windows and macOS as VST3 and AU.",
+            ),
+            (
+                "Decent Sampler makes instrument building easier",
+                "The popular free sampler plugin adds a preset editor.",
+            ),
+            (
+                "Vitaleon brings Vital synth to Akai MPC",
+                "A fork of the free wavetable synthesizer.",
+            ),
+        ):
+            with self.subTest(title=title):
+                is_hardware, is_software = classify_content_flags(
+                    title,
+                    summary,
+                    category="音乐科技",
+                    source="Synthanatomy",
+                )
+                self.assertFalse(is_hardware)
+                self.assertTrue(is_software)
+
+    def test_hardware_inspired_software_update_is_not_hardware(self) -> None:
+        is_hardware, is_software = classify_content_flags(
+            "discoDSP updates OB-Xd with hardware-inspired features",
+            "A major software update.",
+            category="音乐科技",
+            source="Synthtopia",
+        )
+        self.assertFalse(is_hardware)
+        self.assertTrue(is_software)
+
     def test_hardware_with_companion_app_is_both(self) -> None:
         is_hardware, is_software = classify_content_flags(
             "MIDI controller launch adds companion app workflow",
@@ -101,6 +174,8 @@ class ContentClassifierTests(unittest.TestCase):
             "小米雷军：AI+ 手机与机器人有很大想象空间",
             "英伟达安抚机器人生态伙伴，投资不会急刹车",
             "极客早知道：家用机器人或将迎来技术突破",
+            "机器人公司创始人访谈：具身智能如何落地",
+            "CoRL 2026 演讲实录：机器人需要什么 AI",
         ):
             with self.subTest(title=title):
                 is_hardware, _is_software = classify_content_flags(

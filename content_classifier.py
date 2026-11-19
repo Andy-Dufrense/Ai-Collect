@@ -15,7 +15,7 @@ from news_filter import find_matched_keywords
 
 # 分类版本会写入数据库。以后如果大幅修改分类规则，把版本加一，
 # 程序会在下一次启动时自动重新分类已有资讯。
-CONTENT_CLASSIFICATION_VERSION = "5"
+CONTENT_CLASSIFICATION_VERSION = "9"
 
 
 SOFTWARE_CLASSIFICATION_KEYWORDS = (
@@ -83,6 +83,7 @@ SOFTWARE_CLASSIFICATION_KEYWORDS = (
     "视频生成",
     "cloud",
     "web app",
+    "fork",
 )
 
 # 标题中明确出现这些实体词时，优先视为硬件。它们比 RSS 简介中的
@@ -161,19 +162,40 @@ TITLE_SOFTWARE_ONLY_HINTS = (
     "web app",
     "插件",
     "plugin",
+    "plugins",
     "daw",
     "vst",
+    "vst2",
+    "vst3",
+    "aax",
     "software",
     "application",
     "virtual instrument",
     "音源",
+    "ios",
+    "ipados",
+    "android",
+    "iphone",
+    "ipad",
+    "mac",
+    "windows",
+    "browser",
+    "web",
+    "ableton live",
+    "logic pro",
+    "fl studio",
+    "kontakt",
+    "max for live",
+    "fork",
 )
 
 GENERAL_NON_PRODUCT_HARDWARE_PATTERN = re.compile(
     r"(?:"
     r"表示|认为|想象空间|商业机会|行业趋势|生态伙伴|高管|访谈"
+    r"|创始人|联合创始人|演讲|实录|专访|对话|大会|峰会"
+    r"|CoRL|NeurIPS|ICML|CVPR|ACL"
     r"|早报|日报|周报|早知道|盘点|总结|观察|评论"
-    r"|thinks|believes|interview|roundup|daily briefing"
+    r"|thinks|believes|interview|keynote|fireside|roundup|daily briefing"
     r")",
     re.IGNORECASE,
 )
@@ -197,8 +219,16 @@ def classify_content_flags(
     summary_text = summary.casefold()
     combined_text = f"{title_text} {summary_text}"
 
-    hardware_title = find_matched_keywords(
+    # “hardware-inspired”只是软件功能描述，不代表文章主体是硬件实体。
+    hardware_hint_text = re.sub(
+        r"hardware[\s-]*inspired|受硬件启发",
+        "",
         title_text,
+        flags=re.IGNORECASE,
+    )
+
+    hardware_title = find_matched_keywords(
+        hardware_hint_text,
         DIRECTION_HARDWARE_KEYWORDS,
     )
     hardware_summary = find_matched_keywords(
@@ -218,13 +248,16 @@ def classify_content_flags(
     software_score = len(software_title) * 4 + len(software_summary)
 
     title_has_hardware_hint = bool(
-        find_matched_keywords(title_text, TITLE_HARDWARE_HINTS)
+        find_matched_keywords(hardware_hint_text, TITLE_HARDWARE_HINTS)
     )
     title_has_software_hint = bool(
         find_matched_keywords(title_text, TITLE_SOFTWARE_HINTS)
     )
     title_has_strong_software_hint = bool(
         find_matched_keywords(title_text, TITLE_SOFTWARE_ONLY_HINTS)
+    )
+    summary_has_strong_software_hint = bool(
+        find_matched_keywords(summary_text, TITLE_SOFTWARE_ONLY_HINTS)
     )
 
     # 开源项目、commit 和开发分类默认属于软件，但保留命中明确硬件词的例外。
@@ -237,6 +270,27 @@ def classify_content_flags(
     # “software synthesizer”“合成器插件”等标题虽然包含硬件词表中的
     # synthesizer/合成器，但明确写了软件，且没有实体设备提示，应只归软件类。
     if title_has_strong_software_hint and not title_has_hardware_hint:
+        is_hardware = False
+        is_software = True
+
+    # RSS 摘要明确写 plugin/VST/AU/App/fork 时，即使标题只写 Synthesizer，
+    # 也应归软件。若标题同时有 controller/interface/hardware 等实体提示，
+    # 则保留硬件或软硬结合分类。
+    if summary_has_strong_software_hint and not title_has_hardware_hint:
+        is_hardware = False
+        is_software = True
+
+    if re.search(
+        r"hardware[\s-]*inspired|受硬件启发",
+        title_text,
+        flags=re.IGNORECASE,
+    ):
+        is_hardware = False
+        is_software = True
+
+    # 软件信号明显强于硬件信号，且标题没有实体设备词时，不能因为
+    # synthesizer/sampler/MIDI 等兼容词就把插件、App 或网页工具归为硬件。
+    if software_score > hardware_score and not title_has_hardware_hint:
         is_hardware = False
         is_software = True
 
@@ -260,5 +314,10 @@ def classify_content_flags(
             or GENERAL_NON_PRODUCT_HARDWARE_PATTERN.search(title_text)
         ):
             is_hardware = False
+
+    # arXiv 声音与音乐计算论文通常是算法/模型研究，除非标题明确写硬件。
+    if category == "AI音频研究" and not title_has_hardware_hint:
+        is_hardware = False
+        is_software = True
 
     return is_hardware, is_software
