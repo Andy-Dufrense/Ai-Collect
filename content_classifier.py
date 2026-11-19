@@ -15,7 +15,7 @@ from news_filter import find_matched_keywords
 
 # 分类版本会写入数据库。以后如果大幅修改分类规则，把版本加一，
 # 程序会在下一次启动时自动重新分类已有资讯。
-CONTENT_CLASSIFICATION_VERSION = "10"
+CONTENT_CLASSIFICATION_VERSION = "11"
 
 
 SOFTWARE_CLASSIFICATION_KEYWORDS = (
@@ -149,6 +149,44 @@ SUMMARY_STRONG_HARDWARE_HINTS = (
     "监听耳机",
     "midi控制器",
     "硬件合成器",
+)
+
+# 琴弦、吉他、钢琴等词既可能出现在艺人故事中，也可能是实体乐器新品。
+# 只有同时出现发布、评测、上市等产品动作时，才补为硬件。
+INSTRUMENT_PRODUCT_TERMS = (
+    "吉他",
+    "电吉他",
+    "民谣吉他",
+    "古典吉他",
+    "钢琴",
+    "电子琴",
+    "电钢琴",
+    "小提琴",
+    "尤克里里",
+    "琴弦",
+    "乐器",
+    "guitar",
+    "electric guitar",
+    "acoustic guitar",
+    "bass guitar",
+    "piano",
+    "digital piano",
+    "stage piano",
+    "keyboard",
+    "violin",
+    "ukulele",
+    "guitar strings",
+)
+
+INSTRUMENT_PRODUCT_ACTION_PATTERN = re.compile(
+    r"(?:"
+    r"\b(?:launch(?:es|ed)?|release(?:s|d)?|announc(?:es|ed)?|"
+    r"introduc(?:es|ed|ing)|unveil(?:s|ed)?|recreat(?:es|ed)|"
+    r"review(?:s|ed)?|hands-on|first look|now available|shipping|"
+    r"pre-?order|new)\b"
+    r"|发布|推出|上市|新品|评测|上手|开箱|预售|亮相"
+    r")",
+    re.IGNORECASE,
 )
 
 TITLE_SOFTWARE_HINTS = (
@@ -295,6 +333,10 @@ def classify_content_flags(
     summary_has_strong_hardware_hint = bool(
         find_matched_keywords(summary_text, SUMMARY_STRONG_HARDWARE_HINTS)
     )
+    has_instrument_product = bool(
+        find_matched_keywords(combined_text, INSTRUMENT_PRODUCT_TERMS)
+        and INSTRUMENT_PRODUCT_ACTION_PATTERN.search(title_text)
+    )
 
     # 开源项目、commit 和开发分类默认属于软件，但保留命中明确硬件词的例外。
     if category == "AI音频开发" or source.startswith("GitHub"):
@@ -322,6 +364,9 @@ def classify_content_flags(
         summary_has_strong_hardware_hint
         and not title_has_strong_software_hint
     ):
+        is_hardware = True
+
+    if has_instrument_product and not title_has_strong_software_hint:
         is_hardware = True
 
     if re.search(

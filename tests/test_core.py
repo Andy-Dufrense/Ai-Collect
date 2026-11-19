@@ -315,6 +315,16 @@ class NewsFilterTests(unittest.TestCase):
                 "Audient launches next-generation audio interfaces with onboard DSP",
                 "New studio recording hardware with monitor correction.",
             ),
+            (
+                "Guitar.com",
+                "Gibson launches the new Les Paul Standard electric guitar",
+                "A new physical electric guitar for studio and stage players.",
+            ),
+            (
+                "Keyboard Magazine",
+                "Yamaha releases a new stage keyboard with weighted action",
+                "A hardware piano-style keyboard for live performance.",
+            ),
         )
         for source, title, summary in accepted_cases:
             with self.subTest(source=source, title=title):
@@ -526,12 +536,17 @@ class NewsFilterTests(unittest.TestCase):
 
     def test_sogou_queries_use_broad_discovery_terms(self) -> None:
         for keyword in (
-            "AI",
-            "人工智能",
+            "AI编程",
+            "AI芯片发布",
             "AI音乐",
             "音乐",
             "吉他",
+            "吉他新品",
             "乐器",
+            "智能乐器",
+            "钢琴新品",
+            "琴弦新品",
+            "合成器新品",
             "音频",
             "编曲",
             "MIDI",
@@ -548,9 +563,17 @@ class NewsFilterTests(unittest.TestCase):
         names = {source["source"] for source in RSS_SOURCES}
         for name in (
             "Matrixsynth",
+            "Premier Guitar",
+            "Guitar.com",
+            "Guitar Player",
+            "Keyboard Magazine",
             "百度新闻：合成器",
-            "百度新闻：乐器",
+            "百度新闻：吉他新品",
+            "百度新闻：钢琴新品",
             "百度新闻：音频设备",
+            "百度新闻：智能乐器",
+            "百度新闻：琴弦新品",
+            "百度新闻：AI芯片发布",
         ):
             self.assertIn(name, names)
 
@@ -560,9 +583,6 @@ class NewsFilterTests(unittest.TestCase):
             "百度新闻：AI音乐",
             "百度新闻：AI编程",
             "百度新闻：AI模型发布",
-            "百度新闻：AI算力提升",
-            "百度新闻：音乐生成",
-            "百度新闻：音频插件",
         ):
             self.assertIn(name, names)
 
@@ -575,8 +595,8 @@ class NewsFilterTests(unittest.TestCase):
             names.index("百度新闻：AI模型发布"),
         )
         self.assertLess(
-            names.index("百度新闻：乐器"),
-            names.index("百度新闻：音乐生成"),
+            names.index("百度新闻：吉他新品"),
+            names.index("百度新闻：AI编程"),
         )
 
     def test_sogou_rejects_generic_ai_job_replacement_article(self) -> None:

@@ -103,6 +103,10 @@ FOREIGN_MUSIC_TECH_SOURCES = frozenset(
         "music business worldwide",
         "musicradar",
         "guitar world",
+        "premier guitar",
+        "guitar.com",
+        "guitar player",
+        "keyboard magazine",
         "synthtopia",
         "cdm",
         "musictech",
@@ -292,7 +296,7 @@ FOREIGN_PRODUCT_ACTION_PATTERN = re.compile(
     r"announc(?:es|ed|ing)|unveil(?:s|ed)?|update(?:s|d)?|"
     r"upgrad(?:es|ed)|add(?:s|ed)|expand(?:s|ed)?|"
     r"debut(?:s|ed)?|recreat(?:es|ed)|review(?:s|ed)?|"
-    r"hands-on|now available|new version|new release)\b"
+    r"hands-on|now available|new(?: version| release)?)\b"
     r"|测评|评测|发布|推出|上市|更新|升级|教程|指南"
     r")",
     re.IGNORECASE,
@@ -494,7 +498,8 @@ SEARCH_PAGE_NAVIGATION_PATTERN = re.compile(
 COMMON_LOW_VALUE_TITLE_PATTERN = re.compile(
     r"(?:"
     r"股跌|股涨|股价|概念股|投资者|基金|清盘预警|重仓|板块"
-    r"|资本开支|机构预测|下修|市场共识|市场情绪|券商|研报"
+    r"|资本开支|销售额|营收|同比增幅|产能|订单量|代工"
+    r"|机构预测|下修|市场共识|市场情绪|券商|研报"
     r"|汇丰|投行|分析师|偏科生死局|逻辑大变天|狂欢过后"
     r"|市场已经在赌|榜第一易主|热榜|榜单|销量排行"
     r"|留学|申请截止|招生|报考|考试培训|培训课程|报名入口"

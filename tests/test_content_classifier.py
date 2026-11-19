@@ -72,6 +72,48 @@ class ContentClassifierTests(unittest.TestCase):
         self.assertFalse(is_hardware)
         self.assertTrue(is_software)
 
+    def test_instrument_release_is_hardware_but_artist_story_is_not(self) -> None:
+        for title, summary in (
+            (
+                "Gibson launches the new Les Paul Standard guitar",
+                "A new electric guitar for studio and stage players.",
+            ),
+            (
+                "Yamaha releases a new digital piano",
+                "The piano includes a graded hammer-action keyboard.",
+            ),
+            (
+                "Elixir announces new acoustic guitar strings",
+                "A coated guitar string set for acoustic instruments.",
+            ),
+        ):
+            with self.subTest(title=title):
+                is_hardware, _is_software = classify_content_flags(
+                    title,
+                    summary,
+                    category="音乐科技",
+                    source="Guitar World",
+                )
+                self.assertTrue(is_hardware)
+
+        is_hardware, _is_software = classify_content_flags(
+            "Why this guitarist still loves a vintage guitar",
+            "An artist interview about his favourite instrument.",
+            category="音乐科技",
+            source="Guitar World",
+        )
+        self.assertFalse(is_hardware)
+
+    def test_software_guitar_instrument_is_not_hardware(self) -> None:
+        is_hardware, is_software = classify_content_flags(
+            "New acoustic guitar virtual instrument plugin released",
+            "A VST3 guitar sample library for DAWs.",
+            category="音乐科技",
+            source="Rekkerd",
+        )
+        self.assertFalse(is_hardware)
+        self.assertTrue(is_software)
+
     def test_audio_plugin_is_software_only(self) -> None:
         is_hardware, is_software = classify_content_flags(
             "DGR Digital Degrader effect plugin (VST3/AU)",
