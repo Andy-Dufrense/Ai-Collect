@@ -181,6 +181,59 @@ class RssFetcherTests(unittest.TestCase):
             self.assertEqual(len(sessions), 2)
             self.assertTrue(all(session.closed for session in sessions))
 
+    def test_empty_sogou_query_does_not_stop_later_queries(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            database_path = Path(temp_dir) / "sogou-continue.db"
+            queries: list[str] = []
+
+            def fake_sogou(
+                _session: object,
+                query: str,
+            ):
+                queries.append(query)
+                if query == "没有结果的词":
+                    raise ValueError("搜狗没有返回搜索结果")
+                return (
+                    [
+                        {
+                            "title": "AI 编曲软件更新",
+                            "link": "https://example.com/sogou",
+                            "source": "测试公众号",
+                            "publish_time": "2026-11-19T01:00:00+00:00",
+                            "summary": "音乐制作功能更新",
+                            "category": "搜狗微信",
+                            "dedupe_key": "sogou:test",
+                        }
+                    ],
+                    1,
+                    1,
+                )
+
+            with (
+                patch.dict(os.environ, {"NEWS_DB_PATH": str(database_path)}),
+                patch("rss_fetcher.RSS_SOURCES", ()),
+                patch("rss_fetcher.GITHUB_RELEASE_REPOSITORIES", ()),
+                patch("rss_fetcher.GITHUB_DISCOVERY_ENABLED", False),
+                patch(
+                    "rss_fetcher.SOGOU_WECHAT_QUERIES",
+                    ("没有结果的词", "AI编曲"),
+                ),
+                patch("rss_fetcher._sogou_queries_due", return_value=True),
+                patch(
+                    "rss_fetcher._build_http_session",
+                    return_value=ClosingSession(),
+                ),
+                patch(
+                    "rss_fetcher.fetch_sogou_query",
+                    side_effect=fake_sogou,
+                ),
+            ):
+                result = fetch_and_save_news()
+
+            self.assertEqual(queries, ["没有结果的词", "AI编曲"])
+            self.assertEqual(result.successful_sources, 1)
+            self.assertEqual(result.source_count, 2)
+
 
 if __name__ == "__main__":
     unittest.main()

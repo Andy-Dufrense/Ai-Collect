@@ -28,6 +28,10 @@ from database import (
     save_news_items,
 )
 from news_filter import is_relevant_news
+from config import (
+    SOGOU_WECHAT_HARDWARE_QUERIES,
+    SOGOU_WECHAT_SOFTWARE_QUERIES,
+)
 
 
 class NewsFilterTests(unittest.TestCase):
@@ -253,6 +257,14 @@ class NewsFilterTests(unittest.TestCase):
                 category="搜狗微信",
             )
         )
+
+    def test_sogou_queries_cover_software_and_hardware(self) -> None:
+        software = " ".join(SOGOU_WECHAT_SOFTWARE_QUERIES)
+        hardware = " ".join(SOGOU_WECHAT_HARDWARE_QUERIES)
+        for keyword in ("AI编曲", "AI混音 母带", "DAW AI", "AI音乐视频"):
+            self.assertIn(keyword, software)
+        for keyword in ("MIDI控制器", "音频接口 声卡", "效果器 硬件"):
+            self.assertIn(keyword, hardware)
 
 
 class DatabaseTests(unittest.TestCase):

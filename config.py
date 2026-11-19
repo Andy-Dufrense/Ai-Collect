@@ -271,12 +271,29 @@ RSS_SOURCES: Final[tuple[dict[str, str], ...]] = (
 
 
 # 搜狗微信搜索使用公开结果页，不绕过登录、验证码或平台风控。
-# 如果搜狗要求验证，抓取器会跳过本类来源并在日志中说明，不影响 RSS。
-SOGOU_WECHAT_QUERIES: Final[tuple[str, ...]] = (
+# 查询分成软件和硬件两组，保证公众号内容不会只集中在某一种产品形态。
+SOGOU_WECHAT_SOFTWARE_QUERIES: Final[tuple[str, ...]] = (
     "AI音乐",
-    "AI吉他",
-    "AI钢琴 乐理",
-    "AI音频制作",
+    "AI音乐软件",
+    "AI音乐生成",
+    "AI编曲",
+    "AI作曲",
+    "AI写歌",
+    "AI混音 母带",
+    "AI分轨",
+    "AI音频工具",
+    "AI音乐插件",
+    "DAW AI",
+    "AI歌声合成",
+    "开源 AI音乐",
+    "SUNO AI MV",
+    "Suno AI音乐",
+    "AI MV 音乐",
+    "AI音乐视频",
+    "Suno 新功能",
+)
+
+SOGOU_WECHAT_HARDWARE_QUERIES: Final[tuple[str, ...]] = (
     "AI硬件 音乐",
     "智能乐器",
     "音频硬件",
@@ -284,11 +301,17 @@ SOGOU_WECHAT_QUERIES: Final[tuple[str, ...]] = (
     "MIDI控制器",
     "电子乐器 硬件",
     "智能音频硬件",
-    "SUNO AI MV",
-    "Suno AI音乐",
-    "AI MV 音乐",
-    "AI音乐视频",
-    "Suno 新功能",
+    "音频接口 声卡",
+    "合成器 硬件",
+    "效果器 硬件",
+    "AI录音硬件",
+    "AI钢琴 乐理",
+    "AI吉他",
+)
+
+SOGOU_WECHAT_QUERIES: Final[tuple[str, ...]] = (
+    SOGOU_WECHAT_SOFTWARE_QUERIES
+    + SOGOU_WECHAT_HARDWARE_QUERIES
 )
 
 # AI 与音乐/乐器关键词采用并集收录；交叉命中会在排行榜中获得额外加权。

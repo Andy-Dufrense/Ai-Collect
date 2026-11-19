@@ -668,6 +668,7 @@ def _fetch_and_save_news_unlocked() -> FetchResult:
             source_name = f"搜狗微信：{query}"
             source_errors = []
             source_loaded = False
+            stop_sogou_batch = False
 
             for route in routes:
                 LOGGER.info("%s 尝试通过%s抓取", source_name, route.label)
@@ -685,6 +686,17 @@ def _fetch_and_save_news_unlocked() -> FetchResult:
                     message = f"{source_name} 解析失败：{exc}"
                     LOGGER.error(message)
                     errors.append(message)
+                    # 单个关键词没有结果很常见，应继续搜索后续关键词；
+                    # 只有验证码或频率限制才值得停止整批请求。
+                    stop_sogou_batch = any(
+                        marker in str(exc)
+                        for marker in (
+                            "验证码",
+                            "访问过于频繁",
+                            "反爬",
+                            "antispider",
+                        )
+                    )
                     break
                 else:
                     source_loaded = True
@@ -702,8 +714,12 @@ def _fetch_and_save_news_unlocked() -> FetchResult:
                         f"{source_name} 所有网络通道均失败："
                         + "；".join(source_errors)
                     )
-                # 首条搜索被限制时停止本轮剩余关键词，避免连续请求扩大封锁。
-                break
+                    # 网络通道全部失败时停止本批，避免持续无效请求。
+                    stop_sogou_batch = True
+                if stop_sogou_batch:
+                    break
+                # 该关键词只是没有结果，继续搜索后续关键词。
+                continue
 
             successful_sources += 1
             total_entries += source_total
