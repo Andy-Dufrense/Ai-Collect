@@ -15,7 +15,7 @@ from news_filter import find_matched_keywords
 
 # 分类版本会写入数据库。以后如果大幅修改分类规则，把版本加一，
 # 程序会在下一次启动时自动重新分类已有资讯。
-CONTENT_CLASSIFICATION_VERSION = "9"
+CONTENT_CLASSIFICATION_VERSION = "10"
 
 
 SOFTWARE_CLASSIFICATION_KEYWORDS = (
@@ -108,15 +108,47 @@ TITLE_HARDWARE_HINTS = (
     "hardware",
     "device",
     "controller",
+    "daw controller",
+    "stage keyboard",
+    "keyboard synthesizer",
     "audio interface",
     "sound card",
     "microphone",
+    "mic",
+    "headphones",
     "studio monitor",
     "amplifier",
     "pedal",
     "module",
     "drum machine",
     "mixer",
+)
+
+# 这些词组出现在简介中时，通常已经足以确认文章主体是实体设备。
+# 使用完整产品词而不是泛泛的 hardware/device，减少软件文章误判。
+SUMMARY_STRONG_HARDWARE_HINTS = (
+    "audio interface",
+    "sound card",
+    "microphone",
+    "mic",
+    "headphones",
+    "daw controller",
+    "midi controller",
+    "hardware synthesizer",
+    "analog synthesizer",
+    "stage keyboard",
+    "groovebox",
+    "drum machine",
+    "effects pedal",
+    "eurorack",
+    "studio monitor",
+    "音频接口",
+    "声卡",
+    "麦克风",
+    "监听音箱",
+    "监听耳机",
+    "midi控制器",
+    "硬件合成器",
 )
 
 TITLE_SOFTWARE_HINTS = (
@@ -260,6 +292,9 @@ def classify_content_flags(
     summary_has_strong_software_hint = bool(
         find_matched_keywords(summary_text, TITLE_SOFTWARE_ONLY_HINTS)
     )
+    summary_has_strong_hardware_hint = bool(
+        find_matched_keywords(summary_text, SUMMARY_STRONG_HARDWARE_HINTS)
+    )
 
     # 开源项目、commit 和开发分类默认属于软件，但保留命中明确硬件词的例外。
     if category == "AI音频开发" or source.startswith("GitHub"):
@@ -280,6 +315,14 @@ def classify_content_flags(
     if summary_has_strong_software_hint and not title_has_hardware_hint:
         is_hardware = False
         is_software = True
+
+    # 标题可能是产品评测名，实体类型只写在简介里，例如
+    # “Shure MV7i review” + “audio interface”。没有软件限定词时补为硬件。
+    if (
+        summary_has_strong_hardware_hint
+        and not title_has_strong_software_hint
+    ):
+        is_hardware = True
 
     if re.search(
         r"hardware[\s-]*inspired|受硬件启发",

@@ -36,6 +36,42 @@ class ContentClassifierTests(unittest.TestCase):
                 self.assertTrue(is_hardware)
                 self.assertFalse(is_software)
 
+    def test_physical_type_in_summary_recovers_review_articles(self) -> None:
+        """产品名标题没有硬件实体词时，简介中的明确设备类型仍可分类。"""
+
+        for title, summary in (
+            (
+                "Shure MV7i review",
+                "A broadcast microphone with a built-in audio interface.",
+            ),
+            (
+                "Auriteq Flow review",
+                "A compact and configurable DAW controller.",
+            ),
+            (
+                "Yamaha expands its keyboard lineup",
+                "The new CK76 stage keyboard is now available.",
+            ),
+        ):
+            with self.subTest(title=title):
+                is_hardware, _is_software = classify_content_flags(
+                    title,
+                    summary,
+                    category="音乐科技",
+                    source="MusicRadar",
+                )
+                self.assertTrue(is_hardware)
+
+    def test_summary_hardware_compatibility_does_not_override_plugin(self) -> None:
+        is_hardware, is_software = classify_content_flags(
+            "OMEGA-50 software synthesizer (VST3/AU)",
+            "Works with any audio interface and DAW controller.",
+            category="音乐科技",
+            source="Rekkerd",
+        )
+        self.assertFalse(is_hardware)
+        self.assertTrue(is_software)
+
     def test_audio_plugin_is_software_only(self) -> None:
         is_hardware, is_software = classify_content_flags(
             "DGR Digital Degrader effect plugin (VST3/AU)",
