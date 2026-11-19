@@ -40,10 +40,14 @@ LOGGER = logging.getLogger(__name__)
 # 过宽查询更容易命中真正的项目，也能减少无关的“科技”仓库。
 REPOSITORY_QUERIES = (
     '"ai music" in:name,description,readme',
+    '"ai audio" in:name,description,readme',
     '"music generation" in:name,description,readme',
     '"music production" in:name,description,readme',
+    '"text-to-music" in:name,description,readme',
     "midi in:name,description,readme",
     "topic:ai-music",
+    "topic:music-generation",
+    "topic:music-ai",
 )
 COMMIT_QUERIES = (
     '"ai music"',
@@ -174,7 +178,7 @@ def parse_commit_search(
     """
     解析 GitHub commit 搜索结果。
 
-    普通项目的 commit 必须来自至少 100 Stars 的仓库，并且提交消息需要
+    普通项目的 commit 必须来自达到当前 Stars 门槛的仓库，并且提交消息需要
     明确涉及新功能、模型、架构或核心工作流。日志、重试、文档和界面小修
     会被忽略。
     """
@@ -274,7 +278,7 @@ def fetch_new_repositories(
                     "q": f"{query} created:>={since}",
                     "sort": "stars",
                     "order": "desc",
-                    "per_page": 30,
+                    "per_page": 50,
                 },
                 timeout=REQUEST_TIMEOUT_SECONDS,
             )

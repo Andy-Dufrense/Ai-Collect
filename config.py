@@ -672,11 +672,11 @@ SOGOU_PAGE_DELAY_SECONDS: Final[float] = max(
 # 两次查询可能命中同一项目，入库时会按唯一链接自动去重。
 GITHUB_REPOSITORY_LOOKBACK_DAYS: Final[int] = max(
     1,
-    int(_read_positive_number("GITHUB_REPOSITORY_LOOKBACK_DAYS", 14)),
+    int(_read_positive_number("GITHUB_REPOSITORY_LOOKBACK_DAYS", 30)),
 )
 GITHUB_COMMIT_LOOKBACK_DAYS: Final[int] = max(
     1,
-    int(_read_positive_number("GITHUB_COMMIT_LOOKBACK_DAYS", 3)),
+    int(_read_positive_number("GITHUB_COMMIT_LOOKBACK_DAYS", 7)),
 )
 
 # GitHub 不是更新日志仓库。只有获得一定关注度的新项目，以及来自较高热度
@@ -684,11 +684,11 @@ GITHUB_COMMIT_LOOKBACK_DAYS: Final[int] = max(
 # 调整，避免把 0～几颗星的一次性练手项目误当成行业动态。
 GITHUB_NEW_REPOSITORY_MIN_STARS: Final[int] = max(
     0,
-    int(_read_positive_number("GITHUB_NEW_REPOSITORY_MIN_STARS", 15)),
+    int(_read_positive_number("GITHUB_NEW_REPOSITORY_MIN_STARS", 8)),
 )
 GITHUB_COMMIT_MIN_STARS: Final[int] = max(
     0,
-    int(_read_positive_number("GITHUB_COMMIT_MIN_STARS", 50)),
+    int(_read_positive_number("GITHUB_COMMIT_MIN_STARS", 30)),
 )
 GITHUB_MAX_NEW_REPOSITORIES_PER_RUN: Final[int] = max(
     1,
@@ -696,7 +696,7 @@ GITHUB_MAX_NEW_REPOSITORIES_PER_RUN: Final[int] = max(
 )
 GITHUB_MAX_SIGNIFICANT_COMMITS_PER_RUN: Final[int] = max(
     1,
-    int(_read_positive_number("GITHUB_MAX_SIGNIFICANT_COMMITS_PER_RUN", 8)),
+    int(_read_positive_number("GITHUB_MAX_SIGNIFICANT_COMMITS_PER_RUN", 10)),
 )
 
 

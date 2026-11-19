@@ -9,13 +9,13 @@ from __future__ import annotations
 
 import logging
 import os
-from datetime import date, datetime, timedelta, timezone
+from datetime import date, datetime, timezone
+from pathlib import Path
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 from flask import Flask, render_template, request, url_for
 
 from config import (
-    AUTO_FETCH_HEARTBEAT_MAX_AGE_SECONDS,
     DISPLAY_TIME_ZONE,
     FLASK_HOST,
     FLASK_PORT,
@@ -25,7 +25,6 @@ from database import (
     get_all_news,
     get_last_fetch_time,
     get_news_count,
-    get_worker_heartbeat,
     initialize_database,
 )
 from ranking import filter_and_rank_news
@@ -44,27 +43,21 @@ app = Flask(__name__)
 PAGE_SIZE = 20
 
 
-def _is_auto_sync_online(heartbeat_value: str | None) -> bool:
+def _github_actions_auto_sync_configured() -> bool:
     """
-    根据后台心跳判断自动同步是否在线。
+    判断 GitHub Actions 自动同步是否已经配置。
 
-    抓取间隔较长时，心跳会长时间保持不变，因此允许它存活两个轮询周期
-    再加 60 秒。这样正常等待期间不会误报离线，进程异常退出后也会及时提示。
+    本地后台 worker 已按需求停用，不能再用本地心跳判断自动同步状态。
+    当前唯一自动抓取入口是仓库中的 GitHub Actions 工作流。
     """
 
-    if not heartbeat_value:
-        return False
-
-    try:
-        heartbeat = datetime.fromisoformat(heartbeat_value)
-        if heartbeat.tzinfo is None:
-            heartbeat = heartbeat.replace(tzinfo=timezone.utc)
-        maximum_age = timedelta(
-            seconds=AUTO_FETCH_HEARTBEAT_MAX_AGE_SECONDS
-        )
-        return datetime.now(timezone.utc) - heartbeat <= maximum_age
-    except (TypeError, ValueError):
-        return False
+    workflow_path = (
+        Path(__file__).resolve().parent
+        / ".github"
+        / "workflows"
+        / "update-pages.yml"
+    )
+    return workflow_path.is_file()
 
 
 def _display_time_zone() -> ZoneInfo:
@@ -184,7 +177,7 @@ def index():
         content_kind=content_kind,
         sort_by=sort_by,
         last_fetch_at=get_last_fetch_time(),
-        auto_sync_online=_is_auto_sync_online(get_worker_heartbeat()),
+        auto_sync_online=_github_actions_auto_sync_configured(),
         # 页面始终按固定日程实时计算，不信任重启前可能残留的旧 meta 值。
         next_auto_fetch_at=next_estimated_refresh().isoformat(
             timespec="seconds"

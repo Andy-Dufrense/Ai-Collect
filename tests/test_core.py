@@ -1181,13 +1181,15 @@ class FlaskPageTests(unittest.TestCase):
         self.assertIn("总收录", page)
         self.assertIn('id="filter-form"', page)
 
-    def test_index_shows_auto_sync_when_heartbeat_is_fresh(self) -> None:
-        set_worker_heartbeat(datetime.now(timezone.utc))
+    def test_index_shows_github_actions_auto_sync(self) -> None:
+        """本地 worker 停用后，页面应显示 GitHub Actions 自动同步。"""
+
         from app import app
 
         response = app.test_client().get("/")
         page = response.get_data(as_text=True)
         self.assertEqual(response.status_code, 200)
+        self.assertIn("GitHub Actions 自动同步", page)
         self.assertIn("预计下次刷新时间", page)
         self.assertIn("实际刷新时间存在偏差", page)
 

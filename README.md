@@ -347,7 +347,8 @@ Magazine、Music Business Worldwide、爱范儿和 TechCrunch 的 WordPress
 - AudioCraft、Stable Audio Tools、Magenta、Riffusion、Demucs、Sonic Pi
   的 GitHub Releases
 - GitHub 的“AI+音乐强相关项目”发现：新项目必须同时包含 AI 与音乐/音频/
-  乐器方向，最低 Stars 约 15；新功能 commit 来自最低约 50 Stars 的仓库
+  乐器方向，最近 30 天创建且最低 Stars 约 8；新功能 commit 来自最近 7 天、
+  最低约 30 Stars 的仓库
 
 Gearnews 当前返回 429 限流，KVR Audio 返回 403，虎嗅持续超时，品玩 RSS
 格式损坏，因此这些来源已停用，避免每轮抓取产生无意义请求。

@@ -21,14 +21,16 @@
                     <span>
                         {% if auto_sync_online %}
                             {% if next_auto_fetch_at %}
-                                预计下次刷新时间：{{ next_auto_fetch_at | local_time }}
+                                GitHub Actions 自动同步
+                                <small class="sync-note">预计下次刷新时间：{{ next_auto_fetch_at | local_time }}</small>
                                 <small class="sync-note">实际刷新时间存在偏差</small>
                             {% else %}
-                                预计下次刷新时间：正在计算
+                                GitHub Actions 自动同步
+                                <small class="sync-note">预计下次刷新时间：正在计算</small>
                                 <small class="sync-note">实际刷新时间存在偏差</small>
                             {% endif %}
                         {% else %}
-                            自动同步离线
+                            GitHub Actions 自动同步未配置
                         {% endif %}
                     </span>
                 </div>

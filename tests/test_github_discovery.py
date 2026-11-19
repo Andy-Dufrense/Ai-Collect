@@ -19,7 +19,7 @@ class GitHubDiscoveryTests(unittest.TestCase):
                     "description": "AI music stem separation for DAWs",
                     "html_url": "https://github.com/example/ai-stem-studio",
                     "created_at": "2026-11-18T03:00:00Z",
-                    "stargazers_count": 16,
+                    "stargazers_count": 8,
                     "language": "Python",
                     "topics": ["ai-music", "audio"],
                 },
@@ -172,7 +172,7 @@ class GitHubDiscoveryTests(unittest.TestCase):
                     ),
                     "repository": {
                         "full_name": "medium/project",
-                        "stargazers_count": 45,
+                        "stargazers_count": 20,
                     },
                     "commit": {
                         "message": "Add music generation engine",
