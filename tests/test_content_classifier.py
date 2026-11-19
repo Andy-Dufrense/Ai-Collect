@@ -86,6 +86,16 @@ class ContentClassifierTests(unittest.TestCase):
         self.assertFalse(is_hardware)
         self.assertTrue(is_software)
 
+    def test_ai_music_video_is_software(self) -> None:
+        is_hardware, is_software = classify_content_flags(
+            "SUNO 发布 AI MV：音乐视频重磅上线",
+            "通过提示词生成完整音乐视频。",
+            category="搜狗微信",
+            source="搜狗微信",
+        )
+        self.assertFalse(is_hardware)
+        self.assertTrue(is_software)
+
     def test_business_opinion_and_roundup_are_not_hardware(self) -> None:
         for title in (
             "小米雷军：AI+ 手机与机器人有很大想象空间",

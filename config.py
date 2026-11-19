@@ -284,6 +284,11 @@ SOGOU_WECHAT_QUERIES: Final[tuple[str, ...]] = (
     "MIDI控制器",
     "电子乐器 硬件",
     "智能音频硬件",
+    "SUNO AI MV",
+    "Suno AI音乐",
+    "AI MV 音乐",
+    "AI音乐视频",
+    "Suno 新功能",
 )
 
 # AI 与音乐/乐器关键词采用并集收录；交叉命中会在排行榜中获得额外加权。
@@ -348,6 +353,10 @@ MUSIC_KEYWORDS: Final[tuple[str, ...]] = (
     "audio generation",
     "sound design",
     "sound effect",
+    "音乐视频",
+    "ai mv",
+    "music video",
+    "视频配乐",
 )
 
 # 与 AI 或音乐方向直接相关的硬件词。

@@ -15,7 +15,7 @@ from news_filter import find_matched_keywords
 
 # 分类版本会写入数据库。以后如果大幅修改分类规则，把版本加一，
 # 程序会在下一次启动时自动重新分类已有资讯。
-CONTENT_CLASSIFICATION_VERSION = "4"
+CONTENT_CLASSIFICATION_VERSION = "5"
 
 
 SOFTWARE_CLASSIFICATION_KEYWORDS = (
@@ -77,6 +77,10 @@ SOFTWARE_CLASSIFICATION_KEYWORDS = (
     "music generation",
     "audio generation",
     "ai audio",
+    "音乐视频",
+    "ai mv",
+    "music video",
+    "视频生成",
     "cloud",
     "web app",
 )

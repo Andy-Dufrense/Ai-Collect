@@ -245,6 +245,15 @@ class NewsFilterTests(unittest.TestCase):
             )
         )
 
+    def test_suno_ai_music_video_is_supported(self) -> None:
+        self.assertTrue(
+            is_relevant_news(
+                "SUNO 发布 AI MV 重磅上线",
+                "用户可以生成完整的音乐视频。",
+                category="搜狗微信",
+            )
+        )
+
 
 class DatabaseTests(unittest.TestCase):
     """使用临时目录测试数据库，确保不会碰正式 news.db。"""
