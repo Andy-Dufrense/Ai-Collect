@@ -54,7 +54,7 @@ def launch_background_translation() -> None:
                 sys.executable,
                 str(PROJECT_DIR / "scripts" / "translate_missing.py"),
                 "--limit",
-                "80",
+                "1000",
             ],
             cwd=PROJECT_DIR,
             stdout=log_file,

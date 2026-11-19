@@ -19,6 +19,7 @@ import requests
 
 
 MYMEMORY_URL = "https://api.mymemory.translated.net/get"
+GOOGLE_TRANSLATE_URL = "https://translate.googleapis.com/translate_a/single"
 TRANSLATION_ENABLED = os.getenv("TRANSLATION_ENABLED", "1").casefold() not in {
     "0",
     "false",
@@ -56,11 +57,27 @@ def translate_title(
     http = session or requests.Session()
     http.trust_env = False
     try:
-        response = http.get(
+        translated = _translate_with_mymemory(http, text)
+        if translated:
+            return translated
+        return _translate_with_google(http, text)
+    finally:
+        if owns_session:
+            http.close()
+
+
+def _translate_with_mymemory(
+    session: requests.Session,
+    text: str,
+) -> str | None:
+    """使用 MyMemory 免费翻译接口。"""
+
+    try:
+        response = session.get(
             MYMEMORY_URL,
             params={"q": text, "langpair": "en|zh-CN"},
             headers={"User-Agent": "AI-Music-Collector/1.0"},
-            timeout=(4.0, 12.0),
+            timeout=(4.0, 10.0),
         )
         response.raise_for_status()
         payload = response.json()
@@ -77,9 +94,49 @@ def translate_title(
         return translated
     except (requests.RequestException, ValueError, TypeError):
         return None
-    finally:
-        if owns_session:
-            http.close()
+
+
+def _translate_with_google(
+    session: requests.Session,
+    text: str,
+) -> str | None:
+    """
+    MyMemory 限流时使用 Google 公共翻译网页接口作为备用。
+
+    这里只调用无需账号的普通翻译端点，不涉及登录或绕过验证。
+    """
+
+    try:
+        response = session.get(
+            GOOGLE_TRANSLATE_URL,
+            params={
+                "client": "gtx",
+                "sl": "en",
+                "tl": "zh-CN",
+                "dt": "t",
+                "q": text,
+            },
+            headers={"User-Agent": "AI-Music-Collector/1.0"},
+            timeout=(4.0, 12.0),
+        )
+        response.raise_for_status()
+        payload = response.json()
+        if not isinstance(payload, list) or not payload:
+            return None
+        segments = payload[0]
+        if not isinstance(segments, list):
+            return None
+        translated = "".join(
+            str(segment[0])
+            for segment in segments
+            if isinstance(segment, list) and segment
+        ).strip()
+        translated = html.unescape(translated)
+        if not translated or translated.casefold() == text.casefold():
+            return None
+        return translated
+    except (requests.RequestException, ValueError, TypeError):
+        return None
 
 
 def is_translatable_title(text: str) -> bool:
@@ -129,6 +186,7 @@ def translate_items(
 
     cache = load_translation_cache(existing_items)
     translated_count = 0
+    attempted_count = 0
     with requests.Session() as session:
         session.trust_env = False
         for item in items:
@@ -155,6 +213,7 @@ def translate_items(
                     github_payload = title[len(prefix):].strip()
                     break
             if github_prefix:
+                attempted_count += 1
                 translated = translate_title(
                     github_payload,
                     session=session,
@@ -171,6 +230,7 @@ def translate_items(
             if not is_probably_english(title):
                 continue
 
+            attempted_count += 1
             translated = translate_title(title, session=session)
             if translated:
                 item["title_zh"] = translated
@@ -179,4 +239,9 @@ def translate_items(
                 time.sleep(0.15)
                 if translated_count == 1 or translated_count % 10 == 0:
                     LOGGER.info("英文标题翻译进度：%d 条", translated_count)
+    if attempted_count and translated_count == 0:
+        LOGGER.warning(
+            "尝试翻译 %d 条，但所有翻译接口均未返回可用结果",
+            attempted_count,
+        )
     return translated_count

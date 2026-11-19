@@ -5,6 +5,8 @@ from __future__ import annotations
 import unittest
 from unittest.mock import patch
 
+import requests
+
 from translation import (
     is_probably_english,
     is_title_displayable,
@@ -30,6 +32,21 @@ class FakeSession:
         return FakeResponse()
 
 
+class FakeGoogleResponse:
+    def raise_for_status(self) -> None:
+        return None
+
+    def json(self) -> list:
+        return [[["备用接口中文标题", "fallback title", None, None]]]
+
+
+class FallbackSession:
+    def get(self, url: str, **_kwargs):
+        if "mymemory" in url:
+            raise requests.ConnectionError("quota exceeded")
+        return FakeGoogleResponse()
+
+
 class TranslationTests(unittest.TestCase):
     def test_english_title_is_detected(self) -> None:
         self.assertTrue(is_probably_english("New AI guitar tool released"))
@@ -41,6 +58,13 @@ class TranslationTests(unittest.TestCase):
             session=FakeSession(),  # type: ignore[arg-type]
         )
         self.assertEqual(translated, "AI 吉他工具正式发布")
+
+    def test_google_fallback_is_used_when_mymemory_fails(self) -> None:
+        translated = translate_title(
+            "Fallback title for translation",
+            session=FallbackSession(),  # type: ignore[arg-type]
+        )
+        self.assertEqual(translated, "备用接口中文标题")
 
     def test_translation_cache_avoids_repeated_request(self) -> None:
         items = [

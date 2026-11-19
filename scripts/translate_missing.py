@@ -43,15 +43,23 @@ def main() -> int:
             return 0
 
         initialize_database()
-        items = get_all_news()
-        translated = translate_items(
-            items,
-            existing_items=items,
-            max_translations=max(1, args.limit),
-        )
-        if translated:
+        translated_total = 0
+        remaining_limit = max(1, args.limit)
+        while remaining_limit > 0:
+            items = get_all_news()
+            translated = translate_items(
+                items,
+                existing_items=items,
+                max_translations=min(80, remaining_limit),
+            )
+            if translated == 0:
+                break
             save_news_items(items, datetime.now(timezone.utc))
-        print(f"本次补齐中文标题：{translated} 条")
+            translated_total += translated
+            remaining_limit -= translated
+            print(f"翻译批次完成：{translated} 条")
+
+        print(f"本次补齐中文标题：{translated_total} 条")
         return 0
 
 
