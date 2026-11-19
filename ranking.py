@@ -247,6 +247,7 @@ def filter_and_rank_news(
     keyword: str = "",
     specific_date: str = "",
     content_kind: str = "all",
+    sort_by: str = "time",
     now: datetime | None = None,
 ) -> list[dict[str, Any]]:
     """
@@ -255,6 +256,7 @@ def filter_and_rank_news(
     specific_date 为 YYYY-MM-DD 时只筛选本地时区的那一天，并忽略 days。
     content_kind 可选 all、hardware、software；软硬结合资讯会同时出现在
     后两个筛选中。
+    sort_by 可选 time、heat、relevance；默认按发布时间倒序。
     days=0 表示全部时间。关键词使用不区分大小写的包含匹配；
     多个空格分隔的词必须同时出现。
     """
@@ -263,6 +265,9 @@ def filter_and_rank_news(
     selected_kind = content_kind.strip().casefold()
     if selected_kind not in {"all", "hardware", "software"}:
         selected_kind = "all"
+    selected_sort = sort_by.strip().casefold()
+    if selected_sort not in {"time", "heat", "relevance"}:
+        selected_sort = "time"
     # 分号是唯一的多词分隔符；没有分号时整个输入只作为一个搜索词。
     search_terms = [
         term.strip().casefold()
@@ -330,19 +335,43 @@ def filter_and_rank_news(
         item["relevance_score"] = relevance
         item["heat_score"] = heat
         item["recency_score"] = recency
+        item["is_ai_music_cross"] = bool(
+            find_matched_keywords(searchable, AI_KEYWORDS)
+            and find_matched_keywords(searchable, MUSIC_KEYWORDS)
+        )
         item["rank_score"] = round(
             relevance * 0.50 + heat * 0.30 + recency * 0.20,
             1,
         )
         ranked_items.append(item)
 
-    ranked_items.sort(
-        key=lambda item: (
-            item.get("publish_time") or "",
-            item["rank_score"],
-        ),
-        reverse=True,
-    )
+    if selected_sort == "heat":
+        ranked_items.sort(
+            key=lambda item: (
+                item["heat_score"],
+                item.get("publish_time") or "",
+                item["rank_score"],
+            ),
+            reverse=True,
+        )
+    elif selected_sort == "relevance":
+        ranked_items.sort(
+            key=lambda item: (
+                item["is_ai_music_cross"],
+                item["relevance_score"],
+                item.get("publish_time") or "",
+                item["rank_score"],
+            ),
+            reverse=True,
+        )
+    else:
+        ranked_items.sort(
+            key=lambda item: (
+                item.get("publish_time") or "",
+                item["rank_score"],
+            ),
+            reverse=True,
+        )
     ranked_items = balance_source_diversity(ranked_items)
     for rank, item in enumerate(ranked_items, start=1):
         item["rank"] = rank

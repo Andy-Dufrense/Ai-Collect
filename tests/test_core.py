@@ -805,6 +805,7 @@ class FlaskPageTests(unittest.TestCase):
 
         self.assertIn('<select id="content-kind-filter"', hardware_page)
         self.assertIn('value="hardware"', hardware_page)
+        self.assertIn('id="sort-filter"', hardware_page)
         self.assertIn("新型合成器硬件发布", hardware_page)
         self.assertNotIn("AI 音乐编曲插件更新", hardware_page)
         self.assertIn("AI 音乐编曲插件更新", software_page)

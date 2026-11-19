@@ -129,12 +129,16 @@ def index():
     content_kind = request.args.get("kind", "all").strip().casefold()
     if content_kind not in {"all", "hardware", "software"}:
         content_kind = "all"
+    sort_by = request.args.get("sort", "time").strip().casefold()
+    if sort_by not in {"time", "heat", "relevance"}:
+        sort_by = "time"
     ranked_news = filter_and_rank_news(
         all_news_items,
         days=selected_days,
         keyword=keyword,
         specific_date=selected_date,
         content_kind=content_kind,
+        sort_by=sort_by,
     )
     # 指定日期没有数据时，按该日期的真实范围补抓一次。
     if selected_date and not ranked_news:
@@ -146,6 +150,7 @@ def index():
             keyword=keyword,
             specific_date=selected_date,
             content_kind=content_kind,
+            sort_by=sort_by,
         )
     # 英文文章必须完成标题翻译后才展示，翻译失败时保留在数据库中等待重试。
     ranked_news = [item for item in ranked_news if is_title_displayable(item)]
@@ -173,6 +178,7 @@ def index():
         selected_days=selected_days,
         selected_date=selected_date,
         content_kind=content_kind,
+        sort_by=sort_by,
         last_fetch_at=get_last_fetch_time(),
         auto_sync_online=_is_auto_sync_online(get_worker_heartbeat()),
         # 页面始终按固定日程实时计算，不信任重启前可能残留的旧 meta 值。

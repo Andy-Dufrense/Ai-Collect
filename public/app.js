@@ -17,6 +17,7 @@ const elements = {
     days: document.querySelector("#days"),
     specificDate: document.querySelector("#specific-date"),
     contentKind: document.querySelector("#content-kind"),
+    sortBy: document.querySelector("#sort-by"),
     filterForm: document.querySelector("#filter-form"),
     list: document.querySelector("#news-list"),
     empty: document.querySelector("#empty-state"),
@@ -147,10 +148,31 @@ function balanceSourceDiversity(items) {
     return balanced;
 }
 
+function compareRankedItems(left, right, sortBy) {
+    if (sortBy === "heat") {
+        const heatOrder = right.heat_score - left.heat_score;
+        if (heatOrder !== 0) return heatOrder;
+    } else if (sortBy === "relevance") {
+        const crossOrder =
+            Number(Boolean(right.is_ai_music_cross))
+            - Number(Boolean(left.is_ai_music_cross));
+        if (crossOrder !== 0) return crossOrder;
+        const relevanceOrder =
+            right.relevance_score - left.relevance_score;
+        if (relevanceOrder !== 0) return relevanceOrder;
+    }
+    const timeOrder = String(right.publish_time || "").localeCompare(
+        String(left.publish_time || "")
+    );
+    if (timeOrder !== 0) return timeOrder;
+    return right.rank_score - left.rank_score;
+}
+
 function rankItems() {
     const days = Number(elements.days.value);
     const specificDate = elements.specificDate.value;
     const contentKind = elements.contentKind.value;
+    const sortBy = elements.sortBy.value;
     const terms = elements.keyword.value
         .toLocaleLowerCase()
         .split(/[;；]/)
@@ -220,13 +242,7 @@ function rankItems() {
             };
         })
         .sort((left, right) => {
-            const timeOrder = String(right.publish_time || "").localeCompare(
-                String(left.publish_time || "")
-            );
-            if (timeOrder !== 0) {
-                return timeOrder;
-            }
-            return right.rank_score - left.rank_score;
+            return compareRankedItems(left, right, sortBy);
         });
     return balanceSourceDiversity(sortedItems);
 }
@@ -311,6 +327,7 @@ function render() {
     const days = Number(elements.days.value);
     const specificDate = elements.specificDate.value;
     const contentKind = elements.contentKind.value;
+    const sortBy = elements.sortBy.value;
     const keyword = elements.keyword.value.trim();
     elements.summary.textContent = [
         `${ranked.length} 条结果`,
@@ -319,6 +336,11 @@ function render() {
             ? "硬件相关"
             : contentKind === "software"
                 ? "软件相关"
+                : "",
+        sortBy === "heat"
+            ? "按热度"
+            : sortBy === "relevance"
+                ? "按 AI+音乐关联度"
                 : "",
         keyword ? `关键词“${keyword}”` : "",
     ].filter(Boolean).join(" · ");
@@ -371,6 +393,10 @@ elements.specificDate.addEventListener("change", () => {
     render();
 });
 elements.contentKind.addEventListener("change", () => {
+    state.currentPage = 1;
+    render();
+});
+elements.sortBy.addEventListener("change", () => {
     state.currentPage = 1;
     render();
 });

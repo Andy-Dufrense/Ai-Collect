@@ -284,6 +284,39 @@ class RankingTests(unittest.TestCase):
         )
         self.assertGreater(len({item["source"] for item in first_page}), 6)
 
+    def test_heat_and_relevance_sort_modes(self) -> None:
+        items = [
+            make_item(
+                "AI 芯片销量创新高",
+                publish_time="2026-11-17T09:30:00+00:00",
+                source="MusicTech",
+            ),
+            make_item(
+                "AI 吉他编曲与混音工具发布",
+                publish_time="2026-11-17T08:00:00+00:00",
+                summary="人工智能音乐制作和乐器工作流",
+                source="未知来源",
+            ),
+        ]
+        by_heat = filter_and_rank_news(
+            items,
+            days=3,
+            sort_by="heat",
+            now=self.now,
+        )
+        self.assertEqual(by_heat[0]["title"], "AI 芯片销量创新高")
+
+        by_relevance = filter_and_rank_news(
+            items,
+            days=3,
+            sort_by="relevance",
+            now=self.now,
+        )
+        self.assertEqual(
+            by_relevance[0]["title"],
+            "AI 吉他编曲与混音工具发布",
+        )
+
     def test_publication_time_is_primary_sort_key(self) -> None:
         items = [
             make_item(

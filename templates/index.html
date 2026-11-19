@@ -75,7 +75,15 @@
                         <option value="software" {% if content_kind == "software" %}selected{% endif %}>软件相关</option>
                     </select>
                 </label>
-                {% if keyword or selected_days != 3 or selected_date or content_kind != "all" %}
+                <label class="sort-field">
+                    <span>排序方式</span>
+                    <select id="sort-filter" name="sort">
+                        <option value="time" {% if sort_by == "time" %}selected{% endif %}>按时间</option>
+                        <option value="heat" {% if sort_by == "heat" %}selected{% endif %}>按热度</option>
+                        <option value="relevance" {% if sort_by == "relevance" %}selected{% endif %}>按 AI+音乐关联度</option>
+                    </select>
+                </label>
+                {% if keyword or selected_days != 3 or selected_date or content_kind != "all" or sort_by != "time" %}
                     <a class="reset-link" href="{{ url_for('index') }}">重置</a>
                 {% endif %}
             </form>
@@ -96,6 +104,11 @@
                     · 硬件相关
                 {% elif content_kind == "software" %}
                     · 软件相关
+                {% endif %}
+                {% if sort_by == "heat" %}
+                    · 按热度
+                {% elif sort_by == "relevance" %}
+                    · 按 AI+音乐关联度
                 {% endif %}
                 {% if keyword %} · 关键词“{{ keyword }}”{% endif %}
                 {% if total_pages > 1 %} · 第 {{ current_page }}/{{ total_pages }} 页{% endif %}
@@ -139,29 +152,29 @@
             {% if total_pages > 1 %}
                 <nav class="pagination" aria-label="资讯分页">
                     <a class="page-button {{ 'disabled' if current_page == 1 else '' }}"
-                       href="{{ url_for('index', page=current_page - 1, q=keyword, days=selected_days, date=selected_date, kind=content_kind) }}">
+                       href="{{ url_for('index', page=current_page - 1, q=keyword, days=selected_days, date=selected_date, kind=content_kind, sort=sort_by) }}">
                         上一页
                     </a>
                     {% if page_numbers.start > 1 %}
                         <a class="page-button"
-                           href="{{ url_for('index', page=1, q=keyword, days=selected_days, date=selected_date, kind=content_kind) }}">1</a>
+                           href="{{ url_for('index', page=1, q=keyword, days=selected_days, date=selected_date, kind=content_kind, sort=sort_by) }}">1</a>
                         <span class="page-ellipsis">…</span>
                     {% endif %}
                     {% for page_number in page_numbers %}
                         <a class="page-button {{ 'current' if page_number == current_page else '' }}"
-                           href="{{ url_for('index', page=page_number, q=keyword, days=selected_days, date=selected_date, kind=content_kind) }}">
+                           href="{{ url_for('index', page=page_number, q=keyword, days=selected_days, date=selected_date, kind=content_kind, sort=sort_by) }}">
                             {{ page_number }}
                         </a>
                     {% endfor %}
                     {% if page_numbers.stop - 1 < total_pages %}
                         <span class="page-ellipsis">…</span>
                         <a class="page-button"
-                           href="{{ url_for('index', page=total_pages, q=keyword, days=selected_days, date=selected_date, kind=content_kind) }}">
+                           href="{{ url_for('index', page=total_pages, q=keyword, days=selected_days, date=selected_date, kind=content_kind, sort=sort_by) }}">
                             {{ total_pages }}
                         </a>
                     {% endif %}
                     <a class="page-button {{ 'disabled' if current_page == total_pages else '' }}"
-                       href="{{ url_for('index', page=current_page + 1, q=keyword, days=selected_days, date=selected_date, kind=content_kind) }}">
+                       href="{{ url_for('index', page=current_page + 1, q=keyword, days=selected_days, date=selected_date, kind=content_kind, sort=sort_by) }}">
                         下一页
                     </a>
                 </nav>
