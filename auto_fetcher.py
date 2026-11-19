@@ -191,7 +191,13 @@ def main() -> None:
         level=logging.INFO,
         format="%(asctime)s | %(levelname)s | %(name)s | %(message)s",
     )
-    run_forever(translation_launcher=launch_background_translation)
+    # 每次通过 manage.sh 启动或重启后台时先立即同步一次，随后再回到
+    # 北京时间 00:00 / 12:00 的固定日程。否则上午重启会一直等到中午，
+    # 页面看起来像“没有抓到新信息”。
+    run_forever(
+        run_immediately=True,
+        translation_launcher=launch_background_translation,
+    )
 
 
 if __name__ == "__main__":
