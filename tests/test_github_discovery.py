@@ -84,19 +84,32 @@ class GitHubDiscoveryTests(unittest.TestCase):
                         "committer": {"date": "2026-11-18T02:00:00Z"},
                     },
                 },
+                {
+                    "html_url": (
+                        "https://github.com/example/agent/commit/ai123"
+                    ),
+                    "repository": {"full_name": "example/agent"},
+                    "commit": {
+                        "message": "Implement AI agent workflow for audio tools",
+                        "committer": {"date": "2026-11-18T01:00:00Z"},
+                    },
+                },
             ]
         }
 
         items, total, matched = parse_commit_search(payload)
 
-        self.assertEqual(total, 3)
-        self.assertEqual(matched, 1)
+        self.assertEqual(total, 4)
+        self.assertEqual(matched, 2)
         self.assertEqual(
             items[0]["title"],
             "GitHub - 新更新：Add AI music generation workflow"
             "（example/ai-music）",
         )
         self.assertIn("点击标题", items[0]["summary"])
+        self.assertTrue(
+            any("Implement AI agent workflow" in item["title"] for item in items)
+        )
 
 
 if __name__ == "__main__":

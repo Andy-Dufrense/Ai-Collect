@@ -13,11 +13,9 @@ import requests
 from config import (
     GITHUB_COMMIT_LOOKBACK_DAYS,
     GITHUB_REPOSITORY_LOOKBACK_DAYS,
-    MUSIC_KEYWORDS,
     REQUEST_TIMEOUT_SECONDS,
 )
 from news_filter import (
-    find_matched_keywords,
     is_github_spam_text,
     is_relevant_news,
 )
@@ -113,7 +111,6 @@ def parse_repository_search(
         if not is_relevant_news(
             full_name,
             f"{description} {topics}",
-            category="AI音频开发",
         ):
             continue
         try:
@@ -180,14 +177,8 @@ def parse_commit_search(
             or is_github_spam_text(f"{message} {repository_name}")
         ):
             continue
-        commit_direction_text = f"{message} {repository_name}"
-        # commit 自动发现只接收明确出现音乐、乐器或音频方向的提交。
-        # 仅出现“更新/软件/接口”等泛词的提交会制造大量无关仓库噪声。
-        if not find_matched_keywords(
-            commit_direction_text,
-            MUSIC_KEYWORDS,
-        ):
-            continue
+        # 与所有其他来源共用同一组 DISCOVERY_KEYWORDS：
+        # AI、音乐、乐器、音频、MIDI、混音等任一方向均可被发现。
         if not is_relevant_news(message, repository_name):
             continue
         try:
