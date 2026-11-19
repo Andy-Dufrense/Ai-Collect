@@ -107,7 +107,7 @@ BUILT_IN_RSS_SOURCES: Final[tuple[dict[str, str], ...]] = (
     },
     {
         "source": "Premier Guitar",
-        "url": "https://www.premierguitar.com/feed",
+        "url": "https://www.premierguitar.com/rss",
         "category": "音乐科技",
         "focus": "hardware",
     },
@@ -125,7 +125,7 @@ BUILT_IN_RSS_SOURCES: Final[tuple[dict[str, str], ...]] = (
     },
     {
         "source": "Keyboard Magazine",
-        "url": "https://www.keyboardmag.com/rss",
+        "url": "https://www.keyboardmag.com/feed/",
         "category": "音乐科技",
         "focus": "hardware",
     },
