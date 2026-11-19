@@ -758,6 +758,33 @@ class DatabaseTests(unittest.TestCase):
         )
         self.assertIsNone(get_all_news()[0]["publish_time"])
 
+    def test_mojibake_title_is_repaired_before_database_insert(self) -> None:
+        """从旧 JSON 或异常客户端导入时，乱码标题应在入库前恢复。"""
+
+        fetched_at = datetime(2026, 11, 19, 8, 0, tzinfo=timezone.utc)
+        broken_title = (
+            "‰∏ÄÈ¶ñÊ≠å‰∏ÄÈîÆÂèòÂ§ßÁâáÔºÅËãèËØ∫ AI MV "
+            "ÂäüËÉΩÈáçÁ£Ö‰∏äÁ∫ø,‰∏ÄÁßí‰ΩéËá≥3ÂàÜÈí±!"
+        )
+        save_news_items(
+            [
+                {
+                    "title": broken_title,
+                    "link": "https://example.com/mojibake",
+                    "source": "微信公众号 · SUNO",
+                    "publish_time": fetched_at.isoformat(timespec="seconds"),
+                    "summary": "苏诺 AI MV 功能上线",
+                    "category": "微信公众号",
+                }
+            ],
+            fetched_at,
+        )
+
+        self.assertEqual(
+            get_all_news()[0]["title"],
+            "一首歌一键变大片！苏诺 AI MV 功能重磅上线,一秒低至3分钱!",
+        )
+
     def test_obviously_future_publish_time_is_rejected(self) -> None:
         now = datetime(2026, 11, 19, 8, 0, tzinfo=timezone.utc)
         inserted = save_news_items(

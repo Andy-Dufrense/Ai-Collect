@@ -25,6 +25,7 @@ from news_filter import (
     is_promotional_title,
     is_relevant_news,
 )
+from text_utils import repair_mojibake
 
 
 # link 使用 UNIQUE 唯一索引，从数据库层面保证同一篇资讯不会重复入库。
@@ -134,6 +135,7 @@ def initialize_database() -> None:
             "CREATE INDEX IF NOT EXISTS idx_news_content_flags "
             "ON news(is_hardware, is_software, publish_time DESC)"
         )
+        _repair_existing_mojibake_news(connection)
         _purge_existing_github_spam(connection)
         _purge_existing_promotional_news(connection)
         _purge_future_news(connection)
@@ -141,6 +143,50 @@ def initialize_database() -> None:
         _purge_existing_out_of_scope_news(connection)
         _backfill_content_classifications(connection)
         connection.commit()
+
+
+def _repair_existing_mojibake_news(
+    connection: sqlite3.Connection,
+) -> None:
+    """
+    修复旧数据库中已经保存的 UTF-8 乱码。
+
+    某些浏览器、终端或导入脚本会把 UTF-8 误当成 MacRoman/Windows 编码，
+    形成“‰∏ÄÈ¶ñ”一类字符串。这里在启动时逐条检查并原地修复，正常中文
+    不会发生变化。
+    """
+
+    rows = connection.execute(
+        """
+        SELECT id, title, title_zh, summary, source, category
+        FROM news
+        """
+    ).fetchall()
+    updates: list[tuple[str, str, str, str, str, int]] = []
+    for row in rows:
+        original = (
+            str(row["title"] or ""),
+            str(row["title_zh"] or ""),
+            str(row["summary"] or ""),
+            str(row["source"] or ""),
+            str(row["category"] or ""),
+        )
+        repaired = tuple(repair_mojibake(value) for value in original)
+        if repaired != original:
+            updates.append((*repaired, int(row["id"])))
+    if updates:
+        connection.executemany(
+            """
+            UPDATE news
+            SET title = ?,
+                title_zh = ?,
+                summary = ?,
+                source = ?,
+                category = ?
+            WHERE id = ?
+            """,
+            updates,
+        )
 
 
 def _purge_existing_github_spam(connection: sqlite3.Connection) -> None:
@@ -358,10 +404,16 @@ def save_news_items(
 
     with get_connection() as connection:
         for item in items:
-            title = str(item.get("title", "")).strip()
+            title = repair_mojibake(
+                str(item.get("title", ""))
+            ).strip()
             link = str(item.get("link", "")).strip()
-            source = str(item.get("source", "")).strip()
-            summary = str(item.get("summary", "")).strip()
+            source = repair_mojibake(
+                str(item.get("source", ""))
+            ).strip()
+            summary = repair_mojibake(
+                str(item.get("summary", ""))
+            ).strip()
             raw_publish_time = item.get("publish_time")
             publish_time = (
                 str(raw_publish_time).strip()
@@ -385,7 +437,10 @@ def save_news_items(
                         continue
                 except ValueError:
                     continue
-            category = str(item.get("category", "")).strip() or "RSS"
+            category = (
+                repair_mojibake(str(item.get("category", ""))).strip()
+                or "RSS"
+            )
             dedupe_key = str(item.get("dedupe_key", "")).strip() or link
             raw_title_zh = item.get("title_zh")
             title_zh = (
@@ -393,6 +448,8 @@ def save_news_items(
             )
             if not title_zh or title_zh.casefold() == "none":
                 title_zh = None
+            else:
+                title_zh = repair_mojibake(title_zh)
             is_hardware, is_software = classify_content_flags(
                 title,
                 summary,
