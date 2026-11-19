@@ -164,6 +164,7 @@ class RssFetcherTests(unittest.TestCase):
                 patch("rss_fetcher.SOGOU_WECHAT_QUERIES", ()),
                 patch("rss_fetcher.GITHUB_RELEASE_REPOSITORIES", ()),
                 patch("rss_fetcher.GITHUB_DISCOVERY_ENABLED", False),
+                patch("rss_fetcher.WATCHED_ARTICLE_URLS", ()),
                 patch(
                     "rss_fetcher._build_http_session",
                     side_effect=fake_build_session,
@@ -214,6 +215,7 @@ class RssFetcherTests(unittest.TestCase):
                 patch("rss_fetcher.RSS_SOURCES", ()),
                 patch("rss_fetcher.GITHUB_RELEASE_REPOSITORIES", ()),
                 patch("rss_fetcher.GITHUB_DISCOVERY_ENABLED", False),
+                patch("rss_fetcher.WATCHED_ARTICLE_URLS", ()),
                 patch(
                     "rss_fetcher.SOGOU_WECHAT_QUERIES",
                     ("没有结果的词", "AI编曲"),

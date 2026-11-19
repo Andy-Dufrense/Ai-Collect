@@ -264,9 +264,41 @@ def _load_custom_rss_sources() -> tuple[dict[str, str], ...]:
     return tuple(valid_sources)
 
 
+def _load_watched_article_urls() -> tuple[dict[str, str], ...]:
+    """
+    读取需要直接监控的微信公众号文章链接。
+
+    微信公众号没有公开账号 Feed，搜狗也不能保证索引每一篇文章。对于已经
+    确认的重要官方文章，可以通过此文件固定监控。链接会像普通来源一样每轮
+    请求并在入库时去重，不会重复显示。
+    """
+
+    watch_path = BASE_DIR / "watched_articles.json"
+    if not watch_path.exists():
+        return ()
+    try:
+        raw_data = json.loads(watch_path.read_text(encoding="utf-8"))
+        entries = raw_data.get("urls", []) if isinstance(raw_data, dict) else []
+    except (OSError, json.JSONDecodeError, AttributeError):
+        return ()
+
+    result: list[dict[str, str]] = []
+    for entry in entries if isinstance(entries, list) else []:
+        if not isinstance(entry, dict):
+            continue
+        url = str(entry.get("url", "")).strip()
+        source = str(entry.get("source", "")).strip() or "微信公众号"
+        if url.startswith(("https://mp.weixin.qq.com/",)):
+            result.append({"url": url, "source": source})
+    return tuple(result)
+
+
 # 内置稳定来源 + 用户授权的公众号/自定义 RSS。
 RSS_SOURCES: Final[tuple[dict[str, str], ...]] = (
     BUILT_IN_RSS_SOURCES + _load_custom_rss_sources()
+)
+WATCHED_ARTICLE_URLS: Final[tuple[dict[str, str], ...]] = (
+    _load_watched_article_urls()
 )
 
 

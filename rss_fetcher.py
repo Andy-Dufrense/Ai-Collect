@@ -42,6 +42,7 @@ from config import (
     SOGOU_MIN_INTERVAL_SECONDS,
     SOGOU_QUERY_DELAY_SECONDS,
     SOGOU_WECHAT_QUERIES,
+    WATCHED_ARTICLE_URLS,
     get_fetch_lock_path,
 )
 from database import (
@@ -56,6 +57,7 @@ from news_filter import is_relevant_news
 from github_discovery import fetch_github_discovery
 from github_releases import fetch_github_releases
 from sogou_wechat import fetch_sogou_query
+from wechat_article import fetch_wechat_article
 
 
 LOGGER = logging.getLogger(__name__)
@@ -515,6 +517,7 @@ def _fetch_and_save_news_unlocked() -> FetchResult:
     sogou_attempted = 0
     github_attempted = 0
     github_discovery_attempted = 0
+    watched_attempted = 0
 
     routes = _discover_fetch_routes()
     LOGGER.info(
@@ -562,6 +565,48 @@ def _fetch_and_save_news_unlocked() -> FetchResult:
                     errors.append(message)
                 continue
 
+            successful_sources += 1
+            total_entries += source_total
+            all_matched_items.extend(items)
+
+        # 已确认的重要微信公众号文章直接读取。微信公众号没有公开账号 Feed，
+        # 此来源用于补足搜狗尚未索引的官方文章。
+        for watched in WATCHED_ARTICLE_URLS:
+            watched_attempted += 1
+            source_name = watched["source"]
+            source_url = watched["url"]
+            source_errors = []
+            source_loaded = False
+            for route in routes:
+                LOGGER.info("%s 尝试通过%s抓取", source_name, route.label)
+                try:
+                    items, source_total, _source_matched = (
+                        fetch_wechat_article(
+                            route.session,
+                            source_url,
+                            source=source_name,
+                        )
+                    )
+                except requests.RequestException as exc:
+                    route_error = f"{route.label} 失败：{exc}"
+                    LOGGER.warning("%s：%s", source_name, route_error)
+                    source_errors.append(route_error)
+                    continue
+                except (ValueError, TypeError, AttributeError) as exc:
+                    message = f"{source_name} 解析失败：{exc}"
+                    LOGGER.error(message)
+                    errors.append(message)
+                    break
+                else:
+                    source_loaded = True
+                    break
+            if not source_loaded:
+                if source_errors:
+                    errors.append(
+                        f"{source_name} 所有网络通道均失败："
+                        + "；".join(source_errors)
+                    )
+                continue
             successful_sources += 1
             total_entries += source_total
             all_matched_items.extend(items)
@@ -748,6 +793,7 @@ def _fetch_and_save_news_unlocked() -> FetchResult:
             len(RSS_SOURCES)
             + github_attempted
             + github_discovery_attempted
+            + watched_attempted
             + sogou_attempted
         ),
         successful_sources=successful_sources,
