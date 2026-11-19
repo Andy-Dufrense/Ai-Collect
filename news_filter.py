@@ -12,6 +12,7 @@ import re
 from collections.abc import Iterable
 
 from config import (
+    AI_HARDWARE_KEYWORDS,
     AI_KEYWORDS,
     DIRECTION_HARDWARE_KEYWORDS,
     DISCOVERY_KEYWORDS,
@@ -205,11 +206,107 @@ GITHUB_SPAM_PATTERN = re.compile(
     re.IGNORECASE,
 )
 
+SOGOU_LOW_VALUE_PATTERN = re.compile(
+    r"(?:"
+    r"报名|报考|招募|招聘|招生|培训|课程|证书|认证|考试|考中心"
+    r"|大赛|比赛|音乐节|音乐季|音乐会|演唱会|展演|活动预告|直播预告"
+    r"|论坛|峰会|大会|沙龙|研讨会|日报|早报|晚报|周报|榜单|榜第|合集|收藏"
+    r"|生日快乐|人物|访谈|观点|评论|解读|真相|怎么看|为什么|是什么|效果如何"
+    r"|政策|细则|补贴|税务|交税|税率|股价|科技股|融资|估值"
+    r"|图谱|产业链|市场格局|指数|研究报告"
+    r"|免费获取|免费领取|扫码|加群|进群|领取"
+    r")",
+    re.IGNORECASE,
+)
+
+GENERAL_TECH_ROUNDUP_PATTERN = re.compile(
+    r"(?:早报|日报|晚报|周报|盘点|汇总|一览|速览|简报)",
+    re.IGNORECASE,
+)
+
+GENERAL_BUSINESS_ENTERTAINMENT_NOISE = (
+    "卸任",
+    "离职",
+    "上任",
+    "任命",
+    "接任",
+    "辞职",
+    "跳槽",
+    "诉讼",
+    "起诉",
+    "融资",
+    "估值",
+    "股价",
+    "财报",
+    "收购",
+    "裁员",
+    "演唱会",
+    "巡演",
+    "女团",
+    "明星",
+    "代言",
+    "榜单",
+    "ceo",
+    "chairman",
+    "executive",
+    "layoffs",
+)
+
+GITHUB_PIRACY_PATTERN = re.compile(
+    r"(?:"
+    r"\b(?:cracked|crack|keygen|pirated|torrent|activation key|license key)\b"
+    r"|how\s+to\s+get\s+fl\s+studio"
+    r"|fl\s+studio.*producer\s+2026"
+    r"|ableton.*portable\s+mode"
+    r")",
+    re.IGNORECASE,
+)
+
+SOGOU_CONCRETE_SOFTWARE_SIGNALS = (
+    "软件",
+    "应用",
+    "app",
+    "插件",
+    "工具",
+    "平台",
+    "功能",
+    "生成",
+    "编曲",
+    "作曲",
+    "写歌",
+    "混音",
+    "母带",
+    "分轨",
+    "音色",
+    "音源",
+    "提示词",
+    "工作流",
+    "开发",
+    "编程",
+    "代码",
+    "开源",
+    "接口",
+    "api",
+    "sdk",
+    "daw",
+    "vst",
+    "midi",
+    "音频",
+    "声音",
+    "视频",
+    "模型发布",
+    "模型更新",
+    "开源模型",
+)
+
 
 def is_github_spam_text(text: str) -> bool:
     """判断文本是否属于 GitHub 搜索中出现过的批量引流垃圾内容。"""
 
-    return GITHUB_SPAM_PATTERN.search(text) is not None
+    return (
+        GITHUB_SPAM_PATTERN.search(text) is not None
+        or GITHUB_PIRACY_PATTERN.search(text) is not None
+    )
 
 
 def is_promotional_title(*text_parts: str) -> bool:
@@ -323,10 +420,49 @@ def is_relevant_news(
     # 综合科技媒体只保留标题涉及 AI、音乐或方向硬件的内容。
     # 普通硬件不会因为“硬件”二字直接通过。
     if category in {"国内科技", "国际科技"}:
-        return title_ai or title_music or title_hardware
+        if GENERAL_TECH_ROUNDUP_PATTERN.search(title_text):
+            return False
+        if find_matched_keywords(
+            title_text,
+            GENERAL_BUSINESS_ENTERTAINMENT_NOISE,
+        ):
+            return False
+        title_ai_hardware = bool(
+            find_matched_keywords(title_text, AI_HARDWARE_KEYWORDS)
+        )
+        title_concrete_software = bool(
+            find_matched_keywords(
+                title_text,
+                SOGOU_CONCRETE_SOFTWARE_SIGNALS,
+            )
+        )
+        return (
+            title_music
+            or title_ai_hardware
+            or (title_ai and title_hardware)
+            or (title_ai and title_concrete_software)
+        )
 
     # 搜狗微信允许 AI 或音乐单类内容。
     if category == "搜狗微信":
-        return has_discovery_signal
+        compact_title = re.sub(r"\s+", "", title_text)
+        if len(compact_title) < 10:
+            return False
+        if SOGOU_LOW_VALUE_PATTERN.search(title_text):
+            return False
+        title_concrete_software = bool(
+            find_matched_keywords(
+                title_text,
+                SOGOU_CONCRETE_SOFTWARE_SIGNALS,
+            )
+        )
+        has_real_direction = (
+            title_ai and (title_music or title_hardware)
+        ) or (
+            title_music and (title_hardware or title_software)
+        ) or (
+            title_ai and title_concrete_software
+        )
+        return has_real_direction
 
     return has_discovery_signal

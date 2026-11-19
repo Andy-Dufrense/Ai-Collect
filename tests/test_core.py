@@ -80,11 +80,39 @@ class NewsFilterTests(unittest.TestCase):
         )
 
     def test_ai_person_and_price_filter(self) -> None:
-        self.assertTrue(
+        self.assertFalse(
             is_relevant_news(
                 "OpenAI CEO 谈 AI 行业下一阶段",
                 "公司人物与商业动态",
                 category="国内科技",
+            )
+        )
+        self.assertFalse(
+            is_relevant_news(
+                "马斯克预测 AI 将在数年内超越人类",
+                "纯人物观点",
+                category="国内科技",
+            )
+        )
+        self.assertFalse(
+            is_relevant_news(
+                "AI 网络安全风险持续上升",
+                "纯行业评论",
+                category="国际科技",
+            )
+        )
+        self.assertFalse(
+            is_relevant_news(
+                "权志龙公司推出 AI 机器人女团并举办演唱会",
+                "娱乐活动",
+                category="国内科技",
+            )
+        )
+        self.assertFalse(
+            is_relevant_news(
+                "芯片公司 CEO 宣布裁员",
+                "管理层和裁员计划",
+                category="国际科技",
             )
         )
         self.assertFalse(
@@ -210,7 +238,7 @@ class NewsFilterTests(unittest.TestCase):
         )
 
     def test_music_only_and_ai_development_are_kept(self) -> None:
-        self.assertTrue(
+        self.assertFalse(
             is_relevant_news(
                 "爱音乐，更爱古筝",
                 "音乐学习与乐器介绍",
@@ -229,6 +257,49 @@ class NewsFilterTests(unittest.TestCase):
                 "普通手机产品上架",
                 "介绍外观颜色和电池容量",
                 category="国内科技",
+            )
+        )
+
+    def test_sogou_rejects_generic_ai_and_event_posts(self) -> None:
+        for title, summary in (
+            ("AI", "只有两个字母的泛内容"),
+            ("AI 效果如何?", "泛泛讨论"),
+            ("人工智能训练师报名入口开启", "证书培训广告"),
+            ("顶尖音乐生全国音乐节招募", "活动通知"),
+            ("钢琴家的一生", "人物故事"),
+            ("一文看懂 AI 全产业链图谱", "行业综述"),
+            ("人工智能标准研讨会即将举行", "活动通知"),
+            ("温控仪 AI 算法介绍", "与音乐无关的工业产品"),
+            ("AIGC 应用工程师报考流程", "考试报名广告"),
+        ):
+            with self.subTest(title=title):
+                self.assertFalse(
+                    is_relevant_news(
+                        title,
+                        summary,
+                        category="搜狗微信",
+                    )
+                )
+
+        self.assertTrue(
+            is_relevant_news(
+                "Suno 发布 AI MV 音乐视频功能",
+                "用 AI 生成口型同步的音乐视频。",
+                category="搜狗微信",
+            )
+        )
+        self.assertTrue(
+            is_relevant_news(
+                "新款 MIDI 控制器与配套编曲软件更新",
+                "面向音乐制作人的硬件和软件功能。",
+                category="搜狗微信",
+            )
+        )
+        self.assertTrue(
+            is_relevant_news(
+                "AI 编程工具新增音频插件开发接口",
+                "面向音乐软件开发者。",
+                category="搜狗微信",
             )
         )
 
@@ -453,6 +524,21 @@ class DatabaseTests(unittest.TestCase):
         self.assertEqual(inserted, 0)
         self.assertEqual(get_news_count(), 0)
 
+        piracy_count = save_news_items(
+            [
+                {
+                    "title": "GitHub - 新发布：How to get Fl studio Producer 2026",
+                    "link": "https://github.com/spam/flstudio",
+                    "source": "GitHub 项目发现",
+                    "publish_time": fetched_at.isoformat(timespec="seconds"),
+                    "summary": "FL Studio producer download",
+                    "category": "AI音频开发",
+                }
+            ],
+            fetched_at,
+        )
+        self.assertEqual(piracy_count, 0)
+
     def test_promotional_item_is_rejected_before_database_insert(self) -> None:
         fetched_at = datetime(2026, 11, 19, 8, 0, tzinfo=timezone.utc)
         inserted = save_news_items(
@@ -503,6 +589,33 @@ class DatabaseTests(unittest.TestCase):
             now,
         )
         self.assertEqual(inserted, 0)
+        self.assertEqual(get_news_count(), 0)
+
+    def test_initialization_purges_existing_out_of_scope_news(self) -> None:
+        now = datetime(2026, 11, 19, 8, 0, tzinfo=timezone.utc)
+        save_news_items(
+            [
+                {
+                    "title": "AI",
+                    "link": "https://example.com/generic-ai",
+                    "source": "搜狗微信",
+                    "publish_time": now.isoformat(timespec="seconds"),
+                    "summary": "没有质量边界的泛内容",
+                    "category": "搜狗微信",
+                },
+                {
+                    "title": "AI 人物发表行业观点",
+                    "link": "https://example.com/generic-ai-opinion",
+                    "source": "国内科技",
+                    "publish_time": now.isoformat(timespec="seconds"),
+                    "summary": "只有观点，没有产品或技术信息",
+                    "category": "国内科技",
+                },
+            ],
+            now,
+        )
+        self.assertEqual(get_news_count(), 2)
+        initialize_database()
         self.assertEqual(get_news_count(), 0)
 
     def test_none_translated_title_is_saved_as_null(self) -> None:

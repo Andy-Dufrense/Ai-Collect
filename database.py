@@ -20,7 +20,11 @@ from content_classifier import (
     CONTENT_CLASSIFICATION_VERSION,
     classify_content_flags,
 )
-from news_filter import is_github_spam_text, is_promotional_title
+from news_filter import (
+    is_github_spam_text,
+    is_promotional_title,
+    is_relevant_news,
+)
 
 
 # link 使用 UNIQUE 唯一索引，从数据库层面保证同一篇资讯不会重复入库。
@@ -133,6 +137,8 @@ def initialize_database() -> None:
         _purge_existing_github_spam(connection)
         _purge_existing_promotional_news(connection)
         _purge_future_news(connection)
+        _purge_low_value_sogou_news(connection)
+        _purge_existing_out_of_scope_news(connection)
         _backfill_content_classifications(connection)
         connection.commit()
 
@@ -209,6 +215,61 @@ def _purge_future_news(connection: sqlite3.Connection) -> None:
         """,
         (maximum_future,),
     )
+
+
+def _purge_low_value_sogou_news(connection: sqlite3.Connection) -> None:
+    """清理旧规则带入的泛 AI、活动招募和纯音乐资讯。"""
+
+    rows = connection.execute(
+        """
+        SELECT id, title, summary, category
+        FROM news
+        WHERE category = '搜狗微信'
+        """
+    ).fetchall()
+    rejected_ids = [
+        int(row["id"])
+        for row in rows
+        if not is_relevant_news(
+            str(row["title"] or ""),
+            str(row["summary"] or ""),
+            category=str(row["category"] or ""),
+        )
+    ]
+    if rejected_ids:
+        placeholders = ",".join("?" for _ in rejected_ids)
+        connection.execute(
+            f"DELETE FROM news WHERE id IN ({placeholders})",
+            rejected_ids,
+        )
+
+
+def _purge_existing_out_of_scope_news(
+    connection: sqlite3.Connection,
+) -> None:
+    """用当前统一规则清理所有来源中已经不符合范围的旧资讯。"""
+
+    rows = connection.execute(
+        """
+        SELECT id, title, summary, category
+        FROM news
+        """
+    ).fetchall()
+    rejected_ids = [
+        int(row["id"])
+        for row in rows
+        if not is_relevant_news(
+            str(row["title"] or ""),
+            str(row["summary"] or ""),
+            category=str(row["category"] or ""),
+        )
+    ]
+    if rejected_ids:
+        placeholders = ",".join("?" for _ in rejected_ids)
+        connection.execute(
+            f"DELETE FROM news WHERE id IN ({placeholders})",
+            rejected_ids,
+        )
 
 
 def _backfill_content_classifications(
