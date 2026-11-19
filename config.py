@@ -287,6 +287,13 @@ SOGOU_WECHAT_QUERIES: Final[tuple[str, ...]] = (
     "编曲",
     "乐理",
     "音乐制作",
+    "MIDI",
+    "混音",
+    "母带",
+    "音频插件",
+    "DAW",
+    "音源",
+    "音乐生成",
 )
 
 # AI 与音乐/乐器关键词采用并集收录；交叉命中会在排行榜中获得额外加权。
@@ -320,6 +327,13 @@ MUSIC_KEYWORDS: Final[tuple[str, ...]] = (
     "旋律",
     "混音",
     "母带",
+    "midi",
+    "daw",
+    "vst",
+    "音频制作",
+    "音频编辑",
+    "音频插件",
+    "音乐制作",
     "钢琴",
     "乐理",
     "贝斯",
@@ -345,6 +359,11 @@ MUSIC_KEYWORDS: Final[tuple[str, ...]] = (
     "vocal",
     "synthesizer",
     "music production",
+    "audio production",
+    "audio editing",
+    "audio plugin",
+    "mixing",
+    "mastering",
     "music generation",
     "generative audio",
     "ai audio",
@@ -501,6 +520,15 @@ MUSIC_HARDWARE_KEYWORDS: Final[tuple[str, ...]] = (
 # 供筛选器和排序器共同使用，避免两个模块的硬件范围不一致。
 DIRECTION_HARDWARE_KEYWORDS: Final[tuple[str, ...]] = (
     AI_HARDWARE_KEYWORDS + MUSIC_HARDWARE_KEYWORDS
+)
+
+# 所有来源共用的“发现词表”。RSS、搜狗微信、GitHub 和历史回填都应先用
+# 这组宽领域信号发现 AI、音乐、乐器、音频、MIDI、混音等内容，随后再由
+# content_classifier.py 判断硬件或软件。搜索词和分类词职责保持分离。
+DISCOVERY_KEYWORDS: Final[tuple[str, ...]] = tuple(
+    dict.fromkeys(
+        AI_KEYWORDS + MUSIC_KEYWORDS + DIRECTION_HARDWARE_KEYWORDS
+    )
 )
 
 

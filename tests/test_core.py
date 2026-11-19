@@ -265,6 +265,11 @@ class NewsFilterTests(unittest.TestCase):
             "乐器",
             "音频",
             "编曲",
+            "MIDI",
+            "混音",
+            "母带",
+            "DAW",
+            "音源",
         ):
             self.assertIn(keyword, SOGOU_WECHAT_QUERIES)
         self.assertNotIn("SUNO AI MV", SOGOU_WECHAT_QUERIES)

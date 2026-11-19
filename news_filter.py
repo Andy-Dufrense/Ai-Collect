@@ -11,7 +11,12 @@ from __future__ import annotations
 import re
 from collections.abc import Iterable
 
-from config import AI_KEYWORDS, DIRECTION_HARDWARE_KEYWORDS, MUSIC_KEYWORDS
+from config import (
+    AI_KEYWORDS,
+    DIRECTION_HARDWARE_KEYWORDS,
+    DISCOVERY_KEYWORDS,
+    MUSIC_KEYWORDS,
+)
 from filter_learning import is_learned_accepted, is_learned_excluded
 
 
@@ -265,6 +270,9 @@ def is_relevant_news(
     has_hardware_signal = bool(
         find_matched_keywords(combined_text, DIRECTION_HARDWARE_KEYWORDS)
     )
+    has_discovery_signal = bool(
+        find_matched_keywords(combined_text, DISCOVERY_KEYWORDS)
+    )
     title_for_review = str(text_parts[0]) if text_parts else ""
     if is_learned_excluded(title_for_review):
         return False
@@ -308,10 +316,6 @@ def is_relevant_news(
 
     # 搜狗微信允许 AI 或音乐单类内容。
     if category == "搜狗微信":
-        return (
-            has_ai_keyword
-            or has_music_keyword
-            or has_hardware_signal
-        )
+        return has_discovery_signal
 
-    return has_ai_keyword or has_music_keyword or has_hardware_signal
+    return has_discovery_signal

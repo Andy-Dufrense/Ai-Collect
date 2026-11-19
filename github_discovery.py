@@ -31,13 +31,16 @@ LOGGER = logging.getLogger(__name__)
 REPOSITORY_QUERIES = (
     '"ai music" in:name,description,readme',
     '"music generation" in:name,description,readme',
+    '"music production" in:name,description,readme',
+    "midi in:name,description,readme",
     "topic:ai-music",
-    "topic:music-generation",
 )
 COMMIT_QUERIES = (
     '"ai music"',
     '"music generation"',
     '"audio generation"',
+    "midi",
+    "mixing",
 )
 
 # 这些 commit 只维护工程杂项，不反映产品能力或 AI 音频实现变化。
