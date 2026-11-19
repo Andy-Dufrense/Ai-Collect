@@ -358,8 +358,9 @@ def _sogou_queries_due(now: datetime) -> bool:
 
     current_signature = "|".join(SOGOU_WECHAT_QUERIES)
     if get_meta_value("sogou_query_signature") != current_signature:
-        # 关键词列表发生变化时立即执行一次，确保新增的国内容器检索
-        # 不需要等待旧的 12 小时冷却结束。
+        # 关键词列表发生变化时立即执行，并从第一批重新开始，确保新增的
+        # 国内来源不会因为旧游标而排到后续批次。
+        set_meta_value("sogou_batch_cursor", "0")
         return True
 
     last_attempt = get_meta_value("sogou_last_attempt_at")

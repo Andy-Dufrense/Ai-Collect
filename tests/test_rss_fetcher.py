@@ -12,6 +12,7 @@ import fcntl
 import os
 import tempfile
 import unittest
+from datetime import datetime, timezone
 from pathlib import Path
 from unittest.mock import patch
 
@@ -22,9 +23,11 @@ from rss_fetcher import (
     FetchAlreadyRunningError,
     _next_sogou_query_batch,
     _parse_feed_content,
+    _sogou_queries_due,
     fetch_and_save_news,
     fetch_one_source,
 )
+from database import get_meta_value, set_meta_value
 
 
 TEST_RSS = """<?xml version="1.0" encoding="UTF-8"?>
@@ -141,6 +144,26 @@ class ClosingSession:
 
 
 class RssFetcherTests(unittest.TestCase):
+    def test_sogou_signature_change_resets_batch_cursor(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            database_path = Path(temp_dir) / "sogou-signature.db"
+            with (
+                patch.dict(os.environ, {"NEWS_DB_PATH": str(database_path)}),
+                patch(
+                    "rss_fetcher.SOGOU_WECHAT_QUERIES",
+                    ("Midifan", "叉烧网"),
+                ),
+            ):
+                from database import initialize_database
+
+                initialize_database()
+                set_meta_value("sogou_query_signature", "old-query")
+                set_meta_value("sogou_batch_cursor", "31")
+                self.assertTrue(
+                    _sogou_queries_due(datetime.now(timezone.utc))
+                )
+                self.assertEqual(get_meta_value("sogou_batch_cursor"), "0")
+
     def test_sogou_queries_rotate_across_runs(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
             database_path = Path(temp_dir) / "sogou-batches.db"
