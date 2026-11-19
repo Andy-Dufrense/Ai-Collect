@@ -179,11 +179,13 @@ PRICE_OR_PROMOTION_PATTERN = re.compile(
     r"|\d+(?:\.\d+)?\s*%\s*(?:off|折扣)"
     r"|save\s+(?:up\s+to\s+)?\d+(?:\.\d+)?\s*%"
     r"|\d+(?:\.\d+)?\s*%\s+on\b"
-    r"|售价|首发价|起售价|价格|定价|折扣|优惠|促销|降价|涨价|黑五"
-    r"|免费领|会员|订阅|会员费|限时|廉价|便宜"
+    r"|售价|首发价|起售价|到手价|券后价|价格|定价|折扣|优惠|促销"
+    r"|降价|涨价|黑五|清仓|甩卖|特价|秒杀|满减|折后|优惠券"
+    r"|限时|限免|免费领|会员|订阅|会员费|廉价|便宜|预算"
     r"|gift\s+(?:drop|guide|ideas?)"
-    r"|\b(?:price|pricing|discount|deal|deals|sale|bundle|membership|"
-    r"subscription)\b"
+    r"|\b(?:price|pricing|discount|coupon|deal|deals|sale|bundle|"
+    r"membership|subscriptions?|clearance|markdown|budget)\b"
+    r"|black friday|cyber monday|prime day|limited time"
     r")",
     re.IGNORECASE,
 )
@@ -208,6 +210,15 @@ def is_github_spam_text(text: str) -> bool:
     """判断文本是否属于 GitHub 搜索中出现过的批量引流垃圾内容。"""
 
     return GITHUB_SPAM_PATTERN.search(text) is not None
+
+
+def is_promotional_title(*text_parts: str) -> bool:
+    """判断标题是否属于价格、折扣、会员或限时促销内容。"""
+
+    title_text = _normalize_text(
+        " ".join(part for part in text_parts if part)
+    )
+    return PRICE_OR_PROMOTION_PATTERN.search(title_text) is not None
 
 
 def _normalize_text(value: str) -> str:
@@ -279,7 +290,7 @@ def is_relevant_news(
 
     # 噪音词只检查标题。简介中顺带提到诉讼或融资不应错误删除技术文章。
     title_text = _normalize_text(" ".join(text_parts[:1]))
-    if PRICE_OR_PROMOTION_PATTERN.search(title_text):
+    if is_promotional_title(title_text):
         return False
     if (
         category in {"音乐科技", "搜狗微信"}

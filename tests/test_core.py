@@ -27,7 +27,7 @@ from database import (
     set_worker_heartbeat,
     save_news_items,
 )
-from news_filter import is_relevant_news
+from news_filter import is_promotional_title, is_relevant_news
 from config import SOGOU_WECHAT_QUERIES
 
 
@@ -108,6 +108,16 @@ class NewsFilterTests(unittest.TestCase):
                 category="音乐科技",
             )
         )
+        for title in (
+            "音频插件限时降价 50%",
+            "Black Friday plugin deals",
+            "Studio software subscriptions now available",
+        ):
+            with self.subTest(title=title):
+                self.assertTrue(is_promotional_title(title))
+                self.assertFalse(
+                    is_relevant_news(title, category="音乐科技")
+                )
 
     def test_does_not_treat_letters_inside_english_word_as_ai(self) -> None:
         self.assertFalse(is_relevant_news("Daily news about cooking", "普通生活晨报"))
@@ -436,6 +446,24 @@ class DatabaseTests(unittest.TestCase):
                     "publish_time": "2026-11-17T07:00:00+00:00",
                     "summary": "批量引流广告",
                     "category": "AI音频开发",
+                }
+            ],
+            fetched_at,
+        )
+        self.assertEqual(inserted, 0)
+        self.assertEqual(get_news_count(), 0)
+
+    def test_promotional_item_is_rejected_before_database_insert(self) -> None:
+        fetched_at = datetime(2026, 11, 19, 8, 0, tzinfo=timezone.utc)
+        inserted = save_news_items(
+            [
+                {
+                    "title": "AI 音乐插件黑五限时 5 折",
+                    "link": "https://example.com/promotion",
+                    "source": "测试源",
+                    "publish_time": "2026-11-19T07:00:00+00:00",
+                    "summary": "优惠活动",
+                    "category": "音乐科技",
                 }
             ],
             fetched_at,

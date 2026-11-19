@@ -20,7 +20,7 @@ from content_classifier import (
     CONTENT_CLASSIFICATION_VERSION,
     classify_content_flags,
 )
-from news_filter import is_github_spam_text
+from news_filter import is_github_spam_text, is_promotional_title
 
 
 # link 使用 UNIQUE 唯一索引，从数据库层面保证同一篇资讯不会重复入库。
@@ -131,6 +131,7 @@ def initialize_database() -> None:
             "ON news(is_hardware, is_software, publish_time DESC)"
         )
         _purge_existing_github_spam(connection)
+        _purge_existing_promotional_news(connection)
         _backfill_content_classifications(connection)
         connection.commit()
 
@@ -157,6 +158,33 @@ def _purge_existing_github_spam(connection: sqlite3.Connection) -> None:
         connection.execute(
             f"DELETE FROM news WHERE id IN ({placeholders})",
             spam_ids,
+        )
+
+
+def _purge_existing_promotional_news(
+    connection: sqlite3.Connection,
+) -> None:
+    """清理旧版本已经写入数据库的价格、折扣和限时促销文章。"""
+
+    rows = connection.execute(
+        """
+        SELECT id, title, title_zh
+        FROM news
+        """
+    ).fetchall()
+    promotional_ids = [
+        int(row["id"])
+        for row in rows
+        if is_promotional_title(
+            str(row["title"] or ""),
+            str(row["title_zh"] or ""),
+        )
+    ]
+    if promotional_ids:
+        placeholders = ",".join("?" for _ in promotional_ids)
+        connection.execute(
+            f"DELETE FROM news WHERE id IN ({placeholders})",
+            promotional_ids,
         )
 
 
@@ -277,6 +305,8 @@ def save_news_items(
             if source.startswith("GitHub") and is_github_spam_text(
                 f"{title} {summary}"
             ):
+                continue
+            if is_promotional_title(title, title_zh or ""):
                 continue
 
             cursor = connection.execute(
