@@ -210,6 +210,17 @@ class NewsFilterTests(unittest.TestCase):
                 category="国内科技",
             )
         )
+        self.assertFalse(
+            is_relevant_news(
+                (
+                    "荣耀 MagicOS 11 第三批内测机型开启升级，"
+                    "含 Robot Phone、Magic5 系列"
+                ),
+                "普通手机系统升级和内测机型名单。",
+                category="国内科技",
+                source="IT之家24小时榜",
+            )
+        )
 
     def test_music_software_is_relevant(self) -> None:
         self.assertTrue(
@@ -644,6 +655,14 @@ class NewsFilterTests(unittest.TestCase):
                 "AI 重塑软件工程：AI 挤压初级程序员生存空间",
                 "文章讨论 AI 编程助手、软件研发岗位和就业变化。",
                 category="搜狗微信",
+            )
+        )
+        self.assertTrue(
+            is_relevant_news(
+                "专业声卡新品发布：支持 USB-C 和低延迟监听",
+                "面向录音和音乐制作。",
+                category="搜狗微信",
+                source="叉烧网",
             )
         )
         self.assertTrue(

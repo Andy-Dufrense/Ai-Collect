@@ -538,6 +538,28 @@ AI_JOB_GOSSIP_PATTERN = re.compile(
     re.IGNORECASE,
 )
 
+# 这些标题词本身就足够明确地指向 AI 计算硬件，不需要再出现完整的
+# “AI”二字。泛化的 robot/phone 不在此列表中，避免普通机器人手机或
+# 系统升级文章误入 AI 硬件范围。
+AI_HARDWARE_STRONG_TITLE_SIGNALS = (
+    "ai硬件",
+    "ai 硬件",
+    "ai芯片",
+    "ai 芯片",
+    "人工智能硬件",
+    "端侧ai",
+    "边缘ai",
+    "推理芯片",
+    "神经网络处理器",
+    "张量处理器",
+    "npu",
+    "tpu",
+    "ai服务器",
+    "ai 服务器",
+    "智算中心",
+    "算力中心",
+)
+
 GENERAL_TECH_ROUNDUP_PATTERN = re.compile(
     r"(?:早报|日报|晚报|周报|盘点|汇总|一览|速览|简报)",
     re.IGNORECASE,
@@ -844,6 +866,9 @@ def is_relevant_news(
     title_hardware = bool(
         find_matched_keywords(title_text, DIRECTION_HARDWARE_KEYWORDS)
     )
+    title_music_hardware = bool(
+        find_matched_keywords(title_text, MUSIC_HARDWARE_KEYWORDS)
+    )
     title_software = bool(
         find_matched_keywords(title_text, SOFTWARE_SIGNAL_KEYWORDS)
     )
@@ -870,17 +895,25 @@ def is_relevant_news(
         title_ai_hardware = bool(
             find_matched_keywords(title_text, AI_HARDWARE_KEYWORDS)
         )
+        title_strong_ai_hardware = bool(
+            find_matched_keywords(
+                title_text,
+                AI_HARDWARE_STRONG_TITLE_SIGNALS,
+            )
+        )
         title_concrete_software = bool(
             find_matched_keywords(
                 title_text,
                 SOGOU_CONCRETE_SOFTWARE_SIGNALS,
             )
         )
-        return (
-            title_music
-            or title_ai_hardware
-            or (title_ai and title_hardware)
-            or (title_ai and title_concrete_software)
+        return title_music or title_strong_ai_hardware or (
+            title_ai
+            and (
+                title_ai_hardware
+                or title_hardware
+                or title_concrete_software
+            )
         )
 
     # 搜狗微信允许 AI 或音乐单类内容。
@@ -902,6 +935,8 @@ def is_relevant_news(
             title_music and (title_hardware or title_software)
         ) or (
             title_ai and title_concrete_software
+        ) or (
+            title_music_hardware
         )
         return has_real_direction
 
