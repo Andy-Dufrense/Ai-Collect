@@ -11,11 +11,21 @@ from typing import Any
 import requests
 
 from config import (
+    AI_KEYWORDS,
     GITHUB_COMMIT_LOOKBACK_DAYS,
+    GITHUB_COMMIT_MIN_STARS,
+    GITHUB_MAX_NEW_REPOSITORIES_PER_RUN,
+    GITHUB_MAX_SIGNIFICANT_COMMITS_PER_RUN,
+    GITHUB_NEW_REPOSITORY_MIN_STARS,
     GITHUB_REPOSITORY_LOOKBACK_DAYS,
     REQUEST_TIMEOUT_SECONDS,
 )
+from github_quality import (
+    is_pirated_software_repository,
+    is_significant_commit_message,
+)
 from news_filter import (
+    find_matched_keywords,
     is_github_spam_text,
     is_relevant_news,
 )
@@ -41,20 +51,6 @@ COMMIT_QUERIES = (
     "mixing",
 )
 
-# 这些 commit 只维护工程杂项，不反映产品能力或 AI 音频实现变化。
-# 即使它们来自 AI 音乐仓库，也没有必要占用资讯列表。
-LOW_VALUE_COMMIT_PATTERN = re.compile(
-    r"(?:"
-    r"^(?:docs?|readme|typo|format|lint|style)(?:\s|:)|"
-    r"^update\s+(?:docs?|documentation|readme|dependencies|deps)\b|"
-    r"^bump\s+(?:version|dependencies|deps)\b|"
-    r"^merge\s+(?:branch|pull request)\b|"
-    r"^(?:chore|ci)(?:\([^)]*\))?:"
-    r")",
-    re.IGNORECASE,
-)
-
-
 def _headers() -> dict[str, str]:
     headers = {
         "Accept": "application/vnd.github+json",
@@ -73,12 +69,6 @@ def _clean_commit_message(message: str) -> str:
     return re.sub(r"\s+", " ", first_line)[:240]
 
 
-def _is_low_value_commit(message: str) -> bool:
-    """跳过 README、依赖升级、格式化和流水线维护等低信息量 commit。"""
-
-    return LOW_VALUE_COMMIT_PATTERN.search(message.strip()) is not None
-
-
 def _repository_from_commit_url(link: str) -> str:
     """从 commit 网页地址中提取 owner/repository，兼容不同的 API 响应。"""
 
@@ -88,8 +78,15 @@ def _repository_from_commit_url(link: str) -> str:
 
 def parse_repository_search(
     payload: dict[str, Any],
+    *,
+    min_stars: int = GITHUB_NEW_REPOSITORY_MIN_STARS,
 ) -> tuple[list[dict[str, str | None]], int, int]:
-    """解析 GitHub 仓库搜索结果。"""
+    """
+    解析 GitHub 仓库搜索结果。
+
+    新项目必须达到最低 Stars，并排除无说明、练手项目和商业软件盗版
+    安装包。这样只保留真正开始被开发者关注的 AI 音乐项目。
+    """
 
     matched: list[dict[str, str | None]] = []
     items = payload.get("items", [])
@@ -104,13 +101,26 @@ def parse_repository_search(
         created_at = str(repository.get("created_at") or "").strip()
         if not full_name or not link or not created_at:
             continue
+        stars = int(repository.get("stargazers_count") or 0)
+        if stars < min_stars:
+            continue
+        if (
+            len(description) < 12
+            or is_pirated_software_repository(full_name, description)
+        ):
+            continue
         topics = " ".join(
             str(topic) for topic in repository.get("topics", [])
             if isinstance(topic, str)
         )
+        project_context = f"{full_name} {description} {topics}"
+        # 新项目发现只面向 AI 音频/音乐开发。单纯上传商业 DAW 安装包、
+        # 普通桌面工具或没有 AI 能力的播放器不属于本系统关注范围。
+        if not find_matched_keywords(project_context, AI_KEYWORDS):
+            continue
         if not is_relevant_news(
             full_name,
-            f"{description} {topics}",
+            project_context,
             source="GitHub 项目发现",
         ):
             continue
@@ -118,7 +128,6 @@ def parse_repository_search(
             published = datetime.fromisoformat(created_at.replace("Z", "+00:00"))
         except ValueError:
             continue
-        stars = int(repository.get("stargazers_count") or 0)
         language = str(repository.get("language") or "未标注")
         matched.append(
             {
@@ -140,6 +149,7 @@ def parse_repository_search(
                 ),
                 "category": "AI音频开发",
                 "dedupe_key": link,
+                "_github_stars": stars,
             }
         )
     return matched, len(items), len(matched)
@@ -147,8 +157,16 @@ def parse_repository_search(
 
 def parse_commit_search(
     payload: dict[str, Any],
+    *,
+    min_repository_stars: int = GITHUB_COMMIT_MIN_STARS,
 ) -> tuple[list[dict[str, str | None]], int, int]:
-    """解析 GitHub commit 搜索结果。"""
+    """
+    解析 GitHub commit 搜索结果。
+
+    普通项目的 commit 必须来自至少 100 Stars 的仓库，并且提交消息需要
+    明确涉及新功能、模型、架构或核心工作流。日志、重试、文档和界面小修
+    会被忽略。
+    """
 
     matched: list[dict[str, str | None]] = []
     items = payload.get("items", [])
@@ -164,6 +182,7 @@ def parse_commit_search(
         repository_name = str(
             repository.get("full_name") or _repository_from_commit_url(link)
         )
+        repository_stars = int(repository.get("stargazers_count") or 0)
         commit_date = (
             (commit.get("committer") or {}).get("date")
             or (commit.get("author") or {}).get("date")
@@ -174,8 +193,13 @@ def parse_commit_search(
             not message
             or not link
             or not commit_date
-            or _is_low_value_commit(message)
+            or repository_stars < min_repository_stars
+            or not is_significant_commit_message(message)
             or is_github_spam_text(f"{message} {repository_name}")
+            or is_pirated_software_repository(
+                message,
+                repository_name,
+            )
         ):
             continue
         # 与所有其他来源共用同一组 DISCOVERY_KEYWORDS：
@@ -204,10 +228,12 @@ def parse_commit_search(
                 ),
                 "summary": (
                     f"GitHub 项目 {repository_name} 的最新代码提交：{message}；"
+                    f"仓库 Stars：{repository_stars}；"
                     "点击标题可查看代码变更和提交说明。"
                 ),
                 "category": "AI音频开发",
                 "dedupe_key": link,
+                "_github_stars": repository_stars,
             }
         )
     return matched, len(items), len(matched)
@@ -261,7 +287,14 @@ def fetch_new_repositories(
         str(item.get("dedupe_key") or item.get("link")): item
         for item in all_items
     }
-    result_items = list(unique_items.values())
+    result_items = sorted(
+        unique_items.values(),
+        key=lambda item: (
+            int(item.get("_github_stars") or 0),
+            str(item.get("publish_time") or ""),
+        ),
+        reverse=True,
+    )[:GITHUB_MAX_NEW_REPOSITORIES_PER_RUN]
     return result_items, total_entries, len(result_items)
 
 
@@ -313,7 +346,14 @@ def fetch_new_music_commits(
         str(item.get("dedupe_key") or item.get("link")): item
         for item in all_items
     }
-    result_items = list(unique_items.values())
+    result_items = sorted(
+        unique_items.values(),
+        key=lambda item: (
+            int(item.get("_github_stars") or 0),
+            str(item.get("publish_time") or ""),
+        ),
+        reverse=True,
+    )[:GITHUB_MAX_SIGNIFICANT_COMMITS_PER_RUN]
     return result_items, total_entries, len(result_items)
 
 

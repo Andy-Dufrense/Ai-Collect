@@ -734,6 +734,26 @@ GITHUB_COMMIT_LOOKBACK_DAYS: Final[int] = max(
     int(_read_positive_number("GITHUB_COMMIT_LOOKBACK_DAYS", 3)),
 )
 
+# GitHub 不是更新日志仓库。只有获得一定关注度的新项目，以及来自较高热度
+# 仓库的重大功能/模型/架构变化才值得进入资讯列表。阈值可通过环境变量
+# 调整，避免把 0～几颗星的一次性练手项目误当成行业动态。
+GITHUB_NEW_REPOSITORY_MIN_STARS: Final[int] = max(
+    0,
+    int(_read_positive_number("GITHUB_NEW_REPOSITORY_MIN_STARS", 30)),
+)
+GITHUB_COMMIT_MIN_STARS: Final[int] = max(
+    0,
+    int(_read_positive_number("GITHUB_COMMIT_MIN_STARS", 100)),
+)
+GITHUB_MAX_NEW_REPOSITORIES_PER_RUN: Final[int] = max(
+    1,
+    int(_read_positive_number("GITHUB_MAX_NEW_REPOSITORIES_PER_RUN", 5)),
+)
+GITHUB_MAX_SIGNIFICANT_COMMITS_PER_RUN: Final[int] = max(
+    1,
+    int(_read_positive_number("GITHUB_MAX_SIGNIFICANT_COMMITS_PER_RUN", 5)),
+)
+
 
 # 搜狗对连续搜索较敏感。默认每 12 小时才刷新一次微信来源，
 # 查询之间再等待 2 秒，避免每 5 分钟触发访问限制。

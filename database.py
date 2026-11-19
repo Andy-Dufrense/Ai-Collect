@@ -8,6 +8,7 @@ SQLite 数据持久化模块。
 from __future__ import annotations
 
 import json
+import re
 import sqlite3
 from collections.abc import Iterable, Iterator, Mapping
 from contextlib import contextmanager
@@ -15,12 +16,26 @@ from datetime import datetime, timedelta, timezone
 from typing import Any
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
-from config import DISPLAY_TIME_ZONE, NEWS_RETENTION_DAYS, get_database_path
+from config import (
+    AI_KEYWORDS,
+    DISPLAY_TIME_ZONE,
+    GITHUB_COMMIT_MIN_STARS,
+    GITHUB_NEW_REPOSITORY_MIN_STARS,
+    GITHUB_RELEASE_REPOSITORIES,
+    NEWS_RETENTION_DAYS,
+    get_database_path,
+)
 from content_classifier import (
     CONTENT_CLASSIFICATION_VERSION,
     classify_content_flags,
 )
+from github_quality import (
+    is_pirated_software_repository,
+    is_significant_commit_message,
+    stars_from_summary,
+)
 from news_filter import (
+    find_matched_keywords,
     is_github_spam_text,
     is_promotional_title,
     is_relevant_news,
@@ -137,6 +152,7 @@ def initialize_database() -> None:
         )
         _repair_existing_mojibake_news(connection)
         _purge_existing_github_spam(connection)
+        _purge_low_value_github_discovery_news(connection)
         _purge_existing_promotional_news(connection)
         _purge_future_news(connection)
         _purge_low_value_sogou_news(connection)
@@ -211,6 +227,78 @@ def _purge_existing_github_spam(connection: sqlite3.Connection) -> None:
         connection.execute(
             f"DELETE FROM news WHERE id IN ({placeholders})",
             spam_ids,
+        )
+
+
+def _github_update_payload(title: str) -> str:
+    """从统一的 GitHub 标题格式中提取 commit 或 Release 正文。"""
+
+    value = str(title or "").strip()
+    for prefix in ("GitHub - 新发布：", "GitHub - 新更新："):
+        if value.startswith(prefix):
+            value = value[len(prefix):].strip()
+            break
+    return re.sub(r"\s*（[^（）]+）\s*$", "", value).strip()
+
+
+def _purge_low_value_github_discovery_news(
+    connection: sqlite3.Connection,
+) -> None:
+    """
+    清理旧版本已经入库的低热度 GitHub 项目和普通小提交。
+
+    固定跟踪项目的正式 Release 不受普通提交阈值影响；其余仓库必须达到
+    当前 Stars 门槛，提交消息也必须属于重大功能、模型或架构变化。
+    """
+
+    release_sources = {
+        f"GitHub · {repository}"
+        for repository in GITHUB_RELEASE_REPOSITORIES
+    }
+    rows = connection.execute(
+        """
+        SELECT id, title, summary, source
+        FROM news
+        WHERE source = 'GitHub 项目发现'
+           OR source LIKE 'GitHub · %'
+        """
+    ).fetchall()
+    rejected_ids: list[int] = []
+    for row in rows:
+        source = str(row["source"] or "").strip()
+        title = str(row["title"] or "").strip()
+        summary = str(row["summary"] or "").strip()
+        stars = stars_from_summary(summary)
+
+        if source == "GitHub 项目发现":
+            if (
+                stars < GITHUB_NEW_REPOSITORY_MIN_STARS
+                or not find_matched_keywords(
+                    f"{title} {summary}",
+                    AI_KEYWORDS,
+                )
+                or is_pirated_software_repository(title, summary)
+            ):
+                rejected_ids.append(int(row["id"]))
+            continue
+
+        # 固定跟踪项目的 Release 是有意维护的核心数据，不按普通 commit
+        # 规则删除。
+        if source in release_sources:
+            continue
+        message = _github_update_payload(title)
+        if (
+            stars < GITHUB_COMMIT_MIN_STARS
+            or not is_significant_commit_message(message)
+            or is_pirated_software_repository(title, summary)
+        ):
+            rejected_ids.append(int(row["id"]))
+
+    if rejected_ids:
+        placeholders = ",".join("?" for _ in rejected_ids)
+        connection.execute(
+            f"DELETE FROM news WHERE id IN ({placeholders})",
+            rejected_ids,
         )
 
 

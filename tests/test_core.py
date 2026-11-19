@@ -724,6 +724,69 @@ class DatabaseTests(unittest.TestCase):
         )
         self.assertEqual(piracy_count, 0)
 
+    def test_initialization_removes_low_value_github_discovery(self) -> None:
+        """旧库中的低星项目和普通小提交应在启动时清理。"""
+
+        fetched_at = datetime(2026, 11, 19, 8, 0, tzinfo=timezone.utc)
+        save_news_items(
+            [
+                {
+                    "title": "GitHub - 新发布：Small AI music experiment",
+                    "link": "https://github.com/small/experiment",
+                    "source": "GitHub 项目发现",
+                    "publish_time": fetched_at.isoformat(timespec="seconds"),
+                    "summary": "主要语言：Python；Stars：3；",
+                    "category": "AI音频开发",
+                },
+                {
+                    "title": "GitHub - 新发布：AI music stem studio",
+                    "link": "https://github.com/notable/stem-studio",
+                    "source": "GitHub 项目发现",
+                    "publish_time": fetched_at.isoformat(timespec="seconds"),
+                    "summary": "主要语言：Python；Stars：86；",
+                    "category": "AI音频开发",
+                },
+                {
+                    "title": (
+                        "GitHub - 新更新：Increase audio generation retry"
+                        "（example/small）"
+                    ),
+                    "link": "https://github.com/example/small/commit/1",
+                    "source": "GitHub · example/small",
+                    "publish_time": fetched_at.isoformat(timespec="seconds"),
+                    "summary": "仓库 Stars：20；普通重试逻辑。",
+                    "category": "AI音频开发",
+                },
+                {
+                    "title": (
+                        "GitHub - 新更新：Add new music generation engine"
+                        "（example/notable）"
+                    ),
+                    "link": "https://github.com/example/notable/commit/2",
+                    "source": "GitHub · example/notable",
+                    "publish_time": fetched_at.isoformat(timespec="seconds"),
+                    "summary": "仓库 Stars：260；新增音乐生成引擎。",
+                    "category": "AI音频开发",
+                },
+            ],
+            fetched_at,
+        )
+        self.assertEqual(get_news_count(), 4)
+
+        initialize_database()
+
+        remaining_titles = {item["title"] for item in get_all_news()}
+        self.assertEqual(
+            remaining_titles,
+            {
+                "GitHub - 新发布：AI music stem studio",
+                (
+                    "GitHub - 新更新：Add new music generation engine"
+                    "（example/notable）"
+                ),
+            },
+        )
+
     def test_promotional_item_is_rejected_before_database_insert(self) -> None:
         fetched_at = datetime(2026, 11, 19, 8, 0, tzinfo=timezone.utc)
         inserted = save_news_items(

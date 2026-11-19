@@ -9,6 +9,10 @@ import requests
 from bs4 import BeautifulSoup
 
 from config import REQUEST_TIMEOUT_SECONDS
+from github_quality import (
+    is_low_value_release,
+    is_pirated_software_repository,
+)
 from news_filter import is_relevant_news
 
 
@@ -35,13 +39,23 @@ def parse_github_releases(
     for release in payload:
         if not isinstance(release, dict) or release.get("draft"):
             continue
+        tag_name = str(release.get("tag_name") or "").strip()
         title = _clean_text(
-            str(release.get("name") or release.get("tag_name") or repository)
+            str(release.get("name") or tag_name or repository)
         )
         body = _clean_text(str(release.get("body") or ""))
         link = str(release.get("html_url") or "").strip()
         published_at = str(release.get("published_at") or "").strip()
         if not title or not link or not published_at:
+            continue
+        if is_low_value_release(
+            title,
+            body,
+            tag_name=tag_name,
+            prerelease=bool(release.get("prerelease")),
+        ):
+            continue
+        if is_pirated_software_repository(title, body, repository):
             continue
         if not is_relevant_news(
             title,
