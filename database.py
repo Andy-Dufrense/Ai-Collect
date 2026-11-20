@@ -47,6 +47,7 @@ from sogou_wechat import (
     canonicalize_wechat_article_link,
     is_temporary_article_link,
 )
+from source_utils import is_safe_http_url
 from text_utils import repair_mojibake
 
 
@@ -701,7 +702,12 @@ def save_news_items(
             )
 
             # 标题、链接和来源是有效资讯的最低要求，缺失时直接跳过。
-            if not title or not link or not source:
+            if (
+                not title
+                or not link
+                or not source
+                or not is_safe_http_url(link)
+            ):
                 continue
             if source.startswith("GitHub") and is_github_spam_text(
                 f"{title} {summary}"

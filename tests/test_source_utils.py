@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import unittest
 
-from source_utils import display_source_name
+from source_utils import display_source_name, is_safe_http_url
 
 
 class SourceUtilsTests(unittest.TestCase):
@@ -27,6 +27,14 @@ class SourceUtilsTests(unittest.TestCase):
     def test_real_source_names_are_preserved(self) -> None:
         for name in ("Midifan", "叉烧网", "我爱音频网", "MusicTech"):
             self.assertEqual(display_source_name(name), name)
+
+    def test_only_http_article_links_are_safe(self) -> None:
+        self.assertTrue(is_safe_http_url("https://example.com/news"))
+        self.assertTrue(is_safe_http_url("http://example.com/news"))
+        self.assertFalse(is_safe_http_url("javascript:alert(1)"))
+        self.assertFalse(is_safe_http_url("data:text/html,hello"))
+        self.assertFalse(is_safe_http_url("file:///tmp/news.html"))
+        self.assertFalse(is_safe_http_url("https://example.com/a b"))
 
 
 if __name__ == "__main__":

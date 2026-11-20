@@ -38,6 +38,7 @@ from config import (
     BAIDU_QUERY_DELAY_SECONDS,
     DATA_DIR,
     DISPLAY_TIME_ZONE,
+    FETCH_TIME_BUDGET_SECONDS,
     GITHUB_DISCOVERY_ENABLED,
     GITHUB_RELEASE_REPOSITORIES,
     NEWS_RETENTION_DAYS,
@@ -1044,6 +1045,24 @@ def _fetch_and_save_news_unlocked() -> FetchResult:
     watched_attempted = 0
     rss_attempted = 0
     baidu_blocked_for_batch = False
+    fetch_deadline = time.monotonic() + max(0.0, FETCH_TIME_BUDGET_SECONDS)
+    fetch_budget_reported = False
+
+    def fetch_budget_allows_work() -> bool:
+        """达到总预算后停止启动新来源，但保留已经取得的数据。"""
+
+        nonlocal fetch_budget_reported
+        if time.monotonic() < fetch_deadline:
+            return True
+        if not fetch_budget_reported:
+            message = (
+                f"抓取总时间达到 {FETCH_TIME_BUDGET_SECONDS:.0f} 秒预算，"
+                "未开始的来源本轮跳过"
+            )
+            LOGGER.warning(message)
+            errors.append(message)
+            fetch_budget_reported = True
+        return False
 
     routes = _discover_fetch_routes()
     baidu_source_seen = False
@@ -1053,6 +1072,8 @@ def _fetch_and_save_news_unlocked() -> FetchResult:
     )
     try:
         for source_config in RSS_SOURCES:
+            if not fetch_budget_allows_work():
+                break
             source_name = source_config["source"]
             source_url = source_config["url"]
             source_category = source_config.get("category", "RSS")
@@ -1210,6 +1231,8 @@ def _fetch_and_save_news_unlocked() -> FetchResult:
         # 已确认的重要微信公众号文章直接读取。微信公众号没有公开账号 Feed，
         # 此来源用于补足搜狗尚未索引的官方文章。
         for watched in WATCHED_ARTICLE_URLS:
+            if not fetch_budget_allows_work():
+                break
             watched_attempted += 1
             source_name = watched["source"]
             source_url = watched["url"]
@@ -1251,6 +1274,8 @@ def _fetch_and_save_news_unlocked() -> FetchResult:
 
         # GitHub Releases 反映开源 AI 音频项目的版本、功能和实现更新。
         for repository in GITHUB_RELEASE_REPOSITORIES:
+            if not fetch_budget_allows_work():
+                break
             github_attempted += 1
             source_name = f"GitHub · {repository}"
             source_errors = []
@@ -1288,7 +1313,7 @@ def _fetch_and_save_news_unlocked() -> FetchResult:
 
         # 自动发现近期新建的 AI 音乐项目和相关 commit。固定项目 Releases
         # 只能看到“正式发版”，这一步补足尚未发版的新仓库和开发动态。
-        if GITHUB_DISCOVERY_ENABLED:
+        if GITHUB_DISCOVERY_ENABLED and fetch_budget_allows_work():
             github_discovery_attempted = 1
             source_name = "GitHub 新项目与提交发现"
             source_errors = []
@@ -1333,7 +1358,7 @@ def _fetch_and_save_news_unlocked() -> FetchResult:
                 all_matched_items.extend(items)
 
         # 搜狗微信单独限频：每 30 分钟最多刷新一次，查询之间等待 2 秒。
-        if _sogou_queries_due(fetched_at):
+        if fetch_budget_allows_work() and _sogou_queries_due(fetched_at):
             try:
                 sogou_batch_start = int(
                     get_meta_value("sogou_batch_cursor") or "0"
@@ -1358,6 +1383,8 @@ def _fetch_and_save_news_unlocked() -> FetchResult:
             LOGGER.info("搜狗微信尚未到达刷新时间，本轮跳过")
 
         for query_index, query in enumerate(sogou_queries):
+            if not fetch_budget_allows_work():
+                break
             sogou_attempted += 1
             source_name = f"搜狗搜索 · {query}"
             source_errors = []

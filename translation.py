@@ -28,6 +28,22 @@ TRANSLATION_ENABLED = os.getenv("TRANSLATION_ENABLED", "1").casefold() not in {
 }
 MAX_TRANSLATIONS_PER_RUN = 300
 LOGGER = logging.getLogger(__name__)
+
+
+def _translation_time_budget() -> float:
+    """读取单轮翻译时间预算；异常配置回退到 10 分钟。"""
+
+    raw_value = os.getenv("TRANSLATION_TIME_BUDGET_SECONDS", "").strip()
+    if not raw_value:
+        return 600.0
+    try:
+        value = float(raw_value)
+    except ValueError:
+        return 600.0
+    return max(30.0, value)
+
+
+TRANSLATION_TIME_BUDGET_SECONDS = _translation_time_budget()
 GITHUB_TITLE_PREFIXES = (
     "GitHub · AI+音乐新项目：",
     "GitHub · AI+音乐新功能：",
@@ -182,6 +198,7 @@ def translate_items(
     existing_items: Iterable[Mapping[str, Any]] = (),
     enabled: bool | None = None,
     max_translations: int = MAX_TRANSLATIONS_PER_RUN,
+    time_budget_seconds: float | None = None,
 ) -> int:
     """
     为英文标题增加 title_zh 字段，返回本轮新翻译数量。
@@ -194,6 +211,13 @@ def translate_items(
     cache = load_translation_cache(existing_items)
     translated_count = 0
     attempted_count = 0
+    budget = (
+        TRANSLATION_TIME_BUDGET_SECONDS
+        if time_budget_seconds is None
+        else max(0.0, time_budget_seconds)
+    )
+    deadline = time.monotonic() + budget
+    budget_reported = False
     with requests.Session() as session:
         session.trust_env = False
         for item in items:
@@ -207,6 +231,14 @@ def translate_items(
                 item["title_zh"] = cache[key]
                 continue
             if translated_count >= max(0, max_translations):
+                break
+            if time.monotonic() >= deadline:
+                if not budget_reported:
+                    LOGGER.warning(
+                        "翻译达到 %.0f 秒时间预算，剩余标题留待下一轮处理",
+                        budget,
+                    )
+                    budget_reported = True
                 break
 
             # GitHub 标题带有中文分类前缀，不能把整个标题直接送翻译。

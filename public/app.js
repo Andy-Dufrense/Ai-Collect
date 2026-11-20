@@ -11,6 +11,21 @@ const state = {
 };
 const PAGE_SIZE = 20;
 const MAX_ITEMS_PER_SOURCE_PER_PAGE = 6;
+const DATE_TIME_FORMATTER = new Intl.DateTimeFormat("zh-CN", {
+    timeZone: "Asia/Shanghai",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+});
+const DATE_ONLY_FORMATTER = new Intl.DateTimeFormat("en-US", {
+    timeZone: "Asia/Shanghai",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+});
 
 const elements = {
     keyword: document.querySelector("#keyword"),
@@ -36,15 +51,16 @@ function formatTime(value) {
     if (!value) return "时间未知";
     const date = new Date(value);
     if (Number.isNaN(date.getTime())) return "时间未知";
-    return new Intl.DateTimeFormat("zh-CN", {
-        timeZone: "Asia/Shanghai",
-        year: "numeric",
-        month: "2-digit",
-        day: "2-digit",
-        hour: "2-digit",
-        minute: "2-digit",
-        hour12: false,
-    }).format(date);
+    return DATE_TIME_FORMATTER.format(date);
+}
+
+function safeExternalUrl(value) {
+    try {
+        const url = new URL(value);
+        return ["http:", "https:"].includes(url.protocol) ? url.href : "";
+    } catch {
+        return "";
+    }
 }
 
 function nextScheduledRefresh() {
@@ -249,12 +265,7 @@ function rankItems() {
 function shanghaiDate(value) {
     const date = new Date(value);
     if (Number.isNaN(date.getTime())) return "";
-    const parts = new Intl.DateTimeFormat("en-US", {
-        timeZone: "Asia/Shanghai",
-        year: "numeric",
-        month: "2-digit",
-        day: "2-digit",
-    }).formatToParts(date);
+    const parts = DATE_ONLY_FORMATTER.formatToParts(date);
     const part = (type) => parts.find((entry) => entry.type === type)?.value;
     return `${part("year")}-${part("month")}-${part("day")}`;
 }
@@ -398,19 +409,31 @@ async function loadData() {
         const response = await fetch("./data/news.json", { cache: "no-store" });
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
         const payload = await response.json();
-        state.items = Array.isArray(payload.items) ? payload.items : [];
+        state.items = Array.isArray(payload.items)
+            ? payload.items.filter((item) => safeExternalUrl(item.link))
+            : [];
         state.generatedAt = payload.generated_at;
         state.lastRun = payload.last_run;
 
-        elements.total.textContent = String(payload.total ?? state.items.length);
+        elements.total.textContent = String(state.items.length);
         elements.generatedAt.textContent = formatTime(payload.generated_at);
-        elements.syncState.className = "sync-state online";
+        const generatedTime = new Date(payload.generated_at).getTime();
+        const ageHours = Number.isFinite(generatedTime)
+            ? Math.max(0, (Date.now() - generatedTime) / 3600000)
+            : Infinity;
+        elements.syncState.className = ageHours > 30
+            ? "sync-state offline"
+            : "sync-state online";
         const estimatedLine = document.createElement("span");
         estimatedLine.textContent =
             `预计下次刷新时间：${formatTime(nextScheduledRefresh().toISOString())}`;
         const delayNote = document.createElement("small");
         delayNote.className = "sync-note";
-        delayNote.textContent = "实际刷新时间存在偏差";
+        delayNote.textContent = ageHours > 30
+            ? "最近一次自动更新可能失败，当前显示上一版数据"
+            : ageHours > 24
+                ? "数据更新可能延迟"
+                : "实际刷新时间存在偏差";
         elements.syncText.replaceChildren(estimatedLine, delayNote);
         render();
     } catch (error) {
@@ -443,9 +466,13 @@ elements.sortBy.addEventListener("change", () => {
     state.currentPage = 1;
     render();
 });
+let searchTimer = null;
 elements.keyword.addEventListener("input", () => {
-    state.currentPage = 1;
-    render();
+    window.clearTimeout(searchTimer);
+    searchTimer = window.setTimeout(() => {
+        state.currentPage = 1;
+        render();
+    }, 200);
 });
 elements.pagePrev.addEventListener("click", () => {
     state.currentPage = Math.max(1, state.currentPage - 1);

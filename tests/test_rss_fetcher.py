@@ -14,13 +14,14 @@ import tempfile
 import unittest
 from datetime import datetime, timezone
 from pathlib import Path
-from unittest.mock import patch
+from unittest.mock import Mock, patch
 
 import requests
 
 from config import get_fetch_lock_path
 from rss_fetcher import (
     FetchAlreadyRunningError,
+    FetchRoute,
     _advance_sogou_batch_cursor,
     _incremental_source_since,
     _direct_source_urls,
@@ -149,6 +150,44 @@ class ClosingSession:
 
 
 class RssFetcherTests(unittest.TestCase):
+    def test_fetch_stops_starting_sources_after_global_budget(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            database_path = Path(temp_dir) / "fetch-budget.db"
+            event_session = ClosingSession()
+            fetch_mock = Mock()
+            with (
+                patch.dict(os.environ, {"NEWS_DB_PATH": str(database_path)}),
+                patch(
+                    "rss_fetcher.RSS_SOURCES",
+                    (
+                        {
+                            "source": "测试源",
+                            "url": "https://example.com/feed",
+                        },
+                    ),
+                ),
+                patch("rss_fetcher.GITHUB_RELEASE_REPOSITORIES", ()),
+                patch("rss_fetcher.GITHUB_DISCOVERY_ENABLED", False),
+                patch("rss_fetcher.WATCHED_ARTICLE_URLS", ()),
+                patch("rss_fetcher.SOGOU_WECHAT_QUERIES", ()),
+                patch("rss_fetcher.FETCH_TIME_BUDGET_SECONDS", 0),
+                patch(
+                    "rss_fetcher._discover_fetch_routes",
+                    return_value=[FetchRoute("测试通道", event_session)],
+                ),
+                patch(
+                    "rss_fetcher.fetch_one_source",
+                    fetch_mock,
+                ),
+            ):
+                result = fetch_and_save_news()
+
+        fetch_mock.assert_not_called()
+        self.assertEqual(result.source_count, 0)
+        self.assertTrue(
+            any("抓取总时间达到" in error for error in result.errors)
+        )
+
     def test_sogou_signature_change_resets_batch_cursor(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
             database_path = Path(temp_dir) / "sogou-signature.db"

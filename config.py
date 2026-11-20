@@ -1087,6 +1087,14 @@ REQUEST_BACKOFF_SECONDS: Final[float] = _read_positive_number(
     0.8,
 )
 
+# GitHub Actions 中所有来源串行抓取。单个来源失败不会中断任务，但累计
+# 重试仍可能让整轮执行过久。达到预算后不再启动新来源，已完成的数据会
+# 正常入库和导出，避免整次任务被平台强制终止。
+FETCH_TIME_BUDGET_SECONDS: Final[float] = max(
+    60.0,
+    _read_positive_number("FETCH_TIME_BUDGET_SECONDS", 2400.0),
+)
+
 # 整轮抓取完全失败时不必等待完整的 5 分钟，网络恢复后应在 60 秒内自动重试。
 AUTO_FETCH_RETRY_SECONDS: Final[float] = max(
     15.0,

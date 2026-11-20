@@ -1113,6 +1113,24 @@ class DatabaseTests(unittest.TestCase):
         self.assertEqual(second_count, 0)
         self.assertEqual(get_news_count(), 1)
 
+    def test_unsafe_article_link_is_rejected(self) -> None:
+        fetched_at = datetime(2026, 11, 16, 8, 0, tzinfo=timezone.utc)
+        inserted = save_news_items(
+            [
+                {
+                    "title": "AI 音乐工具发布",
+                    "link": "javascript:alert(1)",
+                    "source": "测试源",
+                    "publish_time": "2026-11-16T07:30:00+00:00",
+                    "summary": "测试简介",
+                }
+            ],
+            fetched_at,
+        )
+
+        self.assertEqual(inserted, 0)
+        self.assertEqual(get_news_count(), 0)
+
     def test_initialization_replaces_expired_temporary_links(self) -> None:
         fetched_at = datetime(2026, 11, 20, 1, 0, tzinfo=timezone.utc)
         save_news_items(

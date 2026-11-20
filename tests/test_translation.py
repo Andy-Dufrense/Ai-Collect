@@ -106,6 +106,24 @@ class TranslationTests(unittest.TestCase):
         )
         self.assertTrue(is_title_displayable({"title": "AI 音乐工具更新"}))
 
+    def test_translation_stops_at_time_budget(self) -> None:
+        items = [
+            {
+                "title": "New AI guitar tool released",
+                "link": "https://example.com/tool",
+                "dedupe_key": "tool-budget",
+            }
+        ]
+        with patch("translation.translate_title") as translate_mock:
+            translated_count = translate_items(
+                items,
+                existing_items=[],
+                time_budget_seconds=0,
+            )
+
+        self.assertEqual(translated_count, 0)
+        translate_mock.assert_not_called()
+
     def test_github_title_translates_only_payload_and_keeps_prefix(self) -> None:
         items = [
             {

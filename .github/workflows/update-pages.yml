@@ -9,9 +9,7 @@ on:
     branches: ["main"]
 
 permissions:
-  contents: write
-  pages: write
-  id-token: write
+  contents: read
 
 concurrency:
   group: github-pages
@@ -20,6 +18,10 @@ concurrency:
 jobs:
   update:
     runs-on: ubuntu-latest
+    timeout-minutes: 90
+    permissions:
+      contents: write
+      pages: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -32,6 +34,9 @@ jobs:
 
       - name: Install dependencies
         run: python -m pip install -r requirements.txt
+
+      - name: Run offline tests
+        run: python -m unittest discover -s tests -v
 
       - name: Fetch and export static data
         env:
@@ -50,8 +55,26 @@ jobs:
           git add public/data/news.json public/style.css
           if ! git diff --cached --quiet; then
             git commit -m "chore: update AI music news [skip ci]"
-            git push
+            pushed=0
+            for attempt in 1 2 3; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then
+                pushed=1
+                break
+              fi
+              sleep $((attempt * 5))
+            done
+            if [ "$pushed" -ne 1 ]; then
+              echo "::error title=数据推送失败::连续三次推送失败，旧版 Pages 将继续在线"
+              exit 1
+            fi
           fi
+
+      - name: Report failed update
+        if: failure()
+        run: |
+          echo "::error title=自动更新失败::本次没有发布新数据，上一版 Pages 保持在线"
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
@@ -64,6 +87,10 @@ jobs:
   deploy:
     needs: update
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
