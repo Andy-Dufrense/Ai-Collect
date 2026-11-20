@@ -59,6 +59,7 @@ class GitHubScriptTests(unittest.TestCase):
         self.assertIn("function itemSearchText(item)", script)
         self.assertIn("item.source ||", script)
         self.assertIn("item.display_source ||", script)
+        self.assertIn("terms.some((term) => matchesSearchTerm(text, term))", script)
 
     def test_workflow_has_tests_timeout_and_push_retry(self) -> None:
         project_dir = Path(__file__).resolve().parent.parent

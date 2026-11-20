@@ -49,7 +49,7 @@
             <form class="filter-form" id="filter-form" method="get"
                   action="{{ url_for('index') }}">
                 <label class="search-field">
-                    <span>搜索（多个词用；分隔）</span>
+                    <span>搜索（多个词用；分隔，任一命中）</span>
                     <input name="q" type="search" value="{{ keyword }}"
                            placeholder="MIDI；吉他；编曲">
                 </label>

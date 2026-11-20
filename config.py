@@ -528,6 +528,9 @@ SOURCE_DISCOVERY_TOPICS: Final[tuple[str, ...]] = (
     "AI音乐",
     "AI音频",
     "人工智能",
+    "智能",
+    "乐器",
+    "智能乐器",
     "音乐科技",
     "智能硬件",
     "音频硬件",
@@ -547,6 +550,8 @@ SOGOU_BASE_SOURCE_QUERIES: Final[tuple[str, ...]] = tuple(
 SOGOU_PRIORITY_KEYWORD_QUERIES: Final[tuple[str, ...]] = (
     "AI音乐",
     "AI音频",
+    "智能",
+    "乐器",
     "智能乐器",
     "智能吉他",
     "智能钢琴",

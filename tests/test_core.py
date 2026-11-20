@@ -662,6 +662,8 @@ class NewsFilterTests(unittest.TestCase):
         for keyword in (
             "AI音乐",
             "AI音频",
+            "智能",
+            "乐器",
             "智能乐器",
             "智能吉他",
             "智能钢琴",

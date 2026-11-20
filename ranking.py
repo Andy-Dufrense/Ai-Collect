@@ -323,8 +323,8 @@ def filter_and_rank_news(
             and not bool(item.get("is_software"))
         ):
             continue
-        if any(
-            not _search_term_matches(searchable, term)
+        if search_terms and not any(
+            _search_term_matches(searchable, term)
             for term in search_terms
         ):
             continue

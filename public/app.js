@@ -248,7 +248,10 @@ function rankItems() {
                 return false;
             }
             const text = itemSearchText(item);
-            return terms.every((term) => matchesSearchTerm(text, term));
+            return (
+                terms.length === 0
+                || terms.some((term) => matchesSearchTerm(text, term))
+            );
         })
         .map((item) => {
             const recency = recencyScore(item.publish_time, now);

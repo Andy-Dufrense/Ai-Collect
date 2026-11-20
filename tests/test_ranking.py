@@ -108,6 +108,10 @@ class RankingTests(unittest.TestCase):
                 "M I D 三个字母与普通音乐",
                 publish_time="2026-11-17T07:30:00+00:00",
             ),
+            make_item(
+                "吉他录音设备评测",
+                publish_time="2026-11-17T07:00:00+00:00",
+            ),
         ]
         midi_only = filter_and_rank_news(
             items,
@@ -128,7 +132,7 @@ class RankingTests(unittest.TestCase):
         )
         self.assertEqual(
             [item["title"] for item in multi_terms],
-            ["MIDI 吉他编曲工具"],
+            ["MIDI 吉他编曲工具", "吉他录音设备评测"],
         )
 
         spaced_phrase = filter_and_rank_news(
