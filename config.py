@@ -469,6 +469,11 @@ SOGOU_EXPLICIT_SITES: Final[dict[str, dict[str, str]]] = {
     "叉烧网": {"name": "叉烧网", "url": "https://www.exound.com/"},
     "键盘中国": {"name": "键盘中国", "url": "https://www.cnkeyboard.com/"},
     "小旭音乐": {"name": "小旭音乐", "url": "https://www.xiaoxumusic.com/"},
+    "刘润": {"name": "刘润", "url": "https://www.runliu.com/"},
+    "黑马创业": {
+        "name": "黑马创业",
+        "url": "https://www.iheima.com/",
+    },
     "KVR Audio": {"name": "KVR Audio", "url": "https://www.kvraudio.com/"},
     "Gearspace": {"name": "Gearspace", "url": "https://gearspace.com/"},
     "Production Expert": {
@@ -489,24 +494,27 @@ SOGOU_EXPLICIT_SITES: Final[dict[str, dict[str, str]]] = {
         "url": "https://www.cndzq.com/",
     },
     "MIDI协会": {"name": "MIDI协会", "url": "https://midi.org/"},
-    "刘润 AI音乐": {"name": "刘润", "url": "https://www.runliu.com/"},
-    "黑马创业 AI": {
-        "name": "黑马创业",
-        "url": "https://www.iheima.com/",
-    },
-    "黑马创业 AI音乐": {
-        "name": "黑马创业",
-        "url": "https://www.iheima.com/",
-    },
-    "黑马创业 音乐科技": {
-        "name": "黑马创业",
-        "url": "https://www.iheima.com/",
-    },
-    "黑马创业 智能硬件": {
-        "name": "黑马创业",
-        "url": "https://www.iheima.com/",
-    },
 }
+
+# 所有具名来源都使用同一组细分方向轮换搜索。这样不会只靠“来源名+年份”
+# 抓到泛资讯，也不会因为某个来源只配置了单一关键词而长期没有结果。
+SOURCE_DISCOVERY_TOPICS: Final[tuple[str, ...]] = (
+    "AI",
+    "AI音乐",
+    "AI音频",
+    "人工智能",
+    "音乐科技",
+    "智能硬件",
+    "音频硬件",
+    "音乐软件",
+    "MIDI乐器",
+)
+
+_named_sogou_sources = tuple(SOGOU_EXPLICIT_SITES.items())
+for _topic in SOURCE_DISCOVERY_TOPICS:
+    for _source_name, _source_config in _named_sogou_sources:
+        _query = f"{_source_name} {_topic}"
+        SOGOU_EXPLICIT_SITES.setdefault(_query, _source_config)
 
 SOGOU_SOURCE_QUERIES: Final[tuple[str, ...]] = tuple(
     SOGOU_EXPLICIT_SITES

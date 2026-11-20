@@ -35,6 +35,7 @@ from config import (
     HARDWARE_SEARCH_QUERIES,
     RSS_SOURCES,
     SOFTWARE_SEARCH_QUERIES,
+    SOURCE_DISCOVERY_TOPICS,
     SOGOU_EXPLICIT_SITES,
     SOGOU_KEYWORD_QUERIES,
     SOGOU_SOURCE_QUERIES,
@@ -626,6 +627,17 @@ class NewsFilterTests(unittest.TestCase):
         self.assertIn("音频接口", HARDWARE_SEARCH_QUERIES)
         self.assertIn("智能吉他", HARDWARE_SEARCH_QUERIES)
 
+    def test_all_named_sources_use_each_discovery_topic(self) -> None:
+        source_names = {
+            config["name"] for config in SOGOU_EXPLICIT_SITES.values()
+        }
+        for source_name in source_names:
+            for topic in SOURCE_DISCOVERY_TOPICS:
+                self.assertIn(
+                    f"{source_name} {topic}",
+                    SOGOU_EXPLICIT_SITES,
+                )
+
     def test_black_horse_uses_multiple_relevant_source_queries(self) -> None:
         black_horse_queries = {
             query
@@ -635,10 +647,11 @@ class NewsFilterTests(unittest.TestCase):
         self.assertEqual(
             black_horse_queries,
             {
-                "黑马创业 AI",
-                "黑马创业 AI音乐",
-                "黑马创业 音乐科技",
-                "黑马创业 智能硬件",
+                "黑马创业",
+                *(
+                    f"黑马创业 {topic}"
+                    for topic in SOURCE_DISCOVERY_TOPICS
+                ),
             },
         )
         self.assertTrue(black_horse_queries.issubset(SOGOU_WECHAT_QUERIES))
