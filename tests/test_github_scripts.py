@@ -56,6 +56,9 @@ class GitHubScriptTests(unittest.TestCase):
         self.assertIn("midnight.getTime() + 11 * 3600000", script)
         self.assertIn("midnight.getTime() + 23 * 3600000", script)
         self.assertIn("function safeExternalUrl(value)", script)
+        self.assertIn("function itemSearchText(item)", script)
+        self.assertIn("item.source ||", script)
+        self.assertIn("item.display_source ||", script)
 
     def test_workflow_has_tests_timeout_and_push_retry(self) -> None:
         project_dir = Path(__file__).resolve().parent.parent

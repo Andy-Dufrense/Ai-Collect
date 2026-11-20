@@ -113,6 +113,16 @@ function matchesSearchTerm(text, term) {
     ).test(text);
 }
 
+function itemSearchText(item) {
+    return [
+        item.title || "",
+        item.title_zh || "",
+        item.summary || "",
+        item.source || "",
+        item.display_source || "",
+    ].join(" ").toLocaleLowerCase();
+}
+
 function sourceGroup(item) {
     if (item.category === "搜狗微信") return "搜狗微信";
     if (String(item.source || "").toLowerCase().startsWith("github")) {
@@ -237,11 +247,7 @@ function rankItems() {
             if (contentKind === "software" && !item.is_software) {
                 return false;
             }
-            const text = [
-                item.title || "",
-                item.title_zh || "",
-                item.summary || "",
-            ].join(" ").toLocaleLowerCase();
+            const text = itemSearchText(item);
             return terms.every((term) => matchesSearchTerm(text, term));
         })
         .map((item) => {
