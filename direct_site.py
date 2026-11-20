@@ -14,7 +14,7 @@ import re
 import shutil
 import subprocess
 from datetime import datetime, timezone
-from urllib.parse import urljoin, urlsplit
+from urllib.parse import parse_qs, urlencode, urljoin, urlsplit, urlunsplit
 
 from bs4 import BeautifulSoup
 
@@ -47,7 +47,8 @@ TRAILING_RELATIVE_TIME_PATTERN = re.compile(
     re.IGNORECASE,
 )
 LABELLED_DATE_PATTERN = re.compile(
-    r"(?:发布时间|发布日期|发表时间|publish(?:ed)?(?:\s+time)?)"
+    r"(?:发布时间|发布日期|发表时间|发表于|"
+    r"publish(?:ed)?(?:\s+time)?)"
     r"[^\d]{0,12}(20\d{2})[-年/.](\d{1,2})[-月/.](\d{1,2})",
     re.IGNORECASE,
 )
@@ -110,7 +111,27 @@ def _extract_json_ld_date(soup: BeautifulSoup) -> str | None:
     return None
 
 
-def extract_article_publish_time(html_text: str) -> str | None:
+def _canonicalize_forum_thread_link(link: str) -> str:
+    """把 Discuz 论坛跳转链接转换为稳定的主题链接。"""
+
+    parsed = urlsplit(link)
+    if "forum.php" not in parsed.path.casefold():
+        return ""
+    query = parse_qs(parsed.query)
+    thread_id = str((query.get("tid") or [""])[0]).strip()
+    if not thread_id.isdigit():
+        return ""
+    stable_query = urlencode({"mod": "viewthread", "tid": thread_id})
+    return urlunsplit(
+        (parsed.scheme, parsed.netloc, parsed.path, stable_query, "")
+    )
+
+
+def extract_article_publish_time(
+    html_text: str,
+    *,
+    allow_unlabelled_fallback: bool = True,
+) -> str | None:
     """从文章页的 meta、time 或 JSON-LD 中提取发布时间。"""
 
     soup = BeautifulSoup(html_text, "html.parser")
@@ -131,6 +152,17 @@ def extract_article_publish_time(html_text: str) -> str | None:
     json_ld_date = _extract_json_ld_date(soup)
     if json_ld_date:
         return json_ld_date
+    # Discuz 的第一个帖子通常带有 authorposton 标识。完整日期可能只在
+    # title 属性中，因此文本和属性都要检查。
+    for node in soup.select('em[id^="authorposton"]'):
+        values = [node.get_text(" ", strip=True)]
+        values.extend(
+            str(item.get("title", ""))
+            for item in node.select("[title]")
+        )
+        normalized = _normalize_date(" ".join(values))
+        if normalized:
+            return normalized
     text = soup.get_text(" ", strip=True)
     labelled_match = LABELLED_DATE_PATTERN.search(text)
     if labelled_match:
@@ -144,7 +176,9 @@ def extract_article_publish_time(html_text: str) -> str | None:
             ).isoformat(timespec="seconds")
         except ValueError:
             pass
-    return _normalize_date(text[:5000])
+    if allow_unlabelled_fallback:
+        return _normalize_date(text[:5000])
+    return None
 
 
 def extract_article_title(html_text: str, source: str = "") -> str | None:
@@ -380,10 +414,16 @@ def fetch_direct_site(
         page_reached_since = False
         for candidate in page_candidates:
             title, link, context = candidate
-            if link in seen_candidates:
+            canonical_link = _canonicalize_forum_thread_link(link)
+            candidate_key = canonical_link or link
+            if candidate_key in seen_candidates:
                 continue
-            seen_candidates.add(link)
-            publish_time = _normalize_date(context)
+            seen_candidates.add(candidate_key)
+            is_forum_thread = bool(canonical_link)
+            # 论坛版块页显示的是最后回复时间，不是主题发布时间。
+            publish_time = (
+                None if is_forum_thread else _normalize_date(context)
+            )
             if not publish_time:
                 try:
                     article_response = session.get(
@@ -396,7 +436,10 @@ def fetch_direct_site(
                         or article_response.encoding
                     )
                     article_text = article_response.text
-                    publish_time = extract_article_publish_time(article_text)
+                    publish_time = extract_article_publish_time(
+                        article_text,
+                        allow_unlabelled_fallback=not is_forum_thread,
+                    )
                     article_title = extract_article_title(article_text, source)
                     if article_title:
                         title = article_title
@@ -412,7 +455,7 @@ def fetch_direct_site(
             items.append(
                 {
                     "title": title,
-                    "link": link,
+                    "link": canonical_link or link,
                     "source": source,
                     "publish_time": publish_time,
                     "summary": context,

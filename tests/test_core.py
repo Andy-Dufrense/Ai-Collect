@@ -1237,6 +1237,30 @@ class DatabaseTests(unittest.TestCase):
         initialize_database()
         self.assertEqual(get_news_count(), 0)
 
+    def test_initialization_removes_unverified_keyboard_redirects(self) -> None:
+        fetched_at = datetime(2026, 11, 20, 1, 0, tzinfo=timezone.utc)
+        save_news_items(
+            [
+                {
+                    "title": "智能电子琴旧教程分享",
+                    "link": (
+                        "https://www.cnkeyboard.com/bbs/forum.php"
+                        "?mod=redirect&tid=200443&goto=lastpost#lastpost"
+                    ),
+                    "source": "键盘中国",
+                    "publish_time": "2026-11-19T00:00:00+00:00",
+                    "summary": "电子琴教程",
+                    "category": "音乐科技",
+                    "dedupe_key": "legacy-keyboard-redirect",
+                }
+            ],
+            fetched_at,
+        )
+
+        initialize_database()
+
+        self.assertEqual(get_news_count(), 0)
+
     def test_news_is_sorted_newest_first(self) -> None:
         fetched_at = datetime(2026, 11, 16, 8, 0, tzinfo=timezone.utc)
         base = {

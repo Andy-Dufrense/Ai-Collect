@@ -160,6 +160,7 @@ def initialize_database() -> None:
         )
         _repair_existing_mojibake_news(connection)
         _repair_temporary_news_links(connection)
+        _purge_unstable_forum_redirect_news(connection)
         _purge_invalid_direct_site_pages(connection)
         _purge_existing_github_spam(connection)
         _purge_low_value_github_discovery_news(connection)
@@ -244,6 +245,21 @@ def _repair_temporary_news_links(connection: sqlite3.Connection) -> None:
             "UPDATE news SET link = ? WHERE id = ?",
             updates,
         )
+
+
+def _purge_unstable_forum_redirect_news(
+    connection: sqlite3.Connection,
+) -> None:
+    """删除无法证明真实发布日期的旧论坛跳转记录。"""
+
+    connection.execute(
+        """
+        DELETE FROM news
+        WHERE source = '键盘中国'
+          AND link LIKE '%forum.php?mod=redirect%'
+          AND link LIKE '%goto=lastpost%'
+        """
+    )
 
 
 def _purge_invalid_direct_site_pages(

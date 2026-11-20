@@ -56,6 +56,64 @@ class DirectSiteTests(unittest.TestCase):
             "2026 新款合成器正式发布",
         )
 
+    def test_discuz_thread_uses_first_post_date_not_section_date(self) -> None:
+        forum_home = """
+        <html><body>
+          <div>
+            <a href="/bbs/forum.php?mod=redirect&tid=200443&goto=lastpost#lastpost">
+              智能电子琴旧教程分享
+            </a>
+            <span>2026-11-19 12:00</span>
+          </div>
+        </body></html>
+        """
+        forum_article = """
+        <html><head>
+          <title>智能电子琴旧教程分享 - 键盘中国</title>
+        </head><body>
+          <h1>智能电子琴旧教程分享</h1>
+          <em id="authorposton200443">
+            发表于 <span title="2020-03-01 10:00">2020-03-01 10:00</span>
+          </em>
+        </body></html>
+        """
+
+        class Response:
+            def __init__(self, text: str, url: str) -> None:
+                self.text = text
+                self.url = url
+                self.encoding = "utf-8"
+                self.apparent_encoding = "utf-8"
+
+            def raise_for_status(self) -> None:
+                return None
+
+        class Session:
+            def get(self, url: str, **_kwargs: object) -> Response:
+                if "tid=200443" in url:
+                    return Response(forum_article, url)
+                return Response(forum_home, url)
+
+        items, _total, matched = fetch_direct_site(
+            Session(),
+            "键盘中国",
+            "https://www.cnkeyboard.com/",
+            since="2026-11-18T00:00:00+00:00",
+        )
+
+        self.assertEqual(matched, 1)
+        self.assertEqual(
+            items[0]["publish_time"],
+            "2020-03-01T00:00:00+00:00",
+        )
+        self.assertEqual(
+            items[0]["link"],
+            (
+                "https://www.cnkeyboard.com/bbs/forum.php"
+                "?mod=viewthread&tid=200443"
+            ),
+        )
+
     def test_homepage_title_link_and_date_are_parsed(self) -> None:
         class Response:
             def __init__(self, text: str, url: str) -> None:
