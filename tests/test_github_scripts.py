@@ -30,6 +30,8 @@ class GitHubScriptTests(unittest.TestCase):
         self.assertIn("Math.min(totalPages, currentPage + 2)", script)
         self.assertIn('createCell("page-ellipsis", "…")', script)
         self.assertIn('button.setAttribute("aria-current", "page")', script)
+        self.assertIn("midnight.getTime() + 11 * 3600000", script)
+        self.assertIn("midnight.getTime() + 23 * 3600000", script)
 
     def test_existing_json_can_restore_database(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:

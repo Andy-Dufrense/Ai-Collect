@@ -60,14 +60,13 @@ function nextScheduledRefresh() {
             0
         ));
         // 北京时间 12:00 和次日 00:00 对应 UTC 04:00 和 16:00。
-        candidates.push(new Date(midnight.getTime() + 4 * 3600000));
-        candidates.push(new Date(midnight.getTime() + 16 * 3600000));
+        // 页面展示的是任务完成后可见更新的时间，因此同时加上 7 小时。
+        candidates.push(new Date(midnight.getTime() + 11 * 3600000));
+        candidates.push(new Date(midnight.getTime() + 23 * 3600000));
     }
-    const scheduled =
+    const availableAt =
         candidates.find((candidate) => candidate > now) || candidates.at(-1);
-    // 实际调度仍在北京时间 00:00、12:00；页面展示通常约 7 小时后
-    // 才能看到 Actions 完成抓取和部署的结果。
-    return new Date(scheduled.getTime() + 7 * 3600000);
+    return availableAt;
 }
 
 function recencyScore(publishTime, now) {

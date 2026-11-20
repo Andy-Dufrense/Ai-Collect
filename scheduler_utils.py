@@ -54,6 +54,25 @@ def next_estimated_refresh(now: datetime | None = None) -> datetime:
     统一展示 07:00、19:00。此函数不会改变后台真实调度。
     """
 
-    return next_scheduled_refresh(now) + timedelta(
-        hours=ESTIMATED_REFRESH_DELAY_HOURS
-    )
+    current_utc = now or datetime.now(timezone.utc)
+    if current_utc.tzinfo is None:
+        current_utc = current_utc.replace(tzinfo=timezone.utc)
+    local_now = current_utc.astimezone(schedule_time_zone())
+    candidates: list[datetime] = []
+    for day_offset in (0, 1):
+        target_date = local_now.date() + timedelta(days=day_offset)
+        for schedule_hour in AUTO_FETCH_SCHEDULE_HOURS:
+            available_at = (
+                datetime(
+                    target_date.year,
+                    target_date.month,
+                    target_date.day,
+                    schedule_hour,
+                    0,
+                    tzinfo=schedule_time_zone(),
+                )
+                + timedelta(hours=ESTIMATED_REFRESH_DELAY_HOURS)
+            ).astimezone(timezone.utc)
+            if available_at > current_utc:
+                candidates.append(available_at)
+    return min(candidates)

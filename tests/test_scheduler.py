@@ -22,15 +22,24 @@ class SchedulerTests(unittest.TestCase):
         self.assertEqual(next_scheduled_refresh(now), expected)
 
     def test_display_estimate_is_seven_hours_after_schedule(self) -> None:
+        # 北京时间 09:00，下一次预计可见更新是当天 19:00。
         morning = datetime(2026, 11, 17, 1, 0, tzinfo=timezone.utc)
         self.assertEqual(
             next_estimated_refresh(morning),
             datetime(2026, 11, 17, 11, 0, tzinfo=timezone.utc),
         )
 
+        # 北京时间 14:00，不能跳过当天尚未到来的 19:00。
         afternoon = datetime(2026, 11, 17, 5, 0, tzinfo=timezone.utc)
         self.assertEqual(
             next_estimated_refresh(afternoon),
+            datetime(2026, 11, 17, 11, 0, tzinfo=timezone.utc),
+        )
+
+        # 北京时间 20:00，两次预期更新都已过去，下一次是次日 07:00。
+        evening = datetime(2026, 11, 17, 12, 0, tzinfo=timezone.utc)
+        self.assertEqual(
+            next_estimated_refresh(evening),
             datetime(2026, 11, 17, 23, 0, tzinfo=timezone.utc),
         )
 
