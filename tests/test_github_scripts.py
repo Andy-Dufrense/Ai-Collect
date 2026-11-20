@@ -15,6 +15,22 @@ from scripts.github_update import export_static_site, import_existing_news
 
 
 class GitHubScriptTests(unittest.TestCase):
+    def test_static_page_uses_numbered_pagination(self) -> None:
+        project_dir = Path(__file__).resolve().parent.parent
+        page = (project_dir / "public" / "index.html").read_text(
+            encoding="utf-8"
+        )
+        script = (project_dir / "public" / "app.js").read_text(
+            encoding="utf-8"
+        )
+
+        self.assertIn('id="page-numbers"', page)
+        self.assertNotIn('id="page-info"', page)
+        self.assertIn("Math.max(1, currentPage - 2)", script)
+        self.assertIn("Math.min(totalPages, currentPage + 2)", script)
+        self.assertIn('createCell("page-ellipsis", "…")', script)
+        self.assertIn('button.setAttribute("aria-current", "page")', script)
+
     def test_existing_json_can_restore_database(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
             database_path = Path(temp_dir) / "github-test.db"

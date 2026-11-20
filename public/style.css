@@ -357,11 +357,12 @@ a {
     background: transparent;
 }
 
-.page-info {
-    min-width: 90px;
-    color: var(--muted);
-    font: 0.7rem/1 var(--mono);
-    text-align: center;
+.page-numbers {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    flex-wrap: wrap;
 }
 
 .page-ellipsis {

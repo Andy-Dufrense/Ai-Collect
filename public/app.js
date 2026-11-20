@@ -29,7 +29,7 @@ const elements = {
     pagination: document.querySelector("#pagination"),
     pagePrev: document.querySelector("#page-prev"),
     pageNext: document.querySelector("#page-next"),
-    pageInfo: document.querySelector("#page-info"),
+    pageNumbers: document.querySelector("#page-numbers"),
 };
 
 function formatTime(value) {
@@ -315,6 +315,49 @@ function renderRow(item, rank) {
     return row;
 }
 
+function createPageButton(pageNumber, currentPage) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "page-button";
+    button.textContent = String(pageNumber);
+    if (pageNumber === currentPage) {
+        button.classList.add("current");
+        button.setAttribute("aria-current", "page");
+    }
+    button.addEventListener("click", () => {
+        state.currentPage = pageNumber;
+        render();
+    });
+    return button;
+}
+
+function renderPagination(totalPages) {
+    const currentPage = state.currentPage;
+    const firstPage = Math.max(1, currentPage - 2);
+    const lastPage = Math.min(totalPages, currentPage + 2);
+    const controls = [];
+
+    if (firstPage > 1) {
+        controls.push(createPageButton(1, currentPage));
+        if (firstPage > 2) {
+            controls.push(createCell("page-ellipsis", "…"));
+        }
+    }
+    for (let page = firstPage; page <= lastPage; page += 1) {
+        controls.push(createPageButton(page, currentPage));
+    }
+    if (lastPage < totalPages) {
+        if (lastPage < totalPages - 1) {
+            controls.push(createCell("page-ellipsis", "…"));
+        }
+        controls.push(createPageButton(totalPages, currentPage));
+    }
+
+    elements.pageNumbers.replaceChildren(...controls);
+    elements.pagePrev.disabled = currentPage <= 1;
+    elements.pageNext.disabled = currentPage >= totalPages;
+}
+
 function render() {
     const ranked = rankItems();
     const totalPages = Math.max(1, Math.ceil(ranked.length / PAGE_SIZE));
@@ -348,9 +391,7 @@ function render() {
         keyword ? `关键词“${keyword}”` : "",
     ].filter(Boolean).join(" · ");
     elements.pagination.hidden = totalPages <= 1;
-    elements.pageInfo.textContent = `第 ${state.currentPage} / ${totalPages} 页`;
-    elements.pagePrev.disabled = state.currentPage <= 1;
-    elements.pageNext.disabled = state.currentPage >= totalPages;
+    renderPagination(totalPages);
 }
 
 async function loadData() {
