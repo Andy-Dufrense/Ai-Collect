@@ -490,7 +490,19 @@ SOGOU_EXPLICIT_SITES: Final[dict[str, dict[str, str]]] = {
     },
     "MIDI协会": {"name": "MIDI协会", "url": "https://midi.org/"},
     "刘润 AI音乐": {"name": "刘润", "url": "https://www.runliu.com/"},
+    "黑马创业 AI": {
+        "name": "黑马创业",
+        "url": "https://www.iheima.com/",
+    },
     "黑马创业 AI音乐": {
+        "name": "黑马创业",
+        "url": "https://www.iheima.com/",
+    },
+    "黑马创业 音乐科技": {
+        "name": "黑马创业",
+        "url": "https://www.iheima.com/",
+    },
+    "黑马创业 智能硬件": {
         "name": "黑马创业",
         "url": "https://www.iheima.com/",
     },

@@ -35,6 +35,7 @@ from config import (
     HARDWARE_SEARCH_QUERIES,
     RSS_SOURCES,
     SOFTWARE_SEARCH_QUERIES,
+    SOGOU_EXPLICIT_SITES,
     SOGOU_KEYWORD_QUERIES,
     SOGOU_SOURCE_QUERIES,
     SOGOU_WECHAT_QUERIES,
@@ -624,6 +625,23 @@ class NewsFilterTests(unittest.TestCase):
         self.assertIn("VST3", SOFTWARE_SEARCH_QUERIES)
         self.assertIn("音频接口", HARDWARE_SEARCH_QUERIES)
         self.assertIn("智能吉他", HARDWARE_SEARCH_QUERIES)
+
+    def test_black_horse_uses_multiple_relevant_source_queries(self) -> None:
+        black_horse_queries = {
+            query
+            for query, config in SOGOU_EXPLICIT_SITES.items()
+            if config["name"] == "黑马创业"
+        }
+        self.assertEqual(
+            black_horse_queries,
+            {
+                "黑马创业 AI",
+                "黑马创业 AI音乐",
+                "黑马创业 音乐科技",
+                "黑马创业 智能硬件",
+            },
+        )
+        self.assertTrue(black_horse_queries.issubset(SOGOU_WECHAT_QUERIES))
 
     def test_hardware_specific_sources_are_configured(self) -> None:
         names = {source["source"] for source in RSS_SOURCES}
