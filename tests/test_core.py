@@ -673,6 +673,10 @@ class NewsFilterTests(unittest.TestCase):
                 SOGOU_WECHAT_QUERIES.index(keyword),
                 SOGOU_MAX_QUERIES_PER_RUN,
             )
+        self.assertEqual(
+            SOGOU_WECHAT_QUERIES[:len(SOGOU_PRIORITY_KEYWORD_QUERIES)],
+            SOGOU_PRIORITY_KEYWORD_QUERIES,
+        )
 
     def test_hardware_specific_sources_are_configured(self) -> None:
         names = {source["source"] for source in RSS_SOURCES}

@@ -178,30 +178,7 @@ BUILT_IN_RSS_SOURCES: Final[tuple[dict[str, str], ...]] = (
         "focus": "hardware",
     },
     # 百度只使用宽泛方向词发现内容。具体硬件/软件分类在入库后完成。
-    {
-        "source": "百度新闻：小旭音乐",
-        "url": (
-            "https://news.baidu.com/ns?word=%E5%B0%8F%E6%97%AD%E9%9F%B3%E4%B9%90"
-            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
-        ),
-        "category": "音乐科技",
-    },
-    {
-        "source": "百度新闻：Soomal",
-        "url": (
-            "https://news.baidu.com/ns?word=Soomal"
-            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
-        ),
-        "category": "音乐科技",
-    },
-    {
-        "source": "百度新闻：音频应用",
-        "url": (
-            "https://news.baidu.com/ns?word=%E9%9F%B3%E9%A2%91%E5%BA%94%E7%94%A8"
-            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
-        ),
-        "category": "音乐科技",
-    },
+    # 智能乐器相关查询优先执行，避免前面的来源触发验证后整批被跳过。
     {
         "source": "百度新闻：智能乐器",
         "url": (
@@ -225,6 +202,30 @@ BUILT_IN_RSS_SOURCES: Final[tuple[dict[str, str], ...]] = (
             "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
         ),
         "category": "国内科技",
+    },
+    {
+        "source": "百度新闻：小旭音乐",
+        "url": (
+            "https://news.baidu.com/ns?word=%E5%B0%8F%E6%97%AD%E9%9F%B3%E4%B9%90"
+            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
+        ),
+        "category": "音乐科技",
+    },
+    {
+        "source": "百度新闻：Soomal",
+        "url": (
+            "https://news.baidu.com/ns?word=Soomal"
+            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
+        ),
+        "category": "音乐科技",
+    },
+    {
+        "source": "百度新闻：音频应用",
+        "url": (
+            "https://news.baidu.com/ns?word=%E9%9F%B3%E9%A2%91%E5%BA%94%E7%94%A8"
+            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
+        ),
+        "category": "音乐科技",
     },
     {
         "source": "百度新闻：AI音乐",
@@ -682,8 +683,8 @@ SOGOU_KEYWORD_QUERIES: Final[tuple[str, ...]] = tuple(
 SOGOU_WECHAT_QUERIES: Final[tuple[str, ...]] = (
     tuple(
         dict.fromkeys(
-            SOGOU_BASE_SOURCE_QUERIES
-            + SOGOU_PRIORITY_KEYWORD_QUERIES
+            SOGOU_PRIORITY_KEYWORD_QUERIES
+            + SOGOU_BASE_SOURCE_QUERIES
             + SOGOU_SOURCE_QUERIES
             + SOGOU_KEYWORD_QUERIES
         )
