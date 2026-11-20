@@ -295,7 +295,10 @@ function renderRow(item, rank) {
     const sourceCell = document.createElement("span");
     sourceCell.className = "feed-source";
     const category = createCell("category-tag", item.category || "RSS");
-    const sourceName = createCell("source-name", item.source || "未知来源");
+    const sourceName = createCell(
+      "source-name",
+      item.display_source || item.source || "未知来源",
+    );
     sourceCell.append(category, sourceName);
 
     const publishTime = document.createElement("time");

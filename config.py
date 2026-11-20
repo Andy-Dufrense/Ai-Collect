@@ -179,6 +179,30 @@ BUILT_IN_RSS_SOURCES: Final[tuple[dict[str, str], ...]] = (
     },
     # 百度只使用宽泛方向词发现内容。具体硬件/软件分类在入库后完成。
     {
+        "source": "百度新闻：小旭音乐",
+        "url": (
+            "https://news.baidu.com/ns?word=%E5%B0%8F%E6%97%AD%E9%9F%B3%E4%B9%90"
+            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
+        ),
+        "category": "音乐科技",
+    },
+    {
+        "source": "百度新闻：Soomal",
+        "url": (
+            "https://news.baidu.com/ns?word=Soomal"
+            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
+        ),
+        "category": "音乐科技",
+    },
+    {
+        "source": "百度新闻：音频应用",
+        "url": (
+            "https://news.baidu.com/ns?word=%E9%9F%B3%E9%A2%91%E5%BA%94%E7%94%A8"
+            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
+        ),
+        "category": "音乐科技",
+    },
+    {
         "source": "百度新闻：AI音乐",
         "url": (
             "https://news.baidu.com/ns?word=AI%E9%9F%B3%E4%B9%90"
@@ -266,6 +290,83 @@ BUILT_IN_RSS_SOURCES: Final[tuple[dict[str, str], ...]] = (
 )
 
 
+# 没有稳定 RSS 的站点逐个接入直接文章列表抓取。先确认一个站点的真实
+# 链接、标题和发布时间都稳定，再扩展下一条。
+DIRECT_SITE_SOURCES: Final[tuple[dict[str, str], ...]] = (
+    {
+        "source": "Midifan",
+        "url": "https://www.midifan.com/",
+        "category": "音乐科技",
+        "provider": "html",
+        "max_pages": "8",
+        "max_articles": "200",
+        "browser_fallback": "1",
+    },
+    {
+        "source": "键盘中国",
+        "url": "https://www.cnkeyboard.com/",
+        "category": "音乐科技",
+        "provider": "html",
+        "max_pages": "8",
+        "max_articles": "200",
+        "browser_fallback": "1",
+    },
+    {
+        "source": "小旭音乐",
+        "url": "http://www.xiaoxumusic.com/",
+        "category": "音乐科技",
+        "provider": "html",
+        "max_pages": "8",
+        "max_articles": "200",
+        "browser_fallback": "1",
+    },
+    {
+        "source": "Soomal",
+        "url": "http://www.soomal.com/",
+        "fallback_urls": "https://soomal.com/,https://www.soomal.com/",
+        "category": "音乐科技",
+        "provider": "html",
+        "max_pages": "8",
+        "max_articles": "200",
+        "browser_fallback": "1",
+    },
+    {
+        "source": "我爱音频网",
+        "url": "https://www.52audio.com/",
+        "category": "音乐科技",
+        "provider": "html",
+        "max_pages": "8",
+        "max_articles": "200",
+    },
+    {
+        "source": "音频应用",
+        "url": "https://www.audiobar.cn/",
+        "fallback_urls": "https://www.audiobar.net/,http://www.audiobar.net/",
+        "category": "音乐科技",
+        "provider": "html",
+        "max_pages": "8",
+        "max_articles": "200",
+    },
+    {
+        "source": "中国电子琴信息网",
+        "url": "https://www.cndzq.com/",
+        "category": "音乐科技",
+        "provider": "html",
+        "max_pages": "8",
+        "max_articles": "200",
+    },
+    {
+        "source": "叉烧网",
+        "url": "https://www.exound.com/",
+        "category": "音乐科技",
+        "provider": "html",
+        "max_pages": "8",
+        "max_articles": "200",
+        "browser_fallback": "1",
+    },
+)
+
+
 # 通过 GitHub Releases API 跟踪开源 AI 音频项目的功能与版本更新。
 GITHUB_RELEASE_REPOSITORIES: Final[tuple[str, ...]] = (
     "facebookresearch/audiocraft",
@@ -349,7 +450,9 @@ def _load_watched_article_urls() -> tuple[dict[str, str], ...]:
 
 # 内置稳定来源 + 用户授权的公众号/自定义 RSS。
 RSS_SOURCES: Final[tuple[dict[str, str], ...]] = (
-    BUILT_IN_RSS_SOURCES + _load_custom_rss_sources()
+    BUILT_IN_RSS_SOURCES
+    + DIRECT_SITE_SOURCES
+    + _load_custom_rss_sources()
 )
 WATCHED_ARTICLE_URLS: Final[tuple[dict[str, str], ...]] = (
     _load_watched_article_urls()
@@ -924,7 +1027,7 @@ SOGOU_MAX_QUERIES_PER_RUN: Final[int] = max(
     1,
     int(_read_positive_number("SOGOU_MAX_QUERIES_PER_RUN", 32)),
 )
-SOGOU_FILTER_VERSION: Final[str] = "3"
+SOGOU_FILTER_VERSION: Final[str] = "4"
 
 # 百度新闻搜索页会在一批连续请求后触发安全验证。最多保留 9 个宽方向
 # 查询，并在查询之间等待 3 秒；相同查询组合 6 小时内不重复请求。

@@ -141,7 +141,7 @@
                         </a>
                         <span class="feed-source">
                             <span class="category-tag">{{ item.category }}</span>
-                            <span class="source-name">{{ item.source }}</span>
+                            <span class="source-name">{{ item.display_source or item.source }}</span>
                         </span>
                         <time class="publish-time"
                               datetime="{{ item.publish_time or '' }}">

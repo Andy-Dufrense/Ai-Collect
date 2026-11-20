@@ -130,6 +130,7 @@ FOREIGN_MUSIC_TECH_SOURCES = frozenset(
 # 保留 AI 与音乐/音频/硬件有明确联系，或真正涉及模型、API、SDK、开发
 # 工具和开源项目的文章；纯人物观点、监管、安全评论和社会话题会被排除。
 FOREIGN_GENERAL_TECH_SOURCES = frozenset({"techcrunch"})
+AI_COMMENTARY_SOURCES = frozenset({"刘润", "黑马创业"})
 
 # 标题中直接出现这些词，通常意味着文章讲的是可操作的产品、制作技术、
 # 录音硬件或音乐知识，而不是艺人履历。这里故意不放入单独的 music、
@@ -504,19 +505,61 @@ SEARCH_PAGE_NAVIGATION_PATTERN = re.compile(
 COMMON_LOW_VALUE_TITLE_PATTERN = re.compile(
     r"(?:"
     r"股跌|股涨|股价|概念股|投资者|基金|清盘预警|重仓|板块"
-    r"|资本开支|销售额|营收|同比增幅|产能|订单量|代工"
+    r"|资本开支|销售额|营收|同比增幅|产能|订单量|代工|出口额|进口额"
+    r"|月活|日活|用户数|用户超|创始人.{0,12}[：:]"
     r"|机构预测|下修|市场共识|市场情绪|券商|研报"
     r"|汇丰|投行|分析师|偏科生死局|逻辑大变天|狂欢过后"
     r"|市场已经在赌|榜第一易主|热榜|榜单|销量排行"
     r"|留学|申请截止|招生|报考|考试培训|培训课程|报名入口"
     r"|研讨会|音乐周|活动预告|论坛|峰会|大会|沙龙|大赛|比赛"
-    r"|融资|估值|财报|收购|裁员|卸任|离职|上任|任命|接任|辞职"
+    r"|师资培训|体验会|预告|演出系列|实践音乐会|说明书|使用手册"
+    r"|双十一|狂欢盛宴|省钱攻略"
+    r"|个人资料|Powered by Discuz|求.{0,30}伴奏"
+    r"|网站还在坚持|组织了一场大型演出|求购/定制"
+    r"|早报|日报|晚报|周报|乐展"
+    r"|岗位需求|学院开展|主题活动|体验活动|体验馆|场地介绍"
+    r"|长期收歌|收歌|博士名额|名额空缺|赶尽杀绝|副业|赚钱|变现"
+    r"|token\s*成本|token\s*账单|省\d+%"
+    r"|融资|估值|财报|收购|裁员|卸任|离任|离职|上任|任命|接任|辞职"
     r"|诉讼|起诉|和解|版权纠纷|巡演|演唱会|音乐节|致敬|纪念"
     r"|去世|逝世|八卦|绯闻|恋情|代言"
     r"|\b(?:funding|valuation|earnings|acquisition|acquires|"
     r"layoffs?|resign|resigns|resigned|chairman|ceo|executive|"
     r"lawsuit|sues|sued|settlement|grammy|tour|concert|"
     r"obituary|dies)\b"
+    r")",
+    re.IGNORECASE,
+)
+
+# “AI编程”是宽泛发现词，搜索结果里常混入工具选择、学习教程、
+# 职业观点和排行榜。这里只保留模型、API、SDK、算力、代码生成、
+# 框架或工具发布更新等能反映技术进展的内容。
+AI_PROGRAMMING_TECHNICAL_PATTERN = re.compile(
+    r"(?:"
+    r"模型发布|新版.{0,12}模型|新模型|模型升级|模型更新"
+    r"|发布.{0,12}模型|更新.{0,12}模型"
+    r"|API|SDK|算力|推理|训练|芯片|代码生成"
+    r"|(?:工具|框架|插件|平台|IDE|Agent|智能体).{0,12}"
+    r"(?:发布|更新|升级|新增|开源)"
+    r"|(?:发布|更新|升级|新增).{0,12}"
+    r"(?:工具|框架|插件|平台|IDE|Agent|智能体|功能)"
+    r"|开源.{0,12}(?:项目|框架|工具|插件|模型)"
+    r"|\b(?:model release|new model|api|sdk|inference|compute|"
+    r"code generation|developer tool|framework)\b"
+    r")",
+    re.IGNORECASE,
+)
+
+AI_PROGRAMMING_SEARCH_SOURCE = "搜狗搜索 · ai编程"
+
+# 综合科技媒体中的普通消费硬件和商业观点不属于“AI + 音乐”。即使
+# 标题带有 AI，智能眼镜、智能显示器、网购生意和安防检测也不能仅凭
+# “智能”二字进入资讯库。
+GENERAL_TECH_OFF_TOPIC_PATTERN = re.compile(
+    r"(?:"
+    r"网购|电商|生意|安防|探测仪|智能显示器|智能眼镜"
+    r"|\b(?:online shopping|e-commerce|surveillance|smart glasses|"
+    r"smart display)\b"
     r")",
     re.IGNORECASE,
 )
@@ -566,15 +609,59 @@ UNRELATED_DOMAIN_TITLE_PATTERN = re.compile(
     r"(?:"
     r"手机|平板电脑|MagicOS|鸿蒙|安卓系统|系统升级|内测机型"
     r"|地质|地矿|矿产|勘探|医疗|健康|疾病|临床|药物"
+    r"|抑郁症|自闭症|呼吸系统|咳嗽|结核病"
     r"|自动驾驶|汽车芯片|电商|商品素材"
     r"|\b(?:smartphone|phone launch|geology|mining|medical|clinical|"
-    r"healthcare|automotive|e-commerce)\b"
+    r"healthcare|automotive|e-commerce|depression|autism|respiratory|"
+    r"tuberculosis|cough)\b"
+    r")",
+    re.IGNORECASE,
+)
+
+# 医疗、临床和疾病论文即使使用语音或音频算法，也不属于本系统的产品、
+# 创作工具或音乐技术情报。该规则不依赖标题是否顺带出现“音乐”二字。
+MEDICAL_OR_CLINICAL_TITLE_PATTERN = re.compile(
+    r"(?:"
+    r"抑郁|自闭|呼吸系统|咳嗽|结核|疾病|临床|医疗|药物|健康筛查"
+    r"|\b(?:depression|autism|respiratory|tuberculosis|cough|disease|"
+    r"clinical|medical|health screening)\b"
+    r")",
+    re.IGNORECASE,
+)
+
+# arXiv 的 cs.SD 包含语音、医疗、生物声学和水声通信等论文，不等于
+# “AI + 音乐”。这些偏物理或医学的主题只在标题同时明确涉及音乐制作、
+# 乐器、演唱或音乐生成时才保留。
+ARXIV_OFF_TOPIC_PATTERN = re.compile(
+    r"(?:"
+    r"underwater acoustic|whale|bioacoustic|seismic|geolog|earthquake"
+    r"|speaker age|automatic speech recognition|\bASR\b"
+    r"|classroom recording|fraud detection|vocal corpora|speech corpora"
+    r"|telephone negotiation|spoken semantic parsing"
+    r"|text-to-speech|speaker control"
+    r"|水下声学|鲸|生物声学|地震|地质|说话人年龄|自动语音识别"
+    r"|课堂录音|欺诈检测"
+    r")",
+    re.IGNORECASE,
+)
+
+ARXIV_AI_MUSIC_PATTERN = re.compile(
+    r"(?:"
+    r"music|musical|singing|singer|song|vocal|chord|midi|piano"
+    r"|instrument|music generation|generative audio|music video"
+    r"|music model|symbolic music|source separation|stem separation"
+    r"|audio production|audio editing|mixing|mastering|sound design"
+    r"|synthesizer|synthesis|vocoder|neural codec|text-to-music"
+    r"|speech-to-song|singing voice|instrument separation"
+    r"|音乐|演唱|歌声|歌曲|旋律|和弦|编曲|作曲|midi|钢琴|乐器"
+    r"|音乐生成|音乐模型|符号音乐|音乐视频|人声分离|分轨|混音|母带"
+    r"|声音设计|合成器|声码器|音频生成|生成式音频"
     r")",
     re.IGNORECASE,
 )
 
 GENERAL_TECH_ROUNDUP_PATTERN = re.compile(
-    r"(?:早报|日报|晚报|周报|盘点|汇总|一览|速览|简报)",
+    r"(?:早报|早知道|日报|晚报|周报|盘点|汇总|一览|速览|简报)",
     re.IGNORECASE,
 )
 
@@ -850,13 +937,45 @@ def is_relevant_news(
         or AI_JOB_GOSSIP_PATTERN.search(title_text)
     ):
         return False
-    title_music_direction = bool(
+    if MEDICAL_OR_CLINICAL_TITLE_PATTERN.search(title_text):
+        return False
+    title_music_context = bool(
         find_matched_keywords(title_text, MUSIC_KEYWORDS)
+    )
+    title_ai_context = bool(
+        find_matched_keywords(title_text, AI_KEYWORDS)
+    )
+    if (
+        source.casefold().strip() == AI_PROGRAMMING_SEARCH_SOURCE
+        and not title_music_context
+        and not AI_PROGRAMMING_TECHNICAL_PATTERN.search(title_text)
+    ):
+        return False
+    if (
+        category == "搜狗微信"
+        and title_ai_context
+        and "编程" in title_text
+        and not title_music_context
+        and not AI_PROGRAMMING_TECHNICAL_PATTERN.search(title_text)
+    ):
+        return False
+    title_music_direction = bool(
+        title_music_context
         or find_matched_keywords(title_text, MUSIC_HARDWARE_KEYWORDS)
     )
     if (
         UNRELATED_DOMAIN_TITLE_PATTERN.search(title_text)
         and not title_music_direction
+    ):
+        return False
+    if (
+        source.casefold().strip() == "arxiv sound"
+        and ARXIV_OFF_TOPIC_PATTERN.search(title_text)
+    ):
+        return False
+    if (
+        source.casefold().strip() == "arxiv sound"
+        and not ARXIV_AI_MUSIC_PATTERN.search(title_text)
     ):
         return False
     if (
@@ -874,6 +993,12 @@ def is_relevant_news(
         )
     if _matches_source(source, FOREIGN_GENERAL_TECH_SOURCES):
         return _foreign_general_tech_is_relevant(title_text)
+    if (
+        _matches_source(source, AI_COMMENTARY_SOURCES)
+        and not has_music_keyword
+        and not has_hardware_signal
+    ):
+        return False
     if source.startswith("百度新闻：") and SEARCH_PAGE_NAVIGATION_PATTERN.search(
         title_text
     ):
@@ -909,6 +1034,11 @@ def is_relevant_news(
     if category in {"国内科技", "国际科技"}:
         if GENERAL_TECH_ROUNDUP_PATTERN.search(title_text):
             return False
+        if (
+            GENERAL_TECH_OFF_TOPIC_PATTERN.search(title_text)
+            and not title_music_context
+        ):
+            return False
         if find_matched_keywords(
             title_text,
             GENERAL_BUSINESS_ENTERTAINMENT_NOISE,
@@ -932,9 +1062,7 @@ def is_relevant_news(
         return title_music or title_strong_ai_hardware or (
             title_ai
             and (
-                title_ai_hardware
-                or title_hardware
-                or title_concrete_software
+                title_concrete_software
             )
         )
 
@@ -954,9 +1082,10 @@ def is_relevant_news(
         has_real_direction = (
             title_ai and (title_music or title_hardware)
         ) or (
-            title_music and (title_hardware or title_software)
+            title_music and (title_hardware or title_concrete_software)
         ) or (
-            title_ai and title_concrete_software
+            title_ai
+            and AI_PROGRAMMING_TECHNICAL_PATTERN.search(title_text)
         ) or (
             title_music_hardware
         )

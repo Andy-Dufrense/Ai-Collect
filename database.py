@@ -42,6 +42,11 @@ from news_filter import (
     is_promotional_title,
     is_relevant_news,
 )
+from sogou_wechat import (
+    build_stable_sogou_fallback_link,
+    canonicalize_wechat_article_link,
+    is_temporary_article_link,
+)
 from text_utils import repair_mojibake
 
 
@@ -153,6 +158,8 @@ def initialize_database() -> None:
             "ON news(is_hardware, is_software, publish_time DESC)"
         )
         _repair_existing_mojibake_news(connection)
+        _repair_temporary_news_links(connection)
+        _purge_invalid_direct_site_pages(connection)
         _purge_existing_github_spam(connection)
         _purge_low_value_github_discovery_news(connection)
         _purge_existing_promotional_news(connection)
@@ -207,6 +214,50 @@ def _repair_existing_mojibake_news(
             """,
             updates,
         )
+
+
+def _repair_temporary_news_links(connection: sqlite3.Connection) -> None:
+    """
+    把旧数据库中的临时搜狗/微信链接替换为稳定入口。
+
+    有 __biz、mid、idx、sn 的微信链接会转换为永久文章地址；没有这些
+    参数时，使用完整标题生成可按标题重新定位的搜狗搜索链接。
+    """
+
+    rows = connection.execute(
+        "SELECT id, title, link FROM news"
+    ).fetchall()
+    updates: list[tuple[str, int]] = []
+    for row in rows:
+        link = str(row["link"] or "")
+        if not is_temporary_article_link(link):
+            continue
+        canonical_link = canonicalize_wechat_article_link(link)
+        stable_link = canonical_link or build_stable_sogou_fallback_link(
+            str(row["title"] or ""),
+            anchor=f"news-{int(row['id'])}",
+        )
+        updates.append((stable_link, int(row["id"])))
+    if updates:
+        connection.executemany(
+            "UPDATE news SET link = ? WHERE id = ?",
+            updates,
+        )
+
+
+def _purge_invalid_direct_site_pages(
+    connection: sqlite3.Connection,
+) -> None:
+    """删除论坛用户主页、版块目录等不是资讯文章的页面。"""
+
+    connection.execute(
+        """
+        DELETE FROM news
+        WHERE link LIKE '%space-username-%'
+           OR link LIKE '%space-uid-%'
+           OR link LIKE '%/forum-%'
+        """
+    )
 
 
 def _purge_existing_github_spam(connection: sqlite3.Connection) -> None:

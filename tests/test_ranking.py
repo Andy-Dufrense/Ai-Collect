@@ -77,6 +77,27 @@ class RankingTests(unittest.TestCase):
         self.assertEqual(len(ranked), 1)
         self.assertEqual(ranked[0]["title"], "AI 音乐工具发布")
 
+    def test_keyword_search_matches_source_name(self) -> None:
+        items = [
+            make_item(
+                "新款合成器发布",
+                publish_time="2026-11-17T08:00:00+00:00",
+                source="Midifan",
+            ),
+            make_item(
+                "另一条资讯",
+                publish_time="2026-11-17T07:00:00+00:00",
+                source="其他来源",
+            ),
+        ]
+        ranked = filter_and_rank_news(
+            items,
+            days=3,
+            keyword="Midifan",
+            now=self.now,
+        )
+        self.assertEqual([item["source"] for item in ranked], ["Midifan"])
+
     def test_semicolon_separates_terms_but_space_does_not(self) -> None:
         items = [
             make_item(

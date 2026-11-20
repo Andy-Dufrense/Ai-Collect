@@ -33,6 +33,7 @@ from database import (
 from backfill import backfill_history
 from ranking import filter_and_rank_news
 from rss_fetcher import fetch_and_save_news
+from source_utils import display_source_name
 from translation import translate_items
 
 
@@ -89,6 +90,10 @@ def export_static_site(
         existing_items=existing_items,
         enabled=translate_titles,
     )
+    for item in ranked_items:
+        item["display_source"] = display_source_name(
+            str(item.get("source", ""))
+        )
     latest_run = get_latest_fetch_run()
     payload: dict[str, Any] = {
         "generated_at": now.isoformat(timespec="seconds"),

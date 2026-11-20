@@ -9,7 +9,11 @@ from bs4 import BeautifulSoup
 from sogou_wechat import (
     _extract_publish_time,
     _resolve_sogou_article_link,
+    build_stable_sogou_fallback_link,
     build_sogou_url,
+    canonicalize_wechat_article_link,
+    fetch_sogou_query,
+    is_temporary_article_link,
     parse_sogou_results,
 )
 
@@ -55,9 +59,28 @@ class SogouWechatTests(unittest.TestCase):
         self.assertIn("ft=2026-11-01", url)
         self.assertIn("et=2026-11-01", url)
 
+    def test_preset_time_range_is_included(self) -> None:
+        url = build_sogou_url("Midifan", time_range="3")
+        self.assertIn("tsn=3", url)
+        self.assertNotIn("ft=", url)
+
     def test_second_page_parameter_is_included(self) -> None:
         url = build_sogou_url("Suno", page=2)
         self.assertIn("page=2", url)
+
+    def test_temporary_links_are_normalized_to_stable_links(self) -> None:
+        signed_link = (
+            "https://mp.weixin.qq.com/s?__biz=abc&mid=123&idx=1&sn=def"
+            "&src=11&timestamp=1795130000&signature=temporary"
+        )
+        self.assertTrue(is_temporary_article_link(signed_link))
+        self.assertEqual(
+            canonicalize_wechat_article_link(signed_link),
+            "https://mp.weixin.qq.com/s?__biz=abc&mid=123&idx=1&sn=def",
+        )
+        fallback = build_stable_sogou_fallback_link("酷狗音乐新功能上线")
+        self.assertIn("query=%E9%85%B7%E7%8B%97", fallback)
+        self.assertNotIn("/link?url=", fallback)
 
     def test_only_dedicated_time_element_is_used(self) -> None:
         node = BeautifulSoup(
@@ -103,6 +126,113 @@ class SogouWechatTests(unittest.TestCase):
             items[0]["source"],
             "Midifan",
         )
+        self.assertEqual(items[0]["category"], "音乐科技")
+
+    def test_explicit_site_keeps_daw_update_without_ai_in_title(self) -> None:
+        html = """
+        <html><body><ul class="news-list"><li>
+          <h3><a href="/link?url=daw">Steinberg updates Cubase with new chord tools</a></h3>
+          <p class="txt-info">A DAW workflow and software update for producers.</p>
+          <a class="account">Midifan</a>
+          <span class="s2"><script>document.write(timeConvert('1763280000'))</script></span>
+        </li></ul></body></html>
+        """
+        items, total, matched = parse_sogou_results(
+            html,
+            page_url="https://weixin.sogou.com/weixin?type=2&query=Midifan",
+            query="Midifan",
+        )
+        self.assertEqual(total, 1)
+        self.assertEqual(matched, 1)
+        self.assertEqual(items[0]["source"], "Midifan")
+        self.assertEqual(items[0]["category"], "音乐科技")
+
+    def test_explicit_site_fetch_success_path_is_usable(self) -> None:
+        """完整站点查询路径不能只在解析函数测试中通过。"""
+
+        html = """
+        <html><body><ul class="news-list"><li>
+          <h3><a href="https://mp.weixin.qq.com/s?__biz=midifan&amp;mid=123&amp;idx=1&amp;sn=abc">Steinberg updates Cubase with new chord tools</a></h3>
+          <p class="txt-info">A DAW workflow and software update for producers.</p>
+          <a class="account">Midifan</a>
+          <span class="s2"><script>document.write(timeConvert('1763280000'))</script></span>
+        </li></ul></body></html>
+        """
+
+        class FakeResponse:
+            def __init__(self, text: str, url: str) -> None:
+                self.text = text
+                self.url = url
+                self.status_code = 200
+                self.history = []
+                self.encoding = "utf-8"
+                self.apparent_encoding = "utf-8"
+
+            def raise_for_status(self) -> None:
+                return None
+
+        class FakeSession:
+            def __init__(self) -> None:
+                self.headers: dict[str, str] = {}
+
+            def get(self, url: str, **_kwargs: object) -> FakeResponse:
+                if url == "https://weixin.sogou.com/":
+                    return FakeResponse("<html></html>", url)
+                return FakeResponse(html, url)
+
+        items, total, matched = fetch_sogou_query(
+            FakeSession(),  # type: ignore[arg-type]
+            "Midifan 2026",
+            source_query="Midifan",
+            pages=1,
+        )
+        self.assertEqual(total, 1)
+        self.assertEqual(matched, 1)
+        self.assertEqual(items[0]["source"], "Midifan")
+        self.assertEqual(items[0]["category"], "音乐科技")
+        self.assertEqual(
+            items[0]["link"],
+            "https://mp.weixin.qq.com/s?__biz=midifan&mid=123&idx=1&sn=abc",
+        )
+
+    def test_explicit_site_drops_results_older_than_requested_window(
+        self,
+    ) -> None:
+        html = """
+        <html><body><ul class="news-list"><li>
+          <h3><a href="https://mp.weixin.qq.com/s?__biz=old">Steinberg updates Cubase with new chord tools</a></h3>
+          <p class="txt-info">A DAW workflow and software update for producers.</p>
+          <a class="account">Midifan</a>
+          <span class="s2"><script>document.write(timeConvert('1577836800'))</script></span>
+        </li></ul></body></html>
+        """
+
+        class FakeResponse:
+            url = "https://weixin.sogou.com/weixin?type=2&query=Midifan"
+            text = html
+            status_code = 200
+            history: list[object] = []
+            encoding = "utf-8"
+            apparent_encoding = "utf-8"
+
+            def raise_for_status(self) -> None:
+                return None
+
+        class FakeSession:
+            headers: dict[str, str] = {}
+
+            def get(self, _url: str, **_kwargs: object) -> FakeResponse:
+                return FakeResponse()
+
+        items, total, matched = fetch_sogou_query(
+            FakeSession(),  # type: ignore[arg-type]
+            "Midifan",
+            minimum_publish_date="2026-09-21",
+            pages=1,
+        )
+        self.assertEqual(total, 1)
+        self.assertEqual(matched, 0)
+        self.assertEqual(items, [])
 
     def test_keyword_query_uses_generic_fallback(self) -> None:
         html = SOGOU_HTML.replace(

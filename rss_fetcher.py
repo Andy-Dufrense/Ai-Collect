@@ -24,8 +24,8 @@ from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
 from pathlib import Path
 from typing import Any
-from urllib.parse import urljoin, urlparse
-from zoneinfo import ZoneInfo
+from urllib.parse import urljoin, urlparse, urlsplit
+from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 import feedparser
 import requests
@@ -37,8 +37,10 @@ from config import (
     BAIDU_BLOCK_COOLDOWN_SECONDS,
     BAIDU_QUERY_DELAY_SECONDS,
     DATA_DIR,
+    DISPLAY_TIME_ZONE,
     GITHUB_DISCOVERY_ENABLED,
     GITHUB_RELEASE_REPOSITORIES,
+    NEWS_RETENTION_DAYS,
     PROXY_AUTO_DISCOVERY,
     PROXY_DISCOVERY_PORTS,
     PROXY_PROBE_TIMEOUT_SECONDS,
@@ -51,6 +53,7 @@ from config import (
     SOGOU_MIN_INTERVAL_SECONDS,
     SOGOU_MAX_QUERIES_PER_RUN,
     SOGOU_FILTER_VERSION,
+    SOGOU_EXPLICIT_SITES,
     SOGOU_QUERY_DELAY_SECONDS,
     SOGOU_WECHAT_QUERIES,
     WATCHED_ARTICLE_URLS,
@@ -67,12 +70,34 @@ from database import (
 from news_filter import is_relevant_news
 from github_discovery import fetch_github_discovery
 from github_releases import fetch_github_releases
+from direct_site import fetch_direct_site
 from sogou_wechat import fetch_sogou_query
 from wechat_article import fetch_wechat_article
 
 
 LOGGER = logging.getLogger(__name__)
 MAX_SUMMARY_LENGTH = 500
+
+SOURCE_ALLOWED_DOMAINS: dict[str, tuple[str, ...]] = {
+    "百度新闻：小旭音乐": ("xiaoxumusic.com",),
+    "百度新闻：Soomal": ("soomal.com",),
+    "百度新闻：音频应用": ("audiobar.cn", "audiobar.net"),
+}
+
+
+def _is_allowed_source_result(source: str, link: str) -> bool:
+    """限制具名站点的搜索结果只能来自该站点官方域名。"""
+
+    allowed_domains = SOURCE_ALLOWED_DOMAINS.get(source)
+    if not allowed_domains:
+        return True
+    hostname = (urlsplit(link).hostname or "").casefold()
+    if not hostname:
+        return False
+    return any(
+        hostname == domain or hostname.endswith(f".{domain}")
+        for domain in allowed_domains
+    )
 
 
 class FetchAlreadyRunningError(RuntimeError):
@@ -402,11 +427,92 @@ def _next_sogou_query_batch() -> tuple[str, ...]:
         queries[(cursor + offset) % len(queries)]
         for offset in range(SOGOU_MAX_QUERIES_PER_RUN)
     )
-    next_cursor = (
-        cursor + SOGOU_MAX_QUERIES_PER_RUN
-    ) % len(queries)
-    set_meta_value("sogou_batch_cursor", str(next_cursor))
     return selected
+
+
+def _advance_sogou_batch_cursor(
+    batch_start: int,
+    processed_queries: int,
+) -> None:
+    """
+    只推进实际处理过的搜索词。
+
+    以前批次开始前就一次前进 32 个位置；如果第 7 个关键词触发验证码，
+    后面 25 个关键词会被直接跳过。现在只在请求结束后按实际尝试数推进，
+    下一次从触发限制的位置继续。
+    """
+
+    if not SOGOU_WECHAT_QUERIES or processed_queries <= 0:
+        return
+    next_cursor = (
+        max(0, batch_start) + processed_queries
+    ) % len(SOGOU_WECHAT_QUERIES)
+    set_meta_value("sogou_batch_cursor", str(next_cursor))
+
+
+def _sogou_query_date_bounds(
+    query: str,
+    now: datetime,
+) -> tuple[str, str]:
+    """
+    明确站点查询只看保留期内的文章。
+
+    搜狗按站点名搜索时默认按相关度排序，容易优先返回多年前的经典文章。
+    如果不加时间窗，即使解析成功，文章也会在入库后立即被保留期清理。
+    """
+
+    try:
+        display_zone = ZoneInfo(DISPLAY_TIME_ZONE)
+    except ZoneInfoNotFoundError:
+        display_zone = ZoneInfo("Asia/Shanghai")
+    today = now.astimezone(display_zone).date()
+    start_date = today - timedelta(days=max(1, NEWS_RETENTION_DAYS) - 1)
+    return start_date.isoformat(), today.isoformat()
+
+
+def _incremental_source_since(
+    source_name: str,
+    fetched_at: datetime,
+) -> str:
+    """
+    计算一个直接站点的增量抓取起点。
+
+    优先使用该来源上次成功抓取时间；来源从未成功时使用最近一次全局
+    成功时间；再没有记录时回退到数据库保留期。向前多留一天用于处理
+    重复和延迟索引，重复文章会在数据库去重。
+    """
+
+    source_meta_key = f"source_last_success::{source_name}"
+    raw_since = (
+        get_meta_value(source_meta_key)
+        or get_meta_value("last_fetch_at")
+    )
+    if raw_since:
+        try:
+            since = datetime.fromisoformat(raw_since.replace("Z", "+00:00"))
+            if since.tzinfo is None:
+                since = since.replace(tzinfo=timezone.utc)
+            since = since.astimezone(timezone.utc) - timedelta(days=1)
+            return since.isoformat(timespec="seconds")
+        except ValueError:
+            pass
+    return (
+        fetched_at - timedelta(days=NEWS_RETENTION_DAYS)
+    ).isoformat(timespec="seconds")
+
+
+def _direct_source_urls(source_config: dict[str, str]) -> tuple[str, ...]:
+    """返回直接站点的主入口和备用入口。"""
+
+    urls = [str(source_config.get("url", "")).strip()]
+    urls.extend(
+        item.strip()
+        for item in str(
+            source_config.get("fallback_urls", "")
+        ).split(",")
+        if item.strip()
+    )
+    return tuple(dict.fromkeys(url for url in urls if url))
 
 
 def _clean_html(raw_html: str) -> str:
@@ -847,6 +953,7 @@ def fetch_one_source(
         if (
             not title
             or not link
+            or not _is_allowed_source_result(source, link)
             or not is_relevant_news(
                 title,
                 summary,
@@ -931,6 +1038,7 @@ def _fetch_and_save_news_unlocked() -> FetchResult:
     total_entries = 0
     sogou_queries: tuple[str, ...] = ()
     sogou_attempted = 0
+    sogou_batch_start = 0
     github_attempted = 0
     github_discovery_attempted = 0
     watched_attempted = 0
@@ -948,6 +1056,7 @@ def _fetch_and_save_news_unlocked() -> FetchResult:
             source_name = source_config["source"]
             source_url = source_config["url"]
             source_category = source_config.get("category", "RSS")
+            source_provider = source_config.get("provider", "rss")
             if source_name.startswith("百度新闻："):
                 blocked_until = get_meta_value("baidu_blocked_until")
                 if blocked_until:
@@ -977,13 +1086,71 @@ def _fetch_and_save_news_unlocked() -> FetchResult:
             for route in routes:
                 LOGGER.info("%s 尝试通过%s抓取", source_name, route.label)
                 try:
-                    items, source_total, _source_matched = fetch_one_source(
-                        route.session,
-                        source_name,
-                        source_url,
-                        source_category,
-                        source_focus=source_config.get("focus", ""),
-                    )
+                    if source_provider == "html":
+                        try:
+                            max_pages = max(
+                                1,
+                                int(source_config.get("max_pages", "1")),
+                            )
+                        except ValueError:
+                            max_pages = 1
+                        try:
+                            max_articles = max(
+                                1,
+                                int(source_config.get("max_articles", "12")),
+                            )
+                        except ValueError:
+                            max_articles = 12
+                        last_direct_error: Exception | None = None
+                        for direct_url in _direct_source_urls(source_config):
+                            try:
+                                (
+                                    items,
+                                    source_total,
+                                    source_matched,
+                                ) = fetch_direct_site(
+                                    route.session,
+                                    source_name,
+                                    direct_url,
+                                    source_category,
+                                    max_pages=max_pages,
+                                    max_articles=max_articles,
+                                    browser_fallback=source_config.get(
+                                        "browser_fallback",
+                                        "",
+                                    )
+                                    in {"1", "true", "yes", "on"},
+                                    since=_incremental_source_since(
+                                        source_name,
+                                        fetched_at,
+                                    ),
+                                )
+                                break
+                            except (
+                                requests.RequestException,
+                                ValueError,
+                                TypeError,
+                                AttributeError,
+                            ) as exc:
+                                last_direct_error = exc
+                                LOGGER.warning(
+                                    "%s 入口 %s 失败：%s",
+                                    source_name,
+                                    direct_url,
+                                    exc,
+                                )
+                        else:
+                            if last_direct_error is not None:
+                                raise last_direct_error
+                            raise ValueError("没有可用的站点入口")
+                    else:
+                        items, source_total, _source_matched = fetch_one_source(
+                            route.session,
+                            source_name,
+                            source_url,
+                            source_category,
+                            source_focus=source_config.get("focus", ""),
+                        )
                 except requests.RequestException as exc:
                     route_error = f"{route.label} 失败：{exc}"
                     LOGGER.warning("%s：%s", source_name, route_error)
@@ -1008,7 +1175,16 @@ def _fetch_and_save_news_unlocked() -> FetchResult:
                     break
                 else:
                     source_loaded = True
-                    LOGGER.info("%s 通过%s抓取成功", source_name, route.label)
+                    if source_provider == "html":
+                        LOGGER.info(
+                            "%s 通过%s抓取成功，候选 %d 条，有效 %d 条",
+                            source_name,
+                            route.label,
+                            source_total,
+                            source_matched,
+                        )
+                    else:
+                        LOGGER.info("%s 通过%s抓取成功", source_name, route.label)
                     break
 
             if not source_loaded:
@@ -1021,6 +1197,13 @@ def _fetch_and_save_news_unlocked() -> FetchResult:
                 continue
 
             successful_sources += 1
+            if source_provider != "html" or source_total > 0:
+                # 页面完全没有候选通常意味着站点结构变化、风控或渲染失败，
+                # 此时不能推进增量时间，否则下一轮会跳过这段空档。
+                set_meta_value(
+                    f"source_last_success::{source_name}",
+                    fetched_at.isoformat(timespec="seconds"),
+                )
             total_entries += source_total
             all_matched_items.extend(items)
 
@@ -1151,6 +1334,12 @@ def _fetch_and_save_news_unlocked() -> FetchResult:
 
         # 搜狗微信单独限频：每 30 分钟最多刷新一次，查询之间等待 2 秒。
         if _sogou_queries_due(fetched_at):
+            try:
+                sogou_batch_start = int(
+                    get_meta_value("sogou_batch_cursor") or "0"
+                )
+            except ValueError:
+                sogou_batch_start = 0
             sogou_queries = _next_sogou_query_batch()
             LOGGER.info(
                 "本轮搜狗关键词批次：%d/%d",
@@ -1178,9 +1367,25 @@ def _fetch_and_save_news_unlocked() -> FetchResult:
             for route in routes:
                 LOGGER.info("%s 尝试通过%s抓取", source_name, route.label)
                 try:
-                    items, source_total, _source_matched = fetch_sogou_query(
-                        route.session,
+                    start_date, _end_date = _sogou_query_date_bounds(
                         query,
+                        fetched_at,
+                    )
+                    search_query = query
+                    if query in SOGOU_EXPLICIT_SITES:
+                        try:
+                            display_zone = ZoneInfo(DISPLAY_TIME_ZONE)
+                        except ZoneInfoNotFoundError:
+                            display_zone = ZoneInfo("Asia/Shanghai")
+                        search_query = (
+                            f"{query} "
+                            f"{fetched_at.astimezone(display_zone).year}"
+                        )
+                    items, source_total, source_matched = fetch_sogou_query(
+                        route.session,
+                        search_query,
+                        source_query=query,
+                        minimum_publish_date=start_date,
                     )
                 except requests.RequestException as exc:
                     route_error = f"{route.label} 失败：{exc}"
@@ -1206,11 +1411,30 @@ def _fetch_and_save_news_unlocked() -> FetchResult:
                 else:
                     source_loaded = True
                     LOGGER.info(
-                        "%s 通过%s抓取成功，结果 %d 条",
+                        "%s 通过%s抓取成功，页面候选 %d 条，方向相关 %d 条",
                         source_name,
                         route.label,
                         source_total,
+                        source_matched,
                     )
+                    if source_total and not source_matched:
+                        LOGGER.warning(
+                            "%s 页面有候选，但没有条目通过当前方向过滤",
+                            source_name,
+                        )
+                    if source_matched:
+                        item_dates = sorted(
+                            str(item.get("publish_time") or "")[:10]
+                            for item in items
+                            if item.get("publish_time")
+                        )
+                        if item_dates:
+                            LOGGER.info(
+                                "%s 相关资讯时间范围：%s 至 %s",
+                                source_name,
+                                item_dates[0],
+                                item_dates[-1],
+                            )
                     break
 
             if not source_loaded:
@@ -1231,6 +1455,11 @@ def _fetch_and_save_news_unlocked() -> FetchResult:
             all_matched_items.extend(items)
             if query_index < len(sogou_queries) - 1:
                 time.sleep(SOGOU_QUERY_DELAY_SECONDS)
+        if sogou_queries:
+            _advance_sogou_batch_cursor(
+                sogou_batch_start,
+                sogou_attempted,
+            )
     finally:
         for route in routes:
             route.session.close()

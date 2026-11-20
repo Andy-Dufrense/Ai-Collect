@@ -311,7 +311,7 @@ def filter_and_rank_news(
 
         searchable = (
             f"{item.get('title', '')} {item.get('title_zh', '')} "
-            f"{item.get('summary', '')}".casefold()
+            f"{item.get('summary', '')} {item.get('source', '')}".casefold()
         )
         if (
             selected_kind == "hardware"

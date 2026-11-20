@@ -13,7 +13,7 @@ import html
 import re
 import time
 from datetime import datetime, timezone
-from urllib.parse import quote_plus, urljoin
+from urllib.parse import parse_qs, quote_plus, urlencode, urljoin, urlsplit
 
 import requests
 from bs4 import BeautifulSoup
@@ -38,6 +38,50 @@ def make_sogou_dedupe_key(title: str) -> str:
     stable_title = re.sub(r"\s+", "", title).casefold()
     digest = hashlib.sha256(stable_title.encode("utf-8")).hexdigest()
     return f"sogou:{digest}"
+
+
+def canonicalize_wechat_article_link(link: str) -> str | None:
+    """把带临期签名的微信链接转换为永久文章参数。"""
+
+    parsed = urlsplit(link)
+    if parsed.hostname != "mp.weixin.qq.com":
+        return None
+    query = parse_qs(parsed.query)
+    required_keys = ("__biz", "mid", "idx", "sn")
+    if not all(query.get(key) for key in required_keys):
+        return None
+    permanent_query = urlencode(
+        [(key, query[key][0]) for key in required_keys],
+        safe="*",
+    )
+    return f"https://mp.weixin.qq.com/s?{permanent_query}"
+
+
+def build_stable_sogou_fallback_link(
+    title: str,
+    anchor: str = "",
+) -> str:
+    """用完整标题生成不会携带临时 token 的重新定位链接。"""
+
+    digest = hashlib.sha256(title.encode("utf-8")).hexdigest()[:12]
+    fragment = anchor.strip() or f"news-{digest}"
+    return (
+        "https://weixin.sogou.com/weixin?type=2&query="
+        f"{quote_plus(title)}#{fragment}"
+    )
+
+
+def is_temporary_article_link(link: str) -> bool:
+    """判断链接是否依赖搜狗 token 或微信短期分享签名。"""
+
+    parsed = urlsplit(link)
+    if parsed.hostname == "weixin.sogou.com" and parsed.path == "/link":
+        return True
+    if parsed.hostname == "mp.weixin.qq.com":
+        query = parse_qs(parsed.query)
+        if query.get("timestamp") or query.get("signature"):
+            return True
+    return False
 
 
 def _extract_publish_time(node: object) -> str | None:
@@ -101,6 +145,7 @@ def build_sogou_url(
     *,
     start_date: str = "",
     end_date: str = "",
+    time_range: str = "",
     page: int = 1,
 ) -> str:
     """构造普通关键词搜索 URL，不包含登录凭据或规避验证参数。"""
@@ -109,7 +154,10 @@ def build_sogou_url(
         f"{SOGOU_SEARCH_URL}?type=2&query={quote_plus(query)}"
         "&ie=utf8&s_from=input&_sug_=n&_sug_type_="
     )
-    if start_date and end_date:
+    if time_range:
+        # tsn=1/2/3/4 分别对应一天、一周、一月和一年。
+        url += f"&tsn={time_range}"
+    elif start_date and end_date:
         # tsn=5 是搜狗公开页面的自定义日期范围模式。
         url += f"&tsn=5&ft={start_date}&et={end_date}"
     if page > 1:
@@ -133,6 +181,9 @@ def parse_sogou_results(
     soup = BeautifulSoup(html, "html.parser")
     result_nodes = soup.select("ul.news-list li")
     matched_items: list[dict[str, str | None]] = []
+    explicit_site = SOGOU_EXPLICIT_SITES.get(query)
+    item_category = "音乐科技" if explicit_site else "搜狗微信"
+    item_source = explicit_site["name"] if explicit_site else ""
 
     for node in result_nodes:
         title_link = node.select_one("h3 a")
@@ -150,7 +201,12 @@ def parse_sogou_results(
             if summary_node is not None
             else ""
         )
-        if not is_relevant_news(title, summary, category="搜狗微信"):
+        if not is_relevant_news(
+            title,
+            summary,
+            category=item_category,
+            source=item_source,
+        ):
             continue
 
         # 没有可靠发布时间的旧结果不进入每日排行。
@@ -167,9 +223,8 @@ def parse_sogou_results(
             else ""
         )
         if not account:
-            site = SOGOU_EXPLICIT_SITES.get(query)
-            if site:
-                account = site["name"]
+            if explicit_site:
+                account = explicit_site["name"]
             else:
                 account = "搜狗搜索"
         link = urljoin(page_url, relative_link)
@@ -180,7 +235,7 @@ def parse_sogou_results(
                 "source": account or "搜狗微信",
                 "publish_time": publish_time,
                 "summary": summary,
-                "category": "搜狗微信",
+                "category": item_category,
                 "dedupe_key": make_sogou_dedupe_key(title),
             }
         )
@@ -236,8 +291,11 @@ def fetch_sogou_query(
     session: requests.Session,
     query: str,
     *,
+    source_query: str = "",
     start_date: str = "",
     end_date: str = "",
+    time_range: str = "",
+    minimum_publish_date: str = "",
     pages: int = SOGOU_PAGES_PER_QUERY,
 ) -> tuple[list[dict[str, str | None]], int, int]:
     """
@@ -263,11 +321,14 @@ def fetch_sogou_query(
     all_items: list[dict[str, str | None]] = []
     total_entries = 0
     page_count = max(1, pages)
+    result_query = source_query or query
+    explicit_site = SOGOU_EXPLICIT_SITES.get(result_query)
     for page in range(1, page_count + 1):
         url = build_sogou_url(
             query,
             start_date=start_date,
             end_date=end_date,
+            time_range=time_range,
             page=page,
         )
         try:
@@ -290,8 +351,15 @@ def fetch_sogou_query(
         page_items, page_total, _page_matched = parse_sogou_results(
             response.text,
             page_url=response.url,
-            query=query,
+            query=result_query,
         )
+        cutoff_date = minimum_publish_date or start_date
+        if cutoff_date:
+            page_items = [
+                item
+                for item in page_items
+                if str(item.get("publish_time") or "")[:10] >= cutoff_date
+            ]
         if page_total == 0:
             if page == 1:
                 SOGOU_DEBUG_PATH.parent.mkdir(parents=True, exist_ok=True)
@@ -314,7 +382,6 @@ def fetch_sogou_query(
             break
 
         total_entries += page_total
-        explicit_site = SOGOU_EXPLICIT_SITES.get(query)
         resolved_links = 0
         for item in page_items:
             if explicit_site:
@@ -327,17 +394,14 @@ def fetch_sogou_query(
                     original_link,
                 )
                 resolved_links += 1
-            if (
-                explicit_site
-                and "weixin.sogou.com/link" in str(item.get("link") or "")
-            ):
-                # 无法解析真实文章地址时，链接回退到明确站点首页，
-                # 用标题哈希作为片段保持每条资讯的链接唯一。
-                title_digest = hashlib.sha256(
-                    str(item.get("title") or "").encode("utf-8")
-                ).hexdigest()[:12]
-                item["link"] = (
-                    f"{explicit_site['url']}#article-{title_digest}"
+            current_link = str(item.get("link") or "")
+            canonical_link = canonicalize_wechat_article_link(current_link)
+            if canonical_link:
+                item["link"] = canonical_link
+            elif is_temporary_article_link(current_link):
+                # 临时 token 无法长期使用，但完整标题可以用于以后重新定位。
+                item["link"] = build_stable_sogou_fallback_link(
+                    str(item.get("title") or "")
                 )
         all_items.extend(page_items)
         if page_total < 10 or page >= page_count:

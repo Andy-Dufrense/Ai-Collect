@@ -21,8 +21,13 @@ import requests
 from config import get_fetch_lock_path
 from rss_fetcher import (
     FetchAlreadyRunningError,
+    _advance_sogou_batch_cursor,
+    _incremental_source_since,
+    _direct_source_urls,
+    _is_allowed_source_result,
     _next_sogou_query_batch,
     _parse_feed_content,
+    _sogou_query_date_bounds,
     _sogou_queries_due,
     fetch_and_save_news,
     fetch_one_source,
@@ -182,8 +187,101 @@ class RssFetcherTests(unittest.TestCase):
 
                 initialize_database()
                 self.assertEqual(_next_sogou_query_batch(), ("a", "b"))
+                _advance_sogou_batch_cursor(0, 2)
                 self.assertEqual(_next_sogou_query_batch(), ("c", "d"))
+                _advance_sogou_batch_cursor(2, 2)
                 self.assertEqual(_next_sogou_query_batch(), ("e", "a"))
+
+    def test_sogou_cursor_keeps_unprocessed_queries_after_partial_batch(
+        self,
+    ) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            database_path = Path(temp_dir) / "sogou-partial.db"
+            with (
+                patch.dict(os.environ, {"NEWS_DB_PATH": str(database_path)}),
+                patch(
+                    "rss_fetcher.SOGOU_WECHAT_QUERIES",
+                    ("a", "b", "c", "d", "e"),
+                ),
+                patch(
+                    "rss_fetcher.SOGOU_MAX_QUERIES_PER_RUN",
+                    2,
+                ),
+            ):
+                from database import initialize_database
+
+                initialize_database()
+                batch = _next_sogou_query_batch()
+                self.assertEqual(batch, ("a", "b"))
+                # 如果只完成了第一个词，下一次不能跳到 c。
+                _advance_sogou_batch_cursor(0, 1)
+                self.assertEqual(_next_sogou_query_batch(), ("b", "c"))
+
+    def test_sogou_queries_use_retention_date_window(self) -> None:
+        now = datetime(2026, 11, 19, 10, 0, tzinfo=timezone.utc)
+        with patch("rss_fetcher.NEWS_RETENTION_DAYS", 60):
+            start_date, end_date = _sogou_query_date_bounds(
+                "Midifan",
+                now,
+            )
+            self.assertEqual(start_date, "2026-09-21")
+            self.assertEqual(end_date, "2026-11-19")
+            self.assertEqual(
+                _sogou_query_date_bounds("AI音乐", now),
+                ("2026-09-21", "2026-11-19"),
+            )
+
+    def test_direct_source_uses_last_successful_fetch_time(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            database_path = Path(temp_dir) / "source-since.db"
+            with patch.dict(os.environ, {"NEWS_DB_PATH": str(database_path)}):
+                from database import initialize_database
+
+                initialize_database()
+                set_meta_value(
+                    "source_last_success::Midifan",
+                    "2026-11-20T00:00:00+00:00",
+                )
+                self.assertEqual(
+                    _incremental_source_since(
+                        "Midifan",
+                        datetime(2026, 11, 20, 12, 0, tzinfo=timezone.utc),
+                    ),
+                    "2026-11-19T00:00:00+00:00",
+                )
+
+    def test_direct_source_url_fallbacks_are_deduplicated(self) -> None:
+        self.assertEqual(
+            _direct_source_urls(
+                {
+                    "url": "https://example.com/",
+                    "fallback_urls": (
+                        "https://example.net/, https://example.com/"
+                    ),
+                }
+            ),
+            ("https://example.com/", "https://example.net/"),
+        )
+
+    def test_named_site_search_only_accepts_official_domains(self) -> None:
+        self.assertTrue(
+            _is_allowed_source_result(
+                "百度新闻：Soomal",
+                "https://www.soomal.com/doc/10100000001.htm",
+            )
+        )
+        self.assertFalse(
+            _is_allowed_source_result(
+                "百度新闻：Soomal",
+                "https://baijiahao.baidu.com/s?id=123",
+            )
+        )
+        self.assertTrue(
+            _is_allowed_source_result(
+                "百度新闻：音频应用",
+                "http://www.audiobar.net/thread-1-1-1.html",
+            )
+        )
 
     def test_baidu_security_page_is_reported_explicitly(self) -> None:
         entries, error = _parse_feed_content(
@@ -361,6 +459,7 @@ class RssFetcherTests(unittest.TestCase):
             def fake_sogou(
                 _session: object,
                 query: str,
+                **_kwargs: object,
             ):
                 queries.append(query)
                 if query == "没有结果的词":

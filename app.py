@@ -28,6 +28,7 @@ from database import (
     initialize_database,
 )
 from ranking import filter_and_rank_news
+from source_utils import display_source_name
 from scheduler_utils import next_estimated_refresh
 from translation import is_title_displayable
 
@@ -147,6 +148,10 @@ def index():
         )
     # 英文文章必须完成标题翻译后才展示，翻译失败时保留在数据库中等待重试。
     ranked_news = [item for item in ranked_news if is_title_displayable(item)]
+    for item in ranked_news:
+        item["display_source"] = display_source_name(
+            str(item.get("source", ""))
+        )
     # 隐藏未翻译英文后必须重新编号。否则原始第 1 条被隐藏时，页面会从
     # 2 开始，后续也可能出现 2、4、6 这类不连续序号。
     for rank, item in enumerate(ranked_news, start=1):

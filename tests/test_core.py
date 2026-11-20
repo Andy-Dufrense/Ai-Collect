@@ -31,6 +31,7 @@ from database import (
 from news_filter import is_promotional_title, is_relevant_news
 from config import (
     AI_MUSIC_SEARCH_QUERIES,
+    DIRECT_SITE_SOURCES,
     HARDWARE_SEARCH_QUERIES,
     RSS_SOURCES,
     SOFTWARE_SEARCH_QUERIES,
@@ -636,6 +637,19 @@ class NewsFilterTests(unittest.TestCase):
         ):
             self.assertIn(name, names)
 
+    def test_direct_site_sources_are_configured(self) -> None:
+        names = {source["source"] for source in DIRECT_SITE_SOURCES}
+        for name in (
+            "Midifan",
+            "键盘中国",
+            "小旭音乐",
+            "Soomal",
+            "我爱音频网",
+            "音频应用",
+            "中国电子琴信息网",
+        ):
+            self.assertIn(name, names)
+
     def test_software_specific_sources_are_configured(self) -> None:
         names = {source["source"] for source in RSS_SOURCES}
         for name in (
@@ -704,6 +718,123 @@ class NewsFilterTests(unittest.TestCase):
             )
         )
 
+    def test_ai_programming_query_keeps_only_material_technical_progress(
+        self,
+    ) -> None:
+        """通用的 AI 编程教程、观点和榜单不应挤占资讯首页。"""
+
+        rejected_titles = (
+            "AI 编程靠不靠谱，卡在这套验证闭环上",
+            "64.5%的 AI编程账单，付给了没通过的任务",
+            "保姆级教程：快速入门智谱 AI 编程 ZCode",
+            "2026全球 AI 编程模型实力榜，国模跻身前三",
+            "别再吹 AI编程了，本质是结对编程",
+            "邀请函|郑州西亚斯学院 AI编程实验班",
+            "AI 自动编程的未来：我们应该相信更聪明的大模型",
+            "AI编程工具横向对比：Cursor、Copilot、Claude Code",
+        )
+        for title in rejected_titles:
+            with self.subTest(title=title):
+                self.assertFalse(
+                    is_relevant_news(
+                        title,
+                        "AI 编程搜索结果。",
+                        category="搜狗微信",
+                        source="搜狗搜索 · AI编程",
+                    )
+                )
+
+        accepted_titles = (
+            "OpenAI 发布新版编程模型，代码生成能力提升",
+            "新版 AI 编程 API 开放，推理算力同步提升",
+            "AI 编程框架更新，新增 Agent 工作流",
+        )
+        for title in accepted_titles:
+            with self.subTest(title=title):
+                self.assertTrue(
+                    is_relevant_news(
+                        title,
+                        "面向开发者的模型、API 或工具更新。",
+                        category="搜狗微信",
+                        source="搜狗搜索 · AI编程",
+                    )
+                )
+
+        self.assertTrue(
+            is_relevant_news(
+                "AI 编程工具新增音频插件开发接口",
+                "面向音乐软件开发者。",
+                category="搜狗微信",
+                source="搜狗搜索 · AI编程",
+            )
+        )
+
+        for title in (
+            "AI编程工具太费Token？这个开源插件帮你省99%",
+            "用这个开源工具，AI编程 Token成本至少砍掉两成",
+        ):
+            with self.subTest(title=title):
+                self.assertFalse(
+                    is_relevant_news(
+                        title,
+                        "AI 编程成本省钱的工具推广内容。",
+                        category="搜狗微信",
+                        source="搜狗微信",
+                    )
+                )
+
+        for title in (
+            "Orca：给 AI 编程助手安排一个工作台",
+            "AI编程工具怎么选：从终端、IDE 到 Agent",
+            "AI 编程进入全栈时代",
+            "邀请函|郑州西亚斯学院 AI编程实验班",
+        ):
+            with self.subTest(title=title):
+                self.assertFalse(
+                    is_relevant_news(
+                        title,
+                        "关键词搜索得到的泛 AI 编程内容。",
+                        category="搜狗微信",
+                        source="搜狗微信",
+                    )
+                )
+
+    def test_general_tech_keeps_ai_compute_but_rejects_consumer_ai_hardware(
+        self,
+    ) -> None:
+        """综合科技来源只保留音乐/音频或关键 AI 算力硬件。"""
+
+        for title in (
+            "LG 公布 Smart Monitor Swing AI 可移动智能显示器",
+            "韩国安防企业竞相开发智能眼镜探测仪",
+            "三星 AI 眼镜 Intelligent Eyewear 预售售罄",
+            "微软纳德拉：AI 代劳网购将重塑互联网生意",
+        ):
+            with self.subTest(title=title):
+                self.assertFalse(
+                    is_relevant_news(
+                        title,
+                        "普通消费硬件或商业观点。",
+                        category="国内科技",
+                        source="IT之家24小时榜",
+                    )
+                )
+
+        for title in (
+            "英伟达发布新一代 AI 芯片，推理算力提升",
+            "国产 AI 服务器搭载自研 NPU 处理器",
+            "新一代端侧 AI 推理芯片进入量产",
+        ):
+            with self.subTest(title=title):
+                self.assertTrue(
+                    is_relevant_news(
+                        title,
+                        "面向 AI 训练、推理和算力基础设施。",
+                        category="国内科技",
+                        source="IT之家24小时榜",
+                    )
+                )
+
     def test_common_quality_rules_apply_across_all_sources(self) -> None:
         """金融、就业、培训和娱乐八卦规则不能只针对某一个来源。"""
 
@@ -732,6 +863,202 @@ class NewsFilterTests(unittest.TestCase):
                             source=source,
                         )
                     )
+
+    def test_residual_false_positives_are_rejected(self) -> None:
+        """上一轮实际抓取中出现的低频噪声也应被统一规则排除。"""
+
+        rejected_cases = (
+            (
+                "AIGC 岗位需求仍在增长,但“会用工具”已不再是入行通行证",
+                "搜狗微信",
+                "搜狗微信",
+            ),
+            (
+                "音乐舞蹈学院开展舞绘芳华主题体验活动",
+                "搜狗微信",
+                "搜狗搜索 · 音乐",
+            ),
+            (
+                "乐器在线体验馆--乐器体验馆",
+                "搜狗微信",
+                "搜狗微信",
+            ),
+            (
+                "ON AIR 音乐现场|场地介绍更新",
+                "搜狗微信",
+                "搜狗微信",
+            ),
+            (
+                "被AI赶尽杀绝的独立音乐人",
+                "音乐科技",
+                "钛媒体",
+            ),
+            (
+                "韩国成为全球第四个出口额破万亿美元国家，AI芯片旺盛需求助力",
+                "国内科技",
+                "百度新闻：AI芯片",
+            ),
+            (
+                "长期收歌 | 玩转AI音乐",
+                "搜狗微信",
+                "搜狗微信",
+            ),
+            (
+                "【陕西·西安】2026 吟飞电子管风琴中级师资培训暨体验会",
+                "音乐科技",
+                "键盘中国",
+            ),
+            (
+                "Roland FP-40 电钢琴中文说明书",
+                "音乐科技",
+                "中国电子琴信息网",
+            ),
+            (
+                "叮咚音频双十一狂欢盛宴，省钱攻略就这四个字",
+                "音乐科技",
+                "Midifan",
+            ),
+            (
+                "金甬快讯|金甬震志律所 AI 工作流分享会圆满举办",
+                "搜狗微信",
+                "搜狗搜索",
+            ),
+            (
+                "聚变产业观察 | AI 社交的下一站,不在屏幕里",
+                "音乐科技",
+                "黑马创业",
+            ),
+            (
+                "woshileihui的个人资料 - 键盘中国 - Powered by Discuz!",
+                "音乐科技",
+                "键盘中国",
+            ),
+            (
+                "求 蔡依林《说爱你》Pa300 伴奏/STY",
+                "音乐科技",
+                "键盘中国",
+            ),
+            (
+                "键盘中国，网站还在坚持，不容易",
+                "音乐科技",
+                "键盘中国",
+            ),
+            (
+                "今年又组织了一场大型演出",
+                "音乐科技",
+                "键盘中国",
+            ),
+            (
+                "求购/定制 后弦《下完这场雨》",
+                "音乐科技",
+                "键盘中国",
+            ),
+        )
+        for title, category, source in rejected_cases:
+            with self.subTest(title=title):
+                self.assertFalse(
+                    is_relevant_news(
+                        title,
+                        "搜索摘要或活动说明。",
+                        category=category,
+                        source=source,
+                    )
+                )
+
+    def test_event_description_alone_does_not_reject_relevant_music_content(
+        self,
+    ) -> None:
+        self.assertTrue(
+            is_relevant_news(
+                "2026 AI 乐器与智能音频展会圆满举办",
+                "展会集中展示 AI 合成器、智能吉他和 MIDI 控制器新品。",
+                category="音乐科技",
+                source="Midifan",
+            )
+        )
+
+    def test_arxiv_keeps_music_research_but_rejects_medical_and_physics(
+        self,
+    ) -> None:
+        """arXiv 声音分类不能把医学、水声和评测噪声当作 AI 音乐。"""
+
+        for title in (
+            (
+                "SIGMA: speaker isolation and multimodal depression severity "
+                "assessment through clinical interviews"
+            ),
+            (
+                "Exploring speaker-aware interaction modeling for children "
+                "with autism spectrum disorder"
+            ),
+            (
+                "RespCCT: compact convolutional transformers for respiratory "
+                "disease classification"
+            ),
+            (
+                "Why machine-learning cough models fail: cross-dataset "
+                "evaluation for tuberculosis screening"
+            ),
+            (
+                "Diffusion-based surrogate models for time-varying underwater "
+                "acoustic channels"
+            ),
+            (
+                "Deep-sea voices: the acoustic blueprint of sperm whale codas"
+            ),
+            (
+                "Music of the Deep: an acoustic blueprint of sperm whale "
+                "codas"
+            ),
+            (
+                "Structure across voices: comparing acoustic events across "
+                "four vocal corpora"
+            ),
+            (
+                "21 codec: decoder-side speaker control for text-to-speech "
+                "conversion"
+            ),
+            (
+                "Text-only adapted speech LLM robustness for spoken semantic "
+                "parsing"
+            ),
+            (
+                "Practical evaluation of autonomous systems in the acoustic "
+                "domain"
+            ),
+        ):
+            with self.subTest(title=title):
+                self.assertFalse(
+                    is_relevant_news(
+                        title,
+                        "Speech and acoustic research paper.",
+                        category="AI音频研究",
+                        source="arXiv Sound",
+                    )
+                )
+
+        for title in (
+            "Harmonic circuits: chord progressions in symbolic music models",
+            (
+                "AutoMV: an automatic multi-agent system for music video "
+                "generation"
+            ),
+            "ProSing: zero-shot fine-grained singing technique transfer",
+            (
+                "High-fidelity binarized neural vocoder for singing voice "
+                "synthesis"
+            ),
+            "SPDMX: large open dry audio from symbolic music",
+        ):
+            with self.subTest(title=title):
+                self.assertTrue(
+                    is_relevant_news(
+                        title,
+                        "AI music and audio production research.",
+                        category="AI音频研究",
+                        source="arXiv Sound",
+                    )
+                )
 
     def test_technical_ai_programming_is_kept_across_main_sources(self) -> None:
         """新模型、编程工具和算力提升不受职业八卦规则影响。"""
@@ -785,6 +1112,54 @@ class DatabaseTests(unittest.TestCase):
         self.assertEqual(first_count, 1)
         self.assertEqual(second_count, 0)
         self.assertEqual(get_news_count(), 1)
+
+    def test_initialization_replaces_expired_temporary_links(self) -> None:
+        fetched_at = datetime(2026, 11, 20, 1, 0, tzinfo=timezone.utc)
+        save_news_items(
+            [
+                {
+                    "title": "酷狗音乐发布 AI 混音新功能",
+                    "link": (
+                        "https://weixin.sogou.com/link?url=temporary"
+                        "&token=expired"
+                    ),
+                    "source": "搜狗搜索",
+                    "publish_time": "2026-11-20T00:30:00+00:00",
+                    "summary": "音乐软件功能更新",
+                    "category": "搜狗微信",
+                }
+            ],
+            fetched_at,
+        )
+        initialize_database()
+        items = get_all_news()
+        self.assertEqual(len(items), 1)
+        self.assertIn(
+            "weixin.sogou.com/weixin?type=2&query=",
+            str(items[0]["link"]),
+        )
+        self.assertNotIn("/link?url=", str(items[0]["link"]))
+
+    def test_initialization_removes_forum_profile_pages(self) -> None:
+        fetched_at = datetime(2026, 11, 20, 1, 0, tzinfo=timezone.utc)
+        save_news_items(
+            [
+                {
+                    "title": "example_user",
+                    "link": (
+                        "https://www.cnkeyboard.com/bbs/"
+                        "space-username-example_user.html"
+                    ),
+                    "source": "键盘中国",
+                    "publish_time": "2026-11-20T00:30:00+00:00",
+                    "summary": "电子键盘论坛用户主页",
+                    "category": "音乐科技",
+                }
+            ],
+            fetched_at,
+        )
+        initialize_database()
+        self.assertEqual(get_news_count(), 0)
 
     def test_news_is_sorted_newest_first(self) -> None:
         fetched_at = datetime(2026, 11, 16, 8, 0, tzinfo=timezone.utc)
