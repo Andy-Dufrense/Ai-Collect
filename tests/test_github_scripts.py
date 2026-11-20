@@ -65,6 +65,8 @@ class GitHubScriptTests(unittest.TestCase):
 
         self.assertIn("timeout-minutes: 90", workflow)
         self.assertIn("python -m unittest discover -s tests -v", workflow)
+        self.assertIn('python-version: "3.14"', workflow)
+        self.assertIn("continue-on-error: true", workflow)
         self.assertIn("for attempt in 1 2 3", workflow)
         self.assertIn("git rebase origin/main", workflow)
 
