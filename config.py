@@ -203,6 +203,30 @@ BUILT_IN_RSS_SOURCES: Final[tuple[dict[str, str], ...]] = (
         "category": "音乐科技",
     },
     {
+        "source": "百度新闻：智能乐器",
+        "url": (
+            "https://news.baidu.com/ns?word=%E6%99%BA%E8%83%BD%E4%B9%90%E5%99%A8"
+            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
+        ),
+        "category": "国内科技",
+    },
+    {
+        "source": "百度新闻：智能吉他",
+        "url": (
+            "https://news.baidu.com/ns?word=%E6%99%BA%E8%83%BD%E5%90%89%E4%BB%96"
+            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
+        ),
+        "category": "国内科技",
+    },
+    {
+        "source": "百度新闻：智能钢琴",
+        "url": (
+            "https://news.baidu.com/ns?word=%E6%99%BA%E8%83%BD%E9%92%A2%E7%90%B4"
+            "&tn=newsrss&sr=0&cl=2&rn=20&ct=0"
+        ),
+        "category": "国内科技",
+    },
+    {
         "source": "百度新闻：AI音乐",
         "url": (
             "https://news.baidu.com/ns?word=AI%E9%9F%B3%E4%B9%90"
@@ -516,6 +540,32 @@ for _topic in SOURCE_DISCOVERY_TOPICS:
         _query = f"{_source_name} {_topic}"
         SOGOU_EXPLICIT_SITES.setdefault(_query, _source_config)
 
+SOGOU_BASE_SOURCE_QUERIES: Final[tuple[str, ...]] = tuple(
+    source_name for source_name, _source_config in _named_sogou_sources
+)
+SOGOU_PRIORITY_KEYWORD_QUERIES: Final[tuple[str, ...]] = (
+    "AI音乐",
+    "AI音频",
+    "智能乐器",
+    "智能吉他",
+    "智能钢琴",
+    "智能硬件",
+    "音频硬件",
+    "MIDI控制器",
+    "MIDI键盘",
+    "合成器",
+    "电子琴",
+    "电钢琴",
+    "音频接口",
+    "声卡",
+    "监听音箱",
+    "音乐软件",
+    "DAW",
+    "AI编曲",
+    "AI作曲",
+    "音乐生成",
+)
+
 SOGOU_SOURCE_QUERIES: Final[tuple[str, ...]] = tuple(
     SOGOU_EXPLICIT_SITES
 )
@@ -630,7 +680,14 @@ SOGOU_KEYWORD_QUERIES: Final[tuple[str, ...]] = tuple(
 )
 
 SOGOU_WECHAT_QUERIES: Final[tuple[str, ...]] = (
-    SOGOU_SOURCE_QUERIES + SOGOU_KEYWORD_QUERIES
+    tuple(
+        dict.fromkeys(
+            SOGOU_BASE_SOURCE_QUERIES
+            + SOGOU_PRIORITY_KEYWORD_QUERIES
+            + SOGOU_SOURCE_QUERIES
+            + SOGOU_KEYWORD_QUERIES
+        )
+    )
 )
 
 # AI 与音乐/乐器关键词采用并集收录；交叉命中会在排行榜中获得额外加权。

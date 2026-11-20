@@ -38,6 +38,8 @@ from config import (
     SOURCE_DISCOVERY_TOPICS,
     SOGOU_EXPLICIT_SITES,
     SOGOU_KEYWORD_QUERIES,
+    SOGOU_MAX_QUERIES_PER_RUN,
+    SOGOU_PRIORITY_KEYWORD_QUERIES,
     SOGOU_SOURCE_QUERIES,
     SOGOU_WECHAT_QUERIES,
 )
@@ -656,6 +658,22 @@ class NewsFilterTests(unittest.TestCase):
         )
         self.assertTrue(black_horse_queries.issubset(SOGOU_WECHAT_QUERIES))
 
+    def test_core_intelligent_instrument_queries_run_each_batch(self) -> None:
+        for keyword in (
+            "AI音乐",
+            "AI音频",
+            "智能乐器",
+            "智能吉他",
+            "智能钢琴",
+            "智能硬件",
+            "音频硬件",
+        ):
+            self.assertIn(keyword, SOGOU_PRIORITY_KEYWORD_QUERIES)
+            self.assertLess(
+                SOGOU_WECHAT_QUERIES.index(keyword),
+                SOGOU_MAX_QUERIES_PER_RUN,
+            )
+
     def test_hardware_specific_sources_are_configured(self) -> None:
         names = {source["source"] for source in RSS_SOURCES}
         for name in (
@@ -665,6 +683,9 @@ class NewsFilterTests(unittest.TestCase):
             "Guitar Player",
             "百度新闻：合成器",
             "百度新闻：AI芯片",
+            "百度新闻：智能乐器",
+            "百度新闻：智能吉他",
+            "百度新闻：智能钢琴",
         ):
             self.assertIn(name, names)
 
