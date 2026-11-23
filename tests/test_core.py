@@ -1221,6 +1221,7 @@ class DatabaseTests(unittest.TestCase):
                         "IK Multimedia 发布 iLoud 监听音箱 "
                         "昨天 16:30 发布 产品介绍"
                     ),
+                    "title_zh": "[--őŇ] IK Multimedia ΣĘ≤ľ iLoud",
                     "category": "音乐科技",
                     "dedupe_key": "organ-summary-title",
                 }
@@ -1236,6 +1237,7 @@ class DatabaseTests(unittest.TestCase):
             get_all_news()[0]["publish_time"],
             "2026-11-22T08:30:00+00:00",
         )
+        self.assertIsNone(get_all_news()[0]["title_zh"])
 
     def test_initialization_replaces_expired_temporary_links(self) -> None:
         fetched_at = datetime(2026, 11, 20, 1, 0, tzinfo=timezone.utc)

@@ -758,6 +758,12 @@ def save_news_items(
                 title_zh = strip_title_category_prefix(
                     repair_mojibake(title_zh)
                 )
+                if is_likely_mojibake(title_zh):
+                    title_zh = None
+            if title_zh and len(re.findall(r"[\u3400-\u9fff]", title)) >= 2:
+                # 原始标题已经是中文时，不使用旧机器翻译字段，避免错误翻译
+                # 覆盖已经修复的原始标题。
+                title_zh = None
             is_hardware, is_software = classify_content_flags(
                 title,
                 summary,

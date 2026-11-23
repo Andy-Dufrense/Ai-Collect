@@ -70,6 +70,29 @@ function cleanDisplayTitle(value) {
     ).trim();
 }
 
+function isSuspiciousTranslatedTitle(value) {
+    const text = String(value || "");
+    return (
+        text.includes("\ufffd")
+        || /[\u0370-\u03ff\u0400-\u04ff]|ő|Ň|Ę|ľ|Σ/.test(text)
+    );
+}
+
+function chooseDisplayTitle(item) {
+    if (!isEnglishTitle(item.title || "")) {
+        return cleanDisplayTitle(item.title) || item.title;
+    }
+    const translated = item.title_zh;
+    if (
+        translated
+        && translated !== "None"
+        && !isSuspiciousTranslatedTitle(translated)
+    ) {
+        return cleanDisplayTitle(translated) || item.title;
+    }
+    return cleanDisplayTitle(item.title) || item.title;
+}
+
 function nextScheduledRefresh() {
     const now = new Date();
     const candidates = [];
@@ -313,10 +336,8 @@ function renderRow(item, rank) {
     titleLink.target = "_blank";
     titleLink.rel = "noopener noreferrer";
     titleLink.title = item.title;
-    const displayTitle = item.title_zh && item.title_zh !== "None"
-        ? item.title_zh
-        : item.title;
-    titleLink.textContent = cleanDisplayTitle(displayTitle) || displayTitle;
+    const displayTitle = chooseDisplayTitle(item);
+    titleLink.textContent = displayTitle;
 
     const sourceCell = document.createElement("span");
     sourceCell.className = "feed-source";

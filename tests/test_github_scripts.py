@@ -57,6 +57,8 @@ class GitHubScriptTests(unittest.TestCase):
         self.assertIn("midnight.getTime() + 23 * 3600000", script)
         self.assertIn("function safeExternalUrl(value)", script)
         self.assertIn("function cleanDisplayTitle(value)", script)
+        self.assertIn("function chooseDisplayTitle(item)", script)
+        self.assertIn("isSuspiciousTranslatedTitle(translated)", script)
         self.assertIn("function itemSearchText(item)", script)
         self.assertIn("item.source ||", script)
         self.assertIn("item.display_source ||", script)
