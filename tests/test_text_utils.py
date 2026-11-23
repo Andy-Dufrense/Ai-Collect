@@ -3,11 +3,13 @@
 from __future__ import annotations
 
 import unittest
+from datetime import datetime, timezone
 
 from text_utils import (
     charset_from_content_type,
     decode_html_content,
     is_likely_mojibake,
+    recover_publish_time_from_summary,
     recover_title_from_summary,
     repair_mojibake,
     strip_title_category_prefix,
@@ -137,6 +139,27 @@ class TextUtilsTests(unittest.TestCase):
                 summary,
             ),
             "IK Multimedia 发布 iLoud Micro Monitor 2 监听音箱",
+        )
+
+    def test_organ_relative_publish_time_uses_beijing_time(self) -> None:
+        fetched_at = datetime(2026, 11, 23, 3, 25, tzinfo=timezone.utc)
+        self.assertEqual(
+            recover_publish_time_from_summary(
+                "中国电子琴信息网",
+                "标题 昨天 13:04 发布 正文",
+                fetched_at,
+                "2026-11-21T00:00:00+00:00",
+            ),
+            "2026-11-22T05:04:00+00:00",
+        )
+        self.assertEqual(
+            recover_publish_time_from_summary(
+                "中国电子琴信息网",
+                "标题 5 天前 16:30 发布 正文",
+                fetched_at,
+                None,
+            ),
+            "2026-11-18T08:30:00+00:00",
         )
 
 

@@ -50,6 +50,7 @@ from sogou_wechat import (
 from source_utils import is_safe_http_url
 from text_utils import (
     is_likely_mojibake,
+    recover_publish_time_from_summary,
     recover_title_from_summary,
     repair_mojibake,
     strip_title_category_prefix,
@@ -720,6 +721,12 @@ def save_news_items(
             )
             if not publish_time or publish_time.casefold() == "none":
                 publish_time = None
+            publish_time = recover_publish_time_from_summary(
+                source,
+                summary,
+                fetched_at_utc,
+                publish_time,
+            )
             if publish_time:
                 try:
                     parsed_publish_time = datetime.fromisoformat(

@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import re
+from datetime import datetime, timedelta, timezone
+from zoneinfo import ZoneInfo
 
 
 # 中文 UTF-8 被误按 MacRoman 或 Windows 编码解码后，通常会出现这些字符。
@@ -31,6 +33,10 @@ _SUMMARY_TITLE_BOUNDARY_PATTERN = re.compile(
     r"\s+(?=(?:\d+\s*(?:分钟|小时|天)前|今天|昨天|前天|"
     r"\d{4}[-年/.]\d{1,2}[-月/.]\d{1,2})"
     r"(?:\s+\d{1,2}:\d{2})?\s+(?:发布|发表))"
+)
+_SUMMARY_RELATIVE_TIME_PATTERN = re.compile(
+    r"\s+(?:(?P<days>\d+)\s*天前|(?P<relative>今天|昨天|前天))"
+    r"\s+(?P<hour>\d{1,2}):(?P<minute>\d{2})\s+(?:发布|发表)"
 )
 _COMMON_CJK = frozenset(
     "的一是了我不人在他有这个上们来到时大地为子中你说生国年着就那和要"
@@ -200,6 +206,47 @@ def recover_title_from_summary(
     ):
         return title
     return strip_title_category_prefix(candidate)
+
+
+def recover_publish_time_from_summary(
+    source: str,
+    summary: str,
+    fetched_at: datetime,
+    publish_time: str | None,
+) -> str | None:
+    """从中国电子琴信息网摘要里的相对时间恢复真实发布时间。"""
+
+    if source != "中国电子琴信息网":
+        return publish_time
+    match = _SUMMARY_RELATIVE_TIME_PATTERN.search(summary)
+    if not match:
+        return publish_time
+    hour = int(match.group("hour"))
+    minute = int(match.group("minute"))
+    if not (0 <= hour <= 23 and 0 <= minute <= 59):
+        return publish_time
+    reference = fetched_at
+    if reference.tzinfo is None:
+        reference = reference.replace(tzinfo=timezone.utc)
+    local_reference = reference.astimezone(ZoneInfo("Asia/Shanghai"))
+    if match.group("days"):
+        days_ago = int(match.group("days"))
+    else:
+        days_ago = {"今天": 0, "昨天": 1, "前天": 2}[
+            str(match.group("relative"))
+        ]
+    target_date = local_reference.date() - timedelta(days=days_ago)
+    local_datetime = datetime(
+        target_date.year,
+        target_date.month,
+        target_date.day,
+        hour,
+        minute,
+        tzinfo=ZoneInfo("Asia/Shanghai"),
+    )
+    return local_datetime.astimezone(timezone.utc).isoformat(
+        timespec="seconds"
+    )
 
 
 def _mojibake_candidate_score(candidate: str) -> int:

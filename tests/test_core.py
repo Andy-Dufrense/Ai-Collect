@@ -1232,6 +1232,10 @@ class DatabaseTests(unittest.TestCase):
             get_all_news()[0]["title"],
             "IK Multimedia 发布 iLoud 监听音箱",
         )
+        self.assertEqual(
+            get_all_news()[0]["publish_time"],
+            "2026-11-22T08:30:00+00:00",
+        )
 
     def test_initialization_replaces_expired_temporary_links(self) -> None:
         fetched_at = datetime(2026, 11, 20, 1, 0, tzinfo=timezone.utc)
