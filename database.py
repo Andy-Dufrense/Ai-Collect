@@ -48,7 +48,7 @@ from sogou_wechat import (
     is_temporary_article_link,
 )
 from source_utils import is_safe_http_url
-from text_utils import repair_mojibake
+from text_utils import is_likely_mojibake, repair_mojibake
 
 
 # link 使用 UNIQUE 唯一索引，从数据库层面保证同一篇资讯不会重复入库。
@@ -159,6 +159,7 @@ def initialize_database() -> None:
             "ON news(is_hardware, is_software, publish_time DESC)"
         )
         _repair_existing_mojibake_news(connection)
+        _purge_unrepairable_mojibake_news(connection)
         _repair_temporary_news_links(connection)
         _purge_unstable_forum_redirect_news(connection)
         _purge_invalid_direct_site_pages(connection)
@@ -216,6 +217,34 @@ def _repair_existing_mojibake_news(
             """,
             updates,
         )
+
+
+def _purge_unrepairable_mojibake_news(
+    connection: sqlite3.Connection,
+) -> None:
+    """删除仍无法可靠还原的已知中文来源乱码记录。"""
+
+    rows = connection.execute(
+        """
+        SELECT id, title, summary
+        FROM news
+        WHERE source = '中国电子琴信息网'
+        """
+    ).fetchall()
+    bad_ids = [
+        int(row["id"])
+        for row in rows
+        if is_likely_mojibake(
+            f"{row['title'] or ''} {row['summary'] or ''}"
+        )
+    ]
+    if not bad_ids:
+        return
+    placeholders = ",".join("?" for _ in bad_ids)
+    connection.execute(
+        f"DELETE FROM news WHERE id IN ({placeholders})",
+        bad_ids,
+    )
 
 
 def _repair_temporary_news_links(connection: sqlite3.Connection) -> None:

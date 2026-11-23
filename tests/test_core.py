@@ -1261,6 +1261,30 @@ class DatabaseTests(unittest.TestCase):
 
         self.assertEqual(get_news_count(), 0)
 
+    def test_initialization_removes_unrepairable_organ_site_mojibake(self) -> None:
+        fetched_at = datetime(2026, 11, 23, 1, 0, tzinfo=timezone.utc)
+        save_news_items(
+            [
+                {
+                    "title": (
+                        "[--őŇ] IK Multimedia ΣĘ≤ľ iLoud "
+                        "Micro Monitor 2 ľŗŐż“ŰŌš"
+                    ),
+                    "link": "https://www.cndzq.com/bbs/thread-1-1-1.html",
+                    "source": "中国电子琴信息网",
+                    "publish_time": "2026-11-21T00:00:00+00:00",
+                    "summary": "监听音箱",
+                    "category": "音乐科技",
+                    "dedupe_key": "broken-organ-encoding",
+                }
+            ],
+            fetched_at,
+        )
+
+        initialize_database()
+
+        self.assertEqual(get_news_count(), 0)
+
     def test_news_is_sorted_newest_first(self) -> None:
         fetched_at = datetime(2026, 11, 16, 8, 0, tzinfo=timezone.utc)
         base = {

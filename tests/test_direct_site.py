@@ -6,6 +6,7 @@ import unittest
 from unittest.mock import patch
 
 from direct_site import (
+    _response_html_text,
     extract_article_publish_time,
     extract_article_title,
     fetch_direct_site,
@@ -41,6 +42,21 @@ PAGE_TWO_HTML = """
 
 
 class DirectSiteTests(unittest.TestCase):
+    def test_response_decoding_uses_gbk_meta_instead_of_apparent_encoding(
+        self,
+    ) -> None:
+        class Response:
+            content = (
+                '<html><head><meta charset="gbk"></head>'
+                "<body>新闻 智能乐器</body></html>"
+            ).encode("gb18030")
+            text = "РВОЕ гЁДЬюкЖч"
+            apparent_encoding = "windows-1251"
+            headers = {"Content-Type": "text/html"}
+
+        self.assertIn("新闻", _response_html_text(Response()))
+        self.assertIn("智能乐器", _response_html_text(Response()))
+
     def test_article_metadata_date_is_extracted(self) -> None:
         html = """
         <html><head>

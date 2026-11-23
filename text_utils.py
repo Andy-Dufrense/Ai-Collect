@@ -9,12 +9,170 @@ import re
 # 这里仅用于快速跳过正常中文和纯英文，真正的修复仍会严格验证结果。
 _MOJIBAKE_HINT = re.compile(r"[‰∏ÄÈ¶ñÊ≠åÂèòÁâÔºÅËãØ∫ÃÂâð]")
 _CJK_PATTERN = re.compile(r"[\u3400-\u9fff]")
+_CYRILLIC_RUN_PATTERN = re.compile(r"[\u0400-\u04ffЃІЇЈЎў·]{2,}")
+_SUSPICIOUS_MOJIBAKE_PATTERN = re.compile(
+    r"[\u0370-\u03ff\u0400-\u04ff]|ő|Ň|Ę|ľ|Σ"
+)
+_META_CHARSET_PATTERN = re.compile(
+    br"<meta[^>]+charset\s*=\s*[\"']?\s*([A-Za-z0-9._-]+)",
+    re.IGNORECASE,
+)
+_XML_ENCODING_PATTERN = re.compile(
+    br"<\?xml[^>]+encoding\s*=\s*[\"']([^\"']+)",
+    re.IGNORECASE,
+)
+_COMMON_CJK = frozenset(
+    "的一是了我不人在他有这个上们来到时大地为子中你说生国年着就那和要"
+    "下以能会对发新片闻资讯布推免费配套编辑监听音音箱设备硬件软件智能"
+    "乐器吉他钢琴合成器模块固件工作站键盘虚拟模拟器用于支持功能更新"
+)
+_DOMAIN_CJK_TERMS = (
+    "新闻",
+    "资讯",
+    "发布",
+    "推出",
+    "免费",
+    "配套",
+    "编辑器",
+    "监听",
+    "音箱",
+    "音频",
+    "工作站",
+    "内置",
+    "模块",
+    "键盘",
+    "虚拟",
+    "模拟",
+    "合成器",
+    "固件",
+)
 
 
 def _cjk_count(text: str) -> int:
     """统计中日韩统一表意文字数量，用于判断修复结果是否更像中文。"""
 
     return len(_CJK_PATTERN.findall(text))
+
+
+def charset_from_content_type(content_type: str) -> str:
+    """从 HTTP Content-Type 中提取明确声明的 charset。"""
+
+    match = re.search(
+        r"charset\s*=\s*[\"']?([A-Za-z0-9._-]+)",
+        str(content_type or ""),
+        re.IGNORECASE,
+    )
+    return match.group(1) if match else ""
+
+
+def _normalize_charset(value: str) -> str:
+    """统一中文网页常见编码别名。"""
+
+    encoding = str(value or "").strip().casefold()
+    if encoding in {"gb2312", "gbk", "x-gbk", "gb_2312-80"}:
+        return "gb18030"
+    if encoding in {"utf8", "utf-8-sig"}:
+        return "utf-8"
+    return encoding
+
+
+def decode_html_content(
+    content: bytes,
+    *,
+    declared_encoding: str = "",
+) -> str:
+    """
+    解码 HTML 响应。
+
+    优先使用响应头和 HTML meta 的明确声明；没有声明时先尝试 UTF-8，
+    再尝试中国大陆网站常见的 GB18030。不能先使用 apparent_encoding，
+    否则 GBK 中文页面可能被误判成 Windows-1251。
+    """
+
+    if not content:
+        return ""
+    declared = _normalize_charset(declared_encoding)
+    meta_match = _META_CHARSET_PATTERN.search(content[:20_000])
+    xml_match = _XML_ENCODING_PATTERN.search(content[:1_000])
+    document_declared = _normalize_charset(
+        meta_match.group(1).decode("ascii", errors="ignore")
+        if meta_match
+        else (
+            xml_match.group(1).decode("ascii", errors="ignore")
+            if xml_match
+            else ""
+        )
+    )
+    candidates: list[str] = []
+    for encoding in (
+        document_declared,
+        "utf-8",
+        "gb18030",
+        "big5",
+        declared,
+        "cp1252",
+    ):
+        if encoding and encoding not in candidates:
+            candidates.append(encoding)
+    for encoding in candidates:
+        try:
+            decoded = content.decode(encoding)
+        except (LookupError, UnicodeDecodeError):
+            continue
+        return decoded.lstrip("\ufeff")
+    return content.decode("utf-8", errors="replace").lstrip("\ufeff")
+
+
+def is_likely_mojibake(text: str) -> bool:
+    """判断文本是否仍包含明显的中文编码错乱字符。"""
+
+    value = str(text or "")
+    if not value:
+        return False
+    if "\ufffd" in value or "锟" in value:
+        return True
+    suspicious_count = len(_SUSPICIOUS_MOJIBAKE_PATTERN.findall(value))
+    return suspicious_count >= 2
+
+
+def _repair_gbk_decoded_as_cp1251(text: str) -> str:
+    """修复 GBK 字节被错误按西里尔编码解码后形成的片段。"""
+
+    def replace(match: re.Match[str]) -> str:
+        fragment = match.group(0)
+        best_candidate = fragment
+        best_score = 0
+        for encoding in (
+            "cp1251",
+            "iso8859_5",
+            "mac_cyrillic",
+            "cp1250",
+            "iso8859_2",
+        ):
+            try:
+                candidate = fragment.encode(encoding).decode("gb18030")
+            except (UnicodeEncodeError, UnicodeDecodeError):
+                continue
+            candidate_cjk = _cjk_count(candidate)
+            compact_length = len(re.sub(r"\s+", "", candidate))
+            if (
+                candidate_cjk < 1
+                or candidate_cjk * 2 < max(1, compact_length)
+            ):
+                continue
+            domain_score = sum(
+                100 for term in _DOMAIN_CJK_TERMS if term in candidate
+            )
+            common_score = sum(
+                2 for char in candidate if char in _COMMON_CJK
+            )
+            score = domain_score + common_score + candidate_cjk
+            if score > best_score:
+                best_candidate = candidate
+                best_score = score
+        return best_candidate
+
+    return _CYRILLIC_RUN_PATTERN.sub(replace, text)
 
 
 def repair_mojibake(text: str) -> str:
@@ -25,7 +183,7 @@ def repair_mojibake(text: str) -> str:
     乱码特征时才替换。这样可以避免误改正常英文、法语重音字母或产品名。
     """
 
-    value = str(text or "")
+    value = _repair_gbk_decoded_as_cp1251(str(text or ""))
     if len(value) < 4 or not _MOJIBAKE_HINT.search(value):
         return value
 

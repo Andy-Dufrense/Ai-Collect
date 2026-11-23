@@ -20,7 +20,11 @@ from bs4 import BeautifulSoup
 
 from config import REQUEST_TIMEOUT_SECONDS
 from news_filter import is_relevant_news
-from text_utils import repair_mojibake
+from text_utils import (
+    charset_from_content_type,
+    decode_html_content,
+    repair_mojibake,
+)
 
 
 MAX_ARTICLE_PROBES = 12
@@ -80,6 +84,31 @@ def _normalize_date(value: str) -> str | None:
     if parsed.tzinfo is None:
         parsed = parsed.replace(tzinfo=timezone.utc)
     return parsed.astimezone(timezone.utc).isoformat(timespec="seconds")
+
+
+def _response_html_text(response: object) -> str:
+    """按响应头、HTML 声明和中文编码顺序解码网页。"""
+
+    content = getattr(response, "content", None)
+    if isinstance(content, bytes):
+        headers = getattr(response, "headers", {}) or {}
+        content_type = headers.get("content-type", "")
+        if not content_type and hasattr(headers, "items"):
+            content_type = next(
+                (
+                    value
+                    for key, value in headers.items()
+                    if str(key).casefold() == "content-type"
+                ),
+                "",
+            )
+        return decode_html_content(
+            content,
+            declared_encoding=charset_from_content_type(
+                str(content_type)
+            ),
+        )
+    return str(getattr(response, "text", "") or "")
 
 
 def _extract_json_ld_date(soup: BeautifulSoup) -> str | None:
@@ -381,8 +410,7 @@ def fetch_direct_site(
         try:
             response = session.get(page_url, timeout=REQUEST_TIMEOUT_SECONDS)
             response.raise_for_status()
-            response.encoding = response.apparent_encoding or response.encoding
-            page_text = response.text
+            page_text = _response_html_text(response)
             effective_page_url = response.url
         except Exception:
             rendered = (
@@ -431,11 +459,7 @@ def fetch_direct_site(
                         timeout=REQUEST_TIMEOUT_SECONDS,
                     )
                     article_response.raise_for_status()
-                    article_response.encoding = (
-                        article_response.apparent_encoding
-                        or article_response.encoding
-                    )
-                    article_text = article_response.text
+                    article_text = _response_html_text(article_response)
                     publish_time = extract_article_publish_time(
                         article_text,
                         allow_unlabelled_fallback=not is_forum_thread,
