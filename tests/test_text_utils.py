@@ -73,6 +73,41 @@ class TextUtilsTests(unittest.TestCase):
         self.assertTrue(is_likely_mojibake(broken))
         self.assertFalse(is_likely_mojibake(repaired))
 
+    def test_real_organ_site_multi_codepage_titles_are_repaired(self) -> None:
+        cases = {
+            (
+                "[ аТЮХ ] j0kerpack ЭЦГі InfeKt-FM1ЃКЗТ Access Virus "
+                "ЕФащФтФЃФтКЯГЩЦїЙЬМў"
+            ): (
+                "[ 新闻 ] j0kerpack 推出 InfeKt-FM1：仿 Access Virus "
+                "的虚拟模拟合成器固件"
+            ),
+            (
+                "[РВОЕ] Korg НЖіц phase8 companion ұајӯЖч"
+                "УлТфЙ«№ЬАнУҰУГ"
+            ): (
+                "[新闻] Korg 推出 phase8 companion "
+                "编辑器与音色管理应用"
+            ),
+            (
+                "[–¬őŇ] IK Multimedia ∑Ę≤ľ iLoud Micro Monitor 2 "
+                "ľŗŐż“ŰŌš"
+            ): (
+                "[新闻] IK Multimedia 发布 iLoud Micro Monitor 2 "
+                "监听音箱"
+            ),
+            (
+                "[–¬őŇ] Nektar ∑Ę≤ľ Impact GX49 Mk3 ”Ž "
+                "GX61 Mk3 ľŁŇŐ"
+            ): (
+                "[新闻] Nektar 发布 Impact GX49 Mk3 与 "
+                "GX61 Mk3 键盘"
+            ),
+        }
+        for broken, expected in cases.items():
+            with self.subTest(broken=broken):
+                self.assertEqual(repair_mojibake(broken), expected)
+
 
 if __name__ == "__main__":
     unittest.main()

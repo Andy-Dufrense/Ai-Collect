@@ -25,6 +25,7 @@ _COMMON_CJK = frozenset(
     "的一是了我不人在他有这个上们来到时大地为子中你说生国年着就那和要"
     "下以能会对发新片闻资讯布推免费配套编辑监听音音箱设备硬件软件智能"
     "乐器吉他钢琴合成器模块固件工作站键盘虚拟模拟器用于支持功能更新"
+    "仿首款系列原子演奏四算子讨论分享扩展工具"
 )
 _DOMAIN_CJK_TERMS = (
     "新闻",
@@ -45,6 +46,27 @@ _DOMAIN_CJK_TERMS = (
     "模拟",
     "合成器",
     "固件",
+)
+_PREFERRED_LABEL_TERMS = (
+    "[新闻]",
+    "[ 新闻 ]",
+    "[资讯]",
+    "[ 资讯 ]",
+    "[讨论]",
+    "[新品]",
+)
+_LEGACY_GBK_ENCODINGS = (
+    "ptcp154",
+    "mac_latin2",
+    "iso8859_5",
+    "cp1251",
+    "mac_cyrillic",
+    "cp1250",
+    "iso8859_2",
+    "mac_roman",
+    "cp1252",
+    "cp1257",
+    "iso8859_13",
 )
 
 
@@ -135,6 +157,42 @@ def is_likely_mojibake(text: str) -> bool:
     return suspicious_count >= 2
 
 
+def _mojibake_candidate_score(candidate: str) -> int:
+    """给候选中文文本打分，优先选择常见中文和领域词。"""
+
+    candidate_cjk = _cjk_count(candidate)
+    domain_score = sum(
+        100 for term in _DOMAIN_CJK_TERMS if term in candidate
+    )
+    label_score = sum(
+        300 for term in _PREFERRED_LABEL_TERMS if term in candidate
+    )
+    common_score = sum(
+        2 for char in candidate if char in _COMMON_CJK
+    )
+    return label_score + domain_score + common_score + candidate_cjk
+
+
+def _repair_whole_string_gbk_mojibake(text: str) -> str:
+    """尝试把整条误按单字节编码解码的 GBK 文本恢复成中文。"""
+
+    best_candidate = text
+    best_score = 0
+    for encoding in _LEGACY_GBK_ENCODINGS:
+        try:
+            candidate = text.encode(encoding).decode("gb18030")
+        except (UnicodeEncodeError, UnicodeDecodeError):
+            continue
+        candidate_cjk = _cjk_count(candidate)
+        if candidate_cjk < 2 or "\ufffd" in candidate:
+            continue
+        score = _mojibake_candidate_score(candidate)
+        if score > best_score:
+            best_candidate = candidate
+            best_score = score
+    return best_candidate
+
+
 def _repair_gbk_decoded_as_cp1251(text: str) -> str:
     """修复 GBK 字节被错误按西里尔编码解码后形成的片段。"""
 
@@ -160,13 +218,7 @@ def _repair_gbk_decoded_as_cp1251(text: str) -> str:
                 or candidate_cjk * 2 < max(1, compact_length)
             ):
                 continue
-            domain_score = sum(
-                100 for term in _DOMAIN_CJK_TERMS if term in candidate
-            )
-            common_score = sum(
-                2 for char in candidate if char in _COMMON_CJK
-            )
-            score = domain_score + common_score + candidate_cjk
+            score = _mojibake_candidate_score(candidate)
             if score > best_score:
                 best_candidate = candidate
                 best_score = score
@@ -183,7 +235,14 @@ def repair_mojibake(text: str) -> str:
     乱码特征时才替换。这样可以避免误改正常英文、法语重音字母或产品名。
     """
 
-    value = _repair_gbk_decoded_as_cp1251(str(text or ""))
+    value = str(text or "")
+    if is_likely_mojibake(value):
+        whole_candidate = _repair_whole_string_gbk_mojibake(value)
+        fragment_candidate = _repair_gbk_decoded_as_cp1251(value)
+        value = max(
+            (whole_candidate, fragment_candidate),
+            key=_mojibake_candidate_score,
+        )
     if len(value) < 4 or not _MOJIBAKE_HINT.search(value):
         return value
 
