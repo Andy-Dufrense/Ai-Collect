@@ -21,6 +21,12 @@ _XML_ENCODING_PATTERN = re.compile(
     br"<\?xml[^>]+encoding\s*=\s*[\"']([^\"']+)",
     re.IGNORECASE,
 )
+_TITLE_CATEGORY_PREFIX_PATTERN = re.compile(
+    r"^\s*[\[【]\s*"
+    r"(?:新闻|资讯|讨论|分享|新品|视频|资源|评测|教程|公告|转载|原创)"
+    r"\s*[\]】]\s*(?:[-—|｜:：]\s*)?",
+    re.IGNORECASE,
+)
 _COMMON_CJK = frozenset(
     "的一是了我不人在他有这个上们来到时大地为子中你说生国年着就那和要"
     "下以能会对发新片闻资讯布推免费配套编辑监听音音箱设备硬件软件智能"
@@ -156,6 +162,14 @@ def is_likely_mojibake(text: str) -> bool:
         return True
     suspicious_count = len(_SUSPICIOUS_MOJIBAKE_PATTERN.findall(value))
     return suspicious_count >= 2
+
+
+def strip_title_category_prefix(title: str) -> str:
+    """去掉标题开头的短栏目标签，但保留日期等有效前缀。"""
+
+    value = str(title or "").strip()
+    cleaned = _TITLE_CATEGORY_PREFIX_PATTERN.sub("", value, count=1).strip()
+    return cleaned or value
 
 
 def _mojibake_candidate_score(candidate: str) -> int:

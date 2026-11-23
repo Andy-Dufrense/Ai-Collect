@@ -63,6 +63,13 @@ function safeExternalUrl(value) {
     }
 }
 
+function cleanDisplayTitle(value) {
+    return String(value || "").replace(
+        /^\s*[\[【]\s*(?:新闻|资讯|讨论|分享|新品|视频|资源|评测|教程|公告|转载|原创)\s*[\]】]\s*(?:[-—|｜:：]\s*)?/i,
+        ""
+    ).trim();
+}
+
 function nextScheduledRefresh() {
     const now = new Date();
     const candidates = [];
@@ -309,7 +316,7 @@ function renderRow(item, rank) {
     const displayTitle = item.title_zh && item.title_zh !== "None"
         ? item.title_zh
         : item.title;
-    titleLink.textContent = displayTitle;
+    titleLink.textContent = cleanDisplayTitle(displayTitle) || displayTitle;
 
     const sourceCell = document.createElement("span");
     sourceCell.className = "feed-source";

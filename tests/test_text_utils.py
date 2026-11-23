@@ -9,6 +9,7 @@ from text_utils import (
     decode_html_content,
     is_likely_mojibake,
     repair_mojibake,
+    strip_title_category_prefix,
 )
 
 
@@ -107,6 +108,19 @@ class TextUtilsTests(unittest.TestCase):
         for broken, expected in cases.items():
             with self.subTest(broken=broken):
                 self.assertEqual(repair_mojibake(broken), expected)
+
+    def test_short_category_prefix_is_removed_from_title(self) -> None:
+        for title, expected in (
+            ("[新闻] Korg 发布新合成器", "Korg 发布新合成器"),
+            ("[ 资讯 ] 智能乐器新品", "智能乐器新品"),
+            ("[视频] 合成器使用教程", "合成器使用教程"),
+            ("【2026年11月】Korg 发布新固件", "【2026年11月】Korg 发布新固件"),
+        ):
+            with self.subTest(title=title):
+                self.assertEqual(
+                    strip_title_category_prefix(title),
+                    expected,
+                )
 
 
 if __name__ == "__main__":

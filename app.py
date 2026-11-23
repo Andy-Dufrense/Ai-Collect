@@ -31,6 +31,7 @@ from ranking import filter_and_rank_news
 from source_utils import display_source_name
 from scheduler_utils import next_estimated_refresh
 from translation import is_title_displayable
+from text_utils import strip_title_category_prefix
 
 
 # 统一日志格式，启动脚本会把标准输出和错误写入 data/flask.log。
@@ -151,6 +152,14 @@ def index():
     for item in ranked_news:
         item["display_source"] = display_source_name(
             str(item.get("source", ""))
+        )
+        display_title = (
+            item.get("title_zh")
+            if item.get("title_zh") and item.get("title_zh") != "None"
+            else item.get("title")
+        )
+        item["display_title"] = strip_title_category_prefix(
+            str(display_title or "")
         )
     # 隐藏未翻译英文后必须重新编号。否则原始第 1 条被隐藏时，页面会从
     # 2 开始，后续也可能出现 2、4、6 这类不连续序号。

@@ -48,7 +48,11 @@ from sogou_wechat import (
     is_temporary_article_link,
 )
 from source_utils import is_safe_http_url
-from text_utils import is_likely_mojibake, repair_mojibake
+from text_utils import (
+    is_likely_mojibake,
+    repair_mojibake,
+    strip_title_category_prefix,
+)
 
 
 # link 使用 UNIQUE 唯一索引，从数据库层面保证同一篇资讯不会重复入库。
@@ -691,9 +695,9 @@ def save_news_items(
 
     with get_connection() as connection:
         for item in items:
-            title = repair_mojibake(
-                str(item.get("title", ""))
-            ).strip()
+            title = strip_title_category_prefix(
+                repair_mojibake(str(item.get("title", ""))).strip()
+            )
             link = str(item.get("link", "")).strip()
             source = repair_mojibake(
                 str(item.get("source", ""))
@@ -737,7 +741,9 @@ def save_news_items(
             if not title_zh or title_zh.casefold() == "none":
                 title_zh = None
             else:
-                title_zh = repair_mojibake(title_zh)
+                title_zh = strip_title_category_prefix(
+                    repair_mojibake(title_zh)
+                )
             is_hardware, is_software = classify_content_flags(
                 title,
                 summary,

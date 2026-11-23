@@ -127,7 +127,7 @@
                 </div>
                 <div id="news-list">
                 {% for item in news_items %}
-                    {% set display_title = item.title_zh if item.title_zh and item.title_zh != "None" else item.title %}
+                    {% set display_title = item.display_title %}
                     <article class="feed-row">
                         <span class="rank-number {{ 'top-rank' if item.rank <= 3 else '' }}">
                             {{ item.rank }}

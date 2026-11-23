@@ -1189,6 +1189,25 @@ class DatabaseTests(unittest.TestCase):
         self.assertEqual(inserted, 0)
         self.assertEqual(get_news_count(), 0)
 
+    def test_short_category_prefix_is_removed_before_storage(self) -> None:
+        fetched_at = datetime(2026, 11, 23, 1, 0, tzinfo=timezone.utc)
+        save_news_items(
+            [
+                {
+                    "title": "[新闻] Korg 发布新款合成器",
+                    "link": "https://example.com/title-prefix",
+                    "source": "测试源",
+                    "publish_time": "2026-11-23T00:30:00+00:00",
+                    "summary": "合成器硬件发布",
+                    "category": "音乐科技",
+                    "dedupe_key": "title-prefix",
+                }
+            ],
+            fetched_at,
+        )
+
+        self.assertEqual(get_all_news()[0]["title"], "Korg 发布新款合成器")
+
     def test_initialization_replaces_expired_temporary_links(self) -> None:
         fetched_at = datetime(2026, 11, 20, 1, 0, tzinfo=timezone.utc)
         save_news_items(
