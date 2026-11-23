@@ -1208,6 +1208,31 @@ class DatabaseTests(unittest.TestCase):
 
         self.assertEqual(get_all_news()[0]["title"], "Korg 发布新款合成器")
 
+    def test_organ_title_is_recovered_from_summary_before_storage(self) -> None:
+        fetched_at = datetime(2026, 11, 23, 1, 0, tzinfo=timezone.utc)
+        save_news_items(
+            [
+                {
+                    "title": "[ ���� ] IK Multimedia ���� iLoud ��������",
+                    "link": "https://www.cndzq.com/bbs/thread-summary.html",
+                    "source": "中国电子琴信息网",
+                    "publish_time": "2026-11-23T00:30:00+00:00",
+                    "summary": (
+                        "IK Multimedia 发布 iLoud 监听音箱 "
+                        "昨天 16:30 发布 产品介绍"
+                    ),
+                    "category": "音乐科技",
+                    "dedupe_key": "organ-summary-title",
+                }
+            ],
+            fetched_at,
+        )
+
+        self.assertEqual(
+            get_all_news()[0]["title"],
+            "IK Multimedia 发布 iLoud 监听音箱",
+        )
+
     def test_initialization_replaces_expired_temporary_links(self) -> None:
         fetched_at = datetime(2026, 11, 20, 1, 0, tzinfo=timezone.utc)
         save_news_items(

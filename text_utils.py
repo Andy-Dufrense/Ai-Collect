@@ -27,6 +27,11 @@ _TITLE_CATEGORY_PREFIX_PATTERN = re.compile(
     r"\s*[\]】]\s*(?:[-—|｜:：]\s*)?",
     re.IGNORECASE,
 )
+_SUMMARY_TITLE_BOUNDARY_PATTERN = re.compile(
+    r"\s+(?=(?:\d+\s*(?:分钟|小时|天)前|今天|昨天|前天|"
+    r"\d{4}[-年/.]\d{1,2}[-月/.]\d{1,2})"
+    r"(?:\s+\d{1,2}:\d{2})?\s+(?:发布|发表))"
+)
 _COMMON_CJK = frozenset(
     "的一是了我不人在他有这个上们来到时大地为子中你说生国年着就那和要"
     "下以能会对发新片闻资讯布推免费配套编辑监听音音箱设备硬件软件智能"
@@ -170,6 +175,31 @@ def strip_title_category_prefix(title: str) -> str:
     value = str(title or "").strip()
     cleaned = _TITLE_CATEGORY_PREFIX_PATTERN.sub("", value, count=1).strip()
     return cleaned or value
+
+
+def recover_title_from_summary(
+    source: str,
+    title: str,
+    summary: str,
+) -> str:
+    """当已知站点的标题字段损坏时，从摘要开头的标题副本恢复。"""
+
+    if source != "中国电子琴信息网":
+        return title
+    match = _SUMMARY_TITLE_BOUNDARY_PATTERN.search(summary)
+    if not match:
+        return title
+    if match.start() > 180:
+        return title
+    candidate = summary[: match.start()].strip()
+    if (
+        len(candidate) < 4
+        or _cjk_count(candidate) < 2
+        or is_likely_mojibake(candidate)
+        or "。" in candidate
+    ):
+        return title
+    return strip_title_category_prefix(candidate)
 
 
 def _mojibake_candidate_score(candidate: str) -> int:

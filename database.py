@@ -50,6 +50,7 @@ from sogou_wechat import (
 from source_utils import is_safe_http_url
 from text_utils import (
     is_likely_mojibake,
+    recover_title_from_summary,
     repair_mojibake,
     strip_title_category_prefix,
 )
@@ -705,6 +706,12 @@ def save_news_items(
             summary = repair_mojibake(
                 str(item.get("summary", ""))
             ).strip()
+            title = recover_title_from_summary(
+                source,
+                title,
+                summary,
+            )
+            title = strip_title_category_prefix(title)
             raw_publish_time = item.get("publish_time")
             publish_time = (
                 str(raw_publish_time).strip()

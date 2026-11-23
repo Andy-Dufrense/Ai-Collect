@@ -8,6 +8,7 @@ from text_utils import (
     charset_from_content_type,
     decode_html_content,
     is_likely_mojibake,
+    recover_title_from_summary,
     repair_mojibake,
     strip_title_category_prefix,
 )
@@ -121,6 +122,22 @@ class TextUtilsTests(unittest.TestCase):
                     strip_title_category_prefix(title),
                     expected,
                 )
+
+    def test_organ_title_can_be_recovered_from_correct_summary(self) -> None:
+        title = "[ ���� ] IK Multimedia ���� iLoud Micro Monitor 2 ��������"
+        summary = (
+            "IK Multimedia 发布 iLoud Micro Monitor 2 监听音箱 "
+            "4 天前 发布 IK Multimedia 的超紧凑型监听音箱..."
+        )
+
+        self.assertEqual(
+            recover_title_from_summary(
+                "中国电子琴信息网",
+                title,
+                summary,
+            ),
+            "IK Multimedia 发布 iLoud Micro Monitor 2 监听音箱",
+        )
 
 
 if __name__ == "__main__":
