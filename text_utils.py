@@ -55,6 +55,7 @@ _PREFERRED_LABEL_TERMS = (
     "[讨论]",
     "[新品]",
 )
+_CHINESE_PUNCTUATION = "【】《》，：！？"
 _LEGACY_GBK_ENCODINGS = (
     "ptcp154",
     "mac_latin2",
@@ -167,10 +168,19 @@ def _mojibake_candidate_score(candidate: str) -> int:
     label_score = sum(
         300 for term in _PREFERRED_LABEL_TERMS if term in candidate
     )
+    punctuation_score = sum(
+        10 for char in candidate if char in _CHINESE_PUNCTUATION
+    )
     common_score = sum(
         2 for char in candidate if char in _COMMON_CJK
     )
-    return label_score + domain_score + common_score + candidate_cjk
+    return (
+        label_score
+        + punctuation_score
+        + domain_score
+        + common_score
+        + candidate_cjk
+    )
 
 
 def _repair_whole_string_gbk_mojibake(text: str) -> str:
